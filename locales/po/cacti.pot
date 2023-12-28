@@ -1,0 +1,860 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti \n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2023-12-27 16:26+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: includes/arrays.php:44
+msgid "HTTP plaintext, default port 80"
+msgstr ""
+
+#: includes/arrays.php:45
+msgid "HTTP encrypted (HTTPS), default port 443"
+msgstr ""
+
+#: includes/arrays.php:47
+msgid "SMTP plaintext, default port 25 (or 587 for submission)"
+msgstr ""
+
+#: includes/arrays.php:48
+msgid "SMTP with STARTTLS, default port 25(or 587 for submission)"
+msgstr ""
+
+#: includes/arrays.php:49
+msgid "SMTP encrypted (SMTPS), default port 465"
+msgstr ""
+
+#: includes/arrays.php:51
+msgid "IMAP plaintext, default port 143"
+msgstr ""
+
+#: includes/arrays.php:52
+msgid "IMAP with STARTTLS, default port 143"
+msgstr ""
+
+#: includes/arrays.php:53
+msgid "IMAP encrypted (IMAPS), default port 993"
+msgstr ""
+
+#: includes/arrays.php:55
+msgid "POP3 plaintext, default port 110"
+msgstr ""
+
+#: includes/arrays.php:56
+msgid "POP3 with STARTTLS, default port 110"
+msgstr ""
+
+#: includes/arrays.php:57
+msgid "POP3 encrypted (POP3S), default port 995"
+msgstr ""
+
+#: includes/arrays.php:59
+msgid "DNS plaintext, default port 53"
+msgstr ""
+
+#: includes/arrays.php:62
+msgid "LDAP plaintext, default port 389"
+msgstr ""
+
+#: includes/arrays.php:63
+msgid "LDAP encrypted (LDAPS), default port 636"
+msgstr ""
+
+#: includes/arrays.php:65
+msgid "FTP plaintext, default port 21"
+msgstr ""
+
+#: includes/arrays.php:66
+msgid "FTP encrypted (FTPS), default port 990"
+msgstr ""
+
+#: includes/arrays.php:67
+msgid "SCP download file, default port 22"
+msgstr ""
+
+#: includes/arrays.php:68
+msgid "TFTP protocol - download file, default port 69"
+msgstr ""
+
+#: includes/arrays.php:70
+msgid "SMB plaintext download file, default port 445"
+msgstr ""
+
+#: includes/arrays.php:71
+msgid "SMB encrypted (SMBS) download file, default port 445"
+msgstr ""
+
+#: includes/arrays.php:114
+msgid "Last hour"
+msgstr ""
+
+#: includes/arrays.php:115
+msgid "Last 6 hours"
+msgstr ""
+
+#: includes/arrays.php:116
+msgid "Last day"
+msgstr ""
+
+#: includes/arrays.php:117
+msgid "Last week"
+msgstr ""
+
+#: includes/arrays.php:167
+#, php-format
+msgid "%d Poller run"
+msgstr ""
+
+#: includes/arrays.php:168 includes/arrays.php:169 includes/arrays.php:170
+#: includes/arrays.php:171 includes/arrays.php:172 includes/arrays.php:173
+#: includes/arrays.php:174 includes/arrays.php:175 includes/arrays.php:176
+#, php-format
+msgid "%d Poller runs"
+msgstr ""
+
+#: includes/arrays.php:180 includes/arrays.php:181 includes/arrays.php:182
+#: includes/arrays.php:183 includes/arrays.php:184 includes/arrays.php:185
+#: includes/arrays.php:186 includes/arrays.php:187
+#, php-format
+msgid "%d Seconds"
+msgstr ""
+
+#: includes/arrays.php:214 includes/arrays.php:218 includes/arrays.php:222
+msgid "Delete"
+msgstr ""
+
+#: includes/arrays.php:223
+msgid "Disable"
+msgstr ""
+
+#: includes/arrays.php:224
+msgid "Enable"
+msgstr ""
+
+#: includes/arrays.php:225
+msgid "Duplicate"
+msgstr ""
+
+#: includes/arrays.php:232 includes/arrays.php:252 servcheck_ca.php:264
+#: servcheck_proxies.php:273 servcheck_test.php:801 servcheck_test.php:1033
+msgid "Name"
+msgstr ""
+
+#: includes/arrays.php:233
+msgid "A Useful Name for this CA chain."
+msgstr ""
+
+#: includes/arrays.php:237
+msgid "New CA"
+msgstr ""
+
+#: includes/arrays.php:240 includes/arrays.php:364
+msgid "CA chain"
+msgstr ""
+
+#: includes/arrays.php:244
+msgid "CA and intermediate certs, PEM encoded"
+msgstr ""
+
+#: includes/arrays.php:253
+msgid "A Useful Name for this Proxy."
+msgstr ""
+
+#: includes/arrays.php:257
+msgid "New Proxy"
+msgstr ""
+
+#: includes/arrays.php:261 servcheck_proxies.php:277
+msgid "Hostname"
+msgstr ""
+
+#: includes/arrays.php:262
+msgid "The Proxy Hostname."
+msgstr ""
+
+#: includes/arrays.php:270
+msgid "HTTP Port"
+msgstr ""
+
+#: includes/arrays.php:271
+msgid "The HTTP Proxy Port."
+msgstr ""
+
+#: includes/arrays.php:279
+msgid "HTTPS Port"
+msgstr ""
+
+#: includes/arrays.php:280
+msgid "The HTTPS Proxy Port."
+msgstr ""
+
+#: includes/arrays.php:288
+msgid "User Name"
+msgstr ""
+
+#: includes/arrays.php:289
+msgid "The user to use to authenticate with the Proxy if any."
+msgstr ""
+
+#: includes/arrays.php:297 includes/arrays.php:381
+msgid "Password"
+msgstr ""
+
+#: includes/arrays.php:298
+msgid "The user password to use to authenticate with the Proxy if any."
+msgstr ""
+
+#: includes/arrays.php:318
+msgid "General Settings"
+msgstr ""
+
+#: includes/arrays.php:322
+msgid "Service Check Name"
+msgstr ""
+
+#: includes/arrays.php:323
+msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
+msgstr ""
+
+#: includes/arrays.php:329 servcheck_test.php:1118
+msgid "Enable Service Check"
+msgstr ""
+
+#: includes/arrays.php:330
+msgid "Uncheck this box to disabled this test from being checked."
+msgstr ""
+
+#: includes/arrays.php:335
+msgid "Poller"
+msgstr ""
+
+#: includes/arrays.php:338
+msgid "Poller on which the test will run"
+msgstr ""
+
+#: includes/arrays.php:343
+msgid "Type of service"
+msgstr ""
+
+#: includes/arrays.php:348
+msgid "What type of service?"
+msgstr ""
+
+#: includes/arrays.php:353
+msgid "IP Address or DNS name of server"
+msgstr ""
+
+#: includes/arrays.php:354
+msgid "You can specify another port (example.com:5000) otherwise default will be used"
+msgstr ""
+
+#: includes/arrays.php:361
+msgid "Service settings"
+msgstr ""
+
+#: includes/arrays.php:366 includes/arrays.php:424 includes/arrays.php:515
+#: servcheck_test.php:473
+msgid "None"
+msgstr ""
+
+#: includes/arrays.php:368
+msgid "Your own CA and intermediate certs"
+msgstr ""
+
+#: includes/arrays.php:373 servcheck_proxies.php:285
+msgid "Username"
+msgstr ""
+
+#: includes/arrays.php:375
+msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
+msgstr ""
+
+#: includes/arrays.php:383
+msgid "For anonymous ftp insert email address here."
+msgstr ""
+
+#: includes/arrays.php:389
+msgid "LDAP search"
+msgstr ""
+
+#: includes/arrays.php:391
+msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
+msgstr ""
+
+#: includes/arrays.php:398
+msgid "DNS name for query"
+msgstr ""
+
+#: includes/arrays.php:399
+msgid "DNS name for querying"
+msgstr ""
+
+#: includes/arrays.php:406
+msgid "path part of url"
+msgstr ""
+
+#: includes/arrays.php:407
+msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
+msgstr ""
+
+#: includes/arrays.php:414
+msgid "Requires Authentication"
+msgstr ""
+
+#: includes/arrays.php:415
+msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
+msgstr ""
+
+#: includes/arrays.php:421
+msgid "Proxy Server"
+msgstr ""
+
+#: includes/arrays.php:422
+msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
+msgstr ""
+
+#: includes/arrays.php:430
+msgid "Check Certificate"
+msgstr ""
+
+#: includes/arrays.php:431
+msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
+msgstr ""
+
+#: includes/arrays.php:437
+msgid "Check and notify Certificate expiration"
+msgstr ""
+
+#: includes/arrays.php:438
+msgid "If using SSL, check this box if you want to check the certificate expiration. You will be warn when last 10 days left."
+msgstr ""
+
+#: includes/arrays.php:444
+msgid "Notification Timing"
+msgstr ""
+
+#: includes/arrays.php:447
+msgid "How often test"
+msgstr ""
+
+#: includes/arrays.php:451
+msgid "Test each poller cycle or less"
+msgstr ""
+
+#: includes/arrays.php:455
+msgid "Trigger"
+msgstr ""
+
+#: includes/arrays.php:459
+msgid "How many poller cycles must be down before it will send an alert. After an alert is sent, in order for a 'Site Recovering' Email to be send, it must also be up this number of poller cycles."
+msgstr ""
+
+#: includes/arrays.php:463
+msgid "Time Out"
+msgstr ""
+
+#: includes/arrays.php:467
+msgid "How many seconds to allow the page to timeout before reporting it as down."
+msgstr ""
+
+#: includes/arrays.php:472
+msgid "Verification Strings"
+msgstr ""
+
+#: includes/arrays.php:476
+msgid "Response Search String"
+msgstr ""
+
+#: includes/arrays.php:477
+msgid "This is the string to search for in the response for a live and working service."
+msgstr ""
+
+#: includes/arrays.php:484
+msgid "Response Search String - Maintenance"
+msgstr ""
+
+#: includes/arrays.php:485
+msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
+msgstr ""
+
+#: includes/arrays.php:492
+msgid "Response Search String - Failed"
+msgstr ""
+
+#: includes/arrays.php:493
+msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
+msgstr ""
+
+#: includes/arrays.php:500
+msgid "Notification Settings"
+msgstr ""
+
+#: includes/arrays.php:503
+msgid "Notify Format"
+msgstr ""
+
+#: includes/arrays.php:505
+msgid "This is the format to use when sending the notification email"
+msgstr ""
+
+#: includes/arrays.php:510
+msgid "Notification List"
+msgstr ""
+
+#: includes/arrays.php:512
+msgid "Use this Notification List for those to be notified when this service goes down."
+msgstr ""
+
+#: includes/arrays.php:518
+msgid "Notify Accounts"
+msgstr ""
+
+#: includes/arrays.php:520
+msgid "This is a listing of accounts that will be notified when this service goes down."
+msgstr ""
+
+#: includes/arrays.php:525
+msgid "Extra Alert Emails"
+msgstr ""
+
+#: includes/arrays.php:529
+msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
+msgstr ""
+
+#: includes/arrays.php:533
+msgid "Notes"
+msgstr ""
+
+#: includes/arrays.php:537
+msgid "Notes sent in email"
+msgstr ""
+
+#: includes/functions.php:33 servcheck_test.php:836
+msgid "Tests"
+msgstr ""
+
+#: includes/functions.php:34
+msgid "CA certificates"
+msgstr ""
+
+#: includes/functions.php:35 servcheck_proxies.php:292
+#: servcheck_proxies.php:349
+msgid "Proxies"
+msgstr ""
+
+#: includes/functions.php:36
+msgid "Curl return codes"
+msgstr ""
+
+#: includes/functions.php:42
+msgid "Log History"
+msgstr ""
+
+#: includes/functions.php:49
+msgid "Graphs"
+msgstr ""
+
+#: includes/functions.php:129
+msgid "No data"
+msgstr ""
+
+#: servcheck_ca.php:104
+msgid "Click 'Continue' to delete the following CA."
+msgid_plural "Click 'Continue' to delete following CA."
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_ca.php:109 servcheck_proxies.php:108 servcheck_test.php:198
+#: servcheck_test.php:207 servcheck_test.php:216 servcheck_test.php:225
+msgid "Cancel"
+msgstr ""
+
+#: servcheck_ca.php:109 servcheck_proxies.php:108 servcheck_test.php:198
+#: servcheck_test.php:207 servcheck_test.php:216 servcheck_test.php:225
+msgid "Continue"
+msgstr ""
+
+#: servcheck_ca.php:109
+msgid "Delete CA"
+msgid_plural "Delete CA"
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_ca.php:166
+#, php-format
+msgid "CA [edit: %s]"
+msgstr ""
+
+#: servcheck_ca.php:168
+msgid "CA [new]"
+msgstr ""
+
+#: servcheck_ca.php:268
+msgid "Used"
+msgstr ""
+
+#: servcheck_ca.php:275 servcheck_ca.php:338
+msgid "CAs"
+msgstr ""
+
+#: servcheck_ca.php:296
+msgid "No CAs Found"
+msgstr ""
+
+#: servcheck_ca.php:315
+msgid "Servcheck CA Management"
+msgstr ""
+
+#: servcheck_ca.php:322
+msgid ""
+"Servcheck uses a file of certificates from common root CAs to check certificates. This will work \n"
+"\t\tfor certificates issued by common CAs. If you are using a custom CA (for example, \n"
+"\t\tin a Microsoft AD environment), the test for that certificate will fail because servcheck \n"
+"\t\tdoes not know your CA. You must upload the entire chain (CA certificate and intermediate \n"
+"\t\tcertificates). You then associate these with the test where the certificate issued by your CA is."
+msgstr ""
+
+#: servcheck_ca.php:332 servcheck_proxies.php:343 servcheck_test.php:506
+#: servcheck_test.php:1259
+msgid "Search"
+msgstr ""
+
+#: servcheck_ca.php:343 servcheck_proxies.php:354 servcheck_test.php:1299
+#: servcheck_test.php:1391
+msgid "Default"
+msgstr ""
+
+#: servcheck_ca.php:354 servcheck_proxies.php:365 servcheck_test.php:1310
+#: servcheck_test.php:1402
+msgid "Go"
+msgstr ""
+
+#: servcheck_ca.php:355 servcheck_proxies.php:366 servcheck_test.php:1311
+#: servcheck_test.php:1403
+msgid "Clear"
+msgstr ""
+
+#: servcheck_curl_code.php:55
+msgid "No error codes"
+msgstr ""
+
+#: servcheck_proxies.php:103
+msgid "Click 'Continue' to delete the following Proxy."
+msgid_plural "Click 'Continue' to delete following Proxies."
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_proxies.php:108
+msgid "Delete Proxy"
+msgid_plural "Delete Proxies"
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_proxies.php:169
+#, php-format
+msgid "Proxy [edit: %s]"
+msgstr ""
+
+#: servcheck_proxies.php:171
+msgid "Proxy [new]"
+msgstr ""
+
+#: servcheck_proxies.php:281
+msgid "Ports (http/https)"
+msgstr ""
+
+#: servcheck_proxies.php:309
+msgid "Not Set"
+msgstr ""
+
+#: servcheck_proxies.php:315
+msgid "No Servers Found"
+msgstr ""
+
+#: servcheck_proxies.php:334
+msgid "Servcheck Proxy Management"
+msgstr ""
+
+#: servcheck_test.php:193
+msgid "Click 'Continue' to Delete the following tests."
+msgid_plural "Click 'Continue' to Delete following tests."
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:198
+msgid "Delete rest"
+msgid_plural "Delete tests"
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:202
+msgid "Click 'Continue' to Disable the following test."
+msgid_plural "Click 'Continue' to Disable following Tests."
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:207
+msgid "Disable test"
+msgid_plural "Disable Tests"
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:211
+msgid "Click 'Continue' to Enable the following test."
+msgid_plural "Click 'Continue' to Enable following tests."
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:216
+msgid "Enable test"
+msgid_plural "Enable tests"
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:220
+msgid "Click 'Continue' to Duplicate the following test."
+msgid_plural "Click 'Continue' to Duplicate following tests."
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:225
+msgid "Duplicate test"
+msgid_plural "Duplicate tests"
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:402
+#, php-format
+msgid "The Service Check history was purged for %s"
+msgstr ""
+
+#: servcheck_test.php:416
+#, php-format
+msgid "Query [edit: %s]"
+msgstr ""
+
+#: servcheck_test.php:418
+msgid "Query [new]"
+msgstr ""
+
+#: servcheck_test.php:461
+msgid "No Users Selected"
+msgstr ""
+
+#: servcheck_test.php:463
+msgid "Users Selected"
+msgstr ""
+
+#: servcheck_test.php:466
+msgid "All Users Selected"
+msgstr ""
+
+#: servcheck_test.php:472
+msgid "All"
+msgstr ""
+
+#: servcheck_test.php:798
+msgid "Date"
+msgstr ""
+
+#: servcheck_test.php:804 servcheck_test.php:1058
+msgid "Result"
+msgstr ""
+
+#: servcheck_test.php:807 servcheck_test.php:1063
+msgid "Search result"
+msgstr ""
+
+#: servcheck_test.php:810 servcheck_test.php:1068
+msgid "Curl return code"
+msgstr ""
+
+#: servcheck_test.php:815
+msgid "DNS"
+msgstr ""
+
+#: servcheck_test.php:820
+msgid "Connect"
+msgstr ""
+
+#: servcheck_test.php:825
+msgid "Redirect"
+msgstr ""
+
+#: servcheck_test.php:830
+msgid "Total"
+msgstr ""
+
+#: servcheck_test.php:862
+msgid "Service Down"
+msgstr ""
+
+#: servcheck_test.php:862
+msgid "Service UP"
+msgstr ""
+
+#: servcheck_test.php:876
+msgid "No Service Check Events in History"
+msgstr ""
+
+#: servcheck_test.php:932
+msgid "Last returned data of test"
+msgstr ""
+
+#: servcheck_test.php:1028
+msgid "Actions"
+msgstr ""
+
+#: servcheck_test.php:1038 servcheck_test.php:1144
+msgid "Enabled"
+msgstr ""
+
+#: servcheck_test.php:1043
+msgid "Last Check"
+msgstr ""
+
+#: servcheck_test.php:1048
+msgid "Stats (OK/problem)"
+msgstr ""
+
+#: servcheck_test.php:1053
+msgid "Trigerred"
+msgstr ""
+
+#: servcheck_test.php:1076 servcheck_test.php:1294
+msgid "Checks"
+msgstr ""
+
+#: servcheck_test.php:1113
+msgid "Edit Service Check"
+msgstr ""
+
+#: servcheck_test.php:1122
+msgid "Disable Service Check"
+msgstr ""
+
+#: servcheck_test.php:1126
+msgid "View Service Check History"
+msgstr ""
+
+#: servcheck_test.php:1129
+msgid "View Last returned data"
+msgstr ""
+
+#: servcheck_test.php:1134
+msgid "View Graph"
+msgstr ""
+
+#: servcheck_test.php:1144
+msgid "Disabled"
+msgstr ""
+
+#: servcheck_test.php:1147
+msgid "N/A"
+msgstr ""
+
+#: servcheck_test.php:1154
+msgid "No"
+msgstr ""
+
+#: servcheck_test.php:1154
+msgid "Yes"
+msgstr ""
+
+#: servcheck_test.php:1155 servcheck_test.php:1156
+msgid "Not tested yet"
+msgstr ""
+
+#: servcheck_test.php:1164
+msgid "No Tests Found"
+msgstr ""
+
+#: servcheck_test.php:1250 setup.php:223
+msgid "Service Checks"
+msgstr ""
+
+#: servcheck_test.php:1265
+msgid "State"
+msgstr ""
+
+#: servcheck_test.php:1269
+msgid "Any"
+msgstr ""
+
+#: servcheck_test.php:1278
+msgid "Refresh"
+msgstr ""
+
+#: servcheck_test.php:1372
+msgid "Service Check History"
+msgstr ""
+
+#: servcheck_test.php:1380
+msgid "Date Search"
+msgstr ""
+
+#: servcheck_test.php:1386
+msgid "Entries"
+msgstr ""
+
+#: servcheck_test.php:1404
+msgid "Purge Events"
+msgstr ""
+
+#: setup.php:34
+msgid "Service Check Admin"
+msgstr ""
+
+#: setup.php:213
+msgid "Management"
+msgstr ""
+
+#: setup.php:213
+msgid "Service Checker"
+msgstr ""
+
+#: setup.php:230
+msgid "Service Check Edit"
+msgstr ""
+
+#: setup.php:237
+msgid "Service Check Save"
+msgstr ""
+
+#: setup.php:244
+msgid "Web Proxies"
+msgstr ""
+
+#: setup.php:251
+msgid "Web Proxie Edit"
+msgstr ""
+
+#: setup.php:258
+msgid "Save Web Proxy"
+msgstr ""
+
+#: setup.php:265
+msgid "CA"
+msgstr ""
+
+#: setup.php:272
+msgid "CA Edit"
+msgstr ""
+
+#: setup.php:279
+msgid "Save CA"
+msgstr ""

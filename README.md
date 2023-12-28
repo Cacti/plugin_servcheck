@@ -69,7 +69,9 @@ where the certificate issued by your CA
 
 Bug and feature enhancements for the servcheck plugin are handled in GitHub. If
 you find a first search the Cacti forums for a solution before creating an issue
-in GitHub.
+in GitHub - https://github.com/Cacti/plugin_servcheck
+
+You can find more information on our forum - http://forums.cacti.net/viewtopic.php?t=62934
 
 -----------------------------------------------
 Copyright (c) 2004-2023 - The Cacti Group, Inc.

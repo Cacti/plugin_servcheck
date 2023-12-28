@@ -1,0 +1,1186 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2023-12-27 16:26+0100\n"
+"PO-Revision-Date: 2020-12-14 19:08-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: includes/arrays.php:44
+msgid "HTTP plaintext, default port 80"
+msgstr ""
+
+#: includes/arrays.php:45
+msgid "HTTP encrypted (HTTPS), default port 443"
+msgstr ""
+
+#: includes/arrays.php:47
+msgid "SMTP plaintext, default port 25 (or 587 for submission)"
+msgstr ""
+
+#: includes/arrays.php:48
+msgid "SMTP with STARTTLS, default port 25(or 587 for submission)"
+msgstr ""
+
+#: includes/arrays.php:49
+msgid "SMTP encrypted (SMTPS), default port 465"
+msgstr ""
+
+#: includes/arrays.php:51
+msgid "IMAP plaintext, default port 143"
+msgstr ""
+
+#: includes/arrays.php:52
+msgid "IMAP with STARTTLS, default port 143"
+msgstr ""
+
+#: includes/arrays.php:53
+msgid "IMAP encrypted (IMAPS), default port 993"
+msgstr ""
+
+#: includes/arrays.php:55
+msgid "POP3 plaintext, default port 110"
+msgstr ""
+
+#: includes/arrays.php:56
+msgid "POP3 with STARTTLS, default port 110"
+msgstr ""
+
+#: includes/arrays.php:57
+msgid "POP3 encrypted (POP3S), default port 995"
+msgstr ""
+
+#: includes/arrays.php:59
+msgid "DNS plaintext, default port 53"
+msgstr ""
+
+#: includes/arrays.php:62
+msgid "LDAP plaintext, default port 389"
+msgstr ""
+
+#: includes/arrays.php:63
+msgid "LDAP encrypted (LDAPS), default port 636"
+msgstr ""
+
+#: includes/arrays.php:65
+msgid "FTP plaintext, default port 21"
+msgstr ""
+
+#: includes/arrays.php:66
+msgid "FTP encrypted (FTPS), default port 990"
+msgstr ""
+
+#: includes/arrays.php:67
+msgid "SCP download file, default port 22"
+msgstr ""
+
+#: includes/arrays.php:68
+msgid "TFTP protocol - download file, default port 69"
+msgstr ""
+
+#: includes/arrays.php:70
+msgid "SMB plaintext download file, default port 445"
+msgstr ""
+
+#: includes/arrays.php:71
+msgid "SMB encrypted (SMBS) download file, default port 445"
+msgstr ""
+
+#: includes/arrays.php:114
+#, fuzzy
+msgid "Last hour"
+msgstr "Senaste kontrollen"
+
+#: includes/arrays.php:115
+msgid "Last 6 hours"
+msgstr ""
+
+#: includes/arrays.php:116
+msgid "Last day"
+msgstr ""
+
+#: includes/arrays.php:117
+#, fuzzy
+msgid "Last week"
+msgstr "Senaste kontrollen"
+
+#: includes/arrays.php:167
+#, php-format
+msgid "%d Poller run"
+msgstr ""
+
+#: includes/arrays.php:168 includes/arrays.php:169 includes/arrays.php:170
+#: includes/arrays.php:171 includes/arrays.php:172 includes/arrays.php:173
+#: includes/arrays.php:174 includes/arrays.php:175 includes/arrays.php:176
+#, php-format
+msgid "%d Poller runs"
+msgstr ""
+
+#: includes/arrays.php:180 includes/arrays.php:181 includes/arrays.php:182
+#: includes/arrays.php:183 includes/arrays.php:184 includes/arrays.php:185
+#: includes/arrays.php:186 includes/arrays.php:187
+#, fuzzy, php-format
+msgid "%d Seconds"
+msgstr "%d sekunder"
+
+#: includes/arrays.php:214 includes/arrays.php:218 includes/arrays.php:222
+msgid "Delete"
+msgstr "Radera"
+
+#: includes/arrays.php:223
+msgid "Disable"
+msgstr "Inaktivera"
+
+#: includes/arrays.php:224
+msgid "Enable"
+msgstr "Aktivera"
+
+#: includes/arrays.php:225
+msgid "Duplicate"
+msgstr "Duplicera"
+
+#: includes/arrays.php:232 includes/arrays.php:252 servcheck_ca.php:264
+#: servcheck_proxies.php:273 servcheck_test.php:801 servcheck_test.php:1033
+msgid "Name"
+msgstr "Namn"
+
+#: includes/arrays.php:233
+#, fuzzy
+msgid "A Useful Name for this CA chain."
+msgstr "Ett användbart namn för denna proxy."
+
+#: includes/arrays.php:237
+msgid "New CA"
+msgstr ""
+
+#: includes/arrays.php:240 includes/arrays.php:364
+msgid "CA chain"
+msgstr ""
+
+#: includes/arrays.php:244
+msgid "CA and intermediate certs, PEM encoded"
+msgstr ""
+
+#: includes/arrays.php:253
+#, fuzzy
+msgid "A Useful Name for this Proxy."
+msgstr "Ett användbart namn för denna proxy."
+
+#: includes/arrays.php:257
+#, fuzzy
+msgid "New Proxy"
+msgstr "Ny proxy"
+
+#: includes/arrays.php:261 servcheck_proxies.php:277
+msgid "Hostname"
+msgstr "Värdnamn"
+
+#: includes/arrays.php:262
+#, fuzzy
+msgid "The Proxy Hostname."
+msgstr "Proxy-värdnamnet."
+
+#: includes/arrays.php:270
+#, fuzzy
+msgid "HTTP Port"
+msgstr "HTTP-kod"
+
+#: includes/arrays.php:271
+#, fuzzy
+msgid "The HTTP Proxy Port."
+msgstr "HTTP-proxyporten."
+
+#: includes/arrays.php:279
+#, fuzzy
+msgid "HTTPS Port"
+msgstr "HTTP-kod"
+
+#: includes/arrays.php:280
+#, fuzzy
+msgid "The HTTPS Proxy Port."
+msgstr "HTTPS-proxyporten."
+
+#: includes/arrays.php:288
+msgid "User Name"
+msgstr "Användarnamn"
+
+#: includes/arrays.php:289
+#, fuzzy
+msgid "The user to use to authenticate with the Proxy if any."
+msgstr "Användaren som ska användas för att autentisera med Proxy om någon."
+
+#: includes/arrays.php:297 includes/arrays.php:381
+msgid "Password"
+msgstr "Lösenord"
+
+#: includes/arrays.php:298
+#, fuzzy
+msgid "The user password to use to authenticate with the Proxy if any."
+msgstr "Användarlösenordet som ska användas för att autentisera med Proxy om någon."
+
+#: includes/arrays.php:318
+msgid "General Settings"
+msgstr "Allmänna inställningar"
+
+#: includes/arrays.php:322
+#, fuzzy
+msgid "Service Check Name"
+msgstr "Service Check Name"
+
+#: includes/arrays.php:323
+#, fuzzy
+msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
+msgstr "Namnet som visas för denna servicekontroll och ingår i eventuella varningsmeddelanden."
+
+#: includes/arrays.php:329 servcheck_test.php:1118
+#, fuzzy
+msgid "Enable Service Check"
+msgstr "Aktivera servicekontroll"
+
+#: includes/arrays.php:330
+#, fuzzy
+msgid "Uncheck this box to disabled this test from being checked."
+msgstr "Avmarkera den här rutan om du vill avaktivera den här webbadressen."
+
+#: includes/arrays.php:335
+msgid "Poller"
+msgstr ""
+
+#: includes/arrays.php:338
+msgid "Poller on which the test will run"
+msgstr ""
+
+#: includes/arrays.php:343
+msgid "Type of service"
+msgstr ""
+
+#: includes/arrays.php:348
+msgid "What type of service?"
+msgstr ""
+
+#: includes/arrays.php:353
+#, fuzzy
+msgid "IP Address or DNS name of server"
+msgstr "IP-adress för att ansluta till den här servern"
+
+#: includes/arrays.php:354
+msgid "You can specify another port (example.com:5000) otherwise default will be used"
+msgstr ""
+
+#: includes/arrays.php:361
+#, fuzzy
+msgid "Service settings"
+msgstr "Allmänna inställningar"
+
+#: includes/arrays.php:366 includes/arrays.php:424 includes/arrays.php:515
+#: servcheck_test.php:473
+msgid "None"
+msgstr "Ingen"
+
+#: includes/arrays.php:368
+msgid "Your own CA and intermediate certs"
+msgstr ""
+
+#: includes/arrays.php:373 servcheck_proxies.php:285
+msgid "Username"
+msgstr "Användarnamn"
+
+#: includes/arrays.php:375
+msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
+msgstr ""
+
+#: includes/arrays.php:383
+msgid "For anonymous ftp insert email address here."
+msgstr ""
+
+#: includes/arrays.php:389
+#, fuzzy
+msgid "LDAP search"
+msgstr "Sök"
+
+#: includes/arrays.php:391
+msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
+msgstr ""
+
+#: includes/arrays.php:398
+msgid "DNS name for query"
+msgstr ""
+
+#: includes/arrays.php:399
+msgid "DNS name for querying"
+msgstr ""
+
+#: includes/arrays.php:406
+msgid "path part of url"
+msgstr ""
+
+#: includes/arrays.php:407
+msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
+msgstr ""
+
+#: includes/arrays.php:414
+#, fuzzy
+msgid "Requires Authentication"
+msgstr "Kräver godkännande"
+
+#: includes/arrays.php:415
+#, fuzzy
+msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
+msgstr "Markera den här rutan om webbplatsen normalt returnerar ett 401-fel eftersom det kräver ett användarnamn och lösenord."
+
+#: includes/arrays.php:421
+msgid "Proxy Server"
+msgstr "Proxy Server"
+
+#: includes/arrays.php:422
+#, fuzzy
+msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
+msgstr "Om den här anslutningstexten kräver en proxy, välj den här. Välj annars 'Ingen'."
+
+#: includes/arrays.php:430
+#, fuzzy
+msgid "Check Certificate"
+msgstr "Kontrollera certifikatet"
+
+#: includes/arrays.php:431
+#, fuzzy
+msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
+msgstr "Om du använder SSL markerar du den här rutan om du vill validera certifikatet. Standard på, stäng av om du använder ett självsignerat certifikat."
+
+#: includes/arrays.php:437
+#, fuzzy
+msgid "Check and notify Certificate expiration"
+msgstr "Kontrollera certifikatet"
+
+#: includes/arrays.php:438
+#, fuzzy
+msgid "If using SSL, check this box if you want to check the certificate expiration. You will be warn when last 10 days left."
+msgstr "Om du använder SSL markerar du den här rutan om du vill validera certifikatet. Standard på, stäng av om du använder ett självsignerat certifikat."
+
+#: includes/arrays.php:444
+#, fuzzy
+msgid "Notification Timing"
+msgstr "Aviseringstidning"
+
+#: includes/arrays.php:447
+msgid "How often test"
+msgstr ""
+
+#: includes/arrays.php:451
+msgid "Test each poller cycle or less"
+msgstr ""
+
+#: includes/arrays.php:455
+msgid "Trigger"
+msgstr "Utlösare"
+
+#: includes/arrays.php:459
+#, fuzzy
+msgid "How many poller cycles must be down before it will send an alert. After an alert is sent, in order for a 'Site Recovering' Email to be send, it must also be up this number of poller cycles."
+msgstr "Hur många minuter måste URL-adressen vara nere innan den skickar en varning. Efter att en varning skickats, måste det också vara uppe i det här antalet minuter för att en \"Site Recovering\" Email ska skickas."
+
+#: includes/arrays.php:463
+#, fuzzy
+msgid "Time Out"
+msgstr "Time-out"
+
+#: includes/arrays.php:467
+#, fuzzy
+msgid "How many seconds to allow the page to timeout before reporting it as down."
+msgstr "Hur många sekunder tillåter sidan till timeout innan du rapporterar den som nere."
+
+#: includes/arrays.php:472
+#, fuzzy
+msgid "Verification Strings"
+msgstr "Verifieringssträngar"
+
+#: includes/arrays.php:476
+#, fuzzy
+msgid "Response Search String"
+msgstr "Svar söksträng"
+
+#: includes/arrays.php:477
+#, fuzzy
+msgid "This is the string to search for in the response for a live and working service."
+msgstr "Det här är strängen att söka efter i URL-svaret för en levande och fungerande webbtjänst."
+
+#: includes/arrays.php:484
+#, fuzzy
+msgid "Response Search String - Maintenance"
+msgstr "Response Search String - Underhållssida"
+
+#: includes/arrays.php:485
+#, fuzzy
+msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
+msgstr "Detta är strängen att söka efter på underhållssidan. Tjänsten Check kontrollerar denna sträng om ovanstående sträng inte hittas. Om det hittas betyder det att webbtjänsten är under underhåll."
+
+#: includes/arrays.php:492
+#, fuzzy
+msgid "Response Search String - Failed"
+msgstr "Svarsökningsträng - Misslyckades"
+
+#: includes/arrays.php:493
+#, fuzzy
+msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
+msgstr "Detta är strängen för att söka efter ett känt misslyckande i webbservicemeddelandet. Tjänsten kontrollerar endast om denna sträng hittas, ignorera eventuella timeout-problem och söksträngarna ovan."
+
+#: includes/arrays.php:500
+msgid "Notification Settings"
+msgstr "Inställningar för aviseringar"
+
+#: includes/arrays.php:503
+#, fuzzy
+msgid "Notify Format"
+msgstr "Meddela konton"
+
+#: includes/arrays.php:505
+#, fuzzy
+msgid "This is the format to use when sending the notification email"
+msgstr "Detta är det format som ska användas när du skickar e-postmeddelandet"
+
+#: includes/arrays.php:510
+#, fuzzy
+msgid "Notification List"
+msgstr "Inställningar för aviseringar"
+
+#: includes/arrays.php:512
+#, fuzzy
+msgid "Use this Notification List for those to be notified when this service goes down."
+msgstr "Detta är en lista över konton som kommer att meddelas när denna webbplats går ner."
+
+#: includes/arrays.php:518
+#, fuzzy
+msgid "Notify Accounts"
+msgstr "Meddela konton"
+
+#: includes/arrays.php:520
+#, fuzzy
+msgid "This is a listing of accounts that will be notified when this service goes down."
+msgstr "Detta är en lista över konton som kommer att meddelas när denna webbplats går ner."
+
+#: includes/arrays.php:525
+#, fuzzy
+msgid "Extra Alert Emails"
+msgstr "Extra Alert Emails"
+
+#: includes/arrays.php:529
+#, fuzzy
+msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
+msgstr "Du kan ange här extra e-postmeddelanden för att få varningar för den här URL-adressen (komma-separerade)"
+
+#: includes/arrays.php:533
+msgid "Notes"
+msgstr ""
+
+#: includes/arrays.php:537
+msgid "Notes sent in email"
+msgstr ""
+
+#: includes/functions.php:33 servcheck_test.php:836
+msgid "Tests"
+msgstr ""
+
+#: includes/functions.php:34
+#, fuzzy
+msgid "CA certificates"
+msgstr "Kontrollera certifikatet"
+
+#: includes/functions.php:35 servcheck_proxies.php:292
+#: servcheck_proxies.php:349
+#, fuzzy
+msgid "Proxies"
+msgstr "Ombud"
+
+#: includes/functions.php:36
+msgid "Curl return codes"
+msgstr ""
+
+#: includes/functions.php:42
+#, fuzzy
+msgid "Log History"
+msgstr "Visa historik"
+
+#: includes/functions.php:49
+msgid "Graphs"
+msgstr ""
+
+#: includes/functions.php:129
+msgid "No data"
+msgstr ""
+
+#: servcheck_ca.php:104
+#, fuzzy
+msgid "Click 'Continue' to delete the following CA."
+msgid_plural "Click 'Continue' to delete following CA."
+msgstr[0] "Klicka på 'Fortsätt' för att ta bort följande proxy."
+msgstr[1] "Klicka på 'Fortsätt' för att ta bort följande ombud."
+
+#: servcheck_ca.php:109 servcheck_proxies.php:108 servcheck_test.php:198
+#: servcheck_test.php:207 servcheck_test.php:216 servcheck_test.php:225
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: servcheck_ca.php:109 servcheck_proxies.php:108 servcheck_test.php:198
+#: servcheck_test.php:207 servcheck_test.php:216 servcheck_test.php:225
+msgid "Continue"
+msgstr "Fortsätt"
+
+#: servcheck_ca.php:109
+#, fuzzy
+msgid "Delete CA"
+msgid_plural "Delete CA"
+msgstr[0] "Radera"
+msgstr[1] "Radera"
+
+#: servcheck_ca.php:166
+#, fuzzy, php-format
+msgid "CA [edit: %s]"
+msgstr "Fråga [redigera: %s]"
+
+#: servcheck_ca.php:168
+#, fuzzy
+msgid "CA [new]"
+msgstr "Fråga [ny]"
+
+#: servcheck_ca.php:268
+msgid "Used"
+msgstr ""
+
+#: servcheck_ca.php:275 servcheck_ca.php:338
+msgid "CAs"
+msgstr ""
+
+#: servcheck_ca.php:296
+#, fuzzy
+msgid "No CAs Found"
+msgstr "Inga servrar hittades"
+
+#: servcheck_ca.php:315
+#, fuzzy
+msgid "Servcheck CA Management"
+msgstr "Webseer Server Management"
+
+#: servcheck_ca.php:322
+msgid ""
+"Servcheck uses a file of certificates from common root CAs to check certificates. This will work \n"
+"\t\tfor certificates issued by common CAs. If you are using a custom CA (for example, \n"
+"\t\tin a Microsoft AD environment), the test for that certificate will fail because servcheck \n"
+"\t\tdoes not know your CA. You must upload the entire chain (CA certificate and intermediate \n"
+"\t\tcertificates). You then associate these with the test where the certificate issued by your CA is."
+msgstr ""
+
+#: servcheck_ca.php:332 servcheck_proxies.php:343 servcheck_test.php:506
+#: servcheck_test.php:1259
+msgid "Search"
+msgstr "Sök"
+
+#: servcheck_ca.php:343 servcheck_proxies.php:354 servcheck_test.php:1299
+#: servcheck_test.php:1391
+msgid "Default"
+msgstr "Standard"
+
+#: servcheck_ca.php:354 servcheck_proxies.php:365 servcheck_test.php:1310
+#: servcheck_test.php:1402
+msgid "Go"
+msgstr "Start"
+
+#: servcheck_ca.php:355 servcheck_proxies.php:366 servcheck_test.php:1311
+#: servcheck_test.php:1403
+msgid "Clear"
+msgstr "Rensa"
+
+#: servcheck_curl_code.php:55
+msgid "No error codes"
+msgstr ""
+
+#: servcheck_proxies.php:103
+#, fuzzy
+msgid "Click 'Continue' to delete the following Proxy."
+msgid_plural "Click 'Continue' to delete following Proxies."
+msgstr[0] "Klicka på 'Fortsätt' för att ta bort följande proxy."
+msgstr[1] "Klicka på 'Fortsätt' för att ta bort följande ombud."
+
+#: servcheck_proxies.php:108
+#, fuzzy
+msgid "Delete Proxy"
+msgid_plural "Delete Proxies"
+msgstr[0] "Ta bort"
+msgstr[1] "Ta bort"
+
+#: servcheck_proxies.php:169
+#, fuzzy, php-format
+msgid "Proxy [edit: %s]"
+msgstr "Fråga [redigera: %s]"
+
+#: servcheck_proxies.php:171
+#, fuzzy
+msgid "Proxy [new]"
+msgstr "Fråga [ny]"
+
+#: servcheck_proxies.php:281
+#, fuzzy
+msgid "Ports (http/https)"
+msgstr "Hamnar (http / https)"
+
+#: servcheck_proxies.php:309
+msgid "Not Set"
+msgstr "Ej inställt"
+
+#: servcheck_proxies.php:315
+#, fuzzy
+msgid "No Servers Found"
+msgstr "Inga servrar hittades"
+
+#: servcheck_proxies.php:334
+#, fuzzy
+msgid "Servcheck Proxy Management"
+msgstr "Webseer Server Management"
+
+#: servcheck_test.php:193
+#, fuzzy
+msgid "Click 'Continue' to Delete the following tests."
+msgid_plural "Click 'Continue' to Delete following tests."
+msgstr[0] "Klicka på 'Fortsätt' för att ta bort följande proxy."
+msgstr[1] "Klicka på 'Fortsätt' för att ta bort följande ombud."
+
+#: servcheck_test.php:198
+#, fuzzy
+msgid "Delete rest"
+msgid_plural "Delete tests"
+msgstr[0] "WebSeer-servrar"
+msgstr[1] "WebSeer-servrar"
+
+#: servcheck_test.php:202
+#, fuzzy
+msgid "Click 'Continue' to Disable the following test."
+msgid_plural "Click 'Continue' to Disable following Tests."
+msgstr[0] "Klicka på 'Fortsätt' för att ta bort följande proxy."
+msgstr[1] "Klicka på 'Fortsätt' för att ta bort följande ombud."
+
+#: servcheck_test.php:207
+#, fuzzy
+msgid "Disable test"
+msgid_plural "Disable Tests"
+msgstr[0] "Inaktivera"
+msgstr[1] "Inaktivera"
+
+#: servcheck_test.php:211
+#, fuzzy
+msgid "Click 'Continue' to Enable the following test."
+msgid_plural "Click 'Continue' to Enable following tests."
+msgstr[0] "Klicka på 'Fortsätt' för att ta bort följande proxy."
+msgstr[1] "Klicka på 'Fortsätt' för att ta bort följande ombud."
+
+#: servcheck_test.php:216
+#, fuzzy
+msgid "Enable test"
+msgid_plural "Enable tests"
+msgstr[0] "Aktivera servern"
+msgstr[1] "Aktivera servern"
+
+#: servcheck_test.php:220
+#, fuzzy
+msgid "Click 'Continue' to Duplicate the following test."
+msgid_plural "Click 'Continue' to Duplicate following tests."
+msgstr[0] "Klicka på 'Fortsätt' för att ta bort följande proxy."
+msgstr[1] "Klicka på 'Fortsätt' för att ta bort följande ombud."
+
+#: servcheck_test.php:225
+#, fuzzy
+msgid "Duplicate test"
+msgid_plural "Duplicate tests"
+msgstr[0] "Duplicera"
+msgstr[1] "Duplicera"
+
+#: servcheck_test.php:402
+#, php-format
+msgid "The Service Check history was purged for %s"
+msgstr ""
+
+#: servcheck_test.php:416
+#, fuzzy, php-format
+msgid "Query [edit: %s]"
+msgstr "Fråga [redigera: %s]"
+
+#: servcheck_test.php:418
+#, fuzzy
+msgid "Query [new]"
+msgstr "Fråga [ny]"
+
+#: servcheck_test.php:461
+#, fuzzy
+msgid "No Users Selected"
+msgstr "Inga utvalda användare"
+
+#: servcheck_test.php:463
+#, fuzzy
+msgid "Users Selected"
+msgstr "Användare valda"
+
+#: servcheck_test.php:466
+#, fuzzy
+msgid "All Users Selected"
+msgstr "Alla användare valda"
+
+#: servcheck_test.php:472
+msgid "All"
+msgstr "Alla"
+
+#: servcheck_test.php:798
+msgid "Date"
+msgstr "Datum"
+
+#: servcheck_test.php:804 servcheck_test.php:1058
+msgid "Result"
+msgstr ""
+
+#: servcheck_test.php:807 servcheck_test.php:1063
+#, fuzzy
+msgid "Search result"
+msgstr "Sök"
+
+#: servcheck_test.php:810 servcheck_test.php:1068
+msgid "Curl return code"
+msgstr ""
+
+#: servcheck_test.php:815
+#, fuzzy
+msgid "DNS"
+msgstr "DNS"
+
+#: servcheck_test.php:820
+msgid "Connect"
+msgstr "Anslut"
+
+#: servcheck_test.php:825
+msgid "Redirect"
+msgstr "Omdirigera"
+
+#: servcheck_test.php:830
+msgid "Total"
+msgstr "Totalt"
+
+#: servcheck_test.php:862
+msgid "Service Down"
+msgstr ""
+
+#: servcheck_test.php:862
+msgid "Service UP"
+msgstr ""
+
+#: servcheck_test.php:876
+#, fuzzy
+msgid "No Service Check Events in History"
+msgstr "Inga händelser i historien"
+
+#: servcheck_test.php:932
+msgid "Last returned data of test"
+msgstr ""
+
+#: servcheck_test.php:1028
+msgid "Actions"
+msgstr "Åtgärder"
+
+#: servcheck_test.php:1038 servcheck_test.php:1144
+msgid "Enabled"
+msgstr "Aktiverad"
+
+#: servcheck_test.php:1043
+#, fuzzy
+msgid "Last Check"
+msgstr "Senaste kontrollen"
+
+#: servcheck_test.php:1048
+msgid "Stats (OK/problem)"
+msgstr ""
+
+#: servcheck_test.php:1053
+#, fuzzy
+msgid "Trigerred"
+msgstr "utlöst"
+
+#: servcheck_test.php:1076 servcheck_test.php:1294
+#, fuzzy
+msgid "Checks"
+msgstr "checkar"
+
+#: servcheck_test.php:1113
+#, fuzzy
+msgid "Edit Service Check"
+msgstr "Aktivera servicekontroll"
+
+#: servcheck_test.php:1122
+#, fuzzy
+msgid "Disable Service Check"
+msgstr "Aktivera servicekontroll"
+
+#: servcheck_test.php:1126
+#, fuzzy
+msgid "View Service Check History"
+msgstr "Web Service Checks"
+
+#: servcheck_test.php:1129
+msgid "View Last returned data"
+msgstr ""
+
+#: servcheck_test.php:1134
+msgid "View Graph"
+msgstr ""
+
+#: servcheck_test.php:1144
+msgid "Disabled"
+msgstr "Inaktiverad"
+
+#: servcheck_test.php:1147
+msgid "N/A"
+msgstr "N/A"
+
+#: servcheck_test.php:1154
+msgid "No"
+msgstr "Nej"
+
+#: servcheck_test.php:1154
+msgid "Yes"
+msgstr "Ja"
+
+#: servcheck_test.php:1155 servcheck_test.php:1156
+msgid "Not tested yet"
+msgstr ""
+
+#: servcheck_test.php:1164
+#, fuzzy
+msgid "No Tests Found"
+msgstr "Inga servrar hittades"
+
+#: servcheck_test.php:1250 setup.php:223
+#, fuzzy
+msgid "Service Checks"
+msgstr "Web Service Checks"
+
+#: servcheck_test.php:1265
+msgid "State"
+msgstr "Län"
+
+#: servcheck_test.php:1269
+msgid "Any"
+msgstr "Vilken som helst"
+
+#: servcheck_test.php:1278
+msgid "Refresh"
+msgstr "Uppdatera"
+
+#: servcheck_test.php:1372
+#, fuzzy
+msgid "Service Check History"
+msgstr "Web Service Checks"
+
+#: servcheck_test.php:1380
+#, fuzzy
+msgid "Date Search"
+msgstr "Sök"
+
+#: servcheck_test.php:1386
+msgid "Entries"
+msgstr ""
+
+#: servcheck_test.php:1404
+msgid "Purge Events"
+msgstr ""
+
+#: setup.php:34
+#, fuzzy
+msgid "Service Check Admin"
+msgstr "Web Service Check Admin"
+
+#: setup.php:213
+msgid "Management"
+msgstr "Hantering"
+
+#: setup.php:213
+#, fuzzy
+msgid "Service Checker"
+msgstr "Service Check Name"
+
+#: setup.php:230
+#, fuzzy
+msgid "Service Check Edit"
+msgstr "Service Check Edit"
+
+#: setup.php:237
+#, fuzzy
+msgid "Service Check Save"
+msgstr "Service Check Name"
+
+#: setup.php:244
+#, fuzzy
+msgid "Web Proxies"
+msgstr "WebSeer-servrar"
+
+#: setup.php:251
+#, fuzzy
+msgid "Web Proxie Edit"
+msgstr "Ombud"
+
+#: setup.php:258
+#, fuzzy
+msgid "Save Web Proxy"
+msgstr "Ny proxy"
+
+#: setup.php:265
+msgid "CA"
+msgstr ""
+
+#: setup.php:272
+msgid "CA Edit"
+msgstr ""
+
+#: setup.php:279
+msgid "Save CA"
+msgstr ""
+
+#, fuzzy
+#~ msgid "%d Minutes"
+#~ msgstr "%d minuter"
+
+#, fuzzy
+#~ msgid "Display Name of this server"
+#~ msgstr "Visningsnamn på den här servern"
+
+#, fuzzy
+#~ msgid "Enable Server"
+#~ msgid_plural "Enable Servers"
+#~ msgstr[0] "Aktivera servern"
+#~ msgstr[1] "Aktivera servern"
+
+#, fuzzy
+#~ msgid "Uncheck this box to disabled this server from checking urls."
+#~ msgstr "Avmarkera den här rutan för att inaktivera den här servern från att kontrollera webbadresser."
+
+#, fuzzy
+#~ msgid "Is this server the local server?"
+#~ msgstr "Är den här servern den lokala servern?"
+
+#, fuzzy
+#~ msgid "Check this box if the current server you are connected to is this entry."
+#~ msgstr "Markera den här rutan om den nuvarande servern du är ansluten till är den här posten."
+
+#, fuzzy
+#~ msgid "Master Server"
+#~ msgstr "Master Server"
+
+#, fuzzy
+#~ msgid "Sets this server to the Master server.  The Master server handles all Email operations"
+#~ msgstr "Ställer in denna server på masterservern. Masterserver hanterar all Email-operationer"
+
+#~ msgid "IP Address"
+#~ msgstr "IP adress"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#, fuzzy
+#~ msgid "This is the URL to connect to remote.php on this server."
+#~ msgstr "Detta är URL-adressen för att ansluta till remote.php på den här servern."
+
+#~ msgid "Location"
+#~ msgstr "Plats"
+
+#, fuzzy
+#~ msgid "Location of this server"
+#~ msgstr "Plats för den här servern"
+
+#, fuzzy
+#~ msgid "The URL to Monitor"
+#~ msgstr "URL-adressen till Monitor"
+
+#, fuzzy
+#~ msgid "Enter an IP address to connect to.  Leaving blank will use DNS Resolution instead."
+#~ msgstr "Ange en IP-adress för att ansluta till. Om du lämnar tomt används DNS-upplösningen istället."
+
+#, fuzzy
+#~ msgid "Compression"
+#~ msgstr "Kompression"
+
+#, fuzzy
+#~ msgid "What compression does the server require?  Most servers should not need this, but some will not redirect properly without it."
+#~ msgstr "Vilken komprimering kräver servern? De flesta servrar borde inte behöva detta, men vissa omdirigerar inte ordentligt utan det."
+
+#, fuzzy
+#~ msgid "Available Checks"
+#~ msgstr "Tillgängliga kontroller"
+
+#~ msgid "Servers"
+#~ msgstr "Servrar"
+
+#, fuzzy
+#~ msgid "Cacti Master"
+#~ msgstr "Cacti Master"
+
+#, fuzzy
+#~ msgid "Cacti Remote Server"
+#~ msgstr "Cacti Remote Server"
+
+#, fuzzy
+#~ msgid "WebSeer Service Checks"
+#~ msgstr "WebSeer Service Checks"
+
+#, fuzzy
+#~ msgid "WebSeer Servers"
+#~ msgstr "WebSeer-servrar"
+
+#, fuzzy
+#~ msgid "Server Edit"
+#~ msgstr "Server Redigera"
+
+#, fuzzy
+#~ msgid "Save Server"
+#~ msgstr "Aktivera servern"
+
+#, fuzzy
+#~| msgid "Delete"
+#~ msgid "Delete URL"
+#~ msgid_plural "Delete URLs"
+#~ msgstr[0] "Radera"
+#~ msgstr[1] "Radera"
+
+#, fuzzy
+#~| msgid "Disable"
+#~ msgid "Disable URL"
+#~ msgid_plural "Disable URLs"
+#~ msgstr[0] "Inaktivera"
+#~ msgstr[1] "Inaktivera"
+
+#, fuzzy
+#~| msgid "Enable"
+#~ msgid "Enable URL"
+#~ msgid_plural "Enable URLs"
+#~ msgstr[0] "Aktivera"
+#~ msgstr[1] "Aktivera"
+
+#, fuzzy
+#~| msgid "Duplicate"
+#~ msgid "Duplicate URL"
+#~ msgid_plural "Duplicate URLs"
+#~ msgstr[0] "Duplicera"
+#~ msgstr[1] "Duplicera"
+
+#~ msgid "Error"
+#~ msgstr "Fel"
+
+#, fuzzy
+#~ msgid "HTTP Code"
+#~ msgstr "HTTP-kod"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#, fuzzy
+#~ msgid "Auth"
+#~ msgstr "Auth"
+
+#~ msgid "Timeout"
+#~ msgstr "Timeout"
+
+#, fuzzy
+#~ msgid "DNS: Server %s - A Record for %s"
+#~ msgstr "DNS: Server %s - En post för %s"
+
+#~ msgid "Down"
+#~ msgstr "Nere"
+
+#~ msgid "Up"
+#~ msgstr "Uppe"
+
+#, fuzzy
+#~ msgid "Webseer Service Checks"
+#~ msgstr "WebSeer Service Checks"
+
+#, fuzzy
+#~ msgid "Webseer Service Check History"
+#~ msgstr "WebSeer Service Checks"
+
+#, fuzzy
+#~ msgid "Click 'Continue' to Delete the following Server."
+#~ msgid_plural "Click 'Continue' to Delete following Servers."
+#~ msgstr[0] "Klicka på 'Fortsätt' för att ta bort följande proxy."
+#~ msgstr[1] "Klicka på 'Fortsätt' för att ta bort följande ombud."
+
+#, fuzzy
+#~ msgid "Click 'Continue' to Disable the following Server."
+#~ msgid_plural "Click 'Continue' to Disable following Servers."
+#~ msgstr[0] "Klicka på 'Fortsätt' för att ta bort följande proxy."
+#~ msgstr[1] "Klicka på 'Fortsätt' för att ta bort följande ombud."
+
+#, fuzzy
+#~ msgid "Disable Server"
+#~ msgid_plural "Disable Servers"
+#~ msgstr[0] "Aktivera servern"
+#~ msgstr[1] "Aktivera servern"
+
+#, fuzzy
+#~ msgid "%d Minute"
+#~ msgstr "% d minut"
+
+#, fuzzy
+#~ msgid "No Events in History"
+#~ msgstr "Inga händelser i historien"
+
+#, fuzzy
+#~ msgid "Master"
+#~ msgstr "Bemästra"
+
+#, fuzzy
+#~ msgid "This Host"
+#~ msgstr "Denna värd"
+
+#, fuzzy
+#~| msgid "Edit Site"
+#~ msgid "Edit Server"
+#~ msgstr "Redigera webbplats"
+
+#, fuzzy
+#~ msgid "View Server History"
+#~ msgstr "Visa historik"
+
+#, fuzzy
+#~ msgid "Webseer Servers"
+#~ msgstr "WebSeer-servrar"
+
+#, fuzzy
+#~ msgid "Webseer Server History"
+#~ msgstr "WebSeer-servrar"
+
+#~ msgid "Edit Site"
+#~ msgstr "Redigera webbplats"
+
+#, fuzzy
+#~ msgid "Webseer Site Management"
+#~ msgstr "Webseer Site Management"
+
+#, fuzzy
+#~ msgid "You must select at least one Proxy."
+#~ msgstr "Du måste välja minst en proxy."
+
+#~ msgid "Return"
+#~ msgstr "Tillbaka"
+
+#~ msgid "Sites"
+#~ msgstr "Webbsidor"
+
+#, fuzzy
+#~ msgid "Click 'Continue' to Enable the following Server."
+#~ msgid_plural "Click 'Continue' to Enable following Servers."
+#~ msgstr[0] "Klicka på 'Fortsätt' för att ta bort följande proxy."
+#~ msgstr[1] "Klicka på 'Fortsätt' för att ta bort följande ombud."

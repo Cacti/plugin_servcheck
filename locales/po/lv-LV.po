@@ -1,0 +1,1116 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti 1.2.16\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2023-12-27 16:26+0100\n"
+"PO-Revision-Date: 2023-06-26 13:06+0000\n"
+"Last-Translator: Coool (github.com/Coool) <coool@mail.lv>\n"
+"Language-Team: Latvian <http://translate.cacti.net/projects/cacti/webseer/lv/>\n"
+"Language: lv-LV\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= 19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\n"
+"X-Generator: Weblate 4.8.1\n"
+
+#: includes/arrays.php:44
+msgid "HTTP plaintext, default port 80"
+msgstr ""
+
+#: includes/arrays.php:45
+msgid "HTTP encrypted (HTTPS), default port 443"
+msgstr ""
+
+#: includes/arrays.php:47
+msgid "SMTP plaintext, default port 25 (or 587 for submission)"
+msgstr ""
+
+#: includes/arrays.php:48
+msgid "SMTP with STARTTLS, default port 25(or 587 for submission)"
+msgstr ""
+
+#: includes/arrays.php:49
+msgid "SMTP encrypted (SMTPS), default port 465"
+msgstr ""
+
+#: includes/arrays.php:51
+msgid "IMAP plaintext, default port 143"
+msgstr ""
+
+#: includes/arrays.php:52
+msgid "IMAP with STARTTLS, default port 143"
+msgstr ""
+
+#: includes/arrays.php:53
+msgid "IMAP encrypted (IMAPS), default port 993"
+msgstr ""
+
+#: includes/arrays.php:55
+msgid "POP3 plaintext, default port 110"
+msgstr ""
+
+#: includes/arrays.php:56
+msgid "POP3 with STARTTLS, default port 110"
+msgstr ""
+
+#: includes/arrays.php:57
+msgid "POP3 encrypted (POP3S), default port 995"
+msgstr ""
+
+#: includes/arrays.php:59
+msgid "DNS plaintext, default port 53"
+msgstr ""
+
+#: includes/arrays.php:62
+msgid "LDAP plaintext, default port 389"
+msgstr ""
+
+#: includes/arrays.php:63
+msgid "LDAP encrypted (LDAPS), default port 636"
+msgstr ""
+
+#: includes/arrays.php:65
+msgid "FTP plaintext, default port 21"
+msgstr ""
+
+#: includes/arrays.php:66
+msgid "FTP encrypted (FTPS), default port 990"
+msgstr ""
+
+#: includes/arrays.php:67
+msgid "SCP download file, default port 22"
+msgstr ""
+
+#: includes/arrays.php:68
+msgid "TFTP protocol - download file, default port 69"
+msgstr ""
+
+#: includes/arrays.php:70
+msgid "SMB plaintext download file, default port 445"
+msgstr ""
+
+#: includes/arrays.php:71
+msgid "SMB encrypted (SMBS) download file, default port 445"
+msgstr ""
+
+#: includes/arrays.php:114
+#, fuzzy
+msgid "Last hour"
+msgstr "Pēdējā pārbaude"
+
+#: includes/arrays.php:115
+msgid "Last 6 hours"
+msgstr ""
+
+#: includes/arrays.php:116
+msgid "Last day"
+msgstr ""
+
+#: includes/arrays.php:117
+#, fuzzy
+msgid "Last week"
+msgstr "Pēdējā pārbaude"
+
+#: includes/arrays.php:167
+#, php-format
+msgid "%d Poller run"
+msgstr ""
+
+#: includes/arrays.php:168 includes/arrays.php:169 includes/arrays.php:170
+#: includes/arrays.php:171 includes/arrays.php:172 includes/arrays.php:173
+#: includes/arrays.php:174 includes/arrays.php:175 includes/arrays.php:176
+#, php-format
+msgid "%d Poller runs"
+msgstr ""
+
+#: includes/arrays.php:180 includes/arrays.php:181 includes/arrays.php:182
+#: includes/arrays.php:183 includes/arrays.php:184 includes/arrays.php:185
+#: includes/arrays.php:186 includes/arrays.php:187
+#, php-format
+msgid "%d Seconds"
+msgstr "%d sekundes"
+
+#: includes/arrays.php:214 includes/arrays.php:218 includes/arrays.php:222
+msgid "Delete"
+msgstr "Dzēst"
+
+#: includes/arrays.php:223
+msgid "Disable"
+msgstr "Atspējot"
+
+#: includes/arrays.php:224
+msgid "Enable"
+msgstr "Iespējot"
+
+#: includes/arrays.php:225
+msgid "Duplicate"
+msgstr "Dublēt"
+
+#: includes/arrays.php:232 includes/arrays.php:252 servcheck_ca.php:264
+#: servcheck_proxies.php:273 servcheck_test.php:801 servcheck_test.php:1033
+msgid "Name"
+msgstr "Nosaukums"
+
+#: includes/arrays.php:233
+#, fuzzy
+msgid "A Useful Name for this CA chain."
+msgstr "Noderīgs nosaukums šim starpniekserverim."
+
+#: includes/arrays.php:237
+msgid "New CA"
+msgstr ""
+
+#: includes/arrays.php:240 includes/arrays.php:364
+msgid "CA chain"
+msgstr ""
+
+#: includes/arrays.php:244
+msgid "CA and intermediate certs, PEM encoded"
+msgstr ""
+
+#: includes/arrays.php:253
+msgid "A Useful Name for this Proxy."
+msgstr "Noderīgs nosaukums šim starpniekserverim."
+
+#: includes/arrays.php:257
+msgid "New Proxy"
+msgstr "Jauns starpniekserveris"
+
+#: includes/arrays.php:261 servcheck_proxies.php:277
+msgid "Hostname"
+msgstr "Resursdatora nosaukums"
+
+#: includes/arrays.php:262
+msgid "The Proxy Hostname."
+msgstr "Starpniekservera resursdatora nosaukums."
+
+#: includes/arrays.php:270
+msgid "HTTP Port"
+msgstr "HTTP ports"
+
+#: includes/arrays.php:271
+msgid "The HTTP Proxy Port."
+msgstr "HTTP starpniekservera ports."
+
+#: includes/arrays.php:279
+msgid "HTTPS Port"
+msgstr "HTTPS ports"
+
+#: includes/arrays.php:280
+msgid "The HTTPS Proxy Port."
+msgstr "HTTPS starpniekservera ports."
+
+#: includes/arrays.php:288
+msgid "User Name"
+msgstr "Lietotājvārds"
+
+#: includes/arrays.php:289
+msgid "The user to use to authenticate with the Proxy if any."
+msgstr "Lietotājs, ko izmanto, lai autentificētos ar starpniekserveri, ja tāds ir."
+
+#: includes/arrays.php:297 includes/arrays.php:381
+msgid "Password"
+msgstr "Parole"
+
+#: includes/arrays.php:298
+msgid "The user password to use to authenticate with the Proxy if any."
+msgstr "Lietotāja parole, ko izmanto, lai autentificētos ar starpniekserveri, ja tāds ir."
+
+#: includes/arrays.php:318
+msgid "General Settings"
+msgstr "Pamatiestatījumi"
+
+#: includes/arrays.php:322
+msgid "Service Check Name"
+msgstr "Pakalpojuma pārbaudes nosaukums"
+
+#: includes/arrays.php:323
+msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
+msgstr "Nosaukums, kas tiek attēlots šai pakalpojuma pārbaudei un ir iekļauts visos brīdinājuma paziņojumos."
+
+#: includes/arrays.php:329 servcheck_test.php:1118
+msgid "Enable Service Check"
+msgstr "Iespējot pakalpojuma pārbaudi"
+
+#: includes/arrays.php:330
+#, fuzzy
+msgid "Uncheck this box to disabled this test from being checked."
+msgstr "Noņemiet ķeksi, lai atspējotu šīs tīmekļa vietņu adreses pārbaudi."
+
+#: includes/arrays.php:335
+msgid "Poller"
+msgstr ""
+
+#: includes/arrays.php:338
+msgid "Poller on which the test will run"
+msgstr ""
+
+#: includes/arrays.php:343
+msgid "Type of service"
+msgstr ""
+
+#: includes/arrays.php:348
+msgid "What type of service?"
+msgstr ""
+
+#: includes/arrays.php:353
+#, fuzzy
+msgid "IP Address or DNS name of server"
+msgstr "IP adrese, lai izveidotu savienojumu ar šo serveri"
+
+#: includes/arrays.php:354
+msgid "You can specify another port (example.com:5000) otherwise default will be used"
+msgstr ""
+
+#: includes/arrays.php:361
+#, fuzzy
+msgid "Service settings"
+msgstr "Pakalpojums neaktīvs"
+
+#: includes/arrays.php:366 includes/arrays.php:424 includes/arrays.php:515
+#: servcheck_test.php:473
+msgid "None"
+msgstr "Neviens"
+
+#: includes/arrays.php:368
+msgid "Your own CA and intermediate certs"
+msgstr ""
+
+#: includes/arrays.php:373 servcheck_proxies.php:285
+msgid "Username"
+msgstr "Lietotājvārds"
+
+#: includes/arrays.php:375
+msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
+msgstr ""
+
+#: includes/arrays.php:383
+msgid "For anonymous ftp insert email address here."
+msgstr ""
+
+#: includes/arrays.php:389
+#, fuzzy
+msgid "LDAP search"
+msgstr "Datuma meklēšana"
+
+#: includes/arrays.php:391
+msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
+msgstr ""
+
+#: includes/arrays.php:398
+msgid "DNS name for query"
+msgstr ""
+
+#: includes/arrays.php:399
+msgid "DNS name for querying"
+msgstr ""
+
+#: includes/arrays.php:406
+msgid "path part of url"
+msgstr ""
+
+#: includes/arrays.php:407
+msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
+msgstr ""
+
+#: includes/arrays.php:414
+msgid "Requires Authentication"
+msgstr "Nepieciešama autentifikācija"
+
+#: includes/arrays.php:415
+msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
+msgstr "Atķeksējiet, ja vietne parasti atgriež 401 kļūdu. Tai ir nepieciešams lietotājvārds un parole."
+
+#: includes/arrays.php:421
+msgid "Proxy Server"
+msgstr "Starpniekserveris"
+
+#: includes/arrays.php:422
+msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
+msgstr "Ja šim savienojuma tekstam ir nepieciešams starpniekserveris, izvēlieties to šeit.  Pretējā gadījumā izvēlieties 'Neviens'."
+
+#: includes/arrays.php:430
+msgid "Check Certificate"
+msgstr "Pārbaudīt sertifikātu"
+
+#: includes/arrays.php:431
+msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
+msgstr "Ja izmantojat SSL, atķeksējiet, ja vēlaties pārbaudīt sertifikāta derīgumu. Noklusējums ieslēgts, izslēdziet, ja vietne izmanto pašparakstītu sertifikātu."
+
+#: includes/arrays.php:437
+#, fuzzy
+msgid "Check and notify Certificate expiration"
+msgstr "Pārbaudīt sertifikātu"
+
+#: includes/arrays.php:438
+#, fuzzy
+msgid "If using SSL, check this box if you want to check the certificate expiration. You will be warn when last 10 days left."
+msgstr "Ja izmantojat SSL, atķeksējiet, ja vēlaties pārbaudīt sertifikāta derīgumu. Noklusējums ieslēgts, izslēdziet, ja vietne izmanto pašparakstītu sertifikātu."
+
+#: includes/arrays.php:444
+msgid "Notification Timing"
+msgstr "Paziņojumu laiks"
+
+#: includes/arrays.php:447
+msgid "How often test"
+msgstr ""
+
+#: includes/arrays.php:451
+msgid "Test each poller cycle or less"
+msgstr ""
+
+#: includes/arrays.php:455
+msgid "Trigger"
+msgstr "Palaidējs"
+
+#: includes/arrays.php:459
+#, fuzzy
+msgid "How many poller cycles must be down before it will send an alert. After an alert is sent, in order for a 'Site Recovering' Email to be send, it must also be up this number of poller cycles."
+msgstr "Cik minūtes tīmekļa vietnes saitei ir jābūt nesasniedzamai, lai tiktu nosūtīts brīdinājums.  Pēc brīdinājuma nosūtīšanas tiks nosūtīts tīmekļa vietnes atkopšanas e-pasts, ja tīmekļa vietne ir sasniedzama ilgāk par šo minūšu skaitu."
+
+#: includes/arrays.php:463
+msgid "Time Out"
+msgstr "Nesasniedzams"
+
+#: includes/arrays.php:467
+msgid "How many seconds to allow the page to timeout before reporting it as down."
+msgstr "Cik sekundes ļaut lapai būt nesasniedzamai, pirms tiek ziņots par tā nedarbošanos."
+
+#: includes/arrays.php:472
+msgid "Verification Strings"
+msgstr "Pārbaudes teksti"
+
+#: includes/arrays.php:476
+msgid "Response Search String"
+msgstr "Atbilžu meklēšanas teksts"
+
+#: includes/arrays.php:477
+#, fuzzy
+msgid "This is the string to search for in the response for a live and working service."
+msgstr "Teksts, kas jāmeklē tīmekļa vietnes saites atbildē aktīvam un strādājošam tīmekļa pakalpojumam."
+
+#: includes/arrays.php:484
+#, fuzzy
+msgid "Response Search String - Maintenance"
+msgstr "Atbilžu meklēšanas teksts - Tehniskās apkopes lapa"
+
+#: includes/arrays.php:485
+#, fuzzy
+msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
+msgstr "Teksts, ko meklēt tehniskās apkopes lapā.  Pakalpojuma pārbaude meklēs šo tekstu, ja iepriekš minētais teksts netiks atrasts.  Ja atrod šo tekstu, tas nozīmē, ka tīmekļa pakalpojumam tiek veikta apkope."
+
+#: includes/arrays.php:492
+msgid "Response Search String - Failed"
+msgstr "Atbilžu meklēšanas teksts - Neizdevušies"
+
+#: includes/arrays.php:493
+#, fuzzy
+msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
+msgstr "Teksts, ko meklēt zināmas kļūmes tīmekļa pakalpojuma atbildē.  Pakalpojuma pārbaude brīdinās tikai tad, ja atradīs šo tekstu, ignorējot visas nesasniedzamības problēmas un iepriekš minētos meklēšanas tekstus."
+
+#: includes/arrays.php:500
+msgid "Notification Settings"
+msgstr "Paziņojuma iestatījumi"
+
+#: includes/arrays.php:503
+msgid "Notify Format"
+msgstr "Paziņojuma formāts"
+
+#: includes/arrays.php:505
+msgid "This is the format to use when sending the notification email"
+msgstr "Formāts, kas jāizmanto, nosūtot e-pasta paziņojumu"
+
+#: includes/arrays.php:510
+msgid "Notification List"
+msgstr "Paziņojumu saraksts"
+
+#: includes/arrays.php:512
+#, fuzzy
+msgid "Use this Notification List for those to be notified when this service goes down."
+msgstr "Paziņojumu saraksts, kurš tiek izmantots, lai informētu, kad šī vietne nav sasniedzama."
+
+#: includes/arrays.php:518
+msgid "Notify Accounts"
+msgstr "Paziņošanas konti"
+
+#: includes/arrays.php:520
+#, fuzzy
+msgid "This is a listing of accounts that will be notified when this service goes down."
+msgstr "Kontu saraksts, kuriem tiks paziņots, kad šī vietne nav sasniedzama."
+
+#: includes/arrays.php:525
+msgid "Extra Alert Emails"
+msgstr "Papildus brīdinājuma e-pasti"
+
+#: includes/arrays.php:529
+#, fuzzy
+msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
+msgstr "Varat norādīt papildus e-pastus, kas saņems brīdinājumu ziņojumus par šo tīmekļa vietni (atdalīti ar komatu)"
+
+#: includes/arrays.php:533
+msgid "Notes"
+msgstr ""
+
+#: includes/arrays.php:537
+msgid "Notes sent in email"
+msgstr ""
+
+#: includes/functions.php:33 servcheck_test.php:836
+msgid "Tests"
+msgstr ""
+
+#: includes/functions.php:34
+#, fuzzy
+msgid "CA certificates"
+msgstr "Pārbaudīt sertifikātu"
+
+#: includes/functions.php:35 servcheck_proxies.php:292
+#: servcheck_proxies.php:349
+msgid "Proxies"
+msgstr "Starpniekserveri"
+
+#: includes/functions.php:36
+msgid "Curl return codes"
+msgstr ""
+
+#: includes/functions.php:42
+msgid "Log History"
+msgstr "Žurnālu vēsturi"
+
+#: includes/functions.php:49
+msgid "Graphs"
+msgstr ""
+
+#: includes/functions.php:129
+msgid "No data"
+msgstr ""
+
+#: servcheck_ca.php:104
+#, fuzzy
+msgid "Click 'Continue' to delete the following CA."
+msgid_plural "Click 'Continue' to delete following CA."
+msgstr[0] "Noklikšķiniet 'Turpināt', lai dzēstu norādīto starpniekserveri."
+msgstr[1] "Noklikšķiniet 'Turpināt', lai dzēstu norādīto starpniekserveri."
+msgstr[2] "Noklikšķiniet 'Turpināt', lai dzēstu norādītos starpniekserverus."
+
+#: servcheck_ca.php:109 servcheck_proxies.php:108 servcheck_test.php:198
+#: servcheck_test.php:207 servcheck_test.php:216 servcheck_test.php:225
+msgid "Cancel"
+msgstr "Atcelt"
+
+#: servcheck_ca.php:109 servcheck_proxies.php:108 servcheck_test.php:198
+#: servcheck_test.php:207 servcheck_test.php:216 servcheck_test.php:225
+msgid "Continue"
+msgstr "Turpināt"
+
+#: servcheck_ca.php:109
+#, fuzzy
+msgid "Delete CA"
+msgid_plural "Delete CA"
+msgstr[0] "Dzēst"
+msgstr[1] "Dzēst"
+msgstr[2] "Dzēst"
+
+#: servcheck_ca.php:166
+#, fuzzy, php-format
+msgid "CA [edit: %s]"
+msgstr "Vaicājums [labot: %s]"
+
+#: servcheck_ca.php:168
+#, fuzzy
+msgid "CA [new]"
+msgstr "Vaicājums [jauns]"
+
+#: servcheck_ca.php:268
+msgid "Used"
+msgstr ""
+
+#: servcheck_ca.php:275 servcheck_ca.php:338
+msgid "CAs"
+msgstr ""
+
+#: servcheck_ca.php:296
+#, fuzzy
+msgid "No CAs Found"
+msgstr "Nav atrasts neviens serveris"
+
+#: servcheck_ca.php:315
+#, fuzzy
+msgid "Servcheck CA Management"
+msgstr "Webseer servera pārvaldība"
+
+#: servcheck_ca.php:322
+msgid ""
+"Servcheck uses a file of certificates from common root CAs to check certificates. This will work \n"
+"\t\tfor certificates issued by common CAs. If you are using a custom CA (for example, \n"
+"\t\tin a Microsoft AD environment), the test for that certificate will fail because servcheck \n"
+"\t\tdoes not know your CA. You must upload the entire chain (CA certificate and intermediate \n"
+"\t\tcertificates). You then associate these with the test where the certificate issued by your CA is."
+msgstr ""
+
+#: servcheck_ca.php:332 servcheck_proxies.php:343 servcheck_test.php:506
+#: servcheck_test.php:1259
+msgid "Search"
+msgstr "Meklēt"
+
+#: servcheck_ca.php:343 servcheck_proxies.php:354 servcheck_test.php:1299
+#: servcheck_test.php:1391
+msgid "Default"
+msgstr "Noklusējuma"
+
+#: servcheck_ca.php:354 servcheck_proxies.php:365 servcheck_test.php:1310
+#: servcheck_test.php:1402
+msgid "Go"
+msgstr "Doties"
+
+#: servcheck_ca.php:355 servcheck_proxies.php:366 servcheck_test.php:1311
+#: servcheck_test.php:1403
+msgid "Clear"
+msgstr "Notīrīt"
+
+#: servcheck_curl_code.php:55
+msgid "No error codes"
+msgstr ""
+
+#: servcheck_proxies.php:103
+msgid "Click 'Continue' to delete the following Proxy."
+msgid_plural "Click 'Continue' to delete following Proxies."
+msgstr[0] "Noklikšķiniet 'Turpināt', lai dzēstu norādīto starpniekserveri."
+msgstr[1] "Noklikšķiniet 'Turpināt', lai dzēstu norādīto starpniekserveri."
+msgstr[2] "Noklikšķiniet 'Turpināt', lai dzēstu norādītos starpniekserverus."
+
+#: servcheck_proxies.php:108
+msgid "Delete Proxy"
+msgid_plural "Delete Proxies"
+msgstr[0] "Dzēst starpniekserveri"
+msgstr[1] "Dzēst starpniekserveri"
+msgstr[2] "Dzēst starpniekserverus"
+
+#: servcheck_proxies.php:169
+#, php-format
+msgid "Proxy [edit: %s]"
+msgstr "Starpniekserveris [labot: %s]"
+
+#: servcheck_proxies.php:171
+msgid "Proxy [new]"
+msgstr "Starpniekserveris [jauns]"
+
+#: servcheck_proxies.php:281
+msgid "Ports (http/https)"
+msgstr "Porti (http(80)/https(443))"
+
+#: servcheck_proxies.php:309
+msgid "Not Set"
+msgstr "Nav iestatīts"
+
+#: servcheck_proxies.php:315
+msgid "No Servers Found"
+msgstr "Nav atrasts neviens serveris"
+
+#: servcheck_proxies.php:334
+#, fuzzy
+msgid "Servcheck Proxy Management"
+msgstr "Webseer starpniekserveru pārvaldība"
+
+#: servcheck_test.php:193
+#, fuzzy
+msgid "Click 'Continue' to Delete the following tests."
+msgid_plural "Click 'Continue' to Delete following tests."
+msgstr[0] "Noklikšķiniet 'Turpināt', lai dzēstu norādīto URL vietni."
+msgstr[1] "Noklikšķiniet 'Turpināt', lai dzēstu norādīto URL vietni."
+msgstr[2] "Noklikšķiniet 'Turpināt', lai dzēstu norādītās URL vietnes."
+
+#: servcheck_test.php:198
+#, fuzzy
+msgid "Delete rest"
+msgid_plural "Delete tests"
+msgstr[0] "Dzēst serveri"
+msgstr[1] "Dzēst serveri"
+msgstr[2] "Dzēst serverus"
+
+#: servcheck_test.php:202
+#, fuzzy
+msgid "Click 'Continue' to Disable the following test."
+msgid_plural "Click 'Continue' to Disable following Tests."
+msgstr[0] "Noklikšķiniet 'Turpināt', lai atspējotu norādīto URL vietni."
+msgstr[1] "Noklikšķiniet 'Turpināt', lai atspējotu norādīto URL vietni."
+msgstr[2] "Noklikšķiniet 'Turpināt', lai atspējotu norādītās URL vietnes."
+
+#: servcheck_test.php:207
+#, fuzzy
+msgid "Disable test"
+msgid_plural "Disable Tests"
+msgstr[0] "Atspējot vietni"
+msgstr[1] "Atspējot vietni"
+msgstr[2] "Atspējot vietni"
+
+#: servcheck_test.php:211
+#, fuzzy
+msgid "Click 'Continue' to Enable the following test."
+msgid_plural "Click 'Continue' to Enable following tests."
+msgstr[0] "Noklikšķiniet 'Turpināt', lai iespējotu norādīto URL vietni."
+msgstr[1] "Noklikšķiniet 'Turpināt', lai iespējotu norādīto URL vietni."
+msgstr[2] "Noklikšķiniet 'Turpināt', lai iespējotu norādītās URL vietnes."
+
+#: servcheck_test.php:216
+#, fuzzy
+msgid "Enable test"
+msgid_plural "Enable tests"
+msgstr[0] "Iespējot vietni"
+msgstr[1] "Iespējot vietni"
+msgstr[2] "Iespējot vietni"
+
+#: servcheck_test.php:220
+#, fuzzy
+msgid "Click 'Continue' to Duplicate the following test."
+msgid_plural "Click 'Continue' to Duplicate following tests."
+msgstr[0] "Noklikšķiniet 'Turpināt', lai izveidotu norādīto URL vietnes kopiju."
+msgstr[1] "Noklikšķiniet 'Turpināt', lai izveidotu norādīto URL vietnes kopiju."
+msgstr[2] "Noklikšķiniet 'Turpināt', lai izveidotu norādītās URL vietņu kopijas."
+
+#: servcheck_test.php:225
+#, fuzzy
+msgid "Duplicate test"
+msgid_plural "Duplicate tests"
+msgstr[0] "Dublēt"
+msgstr[1] "Dublēt"
+msgstr[2] "Dublēt"
+
+#: servcheck_test.php:402
+#, php-format
+msgid "The Service Check history was purged for %s"
+msgstr "Pakalpojuma pārbaudes vēsture tika iztīrīta %s"
+
+#: servcheck_test.php:416
+#, php-format
+msgid "Query [edit: %s]"
+msgstr "Vaicājums [labot: %s]"
+
+#: servcheck_test.php:418
+msgid "Query [new]"
+msgstr "Vaicājums [jauns]"
+
+#: servcheck_test.php:461
+msgid "No Users Selected"
+msgstr "Nav atlasīts neviens lietotājs"
+
+#: servcheck_test.php:463
+msgid "Users Selected"
+msgstr "Atlasītie lietotāji"
+
+#: servcheck_test.php:466
+msgid "All Users Selected"
+msgstr "Atlasīti visi lietotāji"
+
+#: servcheck_test.php:472
+msgid "All"
+msgstr "Visi"
+
+#: servcheck_test.php:798
+msgid "Date"
+msgstr "Datums"
+
+#: servcheck_test.php:804 servcheck_test.php:1058
+msgid "Result"
+msgstr ""
+
+#: servcheck_test.php:807 servcheck_test.php:1063
+#, fuzzy
+msgid "Search result"
+msgstr "Meklēt"
+
+#: servcheck_test.php:810 servcheck_test.php:1068
+msgid "Curl return code"
+msgstr ""
+
+#: servcheck_test.php:815
+msgid "DNS"
+msgstr "DNS"
+
+#: servcheck_test.php:820
+msgid "Connect"
+msgstr "Savienot"
+
+#: servcheck_test.php:825
+msgid "Redirect"
+msgstr "Pāradresēt"
+
+#: servcheck_test.php:830
+msgid "Total"
+msgstr "Kopā"
+
+#: servcheck_test.php:862
+msgid "Service Down"
+msgstr "Pakalpojums neaktīvs"
+
+#: servcheck_test.php:862
+#, fuzzy
+msgid "Service UP"
+msgstr "Pakalpojums neaktīvs"
+
+#: servcheck_test.php:876
+msgid "No Service Check Events in History"
+msgstr "Vēsturē nav pakalpojumu pārbaudes notikumu"
+
+#: servcheck_test.php:932
+msgid "Last returned data of test"
+msgstr ""
+
+#: servcheck_test.php:1028
+msgid "Actions"
+msgstr "Darbības"
+
+#: servcheck_test.php:1038 servcheck_test.php:1144
+msgid "Enabled"
+msgstr "Iespējots"
+
+#: servcheck_test.php:1043
+msgid "Last Check"
+msgstr "Pēdējā pārbaude"
+
+#: servcheck_test.php:1048
+msgid "Stats (OK/problem)"
+msgstr ""
+
+#: servcheck_test.php:1053
+#, fuzzy
+msgid "Trigerred"
+msgstr "Nostrādājuši"
+
+#: servcheck_test.php:1076 servcheck_test.php:1294
+msgid "Checks"
+msgstr "Pārbaudes"
+
+#: servcheck_test.php:1113
+msgid "Edit Service Check"
+msgstr "Rediģēt pakalpojuma pārbaudi"
+
+#: servcheck_test.php:1122
+msgid "Disable Service Check"
+msgstr "Atspējot pakalpojuma pārbaudi"
+
+#: servcheck_test.php:1126
+msgid "View Service Check History"
+msgstr "Skatīt pakalpojuma pārbaudes vēsturi"
+
+#: servcheck_test.php:1129
+msgid "View Last returned data"
+msgstr ""
+
+#: servcheck_test.php:1134
+msgid "View Graph"
+msgstr ""
+
+#: servcheck_test.php:1144
+msgid "Disabled"
+msgstr "Atspējots"
+
+#: servcheck_test.php:1147
+msgid "N/A"
+msgstr "Nav pieejams"
+
+#: servcheck_test.php:1154
+msgid "No"
+msgstr "Nē"
+
+#: servcheck_test.php:1154
+msgid "Yes"
+msgstr "Jā"
+
+#: servcheck_test.php:1155 servcheck_test.php:1156
+msgid "Not tested yet"
+msgstr ""
+
+#: servcheck_test.php:1164
+#, fuzzy
+msgid "No Tests Found"
+msgstr "Nav atrasts neviens serveris"
+
+#: servcheck_test.php:1250 setup.php:223
+#, fuzzy
+msgid "Service Checks"
+msgstr "Tīmekļa pakalpojuma pārbaudes"
+
+#: servcheck_test.php:1265
+msgid "State"
+msgstr "Stāvoklis"
+
+#: servcheck_test.php:1269
+msgid "Any"
+msgstr "Jebkuru"
+
+#: servcheck_test.php:1278
+msgid "Refresh"
+msgstr "Atsvaidzināt"
+
+#: servcheck_test.php:1372
+#, fuzzy
+msgid "Service Check History"
+msgstr "Skatīt pakalpojuma pārbaudes vēsturi"
+
+#: servcheck_test.php:1380
+msgid "Date Search"
+msgstr "Datuma meklēšana"
+
+#: servcheck_test.php:1386
+msgid "Entries"
+msgstr "Ieraksti"
+
+#: servcheck_test.php:1404
+msgid "Purge Events"
+msgstr "Iztīrīt notikumus"
+
+#: setup.php:34
+#, fuzzy
+msgid "Service Check Admin"
+msgstr "Tīmekļa pakalpojuma pārbaudes administrators"
+
+#: setup.php:213
+msgid "Management"
+msgstr "Vadība"
+
+#: setup.php:213
+#, fuzzy
+msgid "Service Checker"
+msgstr "Pakalpojuma pārbaudes nosaukums"
+
+#: setup.php:230
+msgid "Service Check Edit"
+msgstr "Pakalpojuma pārbaudes rediģēšana"
+
+#: setup.php:237
+msgid "Service Check Save"
+msgstr "Pakalpojuma pārbaudes saglabāšana"
+
+#: setup.php:244
+#, fuzzy
+msgid "Web Proxies"
+msgstr "WebSeer starpniekserveri"
+
+#: setup.php:251
+#, fuzzy
+msgid "Web Proxie Edit"
+msgstr "Starpniekservera rediģēšana"
+
+#: setup.php:258
+#, fuzzy
+msgid "Save Web Proxy"
+msgstr "Saglabāt starpniekserveri"
+
+#: setup.php:265
+msgid "CA"
+msgstr ""
+
+#: setup.php:272
+msgid "CA Edit"
+msgstr ""
+
+#: setup.php:279
+msgid "Save CA"
+msgstr ""
+
+#~ msgid "%d Minutes"
+#~ msgstr "%d minūtes"
+
+#~ msgid "Display Name of this server"
+#~ msgstr "Šī servera attēlojamais nosaukums"
+
+#~ msgid "Enable Server"
+#~ msgid_plural "Enable Servers"
+#~ msgstr[0] "Iespējot serveri"
+#~ msgstr[1] "Iespējot serveri"
+#~ msgstr[2] "Iespējot serverus"
+
+#~ msgid "Uncheck this box to disabled this server from checking urls."
+#~ msgstr "Noņemiet ķeksi, lai šis serveris neveiktu tīmekļa vietņu adrešu (URLs) pārbaudi."
+
+#~ msgid "Is this server the local server?"
+#~ msgstr "Vai šis serveris ir lokālais serveris?"
+
+#~ msgid "Check this box if the current server you are connected to is this entry."
+#~ msgstr "Atķeksējiet, ja pašreizējais serveris, ar kuru esat izveidojis savienojumu, ir šis."
+
+#~ msgid "Master Server"
+#~ msgstr "Galvenais serveris"
+
+#~ msgid "Sets this server to the Master server.  The Master server handles all Email operations"
+#~ msgstr "Iestata šo serveri par galveno serveri.  Galvenais serveris veic visas e-pasta darbības"
+
+#~ msgid "IP Address"
+#~ msgstr "IP adrese"
+
+#~ msgid "URL"
+#~ msgstr "Tīmekļa vietņu adrese"
+
+#~ msgid "This is the URL to connect to remote.php on this server."
+#~ msgstr "Tīmekļa vietņu adrese, lai izveidotu savienojumu ar remote.php šajā serverī."
+
+#~ msgid "Location"
+#~ msgstr "Atrašanās vieta"
+
+#~ msgid "Location of this server"
+#~ msgstr "Šī servera atrašanās vieta"
+
+#~ msgid "The URL to Monitor"
+#~ msgstr "Tīmekļa vietņu adrese, ko uzraudzīt"
+
+#~ msgid "Enter an IP address to connect to.  Leaving blank will use DNS Resolution instead."
+#~ msgstr "Ievadiet IP adresi, ar kuru veidot savienojumu.  Atstājot tukšu, tiks izmantots DNS vaicājuma lēmums ."
+
+#~ msgid "Compression"
+#~ msgstr "Saspiešana"
+
+#~ msgid "What compression does the server require?  Most servers should not need this, but some will not redirect properly without it."
+#~ msgstr "Kāda saspiešana ir nepieciešama serverim?  Lielākajai daļai serveru tas nav vajadzīgs, taču daži bez tā nevarēs pareizi novirzīt."
+
+#~ msgid "Available Checks"
+#~ msgstr "Pieejamās pārbaudes"
+
+#~ msgid "Servers"
+#~ msgstr "Serveri"
+
+#~ msgid "Cacti Master"
+#~ msgstr "Galvenais Cacti"
+
+#~ msgid "Cacti Remote Server"
+#~ msgstr "Cacti attālais serveris"
+
+#~ msgid "WebSeer Service Checks"
+#~ msgstr "Webseer pakalpojuma pārbaudes"
+
+#~ msgid "WebSeer Servers"
+#~ msgstr "Webseer serveri"
+
+#~ msgid "Server Edit"
+#~ msgstr "Servera rediģēšana"
+
+#~ msgid "Save Server"
+#~ msgstr "Saglabāt serveri"
+
+#~ msgid "Delete URL"
+#~ msgid_plural "Delete URLs"
+#~ msgstr[0] "Dzēst URL vietni"
+#~ msgstr[1] "Dzēst URL vietni"
+#~ msgstr[2] "Dzēst URL vietnes"
+
+#~ msgid "Disable URL"
+#~ msgid_plural "Disable URLs"
+#~ msgstr[0] "Atspējot URL vietni"
+#~ msgstr[1] "Atspējot URL vietni"
+#~ msgstr[2] "Atspējot URL vietnes"
+
+#~ msgid "Enable URL"
+#~ msgid_plural "Enable URLs"
+#~ msgstr[0] "Iespējot URL vietni"
+#~ msgstr[1] "Iespējot URL vietni"
+#~ msgstr[2] "Iespējot URL vietnes"
+
+#~ msgid "Duplicate URL"
+#~ msgid_plural "Duplicate URLs"
+#~ msgstr[0] "Izveidot URL vietnes kopiju"
+#~ msgstr[1] "Izveidot URL vietnes kopiju"
+#~ msgstr[2] "Izveidot URL vietņu kopijas"
+
+#~ msgid "Error"
+#~ msgstr "Kļūda"
+
+#~ msgid "HTTP Code"
+#~ msgstr "HTTP kods"
+
+#~ msgid "Urls"
+#~ msgstr "URL vietnes"
+
+#~ msgid "Service Restored"
+#~ msgstr "Pakalpojums atjaunots"
+
+#~ msgid "Status"
+#~ msgstr "Statuss"
+
+#~ msgid "Auth"
+#~ msgstr "Autorizācijas kods"
+
+#~ msgid "Timeout"
+#~ msgstr "Nesasniedzams"
+
+#~ msgid "DNS: Server %s - A Record for %s"
+#~ msgstr "DNS: Serveris %s - A ieraksts - %s"
+
+#~ msgid "Down"
+#~ msgstr "Neaktīva (nedarbojoša, bezsaistē, izslēgta)"
+
+#~ msgid "Up"
+#~ msgstr "Aktīva (darbojoša, tiešsaistē, ieslēgta)"
+
+#~ msgid "Webseer Service Checks"
+#~ msgstr "Webseer pakalpojuma pārbaudes"
+
+#~ msgid "Webseer Service Check History"
+#~ msgstr "Webseer pakalpojuma pārbaudes vēsture"
+
+#~ msgid "Click 'Continue' to Delete the following Server."
+#~ msgid_plural "Click 'Continue' to Delete following Servers."
+#~ msgstr[0] "Noklikšķiniet 'Turpināt', lai dzēstu norādīto serveri."
+#~ msgstr[1] "Noklikšķiniet 'Turpināt', lai dzēstu norādīto serveri."
+#~ msgstr[2] "Noklikšķiniet 'Turpināt', lai dzēstu norādītos serverus."
+
+#~ msgid "Click 'Continue' to Disable the following Server."
+#~ msgid_plural "Click 'Continue' to Disable following Servers."
+#~ msgstr[0] "Noklikšķiniet 'Turpināt', lai atspējotu norādīto serveri."
+#~ msgstr[1] "Noklikšķiniet 'Turpināt', lai atspējotu norādīto serveri."
+#~ msgstr[2] "Noklikšķiniet 'Turpināt', lai atspējotu norādītos serverus."
+
+#~ msgid "Disable Server"
+#~ msgid_plural "Disable Servers"
+#~ msgstr[0] "Atspējot serveri"
+#~ msgstr[1] "Atspējot serveri"
+#~ msgstr[2] "Atspējot serverus"
+
+#~ msgid "%d Minute"
+#~ msgstr "%d minūte"
+
+#~ msgid "No Events in History"
+#~ msgstr "Vēsturē nav notikumu"
+
+#~ msgid "Master"
+#~ msgstr "Galvenais"
+
+#~ msgid "This Host"
+#~ msgstr "Šis resursdators"
+
+#~ msgid "Edit Server"
+#~ msgstr "Rediģēt serveri"
+
+#~ msgid "View Server History"
+#~ msgstr "Skatīt servera vēsturi"
+
+#~ msgid "Webseer Servers"
+#~ msgstr "Webseer serveri"
+
+#~ msgid "Webseer Server History"
+#~ msgstr "Webseer servera vēsture"
+
+#~ msgid "Edit Site"
+#~ msgstr "Rediģēt vietni"
+
+#~ msgid "Webseer Site Management"
+#~ msgstr "Webseer vietņu pārvaldība"
+
+#~ msgid "You must select at least one Proxy."
+#~ msgstr "Jums ir jāizvēlas vismaz viens starpniekserveris."
+
+#~ msgid "Return"
+#~ msgstr "Atgriezties"
+
+#~ msgid "Sites"
+#~ msgstr "Vietnes"
+
+#~ msgid "Click 'Continue' to Enable the following Server."
+#~ msgid_plural "Click 'Continue' to Enable following Servers."
+#~ msgstr[0] "Noklikšķiniet 'Turpināt', lai iespējotu norādīto serveri."
+#~ msgstr[1] "Noklikšķiniet 'Turpināt', lai iespējotu norādīto serveri."
+#~ msgstr[2] "Noklikšķiniet 'Turpināt', lai iespējotu norādītos serverus."

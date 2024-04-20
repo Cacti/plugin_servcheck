@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2023 The Cacti Group                                 |
+ | Copyright (C) 2004-2024 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -36,7 +36,7 @@ $findcode = get_filter_request_var('findcode');
 html_start_box('', '100%', '', '3', 'center', '');
 
 if (cacti_sizeof($curl_error)) {
-	foreach ($curl_error as $id=>$code) { 
+	foreach ($curl_error as $id=>$code) {
 		form_alternate_row('line' . $id, true);
 
 		if ($id == $findcode) {
@@ -58,6 +58,4 @@ if (cacti_sizeof($curl_error)) {
 html_end_box(false);
 
 bottom_footer();
-
-
 

@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2023 The Cacti Group                                 |
+ | Copyright (C) 2004-2024 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -119,7 +119,6 @@ if (cacti_sizeof($tests)) {
 			array($poller_id));
 
 		if ($max - $total > 0) {
-
 			plugin_servcheck_debug('Launching Service Check ' . $test['display_name'], $test);
 
 			$command_string = read_config_option('path_php_binary');
@@ -168,7 +167,6 @@ if ($poller_id == 1) {
 }
 
 set_config_option('stats_servcheck_' . $poller_id, $stats);
-
 
 /**
  * display_version - displays version information

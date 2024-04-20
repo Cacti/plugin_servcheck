@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2023 The Cacti Group                                 |
+ | Copyright (C) 2004-2024 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -103,6 +103,7 @@ function plugin_servcheck_setup_table() {
 		`notify_extra` varchar(256) NOT NULL,
 		`notify_format` int(3) unsigned NOT NULL default '0',
 		`notes` text NOT NULL default '',
+		`external_id` varchar(20) NOT NULL default '',
 		`how_often` int(11) unsigned NOT NULL default '1',
 		`downtrigger` int(11) unsigned NOT NULL default '3',
 		`timeout_trigger` int(11) unsigned NOT NULL default '4',

@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2023 The Cacti Group                                 |
+ | Copyright (C) 2004-2024 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -21,7 +21,6 @@
  | http://www.cacti.net/                                                   |
  +-------------------------------------------------------------------------+
 */
-
 
 $user_agent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1';
 $ca_info = $config['base_path'] . '/plugins/servcheck/ca-bundle.crt';
@@ -112,7 +111,7 @@ function curl_try ($test) {
 
 	$process = curl_init($url);
 
-	if($test['ca'] > 0) {
+	if ($test['ca'] > 0) {
 		$ca_info = '/tmp/cert' . $test['ca'] . '.pem';
 		plugin_servcheck_debug('Preparing own CA chain file ' . $ca_info , $test);
 
@@ -177,10 +176,10 @@ function curl_try ($test) {
 
 	// Disable Cert checking for now
 	if ($test['checkcert'] == '') {
-		$options[CURLOPT_SSL_VERIFYPEER] = FALSE;
-		$options[CURLOPT_SSL_VERIFYHOST] = FALSE;
+		$options[CURLOPT_SSL_VERIFYPEER] = false;
+		$options[CURLOPT_SSL_VERIFYHOST] = false;
 	} else { // for sure, it seems that it isn't enabled by default now
-		$options[CURLOPT_SSL_VERIFYPEER] = TRUE;
+		$options[CURLOPT_SSL_VERIFYPEER] = true;
 		$options[CURLOPT_SSL_VERIFYHOST] = 2;
 	}
 
@@ -213,7 +212,7 @@ function curl_try ($test) {
 		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
 	}
 
-	if($test['ca'] > 0) {
+	if ($test['ca'] > 0) {
 		unlink ($ca_info);
 		plugin_servcheck_debug('Removing own CA file');
 	}
@@ -266,7 +265,7 @@ function curl_try ($test) {
 
 		plugin_servcheck_debug('Processing search maint');
 
-		if(strpos($data, $test['search_maint']) !== false) {
+		if (strpos($data, $test['search_maint']) !== false) {
 			plugin_servcheck_debug('Search maint string success');
 			$results['result_search'] = 'maint ok';
 			return $results;
@@ -312,6 +311,7 @@ function dns_try ($test) {
 
 	$a = new mxlookup($test['dns_query'], $test['hostname']);
 	$t = microtime(true) - $s;
+
 	$results['options']['connect_time'] = $results['options']['total_time'] = $results['options']['namelookup_time'] = round($t, 4);
 
 	$results['data'] = '';
@@ -324,7 +324,6 @@ function dns_try ($test) {
 
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
-
 		plugin_servcheck_debug('Processing search_failed');
 
 		if (strpos($results['data'], $test['search_failed']) !== false) {
@@ -348,10 +347,9 @@ function dns_try ($test) {
 	}
 
 	if ($test['search_maint'] != '') {
-
 		plugin_servcheck_debug('Processing search maint');
 
-		if(strpos($results['data'], $test['search_maint']) !== false) {
+		if (strpos($results['data'], $test['search_maint']) !== false) {
 			plugin_servcheck_debug('Search maint string success');
 			$results['result_search'] = 'maint ok';
 			return $results;

@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2023 The Cacti Group                                 |
+ | Copyright (C) 2004-2024 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -127,7 +127,7 @@ class mxlookup {
 	function gord($ln = 1) {
 		$reply = '';
 
-		for($i = 0; $i < $ln; $i++){
+		for($i = 0; $i < $ln; $i++) {
 			$reply .= ord(substr($this->dns_reply, $this->cIx, 1));
 			$this->cIx++;
 		}

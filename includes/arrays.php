@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2023 The Cacti Group                                 |
+ | Copyright (C) 2004-2024 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -30,17 +30,16 @@ global	$servcheck_actions_proxy, $servcheck_actions_test, $servcheck_actions_ca,
 	$search, $mail_serv, $service_types, $curl_error, $search_result;
 
 $search_result = array(
-	'ok' => 'String found',
-	'not ok' => 'String not found',
-	'failed ok' => 'Failed string found',
-	'failed not ok' => 'Failed strint not found',
-	'maint ok' => 'Maint string found',
-	'not yet' => 'Not tested yet',
-	'not tested' => 'Search not performed'
+	'ok'            => __('String found', 'servcheck'),
+	'not ok'        => __('String not found', 'servcheck'),
+	'failed ok'     => __('Failed string found', 'servcheck'),
+	'failed not ok' => __('Failed strint not found', 'servcheck'),
+	'maint ok'      => __('Maint string found', 'servcheck'),
+	'not yet'       => __('Not tested yet', 'servcheck'),
+	'not tested'    => __('Search not performed', 'servcheck')
 );
 
 $service_types = array(
-
 	'web_http'        => __('HTTP plaintext, default port 80', 'servcheck'),
 	'web_https'       => __('HTTP encrypted (HTTPS), default port 443', 'servcheck'),
 
@@ -119,48 +118,48 @@ $graph_interval = array (
 
 
 $httperrors = array(
-	  0 => 'Unable to Connect',
-	100 => 'Continue',
-	101 => 'Switching Protocols',
-	200 => 'OK',
-	201 => 'Created',
-	202 => 'Accepted',
-	203 => 'Non-Authoritative Information',
-	204 => 'No Content',
-	205 => 'Reset Content',
-	206 => 'Partial Content',
-	300 => 'Multiple Choices',
-	301 => 'Moved Permanently',
-	302 => 'Found',
-	303 => 'See Other',
-	304 => 'Not Modified',
-	305 => 'Use Proxy',
-	306 => '(Unused)',
-	307 => 'Temporary Redirect',
-	400 => 'Bad Request',
-	401 => 'Unauthorized',
-	402 => 'Payment Required',
-	403 => 'Forbidden',
-	404 => 'Not Found',
-	405 => 'Method Not Allowed',
-	406 => 'Not Acceptable',
-	407 => 'Proxy Authentication Required',
-	408 => 'Request Timeout',
-	409 => 'Conflict',
-	410 => 'Gone',
-	411 => 'Length Required',
-	412 => 'Precondition Failed',
-	413 => 'Request Entity Too Large',
-	414 => 'Request-URI Too Long',
-	415 => 'Unsupported Media Type',
-	416 => 'Requested Range Not Satisfiable',
-	417 => 'Expectation Failed',
-	500 => 'Internal Server Error',
-	501 => 'Not Implemented',
-	502 => 'Bad Gateway',
-	503 => 'Service Unavailable',
-	504 => 'Gateway Timeout',
-	505 => 'HTTP Version Not Supported',
+	  0 => __('Unable to Connect', 'servcheck'),
+	100 => __('Continue', 'servcheck'),
+	101 => __('Switching Protocols', 'servcheck'),
+	200 => __('OK', 'servcheck'),
+	201 => __('Created', 'servcheck'),
+	202 => __('Accepted', 'servcheck'),
+	203 => __('Non-Authoritative Information', 'servcheck'),
+	204 => __('No Content', 'servcheck'),
+	205 => __('Reset Content', 'servcheck'),
+	206 => __('Partial Content', 'servcheck'),
+	300 => __('Multiple Choices', 'servcheck'),
+	301 => __('Moved Permanently', 'servcheck'),
+	302 => __('Found', 'servcheck'),
+	303 => __('See Other', 'servcheck'),
+	304 => __('Not Modified', 'servcheck'),
+	305 => __('Use Proxy', 'servcheck'),
+	306 => __('(Unused)', 'servcheck'),
+	307 => __('Temporary Redirect', 'servcheck'),
+	400 => __('Bad Request', 'servcheck'),
+	401 => __('Unauthorized', 'servcheck'),
+	402 => __('Payment Required', 'servcheck'),
+	403 => __('Forbidden', 'servcheck'),
+	404 => __('Not Found', 'servcheck'),
+	405 => __('Method Not Allowed', 'servcheck'),
+	406 => __('Not Acceptable', 'servcheck'),
+	407 => __('Proxy Authentication Required', 'servcheck'),
+	408 => __('Request Timeout', 'servcheck'),
+	409 => __('Conflict', 'servcheck'),
+	410 => __('Gone', 'servcheck'),
+	411 => __('Length Required', 'servcheck'),
+	412 => __('Precondition Failed', 'servcheck'),
+	413 => __('Request Entity Too Large', 'servcheck'),
+	414 => __('Request-URI Too Long', 'servcheck'),
+	415 => __('Unsupported Media Type', 'servcheck'),
+	416 => __('Requested Range Not Satisfiable', 'servcheck'),
+	417 => __('Expectation Failed', 'servcheck'),
+	500 => __('Internal Server Error', 'servcheck'),
+	501 => __('Not Implemented', 'servcheck'),
+	502 => __('Bad Gateway', 'servcheck'),
+	503 => __('Service Unavailable', 'servcheck'),
+	504 => __('Gateway Timeout', 'servcheck'),
+	505 => __('HTTP Version Not Supported', 'servcheck')
 );
 
 $servcheck_cycles = array(
@@ -225,7 +224,6 @@ $servcheck_actions_test = array(
 	SERVCHECK_ACTION_TEST_DUPLICATE => __('Duplicate', 'servcheck'),
 );
 
-
 $servcheck_ca_fields = array(
 	'name' => array(
 		'method' => 'textbox',
@@ -237,7 +235,7 @@ $servcheck_ca_fields = array(
 		'default' => __('New CA')
 	),
 	'cert'  => array(
-		'friendly_name' => __('CA chain', 'servcheck'),
+		'friendly_name' => __('CA Chain', 'servcheck'),
 		'method' => 'textarea',
 		'textarea_rows' => 10,
 		'textarea_cols' => 100,
@@ -311,7 +309,6 @@ $servcheck_proxy_fields = array(
 	)
 );
 
-
 $servcheck_test_fields = array(
 	'general_spacer' => array(
 		'method' => 'spacer',
@@ -361,7 +358,7 @@ $servcheck_test_fields = array(
 		'friendly_name' => __('Service settings', 'servcheck')
 	),
 	'ca' => array(
-		'friendly_name' => __('CA chain', 'servcheck'),
+		'friendly_name' => __('CA Chain', 'servcheck'),
 		'method' => 'drop_sql',
 		'none_value' => __('None', 'servcheck'),
 		'default' => '0',
@@ -386,7 +383,7 @@ $servcheck_test_fields = array(
 		'size' => '30'
 	),
 	'ldapsearch' => array(
-		'friendly_name' => __('LDAP search', 'servcheck'),
+		'friendly_name' => __('LDAP Search', 'servcheck'),
 		'method' => 'textbox',
 		'description' => __('LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com', 'servcheck'),
 		'value' => '|arg1:ldapsearch|',
@@ -395,7 +392,7 @@ $servcheck_test_fields = array(
 	),
 	'dns_query' => array(
 		'method' => 'textbox',
-		'friendly_name' => __('DNS name for query', 'servcheck'),
+		'friendly_name' => __('DNS Name for Query', 'servcheck'),
 		'description' => __('DNS name for querying', 'servcheck'),
 		'value' => '|arg1:dns_query|',
 		'max_length' => '40',
@@ -403,7 +400,7 @@ $servcheck_test_fields = array(
 	),
 	'path' => array(
 		'method' => 'textbox',
-		'friendly_name' => __('path part of url', 'servcheck'),
+		'friendly_name' => __('Path Part of URL', 'servcheck'),
 		'description' => __('For web service insert at least "/" or something like "/any/path/". For FTP listing must end with char "/". For TFTP/SCP/SMB download test insert /path/file', 'servcheck'),
 		'value' => '|arg1:path|',
 		'max_length' => '140',
@@ -444,7 +441,7 @@ $servcheck_test_fields = array(
 		'friendly_name' => __('Notification Timing', 'servcheck')
 	),
 	'how_often' => array(
-		'friendly_name' => __('How often test', 'servcheck'),
+		'friendly_name' => __('How Often to Test', 'servcheck'),
 		'method' => 'drop_array',
 		'array' => $servcheck_cycles,
 		'default' => 1,
@@ -537,6 +534,15 @@ $servcheck_test_fields = array(
 		'description' => __('Notes sent in email', 'servcheck'),
 		'value' => '|arg1:notes|',
 	),
+	'external_id' => array(
+		'friendly_name' => __('External ID', 'thold'),
+		'method' => 'textbox',
+		'description' => __('Enter an Eternal ID for this Thold Template.', 'thold'),
+		'default' => '',
+		'size' => '20',
+		'max_length' => '20',
+		'value' => '|arg1:external_id',
+	),
 	'id' => array(
 		'method' => 'hidden_zero',
 		'value' => '|arg1:id|'
@@ -545,416 +551,404 @@ $servcheck_test_fields = array(
 
 $curl_error = array(
 	0 => array (
-		'title' => 'CURLE_OK',
-		'description' => 'All fine. Proceed as usual.'
+		'title'       => 'CURLE_OK',
+		'description' => __('All fine. Proceed as usual.', 'servcheck')
 	),
 	1 => array (
-		'title' => 'CURLE_UNSUPPORTED_PROTOCOL',
-		'description' => 'The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it 				
-			can be a misspelled protocol string or just a protocol libcurl has no code for.'
+		'title'       => 'CURLE_UNSUPPORTED_PROTOCOL',
+		'description' => __('The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for.', 'servcheck')
 	),
 	2 => array (
-		'title' => 'CURLE_FAILED_INIT',
-		'description' => 'Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get 
-			done at init time.'
+		'title'       => 'CURLE_FAILED_INIT',
+		'description' => __('Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time.', 'servcheck')
 	),
 	3 => array (
-		'title' => 'CURLE_URL_MALFORMAT',
-		'description' => 'The URL was not properly formatted.'
+		'title'       => 'CURLE_URL_MALFORMAT',
+		'description' => __('The URL was not properly formatted.', 'servcheck')
 	),
 	4 => array (
-		'title' => 'CURLE_NOT_BUILT_IN',
-		'description' => 'A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not 
-			enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl.'
+		'title'       => 'CURLE_NOT_BUILT_IN',
+		'description' => __('A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl.', 'servcheck')
 	),
 	5 => array (
-		'title' => 'CURLE_COULDNT_RESOLVE_PROXY',
-		'description' => 'Could not resolve proxy. The given proxy host could not be resolved.'
+		'title'       => 'CURLE_COULDNT_RESOLVE_PROXY',
+		'description' => __('Could not resolve proxy. The given proxy host could not be resolved.', 'servcheck')
 	),
 	6 => array (
-		'title' => 'CURLE_COULDNT_RESOLVE_HOST',
-		'description' => 'Could not resolve host. The given remote host was not resolved.'
+		'title'       => 'CURLE_COULDNT_RESOLVE_HOST',
+		'description' => __('Could not resolve host. The given remote host was not resolved.', 'servcheck')
 	),
 	7 => array (
-		'title' => 'CURLE_COULDNT_CONNECT',
-		'description' => 'Failed to connect() to host or proxy.'
+		'title'       => 'CURLE_COULDNT_CONNECT',
+		'description' => __('Failed to connect() to host or proxy.', 'servcheck')
 	),
 	8 => array (
-		'title' => 'CURLE_WEIRD_SERVER_REPLY',
-		'description' => 'The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0.'
+		'title'       => 'CURLE_WEIRD_SERVER_REPLY',
+		'description' => __('The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0.', 'servcheck')
 	),
 	9 => array (
-		'title' => 'CURLE_REMOTE_ACCESS_DENIED',
-		'description' => 'We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory.'
+		'title'       => 'CURLE_REMOTE_ACCESS_DENIED',
+		'description' => __('We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory.', 'servcheck')
 	),
 	10 => array (
-		'title' => 'CURLE_FTP_ACCEPT_FAILED',
-		'description' => 'While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar.'
+		'title'       => 'CURLE_FTP_ACCEPT_FAILED',
+		'description' => __('While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar.', 'servcheck')
 	),
 	11 => array (
-		'title' => 'CURLE_FTP_WEIRD_PASS_REPLY',
-		'description' => 'After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned.'
+		'title'       => 'CURLE_FTP_WEIRD_PASS_REPLY',
+		'description' => __('After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned.', 'servcheck')
 	),
 	12 => array (
-		'title' => 'CURLE_FTP_ACCEPT_TIMEOUT',
-		'description' => 'During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired.'
+		'title'       => 'CURLE_FTP_ACCEPT_TIMEOUT',
+		'description' => __('During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired.', 'servcheck')
 	),
 	13 => array (
-		'title' => 'CURLE_FTP_WEIRD_PASV_REPLY',
-		'description' => 'Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed.'
+		'title'       => 'CURLE_FTP_WEIRD_PASV_REPLY',
+		'description' => __('Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed.', 'servcheck')
 	),
 	14 => array (
-		'title' => 'CURLE_FTP_WEIRD_227_FORMAT',
-		'description' => 'FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back.'
+		'title'       => 'CURLE_FTP_WEIRD_227_FORMAT',
+		'description' => __('FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back.', 'servcheck')
 	),
 	15 => array (
-		'title' => 'CURLE_FTP_CANT_GET_HOST',
-		'description' => 'An internal failure to lookup the host used for the new connection.'
+		'title'       => 'CURLE_FTP_CANT_GET_HOST',
+		'description' => __('An internal failure to lookup the host used for the new connection.', 'servcheck')
 	),
 	16 => array (
-		'title' => 'CURLE_HTTP2',
-		'description' => 'A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details.'
+		'title'       => 'CURLE_HTTP2',
+		'description' => __('A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details.', 'servcheck')
 	),
 	17 => array (
-		'title' => 'CURLE_FTP_COULDNT_SET_TYPE',
-		'description' => 'Received an error when trying to set the transfer mode to binary or ASCII.'
+		'title'       => 'CURLE_FTP_COULDNT_SET_TYPE',
+		'description' => __('Received an error when trying to set the transfer mode to binary or ASCII.', 'servcheck')
 	),
 	18 => array (
-		'title' => 'CURLE_PARTIAL_FILE',
-		'description' => 'A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that 
-			does not match the previously given size.'
+		'title'       => 'CURLE_PARTIAL_FILE',
+		'description' => __('A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size.', 'servcheck')
 	),
 	19 => array (
-		'title' => 'CURLE_FTP_COULDNT_RETR_FILE',
-		'description' => 'This was either a weird reply to a \'RETR\' command or a zero byte transfer complete.'
+		'title'       => 'CURLE_FTP_COULDNT_RETR_FILE',
+		'description' => __('This was either a weird reply to a \'RETR\' command or a zero byte transfer complete.', 'servcheck')
 	),
 	20 => array (
-		'title' => 'Obsolete error',
-		'description' => 'Not used in modern versions.'
+		'title'       => __('Obsolete Error', 'servcheck'),
+		'description' => __('Not used in modern versions.', 'servcheck')
 	),
 	21 => array (
-		'title' => 'CURLE_QUOTE_ERROR',
-		'description' => 'When sending custom "QUOTE" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise 	
-			indicated unsuccessful completion of the command.'
+		'title'       => 'CURLE_QUOTE_ERROR',
+		'description' => __('When sending custom "QUOTE" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command.', 'servcheck')
 	),
 	22 => array (
-		'title' => 'CURLE_HTTP_RETURNED_ERROR',
-		'description' => 'This is returned if CURLOPT_FAILONERROR is set TRUE and the HTTP server returns an error code that is >= 400.'
+		'title'       => 'CURLE_HTTP_RETURNED_ERROR',
+		'description' => __('This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400.', 'servcheck')
 	),
 	23 => array (
-		'title' => 'CURLE_WRITE_ERROR',
-		'description' => 'An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback.'
+		'title'       => 'CURLE_WRITE_ERROR',
+		'description' => __('An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback.', 'servcheck')
 	),
 	24 => array (
-		'title' => 'Obsolete error',
-		'description' => 'Not used in modern versions.'
+		'title'       => __('Obsolete Error', 'servcheck'),
+		'description' => __('Not used in modern versions.', 'servcheck')
 	),
 	25 => array (
-		'title' => 'CURLE_UPLOAD_FAILED',
-		'description' => 'Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server\'s explanation for this.'
+		'title'       => 'CURLE_UPLOAD_FAILED',
+		'description' => __('Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server\'s explanation for this.', 'servcheck')
 	),
 	26 => array (
-		'title' => 'CURLE_READ_ERROR',
-		'description' => 'There was a problem reading a local file or an error returned by the read callback.'
+		'title'       => 'CURLE_READ_ERROR',
+		'description' => __('There was a problem reading a local file or an error returned by the read callback.', 'servcheck')
 	),
 	27 => array (
-		'title' => 'CURLE_OUT_OF_MEMORY',
-		'description' => 'A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs.'
+		'title'       => 'CURLE_OUT_OF_MEMORY',
+		'description' => __('A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs.', 'servcheck')
 	),
 	28 => array (
-		'title' => 'CURLE_OPERATION_TIMEDOUT',
-		'description' => 'Operation timeout. The specified time-out period was reached according to the conditions.'
+		'title'       => 'CURLE_OPERATION_TIMEDOUT',
+		'description' => __('Operation timeout. The specified time-out period was reached according to the conditions.', 'servcheck')
 	),
 	29 => array (
-		'title' => 'Obsolete error',
-		'description' => 'Not used in modern versions.'
+		'title'       => __('Obsolete Error', 'servcheck'),
+		'description' => __('Not used in modern versions.', 'servcheck')
 	),
 	30 => array (
-		'title' => 'CURLE_FTP_PORT_FAILED',
-		'description' => 'The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT.'
+		'title'       => 'CURLE_FTP_PORT_FAILED',
+		'description' => __('The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT.', 'servcheck')
 	),
 	31 => array (
-		'title' => 'CURLE_FTP_COULDNT_USE_REST',
-		'description' => 'The FTP REST command returned error. This should never happen if the server is sane.'
+		'title'       => 'CURLE_FTP_COULDNT_USE_REST',
+		'description' => __('The FTP REST command returned error. This should never happen if the server is sane.', 'servcheck')
 	),
 	32 => array (
-		'title' => 'Obsolete error',
-		'description' => 'Not used in modern versions.'
+		'title'       => __('Obsolete Error', 'servcheck'),
+		'description' => __('Not used in modern versions.', 'servcheck')
 	),
 	33 => array (
-		'title' => 'CURLE_RANGE_ERROR',
-		'description' => 'The server does not support or accept range requests.'
+		'title'       => 'CURLE_RANGE_ERROR',
+		'description' => __('The server does not support or accept range requests.', 'servcheck')
 	),
 	34 => array (
-		'title' => 'CURLE_HTTP_POST_ERROR (34)',
-		'description' => 'This is an odd error that mainly occurs due to internal confusion.'
+		'title'       => 'CURLE_HTTP_POST_ERROR (34)',
+		'description' => __('This is an odd error that mainly occurs due to internal confusion.', 'servcheck')
 	),
 	35 => array (
-		'title' => 'CURLE_SSL_CONNECT_ERROR',
-		'description' => 'A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly 					
-			more. Could be certificates (file formats, paths, permissions), passwords, and others.'
+		'title'       => 'CURLE_SSL_CONNECT_ERROR',
+		'description' => __('A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others.', 'servcheck')
 	),
 	36 => array (
-		'title' => 'CURLE_BAD_DOWNLOAD_RESUME',
-		'description' => 'The download could not be resumed because the specified offset was out of the file boundary.'
+		'title'       => 'CURLE_BAD_DOWNLOAD_RESUME',
+		'description' => __('The download could not be resumed because the specified offset was out of the file boundary.', 'servcheck')
 	),
 	37 => array (
-		'title' => 'CURLE_FILE_COULDNT_READ_FILE',
-		'description' => 'A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?'
+		'title'       => 'CURLE_FILE_COULDNT_READ_FILE',
+		'description' => __('A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?', 'servcheck')
 	),
 	38 => array (
-		'title' => 'CURLE_LDAP_CANNOT_BIND',
-		'description' => 'LDAP cannot bind. LDAP bind operation failed.'
+		'title'       => 'CURLE_LDAP_CANNOT_BIND',
+		'description' => __('LDAP cannot bind. LDAP bind operation failed.', 'servcheck')
 	),
 	39 => array (
-		'title' => 'CURLE_LDAP_SEARCH_FAILED',
-		'description' => 'LDAP search failed.'
+		'title'       => 'CURLE_LDAP_SEARCH_FAILED',
+		'description' => __('LDAP search failed.', 'servcheck')
 	),
 	40 => array (
-		'title' => 'Obsolete error',
-		'description' => 'Not used in modern versions.'
+		'title'       => __('Obsolete Error', 'servcheck'),
+		'description' => __('Not used in modern versions.', 'servcheck')
 	),
 	41 => array (
-		'title' => 'CURLE_FUNCTION_NOT_FOUND',
-		'description' => 'Function not found. A required zlib function was not found.'
+		'title'       => 'CURLE_FUNCTION_NOT_FOUND',
+		'description' => __('Function not found. A required zlib function was not found.', 'servcheck')
 	),
 	42 => array (
-		'title' => 'CURLE_ABORTED_BY_CALLBACK',
-		'description' => 'Aborted by callback. A callback returned "abort" to libcurl.'
+		'title'       => 'CURLE_ABORTED_BY_CALLBACK',
+		'description' => __('Aborted by callback. A callback returned "abort" to libcurl.', 'servcheck')
 	),
 	43 => array (
-		'title' => 'CURLE_BAD_FUNCTION_ARGUMENT',
-		'description' => 'A function was called with a bad parameter.'
+		'title'       => 'CURLE_BAD_FUNCTION_ARGUMENT',
+		'description' => __('A function was called with a bad parameter.', 'servcheck')
 	),
 	44 => array (
-		'title' => 'Obsolete error',
-		'description' => 'Not used in modern versions.'
+		'title'       => __('Obsolete Error', 'servcheck'),
+		'description' => __('Not used in modern versions.', 'servcheck')
 	),
 	45 => array (
-		'title' => 'CURLE_INTERFACE_FAILED',
-		'description' => 'Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections\' source IP address with 
-			URLOPT_INTERFACE.'
+		'title'       => 'CURLE_INTERFACE_FAILED',
+		'description' => __('Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections\' source IP address with URLOPT_INTERFACE.', 'servcheck')
 	),
 	46 => array (
-		'title' => 'Obsolete error',
-		'description' => 'Not used in modern versions.'
+		'title'       => __('Obsolete Error', 'servcheck'),
+		'description' => __('Not used in modern versions.', 'servcheck')
 	),
 	47 => array (
-		'title' => 'CURLE_TOO_MANY_REDIRECTS',
-		'description' => 'Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS.'
+		'title'       => 'CURLE_TOO_MANY_REDIRECTS',
+		'description' => __('Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS.', 'servcheck')
 	),
 	48 => array (
-		'title' => 'CURLE_UNKNOWN_OPTION',
-		'description' => 'An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses 
-			libcurl. The error buffer might contain more specific information about which exact option it concerns.'
+		'title'       => 'CURLE_UNKNOWN_OPTION',
+		'description' => __('An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns.', 'servcheck')
 	),
 	49 => array (
-		'title' => 'CURLE_SETOPT_OPTION_SYNTAX',
-		'description' => 'An option passed in to a setopt was wrongly formatted. See error message for details about what option.'
+		'title'       => 'CURLE_SETOPT_OPTION_SYNTAX',
+		'description' => __('An option passed in to a setopt was wrongly formatted. See error message for details about what option.', 'servcheck')
 	),
 	50 => array (
-		'title' => 'Obsolete errors',
-		'description' => 'Not used in modern versions.'
+		'title'       => __('Obsolete Error', 'servcheck'),
+		'description' => __('Not used in modern versions.', 'servcheck')
 	),
 	51 => array (
-		'title' => 'Obsolete errors',
-		'description' => 'Not used in modern versions.'
+		'title'       => __('Obsolete Error', 'servcheck'),
+		'description' => __('Not used in modern versions.', 'servcheck')
 	),
 	52 => array (
-		'title' => 'CURLE_GOT_NOTHING',
-		'description' => 'Nothing was returned from the server, and under the circumstances, getting nothing is considered an error.'
+		'title'       => 'CURLE_GOT_NOTHING',
+		'description' => __('Nothing was returned from the server, and under the circumstances, getting nothing is considered an error.', 'servcheck')
 	),
 	53 => array (
-		'title' => 'CURLE_SSL_ENGINE_NOTFOUND',
-		'description' => 'The specified crypto engine was not found.'
+		'title'       => 'CURLE_SSL_ENGINE_NOTFOUND',
+		'description' => __('The specified crypto engine was not found.', 'servcheck')
 	),
 	54 => array (
-		'title' => 'CURLE_SSL_ENGINE_SETFAILED',
-		'description' => 'Failed setting the selected SSL crypto engine as default.'
+		'title'       => 'CURLE_SSL_ENGINE_SETFAILED',
+		'description' => __('Failed setting the selected SSL crypto engine as default.', 'servcheck')
 	),
 	55 => array (
-		'title' => 'CURLE_SEND_ERROR',
-		'description' => 'Failed sending network data.'
+		'title'       => 'CURLE_SEND_ERROR',
+		'description' => __('Failed sending network data.', 'servcheck')
 	),
 	56 => array (
-		'title' => 'CURLE_RECV_ERROR',
-		'description' => 'Failure with receiving network data.'
+		'title'       => 'CURLE_RECV_ERROR',
+		'description' => __('Failure with receiving network data.', 'servcheck')
 	),
 	57 => array (
-		'title' => 'Obsolete error',
-		'description' => 'Not used in modern versions.'
+		'title'       => __('Obsolete Error', 'servcheck'),
+		'description' => __('Not used in modern versions.', 'servcheck')
 	),
 	58 => array (
-		'title' => 'CURLE_SSL_CERTPROBLEM',
-		'description' => 'problem with the local client certificate.'
+		'title'       => 'CURLE_SSL_CERTPROBLEM',
+		'description' => __('problem with the local client certificate.', 'servcheck')
 	),
 	59 => array (
-		'title' => 'CURLE_SSL_CIPHER',
-		'description' => 'Could not use specified cipher.'
+		'title'       => 'CURLE_SSL_CIPHER',
+		'description' => __('Could not use specified cipher.', 'servcheck')
 	),
 	60 => array (
-		'title' => 'CURLE_PEER_FAILED_VERIFICATION',
-		'description' => 'The remote server\'s SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its 
-			previous value was 51.'
+		'title'       => 'CURLE_PEER_FAILED_VERIFICATION',
+		'description' => __('The remote server\'s SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51.', 'servcheck')
 	),
 	61 => array (
-		'title' => 'CURLE_BAD_CONTENT_ENCODING',
-		'description' => 'Unrecognized transfer encoding.'
+		'title'       => 'CURLE_BAD_CONTENT_ENCODING',
+		'description' => __('Unrecognized transfer encoding.', 'servcheck')
 	),
 	62 => array (
-		'title' => 'Obsolete error',
-		'description' => 'Not used in modern versions.'
+		'title'       => __('Obsolete Error', 'servcheck'),
+		'description' => __('Not used in modern versions.', 'servcheck')
 	),
 	63 => array (
-		'title' => 'CURLE_FILESIZE_EXCEEDED',
-		'description' => 'Maximum file size exceeded.'
+		'title'       => 'CURLE_FILESIZE_EXCEEDED',
+		'description' => __('Maximum file size exceeded.', 'servcheck')
 	),
 	64 => array (
-		'title' => 'CURLE_USE_SSL_FAILED',
-		'description' => 'Requested FTP SSL level failed.'
+		'title'       => 'CURLE_USE_SSL_FAILED',
+		'description' => __('Requested FTP SSL level failed.', 'servcheck')
 	),
 	65 => array (
-		'title' => 'CURLE_SEND_FAIL_REWIND',
-		'description' => 'When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed.'
+		'title'       => 'CURLE_SEND_FAIL_REWIND',
+		'description' => __('When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed.', 'servcheck')
 	),
 	66 => array (
-		'title' => 'CURLE_SSL_ENGINE_INITFAILED',
-		'description' => 'Initiating the SSL Engine failed.'
+		'title'       => 'CURLE_SSL_ENGINE_INITFAILED',
+		'description' => __('Initiating the SSL Engine failed.', 'servcheck')
 	),
 	67 => array (
-		'title' => 'CURLE_LOGIN_DENIED',
-		'description' => 'The remote server denied curl to login (Added in 7.13.1)'
+		'title'       => 'CURLE_LOGIN_DENIED',
+		'description' => __('The remote server denied curl to login (Added in 7.13.1)', 'servcheck')
 	),
 	68 => array (
-		'title' => 'CURLE_TFTP_NOTFOUND',
-		'description' => 'File not found on TFTP server.'
+		'title'       => 'CURLE_TFTP_NOTFOUND',
+		'description' => __('File not found on TFTP server.', 'servcheck')
 	),
 	69 => array (
-		'title' => 'CURLE_TFTP_PERM',
-		'description' => 'Permission problem on TFTP server.'
+		'title'       => 'CURLE_TFTP_PERM',
+		'description' => __('Permission problem on TFTP server.', 'servcheck')
 	),
 	70 => array (
-		'title' => 'CURLE_REMOTE_DISK_FULL',
-		'description' => 'Out of disk space on the server.'
+		'title'       => 'CURLE_REMOTE_DISK_FULL',
+		'description' => __('Out of disk space on the server.', 'servcheck')
 	),
 	71 => array (
-		'title' => 'CURLE_TFTP_ILLEGAL',
-		'description' => 'Illegal TFTP operation.'
+		'title'       => 'CURLE_TFTP_ILLEGAL',
+		'description' => __('Illegal TFTP operation.', 'servcheck')
 	),
 	72 => array (
-		'title' => 'CURLE_TFTP_UNKNOWNID',
-		'description' => 'Unknown TFTP transfer ID.'
+		'title'       => 'CURLE_TFTP_UNKNOWNID',
+		'description' => __('Unknown TFTP transfer ID.', 'servcheck')
 	),
 	73 => array (
-		'title' => 'CURLE_REMOTE_FILE_EXISTS',
-		'description' => 'File already exists and is not overwritten.'
+		'title'       => 'CURLE_REMOTE_FILE_EXISTS',
+		'description' => __('File already exists and is not overwritten.', 'servcheck')
 	),
 	74 => array (
-		'title' => 'CURLE_TFTP_NOSUCHUSER',
-		'description' => 'This error should never be returned by a properly functioning TFTP server.'
+		'title'       => 'CURLE_TFTP_NOSUCHUSER',
+		'description' => __('This error should never be returned by a properly functioning TFTP server.', 'servcheck')
 	),
 	75 => array (
-		'title' => 'Obsolete error',
-		'description' => 'Not used in modern versions.'
+		'title'       => __('Obsolete Error', 'servcheck'),
+		'description' => __('Not used in modern versions.', 'servcheck')
 	),
 	76 => array (
-		'title' => 'Obsolete error',
-		'description' => 'Not used in modern versions.'
+		'title'       => __('Obsolete Error', 'servcheck'),
+		'description' => __('Not used in modern versions.', 'servcheck')
 	),
 	77 => array (
-		'title' => 'CURLE_SSL_CACERT_BADFILE',
-		'description' => 'Problem with reading the SSL CA cert (path? access rights?)'
+		'title'       => 'CURLE_SSL_CACERT_BADFILE',
+		'description' => __('Problem with reading the SSL CA cert (path? access rights?)', 'servcheck')
 	),
 	78 => array (
-		'title' => 'CURLE_REMOTE_FILE_NOT_FOUND',
-		'description' => 'The resource referenced in the URL does not exist.'
+		'title'       => 'CURLE_REMOTE_FILE_NOT_FOUND',
+		'description' => __('The resource referenced in the URL does not exist.', 'servcheck')
 	),
 	79 => array (
-		'title' => 'CURLE_SSH',
-		'description' => 'An unspecified error occurred during the SSH session.'
+		'title'       => 'CURLE_SSH',
+		'description' => __('An unspecified error occurred during the SSH session.', 'servcheck')
 	),
 	80 => array (
-		'title' => 'CURLE_SSL_SHUTDOWN_FAILED',
-		'description' => 'Failed to shut down the SSL connection.'
+		'title'       => 'CURLE_SSL_SHUTDOWN_FAILED',
+		'description' => __('Failed to shut down the SSL connection.' , 'servcheck')
 	),
 	81 => array (
-		'title' => 'CURLE_AGAIN',
-		'description' => 'Socket is not ready for send/recv wait till it\'s ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 
-			7.18.2)'
+		'title'       => 'CURLE_AGAIN',
+		'description' => __('Socket is not ready for send/recv wait till it\'s ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)', 'servcheck')
 	),
 	82 => array (
-		'title' => 'CURLE_SSL_CRL_BADFILE',
-		'description' => 'Failed to load CRL file (Added in 7.19.0)'
+		'title'       => 'CURLE_SSL_CRL_BADFILE',
+		'description' => __('Failed to load CRL file (Added in 7.19.0)', 'servcheck')
 	),
 	83 => array (
-		'title' => 'CURLE_SSL_ISSUER_ERROR',
-		'description' => 'Issuer check failed (Added in 7.19.0)'
+		'title'       => 'CURLE_SSL_ISSUER_ERROR',
+		'description' => __('Issuer check failed (Added in 7.19.0)', 'servcheck')
 	),
 	84 => array (
-		'title' => 'CURLE_FTP_PRET_FAILED',
-		'description' => 'The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom 
-			LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)'
+		'title'       => 'CURLE_FTP_PRET_FAILED',
+		'description' => __('The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)', 'servcheck')
 	),
 	85 => array (
-		'title' => 'CURLE_RTSP_CSEQ_ERROR',
-		'description' => 'Mismatch of RTSP CSeq numbers.'
+		'title'       => 'CURLE_RTSP_CSEQ_ERROR',
+		'description' => __('Mismatch of RTSP CSeq numbers.', 'servcheck')
 	),
 	86 => array (
-		'title' => 'CURLE_RTSP_SESSION_ERROR',
-		'description' => 'Mismatch of RTSP Session Identifiers.'
+		'title'       => 'CURLE_RTSP_SESSION_ERROR',
+		'description' => __('Mismatch of RTSP Session Identifiers.', 'servcheck')
 	),
 	87 => array (
-		'title' => 'CURLE_FTP_BAD_FILE_LIST',
-		'description' => 'Unable to parse FTP file list (during FTP wildcard downloading).'
+		'title'       => 'CURLE_FTP_BAD_FILE_LIST',
+		'description' => __('Unable to parse FTP file list (during FTP wildcard downloading).', 'servcheck')
 	),
 	88 => array (
-		'title' => 'CURLE_CHUNK_FAILED',
-		'description' => 'Chunk callback reported error.'
+		'title'       => 'CURLE_CHUNK_FAILED',
+		'description' => __('Chunk callback reported error.', 'servcheck')
 	),
 	89 => array (
-		'title' => 'CURLE_NO_CONNECTION_AVAILABLE',
-		'description' => '(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)'
+		'title'       => 'CURLE_NO_CONNECTION_AVAILABLE',
+		'description' => __('(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)', 'servcheck')
 	),
 	90 => array (
-		'title' => 'CURLE_SSL_PINNEDPUBKEYNOTMATCH',
-		'description' => 'Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY.'
+		'title'       => 'CURLE_SSL_PINNEDPUBKEYNOTMATCH',
+		'description' => __('Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY.', 'servcheck')
 	),
 	91 => array (
-		'title' => 'CURLE_SSL_INVALIDCERTSTATUS',
-		'description' => 'Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS.'
+		'title'       => 'CURLE_SSL_INVALIDCERTSTATUS',
+		'description' => __('Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS.', 'servcheck')
 	),
 	92 => array (
-		'title' => 'CURLE_HTTP2_STREAM',
-		'description' => 'Stream error in the HTTP/2 framing layer.'
+		'title'       => 'CURLE_HTTP2_STREAM',
+		'description' => __('Stream error in the HTTP/2 framing layer.', 'servcheck')
 	),
 	93 => array (
-		'title' => 'CURLE_RECURSIVE_API_CALL',
-		'description' => 'An API function was called from inside a callback.'
+		'title'       => 'CURLE_RECURSIVE_API_CALL',
+		'description' => __('An API function was called from inside a callback.', 'servcheck')
 	),
 	94 => array (
-		'title' => 'CURLE_AUTH_ERROR',
-		'description' => 'An authentication function returned an error.'
+		'title'       => 'CURLE_AUTH_ERROR',
+		'description' => __('An authentication function returned an error.', 'servcheck')
 	),
 	95 => array (
-		'title' => 'CURLE_HTTP3',
-		'description' => 'A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details.'
+		'title'       => 'CURLE_HTTP3',
+		'description' => __('A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details.', 'servcheck')
 	),
 	96 => array (
-		'title' => 'CURLE_QUIC_CONNECT_ERROR',
-		'description' => 'QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers.'
+		'title'       => 'CURLE_QUIC_CONNECT_ERROR',
+		'description' => __('QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers.', 'servcheck')
 	),
 	97 => array (
-		'title' => 'CURLE_PROXY',
-		'description' => 'Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem.'
+		'title'       => 'CURLE_PROXY',
+		'description' => __('Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem.', 'servcheck')
 	),
 	98 => array (
-		'title' => 'CURLE_SSL_CLIENTCERT',
-		'description' => 'SSL Client Certificate required.'
+		'title'       => 'CURLE_SSL_CLIENTCERT',
+		'description' => __('SSL Client Certificate required.', 'servcheck')
 	),
 	99 => array (
-		'title' => 'CURLE_UNRECOVERABLE_POLL',
-		'description' => 'An internal call to poll() or select() returned error that is not recoverable. '
+		'title'       => 'CURLE_UNRECOVERABLE_POLL',
+		'description' => __('An internal call to poll() or select() returned error that is not recoverable.', 'servcheck')
 	)
 );
-
 

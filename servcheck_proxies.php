@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2023 The Cacti Group                                 |
+ | Copyright (C) 2004-2024 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -29,22 +29,22 @@ include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php')
 set_default_action();
 
 switch (get_request_var('action')) {
-case 'save':
-	proxy_form_save();
+	case 'save':
+		proxy_form_save();
 
-	break;
-case 'actions':
-	proxy_form_actions();
+		break;
+	case 'actions':
+		proxy_form_actions();
 
-	break;
-case 'edit':
-	top_header();
-	proxy_edit();
-	bottom_footer();
+		break;
+	case 'edit':
+		top_header();
+		proxy_edit();
+		bottom_footer();
 
-	break;
-default:
-	proxies();
+		break;
+	default:
+		proxies();
 }
 
 function proxy_form_actions() {
@@ -103,7 +103,7 @@ function proxy_form_actions() {
 						<p>" . __n('Click \'Continue\' to delete the following Proxy.', 'Click \'Continue\' to delete following Proxies.', cacti_sizeof($proxy_array)) . "</p>
 						<div class='itemlist'><ul>$proxy_list</ul></div>
 					</td>
-				</tr>\n";
+				</tr>";
 
 			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete Proxy', 'Delete Proxies', cacti_sizeof($proxy_array)) . "'>";
 		}
@@ -120,7 +120,7 @@ function proxy_form_actions() {
 			<input type='hidden' name='drp_action' value='" . get_nfilter_request_var('drp_action') . "'>
 			$save_html
 		</td>
-	</tr>\n";
+	</tr>";
 
 	html_end_box();
 
@@ -351,10 +351,10 @@ function servcheck_filter() {
 					<td>
 						<select id='rows'>
 							<?php
-							print "<option value='-1'" . (get_request_var('rows') == -1 ? ' selected':'') . ">" . __('Default', 'servcheck') . "</option>\n";
+							print "<option value='-1'" . (get_request_var('rows') == -1 ? ' selected':'') . ">" . __('Default', 'servcheck') . "</option>";
 							if (cacti_sizeof($item_rows)) {
 								foreach ($item_rows as $key => $value) {
-									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . htmlspecialchars($value) . "</option>\n";
+									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . htmlspecialchars($value) . "</option>";
 								}
 							}
 							?>

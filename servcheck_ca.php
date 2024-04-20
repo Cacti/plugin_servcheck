@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2023 The Cacti Group                                 |
+ | Copyright (C) 2004-2024 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -29,22 +29,22 @@ include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php')
 set_default_action();
 
 switch (get_request_var('action')) {
-case 'save':
-	ca_form_save();
+	case 'save':
+		ca_form_save();
 
-	break;
-case 'actions':
-	ca_form_actions();
+		break;
+	case 'actions':
+		ca_form_actions();
 
-	break;
-case 'edit':
-	top_header();
-	ca_edit();
-	bottom_footer();
+		break;
+	case 'edit':
+		top_header();
+		ca_edit();
+		bottom_footer();
 
-	break;
-default:
-	ca();
+		break;
+	default:
+		ca();
 }
 
 function ca_form_actions() {
@@ -104,7 +104,7 @@ function ca_form_actions() {
 						<p>" . __n('Click \'Continue\' to delete the following CA.', 'Click \'Continue\' to delete following CA.', cacti_sizeof($ca_array)) . "</p>
 						<div class='itemlist'><ul>$ca_list</ul></div>
 					</td>
-				</tr>\n";
+				</tr>";
 
 			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete CA', 'Delete CA', cacti_sizeof($ca_array)) . "'>";
 		}
@@ -121,7 +121,7 @@ function ca_form_actions() {
 			<input type='hidden' name='drp_action' value='" . get_nfilter_request_var('drp_action') . "'>
 			$save_html
 		</td>
-	</tr>\n";
+	</tr>";
 
 	html_end_box();
 
@@ -317,13 +317,9 @@ function servcheck_filter() {
 	?>
 	<tr class='even noprint'>
 		<td class='noprint'>
-		
-		<?php 
-		print __('Servcheck uses a file of certificates from common root CAs to check certificates. This will work 
-		for certificates issued by common CAs. If you are using a custom CA (for example, 
-		in a Microsoft AD environment), the test for that certificate will fail because servcheck 
-		does not know your CA. You must upload the entire chain (CA certificate and intermediate 
-		certificates). You then associate these with the test where the certificate issued by your CA is.', 'servcheck');
+
+		<?php
+		print __('Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is.', 'servcheck');
 		?>
 		<form id='servcheck' action='servcheck_ca.php' method='post'>
 			<table class='filterTable'>
@@ -340,10 +336,10 @@ function servcheck_filter() {
 					<td>
 						<select id='rows'>
 							<?php
-							print "<option value='-1'" . (get_request_var('rows') == -1 ? ' selected':'') . ">" . __('Default', 'servcheck') . "</option>\n";
+							print "<option value='-1'" . (get_request_var('rows') == -1 ? ' selected':'') . ">" . __('Default', 'servcheck') . "</option>";
 							if (cacti_sizeof($item_rows)) {
 								foreach ($item_rows as $key => $value) {
-									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . htmlspecialchars($value) . "</option>\n";
+									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . html_escape($value) . "</option>";
 								}
 							}
 							?>
@@ -390,6 +386,7 @@ function servcheck_filter() {
 		</script>
 		</td>
 	</tr>
-<?php
+	<?php
 	html_end_box();
 }
+

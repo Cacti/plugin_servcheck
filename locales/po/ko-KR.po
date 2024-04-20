@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2023-12-27 16:26+0100\n"
+"POT-Creation-Date: 2024-04-20 09:41-0400\n"
 "PO-Revision-Date: 2020-12-14 19:07-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,505 +18,1083 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: includes/arrays.php:44
+#: includes/arrays.php:33
+msgid "String found"
+msgstr ""
+
+#: includes/arrays.php:34
+msgid "String not found"
+msgstr ""
+
+#: includes/arrays.php:35
+msgid "Failed string found"
+msgstr ""
+
+#: includes/arrays.php:36
+msgid "Failed strint not found"
+msgstr ""
+
+#: includes/arrays.php:37
+msgid "Maint string found"
+msgstr ""
+
+#: includes/arrays.php:38 servcheck_test.php:1146 servcheck_test.php:1147
+msgid "Not tested yet"
+msgstr ""
+
+#: includes/arrays.php:39
+msgid "Search not performed"
+msgstr ""
+
+#: includes/arrays.php:43
 msgid "HTTP plaintext, default port 80"
 msgstr ""
 
-#: includes/arrays.php:45
+#: includes/arrays.php:44
 msgid "HTTP encrypted (HTTPS), default port 443"
 msgstr ""
 
-#: includes/arrays.php:47
+#: includes/arrays.php:46
 msgid "SMTP plaintext, default port 25 (or 587 for submission)"
 msgstr ""
 
-#: includes/arrays.php:48
+#: includes/arrays.php:47
 msgid "SMTP with STARTTLS, default port 25(or 587 for submission)"
 msgstr ""
 
-#: includes/arrays.php:49
+#: includes/arrays.php:48
 msgid "SMTP encrypted (SMTPS), default port 465"
 msgstr ""
 
-#: includes/arrays.php:51
+#: includes/arrays.php:50
 msgid "IMAP plaintext, default port 143"
 msgstr ""
 
-#: includes/arrays.php:52
+#: includes/arrays.php:51
 msgid "IMAP with STARTTLS, default port 143"
 msgstr ""
 
-#: includes/arrays.php:53
+#: includes/arrays.php:52
 msgid "IMAP encrypted (IMAPS), default port 993"
 msgstr ""
 
-#: includes/arrays.php:55
+#: includes/arrays.php:54
 msgid "POP3 plaintext, default port 110"
 msgstr ""
 
-#: includes/arrays.php:56
+#: includes/arrays.php:55
 msgid "POP3 with STARTTLS, default port 110"
 msgstr ""
 
-#: includes/arrays.php:57
+#: includes/arrays.php:56
 msgid "POP3 encrypted (POP3S), default port 995"
 msgstr ""
 
-#: includes/arrays.php:59
+#: includes/arrays.php:58
 msgid "DNS plaintext, default port 53"
 msgstr ""
 
-#: includes/arrays.php:62
+#: includes/arrays.php:61
 msgid "LDAP plaintext, default port 389"
 msgstr ""
 
-#: includes/arrays.php:63
+#: includes/arrays.php:62
 msgid "LDAP encrypted (LDAPS), default port 636"
 msgstr ""
 
-#: includes/arrays.php:65
+#: includes/arrays.php:64
 msgid "FTP plaintext, default port 21"
 msgstr ""
 
-#: includes/arrays.php:66
+#: includes/arrays.php:65
 msgid "FTP encrypted (FTPS), default port 990"
 msgstr ""
 
-#: includes/arrays.php:67
+#: includes/arrays.php:66
 msgid "SCP download file, default port 22"
 msgstr ""
 
-#: includes/arrays.php:68
+#: includes/arrays.php:67
 msgid "TFTP protocol - download file, default port 69"
 msgstr ""
 
-#: includes/arrays.php:70
+#: includes/arrays.php:69
 msgid "SMB plaintext download file, default port 445"
 msgstr ""
 
-#: includes/arrays.php:71
+#: includes/arrays.php:70
 msgid "SMB encrypted (SMBS) download file, default port 445"
 msgstr ""
 
-#: includes/arrays.php:114
+#: includes/arrays.php:113
 #, fuzzy
 msgid "Last hour"
 msgstr "마지막 확인"
 
-#: includes/arrays.php:115
+#: includes/arrays.php:114
 msgid "Last 6 hours"
 msgstr ""
 
-#: includes/arrays.php:116
+#: includes/arrays.php:115
 msgid "Last day"
 msgstr ""
 
-#: includes/arrays.php:117
+#: includes/arrays.php:116
 #, fuzzy
 msgid "Last week"
 msgstr "마지막 확인"
 
-#: includes/arrays.php:167
+#: includes/arrays.php:121
+#, fuzzy
+msgid "Unable to Connect"
+msgstr "서버 사용"
+
+#: includes/arrays.php:122 servcheck_ca.php:109 servcheck_proxies.php:108
+#: servcheck_test.php:197 servcheck_test.php:206 servcheck_test.php:215
+#: servcheck_test.php:224
+msgid "Continue"
+msgstr "계속"
+
+#: includes/arrays.php:123
+msgid "Switching Protocols"
+msgstr ""
+
+#: includes/arrays.php:124
+msgid "OK"
+msgstr ""
+
+#: includes/arrays.php:125
+msgid "Created"
+msgstr ""
+
+#: includes/arrays.php:126
+msgid "Accepted"
+msgstr ""
+
+#: includes/arrays.php:127
+msgid "Non-Authoritative Information"
+msgstr ""
+
+#: includes/arrays.php:128
+msgid "No Content"
+msgstr ""
+
+#: includes/arrays.php:129
+msgid "Reset Content"
+msgstr ""
+
+#: includes/arrays.php:130
+msgid "Partial Content"
+msgstr ""
+
+#: includes/arrays.php:131
+msgid "Multiple Choices"
+msgstr ""
+
+#: includes/arrays.php:132
+msgid "Moved Permanently"
+msgstr ""
+
+#: includes/arrays.php:133
+msgid "Found"
+msgstr ""
+
+#: includes/arrays.php:134
+msgid "See Other"
+msgstr ""
+
+#: includes/arrays.php:135
+msgid "Not Modified"
+msgstr ""
+
+#: includes/arrays.php:136
+#, fuzzy
+msgid "Use Proxy"
+msgstr "새 프록시"
+
+#: includes/arrays.php:137
+msgid "(Unused)"
+msgstr ""
+
+#: includes/arrays.php:138
+#, fuzzy
+msgid "Temporary Redirect"
+msgstr "리다이렉트"
+
+#: includes/arrays.php:139
+msgid "Bad Request"
+msgstr ""
+
+#: includes/arrays.php:140
+msgid "Unauthorized"
+msgstr ""
+
+#: includes/arrays.php:141
+msgid "Payment Required"
+msgstr ""
+
+#: includes/arrays.php:142
+msgid "Forbidden"
+msgstr ""
+
+#: includes/arrays.php:143
+#, fuzzy
+msgid "Not Found"
+msgstr "서버를 찾을 수 없음"
+
+#: includes/arrays.php:144
+msgid "Method Not Allowed"
+msgstr ""
+
+#: includes/arrays.php:145
+msgid "Not Acceptable"
+msgstr ""
+
+#: includes/arrays.php:146
+#, fuzzy
+msgid "Proxy Authentication Required"
+msgstr "인증 필요"
+
+#: includes/arrays.php:147
+#, fuzzy
+msgid "Request Timeout"
+msgstr "타임아웃"
+
+#: includes/arrays.php:148
+msgid "Conflict"
+msgstr ""
+
+#: includes/arrays.php:149
+msgid "Gone"
+msgstr ""
+
+#: includes/arrays.php:150
+msgid "Length Required"
+msgstr ""
+
+#: includes/arrays.php:151
+msgid "Precondition Failed"
+msgstr ""
+
+#: includes/arrays.php:152
+msgid "Request Entity Too Large"
+msgstr ""
+
+#: includes/arrays.php:153
+msgid "Request-URI Too Long"
+msgstr ""
+
+#: includes/arrays.php:154
+msgid "Unsupported Media Type"
+msgstr ""
+
+#: includes/arrays.php:155
+msgid "Requested Range Not Satisfiable"
+msgstr ""
+
+#: includes/arrays.php:156
+msgid "Expectation Failed"
+msgstr ""
+
+#: includes/arrays.php:157
+msgid "Internal Server Error"
+msgstr ""
+
+#: includes/arrays.php:158
+msgid "Not Implemented"
+msgstr ""
+
+#: includes/arrays.php:159
+msgid "Bad Gateway"
+msgstr ""
+
+#: includes/arrays.php:160
+msgid "Service Unavailable"
+msgstr ""
+
+#: includes/arrays.php:161
+#, fuzzy
+msgid "Gateway Timeout"
+msgstr "타임아웃"
+
+#: includes/arrays.php:162
+msgid "HTTP Version Not Supported"
+msgstr ""
+
+#: includes/arrays.php:166
 #, php-format
 msgid "%d Poller run"
 msgstr ""
 
-#: includes/arrays.php:168 includes/arrays.php:169 includes/arrays.php:170
-#: includes/arrays.php:171 includes/arrays.php:172 includes/arrays.php:173
-#: includes/arrays.php:174 includes/arrays.php:175 includes/arrays.php:176
+#: includes/arrays.php:167 includes/arrays.php:168 includes/arrays.php:169
+#: includes/arrays.php:170 includes/arrays.php:171 includes/arrays.php:172
+#: includes/arrays.php:173 includes/arrays.php:174 includes/arrays.php:175
 #, php-format
 msgid "%d Poller runs"
 msgstr ""
 
-#: includes/arrays.php:180 includes/arrays.php:181 includes/arrays.php:182
-#: includes/arrays.php:183 includes/arrays.php:184 includes/arrays.php:185
-#: includes/arrays.php:186 includes/arrays.php:187
+#: includes/arrays.php:179 includes/arrays.php:180 includes/arrays.php:181
+#: includes/arrays.php:182 includes/arrays.php:183 includes/arrays.php:184
+#: includes/arrays.php:185 includes/arrays.php:186
 #, fuzzy, php-format
 msgid "%d Seconds"
 msgstr "%d 초"
 
-#: includes/arrays.php:214 includes/arrays.php:218 includes/arrays.php:222
+#: includes/arrays.php:213 includes/arrays.php:217 includes/arrays.php:221
 msgid "Delete"
 msgstr "삭제"
 
-#: includes/arrays.php:223
+#: includes/arrays.php:222
 msgid "Disable"
 msgstr "비활성화"
 
-#: includes/arrays.php:224
+#: includes/arrays.php:223
 msgid "Enable"
 msgstr "활성화"
 
-#: includes/arrays.php:225
+#: includes/arrays.php:224
 msgid "Duplicate"
 msgstr "복사"
 
-#: includes/arrays.php:232 includes/arrays.php:252 servcheck_ca.php:264
-#: servcheck_proxies.php:273 servcheck_test.php:801 servcheck_test.php:1033
+#: includes/arrays.php:230 includes/arrays.php:250 servcheck_ca.php:264
+#: servcheck_proxies.php:273 servcheck_test.php:793 servcheck_test.php:1023
 msgid "Name"
 msgstr "이름"
 
-#: includes/arrays.php:233
+#: includes/arrays.php:231
 #, fuzzy
 msgid "A Useful Name for this CA chain."
 msgstr "이 프록시에 대한 유용한 이름."
 
-#: includes/arrays.php:237
+#: includes/arrays.php:235
 msgid "New CA"
 msgstr ""
 
-#: includes/arrays.php:240 includes/arrays.php:364
-msgid "CA chain"
+#: includes/arrays.php:238 includes/arrays.php:361
+msgid "CA Chain"
 msgstr ""
 
-#: includes/arrays.php:244
+#: includes/arrays.php:242
 msgid "CA and intermediate certs, PEM encoded"
 msgstr ""
 
-#: includes/arrays.php:253
+#: includes/arrays.php:251
 #, fuzzy
 msgid "A Useful Name for this Proxy."
 msgstr "이 프록시에 대한 유용한 이름."
 
-#: includes/arrays.php:257
+#: includes/arrays.php:255
 #, fuzzy
 msgid "New Proxy"
 msgstr "새 프록시"
 
-#: includes/arrays.php:261 servcheck_proxies.php:277
+#: includes/arrays.php:259 servcheck_proxies.php:277
 msgid "Hostname"
 msgstr "호스트명"
 
-#: includes/arrays.php:262
+#: includes/arrays.php:260
 #, fuzzy
 msgid "The Proxy Hostname."
 msgstr "프록시 호스트 이름."
 
-#: includes/arrays.php:270
+#: includes/arrays.php:268
 #, fuzzy
 msgid "HTTP Port"
 msgstr "HTTP 코드"
 
-#: includes/arrays.php:271
+#: includes/arrays.php:269
 #, fuzzy
 msgid "The HTTP Proxy Port."
 msgstr "HTTP 프록시 포트."
 
-#: includes/arrays.php:279
+#: includes/arrays.php:277
 #, fuzzy
 msgid "HTTPS Port"
 msgstr "HTTP 코드"
 
-#: includes/arrays.php:280
+#: includes/arrays.php:278
 #, fuzzy
 msgid "The HTTPS Proxy Port."
 msgstr "HTTPS 프록시 포트."
 
-#: includes/arrays.php:288
+#: includes/arrays.php:286
 msgid "User Name"
 msgstr "사용자 이름"
 
-#: includes/arrays.php:289
+#: includes/arrays.php:287
 #, fuzzy
 msgid "The user to use to authenticate with the Proxy if any."
 msgstr "프록시가있는 경우 인증하는 데 사용할 사용자입니다."
 
-#: includes/arrays.php:297 includes/arrays.php:381
+#: includes/arrays.php:295 includes/arrays.php:378
 msgid "Password"
 msgstr "비밀번호"
 
-#: includes/arrays.php:298
+#: includes/arrays.php:296
 #, fuzzy
 msgid "The user password to use to authenticate with the Proxy if any."
 msgstr "프록시 인증에 사용할 사용자 비밀번호입니다 (있는 경우)."
 
-#: includes/arrays.php:318
+#: includes/arrays.php:315
 msgid "General Settings"
 msgstr "일반 설정"
 
-#: includes/arrays.php:322
+#: includes/arrays.php:319
 #, fuzzy
 msgid "Service Check Name"
 msgstr "서비스 확인 이름"
 
-#: includes/arrays.php:323
+#: includes/arrays.php:320
 #, fuzzy
 msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
 msgstr "이 서비스 확인을 위해 표시되는 이름이며 경고 알림에 포함됩니다."
 
-#: includes/arrays.php:329 servcheck_test.php:1118
+#: includes/arrays.php:326 servcheck_test.php:1107
 #, fuzzy
 msgid "Enable Service Check"
 msgstr "서비스 확인 사용"
 
-#: includes/arrays.php:330
+#: includes/arrays.php:327
 #, fuzzy
 msgid "Uncheck this box to disabled this test from being checked."
 msgstr "이 확인란의 선택을 취소하면이 URL이 선택되지 않습니다."
 
-#: includes/arrays.php:335
+#: includes/arrays.php:332
 msgid "Poller"
 msgstr ""
 
-#: includes/arrays.php:338
+#: includes/arrays.php:335
 msgid "Poller on which the test will run"
 msgstr ""
 
-#: includes/arrays.php:343
+#: includes/arrays.php:340
 msgid "Type of service"
 msgstr ""
 
-#: includes/arrays.php:348
+#: includes/arrays.php:345
 msgid "What type of service?"
 msgstr ""
 
-#: includes/arrays.php:353
+#: includes/arrays.php:350
 #, fuzzy
 msgid "IP Address or DNS name of server"
 msgstr "이 서버에 연결할 IP 주소"
 
-#: includes/arrays.php:354
+#: includes/arrays.php:351
 msgid "You can specify another port (example.com:5000) otherwise default will be used"
 msgstr ""
 
-#: includes/arrays.php:361
+#: includes/arrays.php:358
 #, fuzzy
 msgid "Service settings"
 msgstr "일반 설정"
 
-#: includes/arrays.php:366 includes/arrays.php:424 includes/arrays.php:515
-#: servcheck_test.php:473
+#: includes/arrays.php:363 includes/arrays.php:421 includes/arrays.php:512
+#: servcheck_test.php:477
 msgid "None"
 msgstr "없음"
 
-#: includes/arrays.php:368
+#: includes/arrays.php:365
 msgid "Your own CA and intermediate certs"
 msgstr ""
 
-#: includes/arrays.php:373 servcheck_proxies.php:285
+#: includes/arrays.php:370 servcheck_proxies.php:285
 msgid "Username"
 msgstr "아이디"
 
-#: includes/arrays.php:375
+#: includes/arrays.php:372
 msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
 msgstr ""
 
-#: includes/arrays.php:383
+#: includes/arrays.php:380
 msgid "For anonymous ftp insert email address here."
 msgstr ""
 
-#: includes/arrays.php:389
+#: includes/arrays.php:386
 #, fuzzy
-msgid "LDAP search"
+msgid "LDAP Search"
 msgstr "검색"
 
-#: includes/arrays.php:391
+#: includes/arrays.php:388
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
 msgstr ""
 
-#: includes/arrays.php:398
-msgid "DNS name for query"
+#: includes/arrays.php:395
+msgid "DNS Name for Query"
 msgstr ""
 
-#: includes/arrays.php:399
+#: includes/arrays.php:396
 msgid "DNS name for querying"
 msgstr ""
 
-#: includes/arrays.php:406
-msgid "path part of url"
+#: includes/arrays.php:403
+msgid "Path Part of URL"
 msgstr ""
 
-#: includes/arrays.php:407
+#: includes/arrays.php:404
 msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
 msgstr ""
 
-#: includes/arrays.php:414
+#: includes/arrays.php:411
 #, fuzzy
 msgid "Requires Authentication"
 msgstr "인증 필요"
 
-#: includes/arrays.php:415
+#: includes/arrays.php:412
 #, fuzzy
 msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
 msgstr "사이트가 일반적으로 사용자 이름과 암호가 필요하므로 401 오류를 반환하는 경우이 확인란을 선택하십시오."
 
-#: includes/arrays.php:421
+#: includes/arrays.php:418
 msgid "Proxy Server"
 msgstr "프록시 서버"
 
-#: includes/arrays.php:422
+#: includes/arrays.php:419
 #, fuzzy
 msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
 msgstr "이 연결 텍스트에 프록시가 필요한 경우 여기에서 선택하십시오. 그렇지 않으면 '없음'을 선택하십시오."
 
-#: includes/arrays.php:430
+#: includes/arrays.php:427
 #, fuzzy
 msgid "Check Certificate"
 msgstr "인증서 확인"
 
-#: includes/arrays.php:431
+#: includes/arrays.php:428
 #, fuzzy
 msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
 msgstr "SSL을 사용하는 경우 인증서의 유효성을 검사하려면이 상자를 선택하십시오. 기본 설정은 사이트에서 자체 서명 된 인증서를 사용하는 경우 해제하십시오."
 
-#: includes/arrays.php:437
+#: includes/arrays.php:434
 #, fuzzy
 msgid "Check and notify Certificate expiration"
 msgstr "인증서 확인"
 
-#: includes/arrays.php:438
+#: includes/arrays.php:435
 #, fuzzy
 msgid "If using SSL, check this box if you want to check the certificate expiration. You will be warn when last 10 days left."
 msgstr "SSL을 사용하는 경우 인증서의 유효성을 검사하려면이 상자를 선택하십시오. 기본 설정은 사이트에서 자체 서명 된 인증서를 사용하는 경우 해제하십시오."
 
-#: includes/arrays.php:444
+#: includes/arrays.php:441
 #, fuzzy
 msgid "Notification Timing"
 msgstr "알림 타이밍"
 
-#: includes/arrays.php:447
-msgid "How often test"
+#: includes/arrays.php:444
+msgid "How Often to Test"
 msgstr ""
 
-#: includes/arrays.php:451
+#: includes/arrays.php:448
 msgid "Test each poller cycle or less"
 msgstr ""
 
-#: includes/arrays.php:455
+#: includes/arrays.php:452
 msgid "Trigger"
 msgstr "트리거"
 
-#: includes/arrays.php:459
+#: includes/arrays.php:456
 #, fuzzy
 msgid "How many poller cycles must be down before it will send an alert. After an alert is sent, in order for a 'Site Recovering' Email to be send, it must also be up this number of poller cycles."
 msgstr "경고를 보내기 전에 URL이 몇 분 이내에 있어야합니다. 경고가 전송 된 후 '사이트 복구'전자 메일을 보내려면이 시간 (분) 이상이어야합니다."
 
-#: includes/arrays.php:463
+#: includes/arrays.php:460
 #, fuzzy
 msgid "Time Out"
 msgstr "타임 아웃"
 
-#: includes/arrays.php:467
+#: includes/arrays.php:464
 #, fuzzy
 msgid "How many seconds to allow the page to timeout before reporting it as down."
 msgstr "페이지가 중단 된 것으로보고하기 전에 페이지가 시간 초과되도록 허용하는 데 걸린 시간 (초)입니다."
 
-#: includes/arrays.php:472
+#: includes/arrays.php:469
 #, fuzzy
 msgid "Verification Strings"
 msgstr "확인 문자열"
 
-#: includes/arrays.php:476
+#: includes/arrays.php:473
 #, fuzzy
 msgid "Response Search String"
 msgstr "응답 검색 문자열"
 
-#: includes/arrays.php:477
+#: includes/arrays.php:474
 #, fuzzy
 msgid "This is the string to search for in the response for a live and working service."
 msgstr "이것은 작동중인 웹 서비스에 대한 URL 응답에서 검색 할 문자열입니다."
 
-#: includes/arrays.php:484
+#: includes/arrays.php:481
 #, fuzzy
 msgid "Response Search String - Maintenance"
 msgstr "응답 검색 문자열 - 유지 관리 페이지"
 
-#: includes/arrays.php:485
+#: includes/arrays.php:482
 #, fuzzy
 msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
 msgstr "유지 관리 페이지에서 검색 할 문자열입니다. 위의 문자열을 찾을 수없는 경우 Service Check는이 문자열을 확인합니다. 발견되면 웹 서비스가 유지 보수 중임을 의미합니다."
 
-#: includes/arrays.php:492
+#: includes/arrays.php:489
 #, fuzzy
 msgid "Response Search String - Failed"
 msgstr "응답 검색 문자열 - 실패"
 
-#: includes/arrays.php:493
+#: includes/arrays.php:490
 #, fuzzy
 msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
 msgstr "이 문자열은 웹 서비스 응답에서 알려진 오류를 검색합니다. 서비스 검사는이 문자열이 발견되면 경고하고 시간 초과 문제와 위의 검색 문자열을 무시합니다."
 
-#: includes/arrays.php:500
+#: includes/arrays.php:497
 msgid "Notification Settings"
 msgstr "알림 설정"
 
-#: includes/arrays.php:503
+#: includes/arrays.php:500
 #, fuzzy
 msgid "Notify Format"
 msgstr "계정에 알림"
 
-#: includes/arrays.php:505
+#: includes/arrays.php:502
 #, fuzzy
 msgid "This is the format to use when sending the notification email"
 msgstr "알림 이메일을 보낼 때 사용하는 형식입니다."
 
-#: includes/arrays.php:510
+#: includes/arrays.php:507
 #, fuzzy
 msgid "Notification List"
 msgstr "알림 설정"
 
-#: includes/arrays.php:512
+#: includes/arrays.php:509
 #, fuzzy
 msgid "Use this Notification List for those to be notified when this service goes down."
 msgstr "이 웹 사이트가 다운 될 때 통보 될 계정 목록입니다."
 
-#: includes/arrays.php:518
+#: includes/arrays.php:515
 #, fuzzy
 msgid "Notify Accounts"
 msgstr "계정에 알림"
 
-#: includes/arrays.php:520
+#: includes/arrays.php:517
 #, fuzzy
 msgid "This is a listing of accounts that will be notified when this service goes down."
 msgstr "이 웹 사이트가 다운 될 때 통보 될 계정 목록입니다."
 
-#: includes/arrays.php:525
+#: includes/arrays.php:522
 #, fuzzy
 msgid "Extra Alert Emails"
 msgstr "추가 경고 이메일"
 
-#: includes/arrays.php:529
+#: includes/arrays.php:526
 #, fuzzy
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
 msgstr "이 URL에 대한 알림을 받으려면 추가 이메일을 여기에서 지정할 수 있습니다 (쉼표로 구분)."
 
-#: includes/arrays.php:533
+#: includes/arrays.php:530
 msgid "Notes"
 msgstr ""
 
-#: includes/arrays.php:537
+#: includes/arrays.php:534
 msgid "Notes sent in email"
 msgstr ""
 
-#: includes/functions.php:33 servcheck_test.php:836
+#: includes/arrays.php:538
+msgid "External ID"
+msgstr ""
+
+#: includes/arrays.php:540
+msgid "Enter an Eternal ID for this Thold Template."
+msgstr ""
+
+#: includes/arrays.php:555
+msgid "All fine. Proceed as usual."
+msgstr ""
+
+#: includes/arrays.php:559
+msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
+msgstr ""
+
+#: includes/arrays.php:563
+msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
+msgstr ""
+
+#: includes/arrays.php:567
+msgid "The URL was not properly formatted."
+msgstr ""
+
+#: includes/arrays.php:571
+msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
+msgstr ""
+
+#: includes/arrays.php:575
+msgid "Could not resolve proxy. The given proxy host could not be resolved."
+msgstr ""
+
+#: includes/arrays.php:579
+msgid "Could not resolve host. The given remote host was not resolved."
+msgstr ""
+
+#: includes/arrays.php:583
+msgid "Failed to connect() to host or proxy."
+msgstr ""
+
+#: includes/arrays.php:587
+msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
+msgstr ""
+
+#: includes/arrays.php:591
+msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
+msgstr ""
+
+#: includes/arrays.php:595
+msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
+msgstr ""
+
+#: includes/arrays.php:599
+msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
+msgstr ""
+
+#: includes/arrays.php:603
+msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
+msgstr ""
+
+#: includes/arrays.php:607
+msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
+msgstr ""
+
+#: includes/arrays.php:611
+msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
+msgstr ""
+
+#: includes/arrays.php:615
+msgid "An internal failure to lookup the host used for the new connection."
+msgstr ""
+
+#: includes/arrays.php:619
+msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr ""
+
+#: includes/arrays.php:623
+msgid "Received an error when trying to set the transfer mode to binary or ASCII."
+msgstr ""
+
+#: includes/arrays.php:627
+msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
+msgstr ""
+
+#: includes/arrays.php:631
+msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
+msgstr ""
+
+#: includes/arrays.php:634 includes/arrays.php:650 includes/arrays.php:670
+#: includes/arrays.php:682 includes/arrays.php:714 includes/arrays.php:730
+#: includes/arrays.php:738 includes/arrays.php:754 includes/arrays.php:758
+#: includes/arrays.php:782 includes/arrays.php:802 includes/arrays.php:854
+#: includes/arrays.php:858
+msgid "Obsolete Error"
+msgstr ""
+
+#: includes/arrays.php:635 includes/arrays.php:651 includes/arrays.php:671
+#: includes/arrays.php:683 includes/arrays.php:715 includes/arrays.php:731
+#: includes/arrays.php:739 includes/arrays.php:755 includes/arrays.php:759
+#: includes/arrays.php:783 includes/arrays.php:803 includes/arrays.php:855
+#: includes/arrays.php:859
+msgid "Not used in modern versions."
+msgstr ""
+
+#: includes/arrays.php:639
+msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
+msgstr ""
+
+#: includes/arrays.php:643
+msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
+msgstr ""
+
+#: includes/arrays.php:647
+msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
+msgstr ""
+
+#: includes/arrays.php:655
+msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
+msgstr ""
+
+#: includes/arrays.php:659
+msgid "There was a problem reading a local file or an error returned by the read callback."
+msgstr ""
+
+#: includes/arrays.php:663
+msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
+msgstr ""
+
+#: includes/arrays.php:667
+msgid "Operation timeout. The specified time-out period was reached according to the conditions."
+msgstr ""
+
+#: includes/arrays.php:675
+msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
+msgstr ""
+
+#: includes/arrays.php:679
+msgid "The FTP REST command returned error. This should never happen if the server is sane."
+msgstr ""
+
+#: includes/arrays.php:687
+msgid "The server does not support or accept range requests."
+msgstr ""
+
+#: includes/arrays.php:691
+msgid "This is an odd error that mainly occurs due to internal confusion."
+msgstr ""
+
+#: includes/arrays.php:695
+msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
+msgstr ""
+
+#: includes/arrays.php:699
+msgid "The download could not be resumed because the specified offset was out of the file boundary."
+msgstr ""
+
+#: includes/arrays.php:703
+msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
+msgstr ""
+
+#: includes/arrays.php:707
+msgid "LDAP cannot bind. LDAP bind operation failed."
+msgstr ""
+
+#: includes/arrays.php:711
+#, fuzzy
+msgid "LDAP search failed."
+msgstr "검색"
+
+#: includes/arrays.php:719
+msgid "Function not found. A required zlib function was not found."
+msgstr ""
+
+#: includes/arrays.php:723
+msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
+msgstr ""
+
+#: includes/arrays.php:727
+msgid "A function was called with a bad parameter."
+msgstr ""
+
+#: includes/arrays.php:735
+msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
+msgstr ""
+
+#: includes/arrays.php:743
+msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
+msgstr ""
+
+#: includes/arrays.php:747
+msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
+msgstr ""
+
+#: includes/arrays.php:751
+msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
+msgstr ""
+
+#: includes/arrays.php:763
+msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
+msgstr ""
+
+#: includes/arrays.php:767
+msgid "The specified crypto engine was not found."
+msgstr ""
+
+#: includes/arrays.php:771
+msgid "Failed setting the selected SSL crypto engine as default."
+msgstr ""
+
+#: includes/arrays.php:775
+msgid "Failed sending network data."
+msgstr ""
+
+#: includes/arrays.php:779
+msgid "Failure with receiving network data."
+msgstr ""
+
+#: includes/arrays.php:787
+msgid "problem with the local client certificate."
+msgstr ""
+
+#: includes/arrays.php:791
+msgid "Could not use specified cipher."
+msgstr ""
+
+#: includes/arrays.php:795
+msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
+msgstr ""
+
+#: includes/arrays.php:799
+msgid "Unrecognized transfer encoding."
+msgstr ""
+
+#: includes/arrays.php:807
+msgid "Maximum file size exceeded."
+msgstr ""
+
+#: includes/arrays.php:811
+msgid "Requested FTP SSL level failed."
+msgstr ""
+
+#: includes/arrays.php:815
+msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
+msgstr ""
+
+#: includes/arrays.php:819
+msgid "Initiating the SSL Engine failed."
+msgstr ""
+
+#: includes/arrays.php:823
+msgid "The remote server denied curl to login (Added in 7.13.1)"
+msgstr ""
+
+#: includes/arrays.php:827
+msgid "File not found on TFTP server."
+msgstr ""
+
+#: includes/arrays.php:831
+msgid "Permission problem on TFTP server."
+msgstr ""
+
+#: includes/arrays.php:835
+msgid "Out of disk space on the server."
+msgstr ""
+
+#: includes/arrays.php:839
+msgid "Illegal TFTP operation."
+msgstr ""
+
+#: includes/arrays.php:843
+msgid "Unknown TFTP transfer ID."
+msgstr ""
+
+#: includes/arrays.php:847
+msgid "File already exists and is not overwritten."
+msgstr ""
+
+#: includes/arrays.php:851
+msgid "This error should never be returned by a properly functioning TFTP server."
+msgstr ""
+
+#: includes/arrays.php:863
+msgid "Problem with reading the SSL CA cert (path? access rights?)"
+msgstr ""
+
+#: includes/arrays.php:867
+msgid "The resource referenced in the URL does not exist."
+msgstr ""
+
+#: includes/arrays.php:871
+msgid "An unspecified error occurred during the SSH session."
+msgstr ""
+
+#: includes/arrays.php:875
+msgid "Failed to shut down the SSL connection."
+msgstr ""
+
+#: includes/arrays.php:879
+msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
+msgstr ""
+
+#: includes/arrays.php:883
+msgid "Failed to load CRL file (Added in 7.19.0)"
+msgstr ""
+
+#: includes/arrays.php:887
+msgid "Issuer check failed (Added in 7.19.0)"
+msgstr ""
+
+#: includes/arrays.php:891
+msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
+msgstr ""
+
+#: includes/arrays.php:895
+msgid "Mismatch of RTSP CSeq numbers."
+msgstr ""
+
+#: includes/arrays.php:899
+msgid "Mismatch of RTSP Session Identifiers."
+msgstr ""
+
+#: includes/arrays.php:903
+msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
+msgstr ""
+
+#: includes/arrays.php:907
+msgid "Chunk callback reported error."
+msgstr ""
+
+#: includes/arrays.php:911
+msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
+msgstr ""
+
+#: includes/arrays.php:915
+msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
+msgstr ""
+
+#: includes/arrays.php:919
+msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
+msgstr ""
+
+#: includes/arrays.php:923
+msgid "Stream error in the HTTP/2 framing layer."
+msgstr ""
+
+#: includes/arrays.php:927
+msgid "An API function was called from inside a callback."
+msgstr ""
+
+#: includes/arrays.php:931
+msgid "An authentication function returned an error."
+msgstr ""
+
+#: includes/arrays.php:935
+msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr ""
+
+#: includes/arrays.php:939
+msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
+msgstr ""
+
+#: includes/arrays.php:943
+msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
+msgstr ""
+
+#: includes/arrays.php:947
+msgid "SSL Client Certificate required."
+msgstr ""
+
+#: includes/arrays.php:951
+msgid "An internal call to poll() or select() returned error that is not recoverable."
+msgstr ""
+
+#: includes/functions.php:32 servcheck_test.php:828
 msgid "Tests"
 msgstr ""
 
-#: includes/functions.php:34
+#: includes/functions.php:33
 #, fuzzy
 msgid "CA certificates"
 msgstr "인증서 확인"
 
-#: includes/functions.php:35 servcheck_proxies.php:292
+#: includes/functions.php:34 servcheck_proxies.php:292
 #: servcheck_proxies.php:349
 #, fuzzy
 msgid "Proxies"
 msgstr "프록시"
 
-#: includes/functions.php:36
+#: includes/functions.php:35
 msgid "Curl return codes"
 msgstr ""
 
-#: includes/functions.php:42
+#: includes/functions.php:41
 #, fuzzy
 msgid "Log History"
 msgstr "기록 보기"
 
-#: includes/functions.php:49
+#: includes/functions.php:48
 msgid "Graphs"
 msgstr ""
 
-#: includes/functions.php:129
+#: includes/functions.php:130
 msgid "No data"
 msgstr ""
 
@@ -526,15 +1104,10 @@ msgid "Click 'Continue' to delete the following CA."
 msgid_plural "Click 'Continue' to delete following CA."
 msgstr[0] "다음 프록시를 삭제하려면 '계속'을 클릭하십시오."
 
-#: servcheck_ca.php:109 servcheck_proxies.php:108 servcheck_test.php:198
-#: servcheck_test.php:207 servcheck_test.php:216 servcheck_test.php:225
+#: servcheck_ca.php:109 servcheck_proxies.php:108 servcheck_test.php:197
+#: servcheck_test.php:206 servcheck_test.php:215 servcheck_test.php:224
 msgid "Cancel"
 msgstr "취소"
-
-#: servcheck_ca.php:109 servcheck_proxies.php:108 servcheck_test.php:198
-#: servcheck_test.php:207 servcheck_test.php:216 servcheck_test.php:225
-msgid "Continue"
-msgstr "계속"
 
 #: servcheck_ca.php:109
 #, fuzzy
@@ -556,7 +1129,7 @@ msgstr "검색어 [신규]"
 msgid "Used"
 msgstr ""
 
-#: servcheck_ca.php:275 servcheck_ca.php:338
+#: servcheck_ca.php:275 servcheck_ca.php:334
 msgid "CAs"
 msgstr ""
 
@@ -571,31 +1144,26 @@ msgid "Servcheck CA Management"
 msgstr "웹 서버 관리"
 
 #: servcheck_ca.php:322
-msgid ""
-"Servcheck uses a file of certificates from common root CAs to check certificates. This will work \n"
-"\t\tfor certificates issued by common CAs. If you are using a custom CA (for example, \n"
-"\t\tin a Microsoft AD environment), the test for that certificate will fail because servcheck \n"
-"\t\tdoes not know your CA. You must upload the entire chain (CA certificate and intermediate \n"
-"\t\tcertificates). You then associate these with the test where the certificate issued by your CA is."
+msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
 msgstr ""
 
-#: servcheck_ca.php:332 servcheck_proxies.php:343 servcheck_test.php:506
-#: servcheck_test.php:1259
+#: servcheck_ca.php:328 servcheck_proxies.php:343 servcheck_test.php:510
+#: servcheck_test.php:1251
 msgid "Search"
 msgstr "검색"
 
-#: servcheck_ca.php:343 servcheck_proxies.php:354 servcheck_test.php:1299
-#: servcheck_test.php:1391
+#: servcheck_ca.php:339 servcheck_proxies.php:354 servcheck_test.php:1291
+#: servcheck_test.php:1384
 msgid "Default"
 msgstr "기본값"
 
-#: servcheck_ca.php:354 servcheck_proxies.php:365 servcheck_test.php:1310
-#: servcheck_test.php:1402
+#: servcheck_ca.php:350 servcheck_proxies.php:365 servcheck_test.php:1302
+#: servcheck_test.php:1395
 msgid "Go"
 msgstr "가기"
 
-#: servcheck_ca.php:355 servcheck_proxies.php:366 servcheck_test.php:1311
-#: servcheck_test.php:1403
+#: servcheck_ca.php:351 servcheck_proxies.php:366 servcheck_test.php:1303
+#: servcheck_test.php:1396
 msgid "Clear"
 msgstr "지우기"
 
@@ -644,245 +1212,241 @@ msgstr "서버를 찾을 수 없음"
 msgid "Servcheck Proxy Management"
 msgstr "웹 서버 관리"
 
-#: servcheck_test.php:193
+#: servcheck_test.php:192
 #, fuzzy
 msgid "Click 'Continue' to Delete the following tests."
 msgid_plural "Click 'Continue' to Delete following tests."
 msgstr[0] "다음 프록시를 삭제하려면 '계속'을 클릭하십시오."
 
-#: servcheck_test.php:198
+#: servcheck_test.php:197
 #, fuzzy
 msgid "Delete rest"
 msgid_plural "Delete tests"
 msgstr[0] "WebSeer 서버"
 
-#: servcheck_test.php:202
+#: servcheck_test.php:201
 #, fuzzy
 msgid "Click 'Continue' to Disable the following test."
 msgid_plural "Click 'Continue' to Disable following Tests."
 msgstr[0] "다음 프록시를 삭제하려면 '계속'을 클릭하십시오."
 
-#: servcheck_test.php:207
+#: servcheck_test.php:206
 #, fuzzy
 msgid "Disable test"
 msgid_plural "Disable Tests"
 msgstr[0] "비활성화"
 
-#: servcheck_test.php:211
+#: servcheck_test.php:210
 #, fuzzy
 msgid "Click 'Continue' to Enable the following test."
 msgid_plural "Click 'Continue' to Enable following tests."
 msgstr[0] "다음 프록시를 삭제하려면 '계속'을 클릭하십시오."
 
-#: servcheck_test.php:216
+#: servcheck_test.php:215
 #, fuzzy
 msgid "Enable test"
 msgid_plural "Enable tests"
 msgstr[0] "서버 사용"
 
-#: servcheck_test.php:220
+#: servcheck_test.php:219
 #, fuzzy
 msgid "Click 'Continue' to Duplicate the following test."
 msgid_plural "Click 'Continue' to Duplicate following tests."
 msgstr[0] "다음 프록시를 삭제하려면 '계속'을 클릭하십시오."
 
-#: servcheck_test.php:225
+#: servcheck_test.php:224
 #, fuzzy
 msgid "Duplicate test"
 msgid_plural "Duplicate tests"
 msgstr[0] "복사"
 
-#: servcheck_test.php:402
+#: servcheck_test.php:405
 #, php-format
 msgid "The Service Check history was purged for %s"
 msgstr ""
 
-#: servcheck_test.php:416
+#: servcheck_test.php:419
 #, fuzzy, php-format
 msgid "Query [edit: %s]"
 msgstr "쿼리 [편집 :  %s]"
 
-#: servcheck_test.php:418
+#: servcheck_test.php:421
 #, fuzzy
 msgid "Query [new]"
 msgstr "검색어 [신규]"
 
-#: servcheck_test.php:461
+#: servcheck_test.php:465
 #, fuzzy
 msgid "No Users Selected"
 msgstr "선택된 사용자 없음"
 
-#: servcheck_test.php:463
+#: servcheck_test.php:467
 #, fuzzy
 msgid "Users Selected"
 msgstr "선택된 사용자"
 
-#: servcheck_test.php:466
+#: servcheck_test.php:470
 #, fuzzy
 msgid "All Users Selected"
 msgstr "모든 사용자 선택"
 
-#: servcheck_test.php:472
+#: servcheck_test.php:476
 msgid "All"
 msgstr "모두"
 
-#: servcheck_test.php:798
+#: servcheck_test.php:790
 msgid "Date"
 msgstr "날짜"
 
-#: servcheck_test.php:804 servcheck_test.php:1058
+#: servcheck_test.php:796 servcheck_test.php:1048
 msgid "Result"
 msgstr ""
 
-#: servcheck_test.php:807 servcheck_test.php:1063
+#: servcheck_test.php:799 servcheck_test.php:1053
 #, fuzzy
 msgid "Search result"
 msgstr "검색"
 
-#: servcheck_test.php:810 servcheck_test.php:1068
+#: servcheck_test.php:802 servcheck_test.php:1058
 msgid "Curl return code"
 msgstr ""
 
-#: servcheck_test.php:815
+#: servcheck_test.php:807
 #, fuzzy
 msgid "DNS"
 msgstr "DNS"
 
-#: servcheck_test.php:820
+#: servcheck_test.php:812
 msgid "Connect"
 msgstr "연결"
 
-#: servcheck_test.php:825
+#: servcheck_test.php:817
 msgid "Redirect"
 msgstr "리다이렉트"
 
-#: servcheck_test.php:830
+#: servcheck_test.php:822
 msgid "Total"
 msgstr "합계"
 
-#: servcheck_test.php:862
+#: servcheck_test.php:854
 msgid "Service Down"
 msgstr ""
 
-#: servcheck_test.php:862
+#: servcheck_test.php:854
 msgid "Service UP"
 msgstr ""
 
-#: servcheck_test.php:876
+#: servcheck_test.php:868
 #, fuzzy
 msgid "No Service Check Events in History"
 msgstr "역사상의 사건 없음"
 
-#: servcheck_test.php:932
+#: servcheck_test.php:922
 msgid "Last returned data of test"
 msgstr ""
 
-#: servcheck_test.php:1028
+#: servcheck_test.php:1018
 msgid "Actions"
 msgstr "작업"
 
-#: servcheck_test.php:1038 servcheck_test.php:1144
+#: servcheck_test.php:1028 servcheck_test.php:1135
 msgid "Enabled"
 msgstr "활성화"
 
-#: servcheck_test.php:1043
+#: servcheck_test.php:1033
 msgid "Last Check"
 msgstr "마지막 확인"
 
-#: servcheck_test.php:1048
+#: servcheck_test.php:1038
 msgid "Stats (OK/problem)"
 msgstr ""
 
-#: servcheck_test.php:1053
+#: servcheck_test.php:1043
 #, fuzzy
 msgid "Trigerred"
 msgstr "발동"
 
-#: servcheck_test.php:1076 servcheck_test.php:1294
+#: servcheck_test.php:1066 servcheck_test.php:1286
 #, fuzzy
 msgid "Checks"
 msgstr "체크 무늬"
 
-#: servcheck_test.php:1113
+#: servcheck_test.php:1102
 #, fuzzy
 msgid "Edit Service Check"
 msgstr "서비스 확인 사용"
 
-#: servcheck_test.php:1122
+#: servcheck_test.php:1111
 #, fuzzy
 msgid "Disable Service Check"
 msgstr "서비스 확인 사용"
 
-#: servcheck_test.php:1126
+#: servcheck_test.php:1116
 #, fuzzy
 msgid "View Service Check History"
 msgstr "웹 서비스 점검"
 
-#: servcheck_test.php:1129
+#: servcheck_test.php:1120
 msgid "View Last returned data"
 msgstr ""
 
-#: servcheck_test.php:1134
+#: servcheck_test.php:1125
 msgid "View Graph"
 msgstr ""
 
-#: servcheck_test.php:1144
+#: servcheck_test.php:1135
 msgid "Disabled"
 msgstr "비활성화"
 
-#: servcheck_test.php:1147
+#: servcheck_test.php:1138
 msgid "N/A"
 msgstr "N/A"
 
-#: servcheck_test.php:1154
+#: servcheck_test.php:1145
 msgid "No"
 msgstr "아니오"
 
-#: servcheck_test.php:1154
+#: servcheck_test.php:1145
 msgid "Yes"
 msgstr "예"
 
-#: servcheck_test.php:1155 servcheck_test.php:1156
-msgid "Not tested yet"
-msgstr ""
-
-#: servcheck_test.php:1164
+#: servcheck_test.php:1156
 #, fuzzy
 msgid "No Tests Found"
 msgstr "서버를 찾을 수 없음"
 
-#: servcheck_test.php:1250 setup.php:223
+#: servcheck_test.php:1242 setup.php:224
 #, fuzzy
 msgid "Service Checks"
 msgstr "웹 서비스 점검"
 
-#: servcheck_test.php:1265
+#: servcheck_test.php:1257
 msgid "State"
 msgstr "주"
 
-#: servcheck_test.php:1269
+#: servcheck_test.php:1261
 msgid "Any"
 msgstr "일부"
 
-#: servcheck_test.php:1278
+#: servcheck_test.php:1270
 msgid "Refresh"
 msgstr "새로고침"
 
-#: servcheck_test.php:1372
+#: servcheck_test.php:1364
 #, fuzzy
 msgid "Service Check History"
 msgstr "웹 서비스 점검"
 
-#: servcheck_test.php:1380
+#: servcheck_test.php:1373
 #, fuzzy
 msgid "Date Search"
 msgstr "검색"
 
-#: servcheck_test.php:1386
+#: servcheck_test.php:1379
 msgid "Entries"
 msgstr ""
 
-#: servcheck_test.php:1404
+#: servcheck_test.php:1397
 msgid "Purge Events"
 msgstr ""
 
@@ -891,157 +1455,158 @@ msgstr ""
 msgid "Service Check Admin"
 msgstr "웹 서비스 관리자 확인"
 
-#: setup.php:213
+#: setup.php:214
 msgid "Management"
 msgstr "관리"
 
-#: setup.php:213
+#: setup.php:214
 #, fuzzy
 msgid "Service Checker"
 msgstr "서비스 확인 이름"
 
-#: setup.php:230
+#: setup.php:231
 #, fuzzy
 msgid "Service Check Edit"
 msgstr "서비스 확인 편집"
 
-#: setup.php:237
+#: setup.php:238
 #, fuzzy
 msgid "Service Check Save"
 msgstr "서비스 확인 이름"
 
-#: setup.php:244
+#: setup.php:245
 #, fuzzy
 msgid "Web Proxies"
 msgstr "WebSeer 서버"
 
-#: setup.php:251
+#: setup.php:252
 #, fuzzy
 msgid "Web Proxie Edit"
 msgstr "프록시"
 
-#: setup.php:258
+#: setup.php:259
 #, fuzzy
 msgid "Save Web Proxy"
 msgstr "새 프록시"
 
-#: setup.php:265
+#: setup.php:266
 msgid "CA"
 msgstr ""
 
-#: setup.php:272
+#: setup.php:273
 msgid "CA Edit"
 msgstr ""
 
-#: setup.php:279
+#: setup.php:280
 msgid "Save CA"
 msgstr ""
 
-#~ msgid "%d Minutes"
-#~ msgstr "%d 분"
+#, fuzzy
+#~ msgid "Click 'Continue' to Enable the following Server."
+#~ msgid_plural "Click 'Continue' to Enable following Servers."
+#~ msgstr[0] "다음 프록시를 삭제하려면 '계속'을 클릭하십시오."
+
+#~ msgid "Sites"
+#~ msgstr "사이트"
+
+#~ msgid "Return"
+#~ msgstr "반환"
 
 #, fuzzy
-#~ msgid "Display Name of this server"
-#~ msgstr "이 서버의 표시 이름"
+#~ msgid "You must select at least one Proxy."
+#~ msgstr "프록시를 하나 이상 선택해야합니다."
 
 #, fuzzy
-#~ msgid "Enable Server"
-#~ msgid_plural "Enable Servers"
-#~ msgstr[0] "서버 사용"
+#~ msgid "Webseer Site Management"
+#~ msgstr "웹 사이트 사이트 관리"
 
 #, fuzzy
-#~ msgid "Uncheck this box to disabled this server from checking urls."
-#~ msgstr "이 체크 박스를 선택 취소하면이 서버의 URL 확인이 비활성화됩니다."
+#~ msgid "Edit Site"
+#~ msgstr "사이트 편집"
 
 #, fuzzy
-#~ msgid "Is this server the local server?"
-#~ msgstr "이 서버가 로컬 서버입니까?"
-
-#, fuzzy
-#~ msgid "Check this box if the current server you are connected to is this entry."
-#~ msgstr "현재 연결된 서버가이 항목 인 경우이 상자를 선택하십시오."
-
-#~ msgid "Master Server"
-#~ msgstr "Master 서버"
-
-#, fuzzy
-#~ msgid "Sets this server to the Master server.  The Master server handles all Email operations"
-#~ msgstr "이 서버를 마스터 서버로 설정합니다. 마스터 서버가 모든 전자 메일 작업을 처리합니다."
-
-#~ msgid "IP Address"
-#~ msgstr "IP 주소"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#, fuzzy
-#~ msgid "This is the URL to connect to remote.php on this server."
-#~ msgstr "이 서버의 remote.php에 연결하는 URL입니다."
-
-#~ msgid "Location"
-#~ msgstr "위치"
-
-#, fuzzy
-#~ msgid "Location of this server"
-#~ msgstr "이 서버의 위치"
-
-#, fuzzy
-#~ msgid "The URL to Monitor"
-#~ msgstr "모니터 할 URL"
-
-#, fuzzy
-#~ msgid "Enter an IP address to connect to.  Leaving blank will use DNS Resolution instead."
-#~ msgstr "연결할 IP 주소를 입력하십시오. 비워두면 대신 DNS 확인을 사용합니다."
-
-#~ msgid "Compression"
-#~ msgstr "컴프레션"
-
-#, fuzzy
-#~ msgid "What compression does the server require?  Most servers should not need this, but some will not redirect properly without it."
-#~ msgstr "서버에는 어떤 압축이 필요합니까? 대부분의 서버는이 기능이 필요하지 않지만 일부 서버는이 기능이 없으면 제대로 리디렉션되지 않습니다."
-
-#, fuzzy
-#~ msgid "Available Checks"
-#~ msgstr "사용 가능한 수표"
-
-#~ msgid "Servers"
-#~ msgstr "서버"
-
-#, fuzzy
-#~ msgid "Cacti Master"
-#~ msgstr "선인장 마스터"
-
-#, fuzzy
-#~ msgid "Cacti Remote Server"
-#~ msgstr "선인장 원격 서버"
-
-#, fuzzy
-#~ msgid "WebSeer Service Checks"
-#~ msgstr "WebSeer 서비스 점검"
-
-#, fuzzy
-#~ msgid "WebSeer Servers"
+#~ msgid "Webseer Server History"
 #~ msgstr "WebSeer 서버"
 
 #, fuzzy
-#~ msgid "Server Edit"
-#~ msgstr "서버 편집"
+#~ msgid "Webseer Servers"
+#~ msgstr "WebSeer 서버"
 
 #, fuzzy
-#~ msgid "Save Server"
-#~ msgstr "서버 사용"
+#~| msgid "View History"
+#~ msgid "View Server History"
+#~ msgstr "기록 보기"
 
 #, fuzzy
-#~| msgid "Delete"
-#~ msgid "Delete URL"
-#~ msgid_plural "Delete URLs"
-#~ msgstr[0] "삭제"
+#~ msgid "Edit Server"
+#~ msgstr "사이트 편집"
 
 #, fuzzy
-#~| msgid "Disable"
-#~ msgid "Disable URL"
-#~ msgid_plural "Disable URLs"
-#~ msgstr[0] "비활성화"
+#~ msgid "This Host"
+#~ msgstr "이 호스트"
+
+#~ msgid "Master"
+#~ msgstr "마스터"
+
+#, fuzzy
+#~ msgid "No Events in History"
+#~ msgstr "역사상의 사건 없음"
+
+#~ msgid "%d Minute"
+#~ msgstr "%d 분"
+
+#, fuzzy
+#~ msgid "Disable Server"
+#~ msgid_plural "Disable Servers"
+#~ msgstr[0] "서버 사용"
+
+#, fuzzy
+#~ msgid "Click 'Continue' to Disable the following Server."
+#~ msgid_plural "Click 'Continue' to Disable following Servers."
+#~ msgstr[0] "다음 프록시를 삭제하려면 '계속'을 클릭하십시오."
+
+#, fuzzy
+#~ msgid "Click 'Continue' to Delete the following Server."
+#~ msgid_plural "Click 'Continue' to Delete following Servers."
+#~ msgstr[0] "다음 프록시를 삭제하려면 '계속'을 클릭하십시오."
+
+#, fuzzy
+#~ msgid "Webseer Service Check History"
+#~ msgstr "WebSeer 서비스 점검"
+
+#, fuzzy
+#~ msgid "Webseer Service Checks"
+#~ msgstr "WebSeer 서비스 점검"
+
+#~ msgid "Up"
+#~ msgstr "위로"
+
+#~ msgid "Down"
+#~ msgstr "아래로"
+
+#, fuzzy
+#~ msgid "DNS: Server %s - A Record for %s"
+#~ msgstr "DNS : 서버  %s -  %s의 레코드"
+
+#, fuzzy
+#~ msgid "Auth"
+#~ msgstr "Auth"
+
+#~ msgid "Status"
+#~ msgstr "상태"
+
+#, fuzzy
+#~ msgid "HTTP Code"
+#~ msgstr "HTTP 코드"
+
+#~ msgid "Error"
+#~ msgstr "오류"
+
+#, fuzzy
+#~| msgid "Duplicate"
+#~ msgid "Duplicate URL"
+#~ msgid_plural "Duplicate URLs"
+#~ msgstr[0] "복사"
 
 #, fuzzy
 #~| msgid "Enable"
@@ -1050,111 +1615,107 @@ msgstr ""
 #~ msgstr[0] "활성화"
 
 #, fuzzy
-#~| msgid "Duplicate"
-#~ msgid "Duplicate URL"
-#~ msgid_plural "Duplicate URLs"
-#~ msgstr[0] "복사"
-
-#~ msgid "Error"
-#~ msgstr "오류"
+#~| msgid "Disable"
+#~ msgid "Disable URL"
+#~ msgid_plural "Disable URLs"
+#~ msgstr[0] "비활성화"
 
 #, fuzzy
-#~ msgid "HTTP Code"
-#~ msgstr "HTTP 코드"
-
-#~ msgid "Status"
-#~ msgstr "상태"
-
-#, fuzzy
-#~ msgid "Auth"
-#~ msgstr "Auth"
-
-#~ msgid "Timeout"
-#~ msgstr "타임아웃"
+#~| msgid "Delete"
+#~ msgid "Delete URL"
+#~ msgid_plural "Delete URLs"
+#~ msgstr[0] "삭제"
 
 #, fuzzy
-#~ msgid "DNS: Server %s - A Record for %s"
-#~ msgstr "DNS : 서버  %s -  %s의 레코드"
-
-#~ msgid "Down"
-#~ msgstr "아래로"
-
-#~ msgid "Up"
-#~ msgstr "위로"
+#~ msgid "Save Server"
+#~ msgstr "서버 사용"
 
 #, fuzzy
-#~ msgid "Webseer Service Checks"
+#~ msgid "Server Edit"
+#~ msgstr "서버 편집"
+
+#, fuzzy
+#~ msgid "WebSeer Servers"
+#~ msgstr "WebSeer 서버"
+
+#, fuzzy
+#~ msgid "WebSeer Service Checks"
 #~ msgstr "WebSeer 서비스 점검"
 
 #, fuzzy
-#~ msgid "Webseer Service Check History"
-#~ msgstr "WebSeer 서비스 점검"
+#~ msgid "Cacti Remote Server"
+#~ msgstr "선인장 원격 서버"
 
 #, fuzzy
-#~ msgid "Click 'Continue' to Delete the following Server."
-#~ msgid_plural "Click 'Continue' to Delete following Servers."
-#~ msgstr[0] "다음 프록시를 삭제하려면 '계속'을 클릭하십시오."
+#~ msgid "Cacti Master"
+#~ msgstr "선인장 마스터"
+
+#~ msgid "Servers"
+#~ msgstr "서버"
 
 #, fuzzy
-#~ msgid "Click 'Continue' to Disable the following Server."
-#~ msgid_plural "Click 'Continue' to Disable following Servers."
-#~ msgstr[0] "다음 프록시를 삭제하려면 '계속'을 클릭하십시오."
+#~ msgid "Available Checks"
+#~ msgstr "사용 가능한 수표"
 
 #, fuzzy
-#~ msgid "Disable Server"
-#~ msgid_plural "Disable Servers"
+#~ msgid "What compression does the server require?  Most servers should not need this, but some will not redirect properly without it."
+#~ msgstr "서버에는 어떤 압축이 필요합니까? 대부분의 서버는이 기능이 필요하지 않지만 일부 서버는이 기능이 없으면 제대로 리디렉션되지 않습니다."
+
+#~ msgid "Compression"
+#~ msgstr "컴프레션"
+
+#, fuzzy
+#~ msgid "Enter an IP address to connect to.  Leaving blank will use DNS Resolution instead."
+#~ msgstr "연결할 IP 주소를 입력하십시오. 비워두면 대신 DNS 확인을 사용합니다."
+
+#, fuzzy
+#~ msgid "The URL to Monitor"
+#~ msgstr "모니터 할 URL"
+
+#, fuzzy
+#~ msgid "Location of this server"
+#~ msgstr "이 서버의 위치"
+
+#~ msgid "Location"
+#~ msgstr "위치"
+
+#, fuzzy
+#~ msgid "This is the URL to connect to remote.php on this server."
+#~ msgstr "이 서버의 remote.php에 연결하는 URL입니다."
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "IP Address"
+#~ msgstr "IP 주소"
+
+#, fuzzy
+#~ msgid "Sets this server to the Master server.  The Master server handles all Email operations"
+#~ msgstr "이 서버를 마스터 서버로 설정합니다. 마스터 서버가 모든 전자 메일 작업을 처리합니다."
+
+#~ msgid "Master Server"
+#~ msgstr "Master 서버"
+
+#, fuzzy
+#~ msgid "Check this box if the current server you are connected to is this entry."
+#~ msgstr "현재 연결된 서버가이 항목 인 경우이 상자를 선택하십시오."
+
+#, fuzzy
+#~ msgid "Is this server the local server?"
+#~ msgstr "이 서버가 로컬 서버입니까?"
+
+#, fuzzy
+#~ msgid "Uncheck this box to disabled this server from checking urls."
+#~ msgstr "이 체크 박스를 선택 취소하면이 서버의 URL 확인이 비활성화됩니다."
+
+#, fuzzy
+#~ msgid "Enable Server"
+#~ msgid_plural "Enable Servers"
 #~ msgstr[0] "서버 사용"
 
-#~ msgid "%d Minute"
+#, fuzzy
+#~ msgid "Display Name of this server"
+#~ msgstr "이 서버의 표시 이름"
+
+#~ msgid "%d Minutes"
 #~ msgstr "%d 분"
-
-#, fuzzy
-#~ msgid "No Events in History"
-#~ msgstr "역사상의 사건 없음"
-
-#~ msgid "Master"
-#~ msgstr "마스터"
-
-#, fuzzy
-#~ msgid "This Host"
-#~ msgstr "이 호스트"
-
-#, fuzzy
-#~ msgid "Edit Server"
-#~ msgstr "사이트 편집"
-
-#, fuzzy
-#~| msgid "View History"
-#~ msgid "View Server History"
-#~ msgstr "기록 보기"
-
-#, fuzzy
-#~ msgid "Webseer Servers"
-#~ msgstr "WebSeer 서버"
-
-#, fuzzy
-#~ msgid "Webseer Server History"
-#~ msgstr "WebSeer 서버"
-
-#, fuzzy
-#~ msgid "Edit Site"
-#~ msgstr "사이트 편집"
-
-#, fuzzy
-#~ msgid "Webseer Site Management"
-#~ msgstr "웹 사이트 사이트 관리"
-
-#, fuzzy
-#~ msgid "You must select at least one Proxy."
-#~ msgstr "프록시를 하나 이상 선택해야합니다."
-
-#~ msgid "Return"
-#~ msgstr "반환"
-
-#~ msgid "Sites"
-#~ msgstr "사이트"
-
-#, fuzzy
-#~ msgid "Click 'Continue' to Enable the following Server."
-#~ msgid_plural "Click 'Continue' to Enable following Servers."
-#~ msgstr[0] "다음 프록시를 삭제하려면 '계속'을 클릭하십시오."

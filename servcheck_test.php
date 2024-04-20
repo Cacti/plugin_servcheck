@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2023 The Cacti Group                                 |
+ | Copyright (C) 2004-2024 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -32,71 +32,70 @@ global $refresh;
 set_default_action();
 
 switch (get_request_var('action')) {
-case 'save':
-	form_save();
+	case 'save':
+		form_save();
 
-    break;
-case 'actions':
-	form_actions();
+		break;
+	case 'actions':
+		form_actions();
 
-	break;
-case 'enable':
-	$id = get_filter_request_var('id');
+		break;
+	case 'enable':
+		$id = get_filter_request_var('id');
 
-	if ($id > 0) {
-		db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "on" WHERE id = ?', array($id));
-	}
+		if ($id > 0) {
+			db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "on" WHERE id = ?', array($id));
+		}
 
-	header('Location: servcheck_test.php?header=false');
-	exit;
+		header('Location: servcheck_test.php?header=false');
+		exit;
 
-	break;
-case 'disable':
-	$id = get_filter_request_var('id');
+		break;
+	case 'disable':
+		$id = get_filter_request_var('id');
 
-	if ($id > 0) {
-		db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "" WHERE id = ?', array($id));
-	}
+		if ($id > 0) {
+			db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "" WHERE id = ?', array($id));
+		}
 
-	header('Location: servcheck_test.php?header=false');
-	exit;
+		header('Location: servcheck_test.php?header=false');
+		exit;
 
-	break;
-case 'purge':
-	$id = get_filter_request_var('id');
+		break;
+	case 'purge':
+		$id = get_filter_request_var('id');
 
-	if ($id > 0) {
-		purge_log_events($id);
-	}
+		if ($id > 0) {
+			purge_log_events($id);
+		}
 
-	header('Location: servcheck_test.php?header=false');
-	exit;
+		header('Location: servcheck_test.php?header=false');
+		exit;
 
-	break;
-case 'edit':
-	top_header();
-	servcheck_edit_test();
-	bottom_footer();
+		break;
+	case 'edit':
+		top_header();
+		servcheck_edit_test();
+		bottom_footer();
 
-	break;
-case 'history':
-	servcheck_show_history();
+		break;
+	case 'history':
+		servcheck_show_history();
 
-	break;
-case 'graph':
-	servcheck_show_graph();
+		break;
+	case 'graph':
+		servcheck_show_graph();
 
-	break;
+		break;
 
-case 'last_data':
-	servcheck_show_last_data();
+	case 'last_data':
+		servcheck_show_last_data();
 
-	break;
+		break;
+	default:
+		list_tests();
 
-default:
-	list_tests();
-
-	break;
+		break;
 }
 
 exit;
@@ -136,17 +135,17 @@ function form_actions() {
 
 						foreach ($tests as $id) {
 							$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_test WHERE id = ?', array($id));
-							$save['id']              = 0;
-							$save['display_name']    = 'New Service Check (' . $newid . ')';
-							$save['path']		 = '/';
-							$save['lastcheck']       = '0000-00-00 00:00:00';
-							$save['triggered']       = 0;
-							$save['enabled']         = '';
-							$save['username']        = '';
-							$save['password']        = '';
-							$save['failures']        = 0;
-							$save['stats_ok']        = 0;
-							$save['stats_bad']       = 0;
+							$save['id']           = 0;
+							$save['display_name'] = 'New Service Check (' . $newid . ')';
+							$save['path']         = '/';
+							$save['lastcheck']    = '0000-00-00 00:00:00';
+							$save['triggered']    = 0;
+							$save['enabled']      = '';
+							$save['username']     = '';
+							$save['password']     = '';
+							$save['failures']     = 0;
+							$save['stats_ok']     = 0;
+							$save['stats_bad']    = 0;
 
 							$id = sql_save($save, 'plugin_servcheck_test');
 
@@ -173,7 +172,7 @@ function form_actions() {
 			input_validate_input_number($matches[1]);
 			/* ==================================================== */
 
-			$test_list .= '<li>' . db_fetch_cell_prepared('SELECT display_name FROM plugin_servcheck_test WHERE id = ?', array($matches[1])) . '</li>';
+			$test_list .= '<li>' . __esc(db_fetch_cell_prepared('SELECT display_name FROM plugin_servcheck_test WHERE id = ?', array($matches[1]))) . '</li>';
 			$test_array[] = $matches[1];
 		}
 	}
@@ -188,39 +187,39 @@ function form_actions() {
 
 	if (cacti_sizeof($test_array)) {
 		if ($action == SERVCHECK_ACTION_TEST_DELETE) {
-			print "	<tr>
-					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to Delete the following tests.', 'Click \'Continue\' to Delete following tests.', cacti_sizeof($test_array)) . "</p>
-						<div class='itemlist'><ul>$test_list</ul></div>
-					</td>
-				</tr>\n";
+			print"	<tr>
+				<td class='topBoxAlt'>
+					<p>" . __n('Click \'Continue\' to Delete the following tests.', 'Click \'Continue\' to Delete following tests.', cacti_sizeof($test_array)) . "</p>
+					<div class='itemlist'><ul>$test_list</ul></div>
+				</td>
+			</tr>";
 
 			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete rest', 'Delete tests', cacti_sizeof($test_array)) . "'>";
 		} elseif ($action == SERVCHECK_ACTION_TEST_DISABLE) {
-			print "	<tr>
-					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to Disable the following test.', 'Click \'Continue\' to Disable following Tests.', cacti_sizeof($test_array)) . "</p>
-						<div class='itemlist'><ul>$test_list</ul></div>
-					</td>
-				</tr>\n";
+			print "<tr>
+				<td class='topBoxAlt'>
+					<p>" . __n('Click \'Continue\' to Disable the following test.', 'Click \'Continue\' to Disable following Tests.', cacti_sizeof($test_array)) . "</p>
+					<div class='itemlist'><ul>$test_list</ul></div>
+				</td>
+			</tr>";
 
 			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Disable test', 'Disable Tests', cacti_sizeof($test_array)) . "'>";
 		} elseif ($action == SERVCHECK_ACTION_TEST_ENABLE) {
-			print "	<tr>
-					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to Enable the following test.', 'Click \'Continue\' to Enable following tests.', cacti_sizeof($test_array)) . "</p>
-						<div class='itemlist'><ul>$test_list</ul></div>
-					</td>
-				</tr>\n";
+			print "<tr>
+				<td class='topBoxAlt'>
+					<p>" . __n('Click \'Continue\' to Enable the following test.', 'Click \'Continue\' to Enable following tests.', cacti_sizeof($test_array)) . "</p>
+					<div class='itemlist'><ul>$test_list</ul></div>
+				</td>
+			</tr>";
 
 			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Enable test', 'Enable tests', cacti_sizeof($test_array)) . "'>";
 		} elseif ($action == SERVCHECK_ACTION_TEST_DUPLICATE) {
-			print "	<tr>
-					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to Duplicate the following test.', 'Click \'Continue\' to Duplicate following tests.', cacti_sizeof($test_array)) . "</p>
-						<div class='itemlist'><ul>$test_list</ul></div>
-					</td>
-				</tr>\n";
+			print "<tr>
+				<td class='topBoxAlt'>
+					<p>" . __n('Click \'Continue\' to Duplicate the following test.', 'Click \'Continue\' to Duplicate following tests.', cacti_sizeof($test_array)) . "</p>
+					<div class='itemlist'><ul>$test_list</ul></div>
+				</td>
+			</tr>";
 
 			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate test', 'Duplicate tests', cacti_sizeof($test_array)) . "'>";
 		}
@@ -237,7 +236,7 @@ function form_actions() {
 			<input type='hidden' name='drp_action' value='" . get_nfilter_request_var('drp_action') . "'>
 			$save_html
 		</td>
-	</tr>\n";
+	</tr>";
 
 	html_end_box();
 
@@ -255,7 +254,6 @@ function form_save() {
 	get_filter_request_var('downtrigger');
 	get_filter_request_var('timeout_trigger');
 	get_filter_request_var('how_often');
-
 	/* ==================================================== */
 
 	if (isset_request_var('id')) {
@@ -326,6 +324,10 @@ function form_save() {
 		$save['notes'] = get_nfilter_request_var('notes');
 	}
 
+	if (isset_request_var('external_id')) {
+		$save['external_id'] = get_nfilter_request_var('external_id');
+	}
+
 	if (get_filter_request_var('ca') > 0) {
 		$save['ca'] = get_filter_request_var('ca');
 	} else {
@@ -349,6 +351,7 @@ function form_save() {
 	} else {
 		$save['certexpirenotify'] = '';
 	}
+
 	if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,}$/')))) {
 		$save['username'] = servcheck_hide_text(get_nfilter_request_var('username'));
 		$save['password'] = servcheck_hide_text(get_nfilter_request_var('password'));
@@ -410,7 +413,7 @@ function servcheck_edit_test() {
 	/* ==================================================== */
 
 	$test = array();
-	
+
 	if (!isempty_request_var('id')) {
 		$test = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_test WHERE id = ?', array(get_request_var('id')), false);
 		$header_label = __('Query [edit: %s]', $test['display_name'], 'servcheck');
@@ -450,6 +453,7 @@ function servcheck_edit_test() {
 
 	$(function() {
 		var msWidth = 100;
+
 		$('#notify_accounts option').each(function() {
 			if ($(this).textWidth() > msWidth) {
 				msWidth = $(this).textWidth();
@@ -506,150 +510,138 @@ function servcheck_edit_test() {
 			label: '<?php print __('Search', 'servcheck');?>',
 			width: msWidth
 		});
+
+		setTest();
 	});
 
-	</script>
-	
-<script type='text/javascript'>
+	function setTest() {
+		var test_type = $('#type').val();
+		var tmp = test_type.split('_');
 
-function setTest() {
-	var test_type = $('#type').val();
-	var tmp = test_type.split('_');
+		var category = tmp[0];
+		var subcategory = tmp[1];
 
-	var category = tmp[0];
-	var subcategory = tmp[1];
+		switch(category) {
+			case 'web':
+				$('#row_dns_query').hide();
+				$('#row_username').hide();
+				$('#row_password').hide();
+				$('#row_ldapsearch').hide();
 
-	switch(category) {
-		case 'web':
+				if (subcategory == 'http') {
+					$('#row_ca').hide();
+					$('#row_checkcert').hide();
+					$('#row_certexpirenotify').hide();
+				}
 
-			$('#row_dns_query').hide();
-			$('#row_username').hide();
-			$('#row_password').hide();
-			$('#row_ldapsearch').hide();
+				$('#row_hostname').show();
+				$('#row_path').show();
+				$('#row_requiresauth').show();
+				$('#row_proxy_server').show();
+				if (subcategory == 'https') {
+					$('#row_ca').show();
+					$('#row_checkcert').show();
+					$('#row_certexpirenotify').show();
+				}
 
-			if (subcategory == 'http') {
+				break;
+			case 'mail':
+				$('#row_path').hide();
+				$('#row_requiresauth').hide();
+				$('#row_proxy_server').hide();
+				$('#row_dns_query').hide();
+				$('#row_ldapsearch').hide();
+
+				if (subcategory == 'smtp' || subcategory == 'smtps' || subcategory == 'smtptls') {
+					$('#row_username').hide();
+					$('#row_password').hide();
+				} else {
+					$('#row_username').show();
+					$('#row_password').show();
+				}
+
+				if (subcategory == 'smtps') {
+					$('#row_ca').show();
+					$('#row_checkcert').show();
+					$('#row_certexpirenotify').show();
+				}
+
+				$('#password').attr('type', 'password');
+
+				break
+			case 'dns':
+				$('#row_path').hide();
+				$('#row_requiresauth').hide();
+				$('#row_proxy_server').hide();
+				$('#row_username').hide();
+				$('#row_password').hide();
+				$('#row_ldapsearch').hide();
+
+				$('#row_dns_query').show();
+
+				break;
+/*
+			case 'telnet':
+				$('#row_path').hide();
+				$('#row_requiresauth').hide();
+				$('#row_proxy_server').hide();
+				$('#row_dns_query').hide();
 				$('#row_ca').hide();
 				$('#row_checkcert').hide();
 				$('#row_certexpirenotify').hide();
-			}
 
-			$('#row_hostname').show();
-			$('#row_path').show();
-			$('#row_requiresauth').show();
-			$('#row_proxy_server').show();
-			if (subcategory == 'https') {
-				$('#row_ca').show();
-				$('#row_checkcert').show();
-				$('#row_certexpirenotify').show();
-			}
-			break;
+				$('#row_hostname').show();
 
-		case 'mail':
+				break;
+*/
+			case 'ldap':
+				$('#row_dns_query').hide();
+				$('#row_path').hide();
+				$('#row_requiresauth').hide();
+				$('#row_proxy_server').hide();
 
-			$('#row_path').hide();
-			$('#row_requiresauth').hide();
-			$('#row_proxy_server').hide();
-			$('#row_dns_query').hide();
-			$('#row_ldapsearch').hide();
-
-			if (subcategory == 'smtp' || subcategory == 'smtps' || subcategory == 'smtptls') {
-				$('#row_username').hide();
-				$('#row_password').hide();
-			} else {
 				$('#row_username').show();
 				$('#row_password').show();
-			}
+				$('#row_ldapsearch').show();
 
-			if (subcategory == 'smtps') {
-				$('#row_ca').show();
-				$('#row_checkcert').show();
-				$('#row_certexpirenotify').show();
-			}
+				$('#password').attr('type', 'password');
 
-			$('#password').attr('type', 'password');
+				break;
+			case 'ftp':
+				$('#row_dns_query').hide();
+				$('#row_requiresauth').hide();
+				$('#row_proxy_server').hide();
+				$('#row_ldapsearch').hide();
 
-			break
+				if (subcategory == 'tftp') {
+					$('#row_username').hide();
+					$('#row_password').hide();
+				}
 
-		case 'dns':
-			$('#row_path').hide();
-			$('#row_requiresauth').hide();
-			$('#row_proxy_server').hide();
-			$('#row_username').hide();
-			$('#row_password').hide();
-			$('#row_ldapsearch').hide();
+				$('#row_path').show();
+				$('#row_username').show();
+				$('#row_password').show();
 
-			$('#row_dns_query').show();
-			break;
+				$('#password').attr('type', 'password');
 
-/*
-		case 'telnet':
-			$('#row_path').hide();
-			$('#row_requiresauth').hide();
-			$('#row_proxy_server').hide();
-			$('#row_dns_query').hide();
-			$('#row_ca').hide();
-			$('#row_checkcert').hide();
-			$('#row_certexpirenotify').hide();
+				break;
+			case 'smb':
+				$('#row_dns_query').hide();
+				$('#row_requiresauth').hide();
+				$('#row_proxy_server').hide();
+				$('#row_ldapsearch').hide();
 
-			$('#row_hostname').show();
+				$('#row_username').show();
+				$('#row_password').show();
+				$('#row_path').show();
 
-			break;
-*/
-		case 'ldap':
-			$('#row_dns_query').hide();
-			$('#row_path').hide();
-			$('#row_requiresauth').hide();
-			$('#row_proxy_server').hide();
+				$('#password').attr('type', 'password');
 
-			$('#row_username').show();
-			$('#row_password').show();
-			$('#row_ldapsearch').show();
-
-			$('#password').attr('type', 'password');
-
-			break;
-
-		case 'ftp':
-			$('#row_dns_query').hide();
-			$('#row_requiresauth').hide();
-			$('#row_proxy_server').hide();
-			$('#row_ldapsearch').hide();
-
-			if (subcategory == 'tftp') {
-				$('#row_username').hide();
-				$('#row_password').hide();
-			}
-			
-			$('#row_path').show();
-			$('#row_username').show();
-			$('#row_password').show();
-
-			$('#password').attr('type', 'password');
-
-			break;
-
-		case 'smb':
-			$('#row_dns_query').hide();
-			$('#row_requiresauth').hide();
-			$('#row_proxy_server').hide();
-			$('#row_ldapsearch').hide();
-
-			$('#row_username').show();
-			$('#row_password').show();
-			$('#row_path').show();
-
-			$('#password').attr('type', 'password');
-
-			break;
+				break;
+		}
 	}
-}
-
-setTest();
-
-</script>
-
-
-<?php
+	</script>
+	<?php
 }
 
 /**
@@ -664,38 +656,38 @@ function servcheck_request_validation() {
 			'filter' => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => '-1'
-			),
+		),
 		'page' => array(
 			'filter' => FILTER_VALIDATE_INT,
 			'default' => '1'
-			),
+		),
 		'refresh' => array(
 			'filter' => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => read_config_option('log_refresh_interval')
-			),
+		),
 		'rfilter' => array(
 			'filter' => FILTER_VALIDATE_IS_REGEX,
 			'default' => '',
 			'pageset' => true,
 			'options' => array('options' => 'sanitize_search_string')
-			),
+		),
 		'sort_column' => array(
 			'filter' => FILTER_CALLBACK,
 			'default' => 'display_name',
 			'options' => array('options' => 'sanitize_search_string')
-			),
+		),
 		'sort_direction' => array(
 			'filter' => FILTER_CALLBACK,
 			'default' => 'ASC',
 			'options' => array('options' => 'sanitize_search_string')
-			),
+		),
 		'state' => array(
 			'filter' => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => '-1'
-			)
-        );
+		)
+	);
 
 	validate_store_request_vars($filters, 'sess_servchecktest');
 	/* ================= input validation ================= */
@@ -883,7 +875,6 @@ function servcheck_show_history() {
 	}
 }
 
-
 function servcheck_show_graph() {
 	global $graph_interval;
 
@@ -903,7 +894,7 @@ function servcheck_show_graph() {
 		WHERE id = ?',
 		array($id));
 
-	print '<br/><br/><b>' . $result['display_name'] . ':</b><br/>';
+	print '<br/><br/><b>' . html_escape($result['display_name']) . ':</b><br/>';
 
 	foreach ($graph_interval as $key => $value) {
 		print ($value) . ':<br/>';
@@ -912,7 +903,6 @@ function servcheck_show_graph() {
 }
 
 function servcheck_show_last_data() {
-
 	if (isset_request_var('id')) {
 		$id = get_filter_request_var('id');
 	} else {
@@ -929,9 +919,9 @@ function servcheck_show_last_data() {
 		WHERE id = ?',
 		array($id));
 
-	echo '<br/><br/><b>' . __('Last returned data of test', 'servcheck') . ' ' . $result['display_name'] . ':</b><br/>';
+	print '<br/><br/><b>' . __('Last returned data of test', 'servcheck') . ' ' . html_escape($result['display_name']) . ':</b><br/>';
 
-	echo '<pre>' . htmlspecialchars($result['last_returned_data']) . '</pre>';
+	print '<pre>' . html_escape($result['last_returned_data']) . '</pre>';
 }
 
 function list_tests() {
@@ -1085,7 +1075,6 @@ function list_tests() {
 
 	if (cacti_sizeof($result)) {
 		foreach ($result as $row) {
-
 			$last_log = db_fetch_row_prepared("SELECT *,
 				(SELECT count(id) FROM plugin_servcheck_log WHERE test_id = ? ) as `count`
 				FROM plugin_servcheck_log
@@ -1123,9 +1112,11 @@ function list_tests() {
 					<i class='tholdGlyphDisable fas fa-stop-circle'></i>
 				</a>";
 			}
+
 			print "<a class='pic' href='" . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_test.php?action=history&id=' . $row['id']) . "' title='" . __esc('View Service Check History', 'servcheck') . "'>
 					<i class='tholdGlyphLog fas fa-exclamation-triangle'></i>
 				</a>";
+
 			print "<a class='pic' href='" . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_test.php?action=last_data&id=' . $row['id']) . "' title='" . __esc('View Last returned data', 'servcheck') . "'>
 					<i class='tholdGlyphLog fas fa-search'></i>
 				</a>";
@@ -1157,6 +1148,7 @@ function list_tests() {
 			form_selectable_cell('<a href="' . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_curl_code.php?findcode=' . $last_log['curl_return_code']) . '">' . $last_log['curl_return_code'] . '<a/>', $row['id'], '', 'right');
 
 			form_checkbox_cell($row['id'], $row['id']);
+
 			form_end_row();
 		}
 	} else {
@@ -1285,7 +1277,7 @@ function servcheck_filter() {
 								if (get_request_var('refresh') == $seconds) {
 									print ' selected';
 								}
-								print '>' . $display_text . "</option>\n";
+								print '>' . $display_text . "</option>";
 							}
 							?>
 						</select>
@@ -1296,10 +1288,10 @@ function servcheck_filter() {
 					<td>
 						<select id='rows'>
 							<?php
-							print "<option value='-1'" . (get_request_var('rows') == $key ? ' selected':'') . ">" . __('Default', 'servcheck') . "</option>\n";
+							print "<option value='-1'" . (get_request_var('rows') == $key ? ' selected':'') . ">" . __('Default', 'servcheck') . "</option>";
 							if (cacti_sizeof($item_rows)) {
 								foreach ($item_rows as $key => $value) {
-									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . htmlspecialchars($value) . "</option>\n";
+									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . html_escape($value) . "</option>";
 								}
 							}
 							?>
@@ -1370,6 +1362,7 @@ function servcheck_log_filter() {
 	<?php
 
 	html_start_box(__('Service Check History', 'servcheck') , '100%', '', '3', 'center', '');
+
 	?>
 	<tr class='even noprint'>
 		<td class='noprint'>
@@ -1391,7 +1384,7 @@ function servcheck_log_filter() {
 							print "<option value='-1'" . (get_request_var('rows') == '-1' ? ' selected':'') . ">" . __('Default', 'servcheck') . "</option>";
 							if (cacti_sizeof($item_rows)) {
 								foreach ($item_rows as $key => $value) {
-									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . htmlspecialchars($value) . "</option>";
+									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . html_escape($value) . "</option>";
 								}
 							}
 							?>
@@ -1410,6 +1403,6 @@ function servcheck_log_filter() {
 		</td>
 	</tr>
 	<?php
+
 	html_end_box();
 }
-?>

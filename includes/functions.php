@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2023 The Cacti Group                                 |
+ | Copyright (C) 2004-2024 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -24,7 +24,6 @@
 
 include_once(__DIR__ . '/constants.php');
 include_once(__DIR__ . '/arrays.php');
-
 
 function servcheck_show_tab($current_tab) {
 	global $config;
@@ -50,7 +49,7 @@ function servcheck_show_tab($current_tab) {
 		}
 	}
 
-	print "<div class='tabs'><nav><ul>\n";
+	print "<div class='tabs'><nav><ul>";
 
 	if (cacti_sizeof($tabs)) {
 		foreach ($tabs as $url => $name) {
@@ -84,6 +83,7 @@ function plugin_servcheck_remove_old_users () {
 
 function plugin_servcheck_update_contacts() {
 	$users = db_fetch_assoc("SELECT id, 'email' AS type, email_address FROM user_auth WHERE email_address!=''");
+
 	if (cacti_sizeof($users)) {
 		foreach($users as $u) {
 			$cid = db_fetch_cell('SELECT id FROM plugin_servcheck_contacts WHERE type="email" AND user_id=' . $u['id']);
@@ -110,6 +110,7 @@ function plugin_servcheck_check_debug() {
 
 function plugin_servcheck_debug($message='') {
 	global $debug;
+
 	if ($debug) {
 		cacti_log('DEBUG: ' . trim($message), true, 'SERVCHECK');
 	}
@@ -196,16 +197,14 @@ function plugin_servcheck_graph ($id, $interval) {
 	$content .= 'line_' . $xid . ' = bb.generate(' . $chart_data . ');';
 	$content .= '</script>';
 
-	echo $content;
-
+	print $content;
 }
 
 // I know, it not secure, it is better than plaintext
 
 function servcheck_hide_text ($string) {
-
 	$output = '';
-	
+
 	for ($f = 0; $f < strlen($string); $f++) {
 		$output .= dechex(ord($string[$f]));
 	}
@@ -214,9 +213,8 @@ function servcheck_hide_text ($string) {
 }
 
 function servcheck_show_text ($string) {
-
 	$output = '';
-	
+
 	for ($f = 0; $f < strlen($string); $f = $f + 2) {
 		$output .= chr(hexdec($string[$f] . $string[($f+1)]));
 	}

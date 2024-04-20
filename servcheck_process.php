@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2023 The Cacti Group                                 |
+ | Copyright (C) 2004-2024 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -42,12 +42,13 @@ array_shift($parms);
 
 global $debug;
 
-$debug  = false;
+$debug   = false;
+$force   = false;
 $test_id = '';
-$poller_interval = read_config_option('poller_interval');
-$cert_expiry_days = 10;
-$exp = 0;
-$force = false;
+
+$poller_interval   = read_config_option('poller_interval');
+$cert_expiry_days  = 10;
+$exp               = 0;
 $new_notify_expire = false;
 
 if (cacti_sizeof($parms)) {
@@ -121,7 +122,7 @@ if (!cacti_sizeof($test)) {
 $poller = db_fetch_cell_prepared('SELECT * FROM poller WHERE id = ?',
 	array($test['poller_id']));
 
-if ($poller == FALSE) {
+if ($poller == false) {
 	print "Selected poller not found, changing to poller 1.\n";
 	db_execute_prepared('UPDATE plugin_servcheck_test
 		SET poller_id = 1
@@ -149,7 +150,6 @@ if (function_exists('plugin_maint_check_servcheck_test')) {
 
 $test['days'] = 0;
 register_startup($test_id);
-
 
 /* attempt to get results 3 times before exiting */
 $x = 0;
@@ -314,7 +314,7 @@ if ($new_notify_expire) {
 		SET triggered = ?, failures = ?, lastcheck = ?,
 		stats_ok = ?, stats_bad = ?, last_returned_data = ?
 		WHERE id = ?',
-		array($test['triggered'], $test['failures'], 
+		array($test['triggered'], $test['failures'],
 			date('Y-m-d H:i:s', $results['time']),
 			$test['stats_ok'], $test['stats_bad'],
 			$results['data'], $test['id']
@@ -429,7 +429,7 @@ function plugin_servcheck_get_users($results, $test, $type, $last_log) {
 
 			$message[1]['text'] .= 'Previous search: ' . $last_log['result_search'] . PHP_EOL;
 			$message[1]['text'] .= 'Actual search: ' . $results['result_search'] . PHP_EOL;
-			
+
 
 			if ($test['notes'] != '') {
 				$message[1]['text'] .= PHP_EOL . 'Notes: ' . $test['notes'] . PHP_EOL;
@@ -553,7 +553,7 @@ function plugin_servcheck_get_users($results, $test, $type, $last_log) {
 	}
 
 	$users = explode(',', $to);
-	
+
 	foreach ($message as $m) {
 		foreach ($users as $u) {
 			plugin_servcheck_send_email($u, $m['subject'], $m['text']);

@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: webseer on cacti 1.1.34\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2024-04-20 12:41-0400\n"
-"Last-Translator: tomcat <luis_126@126.com>\n"
-"Language-Team: Chinese (Simplified) <http://translate.cacti.net/projects/cacti/webseer/zh-CN/>\n"
-"Language: zh_CN\n"
+"PO-Revision-Date: 2024-04-20 17:21+0000\n"
+"Last-Translator: Anonymous <anonymous@cacti.net>\n"
+"Language-Team: Chinese (Simplified) <http://translate.cacti.net/projects/"
+"cacti/servcheck/zh_Hans/>\n"
+"Language: zh-CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Weblate 4.8.1\n"
 
 #: includes/arrays.php:33
 msgid "String found"
@@ -491,7 +492,9 @@ msgstr "用户名"
 
 #: includes/arrays.php:372
 msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
-msgstr "通过身份验证，测试将获得更多信息。对于LDAP，类似于cn = John Doe，OU = anygroup，DC = example，DC=com。对于 smb，请使用 DOMAIN/user"
+msgstr ""
+"通过身份验证，测试将获得更多信息。对于LDAP，类似于cn = John Doe，OU = anygroup，DC = example，DC=com。"
+"对于 smb，请使用 DOMAIN/user"
 
 #: includes/arrays.php:380
 msgid "For anonymous ftp insert email address here."
@@ -520,7 +523,9 @@ msgstr "URL 的路径部分"
 
 #: includes/arrays.php:404
 msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
-msgstr "对于 Web 服务，至少插入“/”或类似“/any/path/”的内容。对于 FTP，列表必须以 char “/” 结尾。对于 TFTP/SCP/SMB 下载测试，请插入 /path/file"
+msgstr ""
+"对于 Web 服务，至少插入“/”或类似“/any/path/”的内容。对于 FTP，列表必须以 char “/” 结尾。对于 TFTP/SCP/SMB "
+"下载测试，请插入 /path/file"
 
 #: includes/arrays.php:411
 msgid "Requires Authentication"
@@ -683,7 +688,9 @@ msgstr "都很好。照常进行。"
 
 #: includes/arrays.php:559
 msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
-msgstr "您传递给 libcurl 的 URL 使用了此 libcurl 不支持的协议。支持可能是您未使用的编译时选项，它可能是拼写错误的协议字符串，或者只是 libcurl 没有代码的协议。"
+msgstr ""
+"您传递给 libcurl 的 URL 使用了此 libcurl 不支持的协议。支持可能是您未使用的编译时选项，它可能是拼写错误的协议字符串，或者只是 "
+"libcurl 没有代码的协议。"
 
 #: includes/arrays.php:563
 msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
@@ -695,7 +702,9 @@ msgstr "URL 格式不正确。"
 
 #: includes/arrays.php:571
 msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
-msgstr "由于构建时的决定，在此 libcurl 中找不到内置的请求的功能、协议或选项。这意味着在构建 libcurl 时未启用或显式禁用功能或选项，为了让它发挥作用，您必须获得重建的 libcurl。"
+msgstr ""
+"由于构建时的决定，在此 libcurl 中找不到内置的请求的功能、协议或选项。这意味着在构建 libcurl "
+"时未启用或显式禁用功能或选项，为了让它发挥作用，您必须获得重建的 libcurl。"
 
 #: includes/arrays.php:575
 msgid "Could not resolve proxy. The given proxy host could not be resolved."
@@ -819,7 +828,8 @@ msgstr "这是一个奇怪的错误，主要是由于内部混乱而发生的。
 
 #: includes/arrays.php:695
 msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
-msgstr "SSL/TLS 握手中的某个位置出现问题。你真的想要错误缓冲区并阅读那里的消息，因为它可以稍微精确地指出问题。可以是证书（文件格式、路径、权限）、密码等。"
+msgstr ""
+"SSL/TLS 握手中的某个位置出现问题。你真的想要错误缓冲区并阅读那里的消息，因为它可以稍微精确地指出问题。可以是证书（文件格式、路径、权限）、密码等。"
 
 #: includes/arrays.php:699
 msgid "The download could not be resumed because the specified offset was out of the file boundary."
@@ -860,7 +870,9 @@ msgstr "重定向过多。当遵循重定向时，libcurl 会达到最大数量�
 
 #: includes/arrays.php:747
 msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
-msgstr "传递给 libcurl 的选项无法识别/已知。请参阅相应的文档。这很可能是使用 libcurl 的程序中的问题。错误缓冲区可能包含有关它所涉及的确切选项的更具体信息。"
+msgstr ""
+"传递给 libcurl 的选项无法识别/已知。请参阅相应的文档。这很可能是使用 libcurl "
+"的程序中的问题。错误缓冲区可能包含有关它所涉及的确切选项的更具体信息。"
 
 #: includes/arrays.php:751
 msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
@@ -896,7 +908,8 @@ msgstr "无法使用指定的密码。"
 
 #: includes/arrays.php:795
 msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
-msgstr "远程服务器的 SSL 证书或 SSH 指纹被视为不正常。自 7.62.0 起，此错误代码已与 CURLE_SSL_CACERT 统一。其以前的值为 51。"
+msgstr ""
+"远程服务器的 SSL 证书或 SSH 指纹被视为不正常。自 7.62.0 起，此错误代码已与 CURLE_SSL_CACERT 统一。其以前的值为 51。"
 
 #: includes/arrays.php:799
 msgid "Unrecognized transfer encoding."
@@ -968,7 +981,9 @@ msgstr "无法关闭 SSL 连接。"
 
 #: includes/arrays.php:879
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
-msgstr "套接字尚未准备好发送/接收，请等到它准备好，然后重试。此返回代码仅从 curl_easy_recv 和 curl_easy_send返回（在 7.18.2 中添加）"
+msgstr ""
+"套接字尚未准备好发送/接收，请等到它准备好，然后重试。此返回代码仅从 curl_easy_recv 和 curl_easy_send返回（在 "
+"7.18.2 中添加）"
 
 #: includes/arrays.php:883
 msgid "Failed to load CRL file (Added in 7.19.0)"
@@ -980,7 +995,9 @@ msgstr "颁发者检查失败（7.19.0 中添加）"
 
 #: includes/arrays.php:891
 msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
-msgstr "FTP 服务器根本不理解 PRET 命令或不支持给定的参数。使用CURLOPT_CUSTOMREQUEST时要小心，在 PASV 之前还会发送自定义 LIST 命令和 PRET 命令。（在 7.20.0 中添加）"
+msgstr ""
+"FTP 服务器根本不理解 PRET 命令或不支持给定的参数。使用CURLOPT_CUSTOMREQUEST时要小心，在 PASV 之前还会发送自定义 "
+"LIST 命令和 PRET 命令。（在 7.20.0 中添加）"
 
 #: includes/arrays.php:895
 msgid "Mismatch of RTSP CSeq numbers."
@@ -1119,7 +1136,10 @@ msgstr "Webseer服务器管理"
 
 #: servcheck_ca.php:322
 msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
-msgstr "Servcheck 使用来自常见根 CA 的证书文件来检查证书。这适用于由普通 CA 颁发的证书。如果您使用的是自定义 CA（例如，在 Microsoft AD 环境中），则该证书的测试将失败，因为 servcheck 不知道您的 CA。您必须上传整个链（CA 证书和中间证书）。然后，将这些与 CA 颁发的证书所在的测试相关联。"
+msgstr ""
+"Servcheck 使用来自常见根 CA 的证书文件来检查证书。这适用于由普通 CA 颁发的证书。如果您使用的是自定义 CA（例如，在 "
+"Microsoft AD 环境中），则该证书的测试将失败，因为 servcheck 不知道您的 CA。您必须上传整个链（CA 证书和中间证书）。然后，"
+"将这些与 CA 颁发的证书所在的测试相关联。"
 
 #: servcheck_ca.php:328 servcheck_proxies.php:343 servcheck_test.php:510
 #: servcheck_test.php:1251

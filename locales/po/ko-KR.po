@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2024-04-20 12:30-0400\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: ko_KR\n"
+"PO-Revision-Date: 2024-04-20 17:21+0000\n"
+"Last-Translator: Anonymous <anonymous@cacti.net>\n"
+"Language-Team: Korean <http://translate.cacti.net/projects/cacti/servcheck/"
+"ko/>\n"
+"Language: ko-KR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Weblate 4.8.1\n"
 
 #: includes/arrays.php:33
 msgid "String found"
@@ -497,7 +498,9 @@ msgstr "아이디"
 
 #: includes/arrays.php:372
 msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
-msgstr "인증을 통해 테스트는 더 많은 정보를 얻습니다. LDAP의 경우 cn=John Doe,OU=anygroup,DC=example,DC=com과 같습니다. smb의 경우 DOMAIN/user를 사용합니다."
+msgstr ""
+"인증을 통해 테스트는 더 많은 정보를 얻습니다. LDAP의 경우 cn=John "
+"Doe,OU=anygroup,DC=example,DC=com과 같습니다. smb의 경우 DOMAIN/user를 사용합니다."
 
 #: includes/arrays.php:380
 msgid "For anonymous ftp insert email address here."
@@ -526,7 +529,9 @@ msgstr "URL의 경로 부분"
 
 #: includes/arrays.php:404
 msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
-msgstr "웹 서비스의 경우 최소한 \"/\" 또는 \"/any/path/\"와 같은 것을 삽입하십시오. FTP 목록의 경우 문자 \"/\"로 끝나야 합니다. TFTP/SCP/SMB 다운로드 테스트의 경우 /path/file 삽입"
+msgstr ""
+"웹 서비스의 경우 최소한 \"/\" 또는 \"/any/path/\"와 같은 것을 삽입하십시오. FTP 목록의 경우 문자 \"/\"로 "
+"끝나야 합니다. TFTP/SCP/SMB 다운로드 테스트의 경우 /path/file 삽입"
 
 #: includes/arrays.php:411
 #, fuzzy
@@ -555,7 +560,9 @@ msgstr "인증서 확인"
 #: includes/arrays.php:428
 #, fuzzy
 msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
-msgstr "SSL을 사용하는 경우 인증서의 유효성을 검사하려면이 상자를 선택하십시오. 기본 설정은 사이트에서 자체 서명 된 인증서를 사용하는 경우 해제하십시오."
+msgstr ""
+"SSL을 사용하는 경우 인증서의 유효성을 검사하려면이 상자를 선택하십시오. 기본 설정은 사이트에서 자체 서명 된 인증서를 사용하는 경우 "
+"해제하십시오."
 
 #: includes/arrays.php:434
 #, fuzzy
@@ -565,7 +572,9 @@ msgstr "인증서 확인"
 #: includes/arrays.php:435
 #, fuzzy
 msgid "If using SSL, check this box if you want to check the certificate expiration. You will be warn when last 10 days left."
-msgstr "SSL을 사용하는 경우 인증서의 유효성을 검사하려면이 상자를 선택하십시오. 기본 설정은 사이트에서 자체 서명 된 인증서를 사용하는 경우 해제하십시오."
+msgstr ""
+"SSL을 사용하는 경우 인증서의 유효성을 검사하려면이 상자를 선택하십시오. 기본 설정은 사이트에서 자체 서명 된 인증서를 사용하는 경우 "
+"해제하십시오."
 
 #: includes/arrays.php:441
 #, fuzzy
@@ -587,7 +596,9 @@ msgstr "트리거"
 #: includes/arrays.php:456
 #, fuzzy
 msgid "How many poller cycles must be down before it will send an alert. After an alert is sent, in order for a 'Site Recovering' Email to be send, it must also be up this number of poller cycles."
-msgstr "경고를 보내기 전에 URL이 몇 분 이내에 있어야합니다. 경고가 전송 된 후 '사이트 복구'전자 메일을 보내려면이 시간 (분) 이상이어야합니다."
+msgstr ""
+"경고를 보내기 전에 URL이 몇 분 이내에 있어야합니다. 경고가 전송 된 후 '사이트 복구'전자 메일을 보내려면이 시간 (분) "
+"이상이어야합니다."
 
 #: includes/arrays.php:460
 #, fuzzy
@@ -622,7 +633,9 @@ msgstr "응답 검색 문자열 - 유지 관리 페이지"
 #: includes/arrays.php:482
 #, fuzzy
 msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
-msgstr "유지 관리 페이지에서 검색 할 문자열입니다. 위의 문자열을 찾을 수없는 경우 Service Check는이 문자열을 확인합니다. 발견되면 웹 서비스가 유지 보수 중임을 의미합니다."
+msgstr ""
+"유지 관리 페이지에서 검색 할 문자열입니다. 위의 문자열을 찾을 수없는 경우 Service Check는이 문자열을 확인합니다. 발견되면 "
+"웹 서비스가 유지 보수 중임을 의미합니다."
 
 #: includes/arrays.php:489
 #, fuzzy
@@ -632,7 +645,9 @@ msgstr "응답 검색 문자열 - 실패"
 #: includes/arrays.php:490
 #, fuzzy
 msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
-msgstr "이 문자열은 웹 서비스 응답에서 알려진 오류를 검색합니다. 서비스 검사는이 문자열이 발견되면 경고하고 시간 초과 문제와 위의 검색 문자열을 무시합니다."
+msgstr ""
+"이 문자열은 웹 서비스 응답에서 알려진 오류를 검색합니다. 서비스 검사는이 문자열이 발견되면 경고하고 시간 초과 문제와 위의 검색 "
+"문자열을 무시합니다."
 
 #: includes/arrays.php:497
 msgid "Notification Settings"
@@ -700,11 +715,15 @@ msgstr "괜찮아. 평소와 같이 진행하십시오."
 
 #: includes/arrays.php:559
 msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
-msgstr "libcurl에 전달한 URL이 이 libcurl에서 지원하지 않는 프로토콜을 사용했습니다. 지원은 사용하지 않은 컴파일 타임 옵션 일 수도 있고, 철자가 틀린 프로토콜 문자열 일 수도 있고, libcurl에 코드가없는 프로토콜 일 수도 있습니다."
+msgstr ""
+"libcurl에 전달한 URL이 이 libcurl에서 지원하지 않는 프로토콜을 사용했습니다. 지원은 사용하지 않은 컴파일 타임 옵션 일 "
+"수도 있고, 철자가 틀린 프로토콜 문자열 일 수도 있고, libcurl에 코드가없는 프로토콜 일 수도 있습니다."
 
 #: includes/arrays.php:563
 msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
-msgstr "초기 초기화 코드가 실패했습니다. 이는 내부 오류나 문제일 수 있거나, 초기화 시 근본적인 작업을 수행할 수 없는 리소스 문제일 수 있습니다."
+msgstr ""
+"초기 초기화 코드가 실패했습니다. 이는 내부 오류나 문제일 수 있거나, 초기화 시 근본적인 작업을 수행할 수 없는 리소스 문제일 수 "
+"있습니다."
 
 #: includes/arrays.php:567
 msgid "The URL was not properly formatted."
@@ -712,7 +731,9 @@ msgstr "URL의 형식이 올바르지 않습니다."
 
 #: includes/arrays.php:571
 msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
-msgstr "요청된 기능, 프로토콜 또는 옵션이 빌드 시간 결정으로 인해 이 libcurl에 내장되어 있지 않습니다. 즉, libcurl이 빌드 될 때 기능이나 옵션이 활성화되거나 명시 적으로 비활성화되지 않았으며 작동하려면 다시 빌드 된 libcurl을 가져와야합니다."
+msgstr ""
+"요청된 기능, 프로토콜 또는 옵션이 빌드 시간 결정으로 인해 이 libcurl에 내장되어 있지 않습니다. 즉, libcurl이 빌드 될 "
+"때 기능이나 옵션이 활성화되거나 명시 적으로 비활성화되지 않았으며 작동하려면 다시 빌드 된 libcurl을 가져와야합니다."
 
 #: includes/arrays.php:575
 msgid "Could not resolve proxy. The given proxy host could not be resolved."
@@ -728,7 +749,9 @@ msgstr "호스트 또는 프록시에 연결()하지 못했습니다."
 
 #: includes/arrays.php:587
 msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
-msgstr "서버에서 보낸 데이터 libcurl을 구문 분석할 수 없습니다. 이 오류 코드는 7.51.0 이전에 CURLE_FTP_WEIRD_SERVER_REPLY로 알려져 있습니다."
+msgstr ""
+"서버에서 보낸 데이터 libcurl을 구문 분석할 수 없습니다. 이 오류 코드는 7.51.0 이전에 "
+"CURLE_FTP_WEIRD_SERVER_REPLY로 알려져 있습니다."
 
 #: includes/arrays.php:591
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
@@ -736,15 +759,19 @@ msgstr "URL에 제공된 리소스에 대한 액세스가 거부되었습니다.
 
 #: includes/arrays.php:595
 msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
-msgstr "활성 FTP 세션을 사용할 때 서버가 다시 연결되기를 기다리는 동안 제어 연결 또는 이와 유사한 연결을 통해 오류 코드가 전송되었습니다."
+msgstr ""
+"활성 FTP 세션을 사용할 때 서버가 다시 연결되기를 기다리는 동안 제어 연결 또는 이와 유사한 연결을 통해 오류 코드가 전송되었습니다."
 
 #: includes/arrays.php:599
 msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
-msgstr "FTP 암호를 서버로 보낸 후 libcurl은 적절한 응답을 기대합니다. 이 오류 코드는 예기치 않은 코드가 반환되었음을 나타냅니다."
+msgstr ""
+"FTP 암호를 서버로 보낸 후 libcurl은 적절한 응답을 기대합니다. 이 오류 코드는 예기치 않은 코드가 반환되었음을 나타냅니다."
 
 #: includes/arrays.php:603
 msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
-msgstr "서버가 연결되기를 기다리는 동안 활성 FTP 세션 중에 CURLOPT_ACCEPTTIMEOUT_MS(또는 내부 기본값) 시간 제한이 만료되었습니다."
+msgstr ""
+"서버가 연결되기를 기다리는 동안 활성 FTP 세션 중에 CURLOPT_ACCEPTTIMEOUT_MS(또는 내부 기본값) 시간 제한이 "
+"만료되었습니다."
 
 #: includes/arrays.php:607
 msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
@@ -752,7 +779,9 @@ msgstr "Libcurl이 PASV 또는 EPSV 명령에 대한 응답으로 서버에서 �
 
 #: includes/arrays.php:611
 msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
-msgstr "FTP 서버는 PASV 명령에 대한 응답으로 227줄을 반환합니다. libcurl이 해당 줄을 구문 분석하지 못하면 이 반환 코드가 다시 전달됩니다."
+msgstr ""
+"FTP 서버는 PASV 명령에 대한 응답으로 227줄을 반환합니다. libcurl이 해당 줄을 구문 분석하지 못하면 이 반환 코드가 다시 "
+"전달됩니다."
 
 #: includes/arrays.php:615
 msgid "An internal failure to lookup the host used for the new connection."
@@ -760,7 +789,9 @@ msgstr "새 연결에 사용되는 호스트를 조회하지 못한 내부 오�
 
 #: includes/arrays.php:619
 msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr "HTTP2 프레이밍 계층에서 문제가 감지되었습니다. 이것은 다소 일반적이며 여러 문제 중 하나일 수 있으며 자세한 내용은 오류 버퍼를 참조하십시오."
+msgstr ""
+"HTTP2 프레이밍 계층에서 문제가 감지되었습니다. 이것은 다소 일반적이며 여러 문제 중 하나일 수 있으며 자세한 내용은 오류 버퍼를 "
+"참조하십시오."
 
 #: includes/arrays.php:623
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
@@ -768,7 +799,9 @@ msgstr "전송 모드를 바이너리 또는 ASCII로 설정하려고 할 때 �
 
 #: includes/arrays.php:627
 msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
-msgstr "파일 전송이 예상보다 짧거나 컸습니다. 이는 서버가 먼저 예상 전송 크기를 보고한 다음 이전에 지정된 크기와 일치하지 않는 데이터를 전달할 때 발생합니다."
+msgstr ""
+"파일 전송이 예상보다 짧거나 컸습니다. 이는 서버가 먼저 예상 전송 크기를 보고한 다음 이전에 지정된 크기와 일치하지 않는 데이터를 "
+"전달할 때 발생합니다."
 
 #: includes/arrays.php:631
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
@@ -792,7 +825,9 @@ msgstr "최신 버전에서는 사용되지 않습니다."
 
 #: includes/arrays.php:639
 msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
-msgstr "사용자 지정 \"QUOTE\" 명령을 원격 서버로 보낼 때 명령 중 하나가 400 이상(FTP의 경우)인 오류 코드를 반환하거나 명령 완료에 실패했음을 나타냅니다."
+msgstr ""
+"사용자 지정 \"QUOTE\" 명령을 원격 서버로 보낼 때 명령 중 하나가 400 이상(FTP의 경우)인 오류 코드를 반환하거나 명령 "
+"완료에 실패했음을 나타냅니다."
 
 #: includes/arrays.php:643
 msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
@@ -804,7 +839,9 @@ msgstr "수신된 데이터를 로컬 파일에 쓸 때 오류가 발생했거�
 
 #: includes/arrays.php:655
 msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
-msgstr "업로드를 시작하지 못했습니다. FTP의 경우 서버는 일반적으로 STOR 명령을 거부했습니다. 오류 버퍼에는 일반적으로 이에 대한 서버의 설명이 포함되어 있습니다."
+msgstr ""
+"업로드를 시작하지 못했습니다. FTP의 경우 서버는 일반적으로 STOR 명령을 거부했습니다. 오류 버퍼에는 일반적으로 이에 대한 서버의 "
+"설명이 포함되어 있습니다."
 
 #: includes/arrays.php:659
 msgid "There was a problem reading a local file or an error returned by the read callback."
@@ -820,7 +857,9 @@ msgstr "작업 시간 초과입니다. 조건에 따라 지정된 제한 시간�
 
 #: includes/arrays.php:675
 msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
-msgstr "FTP PORT 명령이 오류를 리턴했습니다. 이것은 주로 libcurl이 사용할 수 있을 만큼 충분한 주소를 지정하지 않았을 때 발생합니다. CURLOPT_FTPPORT 참조."
+msgstr ""
+"FTP PORT 명령이 오류를 리턴했습니다. 이것은 주로 libcurl이 사용할 수 있을 만큼 충분한 주소를 지정하지 않았을 때 "
+"발생합니다. CURLOPT_FTPPORT 참조."
 
 #: includes/arrays.php:679
 msgid "The FTP REST command returned error. This should never happen if the server is sane."
@@ -836,7 +875,9 @@ msgstr "이것은 주로 내부 혼란으로 인해 발생하는 이상한 오�
 
 #: includes/arrays.php:695
 msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
-msgstr "SSL/TLS 핸드쉐이크의 어딘가에서 문제점이 발생했습니다. 오류 버퍼를 원하고 문제를 약간 더 정확히 지적하는 메시지를 읽습니다. 인증서(파일 형식, 경로, 권한), 암호 등이 될 수 있습니다."
+msgstr ""
+"SSL/TLS 핸드쉐이크의 어딘가에서 문제점이 발생했습니다. 오류 버퍼를 원하고 문제를 약간 더 정확히 지적하는 메시지를 읽습니다. "
+"인증서(파일 형식, 경로, 권한), 암호 등이 될 수 있습니다."
 
 #: includes/arrays.php:699
 msgid "The download could not be resumed because the specified offset was out of the file boundary."
@@ -844,7 +885,8 @@ msgstr "지정된 오프셋이 파일 경계를 벗어났기 때문에 다운로
 
 #: includes/arrays.php:703
 msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
-msgstr "FILE:// 파일이 있는 파일을 열 수 없습니다. 파일 경로가 기존 파일을 식별하지 않기 때문일 수 있습니다. 파일 권한을 확인했습니까?"
+msgstr ""
+"FILE:// 파일이 있는 파일을 열 수 없습니다. 파일 경로가 기존 파일을 식별하지 않기 때문일 수 있습니다. 파일 권한을 확인했습니까?"
 
 #: includes/arrays.php:707
 msgid "LDAP cannot bind. LDAP bind operation failed."
@@ -869,15 +911,21 @@ msgstr "함수가 잘못된 매개 변수로 호출되었습니다."
 
 #: includes/arrays.php:735
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
-msgstr "인터페이스 오류입니다. 지정된 발신 인터페이스를 사용할 수 없습니다. URLOPT_INTERFACE를 사용하여 발신 연결의 소스 IP 주소에 사용할 인터페이스를 설정합니다."
+msgstr ""
+"인터페이스 오류입니다. 지정된 발신 인터페이스를 사용할 수 없습니다. URLOPT_INTERFACE를 사용하여 발신 연결의 소스 IP "
+"주소에 사용할 인터페이스를 설정합니다."
 
 #: includes/arrays.php:743
 msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
-msgstr "리디렉션이 너무 많습니다. 리디렉션을 따를 때 libcurl이 최대 양에 도달했습니다. CURLOPT_MAXREDIRS로 한도를 설정하세요."
+msgstr ""
+"리디렉션이 너무 많습니다. 리디렉션을 따를 때 libcurl이 최대 양에 도달했습니다. CURLOPT_MAXREDIRS로 한도를 "
+"설정하세요."
 
 #: includes/arrays.php:747
 msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
-msgstr "libcurl에 전달된 옵션이 인식/알려지지 않았습니다. 해당 설명서를 참조하십시오. 이것은 libcurl을 사용하는 프로그램의 문제일 가능성이 큽니다. 오류 버퍼에는 관련된 정확한 옵션에 대한 보다 구체적인 정보가 포함될 수 있습니다."
+msgstr ""
+"libcurl에 전달된 옵션이 인식/알려지지 않았습니다. 해당 설명서를 참조하십시오. 이것은 libcurl을 사용하는 프로그램의 문제일 "
+"가능성이 큽니다. 오류 버퍼에는 관련된 정확한 옵션에 대한 보다 구체적인 정보가 포함될 수 있습니다."
 
 #: includes/arrays.php:751
 msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
@@ -913,7 +961,9 @@ msgstr "지정된 암호를 사용할 수 없습니다."
 
 #: includes/arrays.php:795
 msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
-msgstr "원격 서버의 SSL 인증서 또는 SSH 지문이 정상이 아닌 것으로 간주되었습니다. 이 오류 코드는 7.62.0부터 CURLE_SSL_CACERT와 통합되었습니다. 이전 값은 51이었습니다."
+msgstr ""
+"원격 서버의 SSL 인증서 또는 SSH 지문이 정상이 아닌 것으로 간주되었습니다. 이 오류 코드는 7.62.0부터 "
+"CURLE_SSL_CACERT와 통합되었습니다. 이전 값은 51이었습니다."
 
 #: includes/arrays.php:799
 msgid "Unrecognized transfer encoding."
@@ -985,7 +1035,9 @@ msgstr "SSL 연결을 종료하지 못했습니다."
 
 #: includes/arrays.php:879
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
-msgstr "소켓이 전송/수신을 위한 준비가 되지 않았으므로 준비가 될 때까지 기다렸다가 다시 시도하십시오. 이 리턴 코드는 curl_easy_recv 및 curl_easy_send에서만 리턴됩니다(7.18.2에 추가됨)."
+msgstr ""
+"소켓이 전송/수신을 위한 준비가 되지 않았으므로 준비가 될 때까지 기다렸다가 다시 시도하십시오. 이 리턴 코드는 "
+"curl_easy_recv 및 curl_easy_send에서만 리턴됩니다(7.18.2에 추가됨)."
 
 #: includes/arrays.php:883
 msgid "Failed to load CRL file (Added in 7.19.0)"
@@ -997,7 +1049,9 @@ msgstr "발급자 확인 실패(7.19.0에 추가됨)"
 
 #: includes/arrays.php:891
 msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
-msgstr "FTP 서버가 PRET 명령을 전혀 이해하지 못하거나 지정된 인수를 지원하지 않습니다. CURLOPT_CUSTOMREQUEST 사용할 때는 사용자 지정 LIST 명령이 PASV 전에 PRET 명령과 함께 전송됩니다. (7.20.0에 추가)"
+msgstr ""
+"FTP 서버가 PRET 명령을 전혀 이해하지 못하거나 지정된 인수를 지원하지 않습니다. CURLOPT_CUSTOMREQUEST 사용할 "
+"때는 사용자 지정 LIST 명령이 PASV 전에 PRET 명령과 함께 전송됩니다. (7.20.0에 추가)"
 
 #: includes/arrays.php:895
 msgid "Mismatch of RTSP CSeq numbers."
@@ -1017,7 +1071,8 @@ msgstr "청크 콜백에서 오류를 보고했습니다."
 
 #: includes/arrays.php:911
 msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
-msgstr "(내부 전용으로 libcurl에 의해 반환되지 않음) 사용할 수 있는 연결이 없으면 세션이 큐에 대기됩니다. (7.30.0에서 추가됨)"
+msgstr ""
+"(내부 전용으로 libcurl에 의해 반환되지 않음) 사용할 수 있는 연결이 없으면 세션이 큐에 대기됩니다. (7.30.0에서 추가됨)"
 
 #: includes/arrays.php:915
 msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
@@ -1041,11 +1096,15 @@ msgstr "인증 함수에서 오류를 반환했습니다."
 
 #: includes/arrays.php:935
 msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr "HTTP/3 계층에서 문제가 감지되었습니다. 이것은 다소 일반적이며 여러 문제 중 하나일 수 있으며 자세한 내용은 오류 버퍼를 참조하십시오."
+msgstr ""
+"HTTP/3 계층에서 문제가 감지되었습니다. 이것은 다소 일반적이며 여러 문제 중 하나일 수 있으며 자세한 내용은 오류 버퍼를 "
+"참조하십시오."
 
 #: includes/arrays.php:939
 msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
-msgstr "QUIC 연결 오류입니다. 이 오류는 SSL 라이브러리 오류로 인해 발생할 수 있습니다. QUIC는 HTTP/3 전송에 사용되는 프로토콜입니다."
+msgstr ""
+"QUIC 연결 오류입니다. 이 오류는 SSL 라이브러리 오류로 인해 발생할 수 있습니다. QUIC는 HTTP/3 전송에 사용되는 "
+"프로토콜입니다."
 
 #: includes/arrays.php:943
 msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
@@ -1138,7 +1197,11 @@ msgstr "웹 서버 관리"
 
 #: servcheck_ca.php:322
 msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
-msgstr "Servcheck는 공통 루트 CA의 인증서 파일을 사용하여 인증서를 확인합니다. 이는 일반 CA에서 발급한 인증서에 대해 작동합니다. 사용자 정의 CA를 사용하는 경우(예: Microsoft AD 환경에서) servcheck가 CA를 알지 못하기 때문에 해당 인증서에 대한 테스트가 실패합니다. 전체 체인(CA 인증서 및 중간 인증서)을 업로드해야 합니다. 그런 다음 CA에서 발급한 인증서가 있는 테스트와 연결합니다."
+msgstr ""
+"Servcheck는 공통 루트 CA의 인증서 파일을 사용하여 인증서를 확인합니다. 이는 일반 CA에서 발급한 인증서에 대해 작동합니다. "
+"사용자 정의 CA를 사용하는 경우(예: Microsoft AD 환경에서) servcheck가 CA를 알지 못하기 때문에 해당 인증서에 "
+"대한 테스트가 실패합니다. 전체 체인(CA 인증서 및 중간 인증서)을 업로드해야 합니다. 그런 다음 CA에서 발급한 인증서가 있는 "
+"테스트와 연결합니다."
 
 #: servcheck_ca.php:328 servcheck_proxies.php:343 servcheck_test.php:510
 #: servcheck_test.php:1251

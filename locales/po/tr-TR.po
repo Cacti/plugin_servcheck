@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2024-04-20 12:39-0400\n"
-"Last-Translator: San IPE <sanipe1949@krunsea.com>\n"
-"Language-Team: Turkish <http://translate.cacti.net/projects/cacti/webseer/tr/>\n"
-"Language: tr_TR\n"
+"PO-Revision-Date: 2024-04-20 17:21+0000\n"
+"Last-Translator: Anonymous <anonymous@cacti.net>\n"
+"Language-Team: Turkish <http://translate.cacti.net/projects/cacti/servcheck/"
+"tr/>\n"
+"Language: tr-TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Weblate 4.8.1\n"
 
 #: includes/arrays.php:33
 msgid "String found"
@@ -60,7 +61,8 @@ msgstr "SMTP düz metni, varsayılan bağlantı noktası 25 (veya gönderim içi
 
 #: includes/arrays.php:47
 msgid "SMTP with STARTTLS, default port 25(or 587 for submission)"
-msgstr "STARTTLS ile SMTP, varsayılan bağlantı noktası 25 (veya gönderim için 587)"
+msgstr ""
+"STARTTLS ile SMTP, varsayılan bağlantı noktası 25 (veya gönderim için 587)"
 
 #: includes/arrays.php:48
 msgid "SMTP encrypted (SMTPS), default port 465"
@@ -424,7 +426,9 @@ msgstr "Şifre"
 #: includes/arrays.php:296
 #, fuzzy
 msgid "The user password to use to authenticate with the Proxy if any."
-msgstr "Varsa, Proxy ile kimlik doğrulaması yapmak için kullanılacak kullanıcı parolası."
+msgstr ""
+"Varsa, Proxy ile kimlik doğrulaması yapmak için kullanılacak kullanıcı "
+"parolası."
 
 #: includes/arrays.php:315
 msgid "General Settings"
@@ -438,7 +442,8 @@ msgstr "Servis Kontrol Adı"
 #: includes/arrays.php:320
 #, fuzzy
 msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
-msgstr "Bu Servis Kontrolü için görüntülenen ad ve Uyarı bildirimlerine dahil edilir."
+msgstr ""
+"Bu Servis Kontrolü için görüntülenen ad ve Uyarı bildirimlerine dahil edilir."
 
 #: includes/arrays.php:326 servcheck_test.php:1107
 #, fuzzy
@@ -448,7 +453,9 @@ msgstr "Servis Kontrolünü Etkinleştir"
 #: includes/arrays.php:327
 #, fuzzy
 msgid "Uncheck this box to disabled this test from being checked."
-msgstr "Bu URL'nin denetlenmesini devre dışı bırakmak için bu kutunun işaretini kaldırın."
+msgstr ""
+"Bu URL'nin denetlenmesini devre dışı bırakmak için bu kutunun işaretini "
+"kaldırın."
 
 #: includes/arrays.php:332
 msgid "Poller"
@@ -473,7 +480,9 @@ msgstr "Bu sunucuya bağlanmak için IP Adresi"
 
 #: includes/arrays.php:351
 msgid "You can specify another port (example.com:5000) otherwise default will be used"
-msgstr "Başka bir bağlantı noktası (example.com:5000) belirtebilirsiniz, aksi takdirde varsayılan kullanılır"
+msgstr ""
+"Başka bir bağlantı noktası (example.com:5000) belirtebilirsiniz, aksi "
+"takdirde varsayılan kullanılır"
 
 #: includes/arrays.php:358
 #, fuzzy
@@ -495,7 +504,10 @@ msgstr "Kullanıcı Adı"
 
 #: includes/arrays.php:372
 msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
-msgstr "Kimlik doğrulaması ile test daha fazla bilgi edinir. LDAP için cn=John Doe,OU=anygroup,DC=example,DC=com gibi bir şey. Smb için ETKİALANI/kullanıcı kullanın"
+msgstr ""
+"Kimlik doğrulaması ile test daha fazla bilgi edinir. LDAP için cn=John "
+"Doe,OU=anygroup,DC=example,DC=com gibi bir şey. Smb için ETKİALANI/kullanıcı "
+"kullanın"
 
 #: includes/arrays.php:380
 msgid "For anonymous ftp insert email address here."
@@ -524,7 +536,10 @@ msgstr "URL'nin Yol Bölümü"
 
 #: includes/arrays.php:404
 msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
-msgstr "Web hizmeti için en az \"/\" veya \"/any/path/\" gibi bir şey ekleyin. FTP listesi için char \"/\" ile bitmelidir. TFTP/SCP/SMB indirme testi için /path/file ekleyin"
+msgstr ""
+"Web hizmeti için en az \"/\" veya \"/any/path/\" gibi bir şey ekleyin. FTP "
+"listesi için char \"/\" ile bitmelidir. TFTP/SCP/SMB indirme testi için /"
+"path/file ekleyin"
 
 #: includes/arrays.php:411
 #, fuzzy
@@ -534,7 +549,9 @@ msgstr "Kimlik Doğrulama Gerektirir"
 #: includes/arrays.php:412
 #, fuzzy
 msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
-msgstr "Site normalde bir kullanıcı adı ve şifre gerektirdiği için 401 Hatası döndürecekse bu kutuyu işaretleyin."
+msgstr ""
+"Site normalde bir kullanıcı adı ve şifre gerektirdiği için 401 Hatası "
+"döndürecekse bu kutuyu işaretleyin."
 
 #: includes/arrays.php:418
 msgid "Proxy Server"
@@ -543,7 +560,9 @@ msgstr "Proxy Sunucusu"
 #: includes/arrays.php:419
 #, fuzzy
 msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
-msgstr "Bu bağlantı metni bir proxy gerektiriyorsa, buradan seçin. Aksi takdirde 'Yok'u seçin."
+msgstr ""
+"Bu bağlantı metni bir proxy gerektiriyorsa, buradan seçin. Aksi takdirde "
+"'Yok'u seçin."
 
 #: includes/arrays.php:427
 #, fuzzy
@@ -553,7 +572,10 @@ msgstr "Sertifikayı Kontrol Et"
 #: includes/arrays.php:428
 #, fuzzy
 msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
-msgstr "SSL kullanıyorsanız, sertifikayı doğrulamak istiyorsanız bu kutuyu işaretleyin. Varsayılan olarak, sitenin kendinden imzalı bir sertifikası kullanıyorsanız kapatın."
+msgstr ""
+"SSL kullanıyorsanız, sertifikayı doğrulamak istiyorsanız bu kutuyu "
+"işaretleyin. Varsayılan olarak, sitenin kendinden imzalı bir sertifikası "
+"kullanıyorsanız kapatın."
 
 #: includes/arrays.php:434
 #, fuzzy
@@ -563,7 +585,10 @@ msgstr "Sertifikayı Kontrol Et"
 #: includes/arrays.php:435
 #, fuzzy
 msgid "If using SSL, check this box if you want to check the certificate expiration. You will be warn when last 10 days left."
-msgstr "SSL kullanıyorsanız, sertifikayı doğrulamak istiyorsanız bu kutuyu işaretleyin. Varsayılan olarak, sitenin kendinden imzalı bir sertifikası kullanıyorsanız kapatın."
+msgstr ""
+"SSL kullanıyorsanız, sertifikayı doğrulamak istiyorsanız bu kutuyu "
+"işaretleyin. Varsayılan olarak, sitenin kendinden imzalı bir sertifikası "
+"kullanıyorsanız kapatın."
 
 #: includes/arrays.php:441
 #, fuzzy
@@ -585,7 +610,10 @@ msgstr "Tetik"
 #: includes/arrays.php:456
 #, fuzzy
 msgid "How many poller cycles must be down before it will send an alert. After an alert is sent, in order for a 'Site Recovering' Email to be send, it must also be up this number of poller cycles."
-msgstr "Bir uyarı göndermeden önce URL’nin kaç dakika kapalı kalması gerekir. Bir uyarı gönderildikten sonra, bir 'Site Kurtarılıyor' E-postasının gönderilebilmesi için bu dakika kadar olmalıdır."
+msgstr ""
+"Bir uyarı göndermeden önce URL’nin kaç dakika kapalı kalması gerekir. Bir "
+"uyarı gönderildikten sonra, bir 'Site Kurtarılıyor' E-postasının "
+"gönderilebilmesi için bu dakika kadar olmalıdır."
 
 #: includes/arrays.php:460
 #, fuzzy
@@ -595,7 +623,9 @@ msgstr "Zaman aşımı"
 #: includes/arrays.php:464
 #, fuzzy
 msgid "How many seconds to allow the page to timeout before reporting it as down."
-msgstr "Sayfanın aşağı olarak bildirilmeden önce sayfanın zaman aşımına uğramasına izin vermek için kaç saniye bekleyin."
+msgstr ""
+"Sayfanın aşağı olarak bildirilmeden önce sayfanın zaman aşımına uğramasına "
+"izin vermek için kaç saniye bekleyin."
 
 #: includes/arrays.php:469
 #, fuzzy
@@ -610,7 +640,8 @@ msgstr "Yanıt Arama Dizesi"
 #: includes/arrays.php:474
 #, fuzzy
 msgid "This is the string to search for in the response for a live and working service."
-msgstr "Bu, canlı ve çalışan bir Web Hizmeti için URL yanıtında aranacak dizedir."
+msgstr ""
+"Bu, canlı ve çalışan bir Web Hizmeti için URL yanıtında aranacak dizedir."
 
 #: includes/arrays.php:481
 #, fuzzy
@@ -620,7 +651,10 @@ msgstr "Yanıt Arama Dizesi - Bakım Sayfası"
 #: includes/arrays.php:482
 #, fuzzy
 msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
-msgstr "Bu Bakım Sayfasında aranacak dizedir. Yukarıdaki kontrol bulunmazsa, Servis Kontrolü bu dizgiyi kontrol eder. Eğer bulunursa, Web Servisinin bakım altında olduğu anlamına gelir."
+msgstr ""
+"Bu Bakım Sayfasında aranacak dizedir. Yukarıdaki kontrol bulunmazsa, Servis "
+"Kontrolü bu dizgiyi kontrol eder. Eğer bulunursa, Web Servisinin bakım "
+"altında olduğu anlamına gelir."
 
 #: includes/arrays.php:489
 #, fuzzy
@@ -630,7 +664,10 @@ msgstr "Yanıt Arama Dizesi - Başarısız"
 #: includes/arrays.php:490
 #, fuzzy
 msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
-msgstr "Bu, Web Hizmeti yanıtında bilinen bir hatayı aramak için kullanılan dizedir. Servis Kontrolü, yalnızca bu dizgi bulunduğunda, zaman aşımı sorunlarını ve yukarıdaki arama dizelerini dikkate almazsa uyarır."
+msgstr ""
+"Bu, Web Hizmeti yanıtında bilinen bir hatayı aramak için kullanılan dizedir. "
+"Servis Kontrolü, yalnızca bu dizgi bulunduğunda, zaman aşımı sorunlarını ve "
+"yukarıdaki arama dizelerini dikkate almazsa uyarır."
 
 #: includes/arrays.php:497
 msgid "Notification Settings"
@@ -674,7 +711,9 @@ msgstr "Ekstra Uyarı E-postaları"
 #: includes/arrays.php:526
 #, fuzzy
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
-msgstr "Bu URL için uyarılar almak için buraya ek E-postalar belirleyebilirsiniz (virgülle ayrılmış)"
+msgstr ""
+"Bu URL için uyarılar almak için buraya ek E-postalar belirleyebilirsiniz ("
+"virgülle ayrılmış)"
 
 #: includes/arrays.php:530
 msgid "Notes"
@@ -698,11 +737,18 @@ msgstr "Her şey yolunda. Her zamanki gibi devam edin."
 
 #: includes/arrays.php:559
 msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
-msgstr "Libcurl'e ilettiğiniz URL, bu libcurl'un desteklemediği bir protokol kullandı. Destek, kullanmadığınız bir derleme zamanı seçeneği olabilir, yanlış yazılmış bir protokol dizesi olabilir veya yalnızca libcurl için kod içermeyen bir protokol olabilir."
+msgstr ""
+"Libcurl'e ilettiğiniz URL, bu libcurl'un desteklemediği bir protokol "
+"kullandı. Destek, kullanmadığınız bir derleme zamanı seçeneği olabilir, "
+"yanlış yazılmış bir protokol dizesi olabilir veya yalnızca libcurl için kod "
+"içermeyen bir protokol olabilir."
 
 #: includes/arrays.php:563
 msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
-msgstr "Erken başlatma kodu başarısız oldu. Bu, büyük olasılıkla dahili bir hata veya sorun ya da temel bir şeyin başlangıçta yapılamadığı bir kaynak sorunu olabilir."
+msgstr ""
+"Erken başlatma kodu başarısız oldu. Bu, büyük olasılıkla dahili bir hata "
+"veya sorun ya da temel bir şeyin başlangıçta yapılamadığı bir kaynak sorunu "
+"olabilir."
 
 #: includes/arrays.php:567
 msgid "The URL was not properly formatted."
@@ -710,7 +756,12 @@ msgstr "URL düzgün biçimlendirilmemiş."
 
 #: includes/arrays.php:571
 msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
-msgstr "İstenen bir özellik, protokol veya seçenek, derleme zamanı kararı nedeniyle bu libcurl'de yerleşik olarak bulunamadı. Bu, libcurl oluşturulduğunda bir özelliğin veya seçeneğin etkinleştirilmediği veya açıkça devre dışı bırakılmadığı anlamına gelir ve çalışmasını sağlamak için yeniden oluşturulmuş bir libcurl almanız gerekir."
+msgstr ""
+"İstenen bir özellik, protokol veya seçenek, derleme zamanı kararı nedeniyle "
+"bu libcurl'de yerleşik olarak bulunamadı. Bu, libcurl oluşturulduğunda bir "
+"özelliğin veya seçeneğin etkinleştirilmediği veya açıkça devre dışı "
+"bırakılmadığı anlamına gelir ve çalışmasını sağlamak için yeniden "
+"oluşturulmuş bir libcurl almanız gerekir."
 
 #: includes/arrays.php:575
 msgid "Could not resolve proxy. The given proxy host could not be resolved."
@@ -726,31 +777,45 @@ msgstr "Ana bilgisayara veya proxy'ye bağlanılamadı."
 
 #: includes/arrays.php:587
 msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
-msgstr "Gönderilen sunucu libcurl verisi ayrıştırılamadı. Bu hata kodu 7.51.0'dan önce CURLE_FTP_WEIRD_SERVER_REPLY olarak biliniyordu."
+msgstr ""
+"Gönderilen sunucu libcurl verisi ayrıştırılamadı. Bu hata kodu 7.51.0'dan "
+"önce CURLE_FTP_WEIRD_SERVER_REPLY olarak biliniyordu."
 
 #: includes/arrays.php:591
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
-msgstr "URL'de verilen kaynağa erişimimiz reddedildi. FTP için bu, uzak dizine geçmeye çalışırken gerçekleşir."
+msgstr ""
+"URL'de verilen kaynağa erişimimiz reddedildi. FTP için bu, uzak dizine "
+"geçmeye çalışırken gerçekleşir."
 
 #: includes/arrays.php:595
 msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
-msgstr "Aktif bir FTP oturumu kullanıldığında sunucunun tekrar bağlanmasını beklerken, kontrol bağlantısı veya benzeri bir hata kodu gönderildi."
+msgstr ""
+"Aktif bir FTP oturumu kullanıldığında sunucunun tekrar bağlanmasını "
+"beklerken, kontrol bağlantısı veya benzeri bir hata kodu gönderildi."
 
 #: includes/arrays.php:599
 msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
-msgstr "FTP şifresini sunucuya gönderdikten sonra, libcurl uygun bir cevap bekler. Bu hata kodu, beklenmeyen bir kodun döndürüldüğünü gösterir."
+msgstr ""
+"FTP şifresini sunucuya gönderdikten sonra, libcurl uygun bir cevap bekler. "
+"Bu hata kodu, beklenmeyen bir kodun döndürüldüğünü gösterir."
 
 #: includes/arrays.php:603
 msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
-msgstr "Etkin bir FTP oturumu sırasında, sunucunun bağlanmasını beklerken, CURLOPT_ACCEPTTIMEOUT_MS (veya dahili varsayılan) zaman aşımı süresi doldu."
+msgstr ""
+"Etkin bir FTP oturumu sırasında, sunucunun bağlanmasını beklerken, "
+"CURLOPT_ACCEPTTIMEOUT_MS (veya dahili varsayılan) zaman aşımı süresi doldu."
 
 #: includes/arrays.php:607
 msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
-msgstr "Libcurl, bir PASV veya EPSV komutuna yanıt olarak sunucudan mantıklı bir sonuç alamadı. Sunucu kusurlu."
+msgstr ""
+"Libcurl, bir PASV veya EPSV komutuna yanıt olarak sunucudan mantıklı bir "
+"sonuç alamadı. Sunucu kusurlu."
 
 #: includes/arrays.php:611
 msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
-msgstr "FTP sunucuları, PASV komutuna yanıt olarak 227 satırlık bir satır döndürür. libcurl bu satırı ayrıştıramazsa, bu dönüş kodu geri geçirilir."
+msgstr ""
+"FTP sunucuları, PASV komutuna yanıt olarak 227 satırlık bir satır döndürür. "
+"libcurl bu satırı ayrıştıramazsa, bu dönüş kodu geri geçirilir."
 
 #: includes/arrays.php:615
 msgid "An internal failure to lookup the host used for the new connection."
@@ -758,19 +823,27 @@ msgstr "Yeni bağlantı için kullanılan ana bilgisayarı aramada bir iç hata.
 
 #: includes/arrays.php:619
 msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr "HTTP2 çerçeveleme katmanında bir sorun algılandı. Bu biraz geneldir ve birkaç sorundan biri olabilir, ayrıntılar için hata arabelleğine bakın."
+msgstr ""
+"HTTP2 çerçeveleme katmanında bir sorun algılandı. Bu biraz geneldir ve "
+"birkaç sorundan biri olabilir, ayrıntılar için hata arabelleğine bakın."
 
 #: includes/arrays.php:623
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
-msgstr "Aktarım modunu ikili veya ASCII olarak ayarlamaya çalışırken bir hata alındı."
+msgstr ""
+"Aktarım modunu ikili veya ASCII olarak ayarlamaya çalışırken bir hata alındı."
 
 #: includes/arrays.php:627
 msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
-msgstr "Dosya aktarımı beklenenden daha kısa veya daha büyüktü. Bu, sunucu ilk olarak beklenen bir aktarım boyutunu bildirdiğinde ve ardından daha önce verilen boyutla eşleşmeyen veriler teslim ettiğinde gerçekleşir."
+msgstr ""
+"Dosya aktarımı beklenenden daha kısa veya daha büyüktü. Bu, sunucu ilk "
+"olarak beklenen bir aktarım boyutunu bildirdiğinde ve ardından daha önce "
+"verilen boyutla eşleşmeyen veriler teslim ettiğinde gerçekleşir."
 
 #: includes/arrays.php:631
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
-msgstr "Bu ya bir 'RETR' komutuna garip bir yanıttı ya da sıfır bayt aktarımı tamamlandı."
+msgstr ""
+"Bu ya bir 'RETR' komutuna garip bir yanıttı ya da sıfır bayt aktarımı "
+"tamamlandı."
 
 #: includes/arrays.php:634 includes/arrays.php:650 includes/arrays.php:670
 #: includes/arrays.php:682 includes/arrays.php:714 includes/arrays.php:730
@@ -790,39 +863,57 @@ msgstr "Modern versiyonlarda kullanılmaz."
 
 #: includes/arrays.php:639
 msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
-msgstr "Uzak sunucuya özel \"QUOTE\" komutları gönderirken, komutlardan biri 400 veya daha yüksek (FTP için) bir hata kodu döndürdü veya başka bir şekilde komutun başarısız bir şekilde tamamlandığını belirtti."
+msgstr ""
+"Uzak sunucuya özel \"QUOTE\" komutları gönderirken, komutlardan biri 400 "
+"veya daha yüksek (FTP için) bir hata kodu döndürdü veya başka bir şekilde "
+"komutun başarısız bir şekilde tamamlandığını belirtti."
 
 #: includes/arrays.php:643
 msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
-msgstr "CURLOPT_FAILONERROR true olarak ayarlanırsa ve HTTP sunucusu >= 400 olan bir hata kodu döndürürse bu döndürülür."
+msgstr ""
+"CURLOPT_FAILONERROR true olarak ayarlanırsa ve HTTP sunucusu >= 400 olan bir "
+"hata kodu döndürürse bu döndürülür."
 
 #: includes/arrays.php:647
 msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
-msgstr "Alınan veriler yerel bir dosyaya yazılırken bir hata oluştu veya yazma geri çağrısından libcurl'e bir hata döndürüldü."
+msgstr ""
+"Alınan veriler yerel bir dosyaya yazılırken bir hata oluştu veya yazma geri "
+"çağrısından libcurl'e bir hata döndürüldü."
 
 #: includes/arrays.php:655
 msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
-msgstr "Karşıya yükleme başlatılamadı. FTP için, sunucu genellikle STOR komutunu reddetti. Hata arabelleği genellikle sunucunun bunun için açıklamasını içerir."
+msgstr ""
+"Karşıya yükleme başlatılamadı. FTP için, sunucu genellikle STOR komutunu "
+"reddetti. Hata arabelleği genellikle sunucunun bunun için açıklamasını "
+"içerir."
 
 #: includes/arrays.php:659
 msgid "There was a problem reading a local file or an error returned by the read callback."
-msgstr "Yerel bir dosya okunurken bir sorun oluştu veya okuma geri araması tarafından döndürülen bir hata oluştu."
+msgstr ""
+"Yerel bir dosya okunurken bir sorun oluştu veya okuma geri araması "
+"tarafından döndürülen bir hata oluştu."
 
 #: includes/arrays.php:663
 msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
-msgstr "Bellek ayırma isteği başarısız oldu. Bu ciddi bir kötülüktür ve bu gerçekleşirse işler ciddi şekilde berbat olur."
+msgstr ""
+"Bellek ayırma isteği başarısız oldu. Bu ciddi bir kötülüktür ve bu "
+"gerçekleşirse işler ciddi şekilde berbat olur."
 
 #: includes/arrays.php:667
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
-msgstr "İşlem zaman aşımı. Belirtilen zaman aşımı süresine şartlara göre ulaşıldı."
+msgstr ""
+"İşlem zaman aşımı. Belirtilen zaman aşımı süresine şartlara göre ulaşıldı."
 
 #: includes/arrays.php:675
 msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
-msgstr "FTP PORT komutu hata verdi. Bu çoğunlukla, libcurl'un kullanması için yeterince iyi bir adres belirtmediğinizde olur. CURLOPT_FTPPORT bakın."
+msgstr ""
+"FTP PORT komutu hata verdi. Bu çoğunlukla, libcurl'un kullanması için "
+"yeterince iyi bir adres belirtmediğinizde olur. CURLOPT_FTPPORT bakın."
 
 #: includes/arrays.php:679
 msgid "The FTP REST command returned error. This should never happen if the server is sane."
-msgstr "FTP REST komutu hata döndürdü. Sunucu aklı başındaysa bu asla olmamalıdır."
+msgstr ""
+"FTP REST komutu hata döndürdü. Sunucu aklı başındaysa bu asla olmamalıdır."
 
 #: includes/arrays.php:687
 msgid "The server does not support or accept range requests."
@@ -834,15 +925,23 @@ msgstr "Bu, esas olarak iç karışıklık nedeniyle ortaya çıkan garip bir ha
 
 #: includes/arrays.php:695
 msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
-msgstr "SSL/TLS el sıkışmasında bir sorun oluştu. Hata arabelleğini gerçekten istiyorsunuz ve sorunu biraz daha saptayacağı için oradaki mesajı okuyorsunuz. Sertifikalar (dosya biçimleri, yollar, izinler), parolalar ve diğerleri olabilir."
+msgstr ""
+"SSL/TLS el sıkışmasında bir sorun oluştu. Hata arabelleğini gerçekten "
+"istiyorsunuz ve sorunu biraz daha saptayacağı için oradaki mesajı "
+"okuyorsunuz. Sertifikalar (dosya biçimleri, yollar, izinler), parolalar ve "
+"diğerleri olabilir."
 
 #: includes/arrays.php:699
 msgid "The download could not be resumed because the specified offset was out of the file boundary."
-msgstr "Belirtilen uzaklık dosya sınırının dışında olduğu için indirme işlemi sürdürülemedi."
+msgstr ""
+"Belirtilen uzaklık dosya sınırının dışında olduğu için indirme işlemi "
+"sürdürülemedi."
 
 #: includes/arrays.php:703
 msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
-msgstr "FILE:// ile verilen bir dosya açılamadı. Büyük olasılıkla, dosya yolu varolan bir dosyayı tanımlamadığı için. Dosya izinlerini kontrol ettiniz mi?"
+msgstr ""
+"FILE:// ile verilen bir dosya açılamadı. Büyük olasılıkla, dosya yolu "
+"varolan bir dosyayı tanımlamadığı için. Dosya izinlerini kontrol ettiniz mi?"
 
 #: includes/arrays.php:707
 msgid "LDAP cannot bind. LDAP bind operation failed."
@@ -859,7 +958,8 @@ msgstr "İşlev bulunamadı. Gerekli bir zlib işlevi bulunamadı."
 
 #: includes/arrays.php:723
 msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
-msgstr "Geri arama ile iptal edildi. Bir geri arama, libcurl'e \"iptal\" döndürdü."
+msgstr ""
+"Geri arama ile iptal edildi. Bir geri arama, libcurl'e \"iptal\" döndürdü."
 
 #: includes/arrays.php:727
 msgid "A function was called with a bad parameter."
@@ -867,23 +967,36 @@ msgstr "Hatalı bir parametreyle bir işlev çağrıldı."
 
 #: includes/arrays.php:735
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
-msgstr "Arayüz hatası. Belirtilen giden arabirim kullanılamadı. Giden bağlantıların kaynak IP adresi için hangi arabirimin kullanılacağını URLOPT_INTERFACE ile ayarlayın."
+msgstr ""
+"Arayüz hatası. Belirtilen giden arabirim kullanılamadı. Giden bağlantıların "
+"kaynak IP adresi için hangi arabirimin kullanılacağını URLOPT_INTERFACE ile "
+"ayarlayın."
 
 #: includes/arrays.php:743
 msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
-msgstr "Çok fazla yönlendirme. Yönlendirmeleri takip ederken, libcurl maksimum miktara ulaştı. CURLOPT_MAXREDIRS ile limitinizi belirleyin."
+msgstr ""
+"Çok fazla yönlendirme. Yönlendirmeleri takip ederken, libcurl maksimum "
+"miktara ulaştı. CURLOPT_MAXREDIRS ile limitinizi belirleyin."
 
 #: includes/arrays.php:747
 msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
-msgstr "Libcurl'e geçirilen bir seçenek tanınmıyor/bilinmiyor. Uygun belgelere bakın. Bu, büyük olasılıkla libcurl kullanan programda bir sorundur. Hata arabelleği, tam olarak hangi seçenekle ilgili olduğu hakkında daha ayrıntılı bilgiler içerebilir."
+msgstr ""
+"Libcurl'e geçirilen bir seçenek tanınmıyor/bilinmiyor. Uygun belgelere "
+"bakın. Bu, büyük olasılıkla libcurl kullanan programda bir sorundur. Hata "
+"arabelleği, tam olarak hangi seçenekle ilgili olduğu hakkında daha ayrıntılı "
+"bilgiler içerebilir."
 
 #: includes/arrays.php:751
 msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
-msgstr "Bir setopt'a iletilen bir seçenek yanlış biçimlendirilmiş. Hangi seçenekle ilgili ayrıntılar için hata mesajına bakın."
+msgstr ""
+"Bir setopt'a iletilen bir seçenek yanlış biçimlendirilmiş. Hangi seçenekle "
+"ilgili ayrıntılar için hata mesajına bakın."
 
 #: includes/arrays.php:763
 msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
-msgstr "Sunucudan hiçbir şey döndürülmedi ve bu koşullar altında hiçbir şey almamak bir hata olarak kabul edilir."
+msgstr ""
+"Sunucudan hiçbir şey döndürülmedi ve bu koşullar altında hiçbir şey almamak "
+"bir hata olarak kabul edilir."
 
 #: includes/arrays.php:767
 msgid "The specified crypto engine was not found."
@@ -911,7 +1024,10 @@ msgstr "Belirtilen şifre kullanılamadı."
 
 #: includes/arrays.php:795
 msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
-msgstr "Uzak sunucunun SSL sertifikası veya SSH parmak izi uygun görülmedi. Bu hata kodu, 7.62.0'dan beri CURLE_SSL_CACERT ile birleştirilmiştir. Önceki değeri 51 idi."
+msgstr ""
+"Uzak sunucunun SSL sertifikası veya SSH parmak izi uygun görülmedi. Bu hata "
+"kodu, 7.62.0'dan beri CURLE_SSL_CACERT ile birleştirilmiştir. Önceki değeri "
+"51 idi."
 
 #: includes/arrays.php:799
 msgid "Unrecognized transfer encoding."
@@ -927,7 +1043,9 @@ msgstr "İstenen FTP SSL düzeyi başarısız oldu."
 
 #: includes/arrays.php:815
 msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
-msgstr "Bir gönderme işlemi yaparken, curl'ün yeniden iletmek için verileri geri sarması gerekiyordu, ancak geri sarma işlemi başarısız oldu."
+msgstr ""
+"Bir gönderme işlemi yaparken, curl'ün yeniden iletmek için verileri geri "
+"sarması gerekiyordu, ancak geri sarma işlemi başarısız oldu."
 
 #: includes/arrays.php:819
 msgid "Initiating the SSL Engine failed."
@@ -963,7 +1081,8 @@ msgstr "Dosya zaten var ve üzerine yazılmıyor."
 
 #: includes/arrays.php:851
 msgid "This error should never be returned by a properly functioning TFTP server."
-msgstr "Bu hata, düzgün çalışan bir TFTP sunucusu tarafından asla döndürülmemelidir."
+msgstr ""
+"Bu hata, düzgün çalışan bir TFTP sunucusu tarafından asla döndürülmemelidir."
 
 #: includes/arrays.php:863
 msgid "Problem with reading the SSL CA cert (path? access rights?)"
@@ -983,7 +1102,10 @@ msgstr "SSL bağlantısı kapatılamadı."
 
 #: includes/arrays.php:879
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
-msgstr "Soket gönderme/kaydetme için hazır değil, hazır olana kadar bekleyin ve tekrar deneyin. Bu dönüş kodu yalnızca curl_easy_recv ve curl_easy_send'den döndürülür (7.18.2'de eklendi)"
+msgstr ""
+"Soket gönderme/kaydetme için hazır değil, hazır olana kadar bekleyin ve "
+"tekrar deneyin. Bu dönüş kodu yalnızca curl_easy_recv ve curl_easy_send'den "
+"döndürülür (7.18.2'de eklendi)"
 
 #: includes/arrays.php:883
 msgid "Failed to load CRL file (Added in 7.19.0)"
@@ -995,7 +1117,11 @@ msgstr "Veren kontrolü başarısız oldu (7.19.0'da eklendi)"
 
 #: includes/arrays.php:891
 msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
-msgstr "FTP sunucusu PRET komutunu hiç anlamıyor veya verilen bağımsız değişkeni desteklemiyor. CURLOPT_CUSTOMREQUEST kullanırken dikkatli olun, PASP'den önce de PRET komutuyla birlikte özel bir LIST komutu gönderilir. (7.20.0'da eklendi)"
+msgstr ""
+"FTP sunucusu PRET komutunu hiç anlamıyor veya verilen bağımsız değişkeni "
+"desteklemiyor. CURLOPT_CUSTOMREQUEST kullanırken dikkatli olun, PASP'den "
+"önce de PRET komutuyla birlikte özel bir LIST komutu gönderilir. (7.20.0'da "
+"eklendi)"
 
 #: includes/arrays.php:895
 msgid "Mismatch of RTSP CSeq numbers."
@@ -1007,7 +1133,8 @@ msgstr "RTSP Oturum Tanımlayıcılarının Uyuşmazlığı."
 
 #: includes/arrays.php:903
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
-msgstr "FTP dosya listesi ayrıştırılamıyor (FTP joker karakter indirme sırasında)."
+msgstr ""
+"FTP dosya listesi ayrıştırılamıyor (FTP joker karakter indirme sırasında)."
 
 #: includes/arrays.php:907
 msgid "Chunk callback reported error."
@@ -1015,11 +1142,14 @@ msgstr "Yığın geri arama hata bildirdi."
 
 #: includes/arrays.php:911
 msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
-msgstr "(Yalnızca dahili kullanım içindir, libcurl tarafından asla döndürülmez) Bağlantı yok, oturum kuyruğa alındı. (7.30.0'da eklendi)"
+msgstr ""
+"(Yalnızca dahili kullanım içindir, libcurl tarafından asla döndürülmez) "
+"Bağlantı yok, oturum kuyruğa alındı. (7.30.0'da eklendi)"
 
 #: includes/arrays.php:915
 msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
-msgstr "CURLOPT_PINNEDPUBLICKEY ile belirtilen sabitlenmiş anahtarla eşleşemedi."
+msgstr ""
+"CURLOPT_PINNEDPUBLICKEY ile belirtilen sabitlenmiş anahtarla eşleşemedi."
 
 #: includes/arrays.php:919
 msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
@@ -1039,15 +1169,21 @@ msgstr "Bir kimlik doğrulama işlevi bir hata döndürdü."
 
 #: includes/arrays.php:935
 msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr "HTTP/3 katmanında bir sorun algılandı. Bu biraz geneldir ve birkaç sorundan biri olabilir, ayrıntılar için hata arabelleğine bakın."
+msgstr ""
+"HTTP/3 katmanında bir sorun algılandı. Bu biraz geneldir ve birkaç sorundan "
+"biri olabilir, ayrıntılar için hata arabelleğine bakın."
 
 #: includes/arrays.php:939
 msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
-msgstr "QUIC bağlantı hatası. Bu hatanın nedeni bir SSL kitaplığı hatası olabilir. QUIC, HTTP/3 aktarımları için kullanılan protokoldür."
+msgstr ""
+"QUIC bağlantı hatası. Bu hatanın nedeni bir SSL kitaplığı hatası olabilir. "
+"QUIC, HTTP/3 aktarımları için kullanılan protokoldür."
 
 #: includes/arrays.php:943
 msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
-msgstr "Proxy el sıkışma hatası. CURLINFO_PROXY_ERROR, belirli bir sorun hakkında ek ayrıntılar sağlar."
+msgstr ""
+"Proxy el sıkışma hatası. CURLINFO_PROXY_ERROR, belirli bir sorun hakkında ek "
+"ayrıntılar sağlar."
 
 #: includes/arrays.php:947
 msgid "SSL Client Certificate required."
@@ -1055,7 +1191,8 @@ msgstr "SSL İstemci Sertifikası gereklidir."
 
 #: includes/arrays.php:951
 msgid "An internal call to poll() or select() returned error that is not recoverable."
-msgstr "Dahili bir poll() veya select() çağrısı, kurtarılamayan bir hata döndürdü."
+msgstr ""
+"Dahili bir poll() veya select() çağrısı, kurtarılamayan bir hata döndürdü."
 
 #: includes/functions.php:32 servcheck_test.php:828
 msgid "Tests"
@@ -1137,7 +1274,14 @@ msgstr "Web sunucusu Sunucu Yönetimi"
 
 #: servcheck_ca.php:322
 msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
-msgstr "Servcheck, sertifikaları kontrol etmek için ortak kök CA'lardan bir sertifika dosyası kullanır. Bu, ortak CA'lar tarafından verilen sertifikalar için çalışır. Özel bir CA kullanıyorsanız (örneğin, bir Microsoft AD ortamında), servcheck CA'nızı tanımadığı için bu sertifikanın testi başarısız olur. Zincirin tamamını (CA sertifikası ve ara sertifikalar) yüklemeniz gerekir. Daha sonra bunları, CA'nız tarafından verilen sertifikanın bulunduğu testle ilişkilendirirsiniz."
+msgstr ""
+"Servcheck, sertifikaları kontrol etmek için ortak kök CA'lardan bir "
+"sertifika dosyası kullanır. Bu, ortak CA'lar tarafından verilen sertifikalar "
+"için çalışır. Özel bir CA kullanıyorsanız (örneğin, bir Microsoft AD "
+"ortamında), servcheck CA'nızı tanımadığı için bu sertifikanın testi "
+"başarısız olur. Zincirin tamamını (CA sertifikası ve ara sertifikalar) "
+"yüklemeniz gerekir. Daha sonra bunları, CA'nız tarafından verilen "
+"sertifikanın bulunduğu testle ilişkilendirirsiniz."
 
 #: servcheck_ca.php:328 servcheck_proxies.php:343 servcheck_test.php:510
 #: servcheck_test.php:1251

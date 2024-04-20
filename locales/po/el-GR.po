@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2024-04-20 12:22-0400\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: el_GR\n"
+"PO-Revision-Date: 2024-04-20 17:20+0000\n"
+"Last-Translator: Anonymous <anonymous@cacti.net>\n"
+"Language-Team: Greek <http://translate.cacti.net/projects/cacti/servcheck/el/"
+">\n"
+"Language: el-GR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.8.1\n"
 
 #: includes/arrays.php:33
 msgid "String found"
@@ -423,7 +424,9 @@ msgstr "Όνομα Χρήστη"
 #: includes/arrays.php:287
 #, fuzzy
 msgid "The user to use to authenticate with the Proxy if any."
-msgstr "Ο χρήστης που θα χρησιμοποιήσει για έλεγχο ταυτότητας με τον διακομιστή μεσολάβησης εάν υπάρχει."
+msgstr ""
+"Ο χρήστης που θα χρησιμοποιήσει για έλεγχο ταυτότητας με τον διακομιστή "
+"μεσολάβησης εάν υπάρχει."
 
 #: includes/arrays.php:295 includes/arrays.php:378
 msgid "Password"
@@ -432,7 +435,9 @@ msgstr "Κωδικός"
 #: includes/arrays.php:296
 #, fuzzy
 msgid "The user password to use to authenticate with the Proxy if any."
-msgstr "Ο κωδικός πρόσβασης χρήστη για χρήση για έλεγχο ταυτότητας με τον διακομιστή μεσολάβησης, εάν υπάρχει."
+msgstr ""
+"Ο κωδικός πρόσβασης χρήστη για χρήση για έλεγχο ταυτότητας με τον διακομιστή "
+"μεσολάβησης, εάν υπάρχει."
 
 #: includes/arrays.php:315
 msgid "General Settings"
@@ -446,7 +451,9 @@ msgstr "Όνομα υπηρεσίας ελέγχου"
 #: includes/arrays.php:320
 #, fuzzy
 msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
-msgstr "Το όνομα που εμφανίζεται για αυτόν τον έλεγχο υπηρεσίας και περιλαμβάνεται σε όλες τις ειδοποιήσεις ειδοποιήσεων."
+msgstr ""
+"Το όνομα που εμφανίζεται για αυτόν τον έλεγχο υπηρεσίας και περιλαμβάνεται "
+"σε όλες τις ειδοποιήσεις ειδοποιήσεων."
 
 #: includes/arrays.php:326 servcheck_test.php:1107
 #, fuzzy
@@ -456,7 +463,9 @@ msgstr "Ενεργοποίηση ελέγχου υπηρεσίας"
 #: includes/arrays.php:327
 #, fuzzy
 msgid "Uncheck this box to disabled this test from being checked."
-msgstr "Καταργήστε την επιλογή αυτού του πλαισίου για να απενεργοποιηθεί αυτή η διεύθυνση URL."
+msgstr ""
+"Καταργήστε την επιλογή αυτού του πλαισίου για να απενεργοποιηθεί αυτή η "
+"διεύθυνση URL."
 
 #: includes/arrays.php:332
 msgid "Poller"
@@ -481,7 +490,9 @@ msgstr "Διεύθυνση IP για σύνδεση σε αυτόν τον δι�
 
 #: includes/arrays.php:351
 msgid "You can specify another port (example.com:5000) otherwise default will be used"
-msgstr "Μπορείτε να καθορίσετε μια άλλη θύρα (example.com:5000), διαφορετικά θα χρησιμοποιηθεί προεπιλογή"
+msgstr ""
+"Μπορείτε να καθορίσετε μια άλλη θύρα (example.com:5000), διαφορετικά θα "
+"χρησιμοποιηθεί προεπιλογή"
 
 #: includes/arrays.php:358
 #, fuzzy
@@ -503,7 +514,10 @@ msgstr "Όνομα Χρήστη"
 
 #: includes/arrays.php:372
 msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
-msgstr "Με τον έλεγχο ταυτότητας η δοκιμή αποκτά περισσότερες πληροφορίες. Για LDAP κάτι σαν cn = John Doe, OU = anygroup, DC = παράδειγμα, DC = com. Για smb χρησιμοποιήστε DOMAIN/χρήστη"
+msgstr ""
+"Με τον έλεγχο ταυτότητας η δοκιμή αποκτά περισσότερες πληροφορίες. Για LDAP "
+"κάτι σαν cn = John Doe, OU = anygroup, DC = παράδειγμα, DC = com. Για smb "
+"χρησιμοποιήστε DOMAIN/χρήστη"
 
 #: includes/arrays.php:380
 msgid "For anonymous ftp insert email address here."
@@ -516,7 +530,9 @@ msgstr "Αναζήτηση"
 
 #: includes/arrays.php:388
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
-msgstr "Φίλτρο αναζήτησης LDAP, θα μπορούσε να είναι, OU = anygroup, DC = παράδειγμα, DC = com"
+msgstr ""
+"Φίλτρο αναζήτησης LDAP, θα μπορούσε να είναι, OU = anygroup, DC = "
+"παράδειγμα, DC = com"
 
 #: includes/arrays.php:395
 msgid "DNS Name for Query"
@@ -532,7 +548,10 @@ msgstr "Τμήμα διαδρομής της διεύθυνσης URL"
 
 #: includes/arrays.php:404
 msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
-msgstr "Για υπηρεσία web, εισαγάγετε τουλάχιστον \"/\" ή κάτι σαν \"/any/path/\". Για FTP, η λίστα πρέπει να τελειώνει με χαρακτήρα \"/\". Για TFTP/SCP/SMB κατεβάστε το δοκιμαστικό ένθετο /διαδρομή/αρχείο"
+msgstr ""
+"Για υπηρεσία web, εισαγάγετε τουλάχιστον \"/\" ή κάτι σαν \"/any/path/\". "
+"Για FTP, η λίστα πρέπει να τελειώνει με χαρακτήρα \"/\". Για TFTP/SCP/SMB "
+"κατεβάστε το δοκιμαστικό ένθετο /διαδρομή/αρχείο"
 
 #: includes/arrays.php:411
 #, fuzzy
@@ -542,7 +561,9 @@ msgstr "Απαιτεί έλεγχο ταυτότητας"
 #: includes/arrays.php:412
 #, fuzzy
 msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
-msgstr "Επιλέξτε αυτό το πλαίσιο εάν ο ιστότοπος θα επιστρέψει κανονικά ένα σφάλμα 401, καθώς απαιτεί όνομα χρήστη και κωδικό πρόσβασης."
+msgstr ""
+"Επιλέξτε αυτό το πλαίσιο εάν ο ιστότοπος θα επιστρέψει κανονικά ένα σφάλμα "
+"401, καθώς απαιτεί όνομα χρήστη και κωδικό πρόσβασης."
 
 #: includes/arrays.php:418
 #, fuzzy
@@ -552,7 +573,9 @@ msgstr "Master Server"
 #: includes/arrays.php:419
 #, fuzzy
 msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
-msgstr "Εάν αυτό το κείμενο σύνδεσης απαιτεί διακομιστή μεσολάβησης, επιλέξτε το εδώ. Διαφορετικά επιλέξτε \"Κανένα\"."
+msgstr ""
+"Εάν αυτό το κείμενο σύνδεσης απαιτεί διακομιστή μεσολάβησης, επιλέξτε το "
+"εδώ. Διαφορετικά επιλέξτε \"Κανένα\"."
 
 #: includes/arrays.php:427
 #, fuzzy
@@ -562,7 +585,10 @@ msgstr "Ελέγξτε το πιστοποιητικό"
 #: includes/arrays.php:428
 #, fuzzy
 msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
-msgstr "Αν χρησιμοποιείτε SSL, επιλέξτε αυτό το πλαίσιο εάν θέλετε να επικυρώσετε το πιστοποιητικό. Η προεπιλογή είναι ενεργοποιημένη, απενεργοποιήστε εάν ο ιστότοπος χρησιμοποιεί πιστοποιητικό που έχει υπογράψει αυτόματα."
+msgstr ""
+"Αν χρησιμοποιείτε SSL, επιλέξτε αυτό το πλαίσιο εάν θέλετε να επικυρώσετε το "
+"πιστοποιητικό. Η προεπιλογή είναι ενεργοποιημένη, απενεργοποιήστε εάν ο "
+"ιστότοπος χρησιμοποιεί πιστοποιητικό που έχει υπογράψει αυτόματα."
 
 #: includes/arrays.php:434
 #, fuzzy
@@ -572,7 +598,10 @@ msgstr "Ελέγξτε το πιστοποιητικό"
 #: includes/arrays.php:435
 #, fuzzy
 msgid "If using SSL, check this box if you want to check the certificate expiration. You will be warn when last 10 days left."
-msgstr "Αν χρησιμοποιείτε SSL, επιλέξτε αυτό το πλαίσιο εάν θέλετε να επικυρώσετε το πιστοποιητικό. Η προεπιλογή είναι ενεργοποιημένη, απενεργοποιήστε εάν ο ιστότοπος χρησιμοποιεί πιστοποιητικό που έχει υπογράψει αυτόματα."
+msgstr ""
+"Αν χρησιμοποιείτε SSL, επιλέξτε αυτό το πλαίσιο εάν θέλετε να επικυρώσετε το "
+"πιστοποιητικό. Η προεπιλογή είναι ενεργοποιημένη, απενεργοποιήστε εάν ο "
+"ιστότοπος χρησιμοποιεί πιστοποιητικό που έχει υπογράψει αυτόματα."
 
 #: includes/arrays.php:441
 #, fuzzy
@@ -594,7 +623,11 @@ msgstr "Ενεργοποίηση"
 #: includes/arrays.php:456
 #, fuzzy
 msgid "How many poller cycles must be down before it will send an alert. After an alert is sent, in order for a 'Site Recovering' Email to be send, it must also be up this number of poller cycles."
-msgstr "Πόσες φορές η διεύθυνση URL πρέπει να βρίσκεται κάτω, πριν να στείλει μια ειδοποίηση. Μετά την αποστολή μιας ειδοποίησης, για να στείλετε ένα μήνυμα ηλεκτρονικού ταχυδρομείου \"Ανάκτηση ιστότοπου\", πρέπει επίσης να είναι αυτός ο αριθμός των λεπτών."
+msgstr ""
+"Πόσες φορές η διεύθυνση URL πρέπει να βρίσκεται κάτω, πριν να στείλει μια "
+"ειδοποίηση. Μετά την αποστολή μιας ειδοποίησης, για να στείλετε ένα μήνυμα "
+"ηλεκτρονικού ταχυδρομείου \"Ανάκτηση ιστότοπου\", πρέπει επίσης να είναι "
+"αυτός ο αριθμός των λεπτών."
 
 #: includes/arrays.php:460
 #, fuzzy
@@ -604,7 +637,9 @@ msgstr "Τέλος χρόνου"
 #: includes/arrays.php:464
 #, fuzzy
 msgid "How many seconds to allow the page to timeout before reporting it as down."
-msgstr "Πόσες δευτερόλεπτα επιτρέπετε στη σελίδα να λήξει χρονικό όριο πριν την αναγγελία της ως κάτω."
+msgstr ""
+"Πόσες δευτερόλεπτα επιτρέπετε στη σελίδα να λήξει χρονικό όριο πριν την "
+"αναγγελία της ως κάτω."
 
 #: includes/arrays.php:469
 #, fuzzy
@@ -619,7 +654,9 @@ msgstr "Ακολουθία αναζήτησης"
 #: includes/arrays.php:474
 #, fuzzy
 msgid "This is the string to search for in the response for a live and working service."
-msgstr "Αυτή είναι η συμβολοσειρά που αναζητά στην απάντηση URL για μια υπηρεσία Web Live και Work."
+msgstr ""
+"Αυτή είναι η συμβολοσειρά που αναζητά στην απάντηση URL για μια υπηρεσία Web "
+"Live και Work."
 
 #: includes/arrays.php:481
 #, fuzzy
@@ -629,7 +666,11 @@ msgstr "Σειρά αναζήτησης απόκρισης - Σελίδα συν
 #: includes/arrays.php:482
 #, fuzzy
 msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
-msgstr "Αυτή είναι η συμβολοσειρά που θέλετε να αναζητήσετε στη σελίδα συντήρησης. Ο έλεγχος υπηρεσίας θα ελέγξει για αυτήν την συμβολοσειρά αν δεν βρέθηκε η παραπάνω συμβολοσειρά. Αν βρεθεί, σημαίνει ότι η υπηρεσία Web βρίσκεται υπό συντήρηση."
+msgstr ""
+"Αυτή είναι η συμβολοσειρά που θέλετε να αναζητήσετε στη σελίδα συντήρησης. Ο "
+"έλεγχος υπηρεσίας θα ελέγξει για αυτήν την συμβολοσειρά αν δεν βρέθηκε η "
+"παραπάνω συμβολοσειρά. Αν βρεθεί, σημαίνει ότι η υπηρεσία Web βρίσκεται υπό "
+"συντήρηση."
 
 #: includes/arrays.php:489
 #, fuzzy
@@ -639,7 +680,11 @@ msgstr "Επαναληπτική αναζήτηση - Αποτυχία"
 #: includes/arrays.php:490
 #, fuzzy
 msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
-msgstr "Αυτή είναι η συμβολοσειρά για να αναζητήσετε μια γνωστή αποτυχία στην απάντηση υπηρεσίας Web. Ο έλεγχος υπηρεσίας θα ειδοποιεί μόνο εάν αυτή η συμβολοσειρά βρίσκεται, αγνοώντας τυχόν προβλήματα χρονικού ορίου και τις παραπάνω συμβολοσειρές αναζήτησης."
+msgstr ""
+"Αυτή είναι η συμβολοσειρά για να αναζητήσετε μια γνωστή αποτυχία στην "
+"απάντηση υπηρεσίας Web. Ο έλεγχος υπηρεσίας θα ειδοποιεί μόνο εάν αυτή η "
+"συμβολοσειρά βρίσκεται, αγνοώντας τυχόν προβλήματα χρονικού ορίου και τις "
+"παραπάνω συμβολοσειρές αναζήτησης."
 
 #: includes/arrays.php:497
 msgid "Notification Settings"
@@ -653,7 +698,9 @@ msgstr "Ειδοποιήστε τους λογαριασμούς"
 #: includes/arrays.php:502
 #, fuzzy
 msgid "This is the format to use when sending the notification email"
-msgstr "Αυτή είναι η μορφή που πρέπει να χρησιμοποιείτε κατά την αποστολή του email ειδοποίησης"
+msgstr ""
+"Αυτή είναι η μορφή που πρέπει να χρησιμοποιείτε κατά την αποστολή του email "
+"ειδοποίησης"
 
 #: includes/arrays.php:507
 #, fuzzy
@@ -663,7 +710,9 @@ msgstr "Ρυθμίσεις ειδοποιήσεων"
 #: includes/arrays.php:509
 #, fuzzy
 msgid "Use this Notification List for those to be notified when this service goes down."
-msgstr "Πρόκειται για μια λίστα λογαριασμών που θα ειδοποιούνται όταν ο ιστότοπος αυτός κατεβαίνει."
+msgstr ""
+"Πρόκειται για μια λίστα λογαριασμών που θα ειδοποιούνται όταν ο ιστότοπος "
+"αυτός κατεβαίνει."
 
 #: includes/arrays.php:515
 #, fuzzy
@@ -673,7 +722,9 @@ msgstr "Ειδοποιήστε τους λογαριασμούς"
 #: includes/arrays.php:517
 #, fuzzy
 msgid "This is a listing of accounts that will be notified when this service goes down."
-msgstr "Πρόκειται για μια λίστα λογαριασμών που θα ειδοποιούνται όταν ο ιστότοπος αυτός κατεβαίνει."
+msgstr ""
+"Πρόκειται για μια λίστα λογαριασμών που θα ειδοποιούνται όταν ο ιστότοπος "
+"αυτός κατεβαίνει."
 
 #: includes/arrays.php:522
 #, fuzzy
@@ -683,7 +734,9 @@ msgstr "Ειδοποιήσεις με επιπλέον ειδοποιήσεις"
 #: includes/arrays.php:526
 #, fuzzy
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
-msgstr "Μπορείτε να ορίσετε επιπλέον μηνύματα ηλεκτρονικού ταχυδρομείου για να λαμβάνετε ειδοποιήσεις για αυτήν τη διεύθυνση URL (διαχωρισμένα με κόμμα)"
+msgstr ""
+"Μπορείτε να ορίσετε επιπλέον μηνύματα ηλεκτρονικού ταχυδρομείου για να "
+"λαμβάνετε ειδοποιήσεις για αυτήν τη διεύθυνση URL (διαχωρισμένα με κόμμα)"
 
 #: includes/arrays.php:530
 msgid "Notes"
@@ -707,11 +760,19 @@ msgstr "Όλα καλά. Προχωρήστε ως συνήθως."
 
 #: includes/arrays.php:559
 msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
-msgstr "Η διεύθυνση URL που μεταβιβάσατε στο libcurl χρησιμοποίησε ένα πρωτόκολλο που δεν υποστηρίζει αυτό το libcurl. Η υποστήριξη μπορεί να είναι μια επιλογή χρόνου μεταγλώττισης που δεν χρησιμοποιήσατε, μπορεί να είναι μια συμβολοσειρά πρωτοκόλλου με ορθογραφικά λάθη ή απλώς ένα πρωτόκολλο libcurl δεν έχει κώδικα."
+msgstr ""
+"Η διεύθυνση URL που μεταβιβάσατε στο libcurl χρησιμοποίησε ένα πρωτόκολλο "
+"που δεν υποστηρίζει αυτό το libcurl. Η υποστήριξη μπορεί να είναι μια "
+"επιλογή χρόνου μεταγλώττισης που δεν χρησιμοποιήσατε, μπορεί να είναι μια "
+"συμβολοσειρά πρωτοκόλλου με ορθογραφικά λάθη ή απλώς ένα πρωτόκολλο libcurl "
+"δεν έχει κώδικα."
 
 #: includes/arrays.php:563
 msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
-msgstr "Ο κωδικός πρώιμης προετοιμασίας απέτυχε. Αυτό είναι πιθανό να είναι ένα εσωτερικό σφάλμα ή πρόβλημα, ή ένα πρόβλημα πόρων όπου κάτι θεμελιώδες δεν θα μπορούσε να γίνει εκείνη τη στιγμή."
+msgstr ""
+"Ο κωδικός πρώιμης προετοιμασίας απέτυχε. Αυτό είναι πιθανό να είναι ένα "
+"εσωτερικό σφάλμα ή πρόβλημα, ή ένα πρόβλημα πόρων όπου κάτι θεμελιώδες δεν "
+"θα μπορούσε να γίνει εκείνη τη στιγμή."
 
 #: includes/arrays.php:567
 msgid "The URL was not properly formatted."
@@ -719,67 +780,111 @@ msgstr "Η διεύθυνση URL δεν μορφοποιήθηκε σωστά."
 
 #: includes/arrays.php:571
 msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
-msgstr "Ένα ζητούμενο χαρακτηριστικό, πρωτόκολλο ή επιλογή δεν βρέθηκε ενσωματωμένο σε αυτό το libcurl λόγω απόφασης χρόνου κατασκευής. Αυτό σημαίνει ότι μια δυνατότητα ή επιλογή δεν ενεργοποιήθηκε ή απενεργοποιήθηκε ρητά όταν δημιουργήθηκε το libcurl και για να λειτουργήσει πρέπει να αποκτήσετε ένα ανακατασκευασμένο libcurl."
+msgstr ""
+"Ένα ζητούμενο χαρακτηριστικό, πρωτόκολλο ή επιλογή δεν βρέθηκε ενσωματωμένο "
+"σε αυτό το libcurl λόγω απόφασης χρόνου κατασκευής. Αυτό σημαίνει ότι μια "
+"δυνατότητα ή επιλογή δεν ενεργοποιήθηκε ή απενεργοποιήθηκε ρητά όταν "
+"δημιουργήθηκε το libcurl και για να λειτουργήσει πρέπει να αποκτήσετε ένα "
+"ανακατασκευασμένο libcurl."
 
 #: includes/arrays.php:575
 msgid "Could not resolve proxy. The given proxy host could not be resolved."
-msgstr "Δεν ήταν δυνατή η επίλυση του διακομιστή μεσολάβησης. Δεν ήταν δυνατή η επίλυση του κεντρικού υπολογιστή διακομιστή μεσολάβησης."
+msgstr ""
+"Δεν ήταν δυνατή η επίλυση του διακομιστή μεσολάβησης. Δεν ήταν δυνατή η "
+"επίλυση του κεντρικού υπολογιστή διακομιστή μεσολάβησης."
 
 #: includes/arrays.php:579
 msgid "Could not resolve host. The given remote host was not resolved."
-msgstr "Δεν ήταν δυνατή η επίλυση του κεντρικού υπολογιστή. Ο συγκεκριμένος απομακρυσμένος κεντρικός υπολογιστής δεν επιλύθηκε."
+msgstr ""
+"Δεν ήταν δυνατή η επίλυση του κεντρικού υπολογιστή. Ο συγκεκριμένος "
+"απομακρυσμένος κεντρικός υπολογιστής δεν επιλύθηκε."
 
 #: includes/arrays.php:583
 msgid "Failed to connect() to host or proxy."
-msgstr "Αποτυχία σύνδεσης() στον κεντρικό υπολογιστή ή στο διακομιστή μεσολάβησης."
+msgstr ""
+"Αποτυχία σύνδεσης() στον κεντρικό υπολογιστή ή στο διακομιστή μεσολάβησης."
 
 #: includes/arrays.php:587
 msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
-msgstr "Ο διακομιστής έστειλε δεδομένα libcurl δεν ήταν δυνατή η ανάλυση. Αυτός ο κωδικός σφάλματος ήταν γνωστός ως CURLE_FTP_WEIRD_SERVER_REPLY πριν από την έκδοση 7.51.0."
+msgstr ""
+"Ο διακομιστής έστειλε δεδομένα libcurl δεν ήταν δυνατή η ανάλυση. Αυτός ο "
+"κωδικός σφάλματος ήταν γνωστός ως CURLE_FTP_WEIRD_SERVER_REPLY πριν από την "
+"έκδοση 7.51.0."
 
 #: includes/arrays.php:591
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
-msgstr "Δεν μας επιτράπηκε η πρόσβαση στον πόρο που δίνεται στη διεύθυνση URL. Για το FTP, αυτό συμβαίνει κατά την προσπάθεια αλλαγής στον απομακρυσμένο κατάλογο."
+msgstr ""
+"Δεν μας επιτράπηκε η πρόσβαση στον πόρο που δίνεται στη διεύθυνση URL. Για "
+"το FTP, αυτό συμβαίνει κατά την προσπάθεια αλλαγής στον απομακρυσμένο "
+"κατάλογο."
 
 #: includes/arrays.php:595
 msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
-msgstr "Ενώ περιμένατε να συνδεθεί ξανά ο διακομιστής όταν χρησιμοποιείται μια ενεργή συνεδρία FTP, στάλθηκε ένας κωδικός σφάλματος μέσω της σύνδεσης ελέγχου ή παρόμοιου."
+msgstr ""
+"Ενώ περιμένατε να συνδεθεί ξανά ο διακομιστής όταν χρησιμοποιείται μια "
+"ενεργή συνεδρία FTP, στάλθηκε ένας κωδικός σφάλματος μέσω της σύνδεσης "
+"ελέγχου ή παρόμοιου."
 
 #: includes/arrays.php:599
 msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
-msgstr "Αφού στείλει τον κωδικό πρόσβασης FTP στο διακομιστή, το libcurl αναμένει μια σωστή απάντηση. Αυτός ο κωδικός σφάλματος υποδεικνύει ότι επιστράφηκε μη αναμενόμενος κωδικός."
+msgstr ""
+"Αφού στείλει τον κωδικό πρόσβασης FTP στο διακομιστή, το libcurl αναμένει "
+"μια σωστή απάντηση. Αυτός ο κωδικός σφάλματος υποδεικνύει ότι επιστράφηκε μη "
+"αναμενόμενος κωδικός."
 
 #: includes/arrays.php:603
 msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
-msgstr "Κατά τη διάρκεια μιας ενεργής περιόδου λειτουργίας FTP ενώ περιμένατε να συνδεθεί ο διακομιστής, έληξε το χρονικό όριο CURLOPT_ACCEPTTIMEOUT_MS (ή η εσωτερική προεπιλογή)."
+msgstr ""
+"Κατά τη διάρκεια μιας ενεργής περιόδου λειτουργίας FTP ενώ περιμένατε να "
+"συνδεθεί ο διακομιστής, έληξε το χρονικό όριο CURLOPT_ACCEPTTIMEOUT_MS (ή η "
+"εσωτερική προεπιλογή)."
 
 #: includes/arrays.php:607
 msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
-msgstr "Το Libcurl απέτυχε να πάρει πίσω ένα λογικό αποτέλεσμα από τον διακομιστή ως απάντηση είτε σε μια εντολή PASV είτε σε μια εντολή EPSV. Ο διακομιστής είναι ελαττωματικός."
+msgstr ""
+"Το Libcurl απέτυχε να πάρει πίσω ένα λογικό αποτέλεσμα από τον διακομιστή ως "
+"απάντηση είτε σε μια εντολή PASV είτε σε μια εντολή EPSV. Ο διακομιστής "
+"είναι ελαττωματικός."
 
 #: includes/arrays.php:611
 msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
-msgstr "Οι διακομιστές FTP επιστρέφουν μια γραμμή 227 ως απόκριση σε μια εντολή PASV. Εάν το libcurl αποτύχει να αναλύσει αυτήν τη γραμμή, αυτός ο κωδικός επιστροφής μεταβιβάζεται ξανά."
+msgstr ""
+"Οι διακομιστές FTP επιστρέφουν μια γραμμή 227 ως απόκριση σε μια εντολή "
+"PASV. Εάν το libcurl αποτύχει να αναλύσει αυτήν τη γραμμή, αυτός ο κωδικός "
+"επιστροφής μεταβιβάζεται ξανά."
 
 #: includes/arrays.php:615
 msgid "An internal failure to lookup the host used for the new connection."
-msgstr "Μια εσωτερική αποτυχία αναζήτησης του κεντρικού υπολογιστή που χρησιμοποιείται για τη νέα σύνδεση."
+msgstr ""
+"Μια εσωτερική αποτυχία αναζήτησης του κεντρικού υπολογιστή που "
+"χρησιμοποιείται για τη νέα σύνδεση."
 
 #: includes/arrays.php:619
 msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr "Εντοπίστηκε πρόβλημα στο επίπεδο πλαισίωσης HTTP2. Αυτό είναι κάπως γενικό και μπορεί να είναι ένα από τα πολλά προβλήματα, δείτε το buffer σφάλματος για λεπτομέρειες."
+msgstr ""
+"Εντοπίστηκε πρόβλημα στο επίπεδο πλαισίωσης HTTP2. Αυτό είναι κάπως γενικό "
+"και μπορεί να είναι ένα από τα πολλά προβλήματα, δείτε το buffer σφάλματος "
+"για λεπτομέρειες."
 
 #: includes/arrays.php:623
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
-msgstr "Παρουσιάστηκε σφάλμα κατά την προσπάθεια ρύθμισης της λειτουργίας μεταφοράς σε δυαδικό ή ASCII."
+msgstr ""
+"Παρουσιάστηκε σφάλμα κατά την προσπάθεια ρύθμισης της λειτουργίας μεταφοράς "
+"σε δυαδικό ή ASCII."
 
 #: includes/arrays.php:627
 msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
-msgstr "Η μεταφορά αρχείων ήταν μικρότερη ή μεγαλύτερη από την αναμενόμενη. Αυτό συμβαίνει όταν ο διακομιστής αναφέρει πρώτα ένα αναμενόμενο μέγεθος μεταφοράς και, στη συνέχεια, παρέχει δεδομένα που δεν ταιριάζουν με το μέγεθος που δόθηκε προηγουμένως."
+msgstr ""
+"Η μεταφορά αρχείων ήταν μικρότερη ή μεγαλύτερη από την αναμενόμενη. Αυτό "
+"συμβαίνει όταν ο διακομιστής αναφέρει πρώτα ένα αναμενόμενο μέγεθος "
+"μεταφοράς και, στη συνέχεια, παρέχει δεδομένα που δεν ταιριάζουν με το "
+"μέγεθος που δόθηκε προηγουμένως."
 
 #: includes/arrays.php:631
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
-msgstr "Αυτή ήταν είτε μια περίεργη απάντηση σε μια εντολή 'RETR' είτε μια πλήρης μεταφορά μηδενικών byte."
+msgstr ""
+"Αυτή ήταν είτε μια περίεργη απάντηση σε μια εντολή 'RETR' είτε μια πλήρης "
+"μεταφορά μηδενικών byte."
 
 #: includes/arrays.php:634 includes/arrays.php:650 includes/arrays.php:670
 #: includes/arrays.php:682 includes/arrays.php:714 includes/arrays.php:730
@@ -799,39 +904,61 @@ msgstr "Δεν χρησιμοποιείται σε σύγχρονες εκδόσ
 
 #: includes/arrays.php:639
 msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
-msgstr "Κατά την αποστολή προσαρμοσμένων εντολών \"QUOTE\" στον απομακρυσμένο διακομιστή, μία από τις εντολές επέστρεψε έναν κωδικό σφάλματος που ήταν 400 ή υψηλότερος (για FTP) ή με άλλο τρόπο υποδείκνυε ανεπιτυχή ολοκλήρωση της εντολής."
+msgstr ""
+"Κατά την αποστολή προσαρμοσμένων εντολών \"QUOTE\" στον απομακρυσμένο "
+"διακομιστή, μία από τις εντολές επέστρεψε έναν κωδικό σφάλματος που ήταν 400 "
+"ή υψηλότερος (για FTP) ή με άλλο τρόπο υποδείκνυε ανεπιτυχή ολοκλήρωση της "
+"εντολής."
 
 #: includes/arrays.php:643
 msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
-msgstr "Αυτό επιστρέφεται εάν CURLOPT_FAILONERROR έχει οριστεί true και ο διακομιστής HTTP επιστρέφει έναν κωδικό σφάλματος που είναι >= 400."
+msgstr ""
+"Αυτό επιστρέφεται εάν CURLOPT_FAILONERROR έχει οριστεί true και ο "
+"διακομιστής HTTP επιστρέφει έναν κωδικό σφάλματος που είναι >= 400."
 
 #: includes/arrays.php:647
 msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
-msgstr "Παρουσιάστηκε σφάλμα κατά την εγγραφή ληφθέντων δεδομένων σε ένα τοπικό αρχείο ή επιστράφηκε σφάλμα στο libcurl από μια επιστροφή κλήσης εγγραφής."
+msgstr ""
+"Παρουσιάστηκε σφάλμα κατά την εγγραφή ληφθέντων δεδομένων σε ένα τοπικό "
+"αρχείο ή επιστράφηκε σφάλμα στο libcurl από μια επιστροφή κλήσης εγγραφής."
 
 #: includes/arrays.php:655
 msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
-msgstr "Αποτυχία εκκίνησης της αποστολής. Για το FTP, ο διακομιστής συνήθως αρνήθηκε την εντολή STOR. Το buffer σφάλματος συνήθως περιέχει την εξήγηση του διακομιστή για αυτό."
+msgstr ""
+"Αποτυχία εκκίνησης της αποστολής. Για το FTP, ο διακομιστής συνήθως αρνήθηκε "
+"την εντολή STOR. Το buffer σφάλματος συνήθως περιέχει την εξήγηση του "
+"διακομιστή για αυτό."
 
 #: includes/arrays.php:659
 msgid "There was a problem reading a local file or an error returned by the read callback."
-msgstr "Παρουσιάστηκε πρόβλημα κατά την ανάγνωση ενός τοπικού αρχείου ή ένα σφάλμα που επιστράφηκε από την επιστροφή κλήσης ανάγνωσης."
+msgstr ""
+"Παρουσιάστηκε πρόβλημα κατά την ανάγνωση ενός τοπικού αρχείου ή ένα σφάλμα "
+"που επιστράφηκε από την επιστροφή κλήσης ανάγνωσης."
 
 #: includes/arrays.php:663
 msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
-msgstr "Απέτυχε μια αίτηση εκχώρησης μνήμης. Αυτό είναι σοβαρή κακία και τα πράγματα είναι σοβαρά χαλασμένα αν συμβεί ποτέ."
+msgstr ""
+"Απέτυχε μια αίτηση εκχώρησης μνήμης. Αυτό είναι σοβαρή κακία και τα πράγματα "
+"είναι σοβαρά χαλασμένα αν συμβεί ποτέ."
 
 #: includes/arrays.php:667
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
-msgstr "Λήξη χρονικού ορίου λειτουργίας. Το καθορισμένο χρονικό όριο συμπληρώθηκε σύμφωνα με τους όρους."
+msgstr ""
+"Λήξη χρονικού ορίου λειτουργίας. Το καθορισμένο χρονικό όριο συμπληρώθηκε "
+"σύμφωνα με τους όρους."
 
 #: includes/arrays.php:675
 msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
-msgstr "Η εντολή FTP PORT επέστρεψε σφάλμα. Αυτό συμβαίνει κυρίως όταν δεν έχετε καθορίσει μια αρκετά καλή διεύθυνση για χρήση από το libcurl. Βλέπε CURLOPT_FTPPORT."
+msgstr ""
+"Η εντολή FTP PORT επέστρεψε σφάλμα. Αυτό συμβαίνει κυρίως όταν δεν έχετε "
+"καθορίσει μια αρκετά καλή διεύθυνση για χρήση από το libcurl. Βλέπε "
+"CURLOPT_FTPPORT."
 
 #: includes/arrays.php:679
 msgid "The FTP REST command returned error. This should never happen if the server is sane."
-msgstr "Η εντολή FTP REST επέστρεψε σφάλμα. Αυτό δεν πρέπει ποτέ να συμβεί εάν ο διακομιστής είναι υγιής."
+msgstr ""
+"Η εντολή FTP REST επέστρεψε σφάλμα. Αυτό δεν πρέπει ποτέ να συμβεί εάν ο "
+"διακομιστής είναι υγιής."
 
 #: includes/arrays.php:687
 msgid "The server does not support or accept range requests."
@@ -839,19 +966,29 @@ msgstr "Ο διακομιστής δεν υποστηρίζει ούτε δέχ�
 
 #: includes/arrays.php:691
 msgid "This is an odd error that mainly occurs due to internal confusion."
-msgstr "Αυτό είναι ένα περίεργο σφάλμα που συμβαίνει κυρίως λόγω εσωτερικής σύγχυσης."
+msgstr ""
+"Αυτό είναι ένα περίεργο σφάλμα που συμβαίνει κυρίως λόγω εσωτερικής σύγχυσης."
 
 #: includes/arrays.php:695
 msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
-msgstr "Παρουσιάστηκε πρόβλημα κάπου στη χειραψία SSL/TLS. Θέλετε πραγματικά το buffer σφάλματος και διαβάστε το μήνυμα εκεί καθώς εντοπίζει το πρόβλημα λίγο περισσότερο. Θα μπορούσαν να είναι πιστοποιητικά (μορφές αρχείων, διαδρομές, δικαιώματα), κωδικοί πρόσβασης και άλλα."
+msgstr ""
+"Παρουσιάστηκε πρόβλημα κάπου στη χειραψία SSL/TLS. Θέλετε πραγματικά το "
+"buffer σφάλματος και διαβάστε το μήνυμα εκεί καθώς εντοπίζει το πρόβλημα "
+"λίγο περισσότερο. Θα μπορούσαν να είναι πιστοποιητικά (μορφές αρχείων, "
+"διαδρομές, δικαιώματα), κωδικοί πρόσβασης και άλλα."
 
 #: includes/arrays.php:699
 msgid "The download could not be resumed because the specified offset was out of the file boundary."
-msgstr "Δεν ήταν δυνατή η συνέχιση της λήψης, επειδή η καθορισμένη μετατόπιση ήταν εκτός του ορίου του αρχείου."
+msgstr ""
+"Δεν ήταν δυνατή η συνέχιση της λήψης, επειδή η καθορισμένη μετατόπιση ήταν "
+"εκτός του ορίου του αρχείου."
 
 #: includes/arrays.php:703
 msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
-msgstr "Δεν ήταν δυνατό το άνοιγμα ενός αρχείου που δόθηκε με FILE://. Πιθανότατα επειδή η διαδρομή αρχείου δεν προσδιορίζει ένα υπάρχον αρχείο. Ελέγξατε τα δικαιώματα αρχείων;"
+msgstr ""
+"Δεν ήταν δυνατό το άνοιγμα ενός αρχείου που δόθηκε με FILE://. Πιθανότατα "
+"επειδή η διαδρομή αρχείου δεν προσδιορίζει ένα υπάρχον αρχείο. Ελέγξατε τα "
+"δικαιώματα αρχείων;"
 
 #: includes/arrays.php:707
 msgid "LDAP cannot bind. LDAP bind operation failed."
@@ -868,7 +1005,9 @@ msgstr "Η λειτουργία δεν βρέθηκε. Δεν βρέθηκε μ�
 
 #: includes/arrays.php:723
 msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
-msgstr "Ματαιώθηκε από την επανάκληση. Μια επανάκληση επέστρεψε \"ματαίωση\" στο libcurl."
+msgstr ""
+"Ματαιώθηκε από την επανάκληση. Μια επανάκληση επέστρεψε \"ματαίωση\" στο "
+"libcurl."
 
 #: includes/arrays.php:727
 msgid "A function was called with a bad parameter."
@@ -876,23 +1015,37 @@ msgstr "Μια συνάρτηση κλήθηκε με μια κακή παράμ
 
 #: includes/arrays.php:735
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
-msgstr "Σφάλμα διεπαφής. Δεν ήταν δυνατή η χρήση καθορισμένης εξερχόμενης διασύνδεσης. Ορίστε ποια διεπαφή θα χρησιμοποιηθεί για τη διεύθυνση IP προέλευσης των εξερχόμενων συνδέσεων με URLOPT_INTERFACE."
+msgstr ""
+"Σφάλμα διεπαφής. Δεν ήταν δυνατή η χρήση καθορισμένης εξερχόμενης "
+"διασύνδεσης. Ορίστε ποια διεπαφή θα χρησιμοποιηθεί για τη διεύθυνση IP "
+"προέλευσης των εξερχόμενων συνδέσεων με URLOPT_INTERFACE."
 
 #: includes/arrays.php:743
 msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
-msgstr "Πάρα πολλές ανακατευθύνσεις. Όταν ακολουθείτε ανακατευθύνσεις, το libcurl έφτασε στο μέγιστο ποσό. Ορίστε το όριό σας με CURLOPT_MAXREDIRS."
+msgstr ""
+"Πάρα πολλές ανακατευθύνσεις. Όταν ακολουθείτε ανακατευθύνσεις, το libcurl "
+"έφτασε στο μέγιστο ποσό. Ορίστε το όριό σας με CURLOPT_MAXREDIRS."
 
 #: includes/arrays.php:747
 msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
-msgstr "Μια επιλογή που μεταβιβάζεται στο libcurl δεν αναγνωρίζεται/είναι γνωστή. Ανατρέξτε στην κατάλληλη τεκμηρίωση. Αυτό είναι πιθανότατα ένα πρόβλημα στο πρόγραμμα που χρησιμοποιεί libcurl. Το buffer σφάλματος ενδέχεται να περιέχει πιο συγκεκριμένες πληροφορίες σχετικά με την ακριβή επιλογή που αφορά."
+msgstr ""
+"Μια επιλογή που μεταβιβάζεται στο libcurl δεν αναγνωρίζεται/είναι γνωστή. "
+"Ανατρέξτε στην κατάλληλη τεκμηρίωση. Αυτό είναι πιθανότατα ένα πρόβλημα στο "
+"πρόγραμμα που χρησιμοποιεί libcurl. Το buffer σφάλματος ενδέχεται να "
+"περιέχει πιο συγκεκριμένες πληροφορίες σχετικά με την ακριβή επιλογή που "
+"αφορά."
 
 #: includes/arrays.php:751
 msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
-msgstr "Μια επιλογή που μεταβιβάστηκε σε ένα setopt μορφοποιήθηκε λανθασμένα. Ανατρέξτε στο μήνυμα σφάλματος για λεπτομέρειες σχετικά με την επιλογή."
+msgstr ""
+"Μια επιλογή που μεταβιβάστηκε σε ένα setopt μορφοποιήθηκε λανθασμένα. "
+"Ανατρέξτε στο μήνυμα σφάλματος για λεπτομέρειες σχετικά με την επιλογή."
 
 #: includes/arrays.php:763
 msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
-msgstr "Τίποτα δεν επιστράφηκε από το διακομιστή και υπό αυτές τις συνθήκες, η λήψη τίποτα θεωρείται σφάλμα."
+msgstr ""
+"Τίποτα δεν επιστράφηκε από το διακομιστή και υπό αυτές τις συνθήκες, η λήψη "
+"τίποτα θεωρείται σφάλμα."
 
 #: includes/arrays.php:767
 msgid "The specified crypto engine was not found."
@@ -900,7 +1053,8 @@ msgstr "Η καθορισμένη μηχανή κρυπτογράφησης δε
 
 #: includes/arrays.php:771
 msgid "Failed setting the selected SSL crypto engine as default."
-msgstr "Αποτυχία ρύθμισης της επιλεγμένης μηχανής κρυπτογράφησης SSL ως προεπιλογής."
+msgstr ""
+"Αποτυχία ρύθμισης της επιλεγμένης μηχανής κρυπτογράφησης SSL ως προεπιλογής."
 
 #: includes/arrays.php:775
 msgid "Failed sending network data."
@@ -920,7 +1074,11 @@ msgstr "Δεν ήταν δυνατή η χρήση καθορισμένου κρ
 
 #: includes/arrays.php:795
 msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
-msgstr "Το πιστοποιητικό SSL ή το δακτυλικό αποτύπωμα SSH του απομακρυσμένου διακομιστή κρίθηκε ότι δεν ήταν εντάξει. Αυτός ο κωδικός σφάλματος έχει ενοποιηθεί με CURLE_SSL_CACERT από την έκδοση 7.62.0. Η προηγούμενη τιμή του ήταν 51."
+msgstr ""
+"Το πιστοποιητικό SSL ή το δακτυλικό αποτύπωμα SSH του απομακρυσμένου "
+"διακομιστή κρίθηκε ότι δεν ήταν εντάξει. Αυτός ο κωδικός σφάλματος έχει "
+"ενοποιηθεί με CURLE_SSL_CACERT από την έκδοση 7.62.0. Η προηγούμενη τιμή του "
+"ήταν 51."
 
 #: includes/arrays.php:799
 msgid "Unrecognized transfer encoding."
@@ -936,7 +1094,9 @@ msgstr "Το επίπεδο SSL FTP που ζητήθηκε απέτυχε."
 
 #: includes/arrays.php:815
 msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
-msgstr "Κατά την εκτέλεση μιας λειτουργίας αποστολής, η μπούκλα έπρεπε να επαναφέρει τα δεδομένα για αναμετάδοση, αλλά η λειτουργία επανατύλιξης απέτυχε."
+msgstr ""
+"Κατά την εκτέλεση μιας λειτουργίας αποστολής, η μπούκλα έπρεπε να επαναφέρει "
+"τα δεδομένα για αναμετάδοση, αλλά η λειτουργία επανατύλιξης απέτυχε."
 
 #: includes/arrays.php:819
 msgid "Initiating the SSL Engine failed."
@@ -944,7 +1104,9 @@ msgstr "Η εκκίνηση του μηχανισμού SSL απέτυχε."
 
 #: includes/arrays.php:823
 msgid "The remote server denied curl to login (Added in 7.13.1)"
-msgstr "Ο απομακρυσμένος διακομιστής αρνήθηκε την μπούκλα για σύνδεση (Προστέθηκε στο 7.13.1)"
+msgstr ""
+"Ο απομακρυσμένος διακομιστής αρνήθηκε την μπούκλα για σύνδεση (Προστέθηκε "
+"στο 7.13.1)"
 
 #: includes/arrays.php:827
 msgid "File not found on TFTP server."
@@ -972,11 +1134,15 @@ msgstr "Το αρχείο υπάρχει ήδη και δεν αντικαθίσ
 
 #: includes/arrays.php:851
 msgid "This error should never be returned by a properly functioning TFTP server."
-msgstr "Αυτό το σφάλμα δεν πρέπει ποτέ να επιστρέφεται από έναν εξυπηρετητή TFTP που λειτουργεί σωστά."
+msgstr ""
+"Αυτό το σφάλμα δεν πρέπει ποτέ να επιστρέφεται από έναν εξυπηρετητή TFTP που "
+"λειτουργεί σωστά."
 
 #: includes/arrays.php:863
 msgid "Problem with reading the SSL CA cert (path? access rights?)"
-msgstr "Πρόβλημα με την ανάγνωση του πιστοποιητικού SSL CA (διαδρομή; δικαιώματα πρόσβασης;)"
+msgstr ""
+"Πρόβλημα με την ανάγνωση του πιστοποιητικού SSL CA (διαδρομή; δικαιώματα "
+"πρόσβασης;)"
 
 #: includes/arrays.php:867
 msgid "The resource referenced in the URL does not exist."
@@ -984,7 +1150,9 @@ msgstr "Ο πόρος που αναφέρεται στη διεύθυνση URL 
 
 #: includes/arrays.php:871
 msgid "An unspecified error occurred during the SSH session."
-msgstr "Παρουσιάστηκε ένα απροσδιόριστο σφάλμα κατά τη διάρκεια της περιόδου λειτουργίας SSH."
+msgstr ""
+"Παρουσιάστηκε ένα απροσδιόριστο σφάλμα κατά τη διάρκεια της περιόδου "
+"λειτουργίας SSH."
 
 #: includes/arrays.php:875
 msgid "Failed to shut down the SSL connection."
@@ -992,7 +1160,10 @@ msgstr "Αποτυχία τερματισμού της σύνδεσης SSL."
 
 #: includes/arrays.php:879
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
-msgstr "Η υποδοχή δεν είναι έτοιμη για αποστολή/λήψη, περιμένετε μέχρι να είναι έτοιμη και προσπαθήστε ξανά. Αυτός ο κωδικός επιστροφής επιστρέφεται μόνο από curl_easy_recv και curl_easy_send (Προστέθηκε στο 7.18.2)"
+msgstr ""
+"Η υποδοχή δεν είναι έτοιμη για αποστολή/λήψη, περιμένετε μέχρι να είναι "
+"έτοιμη και προσπαθήστε ξανά. Αυτός ο κωδικός επιστροφής επιστρέφεται μόνο "
+"από curl_easy_recv και curl_easy_send (Προστέθηκε στο 7.18.2)"
 
 #: includes/arrays.php:883
 msgid "Failed to load CRL file (Added in 7.19.0)"
@@ -1004,7 +1175,11 @@ msgstr "Ο έλεγχος εκδότη απέτυχε (προστέθηκε στ
 
 #: includes/arrays.php:891
 msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
-msgstr "Ο διακομιστής FTP δεν κατανοεί καθόλου την εντολή PRET ή δεν υποστηρίζει το συγκεκριμένο όρισμα. Να είστε προσεκτικοί όταν χρησιμοποιείτε CURLOPT_CUSTOMREQUEST, μια προσαρμοσμένη εντολή LIST αποστέλλεται με την εντολή PRET πριν από το PASV επίσης. (Προστέθηκε στο 7.20.0)"
+msgstr ""
+"Ο διακομιστής FTP δεν κατανοεί καθόλου την εντολή PRET ή δεν υποστηρίζει το "
+"συγκεκριμένο όρισμα. Να είστε προσεκτικοί όταν χρησιμοποιείτε "
+"CURLOPT_CUSTOMREQUEST, μια προσαρμοσμένη εντολή LIST αποστέλλεται με την "
+"εντολή PRET πριν από το PASV επίσης. (Προστέθηκε στο 7.20.0)"
 
 #: includes/arrays.php:895
 msgid "Mismatch of RTSP CSeq numbers."
@@ -1016,7 +1191,9 @@ msgstr "Ασυμφωνία αναγνωριστικών περιόδου λει�
 
 #: includes/arrays.php:903
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
-msgstr "Δεν είναι δυνατή η ανάλυση της λίστας αρχείων FTP (κατά τη λήψη μπαλαντέρ FTP)."
+msgstr ""
+"Δεν είναι δυνατή η ανάλυση της λίστας αρχείων FTP (κατά τη λήψη μπαλαντέρ "
+"FTP)."
 
 #: includes/arrays.php:907
 msgid "Chunk callback reported error."
@@ -1024,15 +1201,21 @@ msgstr "Η επιστροφή κλήσης μπλοκ ανέφερε σφάλμ�
 
 #: includes/arrays.php:911
 msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
-msgstr "(Μόνο για εσωτερική χρήση, δεν επιστρέφεται ποτέ από το libcurl) Δεν υπάρχει διαθέσιμη σύνδεση, η περίοδος λειτουργίας βρίσκεται σε ουρά. (προστέθηκε στο 7.30.0)"
+msgstr ""
+"(Μόνο για εσωτερική χρήση, δεν επιστρέφεται ποτέ από το libcurl) Δεν υπάρχει "
+"διαθέσιμη σύνδεση, η περίοδος λειτουργίας βρίσκεται σε ουρά. (προστέθηκε στο "
+"7.30.0)"
 
 #: includes/arrays.php:915
 msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
-msgstr "Απέτυχε η αντιστοίχιση του καρφιτσωμένου κλειδιού που καθορίστηκε με CURLOPT_PINNEDPUBLICKEY."
+msgstr ""
+"Απέτυχε η αντιστοίχιση του καρφιτσωμένου κλειδιού που καθορίστηκε με "
+"CURLOPT_PINNEDPUBLICKEY."
 
 #: includes/arrays.php:919
 msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
-msgstr "Η κατάσταση επέστρεψε αποτυχία όταν ρωτήθηκε με CURLOPT_SSL_VERIFYSTATUS."
+msgstr ""
+"Η κατάσταση επέστρεψε αποτυχία όταν ρωτήθηκε με CURLOPT_SSL_VERIFYSTATUS."
 
 #: includes/arrays.php:923
 msgid "Stream error in the HTTP/2 framing layer."
@@ -1048,15 +1231,23 @@ msgstr "Μια λειτουργία ελέγχου ταυτότητας επέσ
 
 #: includes/arrays.php:935
 msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr "Εντοπίστηκε πρόβλημα στο επίπεδο HTTP/3. Αυτό είναι κάπως γενικό και μπορεί να είναι ένα από τα πολλά προβλήματα, δείτε το buffer σφάλματος για λεπτομέρειες."
+msgstr ""
+"Εντοπίστηκε πρόβλημα στο επίπεδο HTTP/3. Αυτό είναι κάπως γενικό και μπορεί "
+"να είναι ένα από τα πολλά προβλήματα, δείτε το buffer σφάλματος για "
+"λεπτομέρειες."
 
 #: includes/arrays.php:939
 msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
-msgstr "Σφάλμα σύνδεσης QUIC. Αυτό το σφάλμα μπορεί να οφείλεται σε σφάλμα βιβλιοθήκης SSL. Το QUIC είναι το πρωτόκολλο που χρησιμοποιείται για μεταφορές HTTP/3."
+msgstr ""
+"Σφάλμα σύνδεσης QUIC. Αυτό το σφάλμα μπορεί να οφείλεται σε σφάλμα "
+"βιβλιοθήκης SSL. Το QUIC είναι το πρωτόκολλο που χρησιμοποιείται για "
+"μεταφορές HTTP/3."
 
 #: includes/arrays.php:943
 msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
-msgstr "Σφάλμα χειραψίας διακομιστή μεσολάβησης. CURLINFO_PROXY_ERROR παρέχει επιπλέον λεπτομέρειες σχετικά με το συγκεκριμένο πρόβλημα."
+msgstr ""
+"Σφάλμα χειραψίας διακομιστή μεσολάβησης. CURLINFO_PROXY_ERROR παρέχει "
+"επιπλέον λεπτομέρειες σχετικά με το συγκεκριμένο πρόβλημα."
 
 #: includes/arrays.php:947
 msgid "SSL Client Certificate required."
@@ -1064,7 +1255,9 @@ msgstr "Απαιτείται πιστοποιητικό πελάτη SSL."
 
 #: includes/arrays.php:951
 msgid "An internal call to poll() or select() returned error that is not recoverable."
-msgstr "Μια εσωτερική κλήση για poll() ή select() επέστρεψε σφάλμα που δεν είναι ανακτήσιμο."
+msgstr ""
+"Μια εσωτερική κλήση για poll() ή select() επέστρεψε σφάλμα που δεν είναι "
+"ανακτήσιμο."
 
 #: includes/functions.php:32 servcheck_test.php:828
 msgid "Tests"
@@ -1103,8 +1296,12 @@ msgstr "Ανεπεξέργαστη πηγή"
 #, fuzzy
 msgid "Click 'Continue' to delete the following CA."
 msgid_plural "Click 'Continue' to delete following CA."
-msgstr[0] "Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τον ακόλουθο διακομιστή μεσολάβησης."
-msgstr[1] "Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τους ακόλουθους διακομιστές μεσολάβησης."
+msgstr[0] ""
+"Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τον ακόλουθο διακομιστή "
+"μεσολάβησης."
+msgstr[1] ""
+"Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τους ακόλουθους διακομιστές "
+"μεσολάβησης."
 
 #: servcheck_ca.php:109 servcheck_proxies.php:108 servcheck_test.php:197
 #: servcheck_test.php:206 servcheck_test.php:215 servcheck_test.php:224
@@ -1148,7 +1345,15 @@ msgstr "Διαχείριση διακομιστή WebSEer"
 
 #: servcheck_ca.php:322
 msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
-msgstr "Το Servcheck χρησιμοποιεί ένα αρχείο πιστοποιητικών από κοινές αρχές έκδοσης πιστοποιητικών ρίζας για τον έλεγχο πιστοποιητικών. Αυτό θα λειτουργήσει για πιστοποιητικά που εκδίδονται από κοινές αρχές έκδοσης πιστοποιητικών. Εάν χρησιμοποιείτε μια προσαρμοσμένη CA (για παράδειγμα, σε περιβάλλον Microsoft AD), ο έλεγχος για αυτό το πιστοποιητικό θα αποτύχει, επειδή servcheck δεν γνωρίζει CA σας. Πρέπει να ανεβάσετε ολόκληρη την αλυσίδα (πιστοποιητικό CA και ενδιάμεσα πιστοποιητικά). Στη συνέχεια, τα συσχετίζετε με τη δοκιμή όπου βρίσκεται το πιστοποιητικό που εκδίδεται από την αρχή έκδοσης πιστοποιητικών."
+msgstr ""
+"Το Servcheck χρησιμοποιεί ένα αρχείο πιστοποιητικών από κοινές αρχές έκδοσης "
+"πιστοποιητικών ρίζας για τον έλεγχο πιστοποιητικών. Αυτό θα λειτουργήσει για "
+"πιστοποιητικά που εκδίδονται από κοινές αρχές έκδοσης πιστοποιητικών. Εάν "
+"χρησιμοποιείτε μια προσαρμοσμένη CA (για παράδειγμα, σε περιβάλλον Microsoft "
+"AD), ο έλεγχος για αυτό το πιστοποιητικό θα αποτύχει, επειδή servcheck δεν "
+"γνωρίζει CA σας. Πρέπει να ανεβάσετε ολόκληρη την αλυσίδα (πιστοποιητικό CA "
+"και ενδιάμεσα πιστοποιητικά). Στη συνέχεια, τα συσχετίζετε με τη δοκιμή όπου "
+"βρίσκεται το πιστοποιητικό που εκδίδεται από την αρχή έκδοσης πιστοποιητικών."
 
 #: servcheck_ca.php:328 servcheck_proxies.php:343 servcheck_test.php:510
 #: servcheck_test.php:1251
@@ -1178,8 +1383,12 @@ msgstr "Δεν υπάρχουν κωδικοί σφάλματος"
 #, fuzzy
 msgid "Click 'Continue' to delete the following Proxy."
 msgid_plural "Click 'Continue' to delete following Proxies."
-msgstr[0] "Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τον ακόλουθο διακομιστή μεσολάβησης."
-msgstr[1] "Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τους ακόλουθους διακομιστές μεσολάβησης."
+msgstr[0] ""
+"Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τον ακόλουθο διακομιστή "
+"μεσολάβησης."
+msgstr[1] ""
+"Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τους ακόλουθους διακομιστές "
+"μεσολάβησης."
 
 #: servcheck_proxies.php:108
 #, fuzzy
@@ -1221,8 +1430,12 @@ msgstr "Διαχείριση διακομιστή WebSEer"
 #, fuzzy
 msgid "Click 'Continue' to Delete the following tests."
 msgid_plural "Click 'Continue' to Delete following tests."
-msgstr[0] "Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τον ακόλουθο διακομιστή μεσολάβησης."
-msgstr[1] "Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τους ακόλουθους διακομιστές μεσολάβησης."
+msgstr[0] ""
+"Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τον ακόλουθο διακομιστή "
+"μεσολάβησης."
+msgstr[1] ""
+"Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τους ακόλουθους διακομιστές "
+"μεσολάβησης."
 
 #: servcheck_test.php:197
 #, fuzzy
@@ -1235,8 +1448,12 @@ msgstr[1] "WebServer Servers"
 #, fuzzy
 msgid "Click 'Continue' to Disable the following test."
 msgid_plural "Click 'Continue' to Disable following Tests."
-msgstr[0] "Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τον ακόλουθο διακομιστή μεσολάβησης."
-msgstr[1] "Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τους ακόλουθους διακομιστές μεσολάβησης."
+msgstr[0] ""
+"Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τον ακόλουθο διακομιστή "
+"μεσολάβησης."
+msgstr[1] ""
+"Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τους ακόλουθους διακομιστές "
+"μεσολάβησης."
 
 #: servcheck_test.php:206
 #, fuzzy
@@ -1249,8 +1466,12 @@ msgstr[1] "Απενεργοποίηση"
 #, fuzzy
 msgid "Click 'Continue' to Enable the following test."
 msgid_plural "Click 'Continue' to Enable following tests."
-msgstr[0] "Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τον ακόλουθο διακομιστή μεσολάβησης."
-msgstr[1] "Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τους ακόλουθους διακομιστές μεσολάβησης."
+msgstr[0] ""
+"Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τον ακόλουθο διακομιστή "
+"μεσολάβησης."
+msgstr[1] ""
+"Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τους ακόλουθους διακομιστές "
+"μεσολάβησης."
 
 #: servcheck_test.php:215
 #, fuzzy
@@ -1263,8 +1484,12 @@ msgstr[1] "Ενεργοποίηση διακομιστή"
 #, fuzzy
 msgid "Click 'Continue' to Duplicate the following test."
 msgid_plural "Click 'Continue' to Duplicate following tests."
-msgstr[0] "Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τον ακόλουθο διακομιστή μεσολάβησης."
-msgstr[1] "Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τους ακόλουθους διακομιστές μεσολάβησης."
+msgstr[0] ""
+"Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τον ακόλουθο διακομιστή "
+"μεσολάβησης."
+msgstr[1] ""
+"Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τους ακόλουθους διακομιστές "
+"μεσολάβησης."
 
 #: servcheck_test.php:224
 #, fuzzy

@@ -8,141 +8,142 @@ msgstr ""
 "Project-Id-Version: Cacti 1.2.16\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2023-06-26 13:06+0000\n"
+"PO-Revision-Date: 2024-04-20 12:31-0400\n"
 "Last-Translator: Coool (github.com/Coool) <coool@mail.lv>\n"
 "Language-Team: Latvian <http://translate.cacti.net/projects/cacti/webseer/lv/>\n"
-"Language: lv-LV\n"
+"Language: lv_LV\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= 19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\n"
-"X-Generator: Weblate 4.8.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: includes/arrays.php:33
 msgid "String found"
-msgstr ""
+msgstr "Virkne atrasta"
 
 #: includes/arrays.php:34
 msgid "String not found"
-msgstr ""
+msgstr "Virkne nav atrasta"
 
 #: includes/arrays.php:35
 msgid "Failed string found"
-msgstr ""
+msgstr "Atrasta neveiksmīga virkne"
 
 #: includes/arrays.php:36
 msgid "Failed strint not found"
-msgstr ""
+msgstr "Neveiksmīgs strints nav atrasts"
 
 #: includes/arrays.php:37
 msgid "Maint string found"
-msgstr ""
+msgstr "Atrasta maint virkne"
 
 #: includes/arrays.php:38 servcheck_test.php:1146 servcheck_test.php:1147
 msgid "Not tested yet"
-msgstr ""
+msgstr "Vēl nav pārbaudīts"
 
 #: includes/arrays.php:39
 msgid "Search not performed"
-msgstr ""
+msgstr "Meklēšana nav veikta"
 
 #: includes/arrays.php:43
 msgid "HTTP plaintext, default port 80"
-msgstr ""
+msgstr "HTTP vienkāršs teksts, noklusējuma ports 80"
 
 #: includes/arrays.php:44
 msgid "HTTP encrypted (HTTPS), default port 443"
-msgstr ""
+msgstr "HTTP šifrēts (HTTPS), noklusējuma ports 443"
 
 #: includes/arrays.php:46
 msgid "SMTP plaintext, default port 25 (or 587 for submission)"
-msgstr ""
+msgstr "SMTP vienkāršs teksts, noklusējuma ports 25 (vai 587 iesniegšanai)"
 
 #: includes/arrays.php:47
 msgid "SMTP with STARTTLS, default port 25(or 587 for submission)"
-msgstr ""
+msgstr "SMTP ar STARTTLS, noklusējuma ports 25(vai 587 iesniegšanai)"
 
 #: includes/arrays.php:48
 msgid "SMTP encrypted (SMTPS), default port 465"
-msgstr ""
+msgstr "SMTP šifrēts (SMTPS), noklusējuma ports 465"
 
 #: includes/arrays.php:50
 msgid "IMAP plaintext, default port 143"
-msgstr ""
+msgstr "IMAP vienkāršais teksts, noklusējuma ports 143"
 
 #: includes/arrays.php:51
 msgid "IMAP with STARTTLS, default port 143"
-msgstr ""
+msgstr "IMAP ar STARTTLS, noklusējuma ports 143"
 
 #: includes/arrays.php:52
 msgid "IMAP encrypted (IMAPS), default port 993"
-msgstr ""
+msgstr "IMAP šifrēts (IMAPS), noklusējuma ports 993"
 
 #: includes/arrays.php:54
 msgid "POP3 plaintext, default port 110"
-msgstr ""
+msgstr "POP3 vienkāršs teksts, noklusējuma ports 110"
 
 #: includes/arrays.php:55
 msgid "POP3 with STARTTLS, default port 110"
-msgstr ""
+msgstr "POP3 ar STARTTLS, noklusējuma ports 110"
 
 #: includes/arrays.php:56
 msgid "POP3 encrypted (POP3S), default port 995"
-msgstr ""
+msgstr "POP3 šifrēts (POP3S), noklusējuma ports 995"
 
 #: includes/arrays.php:58
 msgid "DNS plaintext, default port 53"
-msgstr ""
+msgstr "DNS plaintext, noklusējuma ports 53"
 
 #: includes/arrays.php:61
 msgid "LDAP plaintext, default port 389"
-msgstr ""
+msgstr "LDAP vienkāršs teksts, noklusējuma ports 389"
 
 #: includes/arrays.php:62
 msgid "LDAP encrypted (LDAPS), default port 636"
-msgstr ""
+msgstr "LDAP šifrēts (LDAPS), noklusējuma ports 636"
 
 #: includes/arrays.php:64
 msgid "FTP plaintext, default port 21"
-msgstr ""
+msgstr "FTP vienkāršs teksts, noklusējuma ports 21"
 
 #: includes/arrays.php:65
 msgid "FTP encrypted (FTPS), default port 990"
-msgstr ""
+msgstr "FTP šifrēts (FTPS), noklusējuma ports 990"
 
 #: includes/arrays.php:66
 msgid "SCP download file, default port 22"
-msgstr ""
+msgstr "SCP lejupielādes fails, noklusējuma ports 22"
 
 #: includes/arrays.php:67
 msgid "TFTP protocol - download file, default port 69"
-msgstr ""
+msgstr "TFTP protokols - lejupielādēt failu, noklusējuma ports 69"
 
 #: includes/arrays.php:69
 msgid "SMB plaintext download file, default port 445"
-msgstr ""
+msgstr "SMB vienkārša teksta lejupielādes fails, noklusējuma ports 445"
 
 #: includes/arrays.php:70
 msgid "SMB encrypted (SMBS) download file, default port 445"
-msgstr ""
+msgstr "SMB šifrēts (SMBS) lejupielādes fails, noklusējuma ports 445"
 
 #: includes/arrays.php:113
 #, fuzzy
 msgid "Last hour"
-msgstr "Pēdējā pārbaude"
+msgstr "Pēdējā stunda"
 
 #: includes/arrays.php:114
 msgid "Last 6 hours"
-msgstr ""
+msgstr "Pēdējās 6 stundas"
 
 #: includes/arrays.php:115
+#, fuzzy
 msgid "Last day"
-msgstr ""
+msgstr "Pēdējā diena"
 
 #: includes/arrays.php:116
 #, fuzzy
 msgid "Last week"
-msgstr "Pēdējā pārbaude"
+msgstr "Pagājusī nedēļa"
 
 #: includes/arrays.php:121
 #, fuzzy
@@ -157,55 +158,57 @@ msgstr "Turpināt"
 
 #: includes/arrays.php:123
 msgid "Switching Protocols"
-msgstr ""
+msgstr "Pārslēgšanas protokoli"
 
 #: includes/arrays.php:124
 msgid "OK"
-msgstr ""
+msgstr "Labi"
 
 #: includes/arrays.php:125
 msgid "Created"
-msgstr ""
+msgstr "Izveidots"
 
 #: includes/arrays.php:126
 msgid "Accepted"
-msgstr ""
+msgstr "Akceptēts"
 
 #: includes/arrays.php:127
 msgid "Non-Authoritative Information"
-msgstr ""
+msgstr "Neautoritatīva informācija"
 
 #: includes/arrays.php:128
+#, fuzzy
 msgid "No Content"
-msgstr ""
+msgstr "Fails, kurā ir šīs lapas saturs. Šim failam ir jāatrodas katalogā Cacti \"include/content/\"."
 
 #: includes/arrays.php:129
 msgid "Reset Content"
-msgstr ""
+msgstr "Atiestatīt saturu"
 
 #: includes/arrays.php:130
 msgid "Partial Content"
-msgstr ""
+msgstr "Daļējs saturs"
 
 #: includes/arrays.php:131
 msgid "Multiple Choices"
-msgstr ""
+msgstr "Vairākas izvēles iespējas"
 
 #: includes/arrays.php:132
 msgid "Moved Permanently"
-msgstr ""
+msgstr "Pārvietots neatgriezeniski"
 
 #: includes/arrays.php:133
 msgid "Found"
-msgstr ""
+msgstr "Atrasts"
 
 #: includes/arrays.php:134
 msgid "See Other"
-msgstr ""
+msgstr "Skatīt citus"
 
 #: includes/arrays.php:135
+#, fuzzy
 msgid "Not Modified"
-msgstr ""
+msgstr "Pēdējā modifikācijā"
 
 #: includes/arrays.php:136
 #, fuzzy
@@ -214,7 +217,7 @@ msgstr "Jauns starpniekserveris"
 
 #: includes/arrays.php:137
 msgid "(Unused)"
-msgstr ""
+msgstr "(Neizmantots)"
 
 #: includes/arrays.php:138
 #, fuzzy
@@ -223,32 +226,31 @@ msgstr "Pāradresēt"
 
 #: includes/arrays.php:139
 msgid "Bad Request"
-msgstr ""
+msgstr "Slikts pieprasījums"
 
 #: includes/arrays.php:140
 msgid "Unauthorized"
-msgstr ""
+msgstr "Nesankcionētu"
 
 #: includes/arrays.php:141
 msgid "Payment Required"
-msgstr ""
+msgstr "Nepieciešams maksājums"
 
 #: includes/arrays.php:142
 msgid "Forbidden"
-msgstr ""
+msgstr "Aizliegts"
 
 #: includes/arrays.php:143
-#, fuzzy
 msgid "Not Found"
-msgstr "Nav atrasts neviens serveris"
+msgstr "Nav atrasts"
 
 #: includes/arrays.php:144
 msgid "Method Not Allowed"
-msgstr ""
+msgstr "Metode nav atļauta"
 
 #: includes/arrays.php:145
 msgid "Not Acceptable"
-msgstr ""
+msgstr "Nav pieņemams"
 
 #: includes/arrays.php:146
 #, fuzzy
@@ -256,57 +258,56 @@ msgid "Proxy Authentication Required"
 msgstr "Nepieciešama autentifikācija"
 
 #: includes/arrays.php:147
-#, fuzzy
 msgid "Request Timeout"
-msgstr "Nesasniedzams"
+msgstr "Pieprasījuma taimauts"
 
 #: includes/arrays.php:148
 msgid "Conflict"
-msgstr ""
+msgstr "Konflikts"
 
 #: includes/arrays.php:149
 msgid "Gone"
-msgstr ""
+msgstr "Aizgājuši"
 
 #: includes/arrays.php:150
 msgid "Length Required"
-msgstr ""
+msgstr "Nepieciešamais garums"
 
 #: includes/arrays.php:151
 msgid "Precondition Failed"
-msgstr ""
+msgstr "Priekšnosacījums Neizdevās"
 
 #: includes/arrays.php:152
 msgid "Request Entity Too Large"
-msgstr ""
+msgstr "Pieprasījuma entītija ir pārāk liela"
 
 #: includes/arrays.php:153
 msgid "Request-URI Too Long"
-msgstr ""
+msgstr "Pieprasījums-URI pārāk garš"
 
 #: includes/arrays.php:154
 msgid "Unsupported Media Type"
-msgstr ""
+msgstr "Neatbalstīts multivides tips"
 
 #: includes/arrays.php:155
 msgid "Requested Range Not Satisfiable"
-msgstr ""
+msgstr "Pieprasītais diapazons nav apmierinošs"
 
 #: includes/arrays.php:156
 msgid "Expectation Failed"
-msgstr ""
+msgstr "Cerības neizdevās"
 
 #: includes/arrays.php:157
 msgid "Internal Server Error"
-msgstr ""
+msgstr "Iekšējā servera kļūda"
 
 #: includes/arrays.php:158
 msgid "Not Implemented"
-msgstr ""
+msgstr "Nav īstenots"
 
 #: includes/arrays.php:159
 msgid "Bad Gateway"
-msgstr ""
+msgstr "Slikta vārteja"
 
 #: includes/arrays.php:160
 #, fuzzy
@@ -320,19 +321,19 @@ msgstr "Nesasniedzams"
 
 #: includes/arrays.php:162
 msgid "HTTP Version Not Supported"
-msgstr ""
+msgstr "HTTP versija netiek atbalstīta"
 
 #: includes/arrays.php:166
 #, php-format
 msgid "%d Poller run"
-msgstr ""
+msgstr "%d Poller skrējiens"
 
 #: includes/arrays.php:167 includes/arrays.php:168 includes/arrays.php:169
 #: includes/arrays.php:170 includes/arrays.php:171 includes/arrays.php:172
 #: includes/arrays.php:173 includes/arrays.php:174 includes/arrays.php:175
 #, php-format
 msgid "%d Poller runs"
-msgstr ""
+msgstr "%d Poller skrējiens"
 
 #: includes/arrays.php:179 includes/arrays.php:180 includes/arrays.php:181
 #: includes/arrays.php:182 includes/arrays.php:183 includes/arrays.php:184
@@ -369,15 +370,15 @@ msgstr "Noderīgs nosaukums šim starpniekserverim."
 
 #: includes/arrays.php:235
 msgid "New CA"
-msgstr ""
+msgstr "Jaunā CA"
 
 #: includes/arrays.php:238 includes/arrays.php:361
 msgid "CA Chain"
-msgstr ""
+msgstr "CA ķēde"
 
 #: includes/arrays.php:242
 msgid "CA and intermediate certs, PEM encoded"
-msgstr ""
+msgstr "CA un starpposma sertifikāti, PEM kodēti"
 
 #: includes/arrays.php:251
 msgid "A Useful Name for this Proxy."
@@ -450,19 +451,19 @@ msgstr "Noņemiet ķeksi, lai atspējotu šīs tīmekļa vietņu adreses pārbau
 
 #: includes/arrays.php:332
 msgid "Poller"
-msgstr ""
+msgstr "Pollers"
 
 #: includes/arrays.php:335
 msgid "Poller on which the test will run"
-msgstr ""
+msgstr "Aptaujas veicējs, kurā tiks veikts tests"
 
 #: includes/arrays.php:340
 msgid "Type of service"
-msgstr ""
+msgstr "Pakalpojuma veids"
 
 #: includes/arrays.php:345
 msgid "What type of service?"
-msgstr ""
+msgstr "Kāda veida pakalpojums?"
 
 #: includes/arrays.php:350
 #, fuzzy
@@ -471,7 +472,7 @@ msgstr "IP adrese, lai izveidotu savienojumu ar šo serveri"
 
 #: includes/arrays.php:351
 msgid "You can specify another port (example.com:5000) otherwise default will be used"
-msgstr ""
+msgstr "Varat norādīt citu portu (example.com:5000), pretējā gadījumā tiks izmantots noklusējums"
 
 #: includes/arrays.php:358
 #, fuzzy
@@ -485,7 +486,7 @@ msgstr "Neviens"
 
 #: includes/arrays.php:365
 msgid "Your own CA and intermediate certs"
-msgstr ""
+msgstr "Jūsu pašu CA un starpposma sertifikāti"
 
 #: includes/arrays.php:370 servcheck_proxies.php:285
 msgid "Username"
@@ -493,11 +494,11 @@ msgstr "Lietotājvārds"
 
 #: includes/arrays.php:372
 msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
-msgstr ""
+msgstr "Izmantojot autentifikāciju, tests iegūst vairāk informācijas. LDAP gadījumā kaut kas līdzīgs cn=John Doe,OU=anygroup,DC=example,DC=com. SMB izmantošanai izmantojiet DOMAIN/user"
 
 #: includes/arrays.php:380
 msgid "For anonymous ftp insert email address here."
-msgstr ""
+msgstr "Lai iegūtu anonīmu ftp, ievietojiet e-pasta adresi šeit."
 
 #: includes/arrays.php:386
 #, fuzzy
@@ -506,23 +507,23 @@ msgstr "Datuma meklēšana"
 
 #: includes/arrays.php:388
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
-msgstr ""
+msgstr "LDAP meklēšanas filtrs, tas varētu būt ,OU=anygroup,DC=example,DC=com"
 
 #: includes/arrays.php:395
 msgid "DNS Name for Query"
-msgstr ""
+msgstr "Vaicājuma DNS nosaukums"
 
 #: includes/arrays.php:396
 msgid "DNS name for querying"
-msgstr ""
+msgstr "DNS nosaukums vaicājumiem"
 
 #: includes/arrays.php:403
 msgid "Path Part of URL"
-msgstr ""
+msgstr "URL ceļa daļa"
 
 #: includes/arrays.php:404
 msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
-msgstr ""
+msgstr "Tīmekļa pakalpojumam ievietojiet vismaz \"/\" vai kaut ko līdzīgu \"/any/path/\". FTP sarakstam jābeidzas ar char \"/\". TFTP/SCP/SMB lejupielādei testa ieliktnis /ceļš/fails"
 
 #: includes/arrays.php:411
 msgid "Requires Authentication"
@@ -564,11 +565,11 @@ msgstr "Paziņojumu laiks"
 
 #: includes/arrays.php:444
 msgid "How Often to Test"
-msgstr ""
+msgstr "Cik bieži pārbaudīt"
 
 #: includes/arrays.php:448
 msgid "Test each poller cycle or less"
-msgstr ""
+msgstr "Pārbaudiet katru aptaujas ciklu vai mazāk"
 
 #: includes/arrays.php:452
 msgid "Trigger"
@@ -660,99 +661,99 @@ msgstr "Varat norādīt papildus e-pastus, kas saņems brīdinājumu ziņojumus 
 
 #: includes/arrays.php:530
 msgid "Notes"
-msgstr ""
+msgstr "Piezīmes"
 
 #: includes/arrays.php:534
 msgid "Notes sent in email"
-msgstr ""
+msgstr "Piezīmes, kas nosūtītas pa e-pastu"
 
 #: includes/arrays.php:538
 msgid "External ID"
-msgstr ""
+msgstr "Ārējais ID"
 
 #: includes/arrays.php:540
 msgid "Enter an Eternal ID for this Thold Template."
-msgstr ""
+msgstr "Ievadiet mūžīgo ID šai Thold veidnei."
 
 #: includes/arrays.php:555
 msgid "All fine. Proceed as usual."
-msgstr ""
+msgstr "Viss kārtībā. Rīkojieties kā parasti."
 
 #: includes/arrays.php:559
 msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
-msgstr ""
+msgstr "URL, kuru nodevāt libcurl, izmantoja protokolu, kuru šis libcurl neatbalsta. Atbalsts var būt kompilēšanas laika opcija, kuru jūs neizmantojāt, tā var būt kļūdaini uzrakstīta protokola virkne vai tikai protokola libcurl nav koda."
 
 #: includes/arrays.php:563
 msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
-msgstr ""
+msgstr "Agrīnās inicializācijas kods neizdevās. Tā, visticamāk, būs iekšēja kļūda vai problēma, vai resursu problēma, kad kaut ko būtisku nevarēja izdarīt init laikā."
 
 #: includes/arrays.php:567
 msgid "The URL was not properly formatted."
-msgstr ""
+msgstr "URL nebija pareizi formatēts."
 
 #: includes/arrays.php:571
 msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
-msgstr ""
+msgstr "Pieprasītā funkcija, protokols vai opcija netika atrasta iebūvēta šajā libcurl, jo tika pieņemts lēmums par izveides laiku. Tas nozīmē, ka funkcija vai opcija netika iespējota vai skaidri atspējota, kad tika izveidots libcurl, un, lai tā darbotos, jums ir jāiegūst pārbūvēts libcurl."
 
 #: includes/arrays.php:575
 msgid "Could not resolve proxy. The given proxy host could not be resolved."
-msgstr ""
+msgstr "Nevarēja atrisināt starpniekserveri. Doto starpniekserveri nevarēja atrisināt."
 
 #: includes/arrays.php:579
 msgid "Could not resolve host. The given remote host was not resolved."
-msgstr ""
+msgstr "Nevarēja atrisināt saimnieku. Dotais attālinātais saimnieks netika atrisināts."
 
 #: includes/arrays.php:583
 msgid "Failed to connect() to host or proxy."
-msgstr ""
+msgstr "Neizdevās izveidot savienojumu() ar resursdatoru vai starpniekserveri."
 
 #: includes/arrays.php:587
 msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
-msgstr ""
+msgstr "Servera nosūtītie dati libcurl nevarēja parsēt. Šis kļūdas kods bija zināms kā CURLE_FTP_WEIRD_SERVER_REPLY pirms 7.51.0."
 
 #: includes/arrays.php:591
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
-msgstr ""
+msgstr "Mums tika liegta piekļuve vietrādī URL norādītajam resursam. FTP gadījumā tas notiek, mēģinot mainīt uz attālo direktoriju."
 
 #: includes/arrays.php:595
 msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
-msgstr ""
+msgstr "Gaidot, kamēr serveris atkal izveidos savienojumu, kad tiek izmantota aktīva FTP sesija, pa vadības savienojumu tika nosūtīts kļūdas kods vai līdzīgs kods."
 
 #: includes/arrays.php:599
 msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
-msgstr ""
+msgstr "Pēc FTP paroles nosūtīšanas uz serveri libcurl sagaida pareizu atbildi. Šis kļūdas kods norāda, ka tika atgriezts neparedzēts kods."
 
 #: includes/arrays.php:603
 msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
-msgstr ""
+msgstr "Aktīvas FTP sesijas laikā, gaidot servera savienojumu, beidzās CURLOPT_ACCEPTTIMEOUT_MS (vai iekšējā noklusējuma) taimauts."
 
 #: includes/arrays.php:607
 msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
-msgstr ""
+msgstr "Libcurl neizdevās iegūt saprātīgu rezultātu atpakaļ no servera kā atbildi uz PASV vai EPSV komandu. Serveris ir kļūdains."
 
 #: includes/arrays.php:611
 msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
-msgstr ""
+msgstr "FTP serveri atgriež 227 rindu kā atbildi uz PASV komandu. Ja libcurl neizdodas parsēt šo rindu, šis atgriešanas kods tiek nodots atpakaļ."
 
 #: includes/arrays.php:615
 msgid "An internal failure to lookup the host used for the new connection."
-msgstr ""
+msgstr "Iekšēja kļūme uzmeklēt resursdatoru, kas izmantots jaunajam savienojumam."
 
 #: includes/arrays.php:619
 msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr ""
+msgstr "HTTP2 kadrēšanas slānī tika konstatēta problēma. Tas ir nedaudz vispārīgs un var būt viena no vairākām problēmām, sīkāku informāciju skatiet kļūdu buferī."
 
 #: includes/arrays.php:623
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
-msgstr ""
+msgstr "Tika saņemta kļūda, mēģinot iestatīt pārsūtīšanas režīmu uz bināro vai ASCII."
 
 #: includes/arrays.php:627
 msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
-msgstr ""
+msgstr "Failu pārsūtīšana bija īsāka vai lielāka, nekā gaidīts. Tas notiek, kad serveris vispirms ziņo par paredzamo pārsūtīšanas lielumu un pēc tam piegādā datus, kas neatbilst iepriekš norādītajam lielumam."
 
 #: includes/arrays.php:631
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
-msgstr ""
+msgstr "Tā bija vai nu dīvaina atbilde uz \"RETR\" komandu, vai arī nulles baitu pārsūtīšana pabeigta."
 
 #: includes/arrays.php:634 includes/arrays.php:650 includes/arrays.php:670
 #: includes/arrays.php:682 includes/arrays.php:714 includes/arrays.php:730
@@ -760,7 +761,7 @@ msgstr ""
 #: includes/arrays.php:782 includes/arrays.php:802 includes/arrays.php:854
 #: includes/arrays.php:858
 msgid "Obsolete Error"
-msgstr ""
+msgstr "Novecojusi kļūda"
 
 #: includes/arrays.php:635 includes/arrays.php:651 includes/arrays.php:671
 #: includes/arrays.php:683 includes/arrays.php:715 includes/arrays.php:731
@@ -768,67 +769,67 @@ msgstr ""
 #: includes/arrays.php:783 includes/arrays.php:803 includes/arrays.php:855
 #: includes/arrays.php:859
 msgid "Not used in modern versions."
-msgstr ""
+msgstr "Netiek izmantots mūsdienu versijās."
 
 #: includes/arrays.php:639
 msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
-msgstr ""
+msgstr "Nosūtot pielāgotas \"QUOTE\" komandas uz attālo serveri, viena no komandām atgrieza kļūdas kodu, kas bija 400 vai lielāks (FTP) vai citādi norādīja uz neveiksmīgu komandas pabeigšanu."
 
 #: includes/arrays.php:643
 msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
-msgstr ""
+msgstr "Tas tiek atgriezts, ja CURLOPT_FAILONERROR ir iestatīts kā patiess un HTTP serveris atgriež kļūdas kodu, kas ir >= 400."
 
 #: includes/arrays.php:647
 msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
-msgstr ""
+msgstr "Rakstot saņemtos datus lokālajā failā, radās kļūda, vai arī kļūda tika atgriezta libcurl no rakstīšanas atzvanīšanas."
 
 #: includes/arrays.php:655
 msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
-msgstr ""
+msgstr "Neizdevās sākt augšupielādi. FTP gadījumā serveris parasti noliedza STOR komandu. Kļūdu buferis parasti satur servera skaidrojumu par to."
 
 #: includes/arrays.php:659
 msgid "There was a problem reading a local file or an error returned by the read callback."
-msgstr ""
+msgstr "Radās problēma, lasot lokālo failu, vai kļūda, ko atgrieza lasīšanas atzvanīšana."
 
 #: includes/arrays.php:663
 msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
-msgstr ""
+msgstr "Atmiņas piešķiršanas pieprasījums neizdevās. Tas ir nopietns ļaunums, un, ja tas kādreiz notiek, lietas tiek nopietni saskrūvētas."
 
 #: includes/arrays.php:667
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
-msgstr ""
+msgstr "Operācijas taimauts. Noteiktais taimauta periods tika sasniegts atbilstoši nosacījumiem."
 
 #: includes/arrays.php:675
 msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
-msgstr ""
+msgstr "FTP PORT komanda atgrieza kļūdu. Tas galvenokārt notiek, ja neesat norādījis pietiekami labu adresi, lai libcurl varētu izmantot. Sk. CURLOPT_FTPPORT."
 
 #: includes/arrays.php:679
 msgid "The FTP REST command returned error. This should never happen if the server is sane."
-msgstr ""
+msgstr "FTP REST komanda atgrieza kļūdu. Tam nekad nevajadzētu notikt, ja serveris ir saprātīgs."
 
 #: includes/arrays.php:687
 msgid "The server does not support or accept range requests."
-msgstr ""
+msgstr "Serveris neatbalsta un nepieņem diapazona pieprasījumus."
 
 #: includes/arrays.php:691
 msgid "This is an odd error that mainly occurs due to internal confusion."
-msgstr ""
+msgstr "Šī ir dīvaina kļūda, kas galvenokārt rodas iekšējas neskaidrības dēļ."
 
 #: includes/arrays.php:695
 msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
-msgstr ""
+msgstr "Problēma radās kaut kur SSL/TLS rokasspiedienā. Jūs patiešām vēlaties kļūdu buferi un izlasiet tur esošo ziņojumu, jo tas nedaudz vairāk norāda uz problēmu. Var būt sertifikāti (failu formāti, ceļi, atļaujas), paroles un citi."
 
 #: includes/arrays.php:699
 msgid "The download could not be resumed because the specified offset was out of the file boundary."
-msgstr ""
+msgstr "Lejupielādi nevarēja atsākt, jo norādītā nobīde bija ārpus faila robežas."
 
 #: includes/arrays.php:703
 msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
-msgstr ""
+msgstr "Failu ar FILE:// nevarēja atvērt. Visticamāk, tāpēc, ka faila ceļš neidentificē esošu failu. Vai pārbaudījāt failu atļaujas?"
 
 #: includes/arrays.php:707
 msgid "LDAP cannot bind. LDAP bind operation failed."
-msgstr ""
+msgstr "LDAP nevar saistīt. LDAP saistīšanas operācija neizdevās."
 
 #: includes/arrays.php:711
 #, fuzzy
@@ -837,211 +838,211 @@ msgstr "Datuma meklēšana"
 
 #: includes/arrays.php:719
 msgid "Function not found. A required zlib function was not found."
-msgstr ""
+msgstr "Funkcija nav atrasta. Nepieciešamā zlib funkcija netika atrasta."
 
 #: includes/arrays.php:723
 msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
-msgstr ""
+msgstr "Pārtraukts ar atzvanīšanu. Atzvanīšana atgrieza \"abortu\" libcurl."
 
 #: includes/arrays.php:727
 msgid "A function was called with a bad parameter."
-msgstr ""
+msgstr "Funkcija tika izsaukta ar sliktu parametru."
 
 #: includes/arrays.php:735
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
-msgstr ""
+msgstr "Interfeisa kļūda. Norādīto izejošo interfeisu nevarēja izmantot. Iestatiet, kuru interfeisu izmantot izejošo savienojumu avota IP adresei ar URLOPT_INTERFACE."
 
 #: includes/arrays.php:743
 msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
-msgstr ""
+msgstr "Pārāk daudz novirzīšanas. Sekojot novirzīšanai, libcurl sasniedza maksimālo summu. Iestatiet savu limitu ar CURLOPT_MAXREDIRS."
 
 #: includes/arrays.php:747
 msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
-msgstr ""
+msgstr "Libcurl nodotā iespēja netiek atzīta/zināma. Skatiet atbilstošo dokumentāciju. Tas, visticamāk, ir problēma programmā, kas izmanto libcurl. Kļūdu buferī var būt konkrētāka informācija par to, uz kuru tieši opciju tas attiecas."
 
 #: includes/arrays.php:751
 msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
-msgstr ""
+msgstr "Opcija, kas tika nodota setoptam, tika nepareizi formatēta. Detalizētu informāciju par šo opciju skatiet kļūdas ziņojumā."
 
 #: includes/arrays.php:763
 msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
-msgstr ""
+msgstr "Nekas netika atgriezts no servera, un šādos apstākļos nekas netiek uzskatīts par kļūdu."
 
 #: includes/arrays.php:767
 msgid "The specified crypto engine was not found."
-msgstr ""
+msgstr "Norādītais kriptogrāfijas dzinējs netika atrasts."
 
 #: includes/arrays.php:771
 msgid "Failed setting the selected SSL crypto engine as default."
-msgstr ""
+msgstr "Neizdevās iestatīt atlasīto SSL kriptogrāfijas dzinēju kā noklusējumu."
 
 #: includes/arrays.php:775
 msgid "Failed sending network data."
-msgstr ""
+msgstr "Neizdevās nosūtīt tīkla datus."
 
 #: includes/arrays.php:779
 msgid "Failure with receiving network data."
-msgstr ""
+msgstr "Kļūme ar tīkla datu saņemšanu."
 
 #: includes/arrays.php:787
 msgid "problem with the local client certificate."
-msgstr ""
+msgstr "problēma ar lokālā klienta sertifikātu."
 
 #: includes/arrays.php:791
 msgid "Could not use specified cipher."
-msgstr ""
+msgstr "Nevarēja izmantot norādīto šifru."
 
 #: includes/arrays.php:795
 msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
-msgstr ""
+msgstr "Attālā servera SSL sertifikāts vai SSH pirkstu nospiedums tika uzskatīts par nepiemērotu. Šis kļūdas kods ir apvienots ar CURLE_SSL_CACERT kopš 7.62.0. Tās iepriekšējā vērtība bija 51."
 
 #: includes/arrays.php:799
 msgid "Unrecognized transfer encoding."
-msgstr ""
+msgstr "Neatpazīts pārsūtīšanas kodējums."
 
 #: includes/arrays.php:807
 msgid "Maximum file size exceeded."
-msgstr ""
+msgstr "Pārsniegts maksimālais faila lielums."
 
 #: includes/arrays.php:811
 msgid "Requested FTP SSL level failed."
-msgstr ""
+msgstr "Pieprasītais FTP SSL līmenis neizdevās."
 
 #: includes/arrays.php:815
 msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
-msgstr ""
+msgstr "Veicot sūtīšanas operāciju, čokurošanās bija jāpārtin dati, lai tos retranslētu, bet pārtīšanas operācija neizdevās."
 
 #: includes/arrays.php:819
 msgid "Initiating the SSL Engine failed."
-msgstr ""
+msgstr "SSL programmas palaišana neizdevās."
 
 #: includes/arrays.php:823
 msgid "The remote server denied curl to login (Added in 7.13.1)"
-msgstr ""
+msgstr "Attālais serveris liedza čokuroties, lai pieteiktos (Pievienots 7.13.1)"
 
 #: includes/arrays.php:827
 msgid "File not found on TFTP server."
-msgstr ""
+msgstr "Fails nav atrasts TFTP serverī."
 
 #: includes/arrays.php:831
 msgid "Permission problem on TFTP server."
-msgstr ""
+msgstr "Atļaujas problēma TFTP serverī."
 
 #: includes/arrays.php:835
 msgid "Out of disk space on the server."
-msgstr ""
+msgstr "Ārpus diska vietas serverī."
 
 #: includes/arrays.php:839
 msgid "Illegal TFTP operation."
-msgstr ""
+msgstr "Nelikumīga TFTP darbība."
 
 #: includes/arrays.php:843
 msgid "Unknown TFTP transfer ID."
-msgstr ""
+msgstr "Nezināms TFTP pārsūtīšanas ID."
 
 #: includes/arrays.php:847
 msgid "File already exists and is not overwritten."
-msgstr ""
+msgstr "Fails jau pastāv un nav pārrakstīts."
 
 #: includes/arrays.php:851
 msgid "This error should never be returned by a properly functioning TFTP server."
-msgstr ""
+msgstr "Šo kļūdu nekad nedrīkst atgriezt pareizi funkcionējošs TFTP serveris."
 
 #: includes/arrays.php:863
 msgid "Problem with reading the SSL CA cert (path? access rights?)"
-msgstr ""
+msgstr "Problēma ar SSL CA sertifikāta lasīšanu (ceļš? piekļuves tiesības?)"
 
 #: includes/arrays.php:867
 msgid "The resource referenced in the URL does not exist."
-msgstr ""
+msgstr "Resurss, uz kuru ir atsauce vietrādī URL, nepastāv."
 
 #: includes/arrays.php:871
 msgid "An unspecified error occurred during the SSH session."
-msgstr ""
+msgstr "SSH sesijas laikā radās nenoteikta kļūda."
 
 #: includes/arrays.php:875
 msgid "Failed to shut down the SSL connection."
-msgstr ""
+msgstr "Neizdevās izslēgt SSL savienojumu."
 
 #: includes/arrays.php:879
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
-msgstr ""
+msgstr "Ligzda nav gatava nosūtīšanai/recv pagaidiet, līdz tā ir gatava, un mēģiniet vēlreiz. Šis atgrieztais kods tiek atgriezts tikai no curl_easy_recv un curl_easy_send (pievienots 7.18.2. punktā)"
 
 #: includes/arrays.php:883
 msgid "Failed to load CRL file (Added in 7.19.0)"
-msgstr ""
+msgstr "Neizdevās ielādēt CRL failu (pievienots versijā 7.19.0)"
 
 #: includes/arrays.php:887
 msgid "Issuer check failed (Added in 7.19.0)"
-msgstr ""
+msgstr "Izdevēja pārbaude neizdevās (Pievienots 7.19.0. punktā)"
 
 #: includes/arrays.php:891
 msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
-msgstr ""
+msgstr "FTP serveris vispār nesaprot PRET komandu vai neatbalsta doto argumentu. Esiet piesardzīgs, lietojot CURLOPT_CUSTOMREQUEST, arī pirms PASV tiek nosūtīta pielāgota LIST komanda ar komandu PRET. (Pievienots 7.20.0. punktā)"
 
 #: includes/arrays.php:895
 msgid "Mismatch of RTSP CSeq numbers."
-msgstr ""
+msgstr "RTSP CSeq numuru nesakritība."
 
 #: includes/arrays.php:899
 msgid "Mismatch of RTSP Session Identifiers."
-msgstr ""
+msgstr "RTSP sesijas identifikatoru neatbilstība."
 
 #: includes/arrays.php:903
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
-msgstr ""
+msgstr "Nevar parsēt FTP failu sarakstu (FTP aizstājējzīmju lejupielādes laikā)."
 
 #: includes/arrays.php:907
 msgid "Chunk callback reported error."
-msgstr ""
+msgstr "Chunk atzvanīšanas ziņotā kļūda."
 
 #: includes/arrays.php:911
 msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
-msgstr ""
+msgstr "(Tikai iekšējai lietošanai, nekad netiek atgriezts ar libcurl) Nav pieejams savienojums, sesija ir rindā. (pievienots 7.30.0. punktā)"
 
 #: includes/arrays.php:915
 msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
-msgstr ""
+msgstr "Neizdevās saskaņot norādīto piesprausto atslēgu ar CURLOPT_PINNEDPUBLICKEY."
 
 #: includes/arrays.php:919
 msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
-msgstr ""
+msgstr "Statuss atgriezās kļūmē, kad tika jautāts ar CURLOPT_SSL_VERIFYSTATUS."
 
 #: includes/arrays.php:923
 msgid "Stream error in the HTTP/2 framing layer."
-msgstr ""
+msgstr "Straumes kļūda HTTP/2 kadrēšanas slānī."
 
 #: includes/arrays.php:927
 msgid "An API function was called from inside a callback."
-msgstr ""
+msgstr "API funkcija tika izsaukta no atzvanīšanas iekšpuses."
 
 #: includes/arrays.php:931
 msgid "An authentication function returned an error."
-msgstr ""
+msgstr "Autentifikācijas funkcija atgrieza kļūdu."
 
 #: includes/arrays.php:935
 msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr ""
+msgstr "HTTP/3 slānī tika konstatēta problēma. Tas ir nedaudz vispārīgs un var būt viena no vairākām problēmām, sīkāku informāciju skatiet kļūdu buferī."
 
 #: includes/arrays.php:939
 msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
-msgstr ""
+msgstr "QUIC savienojuma kļūda. Šo kļūdu var izraisīt SSL bibliotēkas kļūda. QUIC ir protokols, ko izmanto HTTP/3 pārsūtīšanai."
 
 #: includes/arrays.php:943
 msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
-msgstr ""
+msgstr "Starpniekservera rokasspiediena kļūda. CURLINFO_PROXY_ERROR sniedz papildu informāciju par konkrēto problēmu."
 
 #: includes/arrays.php:947
 msgid "SSL Client Certificate required."
-msgstr ""
+msgstr "Nepieciešams SSL klienta sertifikāts."
 
 #: includes/arrays.php:951
 msgid "An internal call to poll() or select() returned error that is not recoverable."
-msgstr ""
+msgstr "Iekšējs zvans uz aptauju() vai atlasīt() atgriezta kļūda, kas nav atkopjama."
 
 #: includes/functions.php:32 servcheck_test.php:828
 msgid "Tests"
-msgstr ""
+msgstr "Testi"
 
 #: includes/functions.php:33
 #, fuzzy
@@ -1055,7 +1056,7 @@ msgstr "Starpniekserveri"
 
 #: includes/functions.php:35
 msgid "Curl return codes"
-msgstr ""
+msgstr "Curl atgriešanas kodi"
 
 #: includes/functions.php:41
 msgid "Log History"
@@ -1063,11 +1064,11 @@ msgstr "Žurnālu vēsturi"
 
 #: includes/functions.php:48
 msgid "Graphs"
-msgstr ""
+msgstr "Grafiki"
 
 #: includes/functions.php:130
 msgid "No data"
-msgstr ""
+msgstr "Nav datu"
 
 #: servcheck_ca.php:104
 #, fuzzy
@@ -1102,11 +1103,11 @@ msgstr "Vaicājums [jauns]"
 
 #: servcheck_ca.php:268
 msgid "Used"
-msgstr ""
+msgstr "Lietots"
 
 #: servcheck_ca.php:275 servcheck_ca.php:334
 msgid "CAs"
-msgstr ""
+msgstr "Cas"
 
 #: servcheck_ca.php:296
 #, fuzzy
@@ -1120,7 +1121,7 @@ msgstr "Webseer servera pārvaldība"
 
 #: servcheck_ca.php:322
 msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
-msgstr ""
+msgstr "Servcheck izmanto sertifikātu failu no parastajām saknes CA, lai pārbaudītu sertifikātus. Tas darbosies attiecībā uz sertifikātiem, ko izdevušas kopējas KI. Ja izmantojat pielāgotu CA (piemēram, Microsoft AD vidē), šī sertifikāta pārbaude neizdosies, jo servcheck nezina jūsu CA. Jums ir jāaugšupielādē visa ķēde (CA sertifikāts un starpposma sertifikāti). Pēc tam jūs tos saistāt ar testu, ja ir jūsu CA izsniegtais sertifikāts."
 
 #: servcheck_ca.php:328 servcheck_proxies.php:343 servcheck_test.php:510
 #: servcheck_test.php:1251
@@ -1144,7 +1145,7 @@ msgstr "Notīrīt"
 
 #: servcheck_curl_code.php:55
 msgid "No error codes"
-msgstr ""
+msgstr "Nav kļūdu kodu"
 
 #: servcheck_proxies.php:103
 msgid "Click 'Continue' to delete the following Proxy."
@@ -1286,16 +1287,15 @@ msgstr "Datums"
 
 #: servcheck_test.php:796 servcheck_test.php:1048
 msgid "Result"
-msgstr ""
+msgstr "Rezultāts"
 
 #: servcheck_test.php:799 servcheck_test.php:1053
-#, fuzzy
 msgid "Search result"
-msgstr "Meklēt"
+msgstr "Meklēšanas rezultāti"
 
 #: servcheck_test.php:802 servcheck_test.php:1058
 msgid "Curl return code"
-msgstr ""
+msgstr "Curl atgriešanas kods"
 
 #: servcheck_test.php:807
 msgid "DNS"
@@ -1328,7 +1328,7 @@ msgstr "Vēsturē nav pakalpojumu pārbaudes notikumu"
 
 #: servcheck_test.php:922
 msgid "Last returned data of test"
-msgstr ""
+msgstr "Pēdējie atgrieztie testa dati"
 
 #: servcheck_test.php:1018
 msgid "Actions"
@@ -1344,7 +1344,7 @@ msgstr "Pēdējā pārbaude"
 
 #: servcheck_test.php:1038
 msgid "Stats (OK/problem)"
-msgstr ""
+msgstr "Statistika (OK/problēma)"
 
 #: servcheck_test.php:1043
 #, fuzzy
@@ -1369,11 +1369,11 @@ msgstr "Skatīt pakalpojuma pārbaudes vēsturi"
 
 #: servcheck_test.php:1120
 msgid "View Last returned data"
-msgstr ""
+msgstr "Skatīt pēdējos atgrieztos datus"
 
 #: servcheck_test.php:1125
 msgid "View Graph"
-msgstr ""
+msgstr "Skatīt grafiku"
 
 #: servcheck_test.php:1135
 msgid "Disabled"
@@ -1469,15 +1469,15 @@ msgstr "Saglabāt starpniekserveri"
 
 #: setup.php:266
 msgid "CA"
-msgstr ""
+msgstr "CA"
 
 #: setup.php:273
 msgid "CA Edit"
-msgstr ""
+msgstr "CA Rediģēt"
 
 #: setup.php:280
 msgid "Save CA"
-msgstr ""
+msgstr "Saglabāt CA"
 
 #~ msgid "Click 'Continue' to Enable the following Server."
 #~ msgid_plural "Click 'Continue' to Enable following Servers."

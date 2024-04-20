@@ -8,141 +8,140 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2020-12-14 19:05-0500\n"
+"PO-Revision-Date: 2024-04-20 12:24-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he_IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? 2 : 3);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: includes/arrays.php:33
 msgid "String found"
-msgstr ""
+msgstr "מחרוזת נמצאה"
 
 #: includes/arrays.php:34
 msgid "String not found"
-msgstr ""
+msgstr "מחרוזת לא נמצאה"
 
 #: includes/arrays.php:35
 msgid "Failed string found"
-msgstr ""
+msgstr "נמצאה מחרוזת שנכשלה"
 
 #: includes/arrays.php:36
 msgid "Failed strint not found"
-msgstr ""
+msgstr "סטרינט כושל לא נמצא"
 
 #: includes/arrays.php:37
 msgid "Maint string found"
-msgstr ""
+msgstr "נמצאה מחרוזת Maint"
 
 #: includes/arrays.php:38 servcheck_test.php:1146 servcheck_test.php:1147
 msgid "Not tested yet"
-msgstr ""
+msgstr "טרם נבדק"
 
 #: includes/arrays.php:39
 msgid "Search not performed"
-msgstr ""
+msgstr "החיפוש לא בוצע"
 
 #: includes/arrays.php:43
 msgid "HTTP plaintext, default port 80"
-msgstr ""
+msgstr "טקסט רגיל HTTP, יציאת ברירת מחדל 80"
 
 #: includes/arrays.php:44
 msgid "HTTP encrypted (HTTPS), default port 443"
-msgstr ""
+msgstr "HTTP מוצפן (HTTPS), יציאת ברירת מחדל 443"
 
 #: includes/arrays.php:46
 msgid "SMTP plaintext, default port 25 (or 587 for submission)"
-msgstr ""
+msgstr "טקסט רגיל SMTP, יציאת ברירת מחדל 25 (או 587 לשליחה)"
 
 #: includes/arrays.php:47
 msgid "SMTP with STARTTLS, default port 25(or 587 for submission)"
-msgstr ""
+msgstr "SMTP עם STARTTLS, יציאת ברירת מחדל 25 (או 587 לשליחה)"
 
 #: includes/arrays.php:48
 msgid "SMTP encrypted (SMTPS), default port 465"
-msgstr ""
+msgstr "SMTP מוצפן (SMTPS), יציאת ברירת מחדל 465"
 
 #: includes/arrays.php:50
 msgid "IMAP plaintext, default port 143"
-msgstr ""
+msgstr "IMAP טקסט רגיל, יציאת ברירת מחדל 143"
 
 #: includes/arrays.php:51
 msgid "IMAP with STARTTLS, default port 143"
-msgstr ""
+msgstr "IMAP עם STARTTLS, יציאת ברירת מחדל 143"
 
 #: includes/arrays.php:52
 msgid "IMAP encrypted (IMAPS), default port 993"
-msgstr ""
+msgstr "IMAP מוצפן (IMAPS), יציאת ברירת מחדל 993"
 
 #: includes/arrays.php:54
 msgid "POP3 plaintext, default port 110"
-msgstr ""
+msgstr "טקסט רגיל POP3, יציאת ברירת מחדל 110"
 
 #: includes/arrays.php:55
 msgid "POP3 with STARTTLS, default port 110"
-msgstr ""
+msgstr "POP3 עם STARTTLS, יציאת ברירת מחדל 110"
 
 #: includes/arrays.php:56
 msgid "POP3 encrypted (POP3S), default port 995"
-msgstr ""
+msgstr "POP3 מוצפן (POP3S), יציאת ברירת מחדל 995"
 
 #: includes/arrays.php:58
 msgid "DNS plaintext, default port 53"
-msgstr ""
+msgstr "DNS plaintext, יציאת ברירת מחדל 53"
 
 #: includes/arrays.php:61
 msgid "LDAP plaintext, default port 389"
-msgstr ""
+msgstr "טקסט רגיל LDAP, יציאת ברירת מחדל 389"
 
 #: includes/arrays.php:62
 msgid "LDAP encrypted (LDAPS), default port 636"
-msgstr ""
+msgstr "LDAP מוצפן (LDAPS), יציאת ברירת מחדל 636"
 
 #: includes/arrays.php:64
 msgid "FTP plaintext, default port 21"
-msgstr ""
+msgstr "טקסט רגיל של FTP, יציאת ברירת מחדל 21"
 
 #: includes/arrays.php:65
 msgid "FTP encrypted (FTPS), default port 990"
-msgstr ""
+msgstr "FTP מוצפן (FTPS), יציאת ברירת מחדל 990"
 
 #: includes/arrays.php:66
 msgid "SCP download file, default port 22"
-msgstr ""
+msgstr "קובץ הורדה SCP, יציאת ברירת מחדל 22"
 
 #: includes/arrays.php:67
 msgid "TFTP protocol - download file, default port 69"
-msgstr ""
+msgstr "פרוטוקול TFTP - קובץ הורדה, יציאת ברירת מחדל 69"
 
 #: includes/arrays.php:69
 msgid "SMB plaintext download file, default port 445"
-msgstr ""
+msgstr "קובץ הורדת טקסט רגיל SMB, יציאת ברירת מחדל 445"
 
 #: includes/arrays.php:70
 msgid "SMB encrypted (SMBS) download file, default port 445"
-msgstr ""
+msgstr "קובץ הורדה מוצפן SMB (SMBS), יציאת ברירת מחדל 445"
 
 #: includes/arrays.php:113
 #, fuzzy
 msgid "Last hour"
-msgstr "בדיקה אחרונה"
+msgstr "בשעה האחרונה"
 
 #: includes/arrays.php:114
 msgid "Last 6 hours"
-msgstr ""
+msgstr "6 השעות האחרונות"
 
 #: includes/arrays.php:115
 msgid "Last day"
-msgstr ""
+msgstr "היום האחרון"
 
 #: includes/arrays.php:116
-#, fuzzy
 msgid "Last week"
-msgstr "בדיקה אחרונה"
+msgstr "שבוע שעבר"
 
 #: includes/arrays.php:121
 #, fuzzy
@@ -157,55 +156,56 @@ msgstr "המשך"
 
 #: includes/arrays.php:123
 msgid "Switching Protocols"
-msgstr ""
+msgstr "פרוטוקולי מיתוג"
 
 #: includes/arrays.php:124
 msgid "OK"
-msgstr ""
+msgstr "אישור"
 
 #: includes/arrays.php:125
 msgid "Created"
-msgstr ""
+msgstr "נוצר"
 
 #: includes/arrays.php:126
 msgid "Accepted"
-msgstr ""
+msgstr "התקבל"
 
 #: includes/arrays.php:127
 msgid "Non-Authoritative Information"
-msgstr ""
+msgstr "מידע לא מוסמך"
 
 #: includes/arrays.php:128
 msgid "No Content"
-msgstr ""
+msgstr "ללא תוכן"
 
 #: includes/arrays.php:129
 msgid "Reset Content"
-msgstr ""
+msgstr "איפוס תוכן"
 
 #: includes/arrays.php:130
 msgid "Partial Content"
-msgstr ""
+msgstr "תוכן חלקי"
 
 #: includes/arrays.php:131
 msgid "Multiple Choices"
-msgstr ""
+msgstr "אפשרויות בחירה מרובות"
 
 #: includes/arrays.php:132
 msgid "Moved Permanently"
-msgstr ""
+msgstr "הועבר לצמיתות"
 
 #: includes/arrays.php:133
 msgid "Found"
-msgstr ""
+msgstr "נמצאו"
 
 #: includes/arrays.php:134
 msgid "See Other"
-msgstr ""
+msgstr "ראה אחר"
 
 #: includes/arrays.php:135
+#, fuzzy
 msgid "Not Modified"
-msgstr ""
+msgstr "תאריך שינוי"
 
 #: includes/arrays.php:136
 #, fuzzy
@@ -214,7 +214,7 @@ msgstr "פרוקסי חדש"
 
 #: includes/arrays.php:137
 msgid "(Unused)"
-msgstr ""
+msgstr "(לא בשימוש)"
 
 #: includes/arrays.php:138
 #, fuzzy
@@ -223,32 +223,31 @@ msgstr "הפניה"
 
 #: includes/arrays.php:139
 msgid "Bad Request"
-msgstr ""
+msgstr "בקשה רעה"
 
 #: includes/arrays.php:140
 msgid "Unauthorized"
-msgstr ""
+msgstr "אין הרשאה"
 
 #: includes/arrays.php:141
 msgid "Payment Required"
-msgstr ""
+msgstr "נדרש תשלום"
 
 #: includes/arrays.php:142
 msgid "Forbidden"
-msgstr ""
+msgstr "אסור"
 
 #: includes/arrays.php:143
-#, fuzzy
 msgid "Not Found"
-msgstr "לא נמצאו שרתים"
+msgstr "לא נמצא"
 
 #: includes/arrays.php:144
 msgid "Method Not Allowed"
-msgstr ""
+msgstr "השיטה אסורה"
 
 #: includes/arrays.php:145
 msgid "Not Acceptable"
-msgstr ""
+msgstr "לא מקובל"
 
 #: includes/arrays.php:146
 #, fuzzy
@@ -262,55 +261,55 @@ msgstr "פסק זמן"
 
 #: includes/arrays.php:148
 msgid "Conflict"
-msgstr ""
+msgstr "התנגשות"
 
 #: includes/arrays.php:149
 msgid "Gone"
-msgstr ""
+msgstr "נעלם"
 
 #: includes/arrays.php:150
 msgid "Length Required"
-msgstr ""
+msgstr "אורך נדרש"
 
 #: includes/arrays.php:151
 msgid "Precondition Failed"
-msgstr ""
+msgstr "תנאי מקדים נכשל"
 
 #: includes/arrays.php:152
 msgid "Request Entity Too Large"
-msgstr ""
+msgstr "בקש ישות גדולה מדי"
 
 #: includes/arrays.php:153
 msgid "Request-URI Too Long"
-msgstr ""
+msgstr "בקשה-URI ארוך מדי"
 
 #: includes/arrays.php:154
 msgid "Unsupported Media Type"
-msgstr ""
+msgstr "סוג מדיה שאינו נתמך"
 
 #: includes/arrays.php:155
 msgid "Requested Range Not Satisfiable"
-msgstr ""
+msgstr "הטווח המבוקש אינו מספק"
 
 #: includes/arrays.php:156
 msgid "Expectation Failed"
-msgstr ""
+msgstr "הציפייה נכשלה"
 
 #: includes/arrays.php:157
 msgid "Internal Server Error"
-msgstr ""
+msgstr "שגיאת שרת פנימית"
 
 #: includes/arrays.php:158
 msgid "Not Implemented"
-msgstr ""
+msgstr "לא מיושם"
 
 #: includes/arrays.php:159
 msgid "Bad Gateway"
-msgstr ""
+msgstr "כניסה  (gateway) לא תקינה"
 
 #: includes/arrays.php:160
 msgid "Service Unavailable"
-msgstr ""
+msgstr "השירות אינו זמין"
 
 #: includes/arrays.php:161
 #, fuzzy
@@ -319,19 +318,19 @@ msgstr "פסק זמן"
 
 #: includes/arrays.php:162
 msgid "HTTP Version Not Supported"
-msgstr ""
+msgstr "גירסת HTTP אינה נתמכת"
 
 #: includes/arrays.php:166
 #, php-format
 msgid "%d Poller run"
-msgstr ""
+msgstr "%d פולר לרוץ"
 
 #: includes/arrays.php:167 includes/arrays.php:168 includes/arrays.php:169
 #: includes/arrays.php:170 includes/arrays.php:171 includes/arrays.php:172
 #: includes/arrays.php:173 includes/arrays.php:174 includes/arrays.php:175
 #, php-format
 msgid "%d Poller runs"
-msgstr ""
+msgstr "%d פולר רץ"
 
 #: includes/arrays.php:179 includes/arrays.php:180 includes/arrays.php:181
 #: includes/arrays.php:182 includes/arrays.php:183 includes/arrays.php:184
@@ -368,15 +367,15 @@ msgstr "שם שימושי לפרוקסי זה."
 
 #: includes/arrays.php:235
 msgid "New CA"
-msgstr ""
+msgstr "ניו קליפורניה"
 
 #: includes/arrays.php:238 includes/arrays.php:361
 msgid "CA Chain"
-msgstr ""
+msgstr "רשת CA"
 
 #: includes/arrays.php:242
 msgid "CA and intermediate certs, PEM encoded"
-msgstr ""
+msgstr "CA ואישורי ביניים, מקודדים PEM"
 
 #: includes/arrays.php:251
 #, fuzzy
@@ -460,19 +459,19 @@ msgstr "בטל את סימון התיבה הזו כדי להשבית את כתו
 
 #: includes/arrays.php:332
 msgid "Poller"
-msgstr ""
+msgstr "פולר"
 
 #: includes/arrays.php:335
 msgid "Poller on which the test will run"
-msgstr ""
+msgstr "הפולר שעליו ירוץ המבחן"
 
 #: includes/arrays.php:340
 msgid "Type of service"
-msgstr ""
+msgstr "סוג השירות"
 
 #: includes/arrays.php:345
 msgid "What type of service?"
-msgstr ""
+msgstr "איזה סוג שירות?"
 
 #: includes/arrays.php:350
 #, fuzzy
@@ -481,7 +480,7 @@ msgstr "כתובת IP כדי להתחבר לשרת זה"
 
 #: includes/arrays.php:351
 msgid "You can specify another port (example.com:5000) otherwise default will be used"
-msgstr ""
+msgstr "באפשרותך לציין יציאה אחרת (example.com:5000) אחרת ייעשה שימוש כברירת מחדל"
 
 #: includes/arrays.php:358
 #, fuzzy
@@ -495,7 +494,7 @@ msgstr "ללא"
 
 #: includes/arrays.php:365
 msgid "Your own CA and intermediate certs"
-msgstr ""
+msgstr "אישורי CA וביניים משלך"
 
 #: includes/arrays.php:370 servcheck_proxies.php:285
 msgid "Username"
@@ -503,11 +502,11 @@ msgstr "שם משתמש"
 
 #: includes/arrays.php:372
 msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
-msgstr ""
+msgstr "עם אימות, הבדיקה מקבלת מידע נוסף. עבור LDAP משהו כמו cn=John Doe,OU=anygroup,DC=example,DC=com. עבור עסקים קטנים ובינוניים, השתמש בתחום/משתמש"
 
 #: includes/arrays.php:380
 msgid "For anonymous ftp insert email address here."
-msgstr ""
+msgstr "עבור FTP אנונימי הכנס כתובת דוא\"ל כאן."
 
 #: includes/arrays.php:386
 #, fuzzy
@@ -516,23 +515,23 @@ msgstr "חיפוש"
 
 #: includes/arrays.php:388
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
-msgstr ""
+msgstr "מסנן חיפוש LDAP, זה יכול להיות ,OU = anygroup,DC=example,DC=com"
 
 #: includes/arrays.php:395
 msgid "DNS Name for Query"
-msgstr ""
+msgstr "שם DNS עבור שאילתה"
 
 #: includes/arrays.php:396
 msgid "DNS name for querying"
-msgstr ""
+msgstr "שם DNS עבור שאילתה"
 
 #: includes/arrays.php:403
 msgid "Path Part of URL"
-msgstr ""
+msgstr "חלק נתיב מכתובת URL"
 
 #: includes/arrays.php:404
 msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
-msgstr ""
+msgstr "עבור שירות אינטרנט, הוסף לפחות \"/\" או משהו כמו \"/any/path/\". עבור רישום FTP חייב להסתיים ב- char \"/\". עבור TFTP/SCP/SMB DOWNLOAD TEST INSERT /PATH/FILE"
 
 #: includes/arrays.php:411
 msgid "Requires Authentication"
@@ -580,11 +579,11 @@ msgstr "תזמון התראות"
 
 #: includes/arrays.php:444
 msgid "How Often to Test"
-msgstr ""
+msgstr "באיזו תדירות לבדוק"
 
 #: includes/arrays.php:448
 msgid "Test each poller cycle or less"
-msgstr ""
+msgstr "בדוק כל מחזור סוקר או פחות"
 
 #: includes/arrays.php:452
 msgid "Trigger"
@@ -685,99 +684,99 @@ msgstr "תוכל לציין כאן הודעות אימייל נוספות כדי
 
 #: includes/arrays.php:530
 msgid "Notes"
-msgstr ""
+msgstr "הערות"
 
 #: includes/arrays.php:534
 msgid "Notes sent in email"
-msgstr ""
+msgstr "הערות שנשלחו בדואר אלקטרוני"
 
 #: includes/arrays.php:538
 msgid "External ID"
-msgstr ""
+msgstr "מזהה חיצוני"
 
 #: includes/arrays.php:540
 msgid "Enter an Eternal ID for this Thold Template."
-msgstr ""
+msgstr "הזן מזהה נצחי עבור תבנית Thold זו."
 
 #: includes/arrays.php:555
 msgid "All fine. Proceed as usual."
-msgstr ""
+msgstr "הכל בסדר. המשך כרגיל."
 
 #: includes/arrays.php:559
 msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
-msgstr ""
+msgstr "כתובת האתר שהעברת ל- libcurl השתמשה בפרוטוקול ש- libcurl זה אינו תומך בו. התמיכה עשויה להיות אפשרות זמן הידור שלא השתמשת בה, היא יכולה להיות מחרוזת פרוטוקול עם שגיאות כתיב או סתם פרוטוקול של- libcurl אין קוד עבורו."
 
 #: includes/arrays.php:563
 msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
-msgstr ""
+msgstr "קוד אתחול מוקדם נכשל. סביר להניח שזו שגיאה או בעיה פנימית, או בעיית משאבים שבה משהו בסיסי לא יכול היה להתבצע בזמן ה- init."
 
 #: includes/arrays.php:567
 msgid "The URL was not properly formatted."
-msgstr ""
+msgstr "כתובת ה-URL לא עוצבה כראוי."
 
 #: includes/arrays.php:571
 msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
-msgstr ""
+msgstr "תכונה, פרוטוקול או אפשרות מבוקשת לא נמצאו מובנים ב- libcurl זה עקב החלטת זמן בנייה. משמעות הדבר היא כי תכונה או אפשרות לא הופעלה או הושבתה במפורש כאשר libcurl נבנה, וכדי לגרום לו לתפקד אתה צריך לקבל libcurl שנבנה מחדש."
 
 #: includes/arrays.php:575
 msgid "Could not resolve proxy. The given proxy host could not be resolved."
-msgstr ""
+msgstr "לא היתה אפשרות לפתור proxy. לא היתה אפשרות לפתור את מארח ה- proxy הנתון."
 
 #: includes/arrays.php:579
 msgid "Could not resolve host. The given remote host was not resolved."
-msgstr ""
+msgstr "לא היתה אפשרות לפתור את המארח. המארח המרוחק הנתון לא נפתר."
 
 #: includes/arrays.php:583
 msgid "Failed to connect() to host or proxy."
-msgstr ""
+msgstr "החיבור () למארח או ל- Proxy נכשל."
 
 #: includes/arrays.php:587
 msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
-msgstr ""
+msgstr "השרת שלח נתונים libcurl לא יכול לנתח. קוד שגיאה זה היה ידוע בשם CURLE_FTP_WEIRD_SERVER_REPLY לפני 7.51.0."
 
 #: includes/arrays.php:591
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
-msgstr ""
+msgstr "נמנעה מאיתנו גישה למשאב שניתן בכתובת האתר. עבור FTP, הדבר מתרחש בעת ניסיון לשנות לספרייה המרוחקת."
 
 #: includes/arrays.php:595
 msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
-msgstr ""
+msgstr "בעת ההמתנה להתחברות מחדש של השרת כאשר נעשה שימוש בהפעלת FTP פעילה, נשלח קוד שגיאה דרך חיבור הבקרה או דומה."
 
 #: includes/arrays.php:599
 msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
-msgstr ""
+msgstr "לאחר שליחת סיסמת ה- FTP לשרת, libcurl מצפה לתשובה הולמת. קוד שגיאה זה מציין שהוחזר קוד בלתי צפוי."
 
 #: includes/arrays.php:603
 msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
-msgstr ""
+msgstr "במהלך הפעלת FTP פעילה בזמן ההמתנה לחיבור השרת, פג תוקפו של פסק הזמן CURLOPT_ACCEPTTIMEOUT_MS (או של ברירת המחדל הפנימית)."
 
 #: includes/arrays.php:607
 msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
-msgstr ""
+msgstr "Libcurl לא הצליח לקבל תוצאה הגיונית בחזרה מהשרת כתגובה לפקודת PASV או EPSV. השרת פגום."
 
 #: includes/arrays.php:611
 msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
-msgstr ""
+msgstr "שרתי FTP מחזירים שורה של 227 כתגובה לפקודת PASV. אם libcurl אינו מצליח לנתח שורה זו, קוד החזרה זה מועבר בחזרה."
 
 #: includes/arrays.php:615
 msgid "An internal failure to lookup the host used for the new connection."
-msgstr ""
+msgstr "כשל פנימי בחיפוש המחשב המארח המשמש לחיבור החדש."
 
 #: includes/arrays.php:619
 msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr ""
+msgstr "זוהתה בעיה בשכבת המסגור HTTP2. זה קצת גנרי יכול להיות אחד מתוך כמה בעיות, עיין במאגר השגיאה לקבלת פרטים."
 
 #: includes/arrays.php:623
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
-msgstr ""
+msgstr "התקבלה שגיאה בעת ניסיון להגדיר את מצב ההעברה לבינארי או ASCII."
 
 #: includes/arrays.php:627
 msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
-msgstr ""
+msgstr "העברת קבצים הייתה קצרה או גדולה מהצפוי. מצב זה מתרחש כאשר השרת מדווח תחילה על גודל העברה צפוי ולאחר מכן מספק נתונים שאינם תואמים לגודל שניתן קודם לכן."
 
 #: includes/arrays.php:631
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
-msgstr ""
+msgstr "זו הייתה תשובה מוזרה לפקודת 'RETR' או העברת אפס בתים שהושלמה."
 
 #: includes/arrays.php:634 includes/arrays.php:650 includes/arrays.php:670
 #: includes/arrays.php:682 includes/arrays.php:714 includes/arrays.php:730
@@ -785,7 +784,7 @@ msgstr ""
 #: includes/arrays.php:782 includes/arrays.php:802 includes/arrays.php:854
 #: includes/arrays.php:858
 msgid "Obsolete Error"
-msgstr ""
+msgstr "שגיאה מיושנת"
 
 #: includes/arrays.php:635 includes/arrays.php:651 includes/arrays.php:671
 #: includes/arrays.php:683 includes/arrays.php:715 includes/arrays.php:731
@@ -793,67 +792,67 @@ msgstr ""
 #: includes/arrays.php:783 includes/arrays.php:803 includes/arrays.php:855
 #: includes/arrays.php:859
 msgid "Not used in modern versions."
-msgstr ""
+msgstr "לא בשימוש בגרסאות מודרניות."
 
 #: includes/arrays.php:639
 msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
-msgstr ""
+msgstr "בעת שליחת פקודות \"QUOTE\" מותאמות אישית לשרת המרוחק, אחת הפקודות החזירה קוד שגיאה של 400 ומעלה (עבור FTP) או הצביעה בדרך אחרת על השלמה לא מוצלחת של הפקודה."
 
 #: includes/arrays.php:643
 msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
-msgstr ""
+msgstr "פעולה זו מוחזרת אם CURLOPT_FAILONERROR מוגדר true ושרת HTTP מחזיר קוד שגיאה >= 400."
 
 #: includes/arrays.php:647
 msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
-msgstr ""
+msgstr "אירעה שגיאה בעת כתיבת נתונים שהתקבלו לקובץ מקומי, או הוחזרה שגיאה ל- libcurl מהתקשרות חוזרת לכתיבה."
 
 #: includes/arrays.php:655
 msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
-msgstr ""
+msgstr "הפעלת ההעלאה נכשלה. עבור FTP, השרת דחה בדרך כלל את הפקודה STOR. מאגר השגיאות מכיל בדרך כלל את ההסבר של השרת לכך."
 
 #: includes/arrays.php:659
 msgid "There was a problem reading a local file or an error returned by the read callback."
-msgstr ""
+msgstr "אירעה בעיה בקריאת קובץ מקומי או שגיאה שהוחזרה על-ידי ההתקשרות החוזרת לקריאה."
 
 #: includes/arrays.php:663
 msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
-msgstr ""
+msgstr "בקשה להקצאת זיכרון נכשלה. זה רע רציני והדברים נדפקים קשות אם זה יקרה אי פעם."
 
 #: includes/arrays.php:667
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
-msgstr ""
+msgstr "פסק זמן למבצע. תקופת פסק הזמן שנקבעה הושגה בהתאם לתנאים."
 
 #: includes/arrays.php:675
 msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
-msgstr ""
+msgstr "הפקודה FTP PORT החזירה שגיאה. זה קורה בעיקר כאשר לא ציינת כתובת טובה מספיק עבור libcurl להשתמש. ראה CURLOPT_FTPPORT."
 
 #: includes/arrays.php:679
 msgid "The FTP REST command returned error. This should never happen if the server is sane."
-msgstr ""
+msgstr "הפקודה FTP REST החזירה שגיאה. זה לא אמור לקרות אם השרת שפוי."
 
 #: includes/arrays.php:687
 msgid "The server does not support or accept range requests."
-msgstr ""
+msgstr "השרת אינו תומך או מקבל בקשות טווח."
 
 #: includes/arrays.php:691
 msgid "This is an odd error that mainly occurs due to internal confusion."
-msgstr ""
+msgstr "זוהי שגיאה מוזרה המתרחשת בעיקר עקב בלבול פנימי."
 
 #: includes/arrays.php:695
 msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
-msgstr ""
+msgstr "אירעה בעיה איפשהו בלחיצת היד של SSL/TLS. אתה באמת רוצה את מאגר השגיאה ולקרוא את ההודעה שם כפי שהוא מאתר את הבעיה קצת יותר. יכולים להיות אישורים (תבניות קובץ, נתיבים, הרשאות), סיסמאות ועוד."
 
 #: includes/arrays.php:699
 msgid "The download could not be resumed because the specified offset was out of the file boundary."
-msgstr ""
+msgstr "לא היתה אפשרות לחדש את ההורדה מכיוון שההסטה שצוינה הייתה מחוץ לגבול הקובץ."
 
 #: includes/arrays.php:703
 msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
-msgstr ""
+msgstr "לא היתה אפשרות לפתוח קובץ שניתן עם FILE://. סביר להניח מכיוון שנתיב הקובץ אינו מזהה קובץ קיים. האם בדקת הרשאות קבצים?"
 
 #: includes/arrays.php:707
 msgid "LDAP cannot bind. LDAP bind operation failed."
-msgstr ""
+msgstr "LDAP אינו יכול להיקשר. פעולת איגוד LDAP נכשלה."
 
 #: includes/arrays.php:711
 #, fuzzy
@@ -862,211 +861,211 @@ msgstr "חיפוש"
 
 #: includes/arrays.php:719
 msgid "Function not found. A required zlib function was not found."
-msgstr ""
+msgstr "הפונקציה לא נמצאה. פונקציית zlib נדרשת לא נמצאה."
 
 #: includes/arrays.php:723
 msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
-msgstr ""
+msgstr "בוטל על ידי התקשרות חוזרת. שיחה חוזרת החזירה את המילה \"בטל\" ל-libcurl."
 
 #: includes/arrays.php:727
 msgid "A function was called with a bad parameter."
-msgstr ""
+msgstr "פונקציה נקראה עם פרמטר רע."
 
 #: includes/arrays.php:735
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
-msgstr ""
+msgstr "שגיאת ממשק. לא היתה אפשרות להשתמש בממשק יוצא שצוין. הגדר באיזה ממשק להשתמש עבור כתובת ה- IP המקורית של חיבורים יוצאים עם URLOPT_INTERFACE."
 
 #: includes/arrays.php:743
 msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
-msgstr ""
+msgstr "יותר מדי הפניות. בעת ביצוע הפניות, libcurl פגע בסכום המקסימלי. הגדר את המגבלה שלך באמצעות CURLOPT_MAXREDIRS."
 
 #: includes/arrays.php:747
 msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
-msgstr ""
+msgstr "אפשרות שהועברה ל- libcurl אינה מוכרת/ידועה. עיין בתיעוד המתאים. זוהי ככל הנראה בעיה בתוכנית המשתמשת libcurl. מאגר השגיאות עשוי להכיל מידע ספציפי יותר לגבי האפשרות המדויקת שבה הוא עוסק."
 
 #: includes/arrays.php:751
 msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
-msgstr ""
+msgstr "אפשרות שהועברה ל- setopt עוצבה באופן שגוי. ראה הודעת שגיאה לקבלת פרטים אודות איזו אפשרות."
 
 #: includes/arrays.php:763
 msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
-msgstr ""
+msgstr "שום דבר לא הוחזר מהשרת, ובנסיבות העניין, לא מקבל כלום נחשב שגיאה."
 
 #: includes/arrays.php:767
 msgid "The specified crypto engine was not found."
-msgstr ""
+msgstr "מנוע הקריפטו שצוין לא נמצא."
 
 #: includes/arrays.php:771
 msgid "Failed setting the selected SSL crypto engine as default."
-msgstr ""
+msgstr "הגדרת מנוע ההצפנה SSL שנבחר נכשלה כברירת מחדל."
 
 #: includes/arrays.php:775
 msgid "Failed sending network data."
-msgstr ""
+msgstr "שליחת נתוני רשת נכשלה."
 
 #: includes/arrays.php:779
 msgid "Failure with receiving network data."
-msgstr ""
+msgstr "כשל בקבלת נתוני רשת."
 
 #: includes/arrays.php:787
 msgid "problem with the local client certificate."
-msgstr ""
+msgstr "בעיה עם אישור הלקוח המקומי."
 
 #: includes/arrays.php:791
 msgid "Could not use specified cipher."
-msgstr ""
+msgstr "לא היתה אפשרות להשתמש בצופן שצוין."
 
 #: includes/arrays.php:795
 msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
-msgstr ""
+msgstr "אישור SSL או טביעת אצבע SSH של השרת המרוחק הוגדרו כלא בסדר. קוד שגיאה זה אוחד עם CURLE_SSL_CACERT מאז 7.62.0. ערכו הקודם היה 51."
 
 #: includes/arrays.php:799
 msgid "Unrecognized transfer encoding."
-msgstr ""
+msgstr "קידוד העברה לא מזוהה."
 
 #: includes/arrays.php:807
 msgid "Maximum file size exceeded."
-msgstr ""
+msgstr "חריגה מגודל הקובץ המרבי."
 
 #: includes/arrays.php:811
 msgid "Requested FTP SSL level failed."
-msgstr ""
+msgstr "רמת SSL FTP מבוקשת נכשלה."
 
 #: includes/arrays.php:815
 msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
-msgstr ""
+msgstr "בעת ביצוע פעולת שליחה תלתל היה צריך להריץ אחורה את הנתונים כדי לשדר מחדש, אך פעולת ההרצה לאחור נכשלה."
 
 #: includes/arrays.php:819
 msgid "Initiating the SSL Engine failed."
-msgstr ""
+msgstr "הפעלת מנגנון SSL נכשלה."
 
 #: includes/arrays.php:823
 msgid "The remote server denied curl to login (Added in 7.13.1)"
-msgstr ""
+msgstr "השרת המרוחק סירב לתלתל להתחבר (נוסף ב- 7.13.1)"
 
 #: includes/arrays.php:827
 msgid "File not found on TFTP server."
-msgstr ""
+msgstr "הקובץ לא נמצא בשרת TFTP."
 
 #: includes/arrays.php:831
 msgid "Permission problem on TFTP server."
-msgstr ""
+msgstr "בעיית הרשאה בשרת TFTP."
 
 #: includes/arrays.php:835
 msgid "Out of disk space on the server."
-msgstr ""
+msgstr "אין שטח דיסק פנוי בשרת."
 
 #: includes/arrays.php:839
 msgid "Illegal TFTP operation."
-msgstr ""
+msgstr "פעולת TFTP בלתי חוקית."
 
 #: includes/arrays.php:843
 msgid "Unknown TFTP transfer ID."
-msgstr ""
+msgstr "מזהה העברת TFTP לא ידוע."
 
 #: includes/arrays.php:847
 msgid "File already exists and is not overwritten."
-msgstr ""
+msgstr "הקובץ כבר קיים ואינו מוחלף."
 
 #: includes/arrays.php:851
 msgid "This error should never be returned by a properly functioning TFTP server."
-msgstr ""
+msgstr "לעולם אין להחזיר שגיאה זו על-ידי שרת TFTP המתפקד כראוי."
 
 #: includes/arrays.php:863
 msgid "Problem with reading the SSL CA cert (path? access rights?)"
-msgstr ""
+msgstr "בעיה בקריאת אישור SSL CA (נתיב? זכויות גישה?)"
 
 #: includes/arrays.php:867
 msgid "The resource referenced in the URL does not exist."
-msgstr ""
+msgstr "המשאב שאליו מפנה כתובת ה- URL אינו קיים."
 
 #: includes/arrays.php:871
 msgid "An unspecified error occurred during the SSH session."
-msgstr ""
+msgstr "אירעה שגיאה שלא צוינה במהלך הפעלת SSH."
 
 #: includes/arrays.php:875
 msgid "Failed to shut down the SSL connection."
-msgstr ""
+msgstr "כיבוי חיבור SSL נכשל."
 
 #: includes/arrays.php:879
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
-msgstr ""
+msgstr "שקע אינו מוכן לשליחה / recv המתן עד שהוא מוכן ונסה שוב. קוד החזרה זה מוחזר רק מ- curl_easy_recv ו- curl_easy_send (נוסף ב- 7.18.2)"
 
 #: includes/arrays.php:883
 msgid "Failed to load CRL file (Added in 7.19.0)"
-msgstr ""
+msgstr "טעינת קובץ CRL נכשלה (נוסף ב- 7.19.0)"
 
 #: includes/arrays.php:887
 msgid "Issuer check failed (Added in 7.19.0)"
-msgstr ""
+msgstr "בדיקת המנפיק נכשלה (נוסף בתאריך 7.19.0)"
 
 #: includes/arrays.php:891
 msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
-msgstr ""
+msgstr "שרת ה- FTP אינו מבין כלל את הפקודה PRET או אינו תומך בארגומנט הנתון. היזהר בעת שימוש ב- CURLOPT_CUSTOMREQUEST, פקודת LIST מותאמת אישית נשלחת עם הפקודה PRET לפני PASV גם כן. (נוסף בתאריך 7.20.0)"
 
 #: includes/arrays.php:895
 msgid "Mismatch of RTSP CSeq numbers."
-msgstr ""
+msgstr "חוסר התאמה של מספרי RTSP CSeq."
 
 #: includes/arrays.php:899
 msgid "Mismatch of RTSP Session Identifiers."
-msgstr ""
+msgstr "חוסר התאמה של מזהי הפעלת RTSP."
 
 #: includes/arrays.php:903
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
-msgstr ""
+msgstr "לא ניתן לנתח רשימת קבצי FTP (במהלך הורדה כללית של FTP)."
 
 #: includes/arrays.php:907
 msgid "Chunk callback reported error."
-msgstr ""
+msgstr "שיחה חוזרת של Chunk דיווחה על שגיאה."
 
 #: includes/arrays.php:911
 msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
-msgstr ""
+msgstr "(לשימוש פנימי בלבד, לעולם אינו מוחזר על ידי libcurl) אין חיבור זמין, ההפעלה בתור. (נוסף בתאריך 7.30.0)"
 
 #: includes/arrays.php:915
 msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
-msgstr ""
+msgstr "לא ניתן להתאים למפתח המוצמד שצוין ב- CURLOPT_PINNEDPUBLICKEY."
 
 #: includes/arrays.php:919
 msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
-msgstr ""
+msgstr "המצב החזיר כישלון כאשר נשאל עם CURLOPT_SSL_VERIFYSTATUS."
 
 #: includes/arrays.php:923
 msgid "Stream error in the HTTP/2 framing layer."
-msgstr ""
+msgstr "שגיאת הזרמה בשכבת המסגור HTTP/2."
 
 #: includes/arrays.php:927
 msgid "An API function was called from inside a callback."
-msgstr ""
+msgstr "פונקציית API נקראה מתוך התקשרות חוזרת."
 
 #: includes/arrays.php:931
 msgid "An authentication function returned an error."
-msgstr ""
+msgstr "פונקציית אימות החזירה שגיאה."
 
 #: includes/arrays.php:935
 msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr ""
+msgstr "זוהתה בעיה בשכבת HTTP/3. זה קצת גנרי יכול להיות אחד מתוך כמה בעיות, עיין במאגר השגיאה לקבלת פרטים."
 
 #: includes/arrays.php:939
 msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
-msgstr ""
+msgstr "שגיאת חיבור QUIC. שגיאה זו עשויה להיגרם על-ידי שגיאת ספריית SSL. QUIC הוא הפרוטוקול המשמש להעברות HTTP/3."
 
 #: includes/arrays.php:943
 msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
-msgstr ""
+msgstr "שגיאת לחיצת יד של Proxy. CURLINFO_PROXY_ERROR מספק פרטים נוספים על הבעיה הספציפית."
 
 #: includes/arrays.php:947
 msgid "SSL Client Certificate required."
-msgstr ""
+msgstr "נדרש אישור לקוח SSL."
 
 #: includes/arrays.php:951
 msgid "An internal call to poll() or select() returned error that is not recoverable."
-msgstr ""
+msgstr "קריאה פנימית לתשאול() או לבחירה() חזרה שגיאה שאינה ניתנת לשחזור."
 
 #: includes/functions.php:32 servcheck_test.php:828
 msgid "Tests"
-msgstr ""
+msgstr "ניסיונות"
 
 #: includes/functions.php:33
 #, fuzzy
@@ -1080,7 +1079,7 @@ msgstr "פרוקסים"
 
 #: includes/functions.php:35
 msgid "Curl return codes"
-msgstr ""
+msgstr "קודי החזרת תלתלים"
 
 #: includes/functions.php:41
 #, fuzzy
@@ -1089,11 +1088,11 @@ msgstr "צפה בהיסטוריה"
 
 #: includes/functions.php:48
 msgid "Graphs"
-msgstr ""
+msgstr "גרפים"
 
 #: includes/functions.php:130
 msgid "No data"
-msgstr ""
+msgstr "אין נתונים"
 
 #: servcheck_ca.php:104
 #, fuzzy
@@ -1130,11 +1129,11 @@ msgstr "שאילתה [חדש]"
 
 #: servcheck_ca.php:268
 msgid "Used"
-msgstr ""
+msgstr "בשימוש"
 
 #: servcheck_ca.php:275 servcheck_ca.php:334
 msgid "CAs"
-msgstr ""
+msgstr "CAs"
 
 #: servcheck_ca.php:296
 #, fuzzy
@@ -1148,7 +1147,7 @@ msgstr "ניהול שרת Webseer"
 
 #: servcheck_ca.php:322
 msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
-msgstr ""
+msgstr "Servcheck משתמש בקובץ אישורים מרשויות אישורים נפוצות כדי לבדוק אישורים. פעולה זו תפעל עבור אישורים שהונפקו על-ידי רשויות אישורים נפוצות. אם אתה משתמש ב- CA מותאם אישית (לדוגמה, בסביבת Microsoft AD), הבדיקה עבור אישור זה תיכשל מכיוון ש- servcheck אינו מכיר את רשות האישורים שלך. עליך להעלות את כל השרשרת (תעודת CA ותעודות ביניים). לאחר מכן אתה משייך אותם לבדיקה שבה נמצא האישור שהונפק על-ידי רשות האישורים שלך."
 
 #: servcheck_ca.php:328 servcheck_proxies.php:343 servcheck_test.php:510
 #: servcheck_test.php:1251
@@ -1172,7 +1171,7 @@ msgstr "נקה"
 
 #: servcheck_curl_code.php:55
 msgid "No error codes"
-msgstr ""
+msgstr "אין קודי שגיאה"
 
 #: servcheck_proxies.php:103
 #, fuzzy
@@ -1296,7 +1295,7 @@ msgstr[3] "שכפל"
 #: servcheck_test.php:405
 #, php-format
 msgid "The Service Check history was purged for %s"
-msgstr ""
+msgstr "היסטוריית בדיקת השירות נמחקה עבור %s"
 
 #: servcheck_test.php:419
 #, fuzzy, php-format
@@ -1333,7 +1332,7 @@ msgstr "תאריך"
 
 #: servcheck_test.php:796 servcheck_test.php:1048
 msgid "Result"
-msgstr ""
+msgstr "תוצאה"
 
 #: servcheck_test.php:799 servcheck_test.php:1053
 #, fuzzy
@@ -1342,7 +1341,7 @@ msgstr "חיפוש"
 
 #: servcheck_test.php:802 servcheck_test.php:1058
 msgid "Curl return code"
-msgstr ""
+msgstr "קוד החזרת תלתלים"
 
 #: servcheck_test.php:807
 #, fuzzy
@@ -1363,11 +1362,11 @@ msgstr "סה\"כ"
 
 #: servcheck_test.php:854
 msgid "Service Down"
-msgstr ""
+msgstr "השירות מושבת"
 
 #: servcheck_test.php:854
 msgid "Service UP"
-msgstr ""
+msgstr "שירות UP"
 
 #: servcheck_test.php:868
 #, fuzzy
@@ -1376,7 +1375,7 @@ msgstr "אין אירועים בהיסטוריה"
 
 #: servcheck_test.php:922
 msgid "Last returned data of test"
-msgstr ""
+msgstr "נתונים אחרונים שהוחזרו של הבדיקה"
 
 #: servcheck_test.php:1018
 msgid "Actions"
@@ -1393,7 +1392,7 @@ msgstr "בדיקה אחרונה"
 
 #: servcheck_test.php:1038
 msgid "Stats (OK/problem)"
-msgstr ""
+msgstr "סטטיסטיקה (אישור/בעיה)"
 
 #: servcheck_test.php:1043
 #, fuzzy
@@ -1422,11 +1421,11 @@ msgstr "בדיקות שירות אינטרנט"
 
 #: servcheck_test.php:1120
 msgid "View Last returned data"
-msgstr ""
+msgstr "הצג נתונים שהוחזרו לאחרונה"
 
 #: servcheck_test.php:1125
 msgid "View Graph"
-msgstr ""
+msgstr "צפו בגרף"
 
 #: servcheck_test.php:1135
 msgid "Disabled"
@@ -1478,11 +1477,11 @@ msgstr "חיפוש"
 
 #: servcheck_test.php:1379
 msgid "Entries"
-msgstr ""
+msgstr "רשומות"
 
 #: servcheck_test.php:1397
 msgid "Purge Events"
-msgstr ""
+msgstr "טיהור אירועים"
 
 #: setup.php:34
 #, fuzzy
@@ -1525,15 +1524,15 @@ msgstr "פרוקסי חדש"
 
 #: setup.php:266
 msgid "CA"
-msgstr ""
+msgstr "רשות אישורים"
 
 #: setup.php:273
 msgid "CA Edit"
-msgstr ""
+msgstr "CA עריכה"
 
 #: setup.php:280
 msgid "Save CA"
-msgstr ""
+msgstr "שמור CA"
 
 #, fuzzy
 #~ msgid "Click 'Continue' to Enable the following Server."

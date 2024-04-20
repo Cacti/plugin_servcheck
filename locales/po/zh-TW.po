@@ -8,146 +8,145 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2020-12-14 19:09-0500\n"
+"PO-Revision-Date: 2024-04-20 12:42-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: includes/arrays.php:33
 msgid "String found"
-msgstr ""
+msgstr "找到的字串"
 
 #: includes/arrays.php:34
 msgid "String not found"
-msgstr ""
+msgstr "找不到字串"
 
 #: includes/arrays.php:35
 msgid "Failed string found"
-msgstr ""
+msgstr "找到失敗的字串"
 
 #: includes/arrays.php:36
 msgid "Failed strint not found"
-msgstr ""
+msgstr "未找到失敗的 strint"
 
 #: includes/arrays.php:37
 msgid "Maint string found"
-msgstr ""
+msgstr "找到維護字串"
 
 #: includes/arrays.php:38 servcheck_test.php:1146 servcheck_test.php:1147
 msgid "Not tested yet"
-msgstr ""
+msgstr "尚未測試"
 
 #: includes/arrays.php:39
 msgid "Search not performed"
-msgstr ""
+msgstr "未執行搜索"
 
 #: includes/arrays.php:43
 msgid "HTTP plaintext, default port 80"
-msgstr ""
+msgstr "HTTP 明文，預設埠 80"
 
 #: includes/arrays.php:44
 msgid "HTTP encrypted (HTTPS), default port 443"
-msgstr ""
+msgstr "HTTP 加密 （HTTPS），預設埠 443"
 
 #: includes/arrays.php:46
 msgid "SMTP plaintext, default port 25 (or 587 for submission)"
-msgstr ""
+msgstr "SMTP 明文，預設埠 25（或 587 用於提交）"
 
 #: includes/arrays.php:47
 msgid "SMTP with STARTTLS, default port 25(or 587 for submission)"
-msgstr ""
+msgstr "帶有 STARTTLS 的 SMTP，預設埠 25（或 587 用於提交）"
 
 #: includes/arrays.php:48
 msgid "SMTP encrypted (SMTPS), default port 465"
-msgstr ""
+msgstr "SMTP 加密 （SMTPS），預設埠 465"
 
 #: includes/arrays.php:50
 msgid "IMAP plaintext, default port 143"
-msgstr ""
+msgstr "IMAP 明文，預設埠 143"
 
 #: includes/arrays.php:51
 msgid "IMAP with STARTTLS, default port 143"
-msgstr ""
+msgstr "使用 STARTTLS 的 IMAP，預設埠 143"
 
 #: includes/arrays.php:52
 msgid "IMAP encrypted (IMAPS), default port 993"
-msgstr ""
+msgstr "IMAP 加密 （IMAPS），預設埠 993"
 
 #: includes/arrays.php:54
 msgid "POP3 plaintext, default port 110"
-msgstr ""
+msgstr "POP3 明文，預設埠 110"
 
 #: includes/arrays.php:55
 msgid "POP3 with STARTTLS, default port 110"
-msgstr ""
+msgstr "具有 STARTTLS 的 POP3，預設埠 110"
 
 #: includes/arrays.php:56
 msgid "POP3 encrypted (POP3S), default port 995"
-msgstr ""
+msgstr "POP3 加密 （POP3S），預設埠 995"
 
 #: includes/arrays.php:58
 msgid "DNS plaintext, default port 53"
-msgstr ""
+msgstr "DNS 明文，預設埠 53"
 
 #: includes/arrays.php:61
 msgid "LDAP plaintext, default port 389"
-msgstr ""
+msgstr "LDAP 明文，預設埠 389"
 
 #: includes/arrays.php:62
 msgid "LDAP encrypted (LDAPS), default port 636"
-msgstr ""
+msgstr "LDAP 加密 （LDAPS），預設埠 636"
 
 #: includes/arrays.php:64
 msgid "FTP plaintext, default port 21"
-msgstr ""
+msgstr "FTP 明文，預設埠 21"
 
 #: includes/arrays.php:65
 msgid "FTP encrypted (FTPS), default port 990"
-msgstr ""
+msgstr "FTP 加密 （FTPS），預設埠 990"
 
 #: includes/arrays.php:66
 msgid "SCP download file, default port 22"
-msgstr ""
+msgstr "SCP 下載文件，預設埠 22"
 
 #: includes/arrays.php:67
 msgid "TFTP protocol - download file, default port 69"
-msgstr ""
+msgstr "TFTP 協定 - 下載文件，預設埠 69"
 
 #: includes/arrays.php:69
 msgid "SMB plaintext download file, default port 445"
-msgstr ""
+msgstr "SMB 明文下載檔，預設埠 445"
 
 #: includes/arrays.php:70
 msgid "SMB encrypted (SMBS) download file, default port 445"
-msgstr ""
+msgstr "SMB 加密 （SMBS） 下載檔，預設埠 445"
 
 #: includes/arrays.php:113
 #, fuzzy
 msgid "Last hour"
-msgstr "最後檢查"
+msgstr "前1小時"
 
 #: includes/arrays.php:114
 msgid "Last 6 hours"
-msgstr ""
+msgstr "過去 6 小時"
 
 #: includes/arrays.php:115
 msgid "Last day"
-msgstr ""
+msgstr "最後一天"
 
 #: includes/arrays.php:116
-#, fuzzy
 msgid "Last week"
-msgstr "最後檢查"
+msgstr "上個星期"
 
 #: includes/arrays.php:121
 #, fuzzy
 msgid "Unable to Connect"
-msgstr "啟用服務器"
+msgstr "無法連接到服務器"
 
 #: includes/arrays.php:122 servcheck_ca.php:109 servcheck_proxies.php:108
 #: servcheck_test.php:197 servcheck_test.php:206 servcheck_test.php:215
@@ -157,64 +156,64 @@ msgstr "繼續"
 
 #: includes/arrays.php:123
 msgid "Switching Protocols"
-msgstr ""
+msgstr "交換協定"
 
 #: includes/arrays.php:124
 msgid "OK"
-msgstr ""
+msgstr "確定"
 
 #: includes/arrays.php:125
 msgid "Created"
-msgstr ""
+msgstr "已建立"
 
 #: includes/arrays.php:126
 msgid "Accepted"
-msgstr ""
+msgstr "已接受"
 
 #: includes/arrays.php:127
 msgid "Non-Authoritative Information"
-msgstr ""
+msgstr "非權威資訊"
 
 #: includes/arrays.php:128
 msgid "No Content"
-msgstr ""
+msgstr "沒有內容"
 
 #: includes/arrays.php:129
 msgid "Reset Content"
-msgstr ""
+msgstr "重置內容"
 
 #: includes/arrays.php:130
 msgid "Partial Content"
-msgstr ""
+msgstr "部分內容"
 
 #: includes/arrays.php:131
 msgid "Multiple Choices"
-msgstr ""
+msgstr "複選"
 
 #: includes/arrays.php:132
 msgid "Moved Permanently"
-msgstr ""
+msgstr "永久移動"
 
 #: includes/arrays.php:133
 msgid "Found"
-msgstr ""
+msgstr "發現"
 
 #: includes/arrays.php:134
 msgid "See Other"
-msgstr ""
+msgstr "查看其他"
 
 #: includes/arrays.php:135
+#, fuzzy
 msgid "Not Modified"
-msgstr ""
+msgstr "最後修改"
 
 #: includes/arrays.php:136
-#, fuzzy
 msgid "Use Proxy"
-msgstr "新增代理伺服器"
+msgstr "使用代理服務器"
 
 #: includes/arrays.php:137
 msgid "(Unused)"
-msgstr ""
+msgstr "（ 未使用 ）"
 
 #: includes/arrays.php:138
 #, fuzzy
@@ -223,32 +222,31 @@ msgstr "重新導向"
 
 #: includes/arrays.php:139
 msgid "Bad Request"
-msgstr ""
+msgstr "錯誤的請求"
 
 #: includes/arrays.php:140
 msgid "Unauthorized"
-msgstr ""
+msgstr "未經授權"
 
 #: includes/arrays.php:141
 msgid "Payment Required"
-msgstr ""
+msgstr "需要付款"
 
 #: includes/arrays.php:142
 msgid "Forbidden"
-msgstr ""
+msgstr "禁止"
 
 #: includes/arrays.php:143
-#, fuzzy
 msgid "Not Found"
-msgstr "找不到服務器"
+msgstr "未找到"
 
 #: includes/arrays.php:144
 msgid "Method Not Allowed"
-msgstr ""
+msgstr "不允許的方法"
 
 #: includes/arrays.php:145
 msgid "Not Acceptable"
-msgstr ""
+msgstr "不可接受"
 
 #: includes/arrays.php:146
 #, fuzzy
@@ -262,55 +260,56 @@ msgstr "已逾時"
 
 #: includes/arrays.php:148
 msgid "Conflict"
-msgstr ""
+msgstr "衝突"
 
 #: includes/arrays.php:149
 msgid "Gone"
-msgstr ""
+msgstr "已離開"
 
 #: includes/arrays.php:150
 msgid "Length Required"
-msgstr ""
+msgstr "所需長度"
 
 #: includes/arrays.php:151
 msgid "Precondition Failed"
-msgstr ""
+msgstr "前提條件失敗"
 
 #: includes/arrays.php:152
 msgid "Request Entity Too Large"
-msgstr ""
+msgstr "請求實體太大"
 
 #: includes/arrays.php:153
 msgid "Request-URI Too Long"
-msgstr ""
+msgstr "請求 URI 太長"
 
 #: includes/arrays.php:154
 msgid "Unsupported Media Type"
-msgstr ""
+msgstr "不支援的媒體類型"
 
 #: includes/arrays.php:155
 msgid "Requested Range Not Satisfiable"
-msgstr ""
+msgstr "請求的範圍不令人滿意"
 
 #: includes/arrays.php:156
 msgid "Expectation Failed"
-msgstr ""
+msgstr "期望失敗"
 
 #: includes/arrays.php:157
+#, fuzzy
 msgid "Internal Server Error"
-msgstr ""
+msgstr "服務器內部錯誤"
 
 #: includes/arrays.php:158
 msgid "Not Implemented"
-msgstr ""
+msgstr "未實現"
 
 #: includes/arrays.php:159
 msgid "Bad Gateway"
-msgstr ""
+msgstr "閘道錯誤"
 
 #: includes/arrays.php:160
 msgid "Service Unavailable"
-msgstr ""
+msgstr "服務不可用"
 
 #: includes/arrays.php:161
 #, fuzzy
@@ -319,24 +318,24 @@ msgstr "已逾時"
 
 #: includes/arrays.php:162
 msgid "HTTP Version Not Supported"
-msgstr ""
+msgstr "不支援 HTTP 版本"
 
 #: includes/arrays.php:166
 #, php-format
 msgid "%d Poller run"
-msgstr ""
+msgstr "%d 輪詢器運行"
 
 #: includes/arrays.php:167 includes/arrays.php:168 includes/arrays.php:169
 #: includes/arrays.php:170 includes/arrays.php:171 includes/arrays.php:172
 #: includes/arrays.php:173 includes/arrays.php:174 includes/arrays.php:175
 #, php-format
 msgid "%d Poller runs"
-msgstr ""
+msgstr "%d Poller 運行"
 
 #: includes/arrays.php:179 includes/arrays.php:180 includes/arrays.php:181
 #: includes/arrays.php:182 includes/arrays.php:183 includes/arrays.php:184
 #: includes/arrays.php:185 includes/arrays.php:186
-#, fuzzy, php-format
+#, php-format
 msgid "%d Seconds"
 msgstr "%d 秒"
 
@@ -368,15 +367,15 @@ msgstr "此代理的有用名稱。"
 
 #: includes/arrays.php:235
 msgid "New CA"
-msgstr ""
+msgstr "新 CA"
 
 #: includes/arrays.php:238 includes/arrays.php:361
 msgid "CA Chain"
-msgstr ""
+msgstr "CA鏈"
 
 #: includes/arrays.php:242
 msgid "CA and intermediate certs, PEM encoded"
-msgstr ""
+msgstr "CA 和中間證書，PEM 編碼"
 
 #: includes/arrays.php:251
 #, fuzzy
@@ -459,19 +458,19 @@ msgstr "取消選中此框可禁用此網址。"
 
 #: includes/arrays.php:332
 msgid "Poller"
-msgstr ""
+msgstr "輪詢"
 
 #: includes/arrays.php:335
 msgid "Poller on which the test will run"
-msgstr ""
+msgstr "將運行測試的輪詢器"
 
 #: includes/arrays.php:340
 msgid "Type of service"
-msgstr ""
+msgstr "服務類型"
 
 #: includes/arrays.php:345
 msgid "What type of service?"
-msgstr ""
+msgstr "什麼類型的服務？"
 
 #: includes/arrays.php:350
 #, fuzzy
@@ -480,7 +479,7 @@ msgstr "連接到此服務器的IP地址"
 
 #: includes/arrays.php:351
 msgid "You can specify another port (example.com:5000) otherwise default will be used"
-msgstr ""
+msgstr "您可以指定另一個埠 （example.com:5000），否則將使用預設埠"
 
 #: includes/arrays.php:358
 #, fuzzy
@@ -494,7 +493,7 @@ msgstr "無"
 
 #: includes/arrays.php:365
 msgid "Your own CA and intermediate certs"
-msgstr ""
+msgstr "您自己的 CA 和中間證書"
 
 #: includes/arrays.php:370 servcheck_proxies.php:285
 msgid "Username"
@@ -502,11 +501,11 @@ msgstr "用戶名"
 
 #: includes/arrays.php:372
 msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
-msgstr ""
+msgstr "通過身份驗證，測試將獲得更多資訊。對於LDAP，類似於cn = John Doe，OU = anygroup，DC = example，DC=com。對於 smb，請使用 DOMAIN/user"
 
 #: includes/arrays.php:380
 msgid "For anonymous ftp insert email address here."
-msgstr ""
+msgstr "對於匿名 ftp，請在此處插入電子郵件位址。"
 
 #: includes/arrays.php:386
 #, fuzzy
@@ -515,23 +514,23 @@ msgstr "搜尋"
 
 #: includes/arrays.php:388
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
-msgstr ""
+msgstr "LDAP搜索篩檢程式，可以是，OU=anygroup，DC=example，DC=com"
 
 #: includes/arrays.php:395
 msgid "DNS Name for Query"
-msgstr ""
+msgstr "查詢的 DNS 名稱"
 
 #: includes/arrays.php:396
 msgid "DNS name for querying"
-msgstr ""
+msgstr "用於查詢的 DNS 名稱"
 
 #: includes/arrays.php:403
 msgid "Path Part of URL"
-msgstr ""
+msgstr "URL 的路徑部分"
 
 #: includes/arrays.php:404
 msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
-msgstr ""
+msgstr "對於 Web 服務，至少插入“/”或類似“/any/path/”的內容。對於 FTP，清單必須以 char “/” 結尾。對於 TFTP/SCP/SMB 下載測試，請插入 /path/file"
 
 #: includes/arrays.php:411
 #, fuzzy
@@ -544,9 +543,8 @@ msgid "Check this box if the site will normally return a 401 Error as it require
 msgstr "如果站點通常會返回401錯誤，請選中此框，因為它需要用戶名和密碼。"
 
 #: includes/arrays.php:418
-#, fuzzy
 msgid "Proxy Server"
-msgstr "主服務器"
+msgstr "代理服務器"
 
 #: includes/arrays.php:419
 #, fuzzy
@@ -580,11 +578,11 @@ msgstr "通知時間"
 
 #: includes/arrays.php:444
 msgid "How Often to Test"
-msgstr ""
+msgstr "多久測試一次"
 
 #: includes/arrays.php:448
 msgid "Test each poller cycle or less"
-msgstr ""
+msgstr "測試每個輪詢器週期或更短"
 
 #: includes/arrays.php:452
 msgid "Trigger"
@@ -686,99 +684,99 @@ msgstr "您可以在此處指定額外的電子郵件以接收此URL的警報（
 
 #: includes/arrays.php:530
 msgid "Notes"
-msgstr ""
+msgstr "備註"
 
 #: includes/arrays.php:534
 msgid "Notes sent in email"
-msgstr ""
+msgstr "通過電子郵件發送的筆記"
 
 #: includes/arrays.php:538
 msgid "External ID"
-msgstr ""
+msgstr "外部ID"
 
 #: includes/arrays.php:540
 msgid "Enter an Eternal ID for this Thold Template."
-msgstr ""
+msgstr "輸入此 Thold 範本的 Eternal ID。"
 
 #: includes/arrays.php:555
 msgid "All fine. Proceed as usual."
-msgstr ""
+msgstr "都很好。照常進行。"
 
 #: includes/arrays.php:559
 msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
-msgstr ""
+msgstr "您傳遞給 libcurl 的 URL 使用了此 libcurl 不支援的協定。支援可能是您未使用的編譯時選項，它可能是拼寫錯誤的協定字串，或者只是 libcurl 沒有代碼的協定。"
 
 #: includes/arrays.php:563
 msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
-msgstr ""
+msgstr "早期初始化代碼失敗。這可能是內部錯誤或問題，或者是資源問題，其中在初始化時無法完成一些基本的事情。"
 
 #: includes/arrays.php:567
 msgid "The URL was not properly formatted."
-msgstr ""
+msgstr "URL 格式不正確。"
 
 #: includes/arrays.php:571
 msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
-msgstr ""
+msgstr "由於構建時的決定，在此 libcurl 中找不到內置的請求的功能、協定或選項。這意味著在構建 libcurl 時未啟用或顯式禁用功能或選項，為了讓它發揮作用，您必須獲得重建的 libcurl。"
 
 #: includes/arrays.php:575
 msgid "Could not resolve proxy. The given proxy host could not be resolved."
-msgstr ""
+msgstr "無法解析代理。無法解析給定的代理主機。"
 
 #: includes/arrays.php:579
 msgid "Could not resolve host. The given remote host was not resolved."
-msgstr ""
+msgstr "無法解析主機。給定的遠端主機未解析。"
 
 #: includes/arrays.php:583
 msgid "Failed to connect() to host or proxy."
-msgstr ""
+msgstr "無法將 connect（） 連接到主機或代理。"
 
 #: includes/arrays.php:587
 msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
-msgstr ""
+msgstr "伺服器發送的數據 libcurl 無法解析。此錯誤代碼在 7.51.0 之前稱為 CURLE_FTP_WEIRD_SERVER_REPLY。"
 
 #: includes/arrays.php:591
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
-msgstr ""
+msgstr "我們被拒絕訪問 URL 中給出的資源。對於 FTP，在嘗試更改到遠端目錄時會發生這種情況。"
 
 #: includes/arrays.php:595
 msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
-msgstr ""
+msgstr "在使用活動 FTP 工作階段時等待伺服器重新連接時，透過控制連接或類似連接發送錯誤代碼。"
 
 #: includes/arrays.php:599
 msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
-msgstr ""
+msgstr "將 FTP 密碼發送到伺服器後，libcurl 需要正確的回復。此錯誤代碼表示返回了意外代碼。"
 
 #: includes/arrays.php:603
 msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
-msgstr ""
+msgstr "在等待伺服器連接的活動 FTP 工作階段期間，CURLOPT_ACCEPTTIMEOUT_MS（或內部預設）超時已過期。"
 
 #: includes/arrays.php:607
 msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
-msgstr ""
+msgstr "Libcurl 未能從伺服器獲得合理的結果作為對 PASV 或 EPSV 命令的回應。伺服器有缺陷。"
 
 #: includes/arrays.php:611
 msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
-msgstr ""
+msgstr "FTP 伺服器返回 227 行作為對 PASV 命令的回應。如果 libcurl 無法解析該行，則會傳回此返回代碼。"
 
 #: includes/arrays.php:615
 msgid "An internal failure to lookup the host used for the new connection."
-msgstr ""
+msgstr "查找用於新連接的主機的內部故障。"
 
 #: includes/arrays.php:619
 msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr ""
+msgstr "在 HTTP2 成幀層中檢測到問題。這在某種程度上是通用的，可能是幾個問題之一，有關詳細資訊，請參閱錯誤緩衝區。"
 
 #: includes/arrays.php:623
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
-msgstr ""
+msgstr "嘗試將傳輸模式設置為二進位或 ASCII 時收到錯誤。"
 
 #: includes/arrays.php:627
 msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
-msgstr ""
+msgstr "檔傳輸比預期的要短或大。當伺服器首先報告預期的傳輸大小，然後傳送與先前給定的大小不匹配的數據時，就會發生這種情況。"
 
 #: includes/arrays.php:631
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
-msgstr ""
+msgstr "這要麼是對“RETR”命令的奇怪回復，要麼是零位元組傳輸完成。"
 
 #: includes/arrays.php:634 includes/arrays.php:650 includes/arrays.php:670
 #: includes/arrays.php:682 includes/arrays.php:714 includes/arrays.php:730
@@ -786,7 +784,7 @@ msgstr ""
 #: includes/arrays.php:782 includes/arrays.php:802 includes/arrays.php:854
 #: includes/arrays.php:858
 msgid "Obsolete Error"
-msgstr ""
+msgstr "過時錯誤"
 
 #: includes/arrays.php:635 includes/arrays.php:651 includes/arrays.php:671
 #: includes/arrays.php:683 includes/arrays.php:715 includes/arrays.php:731
@@ -794,67 +792,67 @@ msgstr ""
 #: includes/arrays.php:783 includes/arrays.php:803 includes/arrays.php:855
 #: includes/arrays.php:859
 msgid "Not used in modern versions."
-msgstr ""
+msgstr "在現代版本中不使用。"
 
 #: includes/arrays.php:639
 msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
-msgstr ""
+msgstr "向遠端伺服器發送自定義「QUOTE」命令時，其中一個命令返回的錯誤代碼為 400 或更高（對於 FTP），或者以其他方式指示命令未成功完成。"
 
 #: includes/arrays.php:643
 msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
-msgstr ""
+msgstr "如果CURLOPT_FAILONERROR設置為 true，並且 HTTP 伺服器返回 >= 400 的錯誤代碼，則返回此值。"
 
 #: includes/arrays.php:647
 msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
-msgstr ""
+msgstr "將接收到的數據寫入本地檔時出錯，或者從寫入回調返回到 libcurl 時出錯。"
 
 #: includes/arrays.php:655
 msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
-msgstr ""
+msgstr "無法啟動上傳。對於 FTP，伺服器通常拒絕 STOR 命令。錯誤緩衝區通常包含伺服器對此的解釋。"
 
 #: includes/arrays.php:659
 msgid "There was a problem reading a local file or an error returned by the read callback."
-msgstr ""
+msgstr "讀取本地檔時出現問題或讀取回調返回錯誤。"
 
 #: includes/arrays.php:663
 msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
-msgstr ""
+msgstr "記憶體分配請求失敗。這是嚴重的壞事，如果發生這種情況，事情就會嚴重搞砸。"
 
 #: includes/arrays.php:667
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
-msgstr ""
+msgstr "操作超時。根據條件達到了指定的超時期限。"
 
 #: includes/arrays.php:675
 msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
-msgstr ""
+msgstr "FTP PORT 命令返回錯誤。這主要發生在您沒有指定足夠好的位址供 libcurl 使用時。請參見CURLOPT_FTPPORT。"
 
 #: includes/arrays.php:679
 msgid "The FTP REST command returned error. This should never happen if the server is sane."
-msgstr ""
+msgstr "FTP REST 命令返回錯誤。如果伺服器是正常的，則永遠不會發生這種情況。"
 
 #: includes/arrays.php:687
 msgid "The server does not support or accept range requests."
-msgstr ""
+msgstr "伺服器不支援或接受範圍請求。"
 
 #: includes/arrays.php:691
 msgid "This is an odd error that mainly occurs due to internal confusion."
-msgstr ""
+msgstr "這是一個奇怪的錯誤，主要是由於內部混亂而發生的。"
 
 #: includes/arrays.php:695
 msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
-msgstr ""
+msgstr "SSL/TLS 握手中的某個位置出現問題。你真的想要錯誤緩衝區並閱讀那裡的消息，因為它可以稍微精確地指出問題。可以是證書（檔案格式、路徑、許可權）、密碼等。"
 
 #: includes/arrays.php:699
 msgid "The download could not be resumed because the specified offset was out of the file boundary."
-msgstr ""
+msgstr "無法恢復下載，因為指定的偏移量超出了文件邊界。"
 
 #: includes/arrays.php:703
 msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
-msgstr ""
+msgstr "無法打開帶有 FILE:// 的檔。很可能是因為文件路徑未標識現有檔。您是否檢查過檔案許可權？"
 
 #: includes/arrays.php:707
 msgid "LDAP cannot bind. LDAP bind operation failed."
-msgstr ""
+msgstr "LDAP 無法綁定。LDAP 綁定操作失敗。"
 
 #: includes/arrays.php:711
 #, fuzzy
@@ -863,211 +861,211 @@ msgstr "搜尋"
 
 #: includes/arrays.php:719
 msgid "Function not found. A required zlib function was not found."
-msgstr ""
+msgstr "未找到函數。未找到必需的 zlib 函數。"
 
 #: includes/arrays.php:723
 msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
-msgstr ""
+msgstr "因回調而中止。回調將“abort”返回給 libcurl。"
 
 #: includes/arrays.php:727
 msgid "A function was called with a bad parameter."
-msgstr ""
+msgstr "調用的函數參數不正確。"
 
 #: includes/arrays.php:735
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
-msgstr ""
+msgstr "介面錯誤。無法使用指定的傳出介面。使用 URLOPT_INTERFACE 設定要用於傳出連接源 IP 位址的介面。"
 
 #: includes/arrays.php:743
 msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
-msgstr ""
+msgstr "重定向過多。當遵循重定向時，libcurl 會達到最大數量。用CURLOPT_MAXREDIRS設置您的限制。"
 
 #: includes/arrays.php:747
 msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
-msgstr ""
+msgstr "傳遞給 libcurl 的選項無法識別/已知。請參閱相應的文件。這很可能是使用 libcurl 的程序中的問題。錯誤緩衝區可能包含有關它所涉及的確切選項的更具體資訊。"
 
 #: includes/arrays.php:751
 msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
-msgstr ""
+msgstr "傳遞給 setopt 的選項格式錯誤。有關哪個選項的詳細資訊，請參閱錯誤消息。"
 
 #: includes/arrays.php:763
 msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
-msgstr ""
+msgstr "伺服器未返回任何內容，在這種情況下，未返回任何內容將被視為錯誤。"
 
 #: includes/arrays.php:767
 msgid "The specified crypto engine was not found."
-msgstr ""
+msgstr "未找到指定的加密引擎。"
 
 #: includes/arrays.php:771
 msgid "Failed setting the selected SSL crypto engine as default."
-msgstr ""
+msgstr "將選定的 SSL 加密引擎設置為預設值失敗。"
 
 #: includes/arrays.php:775
 msgid "Failed sending network data."
-msgstr ""
+msgstr "發送網路數據失敗。"
 
 #: includes/arrays.php:779
 msgid "Failure with receiving network data."
-msgstr ""
+msgstr "接收網路數據失敗。"
 
 #: includes/arrays.php:787
 msgid "problem with the local client certificate."
-msgstr ""
+msgstr "本地用戶端證書問題。"
 
 #: includes/arrays.php:791
 msgid "Could not use specified cipher."
-msgstr ""
+msgstr "無法使用指定的密碼。"
 
 #: includes/arrays.php:795
 msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
-msgstr ""
+msgstr "遠端伺服器的 SSL 證書或 SSH 指紋被視為不正常。自 7.62.0 起，此錯誤代碼已與 CURLE_SSL_CACERT 統一。其以前的值為 51。"
 
 #: includes/arrays.php:799
 msgid "Unrecognized transfer encoding."
-msgstr ""
+msgstr "無法識別的傳輸編碼。"
 
 #: includes/arrays.php:807
 msgid "Maximum file size exceeded."
-msgstr ""
+msgstr "超出最大檔大小。"
 
 #: includes/arrays.php:811
 msgid "Requested FTP SSL level failed."
-msgstr ""
+msgstr "請求的 FTP SSL 級別失敗。"
 
 #: includes/arrays.php:815
 msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
-msgstr ""
+msgstr "執行發送操作時，curl 必須倒帶數據才能重新傳輸，但回退操作失敗。"
 
 #: includes/arrays.php:819
 msgid "Initiating the SSL Engine failed."
-msgstr ""
+msgstr "啟動 SSL 引擎失敗。"
 
 #: includes/arrays.php:823
 msgid "The remote server denied curl to login (Added in 7.13.1)"
-msgstr ""
+msgstr "遠端伺服器拒絕 curl 登錄（7.13.1 中添加）"
 
 #: includes/arrays.php:827
 msgid "File not found on TFTP server."
-msgstr ""
+msgstr "在TFTP伺服器上找不到檔。"
 
 #: includes/arrays.php:831
 msgid "Permission problem on TFTP server."
-msgstr ""
+msgstr "TFTP 伺服器上的許可權問題。"
 
 #: includes/arrays.php:835
 msgid "Out of disk space on the server."
-msgstr ""
+msgstr "伺服器上的磁碟空間不足。"
 
 #: includes/arrays.php:839
 msgid "Illegal TFTP operation."
-msgstr ""
+msgstr "非法TFTP操作。"
 
 #: includes/arrays.php:843
 msgid "Unknown TFTP transfer ID."
-msgstr ""
+msgstr "未知的 TFTP 傳輸 ID。"
 
 #: includes/arrays.php:847
 msgid "File already exists and is not overwritten."
-msgstr ""
+msgstr "檔已存在且未被覆蓋。"
 
 #: includes/arrays.php:851
 msgid "This error should never be returned by a properly functioning TFTP server."
-msgstr ""
+msgstr "正常運行的 TFTP 伺服器絕不應返回此錯誤。"
 
 #: includes/arrays.php:863
 msgid "Problem with reading the SSL CA cert (path? access rights?)"
-msgstr ""
+msgstr "讀取 SSL CA 憑證時出現問題（路徑？存取權限？）"
 
 #: includes/arrays.php:867
 msgid "The resource referenced in the URL does not exist."
-msgstr ""
+msgstr "URL 中引用的資源不存在。"
 
 #: includes/arrays.php:871
 msgid "An unspecified error occurred during the SSH session."
-msgstr ""
+msgstr "SSH 工作階段期間發生不明錯誤。"
 
 #: includes/arrays.php:875
 msgid "Failed to shut down the SSL connection."
-msgstr ""
+msgstr "無法關閉 SSL 連接。"
 
 #: includes/arrays.php:879
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
-msgstr ""
+msgstr "套接字尚未準備好發送/接收，請等到它準備好，然後重試。此傳回代碼僅從 curl_easy_recv 和 curl_easy_send返回（在 7.18.2 中新增）"
 
 #: includes/arrays.php:883
 msgid "Failed to load CRL file (Added in 7.19.0)"
-msgstr ""
+msgstr "無法載入 CRL 檔（在 7.19.0 中新增）"
 
 #: includes/arrays.php:887
 msgid "Issuer check failed (Added in 7.19.0)"
-msgstr ""
+msgstr "頒發者檢查失敗（7.19.0 中添加）"
 
 #: includes/arrays.php:891
 msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
-msgstr ""
+msgstr "FTP 伺服器根本不理解 PRET 命令或不支援給定的參數。使用CURLOPT_CUSTOMREQUEST時要小心，在 PASV 之前還會發送自定義 LIST 命令和 PRET 命令。（在 7.20.0 中添加）"
 
 #: includes/arrays.php:895
 msgid "Mismatch of RTSP CSeq numbers."
-msgstr ""
+msgstr "RTSP CSeq 編號不匹配。"
 
 #: includes/arrays.php:899
 msgid "Mismatch of RTSP Session Identifiers."
-msgstr ""
+msgstr "RTSP 會話標識碼不匹配。"
 
 #: includes/arrays.php:903
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
-msgstr ""
+msgstr "無法解析 FTP 檔案清單（在 FTP 通配符下載期間）。"
 
 #: includes/arrays.php:907
 msgid "Chunk callback reported error."
-msgstr ""
+msgstr "塊回調報告錯誤。"
 
 #: includes/arrays.php:911
 msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
-msgstr ""
+msgstr "（僅供內部使用，libcurl 從不返回）沒有可用的連接，工作階段已排隊。（在 7.30.0 中添加）"
 
 #: includes/arrays.php:915
 msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
-msgstr ""
+msgstr "無法匹配用 CURLOPT_PINNEDPUBLICKEY 指定的固定鍵。"
 
 #: includes/arrays.php:919
 msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
-msgstr ""
+msgstr "當詢問CURLOPT_SSL_VERIFYSTATUS時，狀態返回失敗。"
 
 #: includes/arrays.php:923
 msgid "Stream error in the HTTP/2 framing layer."
-msgstr ""
+msgstr "HTTP/2 成幀層中的流錯誤。"
 
 #: includes/arrays.php:927
 msgid "An API function was called from inside a callback."
-msgstr ""
+msgstr "從回調內部調用了 API 函數。"
 
 #: includes/arrays.php:931
 msgid "An authentication function returned an error."
-msgstr ""
+msgstr "身份驗證函數返回錯誤。"
 
 #: includes/arrays.php:935
 msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr ""
+msgstr "在 HTTP/3 層中檢測到問題。這在某種程度上是通用的，可能是幾個問題之一，有關詳細資訊，請參閱錯誤緩衝區。"
 
 #: includes/arrays.php:939
 msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
-msgstr ""
+msgstr "QUIC 連接錯誤。此錯誤可能是由 SSL 庫錯誤引起的。QUIC 是用於 HTTP/3 傳輸的協定。"
 
 #: includes/arrays.php:943
 msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
-msgstr ""
+msgstr "代理握手錯誤。CURLINFO_PROXY_ERROR提供了有關特定問題的額外詳細資訊。"
 
 #: includes/arrays.php:947
 msgid "SSL Client Certificate required."
-msgstr ""
+msgstr "需要 SSL 用戶端證書。"
 
 #: includes/arrays.php:951
 msgid "An internal call to poll() or select() returned error that is not recoverable."
-msgstr ""
+msgstr "對 poll（） 或 select（） 的內部調用返回了不可恢復的錯誤。"
 
 #: includes/functions.php:32 servcheck_test.php:828
 msgid "Tests"
-msgstr ""
+msgstr "測試"
 
 #: includes/functions.php:33
 #, fuzzy
@@ -1081,7 +1079,7 @@ msgstr "代理"
 
 #: includes/functions.php:35
 msgid "Curl return codes"
-msgstr ""
+msgstr "Curl 返回代碼"
 
 #: includes/functions.php:41
 #, fuzzy
@@ -1090,11 +1088,11 @@ msgstr "瀏覽歷程"
 
 #: includes/functions.php:48
 msgid "Graphs"
-msgstr ""
+msgstr "圖表"
 
 #: includes/functions.php:130
 msgid "No data"
-msgstr ""
+msgstr "沒有資料"
 
 #: servcheck_ca.php:104
 #, fuzzy
@@ -1125,11 +1123,11 @@ msgstr "查詢[新]"
 
 #: servcheck_ca.php:268
 msgid "Used"
-msgstr ""
+msgstr "已使用"
 
 #: servcheck_ca.php:275 servcheck_ca.php:334
 msgid "CAs"
-msgstr ""
+msgstr "中國科學院"
 
 #: servcheck_ca.php:296
 #, fuzzy
@@ -1143,7 +1141,7 @@ msgstr "Webseer服務器管理"
 
 #: servcheck_ca.php:322
 msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
-msgstr ""
+msgstr "Servcheck 使用來自常見根 CA 的證書檔來檢查證書。這適用於由普通 CA 頒發的證書。如果您使用的是自定義 CA（例如，在 Microsoft AD 環境中），則該證書的測試將失敗，因為 servcheck 不知道您的 CA。您必須上傳整個鏈（CA 證書和中間證書）。然後，將這些與 CA 頒發的證書所在的測試相關聯。"
 
 #: servcheck_ca.php:328 servcheck_proxies.php:343 servcheck_test.php:510
 #: servcheck_test.php:1251
@@ -1167,7 +1165,7 @@ msgstr "清除"
 
 #: servcheck_curl_code.php:55
 msgid "No error codes"
-msgstr ""
+msgstr "無錯誤代碼"
 
 #: servcheck_proxies.php:103
 #, fuzzy
@@ -1261,7 +1259,7 @@ msgstr[0] "複製"
 #: servcheck_test.php:405
 #, php-format
 msgid "The Service Check history was purged for %s"
-msgstr ""
+msgstr "服務檢查歷史記錄已清除%s"
 
 #: servcheck_test.php:419
 #, fuzzy, php-format
@@ -1298,19 +1296,17 @@ msgstr "日期"
 
 #: servcheck_test.php:796 servcheck_test.php:1048
 msgid "Result"
-msgstr ""
+msgstr "結果"
 
 #: servcheck_test.php:799 servcheck_test.php:1053
-#, fuzzy
 msgid "Search result"
-msgstr "搜尋"
+msgstr "搜尋結果"
 
 #: servcheck_test.php:802 servcheck_test.php:1058
 msgid "Curl return code"
-msgstr ""
+msgstr "Curl 返回代碼"
 
 #: servcheck_test.php:807
-#, fuzzy
 msgid "DNS"
 msgstr "DNS"
 
@@ -1328,11 +1324,11 @@ msgstr "總計"
 
 #: servcheck_test.php:854
 msgid "Service Down"
-msgstr ""
+msgstr "服務宕機"
 
 #: servcheck_test.php:854
 msgid "Service UP"
-msgstr ""
+msgstr "服務升級"
 
 #: servcheck_test.php:868
 #, fuzzy
@@ -1341,7 +1337,7 @@ msgstr "沒有歷史事件"
 
 #: servcheck_test.php:922
 msgid "Last returned data of test"
-msgstr ""
+msgstr "上次返回的測試數據"
 
 #: servcheck_test.php:1018
 msgid "Actions"
@@ -1352,13 +1348,12 @@ msgid "Enabled"
 msgstr "啟用"
 
 #: servcheck_test.php:1033
-#, fuzzy
 msgid "Last Check"
 msgstr "最後檢查"
 
 #: servcheck_test.php:1038
 msgid "Stats (OK/problem)"
-msgstr ""
+msgstr "統計資訊（正常/問題）"
 
 #: servcheck_test.php:1043
 #, fuzzy
@@ -1386,11 +1381,11 @@ msgstr "Web服務檢查"
 
 #: servcheck_test.php:1120
 msgid "View Last returned data"
-msgstr ""
+msgstr "查看上次返回的數據"
 
 #: servcheck_test.php:1125
 msgid "View Graph"
-msgstr ""
+msgstr "查看圖表"
 
 #: servcheck_test.php:1135
 msgid "Disabled"
@@ -1442,11 +1437,11 @@ msgstr "搜尋"
 
 #: servcheck_test.php:1379
 msgid "Entries"
-msgstr ""
+msgstr "留言"
 
 #: servcheck_test.php:1397
 msgid "Purge Events"
-msgstr ""
+msgstr "清除事件"
 
 #: setup.php:34
 #, fuzzy
@@ -1489,15 +1484,15 @@ msgstr "新增代理伺服器"
 
 #: setup.php:266
 msgid "CA"
-msgstr ""
+msgstr "CA"
 
 #: setup.php:273
 msgid "CA Edit"
-msgstr ""
+msgstr "CA 編輯"
 
 #: setup.php:280
 msgid "Save CA"
-msgstr ""
+msgstr "保存 CA"
 
 #, fuzzy
 #~ msgid "Click 'Continue' to Enable the following Server."

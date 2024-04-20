@@ -8,141 +8,140 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2020-12-14 19:06-0500\n"
+"PO-Revision-Date: 2024-04-20 12:27-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: includes/arrays.php:33
 msgid "String found"
-msgstr ""
+msgstr "Stringa trovata"
 
 #: includes/arrays.php:34
 msgid "String not found"
-msgstr ""
+msgstr "Stringa non trovata"
 
 #: includes/arrays.php:35
 msgid "Failed string found"
-msgstr ""
+msgstr "Stringa non riuscita trovata"
 
 #: includes/arrays.php:36
 msgid "Failed strint not found"
-msgstr ""
+msgstr "Strint non riuscito non trovato"
 
 #: includes/arrays.php:37
 msgid "Maint string found"
-msgstr ""
+msgstr "Stringa di manutenzione trovata"
 
 #: includes/arrays.php:38 servcheck_test.php:1146 servcheck_test.php:1147
 msgid "Not tested yet"
-msgstr ""
+msgstr "Non ancora testato"
 
 #: includes/arrays.php:39
 msgid "Search not performed"
-msgstr ""
+msgstr "Ricerca non eseguita"
 
 #: includes/arrays.php:43
 msgid "HTTP plaintext, default port 80"
-msgstr ""
+msgstr "Testo non crittografato HTTP, porta predefinita 80"
 
 #: includes/arrays.php:44
 msgid "HTTP encrypted (HTTPS), default port 443"
-msgstr ""
+msgstr "HTTP crittografato (HTTPS), porta predefinita 443"
 
 #: includes/arrays.php:46
 msgid "SMTP plaintext, default port 25 (or 587 for submission)"
-msgstr ""
+msgstr "Testo non crittografato SMTP, porta predefinita 25 (o 587 per l'invio)"
 
 #: includes/arrays.php:47
 msgid "SMTP with STARTTLS, default port 25(or 587 for submission)"
-msgstr ""
+msgstr "SMTP con STARTTLS, porta predefinita 25 (o 587 per l'invio)"
 
 #: includes/arrays.php:48
 msgid "SMTP encrypted (SMTPS), default port 465"
-msgstr ""
+msgstr "Crittografia SMTP (SMTPS), porta predefinita 465"
 
 #: includes/arrays.php:50
 msgid "IMAP plaintext, default port 143"
-msgstr ""
+msgstr "Testo non crittografato IMAP, porta predefinita 143"
 
 #: includes/arrays.php:51
 msgid "IMAP with STARTTLS, default port 143"
-msgstr ""
+msgstr "IMAP con STARTTLS, porta predefinita 143"
 
 #: includes/arrays.php:52
 msgid "IMAP encrypted (IMAPS), default port 993"
-msgstr ""
+msgstr "Crittografia IMAP (IMAP), porta predefinita 993"
 
 #: includes/arrays.php:54
 msgid "POP3 plaintext, default port 110"
-msgstr ""
+msgstr "Testo non crittografato POP3, porta predefinita 110"
 
 #: includes/arrays.php:55
 msgid "POP3 with STARTTLS, default port 110"
-msgstr ""
+msgstr "POP3 con STARTTLS, porta predefinita 110"
 
 #: includes/arrays.php:56
 msgid "POP3 encrypted (POP3S), default port 995"
-msgstr ""
+msgstr "Crittografato POP3 (POP3S), porta predefinita 995"
 
 #: includes/arrays.php:58
 msgid "DNS plaintext, default port 53"
-msgstr ""
+msgstr "DNS testo non crittografato, porta predefinita 53"
 
 #: includes/arrays.php:61
 msgid "LDAP plaintext, default port 389"
-msgstr ""
+msgstr "LDAP testo non crittografato, porta predefinita 389"
 
 #: includes/arrays.php:62
 msgid "LDAP encrypted (LDAPS), default port 636"
-msgstr ""
+msgstr "Crittografia LDAP (LDAPS), porta predefinita 636"
 
 #: includes/arrays.php:64
 msgid "FTP plaintext, default port 21"
-msgstr ""
+msgstr "Testo in chiaro FTP, porta predefinita 21"
 
 #: includes/arrays.php:65
 msgid "FTP encrypted (FTPS), default port 990"
-msgstr ""
+msgstr "FTP crittografato (FTPS), porta predefinita 990"
 
 #: includes/arrays.php:66
 msgid "SCP download file, default port 22"
-msgstr ""
+msgstr "File di download SCP, porta predefinita 22"
 
 #: includes/arrays.php:67
 msgid "TFTP protocol - download file, default port 69"
-msgstr ""
+msgstr "Protocollo TFTP - file di download, porta predefinita 69"
 
 #: includes/arrays.php:69
 msgid "SMB plaintext download file, default port 445"
-msgstr ""
+msgstr "File di download in testo non crittografato SMB, porta predefinita 445"
 
 #: includes/arrays.php:70
 msgid "SMB encrypted (SMBS) download file, default port 445"
-msgstr ""
+msgstr "File di download crittografato SMB (SMBS), porta predefinita 445"
 
 #: includes/arrays.php:113
 #, fuzzy
 msgid "Last hour"
-msgstr "Ultimo controllo"
+msgstr "Ultima ora"
 
 #: includes/arrays.php:114
 msgid "Last 6 hours"
-msgstr ""
+msgstr "Ultime 6 ore"
 
 #: includes/arrays.php:115
 msgid "Last day"
-msgstr ""
+msgstr "Ultimo giorno"
 
 #: includes/arrays.php:116
-#, fuzzy
 msgid "Last week"
-msgstr "Ultimo controllo"
+msgstr "Settimana scorsa"
 
 #: includes/arrays.php:121
 #, fuzzy
@@ -157,55 +156,55 @@ msgstr "Continua"
 
 #: includes/arrays.php:123
 msgid "Switching Protocols"
-msgstr ""
+msgstr "Protocolli di commutazione"
 
 #: includes/arrays.php:124
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: includes/arrays.php:125
 msgid "Created"
-msgstr ""
+msgstr "Creato"
 
 #: includes/arrays.php:126
 msgid "Accepted"
-msgstr ""
+msgstr "Accettato"
 
 #: includes/arrays.php:127
 msgid "Non-Authoritative Information"
-msgstr ""
+msgstr "Informazioni non attendibili"
 
 #: includes/arrays.php:128
 msgid "No Content"
-msgstr ""
+msgstr "Senza Contenuto"
 
 #: includes/arrays.php:129
 msgid "Reset Content"
-msgstr ""
+msgstr "Reimposta Contenuto"
 
 #: includes/arrays.php:130
 msgid "Partial Content"
-msgstr ""
+msgstr "Contenuto parziale"
 
 #: includes/arrays.php:131
 msgid "Multiple Choices"
-msgstr ""
+msgstr "Scelte multiple"
 
 #: includes/arrays.php:132
 msgid "Moved Permanently"
-msgstr ""
+msgstr "Trasferito Definitativamente"
 
 #: includes/arrays.php:133
 msgid "Found"
-msgstr ""
+msgstr "Trovato"
 
 #: includes/arrays.php:134
 msgid "See Other"
-msgstr ""
+msgstr "Vedi altro"
 
 #: includes/arrays.php:135
 msgid "Not Modified"
-msgstr ""
+msgstr "Non modificato"
 
 #: includes/arrays.php:136
 #, fuzzy
@@ -214,41 +213,39 @@ msgstr "Nuovo proxy"
 
 #: includes/arrays.php:137
 msgid "(Unused)"
-msgstr ""
+msgstr "(Non utilizzato)"
 
 #: includes/arrays.php:138
-#, fuzzy
 msgid "Temporary Redirect"
-msgstr "Reindirizza"
+msgstr "Rideviazione Temporanea"
 
 #: includes/arrays.php:139
 msgid "Bad Request"
-msgstr ""
+msgstr "Richiesta non valida"
 
 #: includes/arrays.php:140
 msgid "Unauthorized"
-msgstr ""
+msgstr "Non Autorizzato"
 
 #: includes/arrays.php:141
 msgid "Payment Required"
-msgstr ""
+msgstr "Pagamento richiesto"
 
 #: includes/arrays.php:142
 msgid "Forbidden"
-msgstr ""
+msgstr "Negato"
 
 #: includes/arrays.php:143
-#, fuzzy
 msgid "Not Found"
-msgstr "Nessun server trovato"
+msgstr "Non trovato"
 
 #: includes/arrays.php:144
 msgid "Method Not Allowed"
-msgstr ""
+msgstr "Metodo non consentito"
 
 #: includes/arrays.php:145
 msgid "Not Acceptable"
-msgstr ""
+msgstr "Non accettabile"
 
 #: includes/arrays.php:146
 #, fuzzy
@@ -256,61 +253,60 @@ msgid "Proxy Authentication Required"
 msgstr "Richiede l'autenticazione"
 
 #: includes/arrays.php:147
-#, fuzzy
 msgid "Request Timeout"
-msgstr "Timeout"
+msgstr "Timeout della richiesta"
 
 #: includes/arrays.php:148
 msgid "Conflict"
-msgstr ""
+msgstr "Conflittualità"
 
 #: includes/arrays.php:149
 msgid "Gone"
-msgstr ""
+msgstr "Andata"
 
 #: includes/arrays.php:150
 msgid "Length Required"
-msgstr ""
+msgstr "La lunghezza è obbligatoria"
 
 #: includes/arrays.php:151
 msgid "Precondition Failed"
-msgstr ""
+msgstr "Precondizione non riuscita"
 
 #: includes/arrays.php:152
 msgid "Request Entity Too Large"
-msgstr ""
+msgstr "Entità richiesta troppo grande"
 
 #: includes/arrays.php:153
 msgid "Request-URI Too Long"
-msgstr ""
+msgstr "Request-URI troppo lungo"
 
 #: includes/arrays.php:154
 msgid "Unsupported Media Type"
-msgstr ""
+msgstr "Tipo di media non supportato"
 
 #: includes/arrays.php:155
 msgid "Requested Range Not Satisfiable"
-msgstr ""
+msgstr "Intervallo richiesto non soddisfatta"
 
 #: includes/arrays.php:156
 msgid "Expectation Failed"
-msgstr ""
+msgstr "Aspettativa fallita"
 
 #: includes/arrays.php:157
 msgid "Internal Server Error"
-msgstr ""
+msgstr "Errore interno del server"
 
 #: includes/arrays.php:158
 msgid "Not Implemented"
-msgstr ""
+msgstr "Non implementato"
 
 #: includes/arrays.php:159
 msgid "Bad Gateway"
-msgstr ""
+msgstr "Gateway errato"
 
 #: includes/arrays.php:160
 msgid "Service Unavailable"
-msgstr ""
+msgstr "Servizio non disponibile"
 
 #: includes/arrays.php:161
 #, fuzzy
@@ -319,26 +315,26 @@ msgstr "Timeout"
 
 #: includes/arrays.php:162
 msgid "HTTP Version Not Supported"
-msgstr ""
+msgstr "Versione HTTP non supportata"
 
 #: includes/arrays.php:166
 #, php-format
 msgid "%d Poller run"
-msgstr ""
+msgstr "%d Corsa del Poller"
 
 #: includes/arrays.php:167 includes/arrays.php:168 includes/arrays.php:169
 #: includes/arrays.php:170 includes/arrays.php:171 includes/arrays.php:172
 #: includes/arrays.php:173 includes/arrays.php:174 includes/arrays.php:175
 #, php-format
 msgid "%d Poller runs"
-msgstr ""
+msgstr "%d Poller corre"
 
 #: includes/arrays.php:179 includes/arrays.php:180 includes/arrays.php:181
 #: includes/arrays.php:182 includes/arrays.php:183 includes/arrays.php:184
 #: includes/arrays.php:185 includes/arrays.php:186
 #, php-format
 msgid "%d Seconds"
-msgstr "<ph id=\"mtc_1\" equiv-text=\"base64:JWQ=\"/> secondi"
+msgstr "%d Secondi"
 
 #: includes/arrays.php:213 includes/arrays.php:217 includes/arrays.php:221
 msgid "Delete"
@@ -368,15 +364,15 @@ msgstr "Un nome utile per questo proxy."
 
 #: includes/arrays.php:235
 msgid "New CA"
-msgstr ""
+msgstr "Nuova CA"
 
 #: includes/arrays.php:238 includes/arrays.php:361
 msgid "CA Chain"
-msgstr ""
+msgstr "Catena CA"
 
 #: includes/arrays.php:242
 msgid "CA and intermediate certs, PEM encoded"
-msgstr ""
+msgstr "Certificati CA e intermedi, con codifica PEM"
 
 #: includes/arrays.php:251
 #, fuzzy
@@ -461,19 +457,19 @@ msgstr "Deselezionare questa casella di controllo per disabilitare la selezione 
 
 #: includes/arrays.php:332
 msgid "Poller"
-msgstr ""
+msgstr "Poller"
 
 #: includes/arrays.php:335
 msgid "Poller on which the test will run"
-msgstr ""
+msgstr "Poller su cui verrà eseguito il test"
 
 #: includes/arrays.php:340
 msgid "Type of service"
-msgstr ""
+msgstr "Tipo di servizio"
 
 #: includes/arrays.php:345
 msgid "What type of service?"
-msgstr ""
+msgstr "Che tipo di servizio?"
 
 #: includes/arrays.php:350
 #, fuzzy
@@ -482,7 +478,7 @@ msgstr "Indirizzo IP per connettersi a questo server"
 
 #: includes/arrays.php:351
 msgid "You can specify another port (example.com:5000) otherwise default will be used"
-msgstr ""
+msgstr "È possibile specificare un'altra porta (example.com:5000), altrimenti verrà utilizzata l'impostazione predefinita"
 
 #: includes/arrays.php:358
 #, fuzzy
@@ -496,7 +492,7 @@ msgstr "Nessuno"
 
 #: includes/arrays.php:365
 msgid "Your own CA and intermediate certs"
-msgstr ""
+msgstr "La tua CA e i tuoi certificati intermedi"
 
 #: includes/arrays.php:370 servcheck_proxies.php:285
 msgid "Username"
@@ -504,11 +500,11 @@ msgstr "Nome utente"
 
 #: includes/arrays.php:372
 msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
-msgstr ""
+msgstr "Con l'autenticazione il test ottiene più informazioni. Per LDAP qualcosa come cn=John Doe,OU=anygroup,DC=example,DC=com. Per smb utilizzare DOMINIO/utente"
 
 #: includes/arrays.php:380
 msgid "For anonymous ftp insert email address here."
-msgstr ""
+msgstr "Per ftp anonimo inserire l'indirizzo email qui."
 
 #: includes/arrays.php:386
 #, fuzzy
@@ -517,23 +513,23 @@ msgstr "Cerca"
 
 #: includes/arrays.php:388
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
-msgstr ""
+msgstr "Filtro di ricerca LDAP, potrebbe essere ,OU=anygroup,DC=example,DC=com"
 
 #: includes/arrays.php:395
 msgid "DNS Name for Query"
-msgstr ""
+msgstr "Nome DNS per la query"
 
 #: includes/arrays.php:396
 msgid "DNS name for querying"
-msgstr ""
+msgstr "Nome DNS per l'esecuzione di query"
 
 #: includes/arrays.php:403
 msgid "Path Part of URL"
-msgstr ""
+msgstr "Parte del percorso dell'URL"
 
 #: includes/arrays.php:404
 msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
-msgstr ""
+msgstr "Per il servizio Web, inserire almeno \"/\" o qualcosa come \"/any/path/\". Per l'elenco FTP deve terminare con char \"/\". Per TFTP/SCP/SMB scaricare l'inserto di prova /percorso/file"
 
 #: includes/arrays.php:411
 msgid "Requires Authentication"
@@ -580,11 +576,11 @@ msgstr "Tempistica delle notifiche"
 
 #: includes/arrays.php:444
 msgid "How Often to Test"
-msgstr ""
+msgstr "Con quale frequenza eseguire il test"
 
 #: includes/arrays.php:448
 msgid "Test each poller cycle or less"
-msgstr ""
+msgstr "Testare ogni ciclo di poller o meno"
 
 #: includes/arrays.php:452
 msgid "Trigger"
@@ -686,99 +682,99 @@ msgstr "È possibile specificare qui e-mail extra per ricevere avvisi per questo
 
 #: includes/arrays.php:530
 msgid "Notes"
-msgstr ""
+msgstr "Note"
 
 #: includes/arrays.php:534
 msgid "Notes sent in email"
-msgstr ""
+msgstr "Note inviate via e-mail"
 
 #: includes/arrays.php:538
 msgid "External ID"
-msgstr ""
+msgstr "ID esterno"
 
 #: includes/arrays.php:540
 msgid "Enter an Eternal ID for this Thold Template."
-msgstr ""
+msgstr "Inserisci un ID eterno per questo modello di Thold."
 
 #: includes/arrays.php:555
 msgid "All fine. Proceed as usual."
-msgstr ""
+msgstr "Tutto bene. Procedere come di consueto."
 
 #: includes/arrays.php:559
 msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
-msgstr ""
+msgstr "L'URL che hai passato a libcurl usava un protocollo che questo libcurl non supporta. Il supporto potrebbe essere un'opzione in fase di compilazione che non è stata usata, può essere una stringa di protocollo errata o semplicemente un protocollo per il quale libcurl non ha codice."
 
 #: includes/arrays.php:563
 msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
-msgstr ""
+msgstr "Il codice di inizializzazione iniziale non è riuscito. È probabile che si tratti di un errore o di un problema interno o di un problema di risorse in cui non è stato possibile eseguire un'operazione fondamentale in fase di inizializzazione."
 
 #: includes/arrays.php:567
 msgid "The URL was not properly formatted."
-msgstr ""
+msgstr "L'URL non è stato formattato correttamente."
 
 #: includes/arrays.php:571
 msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
-msgstr ""
+msgstr "Una funzionalità, un protocollo o un'opzione richiesta non è stata trovata incorporata in questa libcurl a causa di una decisione in fase di compilazione. Questo significa che una funzionalità o un'opzione non è stata abilitata o esplicitamente disabilitata quando libcurl è stata compilata e per farla funzionare è necessario ottenere una libcurl ricompilata."
 
 #: includes/arrays.php:575
 msgid "Could not resolve proxy. The given proxy host could not be resolved."
-msgstr ""
+msgstr "Impossibile risolvere il proxy. Non è stato possibile risolvere l'host proxy specificato."
 
 #: includes/arrays.php:579
 msgid "Could not resolve host. The given remote host was not resolved."
-msgstr ""
+msgstr "Impossibile risolvere l'host. L'host remoto specificato non è stato risolto."
 
 #: includes/arrays.php:583
 msgid "Failed to connect() to host or proxy."
-msgstr ""
+msgstr "Impossibile connettersi() all'host o al proxy."
 
 #: includes/arrays.php:587
 msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
-msgstr ""
+msgstr "Il server ha inviato i dati che libcurl non è stato in grado di analizzare. Questo codice di errore era noto come CURLE_FTP_WEIRD_SERVER_REPLY prima della versione 7.51.0."
 
 #: includes/arrays.php:591
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
-msgstr ""
+msgstr "Ci è stato negato l'accesso alla risorsa indicata nell'URL. Per FTP, ciò si verifica durante il tentativo di passare alla directory remota."
 
 #: includes/arrays.php:595
 msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
-msgstr ""
+msgstr "Durante l'attesa che il server si riconnetta quando viene utilizzata una sessione FTP attiva, è stato inviato un codice di errore tramite la connessione di controllo o simile."
 
 #: includes/arrays.php:599
 msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
-msgstr ""
+msgstr "Dopo aver inviato la password FTP al server, libcurl si aspetta una risposta adeguata. Questo codice di errore indica che è stato restituito un codice imprevisto."
 
 #: includes/arrays.php:603
 msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
-msgstr ""
+msgstr "Durante una sessione FTP attiva, in attesa della connessione del server, il timeout CURLOPT_ACCEPTTIMEOUT_MS (o l'impostazione predefinita interna) è scaduto."
 
 #: includes/arrays.php:607
 msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
-msgstr ""
+msgstr "Libcurl non è riuscito a ottenere un risultato sensato dal server come risposta a un comando PASV o EPSV. Il server è difettoso."
 
 #: includes/arrays.php:611
 msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
-msgstr ""
+msgstr "I server FTP restituiscono una riga 227 come risposta a un comando PASV. Se libcurl non riesce ad analizzare quella riga, questo codice di ritorno viene restituito."
 
 #: includes/arrays.php:615
 msgid "An internal failure to lookup the host used for the new connection."
-msgstr ""
+msgstr "Errore interno nella ricerca dell'host utilizzato per la nuova connessione."
 
 #: includes/arrays.php:619
 msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr ""
+msgstr "È stato rilevato un problema nel livello di framing HTTP2. Questo è un po' generico e può essere uno dei diversi problemi, vedere il buffer degli errori per i dettagli."
 
 #: includes/arrays.php:623
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
-msgstr ""
+msgstr "È stato visualizzato un errore durante il tentativo di impostare la modalità di trasferimento su binario o ASCII."
 
 #: includes/arrays.php:627
 msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
-msgstr ""
+msgstr "Il trasferimento di un file è stato più breve o più grande del previsto. Ciò si verifica quando il server segnala per la prima volta una dimensione di trasferimento prevista e quindi fornisce dati che non corrispondono alle dimensioni specificate in precedenza."
 
 #: includes/arrays.php:631
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
-msgstr ""
+msgstr "Si trattava di una strana risposta a un comando 'RETR' o di un trasferimento a zero byte completato."
 
 #: includes/arrays.php:634 includes/arrays.php:650 includes/arrays.php:670
 #: includes/arrays.php:682 includes/arrays.php:714 includes/arrays.php:730
@@ -786,7 +782,7 @@ msgstr ""
 #: includes/arrays.php:782 includes/arrays.php:802 includes/arrays.php:854
 #: includes/arrays.php:858
 msgid "Obsolete Error"
-msgstr ""
+msgstr "Errore obsoleto"
 
 #: includes/arrays.php:635 includes/arrays.php:651 includes/arrays.php:671
 #: includes/arrays.php:683 includes/arrays.php:715 includes/arrays.php:731
@@ -794,67 +790,67 @@ msgstr ""
 #: includes/arrays.php:783 includes/arrays.php:803 includes/arrays.php:855
 #: includes/arrays.php:859
 msgid "Not used in modern versions."
-msgstr ""
+msgstr "Non utilizzato nelle versioni moderne."
 
 #: includes/arrays.php:639
 msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
-msgstr ""
+msgstr "Quando si inviavano comandi personalizzati \"QUOTE\" al server remoto, uno dei comandi restituiva un codice di errore pari o superiore a 400 (per FTP) o indicava in altro modo il completamento non riuscito del comando."
 
 #: includes/arrays.php:643
 msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
-msgstr ""
+msgstr "Viene restituito se CURLOPT_FAILONERROR è impostato su true e il server HTTP restituisce un codice di errore >= 400."
 
 #: includes/arrays.php:647
 msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
-msgstr ""
+msgstr "Si è verificato un errore durante la scrittura dei dati ricevuti in un file locale, oppure è stato restituito un errore a libcurl da un callback di scrittura."
 
 #: includes/arrays.php:655
 msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
-msgstr ""
+msgstr "Impossibile avviare il caricamento. Per FTP, il server in genere negava il comando STOR. Il buffer degli errori contiene in genere la spiegazione del server per questo."
 
 #: includes/arrays.php:659
 msgid "There was a problem reading a local file or an error returned by the read callback."
-msgstr ""
+msgstr "Si è verificato un problema durante la lettura di un file locale o un errore restituito dal callback di lettura."
 
 #: includes/arrays.php:663
 msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
-msgstr ""
+msgstr "Una richiesta di allocazione della memoria non è riuscita. Questa è una grave cattiveria e le cose sono gravemente incasinate se ciò dovesse mai accadere."
 
 #: includes/arrays.php:667
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
-msgstr ""
+msgstr "Timeout dell'operazione. Il periodo di timeout specificato è stato raggiunto in base alle condizioni."
 
 #: includes/arrays.php:675
 msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
-msgstr ""
+msgstr "Il comando FTP PORT ha restituito un errore. Questo accade soprattutto quando non è stato specificato un indirizzo sufficientemente buono per l'uso da parte di libcurl. Vedere CURLOPT_FTPPORT."
 
 #: includes/arrays.php:679
 msgid "The FTP REST command returned error. This should never happen if the server is sane."
-msgstr ""
+msgstr "Il comando FTP REST ha restituito un errore. Questo non dovrebbe mai accadere se il server è sano di mente."
 
 #: includes/arrays.php:687
 msgid "The server does not support or accept range requests."
-msgstr ""
+msgstr "Il server non supporta né accetta richieste di intervallo."
 
 #: includes/arrays.php:691
 msgid "This is an odd error that mainly occurs due to internal confusion."
-msgstr ""
+msgstr "Questo è uno strano errore che si verifica principalmente a causa della confusione interna."
 
 #: includes/arrays.php:695
 msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
-msgstr ""
+msgstr "Si è verificato un problema da qualche parte nell'handshake SSL/TLS. Vuoi davvero il buffer degli errori e leggi il messaggio lì mentre individua il problema un po' di più. Può trattarsi di certificati (formati di file, percorsi, autorizzazioni), password e altro."
 
 #: includes/arrays.php:699
 msgid "The download could not be resumed because the specified offset was out of the file boundary."
-msgstr ""
+msgstr "Non è stato possibile riprendere il download perché l'offset specificato non rientrava nel limite del file."
 
 #: includes/arrays.php:703
 msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
-msgstr ""
+msgstr "Non è stato possibile aprire un file fornito con FILE://. Molto probabilmente perché il percorso del file non identifica un file esistente. Hai controllato le autorizzazioni dei file?"
 
 #: includes/arrays.php:707
 msgid "LDAP cannot bind. LDAP bind operation failed."
-msgstr ""
+msgstr "LDAP non è in grado di eseguire l'associazione. L'operazione di associazione LDAP non è riuscita."
 
 #: includes/arrays.php:711
 #, fuzzy
@@ -863,211 +859,211 @@ msgstr "Cerca"
 
 #: includes/arrays.php:719
 msgid "Function not found. A required zlib function was not found."
-msgstr ""
+msgstr "Funzione non trovata. Non è stata trovata una funzione zlib richiesta."
 
 #: includes/arrays.php:723
 msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
-msgstr ""
+msgstr "Interrotto da callback. Un callback ha restituito \"abort\" a libcurl."
 
 #: includes/arrays.php:727
 msgid "A function was called with a bad parameter."
-msgstr ""
+msgstr "È stata chiamata una funzione con un parametro non valido."
 
 #: includes/arrays.php:735
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
-msgstr ""
+msgstr "Errore di interfaccia. Non è stato possibile utilizzare un'interfaccia in uscita specificata. Impostare l'interfaccia da utilizzare per l'indirizzo IP di origine delle connessioni in uscita con URLOPT_INTERFACE."
 
 #: includes/arrays.php:743
 msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
-msgstr ""
+msgstr "Troppi reindirizzamenti. Quando si seguono i reindirizzamenti, libcurl raggiunge l'importo massimo. Imposta il tuo limite con CURLOPT_MAXREDIRS."
 
 #: includes/arrays.php:747
 msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
-msgstr ""
+msgstr "Un'opzione passata a libcurl non è riconosciuta/conosciuta. Fare riferimento alla documentazione appropriata. Questo è molto probabilmente un problema nel programma che usa libcurl. Il buffer degli errori potrebbe contenere informazioni più specifiche sull'opzione esatta."
 
 #: includes/arrays.php:751
 msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
-msgstr ""
+msgstr "Un'opzione passata a un setopt è stata formattata in modo errato. Vedere il messaggio di errore per i dettagli sull'opzione."
 
 #: includes/arrays.php:763
 msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
-msgstr ""
+msgstr "Non è stato restituito nulla dal server e, date le circostanze, non ottenere nulla è considerato un errore."
 
 #: includes/arrays.php:767
 msgid "The specified crypto engine was not found."
-msgstr ""
+msgstr "Il motore di crittografia specificato non è stato trovato."
 
 #: includes/arrays.php:771
 msgid "Failed setting the selected SSL crypto engine as default."
-msgstr ""
+msgstr "Impossibile impostare il motore di crittografia SSL selezionato come predefinito."
 
 #: includes/arrays.php:775
 msgid "Failed sending network data."
-msgstr ""
+msgstr "Impossibile inviare i dati di rete."
 
 #: includes/arrays.php:779
 msgid "Failure with receiving network data."
-msgstr ""
+msgstr "Errore con la ricezione dei dati di rete."
 
 #: includes/arrays.php:787
 msgid "problem with the local client certificate."
-msgstr ""
+msgstr "problema con il certificato client locale."
 
 #: includes/arrays.php:791
 msgid "Could not use specified cipher."
-msgstr ""
+msgstr "Impossibile utilizzare la crittografia specificata."
 
 #: includes/arrays.php:795
 msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
-msgstr ""
+msgstr "Il certificato SSL o l'impronta digitale SSH del server remoto non sono stati ritenuti idonei. Questo codice di errore è stato unificato con CURLE_SSL_CACERT a partire dalla versione 7.62.0. Il suo valore precedente era 51."
 
 #: includes/arrays.php:799
 msgid "Unrecognized transfer encoding."
-msgstr ""
+msgstr "Codifica di trasferimento non riconosciuta."
 
 #: includes/arrays.php:807
 msgid "Maximum file size exceeded."
-msgstr ""
+msgstr "La dimensione massima del file è stata superata."
 
 #: includes/arrays.php:811
 msgid "Requested FTP SSL level failed."
-msgstr ""
+msgstr "Livello SSL FTP richiesto non riuscito."
 
 #: includes/arrays.php:815
 msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
-msgstr ""
+msgstr "Quando si esegue un'operazione di invio, curl deve riavvolgere i dati per ritrasmetterli, ma l'operazione di riavvolgimento non riesce."
 
 #: includes/arrays.php:819
 msgid "Initiating the SSL Engine failed."
-msgstr ""
+msgstr "L'avvio del motore SSL non è riuscito."
 
 #: includes/arrays.php:823
 msgid "The remote server denied curl to login (Added in 7.13.1)"
-msgstr ""
+msgstr "Il server remoto ha negato curl all'accesso (aggiunto nella versione 7.13.1)"
 
 #: includes/arrays.php:827
 msgid "File not found on TFTP server."
-msgstr ""
+msgstr "File non trovato sul server TFTP."
 
 #: includes/arrays.php:831
 msgid "Permission problem on TFTP server."
-msgstr ""
+msgstr "Problema di autorizzazione sul server TFTP."
 
 #: includes/arrays.php:835
 msgid "Out of disk space on the server."
-msgstr ""
+msgstr "Spazio su disco insufficiente sul server."
 
 #: includes/arrays.php:839
 msgid "Illegal TFTP operation."
-msgstr ""
+msgstr "Operazione TFTP illegale."
 
 #: includes/arrays.php:843
 msgid "Unknown TFTP transfer ID."
-msgstr ""
+msgstr "ID trasferimento TFTP sconosciuto."
 
 #: includes/arrays.php:847
 msgid "File already exists and is not overwritten."
-msgstr ""
+msgstr "Il file esiste già e non viene sovrascritto."
 
 #: includes/arrays.php:851
 msgid "This error should never be returned by a properly functioning TFTP server."
-msgstr ""
+msgstr "Questo errore non dovrebbe mai essere restituito da un server TFTP correttamente funzionante."
 
 #: includes/arrays.php:863
 msgid "Problem with reading the SSL CA cert (path? access rights?)"
-msgstr ""
+msgstr "Problema con la lettura del certificato CA SSL (percorso? diritti di accesso?)"
 
 #: includes/arrays.php:867
 msgid "The resource referenced in the URL does not exist."
-msgstr ""
+msgstr "La risorsa a cui si fa riferimento nell'URL non esiste."
 
 #: includes/arrays.php:871
 msgid "An unspecified error occurred during the SSH session."
-msgstr ""
+msgstr "Si è verificato un errore non specificato durante la sessione SSH."
 
 #: includes/arrays.php:875
 msgid "Failed to shut down the SSL connection."
-msgstr ""
+msgstr "Impossibile arrestare la connessione SSL."
 
 #: includes/arrays.php:879
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
-msgstr ""
+msgstr "Il socket non è pronto per l'invio/ricezione, attendere che sia pronto e riprovare. Questo codice restituito viene restituito solo da curl_easy_recv e curl_easy_send (aggiunto nella versione 7.18.2)"
 
 #: includes/arrays.php:883
 msgid "Failed to load CRL file (Added in 7.19.0)"
-msgstr ""
+msgstr "Impossibile caricare il file CRL (aggiunto nella versione 7.19.0)"
 
 #: includes/arrays.php:887
 msgid "Issuer check failed (Added in 7.19.0)"
-msgstr ""
+msgstr "Controllo dell'autorità non riuscito (aggiunto nella versione 7.19.0)"
 
 #: includes/arrays.php:891
 msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
-msgstr ""
+msgstr "Il server FTP non comprende affatto il comando PRET o non supporta l'argomento specificato. Prestare attenzione quando si utilizza CURLOPT_CUSTOMREQUEST, viene inviato un comando LIST personalizzato con il comando PRET anche prima di PASV. (Aggiunto nella versione 7.20.0)"
 
 #: includes/arrays.php:895
 msgid "Mismatch of RTSP CSeq numbers."
-msgstr ""
+msgstr "Mancata corrispondenza dei numeri RTSP CSeq."
 
 #: includes/arrays.php:899
 msgid "Mismatch of RTSP Session Identifiers."
-msgstr ""
+msgstr "Mancata corrispondenza degli identificatori di sessione RTSP."
 
 #: includes/arrays.php:903
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
-msgstr ""
+msgstr "Impossibile analizzare l'elenco dei file FTP (durante il download dei caratteri jolly FTP)."
 
 #: includes/arrays.php:907
 msgid "Chunk callback reported error."
-msgstr ""
+msgstr "Errore segnalato dal callback del blocco."
 
 #: includes/arrays.php:911
 msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
-msgstr ""
+msgstr "(Solo per uso interno, non viene mai restituito da libcurl) Nessuna connessione disponibile, la sessione è in coda. (aggiunto nella versione 7.30.0)"
 
 #: includes/arrays.php:915
 msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
-msgstr ""
+msgstr "Impossibile trovare la corrispondenza con la chiave bloccata specificata con CURLOPT_PINNEDPUBLICKEY."
 
 #: includes/arrays.php:919
 msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
-msgstr ""
+msgstr "Lo stato ha restituito un errore quando è stato richiesto con CURLOPT_SSL_VERIFYSTATUS."
 
 #: includes/arrays.php:923
 msgid "Stream error in the HTTP/2 framing layer."
-msgstr ""
+msgstr "Errore di flusso nel livello di frame HTTP/2."
 
 #: includes/arrays.php:927
 msgid "An API function was called from inside a callback."
-msgstr ""
+msgstr "Una funzione API è stata chiamata dall'interno di un callback."
 
 #: includes/arrays.php:931
 msgid "An authentication function returned an error."
-msgstr ""
+msgstr "Una funzione di autenticazione ha restituito un errore."
 
 #: includes/arrays.php:935
 msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr ""
+msgstr "È stato rilevato un problema nel livello HTTP/3. Questo è un po' generico e può essere uno dei diversi problemi, vedere il buffer degli errori per i dettagli."
 
 #: includes/arrays.php:939
 msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
-msgstr ""
+msgstr "Errore di connessione QUIC. Questo errore può essere causato da un errore della libreria SSL. QUIC è il protocollo utilizzato per i trasferimenti HTTP/3."
 
 #: includes/arrays.php:943
 msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
-msgstr ""
+msgstr "Errore di handshake proxy. CURLINFO_PROXY_ERROR fornisce ulteriori dettagli sul problema specifico."
 
 #: includes/arrays.php:947
 msgid "SSL Client Certificate required."
-msgstr ""
+msgstr "È richiesto il certificato client SSL."
 
 #: includes/arrays.php:951
 msgid "An internal call to poll() or select() returned error that is not recoverable."
-msgstr ""
+msgstr "Una chiamata interna a poll() o select() ha restituito un errore che non è recuperabile."
 
 #: includes/functions.php:32 servcheck_test.php:828
 msgid "Tests"
-msgstr ""
+msgstr "Test"
 
 #: includes/functions.php:33
 #, fuzzy
@@ -1081,20 +1077,19 @@ msgstr "Proxy"
 
 #: includes/functions.php:35
 msgid "Curl return codes"
-msgstr ""
+msgstr "Codici restituiti Curl"
 
 #: includes/functions.php:41
-#, fuzzy
 msgid "Log History"
-msgstr "Visualizza lo storico"
+msgstr "Storico Log"
 
 #: includes/functions.php:48
 msgid "Graphs"
-msgstr ""
+msgstr "Grafici"
 
 #: includes/functions.php:130
 msgid "No data"
-msgstr ""
+msgstr "Nessun dato"
 
 #: servcheck_ca.php:104
 #, fuzzy
@@ -1127,11 +1122,11 @@ msgstr "Domanda [nuovo]"
 
 #: servcheck_ca.php:268
 msgid "Used"
-msgstr ""
+msgstr "Usato"
 
 #: servcheck_ca.php:275 servcheck_ca.php:334
 msgid "CAs"
-msgstr ""
+msgstr "CA"
 
 #: servcheck_ca.php:296
 #, fuzzy
@@ -1145,7 +1140,7 @@ msgstr "Gestione dei server Webseer"
 
 #: servcheck_ca.php:322
 msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
-msgstr ""
+msgstr "Servcheck utilizza un file di certificati provenienti da CA radice comuni per controllare i certificati. Questo funzionerà per i certificati emessi da CA comuni. Se si utilizza una CA personalizzata (ad esempio, in un ambiente Microsoft AD), il test per tale certificato avrà esito negativo perché servcheck non conosce la CA dell'utente. È necessario caricare l'intera catena (certificato CA e certificati intermedi). Li si associa quindi al test in cui si trova il certificato emesso dalla CA."
 
 #: servcheck_ca.php:328 servcheck_proxies.php:343 servcheck_test.php:510
 #: servcheck_test.php:1251
@@ -1169,7 +1164,7 @@ msgstr "Cancella"
 
 #: servcheck_curl_code.php:55
 msgid "No error codes"
-msgstr ""
+msgstr "Nessun codice di errore"
 
 #: servcheck_proxies.php:103
 #, fuzzy
@@ -1273,7 +1268,7 @@ msgstr[1] "Duplica"
 #: servcheck_test.php:405
 #, php-format
 msgid "The Service Check history was purged for %s"
-msgstr ""
+msgstr "La cronologia di Service Check è stata eliminata per %s"
 
 #: servcheck_test.php:419
 #, fuzzy, php-format
@@ -1310,16 +1305,15 @@ msgstr "Data"
 
 #: servcheck_test.php:796 servcheck_test.php:1048
 msgid "Result"
-msgstr ""
+msgstr "Risultato"
 
 #: servcheck_test.php:799 servcheck_test.php:1053
-#, fuzzy
 msgid "Search result"
-msgstr "Cerca"
+msgstr "Risultato della ricerca"
 
 #: servcheck_test.php:802 servcheck_test.php:1058
 msgid "Curl return code"
-msgstr ""
+msgstr "Codice restituito Curl"
 
 #: servcheck_test.php:807
 #, fuzzy
@@ -1340,11 +1334,11 @@ msgstr "Totale"
 
 #: servcheck_test.php:854
 msgid "Service Down"
-msgstr ""
+msgstr "Servizio inattivo"
 
 #: servcheck_test.php:854
 msgid "Service UP"
-msgstr ""
+msgstr "Servizio UP"
 
 #: servcheck_test.php:868
 #, fuzzy
@@ -1353,7 +1347,7 @@ msgstr "Nessun evento nella storia"
 
 #: servcheck_test.php:922
 msgid "Last returned data of test"
-msgstr ""
+msgstr "Ultimi dati restituiti del test"
 
 #: servcheck_test.php:1018
 msgid "Actions"
@@ -1364,13 +1358,12 @@ msgid "Enabled"
 msgstr "Abilitato"
 
 #: servcheck_test.php:1033
-#, fuzzy
 msgid "Last Check"
-msgstr "Ultimo controllo"
+msgstr "Ultimo Controllo"
 
 #: servcheck_test.php:1038
 msgid "Stats (OK/problem)"
-msgstr ""
+msgstr "Statistiche (OK/problema)"
 
 #: servcheck_test.php:1043
 #, fuzzy
@@ -1398,11 +1391,11 @@ msgstr "Controlli dei servizi web"
 
 #: servcheck_test.php:1120
 msgid "View Last returned data"
-msgstr ""
+msgstr "Visualizza gli ultimi dati restituiti"
 
 #: servcheck_test.php:1125
 msgid "View Graph"
-msgstr ""
+msgstr "Visualizza grafico"
 
 #: servcheck_test.php:1135
 msgid "Disabled"
@@ -1454,11 +1447,11 @@ msgstr "Cerca"
 
 #: servcheck_test.php:1379
 msgid "Entries"
-msgstr ""
+msgstr "Voci"
 
 #: servcheck_test.php:1397
 msgid "Purge Events"
-msgstr ""
+msgstr "Eventi di eliminazione"
 
 #: setup.php:34
 #, fuzzy
@@ -1501,15 +1494,15 @@ msgstr "Nuovo proxy"
 
 #: setup.php:266
 msgid "CA"
-msgstr ""
+msgstr "CA"
 
 #: setup.php:273
 msgid "CA Edit"
-msgstr ""
+msgstr "CA Modifica"
 
 #: setup.php:280
 msgid "Save CA"
-msgstr ""
+msgstr "Salva CA"
 
 #, fuzzy
 #~ msgid "Click 'Continue' to Enable the following Server."

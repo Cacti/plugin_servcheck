@@ -8,123 +8,123 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2020-12-14 19:04-0500\n"
+"PO-Revision-Date: 2024-04-20 12:19-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: bg_BG\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: includes/arrays.php:33
 msgid "String found"
-msgstr ""
+msgstr "Низът е намерен"
 
 #: includes/arrays.php:34
 msgid "String not found"
-msgstr ""
+msgstr "Низът не е намерен"
 
 #: includes/arrays.php:35
 msgid "Failed string found"
-msgstr ""
+msgstr "Намерен неуспешен низ"
 
 #: includes/arrays.php:36
 msgid "Failed strint not found"
-msgstr ""
+msgstr "Неуспешен strint не е намерен"
 
 #: includes/arrays.php:37
 msgid "Maint string found"
-msgstr ""
+msgstr "Намерен поддържащ низ"
 
 #: includes/arrays.php:38 servcheck_test.php:1146 servcheck_test.php:1147
 msgid "Not tested yet"
-msgstr ""
+msgstr "Все още не е тестван"
 
 #: includes/arrays.php:39
 msgid "Search not performed"
-msgstr ""
+msgstr "Търсенето не е извършено"
 
 #: includes/arrays.php:43
 msgid "HTTP plaintext, default port 80"
-msgstr ""
+msgstr "HTTP обикновен текст, порт по подразбиране 80"
 
 #: includes/arrays.php:44
 msgid "HTTP encrypted (HTTPS), default port 443"
-msgstr ""
+msgstr "HTTP криптиран (HTTPS), порт по подразбиране 443"
 
 #: includes/arrays.php:46
 msgid "SMTP plaintext, default port 25 (or 587 for submission)"
-msgstr ""
+msgstr "SMTP обикновен текст, порт по подразбиране 25 (или 587 за изпращане)"
 
 #: includes/arrays.php:47
 msgid "SMTP with STARTTLS, default port 25(or 587 for submission)"
-msgstr ""
+msgstr "SMTP с STARTTLS, порт по подразбиране 25 (или 587 за изпращане)"
 
 #: includes/arrays.php:48
 msgid "SMTP encrypted (SMTPS), default port 465"
-msgstr ""
+msgstr "SMTP криптиран (SMTPS), порт по подразбиране 465"
 
 #: includes/arrays.php:50
 msgid "IMAP plaintext, default port 143"
-msgstr ""
+msgstr "IMAP обикновен текст, порт по подразбиране 143"
 
 #: includes/arrays.php:51
 msgid "IMAP with STARTTLS, default port 143"
-msgstr ""
+msgstr "IMAP с STARTTLS, порт по подразбиране 143"
 
 #: includes/arrays.php:52
 msgid "IMAP encrypted (IMAPS), default port 993"
-msgstr ""
+msgstr "IMAP криптиран (IMAPS), порт по подразбиране 993"
 
 #: includes/arrays.php:54
 msgid "POP3 plaintext, default port 110"
-msgstr ""
+msgstr "POP3 обикновен текст, порт по подразбиране 110"
 
 #: includes/arrays.php:55
 msgid "POP3 with STARTTLS, default port 110"
-msgstr ""
+msgstr "POP3 с STARTTLS, порт по подразбиране 110"
 
 #: includes/arrays.php:56
 msgid "POP3 encrypted (POP3S), default port 995"
-msgstr ""
+msgstr "POP3 криптиран (POP3S), порт по подразбиране 995"
 
 #: includes/arrays.php:58
 msgid "DNS plaintext, default port 53"
-msgstr ""
+msgstr "DNS обикновен текст, порт по подразбиране 53"
 
 #: includes/arrays.php:61
 msgid "LDAP plaintext, default port 389"
-msgstr ""
+msgstr "LDAP обикновен текст, порт по подразбиране 389"
 
 #: includes/arrays.php:62
 msgid "LDAP encrypted (LDAPS), default port 636"
-msgstr ""
+msgstr "LDAP криптиран (LDAPS), порт по подразбиране 636"
 
 #: includes/arrays.php:64
 msgid "FTP plaintext, default port 21"
-msgstr ""
+msgstr "FTP обикновен текст, порт по подразбиране 21"
 
 #: includes/arrays.php:65
 msgid "FTP encrypted (FTPS), default port 990"
-msgstr ""
+msgstr "FTP криптиран (FTPS), порт по подразбиране 990"
 
 #: includes/arrays.php:66
 msgid "SCP download file, default port 22"
-msgstr ""
+msgstr "Файл за изтегляне на SCP, порт по подразбиране 22"
 
 #: includes/arrays.php:67
 msgid "TFTP protocol - download file, default port 69"
-msgstr ""
+msgstr "TFTP протокол - файл за изтегляне, порт по подразбиране 69"
 
 #: includes/arrays.php:69
 msgid "SMB plaintext download file, default port 445"
-msgstr ""
+msgstr "SMB файл за изтегляне на обикновен текст, порт по подразбиране 445"
 
 #: includes/arrays.php:70
 msgid "SMB encrypted (SMBS) download file, default port 445"
-msgstr ""
+msgstr "SMB криптиран (SMBS) файл за изтегляне, порт по подразбиране 445"
 
 #: includes/arrays.php:113
 #, fuzzy
@@ -133,16 +133,15 @@ msgstr "Последна проверка"
 
 #: includes/arrays.php:114
 msgid "Last 6 hours"
-msgstr ""
+msgstr "Последни 6 часа"
 
 #: includes/arrays.php:115
 msgid "Last day"
-msgstr ""
+msgstr "Последен ден"
 
 #: includes/arrays.php:116
-#, fuzzy
 msgid "Last week"
-msgstr "Последна проверка"
+msgstr "Предишна седмица"
 
 #: includes/arrays.php:121
 #, fuzzy
@@ -157,55 +156,56 @@ msgstr "Продължи"
 
 #: includes/arrays.php:123
 msgid "Switching Protocols"
-msgstr ""
+msgstr "Протоколи за превключване"
 
 #: includes/arrays.php:124
 msgid "OK"
-msgstr ""
+msgstr "ОК"
 
 #: includes/arrays.php:125
 msgid "Created"
-msgstr ""
+msgstr "Създаден"
 
 #: includes/arrays.php:126
 msgid "Accepted"
-msgstr ""
+msgstr "Прието"
 
 #: includes/arrays.php:127
 msgid "Non-Authoritative Information"
-msgstr ""
+msgstr "Неавторитетна информация"
 
 #: includes/arrays.php:128
 msgid "No Content"
-msgstr ""
+msgstr "Съдържание"
 
 #: includes/arrays.php:129
 msgid "Reset Content"
-msgstr ""
+msgstr "Нулиране на съдържанието"
 
 #: includes/arrays.php:130
 msgid "Partial Content"
-msgstr ""
+msgstr "Частично съдържание"
 
 #: includes/arrays.php:131
 msgid "Multiple Choices"
-msgstr ""
+msgstr "Множество възможности за избор"
 
 #: includes/arrays.php:132
 msgid "Moved Permanently"
-msgstr ""
+msgstr "преместен за постоянно"
 
 #: includes/arrays.php:133
 msgid "Found"
-msgstr ""
+msgstr "Намерен"
 
 #: includes/arrays.php:134
 msgid "See Other"
-msgstr ""
+msgstr "Вижте Други"
 
 #: includes/arrays.php:135
+#, fuzzy
 msgid "Not Modified"
-msgstr ""
+msgstr "Последна промяна"
 
 #: includes/arrays.php:136
 #, fuzzy
@@ -214,7 +214,7 @@ msgstr "Нов прокси"
 
 #: includes/arrays.php:137
 msgid "(Unused)"
-msgstr ""
+msgstr "(неизползван)"
 
 #: includes/arrays.php:138
 #, fuzzy
@@ -223,32 +223,31 @@ msgstr "Пренасочване"
 
 #: includes/arrays.php:139
 msgid "Bad Request"
-msgstr ""
+msgstr "Неправилна заявка"
 
 #: includes/arrays.php:140
 msgid "Unauthorized"
-msgstr ""
+msgstr "Неупълномощен"
 
 #: includes/arrays.php:141
 msgid "Payment Required"
-msgstr ""
+msgstr "изисква се плащане"
 
 #: includes/arrays.php:142
 msgid "Forbidden"
-msgstr ""
+msgstr "Забранено"
 
 #: includes/arrays.php:143
-#, fuzzy
 msgid "Not Found"
-msgstr "Не са намерени сървъри"
+msgstr "Не е намерен"
 
 #: includes/arrays.php:144
 msgid "Method Not Allowed"
-msgstr ""
+msgstr "Методът Не е Позволен"
 
 #: includes/arrays.php:145
 msgid "Not Acceptable"
-msgstr ""
+msgstr "Неприемливо"
 
 #: includes/arrays.php:146
 #, fuzzy
@@ -262,55 +261,55 @@ msgstr "Време за изчакване"
 
 #: includes/arrays.php:148
 msgid "Conflict"
-msgstr ""
+msgstr "Конфликт"
 
 #: includes/arrays.php:149
 msgid "Gone"
-msgstr ""
+msgstr "Си отиде"
 
 #: includes/arrays.php:150
 msgid "Length Required"
-msgstr ""
+msgstr "Необходима дължина"
 
 #: includes/arrays.php:151
 msgid "Precondition Failed"
-msgstr ""
+msgstr "Неуспешно предварително условие"
 
 #: includes/arrays.php:152
 msgid "Request Entity Too Large"
-msgstr ""
+msgstr "Обектът на заявката е твърде голям"
 
 #: includes/arrays.php:153
 msgid "Request-URI Too Long"
-msgstr ""
+msgstr "URI на заявката е твърде дълъг"
 
 #: includes/arrays.php:154
 msgid "Unsupported Media Type"
-msgstr ""
+msgstr "Неподдържан тип медия"
 
 #: includes/arrays.php:155
 msgid "Requested Range Not Satisfiable"
-msgstr ""
+msgstr "Заявеният диапазон не е удовлетворим"
 
 #: includes/arrays.php:156
 msgid "Expectation Failed"
-msgstr ""
+msgstr "Неуспешно очакване"
 
 #: includes/arrays.php:157
 msgid "Internal Server Error"
-msgstr ""
+msgstr "Вътрешна грешка на сървъра"
 
 #: includes/arrays.php:158
 msgid "Not Implemented"
-msgstr ""
+msgstr "Не е изпълнено"
 
 #: includes/arrays.php:159
 msgid "Bad Gateway"
-msgstr ""
+msgstr "лош изход"
 
 #: includes/arrays.php:160
 msgid "Service Unavailable"
-msgstr ""
+msgstr "Услугата не е достъпна"
 
 #: includes/arrays.php:161
 #, fuzzy
@@ -319,19 +318,19 @@ msgstr "Време за изчакване"
 
 #: includes/arrays.php:162
 msgid "HTTP Version Not Supported"
-msgstr ""
+msgstr "HTTP версията не се поддържа"
 
 #: includes/arrays.php:166
 #, php-format
 msgid "%d Poller run"
-msgstr ""
+msgstr "%d Провеждане на Poller"
 
 #: includes/arrays.php:167 includes/arrays.php:168 includes/arrays.php:169
 #: includes/arrays.php:170 includes/arrays.php:171 includes/arrays.php:172
 #: includes/arrays.php:173 includes/arrays.php:174 includes/arrays.php:175
 #, php-format
 msgid "%d Poller runs"
-msgstr ""
+msgstr "%d Poller работи"
 
 #: includes/arrays.php:179 includes/arrays.php:180 includes/arrays.php:181
 #: includes/arrays.php:182 includes/arrays.php:183 includes/arrays.php:184
@@ -368,15 +367,15 @@ msgstr "Полезно име за този прокси сървър."
 
 #: includes/arrays.php:235
 msgid "New CA"
-msgstr ""
+msgstr "Нов CA"
 
 #: includes/arrays.php:238 includes/arrays.php:361
 msgid "CA Chain"
-msgstr ""
+msgstr "CA верига"
 
 #: includes/arrays.php:242
 msgid "CA and intermediate certs, PEM encoded"
-msgstr ""
+msgstr "CA и междинни сертификати, PEM кодирани"
 
 #: includes/arrays.php:251
 #, fuzzy
@@ -461,19 +460,19 @@ msgstr "Махнете отметката от това квадратче, за
 
 #: includes/arrays.php:332
 msgid "Poller"
-msgstr ""
+msgstr "Анкетиращ"
 
 #: includes/arrays.php:335
 msgid "Poller on which the test will run"
-msgstr ""
+msgstr "Poller, на който ще се проведе тестът"
 
 #: includes/arrays.php:340
 msgid "Type of service"
-msgstr ""
+msgstr "Вид услуга"
 
 #: includes/arrays.php:345
 msgid "What type of service?"
-msgstr ""
+msgstr "Какъв тип услуга?"
 
 #: includes/arrays.php:350
 #, fuzzy
@@ -482,7 +481,7 @@ msgstr "IP адрес за свързване към този сървър"
 
 #: includes/arrays.php:351
 msgid "You can specify another port (example.com:5000) otherwise default will be used"
-msgstr ""
+msgstr "Можете да посочите друг порт (example.com:5000), в противен случай ще се използва подразбиране"
 
 #: includes/arrays.php:358
 #, fuzzy
@@ -496,7 +495,7 @@ msgstr "Няма"
 
 #: includes/arrays.php:365
 msgid "Your own CA and intermediate certs"
-msgstr ""
+msgstr "Ваш собствен CA и междинни сертификати"
 
 #: includes/arrays.php:370 servcheck_proxies.php:285
 msgid "Username"
@@ -504,11 +503,11 @@ msgstr "Потребител"
 
 #: includes/arrays.php:372
 msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
-msgstr ""
+msgstr "С удостоверяването тестът получава повече информация. За LDAP нещо като cn=John Doe,OU=anygroup,DC=example,DC=com. За smb използвайте DOMAIN/потребител"
 
 #: includes/arrays.php:380
 msgid "For anonymous ftp insert email address here."
-msgstr ""
+msgstr "За анонимен ftp въведете имейл адрес тук."
 
 #: includes/arrays.php:386
 #, fuzzy
@@ -517,23 +516,23 @@ msgstr "Търсене"
 
 #: includes/arrays.php:388
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
-msgstr ""
+msgstr "LDAP филтър за търсене, може да е ,OU=anygroup,DC=example,DC=com"
 
 #: includes/arrays.php:395
 msgid "DNS Name for Query"
-msgstr ""
+msgstr "DNS име за заявка"
 
 #: includes/arrays.php:396
 msgid "DNS name for querying"
-msgstr ""
+msgstr "DNS име за заявка"
 
 #: includes/arrays.php:403
 msgid "Path Part of URL"
-msgstr ""
+msgstr "Път Част от URL"
 
 #: includes/arrays.php:404
 msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
-msgstr ""
+msgstr "За уеб услуга въведете поне \"/\" или нещо като \"/any/path/\". За FTP списъкът трябва да завършва със символ \"/\". За тест за изтегляне на TFTP/SCP/SMB вмъкнете /path/file"
 
 #: includes/arrays.php:411
 #, fuzzy
@@ -582,11 +581,11 @@ msgstr "Време за известия"
 
 #: includes/arrays.php:444
 msgid "How Often to Test"
-msgstr ""
+msgstr "Колко често да се тества"
 
 #: includes/arrays.php:448
 msgid "Test each poller cycle or less"
-msgstr ""
+msgstr "Тествайте всеки полер цикъл или по-малко"
 
 #: includes/arrays.php:452
 msgid "Trigger"
@@ -689,99 +688,99 @@ msgstr "Можете да посочите тук допълнителни им�
 
 #: includes/arrays.php:530
 msgid "Notes"
-msgstr ""
+msgstr "Бележки"
 
 #: includes/arrays.php:534
 msgid "Notes sent in email"
-msgstr ""
+msgstr "Бележки, изпратени по имейл"
 
 #: includes/arrays.php:538
 msgid "External ID"
-msgstr ""
+msgstr "Външен идентификатор"
 
 #: includes/arrays.php:540
 msgid "Enter an Eternal ID for this Thold Template."
-msgstr ""
+msgstr "Въведете вечен идентификатор за този Thold шаблон."
 
 #: includes/arrays.php:555
 msgid "All fine. Proceed as usual."
-msgstr ""
+msgstr "Всичко е наред. Продължете както обикновено."
 
 #: includes/arrays.php:559
 msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
-msgstr ""
+msgstr "URL адресът, който сте предали на libcurl, е използвал протокол, който този libcurl не поддържа. Поддръжката може да е опция за компилиране, която не сте използвали, може да е низ от протокол с грешно изписване или просто протокол, за който libcurl няма код."
 
 #: includes/arrays.php:563
 msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
-msgstr ""
+msgstr "Неуспешен код за ранна инициализация. Това вероятно е вътрешна грешка или проблем, или проблем с ресурсите, при който нещо фундаментално не може да се направи в инициализираното време."
 
 #: includes/arrays.php:567
 msgid "The URL was not properly formatted."
-msgstr ""
+msgstr "URL адресът не е правилно форматиран."
 
 #: includes/arrays.php:571
 msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
-msgstr ""
+msgstr "Исканата функция, протокол или опция не е намерена вградена в този libcurl поради решение за време за изграждане. Това означава, че дадена функция или опция не е била активирана или изрично деактивирана, когато е построен libcurl и за да го накарате да функционира, трябва да получите възстановен libcurl."
 
 #: includes/arrays.php:575
 msgid "Could not resolve proxy. The given proxy host could not be resolved."
-msgstr ""
+msgstr "Проксито не можа да бъде разрешено. Даденият прокси хост не можа да бъде разрешен."
 
 #: includes/arrays.php:579
 msgid "Could not resolve host. The given remote host was not resolved."
-msgstr ""
+msgstr "Хостът не можа да бъде разрешен. Даденият отдалечен хост не е разрешен."
 
 #: includes/arrays.php:583
 msgid "Failed to connect() to host or proxy."
-msgstr ""
+msgstr "Неуспешно свързване() с хост или прокси."
 
 #: includes/arrays.php:587
 msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
-msgstr ""
+msgstr "Сървърът, изпратен от libcurl на данни, не можа да анализира. Този код за грешка е известен като CURLE_FTP_WEIRD_SERVER_REPLY преди 7.51.0."
 
 #: includes/arrays.php:591
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
-msgstr ""
+msgstr "Беше ни отказан достъп до ресурса, даден в URL адреса. За FTP това се случва, докато се опитвате да промените отдалечената директория."
 
 #: includes/arrays.php:595
 msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
-msgstr ""
+msgstr "Докато чакате сървърът да се свърже отново, когато се използва активна FTP сесия, е изпратен код на грешка през контролната връзка или подобен."
 
 #: includes/arrays.php:599
 msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
-msgstr ""
+msgstr "След като изпрати FTP паролата на сървъра, libcurl очаква подходящ отговор. Този код на грешка показва, че е върнат неочакван код."
 
 #: includes/arrays.php:603
 msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
-msgstr ""
+msgstr "По време на активна FTP сесия, докато чакате сървърът да се свърже, изтече времето за изчакване на CURLOPT_ACCEPTTIMEOUT_MS (или вътрешното време по подразбиране)."
 
 #: includes/arrays.php:607
 msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
-msgstr ""
+msgstr "Libcurl не успя да получи разумен резултат обратно от сървъра като отговор на PASV или EPSV команда. Сървърът е дефектен."
 
 #: includes/arrays.php:611
 msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
-msgstr ""
+msgstr "FTP сървърите връщат 227-линия като отговор на PASV команда. Ако libcurl не успее да анализира този ред, този код за връщане се предава обратно."
 
 #: includes/arrays.php:615
 msgid "An internal failure to lookup the host used for the new connection."
-msgstr ""
+msgstr "Вътрешна грешка при търсене на хоста, използван за новата връзка."
 
 #: includes/arrays.php:619
 msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr ""
+msgstr "Открит е проблем в слоя за кадриране HTTP2. Това е донякъде общо и може да бъде един от няколко проблема, вижте буфера за грешки за подробности."
 
 #: includes/arrays.php:623
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
-msgstr ""
+msgstr "Получава се грешка при опит за задаване на режим на прехвърляне на двоичен или ASCII."
 
 #: includes/arrays.php:627
 msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
-msgstr ""
+msgstr "Прехвърлянето на файлове е по-кратко или по-голямо от очакваното. Това се случва, когато сървърът първо отчита очаквания размер на трансфера и след това доставя данни, които не съответстват на предишния зададен размер."
 
 #: includes/arrays.php:631
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
-msgstr ""
+msgstr "Това беше или странен отговор на команда \"RETR\", или трансфер с нулев байт."
 
 #: includes/arrays.php:634 includes/arrays.php:650 includes/arrays.php:670
 #: includes/arrays.php:682 includes/arrays.php:714 includes/arrays.php:730
@@ -789,7 +788,7 @@ msgstr ""
 #: includes/arrays.php:782 includes/arrays.php:802 includes/arrays.php:854
 #: includes/arrays.php:858
 msgid "Obsolete Error"
-msgstr ""
+msgstr "Остаряла грешка"
 
 #: includes/arrays.php:635 includes/arrays.php:651 includes/arrays.php:671
 #: includes/arrays.php:683 includes/arrays.php:715 includes/arrays.php:731
@@ -797,67 +796,67 @@ msgstr ""
 #: includes/arrays.php:783 includes/arrays.php:803 includes/arrays.php:855
 #: includes/arrays.php:859
 msgid "Not used in modern versions."
-msgstr ""
+msgstr "Не се използва в съвременните версии."
 
 #: includes/arrays.php:639
 msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
-msgstr ""
+msgstr "При изпращане на персонализирани команди \"QUOTE\" към отдалечения сървър, една от командите връща код на грешка, който е 400 или по-висок (за FTP) или по друг начин показва неуспешно завършване на командата."
 
 #: includes/arrays.php:643
 msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
-msgstr ""
+msgstr "Това се връща, ако CURLOPT_FAILONERROR е зададено вярно и HTTP сървърът връща код на грешка, който е >= 400."
 
 #: includes/arrays.php:647
 msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
-msgstr ""
+msgstr "Възникна грешка при запис на получените данни в локален файл или грешка беше върната в libcurl от обратно повикване за запис."
 
 #: includes/arrays.php:655
 msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
-msgstr ""
+msgstr "Неуспешно стартиране на качването. За FTP сървърът обикновено отказва командата STOR. Буферът за грешки обикновено съдържа обяснението на сървъра за това."
 
 #: includes/arrays.php:659
 msgid "There was a problem reading a local file or an error returned by the read callback."
-msgstr ""
+msgstr "Имаше проблем при четене на локален файл или грешка, върната от обратното извикване за четене."
 
 #: includes/arrays.php:663
 msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
-msgstr ""
+msgstr "Неуспешно искане за заделяне на памет. Това е сериозна лошотия и нещата са силно прецакани, ако това някога се случи."
 
 #: includes/arrays.php:667
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
-msgstr ""
+msgstr "Време на изчакване на операцията. Посоченият период на изчакване е достигнат според условията."
 
 #: includes/arrays.php:675
 msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
-msgstr ""
+msgstr "Командата FTP PORT върна грешка. Това най-вече се случва, когато не сте посочили достатъчно добър адрес, който да използвате libcurl. Виж CURLOPT_FTPPORT."
 
 #: includes/arrays.php:679
 msgid "The FTP REST command returned error. This should never happen if the server is sane."
-msgstr ""
+msgstr "Командата FTP REST върна грешка. Това никога не трябва да се случва, ако сървърът е нормален."
 
 #: includes/arrays.php:687
 msgid "The server does not support or accept range requests."
-msgstr ""
+msgstr "Сървърът не поддържа и не приема заявки за обхват."
 
 #: includes/arrays.php:691
 msgid "This is an odd error that mainly occurs due to internal confusion."
-msgstr ""
+msgstr "Това е странна грешка, която възниква главно поради вътрешно объркване."
 
 #: includes/arrays.php:695
 msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
-msgstr ""
+msgstr "Възникна проблем някъде в SSL/TLS ръкостискането. Наистина искате буфера за грешки и прочетете съобщението там, тъй като той посочва проблема малко повече. Могат да бъдат сертификати (файлови формати, пътища, разрешения), пароли и други."
 
 #: includes/arrays.php:699
 msgid "The download could not be resumed because the specified offset was out of the file boundary."
-msgstr ""
+msgstr "Изтеглянето не можа да бъде възобновено, защото указаното отместване е извън границите на файла."
 
 #: includes/arrays.php:703
 msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
-msgstr ""
+msgstr "Файл, даден с FILE://, не можа да бъде отворен. Най-вероятно защото пътят на файла не идентифицира съществуващ файл. Проверихте ли разрешенията за файлове?"
 
 #: includes/arrays.php:707
 msgid "LDAP cannot bind. LDAP bind operation failed."
-msgstr ""
+msgstr "LDAP не може да се обвърже. Неуспешна операция за свързване на LDAP."
 
 #: includes/arrays.php:711
 #, fuzzy
@@ -866,211 +865,211 @@ msgstr "Търсене"
 
 #: includes/arrays.php:719
 msgid "Function not found. A required zlib function was not found."
-msgstr ""
+msgstr "Функцията не е намерена. Необходимата zlib функция не беше намерена."
 
 #: includes/arrays.php:723
 msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
-msgstr ""
+msgstr "Прекратено чрез обратно повикване. Обратното повикване върна \"прекратяване\" на libcurl."
 
 #: includes/arrays.php:727
 msgid "A function was called with a bad parameter."
-msgstr ""
+msgstr "Беше извикана функция с лош параметър."
 
 #: includes/arrays.php:735
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
-msgstr ""
+msgstr "Грешка в интерфейса. Не можа да се използва указан изходящ интерфейс. Задайте кой интерфейс да се използва за IP адреса на източника на изходящи връзки с URLOPT_INTERFACE."
 
 #: includes/arrays.php:743
 msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
-msgstr ""
+msgstr "Твърде много пренасочвания. Когато следвате пренасочвания, libcurl удари максималната сума. Задайте лимита си с CURLOPT_MAXREDIRS."
 
 #: includes/arrays.php:747
 msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
-msgstr ""
+msgstr "Опция, предадена на libcurl, не е разпозната/известна. Обърнете се към съответната документация. Това най-вероятно е проблем в програмата, която използва libcurl. Буферът за грешки може да съдържа по-конкретна информация за коя точно опция се отнася."
 
 #: includes/arrays.php:751
 msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
-msgstr ""
+msgstr "Опция, подадена в setopt, е неправилно форматирана. Вижте съобщение за грешка за подробности относно коя опция."
 
 #: includes/arrays.php:763
 msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
-msgstr ""
+msgstr "Нищо не е върнато от сървъра и при тези обстоятелства получаването на нищо не се счита за грешка."
 
 #: includes/arrays.php:767
 msgid "The specified crypto engine was not found."
-msgstr ""
+msgstr "Указаната машина за шифроване не е намерена."
 
 #: includes/arrays.php:771
 msgid "Failed setting the selected SSL crypto engine as default."
-msgstr ""
+msgstr "Неуспешно задаване на избраната SSL крипто машина по подразбиране."
 
 #: includes/arrays.php:775
 msgid "Failed sending network data."
-msgstr ""
+msgstr "Неуспешно изпращане на мрежови данни."
 
 #: includes/arrays.php:779
 msgid "Failure with receiving network data."
-msgstr ""
+msgstr "Грешка при получаване на мрежови данни."
 
 #: includes/arrays.php:787
 msgid "problem with the local client certificate."
-msgstr ""
+msgstr "проблем с локалния клиентски сертификат."
 
 #: includes/arrays.php:791
 msgid "Could not use specified cipher."
-msgstr ""
+msgstr "Указаният шифър не можа да бъде използван."
 
 #: includes/arrays.php:795
 msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
-msgstr ""
+msgstr "SSL сертификатът или SSH пръстовият отпечатък на отдалечения сървър не се считат за ОК. Този код за грешка е унифициран с CURLE_SSL_CACERT от 7.62.0. Предишната му стойност беше 51."
 
 #: includes/arrays.php:799
 msgid "Unrecognized transfer encoding."
-msgstr ""
+msgstr "Неразпознато кодиране на трансфер."
 
 #: includes/arrays.php:807
 msgid "Maximum file size exceeded."
-msgstr ""
+msgstr "Максималният размер на файла е надвишен."
 
 #: includes/arrays.php:811
 msgid "Requested FTP SSL level failed."
-msgstr ""
+msgstr "Исканото FTP SSL ниво е неуспешно."
 
 #: includes/arrays.php:815
 msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
-msgstr ""
+msgstr "При извършване на операция за изпращане curl трябваше да пренавива данните, за да препредава, но операцията за пренавиване не успя."
 
 #: includes/arrays.php:819
 msgid "Initiating the SSL Engine failed."
-msgstr ""
+msgstr "Стартирането на SSL машината е неуспешно."
 
 #: includes/arrays.php:823
 msgid "The remote server denied curl to login (Added in 7.13.1)"
-msgstr ""
+msgstr "Отдалеченият сървър отказа curl за влизане (Добавено в 7.13.1)"
 
 #: includes/arrays.php:827
 msgid "File not found on TFTP server."
-msgstr ""
+msgstr "Файлът не е намерен на TFTP сървъра."
 
 #: includes/arrays.php:831
 msgid "Permission problem on TFTP server."
-msgstr ""
+msgstr "Проблем с разрешението на TFTP сървъра."
 
 #: includes/arrays.php:835
 msgid "Out of disk space on the server."
-msgstr ""
+msgstr "Недостиг на дисково пространство на сървъра."
 
 #: includes/arrays.php:839
 msgid "Illegal TFTP operation."
-msgstr ""
+msgstr "Незаконна операция на TFTP."
 
 #: includes/arrays.php:843
 msgid "Unknown TFTP transfer ID."
-msgstr ""
+msgstr "Неизвестен ИД на TFTP трансфер."
 
 #: includes/arrays.php:847
 msgid "File already exists and is not overwritten."
-msgstr ""
+msgstr "Файлът вече съществува и не се презаписва."
 
 #: includes/arrays.php:851
 msgid "This error should never be returned by a properly functioning TFTP server."
-msgstr ""
+msgstr "Тази грешка никога не трябва да се връща от правилно функциониращ TFTP сървър."
 
 #: includes/arrays.php:863
 msgid "Problem with reading the SSL CA cert (path? access rights?)"
-msgstr ""
+msgstr "Проблем с четенето на SSL CA cert (път? права за достъп?)"
 
 #: includes/arrays.php:867
 msgid "The resource referenced in the URL does not exist."
-msgstr ""
+msgstr "Ресурсът, посочен в URL адреса, не съществува."
 
 #: includes/arrays.php:871
 msgid "An unspecified error occurred during the SSH session."
-msgstr ""
+msgstr "Възникна неопределена грешка по време на SSH сесията."
 
 #: includes/arrays.php:875
 msgid "Failed to shut down the SSL connection."
-msgstr ""
+msgstr "Неуспешно изключване на SSL връзката."
 
 #: includes/arrays.php:879
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
-msgstr ""
+msgstr "Сокетът не е готов за изпращане/получаване, изчакайте, докато е готов, и опитайте отново. Този код за връщане се връща само от curl_easy_recv и curl_easy_send (добавен в 7.18.2)"
 
 #: includes/arrays.php:883
 msgid "Failed to load CRL file (Added in 7.19.0)"
-msgstr ""
+msgstr "Неуспешно зареждане на CRL файл (добавен в 7.19.0)"
 
 #: includes/arrays.php:887
 msgid "Issuer check failed (Added in 7.19.0)"
-msgstr ""
+msgstr "Неуспешна проверка на издателя (добавена в 7.19.0)"
 
 #: includes/arrays.php:891
 msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
-msgstr ""
+msgstr "FTP сървърът изобщо не разбира командата PRET или не поддържа дадения аргумент. Бъдете внимателни, когато използвате CURLOPT_CUSTOMREQUEST, персонализирана команда LIST се изпраща с командата PRET и преди PASV. (Добавено в 7.20.0)"
 
 #: includes/arrays.php:895
 msgid "Mismatch of RTSP CSeq numbers."
-msgstr ""
+msgstr "Несъответствие на RTSP CSeq номера."
 
 #: includes/arrays.php:899
 msgid "Mismatch of RTSP Session Identifiers."
-msgstr ""
+msgstr "Несъответствие на идентификаторите на RTSP сесии."
 
 #: includes/arrays.php:903
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
-msgstr ""
+msgstr "Списъкът с FTP файлове не може да бъде анализиран (по време на изтеглянето на заместващи символи от FTP)."
 
 #: includes/arrays.php:907
 msgid "Chunk callback reported error."
-msgstr ""
+msgstr "Чунк обратно повикване съобщава за грешка."
 
 #: includes/arrays.php:911
 msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
-msgstr ""
+msgstr "(Само за вътрешна употреба, никога не се връща от libcurl) Няма налична връзка, сесията е поставена на опашка. (добавено в 7.30.0)"
 
 #: includes/arrays.php:915
 msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
-msgstr ""
+msgstr "Неуспешно съвпадение на закачения ключ, зададен с CURLOPT_PINNEDPUBLICKEY."
 
 #: includes/arrays.php:919
 msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
-msgstr ""
+msgstr "Статусът се върна при поискване с CURLOPT_SSL_VERIFYSTATUS."
 
 #: includes/arrays.php:923
 msgid "Stream error in the HTTP/2 framing layer."
-msgstr ""
+msgstr "Грешка при поточно предаване в HTTP/2 рамкиращия слой."
 
 #: includes/arrays.php:927
 msgid "An API function was called from inside a callback."
-msgstr ""
+msgstr "Извикана е API функция от обратно повикване."
 
 #: includes/arrays.php:931
 msgid "An authentication function returned an error."
-msgstr ""
+msgstr "Функция за удостоверяване върна грешка."
 
 #: includes/arrays.php:935
 msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr ""
+msgstr "Открит е проблем в слоя HTTP/3. Това е донякъде общо и може да бъде един от няколко проблема, вижте буфера за грешки за подробности."
 
 #: includes/arrays.php:939
 msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
-msgstr ""
+msgstr "Грешка при свързване с QUIC. Тази грешка може да е причинена от грешка в SSL библиотека. QUIC е протоколът, използван за HTTP/3 трансфери."
 
 #: includes/arrays.php:943
 msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
-msgstr ""
+msgstr "Грешка при ръкостискане на прокси сървър. CURLINFO_PROXY_ERROR предоставя допълнителни подробности за конкретния проблем."
 
 #: includes/arrays.php:947
 msgid "SSL Client Certificate required."
-msgstr ""
+msgstr "Изисква се SSL клиентски сертификат."
 
 #: includes/arrays.php:951
 msgid "An internal call to poll() or select() returned error that is not recoverable."
-msgstr ""
+msgstr "Върнато е вътрешно извикване на poll() или select() грешка, която не може да бъде възстановена."
 
 #: includes/functions.php:32 servcheck_test.php:828
 msgid "Tests"
-msgstr ""
+msgstr "Тестове"
 
 #: includes/functions.php:33
 #, fuzzy
@@ -1085,7 +1084,7 @@ msgstr "Пълномощници"
 
 #: includes/functions.php:35
 msgid "Curl return codes"
-msgstr ""
+msgstr "Кодове за връщане на къдрици"
 
 #: includes/functions.php:41
 #, fuzzy
@@ -1094,11 +1093,11 @@ msgstr "Преглед на хронология"
 
 #: includes/functions.php:48
 msgid "Graphs"
-msgstr ""
+msgstr "Графики"
 
 #: includes/functions.php:130
 msgid "No data"
-msgstr ""
+msgstr "Няма данни"
 
 #: servcheck_ca.php:104
 #, fuzzy
@@ -1131,11 +1130,11 @@ msgstr "Заявка [нова]"
 
 #: servcheck_ca.php:268
 msgid "Used"
-msgstr ""
+msgstr "Употребяван"
 
 #: servcheck_ca.php:275 servcheck_ca.php:334
 msgid "CAs"
-msgstr ""
+msgstr "CA"
 
 #: servcheck_ca.php:296
 #, fuzzy
@@ -1149,7 +1148,7 @@ msgstr "Управление на сървър за уеб сървъри"
 
 #: servcheck_ca.php:322
 msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
-msgstr ""
+msgstr "Servcheck използва файл със сертификати от общи главни CA, за да провери сертификатите. Това ще работи за сертификати, издадени от общи СО. Ако използвате персонализиран CA (например в среда на Microsoft AD), тестът за този сертификат ще бъде неуспешен, защото servcheck не познава вашия CA. Трябва да качите цялата верига (сертификат CA и междинни сертификати). След това ги свързвате с теста, където е сертификатът, издаден от вашия CA."
 
 #: servcheck_ca.php:328 servcheck_proxies.php:343 servcheck_test.php:510
 #: servcheck_test.php:1251
@@ -1173,7 +1172,7 @@ msgstr "Изчисти"
 
 #: servcheck_curl_code.php:55
 msgid "No error codes"
-msgstr ""
+msgstr "Няма кодове на грешки"
 
 #: servcheck_proxies.php:103
 #, fuzzy
@@ -1277,7 +1276,7 @@ msgstr[1] "Дублирай"
 #: servcheck_test.php:405
 #, php-format
 msgid "The Service Check history was purged for %s"
-msgstr ""
+msgstr "Историята на проверката на услугата е изчистена за %s"
 
 #: servcheck_test.php:419
 #, fuzzy, php-format
@@ -1314,7 +1313,7 @@ msgstr "Дата"
 
 #: servcheck_test.php:796 servcheck_test.php:1048
 msgid "Result"
-msgstr ""
+msgstr "Резултат"
 
 #: servcheck_test.php:799 servcheck_test.php:1053
 #, fuzzy
@@ -1323,7 +1322,7 @@ msgstr "Търсене"
 
 #: servcheck_test.php:802 servcheck_test.php:1058
 msgid "Curl return code"
-msgstr ""
+msgstr "Код за връщане на къдрици"
 
 #: servcheck_test.php:807
 #, fuzzy
@@ -1344,11 +1343,11 @@ msgstr "Общо"
 
 #: servcheck_test.php:854
 msgid "Service Down"
-msgstr ""
+msgstr "Услугата е свалена"
 
 #: servcheck_test.php:854
 msgid "Service UP"
-msgstr ""
+msgstr "Сервиз UP"
 
 #: servcheck_test.php:868
 #, fuzzy
@@ -1357,7 +1356,7 @@ msgstr "Няма събития в историята"
 
 #: servcheck_test.php:922
 msgid "Last returned data of test"
-msgstr ""
+msgstr "Последно върнати данни от теста"
 
 #: servcheck_test.php:1018
 msgid "Actions"
@@ -1374,7 +1373,7 @@ msgstr "Последна проверка"
 
 #: servcheck_test.php:1038
 msgid "Stats (OK/problem)"
-msgstr ""
+msgstr "Статистика (OK/проблем)"
 
 #: servcheck_test.php:1043
 #, fuzzy
@@ -1403,11 +1402,11 @@ msgstr "Проверки на уеб услуги"
 
 #: servcheck_test.php:1120
 msgid "View Last returned data"
-msgstr ""
+msgstr "Преглед на последно върнатите данни"
 
 #: servcheck_test.php:1125
 msgid "View Graph"
-msgstr ""
+msgstr "Преглед на графиката"
 
 #: servcheck_test.php:1135
 msgid "Disabled"
@@ -1459,11 +1458,11 @@ msgstr "Търсене"
 
 #: servcheck_test.php:1379
 msgid "Entries"
-msgstr ""
+msgstr "Получени съобщения"
 
 #: servcheck_test.php:1397
 msgid "Purge Events"
-msgstr ""
+msgstr "Изчистване на събития"
 
 #: setup.php:34
 #, fuzzy
@@ -1506,15 +1505,15 @@ msgstr "Нов прокси"
 
 #: setup.php:266
 msgid "CA"
-msgstr ""
+msgstr "СА"
 
 #: setup.php:273
 msgid "CA Edit"
-msgstr ""
+msgstr "CA Редактиране"
 
 #: setup.php:280
 msgid "Save CA"
-msgstr ""
+msgstr "Запиши CA"
 
 #, fuzzy
 #~ msgid "Click 'Continue' to Enable the following Server."

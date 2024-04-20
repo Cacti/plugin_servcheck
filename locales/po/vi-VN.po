@@ -8,141 +8,140 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2020-12-14 19:09-0500\n"
+"PO-Revision-Date: 2024-04-20 12:40-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: vi_VN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: includes/arrays.php:33
 msgid "String found"
-msgstr ""
+msgstr "Tìm thấy chuỗi"
 
 #: includes/arrays.php:34
 msgid "String not found"
-msgstr ""
+msgstr "Không tìm thấy chuỗi"
 
 #: includes/arrays.php:35
 msgid "Failed string found"
-msgstr ""
+msgstr "Tìm thấy chuỗi không thành công"
 
 #: includes/arrays.php:36
 msgid "Failed strint not found"
-msgstr ""
+msgstr "Không tìm thấy strint thất bại"
 
 #: includes/arrays.php:37
 msgid "Maint string found"
-msgstr ""
+msgstr "Tìm thấy chuỗi Maint"
 
 #: includes/arrays.php:38 servcheck_test.php:1146 servcheck_test.php:1147
 msgid "Not tested yet"
-msgstr ""
+msgstr "Chưa được thử nghiệm"
 
 #: includes/arrays.php:39
 msgid "Search not performed"
-msgstr ""
+msgstr "Tìm kiếm không được thực hiện"
 
 #: includes/arrays.php:43
 msgid "HTTP plaintext, default port 80"
-msgstr ""
+msgstr "Bản rõ HTTP, cổng mặc định 80"
 
 #: includes/arrays.php:44
 msgid "HTTP encrypted (HTTPS), default port 443"
-msgstr ""
+msgstr "Mã hóa HTTP (HTTPS), cổng mặc định 443"
 
 #: includes/arrays.php:46
 msgid "SMTP plaintext, default port 25 (or 587 for submission)"
-msgstr ""
+msgstr "SMTP bản rõ, cổng mặc định 25 (hoặc 587 để gửi)"
 
 #: includes/arrays.php:47
 msgid "SMTP with STARTTLS, default port 25(or 587 for submission)"
-msgstr ""
+msgstr "SMTP với STARTTLS, cổng mặc định 25 (hoặc 587 để gửi)"
 
 #: includes/arrays.php:48
 msgid "SMTP encrypted (SMTPS), default port 465"
-msgstr ""
+msgstr "Mã hóa SMTP (SMTPS), cổng mặc định 465"
 
 #: includes/arrays.php:50
 msgid "IMAP plaintext, default port 143"
-msgstr ""
+msgstr "Bản rõ IMAP, cổng mặc định 143"
 
 #: includes/arrays.php:51
 msgid "IMAP with STARTTLS, default port 143"
-msgstr ""
+msgstr "IMAP với STARTTLS, cổng mặc định 143"
 
 #: includes/arrays.php:52
 msgid "IMAP encrypted (IMAPS), default port 993"
-msgstr ""
+msgstr "Mã hóa IMAP (IMAPS), cổng mặc định 993"
 
 #: includes/arrays.php:54
 msgid "POP3 plaintext, default port 110"
-msgstr ""
+msgstr "POP3 bản rõ, cổng mặc định 110"
 
 #: includes/arrays.php:55
 msgid "POP3 with STARTTLS, default port 110"
-msgstr ""
+msgstr "POP3 với STARTTLS, cổng mặc định 110"
 
 #: includes/arrays.php:56
 msgid "POP3 encrypted (POP3S), default port 995"
-msgstr ""
+msgstr "Mã hóa POP3 (POP3S), cổng mặc định 995"
 
 #: includes/arrays.php:58
 msgid "DNS plaintext, default port 53"
-msgstr ""
+msgstr "DNS plaintext, cổng mặc định 53"
 
 #: includes/arrays.php:61
 msgid "LDAP plaintext, default port 389"
-msgstr ""
+msgstr "LDAP plaintext, cổng mặc định 389"
 
 #: includes/arrays.php:62
 msgid "LDAP encrypted (LDAPS), default port 636"
-msgstr ""
+msgstr "Mã hóa LDAP (LDAPS), cổng mặc định 636"
 
 #: includes/arrays.php:64
 msgid "FTP plaintext, default port 21"
-msgstr ""
+msgstr "FTP plaintext, cổng mặc định 21"
 
 #: includes/arrays.php:65
 msgid "FTP encrypted (FTPS), default port 990"
-msgstr ""
+msgstr "Mã hóa FTP (FTPS), cổng mặc định 990"
 
 #: includes/arrays.php:66
 msgid "SCP download file, default port 22"
-msgstr ""
+msgstr "Tệp tải xuống SCP, cổng mặc định 22"
 
 #: includes/arrays.php:67
 msgid "TFTP protocol - download file, default port 69"
-msgstr ""
+msgstr "Giao thức TFTP - Tải file mặc định 69"
 
 #: includes/arrays.php:69
 msgid "SMB plaintext download file, default port 445"
-msgstr ""
+msgstr "Tệp tải xuống văn bản thuần SMB, cổng mặc định 445"
 
 #: includes/arrays.php:70
 msgid "SMB encrypted (SMBS) download file, default port 445"
-msgstr ""
+msgstr "Tệp tải xuống được mã hóa SMB (SMBS), cổng mặc định 445"
 
 #: includes/arrays.php:113
 #, fuzzy
 msgid "Last hour"
-msgstr "Lần cuối kiểm tra vào"
+msgstr "1 giờ trước"
 
 #: includes/arrays.php:114
 msgid "Last 6 hours"
-msgstr ""
+msgstr "6 giờ qua"
 
 #: includes/arrays.php:115
 msgid "Last day"
-msgstr ""
+msgstr "Ngày cuối"
 
 #: includes/arrays.php:116
-#, fuzzy
 msgid "Last week"
-msgstr "Lần cuối kiểm tra vào"
+msgstr "Tuần trước"
 
 #: includes/arrays.php:121
 #, fuzzy
@@ -157,55 +156,56 @@ msgstr "Tiếp tục"
 
 #: includes/arrays.php:123
 msgid "Switching Protocols"
-msgstr ""
+msgstr "Chuyển đổi giao thức"
 
 #: includes/arrays.php:124
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: includes/arrays.php:125
 msgid "Created"
-msgstr ""
+msgstr "Đã tạo"
 
 #: includes/arrays.php:126
 msgid "Accepted"
-msgstr ""
+msgstr "Đã chấp nhận"
 
 #: includes/arrays.php:127
 msgid "Non-Authoritative Information"
-msgstr ""
+msgstr "Thông tin không có thẩm quyền"
 
 #: includes/arrays.php:128
 msgid "No Content"
-msgstr ""
+msgstr "Không có nội dung"
 
 #: includes/arrays.php:129
 msgid "Reset Content"
-msgstr ""
+msgstr "Đặt lại nội dung"
 
 #: includes/arrays.php:130
 msgid "Partial Content"
-msgstr ""
+msgstr "Nội dung một phần"
 
 #: includes/arrays.php:131
 msgid "Multiple Choices"
-msgstr ""
+msgstr "Nhiều lựa chọn"
 
 #: includes/arrays.php:132
 msgid "Moved Permanently"
-msgstr ""
+msgstr "Di chuyển vĩnh viễn"
 
 #: includes/arrays.php:133
 msgid "Found"
-msgstr ""
+msgstr "Tìm thấy"
 
 #: includes/arrays.php:134
 msgid "See Other"
-msgstr ""
+msgstr "Xem khác"
 
 #: includes/arrays.php:135
+#, fuzzy
 msgid "Not Modified"
-msgstr ""
+msgstr "Sửa đổi lần cuối"
 
 #: includes/arrays.php:136
 #, fuzzy
@@ -214,7 +214,7 @@ msgstr "Proxy mới"
 
 #: includes/arrays.php:137
 msgid "(Unused)"
-msgstr ""
+msgstr "(Chưa sử dụng)"
 
 #: includes/arrays.php:138
 #, fuzzy
@@ -223,32 +223,31 @@ msgstr "Chuyển hướng"
 
 #: includes/arrays.php:139
 msgid "Bad Request"
-msgstr ""
+msgstr "Yêu cầu không hợp lệ"
 
 #: includes/arrays.php:140
 msgid "Unauthorized"
-msgstr ""
+msgstr "Phép"
 
 #: includes/arrays.php:141
 msgid "Payment Required"
-msgstr ""
+msgstr "Yêu cầu thanh toán"
 
 #: includes/arrays.php:142
 msgid "Forbidden"
-msgstr ""
+msgstr "Bị cấm"
 
 #: includes/arrays.php:143
-#, fuzzy
 msgid "Not Found"
-msgstr "Không tìm thấy máy chủ"
+msgstr "Không tìm thấy"
 
 #: includes/arrays.php:144
 msgid "Method Not Allowed"
-msgstr ""
+msgstr "Phương pháp không được phép"
 
 #: includes/arrays.php:145
 msgid "Not Acceptable"
-msgstr ""
+msgstr "Không được chấp nhận"
 
 #: includes/arrays.php:146
 #, fuzzy
@@ -262,55 +261,55 @@ msgstr "Hết giờ"
 
 #: includes/arrays.php:148
 msgid "Conflict"
-msgstr ""
+msgstr "Xung đột"
 
 #: includes/arrays.php:149
 msgid "Gone"
-msgstr ""
+msgstr "Đi"
 
 #: includes/arrays.php:150
 msgid "Length Required"
-msgstr ""
+msgstr "Chiều dài yêu cầu"
 
 #: includes/arrays.php:151
 msgid "Precondition Failed"
-msgstr ""
+msgstr "Điều kiện tiên quyết không thành công"
 
 #: includes/arrays.php:152
 msgid "Request Entity Too Large"
-msgstr ""
+msgstr "Yêu cầu thực thể quá lớn"
 
 #: includes/arrays.php:153
 msgid "Request-URI Too Long"
-msgstr ""
+msgstr "Yêu cầu-URI quá dài"
 
 #: includes/arrays.php:154
 msgid "Unsupported Media Type"
-msgstr ""
+msgstr "Loại phương tiện không được hỗ trợ"
 
 #: includes/arrays.php:155
 msgid "Requested Range Not Satisfiable"
-msgstr ""
+msgstr "Phạm vi yêu cầu không thỏa mãn"
 
 #: includes/arrays.php:156
 msgid "Expectation Failed"
-msgstr ""
+msgstr "Thực hiện không thành công"
 
 #: includes/arrays.php:157
 msgid "Internal Server Error"
-msgstr ""
+msgstr "Lỗi máy chủ nội bộ"
 
 #: includes/arrays.php:158
 msgid "Not Implemented"
-msgstr ""
+msgstr "Không được thực hiện"
 
 #: includes/arrays.php:159
 msgid "Bad Gateway"
-msgstr ""
+msgstr "Cổng xấu"
 
 #: includes/arrays.php:160
 msgid "Service Unavailable"
-msgstr ""
+msgstr "Dịch vụ không khả dụng"
 
 #: includes/arrays.php:161
 #, fuzzy
@@ -319,19 +318,19 @@ msgstr "Hết giờ"
 
 #: includes/arrays.php:162
 msgid "HTTP Version Not Supported"
-msgstr ""
+msgstr "Phiên bản HTTP không được hỗ trợ"
 
 #: includes/arrays.php:166
 #, php-format
 msgid "%d Poller run"
-msgstr ""
+msgstr "%d Poller chạy"
 
 #: includes/arrays.php:167 includes/arrays.php:168 includes/arrays.php:169
 #: includes/arrays.php:170 includes/arrays.php:171 includes/arrays.php:172
 #: includes/arrays.php:173 includes/arrays.php:174 includes/arrays.php:175
 #, php-format
 msgid "%d Poller runs"
-msgstr ""
+msgstr "%d Poller chạy"
 
 #: includes/arrays.php:179 includes/arrays.php:180 includes/arrays.php:181
 #: includes/arrays.php:182 includes/arrays.php:183 includes/arrays.php:184
@@ -368,15 +367,15 @@ msgstr "Tên hữu ích cho Proxy này."
 
 #: includes/arrays.php:235
 msgid "New CA"
-msgstr ""
+msgstr "CA mới"
 
 #: includes/arrays.php:238 includes/arrays.php:361
 msgid "CA Chain"
-msgstr ""
+msgstr "Chuỗi CA"
 
 #: includes/arrays.php:242
 msgid "CA and intermediate certs, PEM encoded"
-msgstr ""
+msgstr "CA và chứng chỉ trung gian, PEM được mã hóa"
 
 #: includes/arrays.php:251
 #, fuzzy
@@ -461,19 +460,19 @@ msgstr "Bỏ chọn hộp này để vô hiệu hóa url này khỏi bị kiểm
 
 #: includes/arrays.php:332
 msgid "Poller"
-msgstr ""
+msgstr "Người thăm dò ý kiến"
 
 #: includes/arrays.php:335
 msgid "Poller on which the test will run"
-msgstr ""
+msgstr "Poller trên đó thử nghiệm sẽ chạy"
 
 #: includes/arrays.php:340
 msgid "Type of service"
-msgstr ""
+msgstr "Loại hình dịch vụ"
 
 #: includes/arrays.php:345
 msgid "What type of service?"
-msgstr ""
+msgstr "Loại dịch vụ nào?"
 
 #: includes/arrays.php:350
 #, fuzzy
@@ -482,12 +481,11 @@ msgstr "Địa chỉ IP để kết nối với máy chủ này"
 
 #: includes/arrays.php:351
 msgid "You can specify another port (example.com:5000) otherwise default will be used"
-msgstr ""
+msgstr "Bạn có thể chỉ định một cổng khác (example.com:5000) nếu không mặc định sẽ được sử dụng"
 
 #: includes/arrays.php:358
-#, fuzzy
 msgid "Service settings"
-msgstr "Cài đặt chung"
+msgstr "Cài đặt dịch vụ"
 
 #: includes/arrays.php:363 includes/arrays.php:421 includes/arrays.php:512
 #: servcheck_test.php:477
@@ -496,7 +494,7 @@ msgstr "Không"
 
 #: includes/arrays.php:365
 msgid "Your own CA and intermediate certs"
-msgstr ""
+msgstr "Chứng chỉ CA và trung cấp của riêng bạn"
 
 #: includes/arrays.php:370 servcheck_proxies.php:285
 msgid "Username"
@@ -504,11 +502,11 @@ msgstr "Tên đăng nhập"
 
 #: includes/arrays.php:372
 msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
-msgstr ""
+msgstr "Với xác thực, bài kiểm tra thu được nhiều thông tin hơn. Đối với LDAP, một cái gì đó như cn = John Doe, OU = anygroup, DC = example, DC = com. Đối với smb sử dụng DOMAIN/user"
 
 #: includes/arrays.php:380
 msgid "For anonymous ftp insert email address here."
-msgstr ""
+msgstr "Đối với ftp ẩn danh chèn địa chỉ email ở đây."
 
 #: includes/arrays.php:386
 #, fuzzy
@@ -517,23 +515,23 @@ msgstr "Tìm kiếm"
 
 #: includes/arrays.php:388
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
-msgstr ""
+msgstr "Bộ lọc tìm kiếm LDAP, nó có thể là ,OU = anygroup, DC = example, DC = com"
 
 #: includes/arrays.php:395
 msgid "DNS Name for Query"
-msgstr ""
+msgstr "Tên DNS cho truy vấn"
 
 #: includes/arrays.php:396
 msgid "DNS name for querying"
-msgstr ""
+msgstr "Tên DNS để truy vấn"
 
 #: includes/arrays.php:403
 msgid "Path Part of URL"
-msgstr ""
+msgstr "Một phần đường dẫn của URL"
 
 #: includes/arrays.php:404
 msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
-msgstr ""
+msgstr "Đối với dịch vụ web, hãy chèn ít nhất \"/\" hoặc một cái gì đó như \"/any/path/\". Đối với danh sách FTP phải kết thúc bằng ký tự \"/\". Đối với thử nghiệm tải xuống TFTP / SCP / SMB chèn / đường dẫn / tệp"
 
 #: includes/arrays.php:411
 #, fuzzy
@@ -581,11 +579,11 @@ msgstr "Thời gian thông báo"
 
 #: includes/arrays.php:444
 msgid "How Often to Test"
-msgstr ""
+msgstr "Tần suất kiểm tra"
 
 #: includes/arrays.php:448
 msgid "Test each poller cycle or less"
-msgstr ""
+msgstr "Kiểm tra từng chu kỳ thăm dò ý kiến hoặc ít hơn"
 
 #: includes/arrays.php:452
 msgid "Trigger"
@@ -687,99 +685,99 @@ msgstr "Bạn có thể chỉ định ở đây thêm Email để nhận thông 
 
 #: includes/arrays.php:530
 msgid "Notes"
-msgstr ""
+msgstr "Ghi chú"
 
 #: includes/arrays.php:534
 msgid "Notes sent in email"
-msgstr ""
+msgstr "Ghi chú được gửi trong email"
 
 #: includes/arrays.php:538
 msgid "External ID"
-msgstr ""
+msgstr "ID ngoài"
 
 #: includes/arrays.php:540
 msgid "Enter an Eternal ID for this Thold Template."
-msgstr ""
+msgstr "Nhập ID vĩnh cửu cho Mẫu Thold này."
 
 #: includes/arrays.php:555
 msgid "All fine. Proceed as usual."
-msgstr ""
+msgstr "Tất cả đều ổn. Tiến hành như bình thường."
 
 #: includes/arrays.php:559
 msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
-msgstr ""
+msgstr "URL bạn đã chuyển đến libcurl đã sử dụng một giao thức mà libcurl này không hỗ trợ. Hỗ trợ có thể là một tùy chọn thời gian biên dịch mà bạn không sử dụng, nó có thể là một chuỗi giao thức sai chính tả hoặc chỉ là một libcurl giao thức không có mã."
 
 #: includes/arrays.php:563
 msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
-msgstr ""
+msgstr "Mã khởi tạo sớm không thành công. Đây có thể là một lỗi hoặc vấn đề nội bộ, hoặc một vấn đề tài nguyên mà một cái gì đó cơ bản không thể được thực hiện tại thời điểm đó."
 
 #: includes/arrays.php:567
 msgid "The URL was not properly formatted."
-msgstr ""
+msgstr "URL không được định dạng đúng."
 
 #: includes/arrays.php:571
 msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
-msgstr ""
+msgstr "Không tìm thấy tính năng, giao thức hoặc tùy chọn được yêu cầu được tích hợp sẵn trong libcurl này do quyết định về thời gian xây dựng. Điều này có nghĩa là một tính năng hoặc tùy chọn không được bật hoặc tắt rõ ràng khi libcurl được xây dựng và để làm cho nó hoạt động, bạn phải có một libcurl được xây dựng lại."
 
 #: includes/arrays.php:575
 msgid "Could not resolve proxy. The given proxy host could not be resolved."
-msgstr ""
+msgstr "Không thể giải quyết proxy. Máy chủ proxy đã cho không thể được giải quyết."
 
 #: includes/arrays.php:579
 msgid "Could not resolve host. The given remote host was not resolved."
-msgstr ""
+msgstr "Không thể giải quyết máy chủ. Máy chủ từ xa đã cho không được giải quyết."
 
 #: includes/arrays.php:583
 msgid "Failed to connect() to host or proxy."
-msgstr ""
+msgstr "Không thể kết nối() với máy chủ lưu trữ hoặc proxy."
 
 #: includes/arrays.php:587
 msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
-msgstr ""
+msgstr "Máy chủ đã gửi dữ liệu libcurl không thể phân tích cú pháp. Mã lỗi này được gọi là CURLE_FTP_WEIRD_SERVER_REPLY trước 7.51.0."
 
 #: includes/arrays.php:591
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
-msgstr ""
+msgstr "Chúng tôi đã bị từ chối truy cập vào tài nguyên được cung cấp trong URL. Đối với FTP, điều này xảy ra trong khi cố gắng thay đổi thư mục từ xa."
 
 #: includes/arrays.php:595
 msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
-msgstr ""
+msgstr "Trong khi chờ máy chủ kết nối lại khi phiên FTP hoạt động được sử dụng, mã lỗi đã được gửi qua kết nối điều khiển hoặc tương tự."
 
 #: includes/arrays.php:599
 msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
-msgstr ""
+msgstr "Sau khi gửi mật khẩu FTP đến máy chủ, libcurl mong đợi một câu trả lời thích hợp. Mã lỗi này chỉ ra rằng một mã không mong muốn đã được trả về."
 
 #: includes/arrays.php:603
 msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
-msgstr ""
+msgstr "Trong phiên FTP hoạt động trong khi chờ máy chủ kết nối, thời gian chờ CURLOPT_ACCEPTTIMEOUT_MS (hoặc mặc định nội bộ) đã hết hạn."
 
 #: includes/arrays.php:607
 msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
-msgstr ""
+msgstr "Libcurl không nhận được kết quả hợp lý từ máy chủ dưới dạng phản hồi cho lệnh PASV hoặc EPSV. Máy chủ bị lỗi."
 
 #: includes/arrays.php:611
 msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
-msgstr ""
+msgstr "Máy chủ FTP trả về 227 dòng dưới dạng phản hồi lệnh PASV. Nếu libcurl không phân tích được dòng đó, mã trả về này sẽ được chuyển trở lại."
 
 #: includes/arrays.php:615
 msgid "An internal failure to lookup the host used for the new connection."
-msgstr ""
+msgstr "Lỗi nội bộ để tra cứu máy chủ được sử dụng cho kết nối mới."
 
 #: includes/arrays.php:619
 msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr ""
+msgstr "Một vấn đề đã được phát hiện trong lớp khung HTTP2. Điều này hơi chung chung và có thể là một trong một số vấn đề, hãy xem bộ đệm lỗi để biết chi tiết."
 
 #: includes/arrays.php:623
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
-msgstr ""
+msgstr "Nhận được lỗi khi cố gắng đặt chế độ chuyển thành nhị phân hoặc ASCII."
 
 #: includes/arrays.php:627
 msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
-msgstr ""
+msgstr "Việc truyền tệp ngắn hơn hoặc lớn hơn dự kiến. Điều này xảy ra khi máy chủ lần đầu tiên báo cáo kích thước truyền dự kiến và sau đó cung cấp dữ liệu không khớp với kích thước đã cho trước đó."
 
 #: includes/arrays.php:631
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
-msgstr ""
+msgstr "Đây là một câu trả lời kỳ lạ cho lệnh 'RETR' hoặc hoàn tất quá trình chuyển byte bằng không."
 
 #: includes/arrays.php:634 includes/arrays.php:650 includes/arrays.php:670
 #: includes/arrays.php:682 includes/arrays.php:714 includes/arrays.php:730
@@ -787,7 +785,7 @@ msgstr ""
 #: includes/arrays.php:782 includes/arrays.php:802 includes/arrays.php:854
 #: includes/arrays.php:858
 msgid "Obsolete Error"
-msgstr ""
+msgstr "Lỗi thời"
 
 #: includes/arrays.php:635 includes/arrays.php:651 includes/arrays.php:671
 #: includes/arrays.php:683 includes/arrays.php:715 includes/arrays.php:731
@@ -795,67 +793,67 @@ msgstr ""
 #: includes/arrays.php:783 includes/arrays.php:803 includes/arrays.php:855
 #: includes/arrays.php:859
 msgid "Not used in modern versions."
-msgstr ""
+msgstr "Không được sử dụng trong các phiên bản hiện đại."
 
 #: includes/arrays.php:639
 msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
-msgstr ""
+msgstr "Khi gửi lệnh \"QUOTE\" tùy chỉnh đến máy chủ từ xa, một trong các lệnh trả về mã lỗi từ 400 trở lên (đối với FTP) hoặc cho biết hoàn thành lệnh không thành công."
 
 #: includes/arrays.php:643
 msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
-msgstr ""
+msgstr "Điều này được trả về nếu CURLOPT_FAILONERROR được đặt true và máy chủ HTTP trả về mã lỗi > = 400."
 
 #: includes/arrays.php:647
 msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
-msgstr ""
+msgstr "Đã xảy ra lỗi khi ghi dữ liệu nhận được vào tệp cục bộ hoặc lỗi được trả về libcurl từ callback ghi."
 
 #: includes/arrays.php:655
 msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
-msgstr ""
+msgstr "Không thể bắt đầu tải lên. Đối với FTP, máy chủ thường từ chối lệnh TOR. Bộ đệm lỗi thường chứa lời giải thích của máy chủ cho điều này."
 
 #: includes/arrays.php:659
 msgid "There was a problem reading a local file or an error returned by the read callback."
-msgstr ""
+msgstr "Đã xảy ra sự cố khi đọc tệp cục bộ hoặc lỗi được trả về bởi lệnh gọi lại đã đọc."
 
 #: includes/arrays.php:663
 msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
-msgstr ""
+msgstr "Yêu cầu cấp phát bộ nhớ không thành công. Đây là điều tồi tệ nghiêm trọng và mọi thứ sẽ bị trục trặc nghiêm trọng nếu điều này xảy ra."
 
 #: includes/arrays.php:667
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
-msgstr ""
+msgstr "Thời gian chờ hoạt động. Khoảng thời gian chờ quy định đã đạt được theo các điều kiện."
 
 #: includes/arrays.php:675
 msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
-msgstr ""
+msgstr "Lệnh FTP PORT trả về lỗi. Điều này chủ yếu xảy ra khi bạn chưa chỉ định một địa chỉ đủ tốt để libcurl sử dụng. Xem CURLOPT_FTPPORT."
 
 #: includes/arrays.php:679
 msgid "The FTP REST command returned error. This should never happen if the server is sane."
-msgstr ""
+msgstr "Lệnh FTP REST trả về lỗi. Điều này sẽ không bao giờ xảy ra nếu máy chủ hoạt động tốt."
 
 #: includes/arrays.php:687
 msgid "The server does not support or accept range requests."
-msgstr ""
+msgstr "Máy chủ không hỗ trợ hoặc chấp nhận yêu cầu phạm vi."
 
 #: includes/arrays.php:691
 msgid "This is an odd error that mainly occurs due to internal confusion."
-msgstr ""
+msgstr "Đây là một lỗi kỳ lạ chủ yếu xảy ra do nhầm lẫn nội bộ."
 
 #: includes/arrays.php:695
 msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
-msgstr ""
+msgstr "Một vấn đề đã xảy ra ở đâu đó trong bắt tay SSL / TLS. Bạn thực sự muốn bộ đệm lỗi và đọc thông báo ở đó vì nó xác định chính xác vấn đề hơn một chút. Có thể là chứng chỉ (định dạng tệp, đường dẫn, quyền), mật khẩu và các chứng chỉ khác."
 
 #: includes/arrays.php:699
 msgid "The download could not be resumed because the specified offset was out of the file boundary."
-msgstr ""
+msgstr "Không thể tiếp tục tải xuống vì phần bù được chỉ định nằm ngoài ranh giới tệp."
 
 #: includes/arrays.php:703
 msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
-msgstr ""
+msgstr "Không thể mở tệp được cung cấp với FILE://. Nhiều khả năng là do đường dẫn tệp không xác định tệp hiện có. Bạn đã kiểm tra quyền truy cập tệp chưa?"
 
 #: includes/arrays.php:707
 msgid "LDAP cannot bind. LDAP bind operation failed."
-msgstr ""
+msgstr "LDAP không thể ràng buộc. Hoạt động liên kết LDAP không thành công."
 
 #: includes/arrays.php:711
 #, fuzzy
@@ -864,211 +862,211 @@ msgstr "Tìm kiếm"
 
 #: includes/arrays.php:719
 msgid "Function not found. A required zlib function was not found."
-msgstr ""
+msgstr "Không tìm thấy chức năng. Không tìm thấy hàm zlib bắt buộc."
 
 #: includes/arrays.php:723
 msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
-msgstr ""
+msgstr "Bị hủy bỏ bằng cách gọi lại. Một cuộc gọi lại đã trả lại \"hủy bỏ\" cho libcurl."
 
 #: includes/arrays.php:727
 msgid "A function was called with a bad parameter."
-msgstr ""
+msgstr "Một hàm được gọi với một tham số xấu."
 
 #: includes/arrays.php:735
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
-msgstr ""
+msgstr "Lỗi giao diện. Không thể sử dụng giao diện gửi đi được chỉ định. Đặt giao diện để sử dụng cho địa chỉ IP nguồn của kết nối đi với URLOPT_INTERFACE."
 
 #: includes/arrays.php:743
 msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
-msgstr ""
+msgstr "Quá nhiều chuyển hướng. Khi theo dõi chuyển hướng, libcurl đạt số tiền tối đa. Đặt giới hạn của bạn với CURLOPT_MAXREDIRS."
 
 #: includes/arrays.php:747
 msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
-msgstr ""
+msgstr "Một tùy chọn được chuyển đến libcurl không được công nhận / biết đến. Tham khảo tài liệu thích hợp. Đây rất có thể là một vấn đề trong chương trình sử dụng libcurl. Bộ đệm lỗi có thể chứa thông tin cụ thể hơn về tùy chọn chính xác mà nó quan tâm."
 
 #: includes/arrays.php:751
 msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
-msgstr ""
+msgstr "Một tùy chọn được chuyển vào setopt đã bị định dạng sai. Xem thông báo lỗi để biết chi tiết về tùy chọn nào."
 
 #: includes/arrays.php:763
 msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
-msgstr ""
+msgstr "Không có gì được trả về từ máy chủ và trong các trường hợp, không nhận được gì được coi là lỗi."
 
 #: includes/arrays.php:767
 msgid "The specified crypto engine was not found."
-msgstr ""
+msgstr "Không tìm thấy công cụ tiền điện tử được chỉ định."
 
 #: includes/arrays.php:771
 msgid "Failed setting the selected SSL crypto engine as default."
-msgstr ""
+msgstr "Không thể đặt công cụ tiền điện tử SSL đã chọn làm mặc định."
 
 #: includes/arrays.php:775
 msgid "Failed sending network data."
-msgstr ""
+msgstr "Gửi dữ liệu mạng không thành công."
 
 #: includes/arrays.php:779
 msgid "Failure with receiving network data."
-msgstr ""
+msgstr "Lỗi khi nhận dữ liệu mạng."
 
 #: includes/arrays.php:787
 msgid "problem with the local client certificate."
-msgstr ""
+msgstr "Sự cố với chứng chỉ máy khách cục bộ."
 
 #: includes/arrays.php:791
 msgid "Could not use specified cipher."
-msgstr ""
+msgstr "Không thể sử dụng mật mã được chỉ định."
 
 #: includes/arrays.php:795
 msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
-msgstr ""
+msgstr "Chứng chỉ SSL của máy chủ từ xa hoặc dấu vân tay SSH được coi là không ổn. Mã lỗi này đã được thống nhất với CURLE_SSL_CACERT kể từ 7.62.0. Giá trị trước đây của nó là 51."
 
 #: includes/arrays.php:799
 msgid "Unrecognized transfer encoding."
-msgstr ""
+msgstr "Mã hóa truyền không được công nhận."
 
 #: includes/arrays.php:807
 msgid "Maximum file size exceeded."
-msgstr ""
+msgstr "Vượt quá kích thước tệp tối đa."
 
 #: includes/arrays.php:811
 msgid "Requested FTP SSL level failed."
-msgstr ""
+msgstr "Yêu cầu mức SSL FTP không thành công."
 
 #: includes/arrays.php:815
 msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
-msgstr ""
+msgstr "Khi thực hiện thao tác gửi, curl phải tua lại dữ liệu để truyền lại, nhưng thao tác tua lại không thành công."
 
 #: includes/arrays.php:819
 msgid "Initiating the SSL Engine failed."
-msgstr ""
+msgstr "Khởi tạo SSL Engine không thành công."
 
 #: includes/arrays.php:823
 msgid "The remote server denied curl to login (Added in 7.13.1)"
-msgstr ""
+msgstr "Máy chủ từ xa từ chối cuộn tròn để đăng nhập (Thêm vào 7.13.1)"
 
 #: includes/arrays.php:827
 msgid "File not found on TFTP server."
-msgstr ""
+msgstr "Không tìm thấy tệp trên máy chủ TFTP."
 
 #: includes/arrays.php:831
 msgid "Permission problem on TFTP server."
-msgstr ""
+msgstr "Vấn đề quyền trên máy chủ TFTP."
 
 #: includes/arrays.php:835
 msgid "Out of disk space on the server."
-msgstr ""
+msgstr "Hết dung lượng đĩa trên máy chủ."
 
 #: includes/arrays.php:839
 msgid "Illegal TFTP operation."
-msgstr ""
+msgstr "Hoạt động TFTP bất hợp pháp."
 
 #: includes/arrays.php:843
 msgid "Unknown TFTP transfer ID."
-msgstr ""
+msgstr "ID chuyển TFTP không xác định."
 
 #: includes/arrays.php:847
 msgid "File already exists and is not overwritten."
-msgstr ""
+msgstr "Tệp đã tồn tại và không bị ghi đè."
 
 #: includes/arrays.php:851
 msgid "This error should never be returned by a properly functioning TFTP server."
-msgstr ""
+msgstr "Lỗi này không bao giờ được trả về bởi một máy chủ TFTP hoạt động đúng."
 
 #: includes/arrays.php:863
 msgid "Problem with reading the SSL CA cert (path? access rights?)"
-msgstr ""
+msgstr "Vấn đề với việc đọc chứng chỉ SSL CA (đường dẫn? quyền truy cập?)"
 
 #: includes/arrays.php:867
 msgid "The resource referenced in the URL does not exist."
-msgstr ""
+msgstr "Tài nguyên được tham chiếu trong URL không tồn tại."
 
 #: includes/arrays.php:871
 msgid "An unspecified error occurred during the SSH session."
-msgstr ""
+msgstr "Đã xảy ra lỗi không xác định trong phiên SSH."
 
 #: includes/arrays.php:875
 msgid "Failed to shut down the SSL connection."
-msgstr ""
+msgstr "Không thể tắt kết nối SSL."
 
 #: includes/arrays.php:879
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
-msgstr ""
+msgstr "Ổ cắm chưa sẵn sàng để gửi / recv, đợi cho đến khi nó sẵn sàng và thử lại. Mã trả về này chỉ được trả về từ curl_easy_recv và curl_easy_send (Thêm vào 7.18.2)"
 
 #: includes/arrays.php:883
 msgid "Failed to load CRL file (Added in 7.19.0)"
-msgstr ""
+msgstr "Không thể tải tệp CRL (Thêm vào 7.19.0)"
 
 #: includes/arrays.php:887
 msgid "Issuer check failed (Added in 7.19.0)"
-msgstr ""
+msgstr "Kiểm tra nhà phát hành không thành công (Đã thêm vào 7.19.0)"
 
 #: includes/arrays.php:891
 msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
-msgstr ""
+msgstr "Máy chủ FTP hoàn toàn không hiểu lệnh PRET hoặc không hỗ trợ đối số đã cho. Hãy cẩn thận khi sử dụng CURLOPT_CUSTOMREQUEST, một lệnh LIST tùy chỉnh cũng được gửi bằng lệnh PRET trước PASV. (Thêm vào trong 7.20.0)"
 
 #: includes/arrays.php:895
 msgid "Mismatch of RTSP CSeq numbers."
-msgstr ""
+msgstr "Không khớp số RTSP CSeq."
 
 #: includes/arrays.php:899
 msgid "Mismatch of RTSP Session Identifiers."
-msgstr ""
+msgstr "Số nhận dạng phiên RTSP không khớp."
 
 #: includes/arrays.php:903
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
-msgstr ""
+msgstr "Không thể phân tích cú pháp danh sách tệp FTP (trong khi tải xuống ký tự đại diện FTP)."
 
 #: includes/arrays.php:907
 msgid "Chunk callback reported error."
-msgstr ""
+msgstr "Chunk callback báo cáo lỗi."
 
 #: includes/arrays.php:911
 msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
-msgstr ""
+msgstr "(Chỉ sử dụng nội bộ, không bao giờ được trả lại bởi libcurl) Không có kết nối khả dụng, phiên được xếp hàng. (được thêm vào trong 7.30.0)"
 
 #: includes/arrays.php:915
 msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
-msgstr ""
+msgstr "Không khớp với khóa được ghim được chỉ định với CURLOPT_PINNEDPUBLICKEY."
 
 #: includes/arrays.php:919
 msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
-msgstr ""
+msgstr "Trạng thái trả về thất bại khi được hỏi với CURLOPT_SSL_VERIFYSTATUS."
 
 #: includes/arrays.php:923
 msgid "Stream error in the HTTP/2 framing layer."
-msgstr ""
+msgstr "Lỗi luồng trong lớp khung HTTP / 2."
 
 #: includes/arrays.php:927
 msgid "An API function was called from inside a callback."
-msgstr ""
+msgstr "Một hàm API được gọi từ bên trong một callback."
 
 #: includes/arrays.php:931
 msgid "An authentication function returned an error."
-msgstr ""
+msgstr "Một hàm xác thực trả về lỗi."
 
 #: includes/arrays.php:935
 msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr ""
+msgstr "Một vấn đề đã được phát hiện trong lớp HTTP / 3. Điều này hơi chung chung và có thể là một trong một số vấn đề, hãy xem bộ đệm lỗi để biết chi tiết."
 
 #: includes/arrays.php:939
 msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
-msgstr ""
+msgstr "Lỗi kết nối QUIC. Lỗi này có thể do lỗi thư viện SSL. QUIC là giao thức được sử dụng để truyền HTTP / 3."
 
 #: includes/arrays.php:943
 msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
-msgstr ""
+msgstr "Lỗi bắt tay proxy. CURLINFO_PROXY_ERROR cung cấp thêm chi tiết về vấn đề cụ thể."
 
 #: includes/arrays.php:947
 msgid "SSL Client Certificate required."
-msgstr ""
+msgstr "Yêu cầu chứng chỉ máy khách SSL."
 
 #: includes/arrays.php:951
 msgid "An internal call to poll() or select() returned error that is not recoverable."
-msgstr ""
+msgstr "Lệnh gọi nội bộ đến poll() hoặc select() trả về lỗi không thể khôi phục được."
 
 #: includes/functions.php:32 servcheck_test.php:828
 msgid "Tests"
-msgstr ""
+msgstr "Bài kiểm tra"
 
 #: includes/functions.php:33
 #, fuzzy
@@ -1083,7 +1081,7 @@ msgstr "Proxy"
 
 #: includes/functions.php:35
 msgid "Curl return codes"
-msgstr ""
+msgstr "Mã trả hàng Curl"
 
 #: includes/functions.php:41
 #, fuzzy
@@ -1092,11 +1090,11 @@ msgstr "Xem lịch sử"
 
 #: includes/functions.php:48
 msgid "Graphs"
-msgstr ""
+msgstr "Đồ thị"
 
 #: includes/functions.php:130
 msgid "No data"
-msgstr ""
+msgstr "Không có dữ liệu"
 
 #: servcheck_ca.php:104
 #, fuzzy
@@ -1127,11 +1125,11 @@ msgstr "Truy vấn [mới]"
 
 #: servcheck_ca.php:268
 msgid "Used"
-msgstr ""
+msgstr "Đã sử dụng"
 
 #: servcheck_ca.php:275 servcheck_ca.php:334
 msgid "CAs"
-msgstr ""
+msgstr "Cas"
 
 #: servcheck_ca.php:296
 #, fuzzy
@@ -1145,7 +1143,7 @@ msgstr "Quản lý máy chủ Webseer"
 
 #: servcheck_ca.php:322
 msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
-msgstr ""
+msgstr "Servcheck sử dụng một tệp chứng chỉ từ các CA gốc phổ biến để kiểm tra chứng chỉ. Điều này sẽ hoạt động đối với các chứng chỉ do các CA thông thường cấp. Nếu bạn đang sử dụng CA tùy chỉnh (ví dụ: trong môi trường Microsoft AD), kiểm tra chứng chỉ đó sẽ không thành công vì servcheck không biết CA của bạn. Bạn phải tải lên toàn bộ chuỗi (chứng chỉ CA và chứng chỉ trung gian). Sau đó, bạn liên kết những điều này với bài kiểm tra có chứng chỉ do CA của bạn cấp."
 
 #: servcheck_ca.php:328 servcheck_proxies.php:343 servcheck_test.php:510
 #: servcheck_test.php:1251
@@ -1169,7 +1167,7 @@ msgstr "Xóa"
 
 #: servcheck_curl_code.php:55
 msgid "No error codes"
-msgstr ""
+msgstr "Không có mã lỗi"
 
 #: servcheck_proxies.php:103
 #, fuzzy
@@ -1263,7 +1261,7 @@ msgstr[0] "Bản sao"
 #: servcheck_test.php:405
 #, php-format
 msgid "The Service Check history was purged for %s"
-msgstr ""
+msgstr "Lịch sử Kiểm tra dịch vụ đã bị xóa trong %s"
 
 #: servcheck_test.php:419
 #, fuzzy, php-format
@@ -1300,16 +1298,15 @@ msgstr "Ngày"
 
 #: servcheck_test.php:796 servcheck_test.php:1048
 msgid "Result"
-msgstr ""
+msgstr "Kết quả"
 
 #: servcheck_test.php:799 servcheck_test.php:1053
-#, fuzzy
 msgid "Search result"
-msgstr "Tìm kiếm"
+msgstr "Tìm kiếm kết quả"
 
 #: servcheck_test.php:802 servcheck_test.php:1058
 msgid "Curl return code"
-msgstr ""
+msgstr "Mã trả về Curl"
 
 #: servcheck_test.php:807
 #, fuzzy
@@ -1330,11 +1327,11 @@ msgstr "Tổng"
 
 #: servcheck_test.php:854
 msgid "Service Down"
-msgstr ""
+msgstr "Dịch vụ xuống"
 
 #: servcheck_test.php:854
 msgid "Service UP"
-msgstr ""
+msgstr "Dịch vụ UP"
 
 #: servcheck_test.php:868
 #, fuzzy
@@ -1343,7 +1340,7 @@ msgstr "Không có sự kiện trong lịch sử"
 
 #: servcheck_test.php:922
 msgid "Last returned data of test"
-msgstr ""
+msgstr "Dữ liệu trả về cuối cùng của thử nghiệm"
 
 #: servcheck_test.php:1018
 msgid "Actions"
@@ -1360,7 +1357,7 @@ msgstr "Lần cuối kiểm tra vào"
 
 #: servcheck_test.php:1038
 msgid "Stats (OK/problem)"
-msgstr ""
+msgstr "Số liệu thống kê (OK / vấn đề)"
 
 #: servcheck_test.php:1043
 #, fuzzy
@@ -1388,11 +1385,11 @@ msgstr "Kiểm tra dịch vụ web"
 
 #: servcheck_test.php:1120
 msgid "View Last returned data"
-msgstr ""
+msgstr "Xem dữ liệu trả về cuối cùng"
 
 #: servcheck_test.php:1125
 msgid "View Graph"
-msgstr ""
+msgstr "Xem biểu đồ"
 
 #: servcheck_test.php:1135
 msgid "Disabled"
@@ -1444,11 +1441,11 @@ msgstr "Tìm kiếm"
 
 #: servcheck_test.php:1379
 msgid "Entries"
-msgstr ""
+msgstr "Mục"
 
 #: servcheck_test.php:1397
 msgid "Purge Events"
-msgstr ""
+msgstr "Sự kiện thanh trừng"
 
 #: setup.php:34
 #, fuzzy
@@ -1491,15 +1488,15 @@ msgstr "Proxy mới"
 
 #: setup.php:266
 msgid "CA"
-msgstr ""
+msgstr "CA"
 
 #: setup.php:273
 msgid "CA Edit"
-msgstr ""
+msgstr "CA Chỉnh sửa"
 
 #: setup.php:280
 msgid "Save CA"
-msgstr ""
+msgstr "Lưu CA"
 
 #, fuzzy
 #~ msgid "Click 'Continue' to Enable the following Server."

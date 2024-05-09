@@ -358,7 +358,7 @@ function form_save() {
 	}
 
 	if ($category == 'web' || $category == 'ftp' || $category == 'smb') {
-		if (isset_request_var('path') && get_filter_request_var('path', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-zA-Z0-9_;\-\/.]+$/')))) {
+		if (isset_request_var('path') && get_filter_request_var('path', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-zA-Z0-9_;\-\/\.\?=]+$/')))) {
 			$save['path'] = get_nfilter_request_var('path');
 		} else {
 			raise_message(3);

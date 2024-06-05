@@ -552,6 +552,13 @@ function plugin_servcheck_get_users($results, $test, $type, $last_log) {
 		}
 	}
 
+	foreach ($message as $m) {
+		plugin_servcheck_send_email($to, $m['subject'], $m['text']);
+	}
+
+
+
+/*	separately - I will add option for this later
 	$users = explode(',', $to);
 
 	foreach ($message as $m) {
@@ -559,6 +566,7 @@ function plugin_servcheck_get_users($results, $test, $type, $last_log) {
 			plugin_servcheck_send_email($u, $m['subject'], $m['text']);
 		}
 	}
+*/
 }
 
 

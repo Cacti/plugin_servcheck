@@ -541,7 +541,7 @@ $servcheck_test_fields = array(
 		'default' => '',
 		'size' => '20',
 		'max_length' => '20',
-		'value' => '|arg1:external_id',
+		'value' => '|arg1:external_id|',
 	),
 	'id' => array(
 		'method' => 'hidden_zero',

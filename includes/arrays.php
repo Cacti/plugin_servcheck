@@ -350,7 +350,7 @@ $servcheck_test_fields = array(
 		'friendly_name' => __('IP Address or DNS name of server', 'servcheck'),
 		'description' => __('You can specify another port (example.com:5000) otherwise default will be used', 'servcheck'),
 		'value' => '|arg1:hostname|',
-		'max_length' => '40',
+		'max_length' => '100',
 		'size' => '30'
 	),
 	'service_spacer' => array(

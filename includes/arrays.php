@@ -445,7 +445,7 @@ $servcheck_test_fields = array(
 		'method' => 'drop_array',
 		'array' => $servcheck_cycles,
 		'default' => 1,
-		'description' => __('Test each poller cycle or less', 'servcheck'),
+		'description' => __('Test every (N * (poller cycle - 10 seconds))', 'servcheck'),
 		'value' => '|arg1:how_often|',
 	),
 	'downtrigger' => array(
@@ -453,7 +453,7 @@ $servcheck_test_fields = array(
 		'method' => 'drop_array',
 		'array' => $servcheck_cycles,
 		'default' => 1,
-		'description' => __('How many poller cycles must be down before it will send an alert. After an alert is sent, in order for a \'Site Recovering\' Email to be send, it must also be up this number of poller cycles.', 'servcheck'),
+		'description' => __('How many poller cycles the service must be DOWN before an alert email is triggered. The same number is applicable in case of \'Site Recovering\'.', 'servcheck'),
 		'value' => '|arg1:downtrigger|',
 	),
 	'timeout_trigger' => array(
@@ -537,7 +537,7 @@ $servcheck_test_fields = array(
 	'external_id' => array(
 		'friendly_name' => __('External ID', 'thold'),
 		'method' => 'textbox',
-		'description' => __('Enter an Eternal ID for this Thold Template.', 'thold'),
+		'description' => __('Enter an External ID for this Thold Template.', 'thold'),
 		'default' => '',
 		'size' => '20',
 		'max_length' => '20',

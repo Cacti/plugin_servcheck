@@ -490,7 +490,7 @@ function plugin_servcheck_get_users($results, $test, $type, $last_log) {
 			$message[0]['text'] .= '</table>' . PHP_EOL;
 			$message[0]['text'] .= '<hr>';
 
-			if ($results['error'] = 'ok') {
+			if ($results['error'] == 'ok') {
 				$message[0]['text'] .= '<table>' . PHP_EOL;
 				$message[0]['text'] .= '<tr><td>Total Time:</td><td> '     . round($results['options']['total_time'],4)      . '</td></tr>' . PHP_EOL;
 				$message[0]['text'] .= '<tr><td>Connect Time:</td><td> '   . round($results['options']['connect_time'],4)    . '</td></tr>' . PHP_EOL;

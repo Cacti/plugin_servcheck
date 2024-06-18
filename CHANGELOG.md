@@ -1,5 +1,7 @@
 # ChangeLog
 
+*feature#14 - add settings tab, add send email separately option
+
 --- 0.1 ---
 
 * Initial public release - Based on plugin webseer version 3.2

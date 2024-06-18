@@ -30,6 +30,7 @@ function plugin_servcheck_install () {
 	api_plugin_register_hook('servcheck', 'config_arrays',        'plugin_servcheck_config_arrays',        'setup.php');
 	api_plugin_register_hook('servcheck', 'poller_bottom',        'plugin_servcheck_poller_bottom',        'setup.php');
 	api_plugin_register_hook('servcheck', 'replicate_out',        'servcheck_replicate_out',               'setup.php');
+	api_plugin_register_hook('servcheck', 'config_settings',      'servcheck_config_settings',             'setup.php');
 
 	api_plugin_register_realm('servcheck', 'servcheck_test.php,servcheck_curl_code.php,servcheck_proxies.php,servcheck_ca.php', __('Service Check Admin', 'servcheck'), 1);
 
@@ -65,6 +66,7 @@ function plugin_servcheck_upgrade() {
 		array('servcheck_test.php,servcheck_curl_code.php,servcheck_proxies.php,servcheck_ca.php'));
 
 		api_plugin_register_hook('servcheck', 'replicate_out', 'servcheck_replicate_out', 'setup.php', '1');
+		api_plugin_register_hook('servcheck', 'config_settings', 'servcheck_config_settings', 'setup.php', '1');
 
 	return true;
 }
@@ -310,4 +312,21 @@ function servcheck_replicate_out($data) {
 	return $data;
 }
 
+function servcheck_config_settings() {
+	global $tabs, $settings;
 
+	$tabs['servcheck'] = __('Servcheck', 'servcheck');
+
+	$settings['servcheck'] = array(
+		'servcheck_display_header' => array(
+			'friendly_name' => __('Email Settings', 'servcheck'),
+			'method'        => 'spacer',
+		),
+		'servcheck_send_email_separately' => array(
+			'friendly_name' => __('Send Email separately for each address', 'servcheck'),
+			'description'   => __('If checked, this will cause all Emails to be sent separately for each address.', 'servcheck'),
+			'method'        => 'checkbox',
+			'default'       => '',
+		)
+	);
+}

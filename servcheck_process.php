@@ -350,6 +350,8 @@ function register_shutdown($test_id) {
 function plugin_servcheck_get_users($results, $test, $type, $last_log) {
 	global $httperrors, $cert_expiry_days;
 
+	$servcheck_send_email_separately = read_config_option('servcheck_send_email_separately');
+
 	$users = '';
 	if ($test['notify_accounts'] != '') {
 		$users = db_fetch_cell("SELECT GROUP_CONCAT(DISTINCT data) AS emails
@@ -552,21 +554,21 @@ function plugin_servcheck_get_users($results, $test, $type, $last_log) {
 		}
 	}
 
-	foreach ($message as $m) {
-		plugin_servcheck_send_email($to, $m['subject'], $m['text']);
-	}
 
+	if ($servcheck_send_email_separately != 'on') {
+		foreach ($message as $m) {
+			plugin_servcheck_send_email($to, $m['subject'], $m['text']);
+		}
+	} else {
 
+		$users = explode(',', $to);
 
-/*	separately - I will add option for this later
-	$users = explode(',', $to);
-
-	foreach ($message as $m) {
-		foreach ($users as $u) {
-			plugin_servcheck_send_email($u, $m['subject'], $m['text']);
+		foreach ($message as $m) {
+			foreach ($users as $u) {
+				plugin_servcheck_send_email($u, $m['subject'], $m['text']);
+			}
 		}
 	}
-*/
 }
 
 

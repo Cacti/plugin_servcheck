@@ -350,7 +350,7 @@ function register_shutdown($test_id) {
 function plugin_servcheck_get_users($results, $test, $type, $last_log) {
 	global $httperrors, $cert_expiry_days;
 
-	$servcheck_send_email_separately = read_config_option('thold_send_email_separately');
+	$servcheck_send_email_separately = read_config_option('servcheck_send_email_separately');
 
 	$users = '';
 	if ($test['notify_accounts'] != '') {

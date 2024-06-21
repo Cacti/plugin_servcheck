@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: webseer on cacti 1.1.34\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2024-04-20 17:21+0000\n"
-"Last-Translator: Anonymous <anonymous@cacti.net>\n"
+"PO-Revision-Date: 2024-06-21 02:29+0000\n"
+"Last-Translator: tql <fttx31@126.com>\n"
 "Language-Team: Chinese (Simplified) <http://translate.cacti.net/projects/"
 "cacti/servcheck/zh_Hans/>\n"
 "Language: zh-CN\n"
@@ -449,7 +449,7 @@ msgstr "取消选中此框可禁用此网址进行检查。"
 
 #: includes/arrays.php:332
 msgid "Poller"
-msgstr "Poller"
+msgstr "轮询器"
 
 #: includes/arrays.php:335
 msgid "Poller on which the test will run"

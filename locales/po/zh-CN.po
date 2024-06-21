@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: webseer on cacti 1.1.34\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2024-06-21 02:29+0000\n"
+"PO-Revision-Date: 2024-06-21 08:51+0000\n"
 "Last-Translator: tql <fttx31@126.com>\n"
 "Language-Team: Chinese (Simplified) <http://translate.cacti.net/projects/"
 "cacti/servcheck/zh_Hans/>\n"
@@ -680,7 +680,7 @@ msgstr "外部ID"
 
 #: includes/arrays.php:540
 msgid "Enter an Eternal ID for this Thold Template."
-msgstr "输入此 Thold 模板的 Eternal ID。"
+msgstr "创建阈值模板。"
 
 #: includes/arrays.php:555
 msgid "All fine. Proceed as usual."

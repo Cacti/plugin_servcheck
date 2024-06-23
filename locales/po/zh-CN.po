@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: webseer on cacti 1.1.34\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2024-06-21 08:51+0000\n"
+"PO-Revision-Date: 2024-06-23 04:09+0000\n"
 "Last-Translator: tql <fttx31@126.com>\n"
 "Language-Team: Chinese (Simplified) <http://translate.cacti.net/projects/"
 "cacti/servcheck/zh_Hans/>\n"
@@ -347,7 +347,7 @@ msgstr "启用"
 
 #: includes/arrays.php:224
 msgid "Duplicate"
-msgstr "重复"
+msgstr "复制"
 
 #: includes/arrays.php:230 includes/arrays.php:250 servcheck_ca.php:264
 #: servcheck_proxies.php:273 servcheck_test.php:793 servcheck_test.php:1023
@@ -1337,7 +1337,7 @@ msgstr "操作"
 
 #: servcheck_test.php:1028 servcheck_test.php:1135
 msgid "Enabled"
-msgstr "启用"
+msgstr "已启用"
 
 #: servcheck_test.php:1033
 msgid "Last Check"
@@ -1385,11 +1385,11 @@ msgstr "已禁用"
 
 #: servcheck_test.php:1138
 msgid "N/A"
-msgstr "N/A"
+msgstr "不可用"
 
 #: servcheck_test.php:1145
 msgid "No"
-msgstr "不"
+msgstr "否"
 
 #: servcheck_test.php:1145
 msgid "Yes"

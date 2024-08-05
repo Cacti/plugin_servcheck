@@ -432,7 +432,7 @@ $servcheck_test_fields = array(
 	'certexpirenotify' => array(
 		'method' => 'checkbox',
 		'friendly_name' => __('Check and notify Certificate expiration', 'servcheck'),
-		'description' => __('If using SSL, check this box if you want to check the certificate expiration. You will be warn when last 10 days left.', 'servcheck'),
+		'description' => __('If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify..', 'servcheck'),
 		'value' => '|arg1:certexpirenotify|',
 		'default' => '',
 	),

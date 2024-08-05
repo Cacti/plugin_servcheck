@@ -277,6 +277,37 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 			plugin_servcheck_send_notification($results, $test, '', $last_log);
 		}
 	}
+/* command
+
+!!!!!!!!!!!!!!!!!!
+	$command = read_config_option('servcheck_change_command');
+	$command_enable = read_config_option('servcheck_enable_scripts');
+	if ($command_enable && $command != '') {
+
+		thold_putenv('SERVCHECK_TEST_NAME='              . $test['display_name']);
+		thold_putenv('SERVCHECK_EXTERNAL_ID='            . $test['external_id']);
+		thold_putenv('SERVCHECK_TEST_TYPE='              . $test['type']);
+		thold_putenv('SERVCHECK_POLLER='                 . $test['poller_id']);
+		thold_putenv('SERVCHECK_RESULT='                 . $results['result']);
+		thold_putenv('SERVCHECK_RESULT_SEARCH='          . $results['result_search']);
+		thold_putenv('SERVCHECK_CURL_RETURN_CODE='       . $results['curl_return_code']);
+		thold_putenv('SERVCHECK_CERTIFICATE_EXPIRATION=' . $test['expiry_date']);
+
+		if (file_exists($command) && is_executable($command)) {
+			$output = array();
+			$return = 0;
+
+			exec($command, $output, $return);
+
+			cacti_log('Servcheck Command for test[' . $test['id'] . '] Command[' . $command . '] ExitStatus[' . $return . '] Output[' . implode(' ', $output) . ']', false, 'SERVCHECK');
+		} else {
+			cacti_log('WARNING: Servcheck Command for test[' . $test['id'] . '] Command[' . $command . '] Is either Not found or Not executable!', false, 'SERVCHECK');
+		}
+	}
+
+
+
+end command */
 } else {
 	plugin_servcheck_debug('Not checking for trigger', $test);
 }

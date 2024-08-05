@@ -334,9 +334,9 @@ function servcheck_config_settings() {
 			'method' => 'checkbox',
 			'default' => ''
 		),
-		'servcheck_device_command' => array(
+		'servcheck_change_command' => array(
 			'friendly_name' => __('Status Change Command', 'servcheck'),
-			'description' => __('When a Test returns different result, search result, curl return code, ... run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_CHECK_NAME&#062 &#060SERVCHECK_EXTERNAL_ID_SITE&#062 &#060SERVCHECK_CHECK_TYPE&#062 &#060SERVCHECK_SERVER&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CURL_RETURN_CODE&#062 &#060SERVCHECK_CERtIFICATE_EXPIRATION&#062', 'servcheck'),
+			'description' => __('When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CURL_RETURN_CODE&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062', 'servcheck'),
 			'method' => 'filepath',
 			'file_type' => 'binary',
 			'size' => '100',

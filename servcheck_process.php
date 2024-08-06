@@ -227,6 +227,7 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 
 	plugin_servcheck_debug('Checking for trigger', $test);
 
+
 	$sendemail = false;
 
 	if ($results['result'] != 'ok') {
@@ -248,11 +249,14 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 		}
 	}
 
+
 	if ($last_log['result_search'] != $results['result_search']) {
 		$sendemail = true;
 	}
 
-	if ($test['certexpirenotify'] && && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days) {
+
+
+	if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days) {
 
 		// notify once per day
 		$new_notify = db_fetch_cell_prepared('SELECT UNIX_TIMESTAMP(DATE_ADD(last_exp_notify, INTERVAL 1 DAY))
@@ -268,6 +272,8 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 		}
 	}
 
+
+
 	if ($sendemail) {
 		plugin_servcheck_debug('Time to send email to admins', $test);
 
@@ -277,21 +283,20 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 			plugin_servcheck_send_notification($results, $test, '', $last_log);
 		}
 	}
-/* command
 
-!!!!!!!!!!!!!!!!!!
 	$command = read_config_option('servcheck_change_command');
 	$command_enable = read_config_option('servcheck_enable_scripts');
 	if ($command_enable && $command != '') {
+		plugin_servcheck_debug('Time to run command', $test);
 
-		thold_putenv('SERVCHECK_TEST_NAME='              . $test['display_name']);
-		thold_putenv('SERVCHECK_EXTERNAL_ID='            . $test['external_id']);
-		thold_putenv('SERVCHECK_TEST_TYPE='              . $test['type']);
-		thold_putenv('SERVCHECK_POLLER='                 . $test['poller_id']);
-		thold_putenv('SERVCHECK_RESULT='                 . $results['result']);
-		thold_putenv('SERVCHECK_RESULT_SEARCH='          . $results['result_search']);
-		thold_putenv('SERVCHECK_CURL_RETURN_CODE='       . $results['curl_return_code']);
-		thold_putenv('SERVCHECK_CERTIFICATE_EXPIRATION=' . $test['expiry_date']);
+		putenv('SERVCHECK_TEST_NAME='              . $test['display_name']);
+		putenv('SERVCHECK_EXTERNAL_ID='            . $test['external_id']);
+		putenv('SERVCHECK_TEST_TYPE='              . $test['type']);
+		putenv('SERVCHECK_POLLER='                 . $test['poller_id']);
+		putenv('SERVCHECK_RESULT='                 . $results['result']);
+		putenv('SERVCHECK_RESULT_SEARCH='          . $results['result_search']);
+		putenv('SERVCHECK_CURL_RETURN_CODE='       . $results['curl_return']);
+		putenv('SERVCHECK_CERTIFICATE_EXPIRATION=' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Not tested'));
 
 		if (file_exists($command) && is_executable($command)) {
 			$output = array();
@@ -304,10 +309,6 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 			cacti_log('WARNING: Servcheck Command for test[' . $test['id'] . '] Command[' . $command . '] Is either Not found or Not executable!', false, 'SERVCHECK');
 		}
 	}
-
-
-
-end command */
 } else {
 	plugin_servcheck_debug('Not checking for trigger', $test);
 }

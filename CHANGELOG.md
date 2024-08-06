@@ -1,6 +1,7 @@
 # ChangeLog
 
 *feature#14 - add settings tab, add send email separately option
+*feature#10 - add script/command
 
 --- 0.1 ---
 

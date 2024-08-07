@@ -432,7 +432,7 @@ $servcheck_test_fields = array(
 	'certexpirenotify' => array(
 		'method' => 'checkbox',
 		'friendly_name' => __('Check and notify Certificate expiration', 'servcheck'),
-		'description' => __('If using SSL, check this box if you want to check the certificate expiration. You will be warn when last 10 days left.', 'servcheck'),
+		'description' => __('If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify..', 'servcheck'),
 		'value' => '|arg1:certexpirenotify|',
 		'default' => '',
 	),
@@ -537,7 +537,7 @@ $servcheck_test_fields = array(
 	'external_id' => array(
 		'friendly_name' => __('External ID', 'thold'),
 		'method' => 'textbox',
-		'description' => __('Enter an External ID for this Thold Template.', 'thold'),
+		'description' => __('Enter an External ID for this test.', 'thold'),
 		'default' => '',
 		'size' => '20',
 		'max_length' => '20',

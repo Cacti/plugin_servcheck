@@ -1,6 +1,8 @@
 # ChangeLog
 
 *feature#14 - add settings tab, add send email separately option
+*feature#10 - add script/command
+*feature - add certificate expiry days options
 
 --- 0.1 ---
 

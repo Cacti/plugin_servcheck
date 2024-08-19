@@ -318,7 +318,7 @@ function servcheck_config_settings() {
 
 	$settings['servcheck'] = array(
 		'servcheck_display_header' => array(
-			'friendly_name' => __('Email Settings', 'servcheck'),
+			'friendly_name' => __('Notification Preferences', 'servcheck'),
 			'method'        => 'spacer',
 		),
 		'servcheck_send_email_separately' => array(
@@ -333,6 +333,32 @@ function servcheck_config_settings() {
 			'method'        => 'checkbox',
 			'default'       => '',
 		),
-
+		'servcheck_enable_scripts' => array(
+			'friendly_name' => __('Enable Command Execution', 'servcheck'),
+			'description' => __('Checking this box will enable the ability to run commands on Servcheck events.', 'servcheck'),
+			'method' => 'checkbox',
+			'default' => ''
+		),
+		'servcheck_change_command' => array(
+			'friendly_name' => __('Status Change Command', 'servcheck'),
+			'description' => __('When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CURL_RETURN_CODE&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062', 'servcheck'),
+			'method' => 'filepath',
+			'file_type' => 'binary',
+			'size' => '100',
+			'max_length' => '100',
+			'default' => ''
+		),
+		'servcheck_certificate_expiry_days' => array(
+			'friendly_name' => __('Check certificate expiration', 'servcheck'),
+			'description' => __('If SSL/TLS service certificate expiration is enabled, notify about soon expiration ', 'sercheck'),
+			'method' => 'drop_array',
+			'array' => array(
+				'-1' => __('Disabled', 'servcheck'),
+				'3'  => __('3 days before', 'servcheck'),
+				'7'  => __('1 week before', 'servcheck'),
+				'21' => __('3 weeks before', 'servcheck'),
+			),
+			'default' => 7
+		),
 	);
 }

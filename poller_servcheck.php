@@ -90,7 +90,7 @@ plugin_servcheck_check_debug();
 
 print "Running Service Checks\n";
 
-// Remove old logs)
+// Remove old logs
 $t = time() - (86400 * 30);
 
 if ($poller_id == 1) {

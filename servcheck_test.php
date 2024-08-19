@@ -901,8 +901,9 @@ function servcheck_show_graph() {
 	print '<br/><br/><b>' . html_escape($result['display_name']) . ':</b><br/>';
 
 	foreach ($graph_interval as $key => $value) {
-		print ($value) . ':<br/>';
+		print ($value) . ': ';
 		plugin_servcheck_graph ($id, $key);
+		print '<br/><br/>';
 	}
 }
 

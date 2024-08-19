@@ -127,7 +127,7 @@ function plugin_servcheck_graph ($id, $interval) {
 		ORDER BY id", array($id, $interval));
 
 	if (cacti_sizeof($result) < 5) {
-		print __('No data', 'servcheck') . '\n';
+		print __('No data', 'servcheck');
 		return;
 	}
 

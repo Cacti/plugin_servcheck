@@ -30,6 +30,7 @@ class mxlookup {
 	var $cIx        = 0;
 	var $arrMX      = array();
 	var $dns_repl_domain;
+	var $dns_reply  = '';
 
 	function __construct($domain, $dns = '4.2.2.1') {
 		$this->QNAME($domain);

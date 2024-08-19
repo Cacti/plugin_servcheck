@@ -371,7 +371,11 @@ function form_save() {
 	$save['search']          = get_nfilter_request_var('search');
 	$save['search_maint']    = get_nfilter_request_var('search_maint');
 	$save['search_failed']   = get_nfilter_request_var('search_failed');
-	$save['notify_list']     = get_nfilter_request_var('notify_list');
+
+	if (api_plugin_installed('thold')) {
+		$save['notify_list']     = get_filter_request_var('notify_list');
+	}
+
 	$save['notify_extra']    = get_nfilter_request_var('notify_extra');
 	$save['downtrigger']     = get_filter_request_var('downtrigger');
 	$save['timeout_trigger'] = get_filter_request_var('timeout_trigger');
@@ -408,6 +412,7 @@ function purge_log_events($id) {
 function servcheck_edit_test() {
 	global $servcheck_test_fields, $service_types;
 
+
 	/* ================= input validation ================= */
 	get_filter_request_var('id');
 	/* ==================================================== */
@@ -421,9 +426,8 @@ function servcheck_edit_test() {
 		$header_label = __('Query [new]', 'servcheck');
 	}
 
-	if (read_config_option('thold_disable_legacy', true) == 'on') {
-		$servcheck_test_fields['notify_accounts']['method'] = 'hidden';
-		$servcheck_test_fields['notify_extra']['method']    = 'hidden';
+	if (!api_plugin_installed('thold')) {
+		$servcheck_test_fields['notify_list']['method'] = 'hidden';
 	}
 
 	if (isset($test['username'])) {

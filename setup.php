@@ -77,7 +77,6 @@ function plugin_servcheck_version() {
 	return $info['info'];
 }
 
-
 function plugin_servcheck_setup_table() {
 
 	db_execute("CREATE TABLE IF NOT EXISTS `plugin_servcheck_test` (
@@ -325,6 +324,12 @@ function servcheck_config_settings() {
 		'servcheck_send_email_separately' => array(
 			'friendly_name' => __('Send Email separately for each address', 'servcheck'),
 			'description'   => __('If checked, this will cause all Emails to be sent separately for each address.', 'servcheck'),
+			'method'        => 'checkbox',
+			'default'       => '',
+		),
+		'servcheck_disable_notification' => array(
+			'friendly_name' => __('Stop sending all notification', 'servcheck'),
+			'description'   => __('If checked, servcheck will not send any emails.', 'servcheck'),
 			'method'        => 'checkbox',
 			'default'       => '',
 		),

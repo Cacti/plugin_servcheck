@@ -275,7 +275,7 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 
 
 	if ($sendemail) {
-		plugin_servcheck_debug('Time to send email to admins', $test);
+		plugin_servcheck_debug('Time to send email', $test);
 
 		if ($test['notify_format'] == SERVCHECK_FORMAT_PLAIN) {
 			plugin_servcheck_send_notification($results, $test, 'text', $last_log);
@@ -384,6 +384,13 @@ function register_shutdown($test_id) {
 function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 	global $httperrors, $cert_expiry_days;
 
+	if (read_config_option('servcheck_disable_notification') == 'on') {
+		cacti_log('Notifications are disabled, notification will not send for test ' . $test['display_name'], false, 'SERVCHECK');
+		plugin_servcheck_debug('Notification disabled globally', $test);
+
+		return true;
+	}
+
 	$servcheck_send_email_separately = read_config_option('servcheck_send_email_separately');
 
 	$users = '';
@@ -393,7 +400,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			WHERE id IN (" . $test['notify_accounts'] . ")");
 	}
 
-	if ($users == '' && isset($test['notify_extra']) && $test['notify_extra'] == '' && $test['notify_list'] <= 0) {
+	if ($users == '' && (isset($test['notify_extra']) && $test['notify_extra'] == '') && (api_plugin_installed('thold') && $test['notify_list'] <= 0)) {
 		cacti_log('ERROR: No users to send SERVCHECK Notification for ' . $test['display_name'], false, 'SERVCHECK');
 		return;
 	}
@@ -408,7 +415,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 		$to .= ($to != '' ? ', ':'') . $test['notify_extra'];
 	}
 
-	if ($test['notify_list'] > 0) {
+	if (api_plugin_installed('thold') && $test['notify_list'] > 0) {
 		$emails = db_fetch_cell_prepared('SELECT emails
 			FROM plugin_notification_lists
 			WHERE id = ?',

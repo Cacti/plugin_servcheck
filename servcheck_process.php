@@ -407,7 +407,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 	$to = $users;
 
-	if (read_config_option('thold_disable_legacy') == 'on' && ($to != '' || $test['notify_extra'] != '')) {
+	if (read_config_option('servcheck_disable_notification') == 'on' && ($to != '' || $test['notify_extra'] != '')) {
 		cacti_log(sprintf('WARNING: Service Check %s has individual Emails specified and Disable Legacy Notification is Enabled.', $test['display_name']), false, 'SERVCHECK');
 	}
 

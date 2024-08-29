@@ -191,7 +191,6 @@ $servcheck_notify_formats = array(
 	SERVCHECK_FORMAT_PLAIN => 'plain',
 );
 
-
 if (db_table_exists('plugin_servcheck_contacts')) {
 	$servcheck_contact_users = db_fetch_assoc("SELECT pwc.id, pwc.data, pwc.type, ua.full_name
 		FROM plugin_servcheck_contacts AS pwc
@@ -535,9 +534,9 @@ $servcheck_test_fields = array(
 		'value' => '|arg1:notes|',
 	),
 	'external_id' => array(
-		'friendly_name' => __('External ID', 'thold'),
+		'friendly_name' => __('External ID', 'servcheck'),
 		'method' => 'textbox',
-		'description' => __('Enter an External ID for this test.', 'thold'),
+		'description' => __('Enter an External ID for this test.', 'servcheck'),
 		'default' => '',
 		'size' => '20',
 		'max_length' => '20',

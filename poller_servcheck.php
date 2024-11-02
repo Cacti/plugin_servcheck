@@ -75,7 +75,7 @@ if (cacti_sizeof($parms)) {
 				display_help();
 				exit;
 			default:
-				print "ERROR: Invalid Parameter " . $parameter . "\n\n";
+				print 'ERROR: Invalid Parameter ' . $parameter . PHP_EOL . PHP_EOL;
 				display_help();
 				exit;
 		}
@@ -88,7 +88,7 @@ if (!function_exists('curl_init')) {
 
 plugin_servcheck_check_debug();
 
-print "Running Service Checks\n";
+print 'Running Service Checks' . PHP_EOL;
 
 // Remove old logs
 $t = time() - (86400 * 30);
@@ -109,25 +109,25 @@ $tests = db_fetch_assoc_prepared('SELECT *
 	AND poller_id = ?',
 	array($poller_id));
 
-$max = 12;
+$max_processes = 12;
 
 if (cacti_sizeof($tests)) {
 	foreach($tests as $test) {
-		$total = db_fetch_cell_prepared('SELECT COUNT(id)
+		$running_processes = db_fetch_cell_prepared('SELECT COUNT(id)
 			FROM plugin_servcheck_processes
 			WHERE poller_id = ?',
 			array($poller_id));
 
-		if ($max - $total > 0) {
+		if ($max_processes - $running_processes > 0) {
 			plugin_servcheck_debug('Launching Service Check ' . $test['display_name'], $test);
 
 			$command_string = read_config_option('path_php_binary');
 			$extra_args     = '-q "' . $config['base_path'] . '/plugins/servcheck/servcheck_process.php" --id=' . $test['id'] . ($debug ? ' --debug':'');
 			exec_background($command_string, $extra_args);
 
-			usleep(10000);
+			sleep(2);
 		} else {
-			usleep(10000);
+			sleep(2);
 
 			db_execute_prepared('DELETE FROM plugin_servcheck_processes
 				WHERE time < FROM_UNIXTIME(?)
@@ -155,10 +155,38 @@ while(true) {
 	}
 }
 
+// stats
+$stat_ok = 0;
+$stat_ko = 0;
+$stat_search_ok = 0;
+$stat_search_ko = 0;
+
+foreach ($tests as $test) {
+	$test_last = db_fetch_row_prepared('SELECT result, result_search
+		FROM plugin_servcheck_log
+		WHERE test_id = ?
+		ORDER BY id DESC LIMIT 1',
+		array($test['id']));
+
+	if ($test_last['result'] == 'ok' || $test_last['result'] == 'not yet') {
+		$stat_ok++;
+	} else {
+		$stat_ko++;
+	}
+
+	if ($test_last['result_search'] == 'ok' || $test_last['result_search'] == 'not yet ' || $test_last['result_search'] == 'not tested') {
+		$stat_search_ok++;
+	} else {
+		$stat_search_ko++;
+	}
+}
+
 $end   = microtime(true);
 $ttime = round($end - $start, 2);
 
-$stats = 'Time:' . $ttime . ' Checks:' . sizeof($tests);
+$stats = 'Time:' . $ttime . ' Checks:' . cacti_sizeof($tests) .
+	' Results(ok/problem):' . $stat_ok . '/' . $stat_ko . 
+	' Search results(ok/problem):' . $stat_search_ok . '/' . $stat_search_ko;
 
 cacti_log("SERVCHECK STATS: $stats", false, 'SYSTEM');
 
@@ -178,20 +206,19 @@ function display_version() {
 		include_once($config['base_path'] . '/plugins/servcheck/setup.php');
 	}
 
-    $info = plugin_servcheck_version();
-
-    print "Cacti Service Check Master Process, Version " . $info['version'] . ", " . COPYRIGHT_YEARS . "\n";
+	$info = plugin_servcheck_version();
+	print 'Cacti Service Check Master Process, Version ' . $info['version'] . ', ' . COPYRIGHT_YEARS . PHP_EOL;
 }
 
 /**
  * display_help - displays the usage of the function
  */
 function display_help () {
-    display_version();
+	display_version();
 
-    print "\nusage: poller_servcheck.php [--debug] [--force]\n\n";
-	print "This binary will exec all the Service check child processes.\n\n";
-    print "--force    - Force all the service checks to run now\n";
-    print "--debug    - Display verbose output during execution\n\n";
+	print PHP_EOL . 'usage: poller_servcheck.php [--debug] [--force]' . PHP_EOL . PHP_EOL;
+	print 'This binary will exec all the Service check child processes.' . PHP_EOL . PHP_EOL;
+	print '--force    - Force all the service checks to run now' . PHP_EOL . PHP_EOL;
+	print '--debug    - Display verbose output during execution' . PHP_EOL . PHP_EOL;
 }
 

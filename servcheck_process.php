@@ -44,7 +44,7 @@ global $debug;
 
 $debug   = false;
 $force   = false;
-$test_id = '';
+$test_id = 0;
 
 $poller_interval   = read_config_option('poller_interval');
 $cert_expiry_days  = read_config_option('servcheck_certificate_expiry_days');
@@ -62,7 +62,7 @@ if (cacti_sizeof($parms)) {
 
 		switch ($arg) {
 		case '--id':
-			$test_id = $value;
+			$test_id = intval($value);
 			break;
 		case '-d':
 		case '--debug':
@@ -84,7 +84,7 @@ if (cacti_sizeof($parms)) {
 			$force = true;
 			break;
 		default:
-			print 'ERROR: Invalid Parameter ' . $parameter . "\n\n";
+			print 'ERROR: Invalid Parameter ' . $parameter . PHP_EOL . PHP_EOL;
 			display_help();
 			exit;
 		}
@@ -92,11 +92,11 @@ if (cacti_sizeof($parms)) {
 }
 
 if (!function_exists('curl_init')) {
-	print "FATAL: You must install php-curl to use this Plugin" . PHP_EOL;
+	print 'FATAL: You must install php-curl to use this Plugin' . PHP_EOL;
 }
 
-if (empty($test_id)) {
-	print "ERROR: You must specify a test id\n";
+if (empty($test_id) || !is_int($test_id)) {
+	print 'ERROR: You must specify a test id' . PHP_EOL;
 	exit(1);
 }
 
@@ -113,9 +113,8 @@ $test = db_fetch_row_prepared('SELECT *, UNIX_TIMESTAMP(DATE_ADD(lastcheck, INTE
 	WHERE id = ? ' . $enabled,
 	array(($poller_interval-10), $test_id));
 
-
 if (!cacti_sizeof($test)) {
-	print "ERROR: Test not Found\n";
+	print 'ERROR: Test not Found' . PHP_EOL;
 	exit(1);
 }
 
@@ -123,7 +122,7 @@ $poller = db_fetch_cell_prepared('SELECT * FROM poller WHERE id = ?',
 	array($test['poller_id']));
 
 if ($poller == false) {
-	print "Selected poller not found, changing to poller 1.\n";
+	print 'Selected poller not found, changing to poller 1' . PHP_EOL;
 	db_execute_prepared('UPDATE plugin_servcheck_test
 		SET poller_id = 1
 		WHERE id = ?',
@@ -186,7 +185,7 @@ while ($x < 3) {
 
 if (cacti_sizeof($results) == 0) {
 	plugin_servcheck_debug('Unknown error for test ' . $test['id'], $test);
-	exit('Unknown errof for test ' . $test['id']);
+	exit('Unknown error for test ' . $test['id']);
 }
 
 plugin_servcheck_debug('failures:'. $test['stats_bad'] . ', triggered:' . $test['triggered'], $test);
@@ -196,7 +195,7 @@ if ($test['certexpirenotify']) {
 	if (isset($results['options']['certinfo'][0])) {
 		plugin_servcheck_debug('Returned certificate info: ' .  clean_up_lines(var_export($results['options']['certinfo'], true))  , $test);
 
-		$parsed = date_parse_from_format("M j H:i:s Y e", $results['options']['certinfo'][0]['Expire date']);
+		$parsed = date_parse_from_format('M j H:i:s Y e', $results['options']['certinfo'][0]['Expire date']);
 		$exp = mktime($parsed['hour'], $parsed['minute'], $parsed['second'], $parsed['month'], $parsed['day'], $parsed['year']);
 		$test['days'] = round(($exp - time()) / 86400);
 		$test['expiry_date'] = $parsed['day'] . '. ' . $parsed['month'] . '. ' . $parsed['year'];
@@ -205,9 +204,9 @@ if ($test['certexpirenotify']) {
 
 $test['status_change'] = false;
 
-$last_log = db_fetch_row_prepared("SELECT *
+$last_log = db_fetch_row_prepared('SELECT *
 		FROM plugin_servcheck_log
-		WHERE test_id = ? ORDER BY id DESC LIMIT 1",
+		WHERE test_id = ? ORDER BY id DESC LIMIT 1',
 		array ($test['id']));
 
 if (!$last_log) {
@@ -221,12 +220,10 @@ if ($results['result'] == 'ok') {
 	$test['stats_bad'] += 1;
 }
 
-
 if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $results['result_search'] ||
 	($test['certexpirenotify'] && $test_expiry_days > 0 && $test['days'] < $cert_expiry_days)) {
 
 	plugin_servcheck_debug('Checking for trigger', $test);
-
 
 	$sendemail = false;
 
@@ -241,20 +238,19 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 	}
 
 	if ($results['result'] == 'ok') {
-		if ($test['failures'] == 0 && $test['triggered'] == 1) {
+		if ($test['triggered'] == 1) {
 			$sendemail = true;
-			$test['triggered'] = 0;
 			$test['status_change'] = true;
-			$test['failures'] = 0;
 		}
-	}
+			$test['triggered'] = 0;
+			$test['failures'] = 0;
+		
 
+	}
 
 	if ($last_log['result_search'] != $results['result_search']) {
 		$sendemail = true;
 	}
-
-
 
 	if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days) {
 
@@ -271,8 +267,6 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 			$new_notify_expire = true;
 		}
 	}
-
-
 
 	if ($sendemail) {
 		plugin_servcheck_debug('Time to send email', $test);
@@ -311,16 +305,24 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 	}
 } else {
 	plugin_servcheck_debug('Not checking for trigger', $test);
+
+	if ($results['result'] != 'ok') {
+		$test['failures']++;
+		$test['triggered'] = 1;
+	} else {
+		$test['triggered'] = 0;
+		$test['failures'] = 0;
+	}
 }
 
 plugin_servcheck_debug('Updating Statistics', $test);
 
-db_execute_prepared("INSERT INTO plugin_servcheck_log
+db_execute_prepared('INSERT INTO plugin_servcheck_log
 	(test_id, lastcheck, cert_expire, result, http_code, error,
 	total_time, namelookup_time, connect_time, redirect_time,
 	redirect_count, size_download, speed_download, result_search,
 	curl_return_code)
-	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
 	array($test['id'], date('Y-m-d H:i:s', $results['time']), date('Y-m-d H:i:s', $exp),
 		$results['result'],
 		$results['options']['http_code'], $results['error'],

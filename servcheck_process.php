@@ -409,7 +409,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 	$to = $users;
 
-	if (read_config_option('thold_disable_legacy') == 'on' && ($to != '' || $test['notify_extra'] != '')) {
+	if (read_config_option('servcheck_disable_notification') == 'on' && ($to != '' || $test['notify_extra'] != '')) {
 		cacti_log(sprintf('WARNING: Service Check %s has individual Emails specified and Disable Legacy Notification is Enabled.', $test['display_name']), false, 'SERVCHECK');
 	}
 
@@ -439,8 +439,9 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 			$message[0]['text']  = 'Service state: ' . ($results['result'] == 'ok' ? 'Recovering' : 'Down') . PHP_EOL;
 
+
 			if (!is_null($test['path'])) {
-				$message[0]['path'] .= 'Path: ' . $test['path'] . PHP_EOL;
+				$message[0]['text'] .= 'Path: ' . $test['path'] . PHP_EOL;
 			}
 			$message[0]['text'] .= 'Error: ' . $results['error'] . PHP_EOL;
 			$message[0]['text'] .= 'Total Time: ' . $results['options']['total_time'] . PHP_EOL;
@@ -456,6 +457,8 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 		// search string notification
 		if ($last_log['result_search'] != $results['result_search']) {
 			$message[1]['subject'] = '[Cacti servcheck] Service ' . $test['display_name'] . ' - changed search string';
+
+			$message[1]['text'] = 'Hostname: ' . $test['hostname'] . PHP_EOL;
 
 			if (!is_null($test['path'])) {
 				$message[1]['text'] .= 'Path: ' . $test['path'] . PHP_EOL;
@@ -482,7 +485,9 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 		if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days) {
 			$message[2]['subject'] = '[Cacti servcheck] Certificate will expired in less than ' . $cert_expiry_days . ' days: ' . $test['display_name'];
-			$message[2]['text']  = 'Site ' . $test['display_name'] . PHP_EOL;
+			$message[2]['text'] = 'Site ' . $test['display_name'] . PHP_EOL;
+
+			$message[2]['text'] .= 'Hostname: ' . $test['hostname'] . PHP_EOL;
 
 			if (!is_null($test['path'])) {
 				$message[2]['text'] .= 'Path: ' . $test['path'] . PHP_EOL;
@@ -509,6 +514,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			$message[0]['text'] .= '<hr>';
 
 			$message[0]['text'] .= '<table>' . PHP_EOL;
+			$message[0]['text'] .= '<tr><td>Hostname:</td><td>' . $test['hostname'] . '</td></tr>' . PHP_EOL;
 
 			if (!is_null($test['path'])) {
 				$message[0]['text'] .= '<tr><td>Path:</td><td>' . $test['path'] . '</td></tr>' . PHP_EOL;
@@ -559,6 +565,8 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 			$message[1]['text'] .= '<table>' . PHP_EOL;
 
+			$message[1]['text'] .= '<tr><td>Hostname:</td><td>' . $test['hostname'] . '</td></tr>' . PHP_EOL;
+
 			if (!is_null($test['path'])) {
 				$message[1]['text'] .= '<tr><td>Path:</td><td>' . $test['path'] . '</td></tr>' . PHP_EOL;
 			}
@@ -584,6 +592,8 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			$message[2]['text'] .= '<hr>';
 
 			$message[2]['text'] .= '<table>' . PHP_EOL;
+
+			$message[2]['text'] .= '<tr><td>Hostname:</td><td>' . $test['hostname'] . '</td></tr>' . PHP_EOL;
 
 			if (!is_null($test['path'])) {
 				$message[2]['text'] .= '<tr><td>Path:</td><td>' . $test['path'] . '</td></tr>' . PHP_EOL;

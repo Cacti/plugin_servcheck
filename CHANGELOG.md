@@ -4,6 +4,7 @@
 
 *issue#17: Remove dependency on thold plugin, notify lists remain if thold is installed 
 *issue#15: Fix DNS test issue
+*issue#19: Rename old thold names, fix incorrect variable
 *issue: Fix incorrect result logic
 *feature#14: add settings tab, add send email separately option
 

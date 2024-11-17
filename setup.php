@@ -292,7 +292,7 @@ function servcheck_replicate_out($data) {
 	$rcnn_id          = $data['rcnn_id'];
 	$class            = $data['class'];
 
-	cacti_log('INFO: Replacting for the servcheck Plugin', false, 'REPLICATE');
+	cacti_log('INFO: Replicating for the servcheck Plugin', false, 'REPLICATE');
 
 	$tables = array(
 		'plugin_servcheck_contacts',

@@ -327,12 +327,12 @@ $servcheck_test_fields = array(
 		'value' => '|arg1:enabled|',
 		'default' => 'on',
 	),
-	'poller' => array(
+	'poller_id' => array(
 		'friendly_name' => __('Poller', 'servcheck'),
 		'method' => 'drop_sql',
 		'default' => 1,
 		'description' => __('Poller on which the test will run', 'servcheck'),
-		'value' => '|arg1:poller|',
+		'value' => '|arg1:poller_id|',
 		'sql' => 'SELECT id, name FROM poller ORDER BY id',
 	),
 	'type' => array(

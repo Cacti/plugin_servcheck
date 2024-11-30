@@ -1,5 +1,9 @@
 # ChangeLog
 
+--- develop ---
+
+* issue: Unable to save poller for service check
+
 --- 0.2 ---
 
 * issue#17: Remove dependency on thold plugin, notify lists remain if thold is installed 

@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2024-04-20 17:21+0000\n"
-"Last-Translator: Anonymous <anonymous@cacti.net>\n"
+"PO-Revision-Date: 2024-12-06 19:25+0000\n"
+"Last-Translator: Anton Zhuravlev <baka109g@gmail.com>\n"
 "Language-Team: Russian <http://translate.cacti.net/projects/cacti/servcheck/"
 "ru/>\n"
 "Language: ru-RU\n"
@@ -459,18 +459,16 @@ msgid "Poller on which the test will run"
 msgstr "Поллер, на котором будет выполняться тест"
 
 #: includes/arrays.php:340
-#, fuzzy
 msgid "Type of service"
-msgstr "Тип услуги"
+msgstr "Тип сервиса"
 
 #: includes/arrays.php:345
 msgid "What type of service?"
 msgstr "Что это за услуга?"
 
 #: includes/arrays.php:350
-#, fuzzy
 msgid "IP Address or DNS name of server"
-msgstr "IP-адрес для подключения к этому серверу"
+msgstr "IP-адрес или DNS имя сервера"
 
 #: includes/arrays.php:351
 msgid "You can specify another port (example.com:5000) otherwise default will be used"
@@ -506,9 +504,8 @@ msgid "For anonymous ftp insert email address here."
 msgstr "Для анонимного ftp введите адрес электронной почты здесь."
 
 #: includes/arrays.php:386
-#, fuzzy
 msgid "LDAP Search"
-msgstr "Поиск"
+msgstr "LDAP Поиск"
 
 #: includes/arrays.php:388
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
@@ -538,7 +535,6 @@ msgid "Requires Authentication"
 msgstr "Требуется аутентификация"
 
 #: includes/arrays.php:412
-#, fuzzy
 msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
 msgstr ""
 "Установите этот флажок, если сайт обычно возвращает ошибку 401, так как для "
@@ -556,9 +552,8 @@ msgstr ""
 "противном случае выберите «Нет»."
 
 #: includes/arrays.php:427
-#, fuzzy
 msgid "Check Certificate"
-msgstr "Проверьте сертификат"
+msgstr "Проверить сертификат"
 
 #: includes/arrays.php:428
 #, fuzzy
@@ -569,9 +564,8 @@ msgstr ""
 "самоподписной сертификат."
 
 #: includes/arrays.php:434
-#, fuzzy
 msgid "Check and notify Certificate expiration"
-msgstr "Проверьте сертификат"
+msgstr "Проверка и уведомление об истекающем сертификате"
 
 #: includes/arrays.php:435
 #, fuzzy
@@ -582,7 +576,6 @@ msgstr ""
 "самоподписной сертификат."
 
 #: includes/arrays.php:441
-#, fuzzy
 msgid "Notification Timing"
 msgstr "Время уведомления"
 
@@ -608,7 +601,6 @@ msgstr ""
 "количество минут."
 
 #: includes/arrays.php:460
-#, fuzzy
 msgid "Time Out"
 msgstr "Тайм-аут"
 
@@ -666,9 +658,8 @@ msgid "Notification Settings"
 msgstr "Настройки уведомлений"
 
 #: includes/arrays.php:500
-#, fuzzy
 msgid "Notify Format"
-msgstr "Уведомить счета"
+msgstr "Формат оповещений"
 
 #: includes/arrays.php:502
 #, fuzzy
@@ -953,9 +944,8 @@ msgid "LDAP cannot bind. LDAP bind operation failed."
 msgstr "LDAP не может связываться. Не удалось выполнить операцию привязки LDAP."
 
 #: includes/arrays.php:711
-#, fuzzy
 msgid "LDAP search failed."
-msgstr "Поиск"
+msgstr "LDAP поиск неудачен"
 
 #: includes/arrays.php:719
 msgid "Function not found. A required zlib function was not found."
@@ -1347,18 +1337,16 @@ msgid "Proxy [new]"
 msgstr "Запрос [новый]"
 
 #: servcheck_proxies.php:281
-#, fuzzy
 msgid "Ports (http/https)"
-msgstr "Порты (http / https)"
+msgstr "Порты (http/https)"
 
 #: servcheck_proxies.php:309
 msgid "Not Set"
 msgstr "Не задано"
 
 #: servcheck_proxies.php:315
-#, fuzzy
 msgid "No Servers Found"
-msgstr "Серверы не найдены"
+msgstr "Сервера не найдены"
 
 #: servcheck_proxies.php:334
 #, fuzzy
@@ -1374,12 +1362,11 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: servcheck_test.php:197
-#, fuzzy
 msgid "Delete rest"
 msgid_plural "Delete tests"
-msgstr[0] "Серверы WebSeer"
-msgstr[1] "Серверы WebSeer"
-msgstr[2] "Серверы WebSeer"
+msgstr[0] "Удалить тест"
+msgstr[1] "Удалить тесты"
+msgstr[2] "Удалить тест"
 
 #: servcheck_test.php:201
 #, fuzzy
@@ -1390,12 +1377,11 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: servcheck_test.php:206
-#, fuzzy
 msgid "Disable test"
 msgid_plural "Disable Tests"
-msgstr[0] "Выключить"
-msgstr[1] "Выключить"
-msgstr[2] "Выключить"
+msgstr[0] "Выключить тест"
+msgstr[1] "Выключить тесты"
+msgstr[2] "Выключить тесты"
 
 #: servcheck_test.php:210
 #, fuzzy
@@ -1406,28 +1392,25 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: servcheck_test.php:215
-#, fuzzy
 msgid "Enable test"
 msgid_plural "Enable tests"
-msgstr[0] "Включить сервер"
-msgstr[1] "Включить сервер"
-msgstr[2] "Включить сервер"
+msgstr[0] "Включить тест"
+msgstr[1] "Включить тесты"
+msgstr[2] "Включить тесты"
 
 #: servcheck_test.php:219
-#, fuzzy
 msgid "Click 'Continue' to Duplicate the following test."
 msgid_plural "Click 'Continue' to Duplicate following tests."
-msgstr[0] "Нажмите «Продолжить», чтобы удалить следующий прокси."
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Нажмите «Продолжить», чтобы дублировать следующий тест."
+msgstr[1] "Нажмите «Продолжить», чтобы дублировать следующие тесты."
+msgstr[2] "Нажмите «Продолжить», чтобы дублировать следующие тесты."
 
 #: servcheck_test.php:224
-#, fuzzy
 msgid "Duplicate test"
 msgid_plural "Duplicate tests"
-msgstr[0] "Дублировать"
-msgstr[1] "Дублировать"
-msgstr[2] "Дублировать"
+msgstr[0] "Дублировать тест"
+msgstr[1] "Дублировать тесты"
+msgstr[2] "Дублировать тесты"
 
 #: servcheck_test.php:405
 #, fuzzy, php-format
@@ -1435,27 +1418,23 @@ msgid "The Service Check history was purged for %s"
 msgstr "История проверки услуг была очищена для %s"
 
 #: servcheck_test.php:419
-#, fuzzy, php-format
+#, php-format
 msgid "Query [edit: %s]"
 msgstr "Запрос [Редактировать: %s]"
 
 #: servcheck_test.php:421
-#, fuzzy
 msgid "Query [new]"
 msgstr "Запрос [новый]"
 
 #: servcheck_test.php:465
-#, fuzzy
 msgid "No Users Selected"
-msgstr "Нет пользователей Выбранные пользователи"
+msgstr "Пользователь не выбран"
 
 #: servcheck_test.php:467
-#, fuzzy
 msgid "Users Selected"
-msgstr "Пользователи Выбранные"
+msgstr "Выбранные пользователи"
 
 #: servcheck_test.php:470
-#, fuzzy
 msgid "All Users Selected"
 msgstr "Все выбранные пользователи"
 
@@ -1578,9 +1557,8 @@ msgid "Yes"
 msgstr "Да"
 
 #: servcheck_test.php:1156
-#, fuzzy
 msgid "No Tests Found"
-msgstr "Серверы не найдены"
+msgstr "Тесты не найдены"
 
 #: servcheck_test.php:1242 setup.php:224
 #, fuzzy

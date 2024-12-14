@@ -44,7 +44,8 @@ LDAP and LDAPS - do searching in LDAP
 FTP, FTPS - try to login and return directory listing
 TFTP - try to download specific file
 SCP - try to login and download specific file
-SMB, SMBS - try to login and download specific file.
+SMB, SMBS - try to login and download specific file
+MQTT - try to subscribe topic or wait for any message and print result
 
 ## Important
 Recomendation for tests with download -  please download only small not binary files.
@@ -55,6 +56,9 @@ For POP3 and IMAP tests is better insert correct username and password. Without 
 curl will return incorrect result.
 
 SCP is in insecure mode - doesn't check SSH server key!
+
+MQTT is only plaintext. You can specify username and password. MQTT test waits for the first messase from a given topic
+or for any message if the topic has not been specified.
 
 Do not test other servers without permission!
 

@@ -3,6 +3,7 @@
 --- develop ---
 
 * issue: Unable to save poller for service check
+* feature#23: Add MQTT and DNS over HTTPS test
 
 --- 0.2 ---
 

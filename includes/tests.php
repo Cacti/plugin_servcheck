@@ -501,3 +501,172 @@ function mqtt_try ($test) {
 
 	return $results;
 }
+
+
+function doh_try ($test) {
+	global $user_agent, $config, $ca_info, $service_types_ports;
+
+	$cert_info = array();
+
+	// default result
+	$results['result'] = 'ok';
+	$results['time'] = time();
+	$results['error'] = '';
+	$results['result_search'] = 'not tested';
+
+	$options = array(
+		CURLOPT_HEADER         => true,
+		CURLOPT_USERAGENT      => $user_agent,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_MAXREDIRS      => 4,
+		CURLOPT_TIMEOUT        => $test['timeout_trigger'],
+		CURLOPT_CAINFO         => $ca_info,
+	);
+
+	if (empty($test['hostname']) || empty($test['dns_query'])) {
+		cacti_log('Empty hsotname or dns_query, nothing to test');
+		$results['result'] = 'error';
+		$results['error'] = 'Empty hostname/dns';
+		return $results;
+	}
+
+	list($category,$service) = explode('_', $test['type']);
+
+	if (strpos($test['hostname'], ':') === 0) {
+		$test['hostname'] .=  ':' . $service_types_ports[$test['type']];
+	}
+
+	$url = 'https://' . $test['hostname'] . '/' . $test['dns_query'];
+
+	plugin_servcheck_debug('Final url is ' . $url , $test);
+
+	$process = curl_init($url);
+
+	if ($test['ca'] > 0) {
+		$ca_info = '/tmp/cert' . $test['ca'] . '.pem';
+		plugin_servcheck_debug('Preparing own CA chain file ' . $ca_info , $test);
+
+		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
+			array($test['ca']));
+
+		$cert_file = fopen($ca_info, 'a');
+		if ($cert_file) {
+			fwrite ($cert_file, $cert);
+			fclose($cert_file);
+		} else {
+			cacti_log('Cannot create ca cert file ' . $ca_info);
+			$results['result'] = 'error';
+			$results['error'] = 'Cannot create ca cert file';
+			return $results;
+		}
+	}
+
+	// Disable Cert checking for now
+	if ($test['checkcert'] == '') {
+		$options[CURLOPT_SSL_VERIFYPEER] = false;
+		$options[CURLOPT_SSL_VERIFYHOST] = false;
+	} else { // for sure, it seems that it isn't enabled by default now
+		$options[CURLOPT_SSL_VERIFYPEER] = true;
+		$options[CURLOPT_SSL_VERIFYHOST] = 2;
+	}
+
+	if ($test['certexpirenotify'] != '') {
+		$options[CURLOPT_CERTINFO] = true;
+	}
+
+	plugin_servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
+
+	curl_setopt_array($process,$options);
+
+	plugin_servcheck_debug('Executing curl request', $test);
+
+	$data = curl_exec($process);
+	$data = str_replace(array("'", "\\"), array(''), $data);
+	$results['data'] = $data;
+
+	// Get information regarding a specific transfer, cert info too
+	$results['options'] = curl_getinfo($process);
+
+	$results['curl_return'] = curl_errno($process);
+
+	plugin_servcheck_debug('cURL error: ' . $results['curl_return']);
+
+	plugin_servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
+
+	if ($results['curl_return'] > 0) {
+		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
+	}
+
+	if ($test['ca'] > 0) {
+		unlink ($ca_info);
+		plugin_servcheck_debug('Removing own CA file');
+	}
+
+	curl_close($process);
+
+	if ($test['type'] == 'web_http' || $test['type'] == 'web_https') {
+
+		// not found?
+		if ($results['options']['http_code'] == 404) {
+			$results['result'] = 'error';
+			$results['error'] = '404 - Not found';
+			return $results;
+		}
+	}
+
+	if (empty($results['data']) && $results['curl_return'] > 0) {
+		$results['result'] = 'error';
+		$results['error'] = 'No data returned';
+
+		return $results;
+	}
+
+	// If we have set a failed search string, then ignore the normal searches and only alert on it
+	if ($test['search_failed'] != '') {
+
+		plugin_servcheck_debug('Processing search_failed');
+
+		if (strpos($data, $test['search_failed']) !== false) {
+			plugin_servcheck_debug('Search failed string success');
+			$results['result_search'] = 'failed ok';
+			return $results;
+		}
+	}
+
+	plugin_servcheck_debug('Processing search');
+
+	if ($test['search'] != '') {
+		if (strpos($data, $test['search']) !== false) {
+			plugin_servcheck_debug('Search string success');
+			$results['result_search'] = 'ok';
+			return $results;
+		} else {
+			$results['result_search'] = 'not ok';
+			return $results;
+		}
+	}
+
+	if ($test['search_maint'] != '') {
+
+		plugin_servcheck_debug('Processing search maint');
+
+		if (strpos($data, $test['search_maint']) !== false) {
+			plugin_servcheck_debug('Search maint string success');
+			$results['result_search'] = 'maint ok';
+			return $results;
+		}
+	}
+
+	if ($test['requiresauth'] != '') {
+
+		plugin_servcheck_debug('Processing requires no authentication required');
+
+		if ($results['options']['http_code'] != 401) {
+			$results['error'] = 'The requested URL returned error: ' . $results['options']['http_code'];
+		}
+	}
+
+	return $results;
+}
+

@@ -156,7 +156,7 @@ $results = array();
 
 while ($x < 3) {
 	plugin_servcheck_debug('Service Check Number ' . $x, $test);
-
+echo "aaaa: " .$test['type'] . ":aaa";
 	list($category,$type) = explode('_', $test['type']);
 	include_once($config['base_path'] . '/plugins/servcheck/includes/tests.php');
 
@@ -174,7 +174,11 @@ while ($x < 3) {
 			break;
 
 		case 'dns':
-			$results = dns_try($test);
+			if ($type == 'doh') {
+				$results = doh_try($test);
+			} else {
+				$results = dns_try($test);
+			}
 			break;
 	}
 

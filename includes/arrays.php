@@ -56,7 +56,7 @@ $service_types = array(
 	'mail_pop3s'      => __('POP3 encrypted (POP3S), default port 995', 'servcheck'),
 
 	'dns_dns'         => __('DNS plaintext, default port 53', 'servcheck'),
-//	'dns_doh'         => __('DNS over HTTPS, default port 443', 'servcheck'),
+	'dns_doh'         => __('DNS over HTTPS, default port 443', 'servcheck'),
 
 	'ldap_ldap'       => __('LDAP plaintext, default port 389', 'servcheck'),
 	'ldap_ldaps'      => __('LDAP encrypted (LDAPS), default port 636', 'servcheck'),
@@ -91,7 +91,7 @@ $service_types_ports = array(
 	'mail_pop3s'      => 995,
 
 	'dns_dns'         => 53,
-//	'dns_doh'         => 443,
+	'dns_doh'         => 443,
 
 	'ldap_ldap'       => 389,
 	'ldap_ldaps'      => 636,
@@ -347,7 +347,7 @@ $servcheck_test_fields = array(
 	'hostname' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('IP Address or DNS name of server', 'servcheck'),
-		'description' => __('You can specify another port (example.com:5000) otherwise default will be used', 'servcheck'),
+		'description' => __('You can specify another port (example.com:5000) otherwise default will be used. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)', 'servcheck'),
 		'value' => '|arg1:hostname|',
 		'max_length' => '100',
 		'size' => '30'
@@ -392,7 +392,7 @@ $servcheck_test_fields = array(
 	'dns_query' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('DNS Name for Query', 'servcheck'),
-		'description' => __('DNS name for querying', 'servcheck'),
+		'description' => __('DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A', 'servcheck'),
 		'value' => '|arg1:dns_query|',
 		'max_length' => '40',
 		'size' => '30'

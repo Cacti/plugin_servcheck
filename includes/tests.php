@@ -187,6 +187,7 @@ function curl_try ($test) {
 		$options[CURLOPT_CERTINFO] = true;
 	}
 
+
 	plugin_servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
 
 	curl_setopt_array($process,$options);
@@ -194,9 +195,7 @@ function curl_try ($test) {
 	plugin_servcheck_debug('Executing curl request', $test);
 
 	$data = curl_exec($process);
-
 	$data = str_replace(array("'", "\\"), array(''), $data);
-
 	$results['data'] = $data;
 
 	// Get information regarding a specific transfer, cert info too
@@ -359,3 +358,138 @@ function dns_try ($test) {
 	return $results;
 }
 
+function mqtt_try ($test) {
+	global $config;
+
+	// default result
+	$results['result'] = 'ok';
+	$results['time'] = time();
+	$results['error'] = '';
+	$results['result_search'] = 'not tested';
+
+	if (strpos($test['hostname'], ':') === 0) {
+		$test['hostname'] .=  ':' . $service_types_ports[$test['type']];
+	}
+
+	$cred = '';
+
+	if ($test['username'] != '') {
+		// curl needs username with %40 instead of @
+		$cred = str_replace('@', '%40', servcheck_show_text($test['username']));
+		$cred .= ':';
+		$cred .= servcheck_show_text($test['password']);
+		$cred .= '@';
+	}
+
+	if ($test['path'] == '') {
+		// try any message
+		$test['path'] = '/%23';
+//		$test['path'] = '/%24SYS/broker/uptime';
+	}
+
+	$url = 'mqtt://' . $cred . $test['hostname'] . $test['path'];
+
+	plugin_servcheck_debug('Final url is ' . $url , $test);
+
+	$process = curl_init($url);
+
+	$filename = '/tmp/mqtt_' . time() . '.txt';
+	$file = fopen($filename, 'w');
+
+	$options = array(
+		CURLOPT_HEADER         => true,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_FILE => $file,
+		CURLOPT_TIMEOUT        => 5,
+		CURLOPT_NOPROGRESS => false,
+		CURLOPT_XFERINFOFUNCTION =>function(  $download_size, $downloaded, $upload_size, $uploaded){
+			if ($downloaded > 0) {
+				return 1;
+			}
+		},
+	);
+
+	plugin_servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
+
+	curl_setopt_array($process,$options);
+
+	plugin_servcheck_debug('Executing curl request', $test);
+
+	curl_exec($process);
+	fclose($file);
+
+	$data = str_replace(array("'", "\\"), array(''), file_get_contents($filename));
+	$results['data'] = $data;
+
+	// Get information regarding a specific transfer
+	$results['options'] = curl_getinfo($process);
+
+	$results['curl_return'] = curl_errno($process);
+
+	plugin_servcheck_debug('cURL error: ' . $results['curl_return']);
+
+	plugin_servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
+
+	// 42 is ok, it is own CURLE_ABORTED_BY_CALLBACK. Normal return is 28 (timeout)
+	if ($results['curl_return'] == 42) {
+		$results['curl_return'] = 0;
+	} elseif ($results['curl_return'] > 0) {
+		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
+	}
+
+	curl_close($process);
+
+	if (empty($results['data']) && $results['curl_return'] > 0) {
+		$results['result'] = 'error';
+		$results['error'] = 'No data returned';
+
+		return $results;
+	}
+
+	// If we have set a failed search string, then ignore the normal searches and only alert on it
+	if ($test['search_failed'] != '') {
+
+		plugin_servcheck_debug('Processing search_failed');
+
+		if (strpos($data, $test['search_failed']) !== false) {
+			plugin_servcheck_debug('Search failed string success');
+			$results['result_search'] = 'failed ok';
+			return $results;
+		}
+	}
+
+	plugin_servcheck_debug('Processing search');
+
+	if ($test['search'] != '') {
+		if (strpos($data, $test['search']) !== false) {
+			plugin_servcheck_debug('Search string success');
+			$results['result_search'] = 'ok';
+			return $results;
+		} else {
+			$results['result_search'] = 'not ok';
+			return $results;
+		}
+	}
+
+	if ($test['search_maint'] != '') {
+
+		plugin_servcheck_debug('Processing search maint');
+
+		if (strpos($data, $test['search_maint']) !== false) {
+			plugin_servcheck_debug('Search maint string success');
+			$results['result_search'] = 'maint ok';
+			return $results;
+		}
+	}
+
+	if ($test['requiresauth'] != '') {
+
+		plugin_servcheck_debug('Processing requires no authentication required');
+
+		if ($results['options']['http_code'] != 401) {
+			$results['error'] = 'The requested URL returned error: ' . $results['options']['http_code'];
+		}
+	}
+
+	return $results;
+}

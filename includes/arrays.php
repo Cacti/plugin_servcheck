@@ -70,7 +70,7 @@ $service_types = array(
 	'smb_smbs'        => __('SMB encrypted (SMBS) download file, default port 445', 'servcheck'),
 
 //	'telnet_telnet'   => __('Telnet plaintext, default port 23', 'servcheck'),
-//	'mqtt_mqtt'       => __('MQTT - default port 80', 'servcheck'),
+	'mqtt_mqtt'       => __('MQTT plaintext, default port 1883', 'servcheck'),
 );
 
 $service_types_ports = array(
@@ -105,7 +105,7 @@ $service_types_ports = array(
 	'smb_smbs'        => 636,
 
 //	'telnet_telnet'   => 23,
-//	'mqtt_mqtt'       => 80,
+	'mqtt_mqtt'       => 1883,
 );
 
 
@@ -368,7 +368,7 @@ $servcheck_test_fields = array(
 	'username' => array(
 		'friendly_name' => __('Username', 'servcheck'),
 		'method' => 'textbox',
-		'description' => __('With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user', 'servcheck'),
+		'description' => __('With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For SMB use DOMAIN/user. MQTT supports username/password too. ', 'servcheck'),
 		'value' => '|arg1:username|',
 		'max_length' => '100',
 		'size' => '30'
@@ -400,7 +400,7 @@ $servcheck_test_fields = array(
 	'path' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('Path Part of URL', 'servcheck'),
-		'description' => __('For web service insert at least "/" or something like "/any/path/". For FTP listing must end with char "/". For TFTP/SCP/SMB download test insert /path/file', 'servcheck'),
+		'description' => __('For web service insert at least "/" or something like "/any/path/". For FTP listing must end with char "/". For TFTP/SCP/SMB download test insert /path/file. For MQTT you can specify topic (bedroom/temp). Left blank for any topic.', 'servcheck'),
 		'value' => '|arg1:path|',
 		'max_length' => '140',
 		'size' => '30'

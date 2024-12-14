@@ -642,6 +642,21 @@ function servcheck_edit_test() {
 				$('#password').attr('type', 'password');
 
 				break;
+			case 'mqtt':
+				$('#row_dns_query').hide();
+				$('#row_requiresauth').hide();
+				$('#row_proxy_server').hide();
+				$('#row_ldapsearch').hide();
+				$('#row_ca').hide();
+				$('#row_checkcert').hide();
+				$('#row_certexpirenotify').hide();
+
+				$('#row_username').show();
+				$('#row_password').show();
+				$('#row_path').show();
+
+				$('#password').attr('type', 'password');
+				break;
 		}
 	}
 	</script>

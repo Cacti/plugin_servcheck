@@ -358,6 +358,14 @@ function dns_try ($test) {
 	return $results;
 }
 
+/*
+there are 2 problems:
+- when to terminate the connection - curl can't easily set "disconnect on first received message".
+	I callcall back and if any data is returned, the connection is terminated (42).
+	If no data is returned, the test timeouts (28)
+- the data is not returned the same way as with other services, I have to capture it in a file
+*/
+
 function mqtt_try ($test) {
 	global $config;
 
@@ -397,11 +405,11 @@ function mqtt_try ($test) {
 	$file = fopen($filename, 'w');
 
 	$options = array(
-		CURLOPT_HEADER         => true,
-		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_FILE => $file,
-		CURLOPT_TIMEOUT        => 5,
-		CURLOPT_NOPROGRESS => false,
+		CURLOPT_HEADER           => true,
+		CURLOPT_RETURNTRANSFER   => true,
+		CURLOPT_FILE             => $file,
+		CURLOPT_TIMEOUT          => 5,
+		CURLOPT_NOPROGRESS       => false,
 		CURLOPT_XFERINFOFUNCTION =>function(  $download_size, $downloaded, $upload_size, $uploaded){
 			if ($downloaded > 0) {
 				return 1;
@@ -416,7 +424,7 @@ function mqtt_try ($test) {
 	plugin_servcheck_debug('Executing curl request', $test);
 
 	curl_exec($process);
-	fclose($file);
+	$x = fclose($file);
 
 	$data = str_replace(array("'", "\\"), array(''), file_get_contents($filename));
 	$results['data'] = $data;

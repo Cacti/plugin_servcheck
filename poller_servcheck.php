@@ -96,10 +96,6 @@ if (!function_exists('curl_init')) {
 	print "FATAL: You must install php-curl to use this Plugin" . PHP_EOL;
 }
 
-if (is_numeric($test_id) && $test_id > 0) {
-	$test_cond = ' AND id = ' . $test_id;
-}
-
 plugin_servcheck_check_debug();
 
 print 'Running Service Checks' . PHP_EOL;

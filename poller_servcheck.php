@@ -59,7 +59,12 @@ if (cacti_sizeof($parms)) {
 
 		switch ($arg) {
 			case '--id':
-				$test_id = $value;
+				if (is_numeric($value) && $value > 0) {
+					$test_id = $value;
+				} else {
+					print "FATAL: Option 'id' is not numeric" . PHP_EOL;
+					exit(1);
+				}
 				break;
 			case '-f':
 			case '--force':
@@ -91,10 +96,6 @@ if (!function_exists('curl_init')) {
 	print "FATAL: You must install php-curl to use this Plugin" . PHP_EOL;
 }
 
-if (is_numeric($test_id) && $test_id > 0) {
-	$test_cond = ' AND id = ' . $test_id;
-}
-
 plugin_servcheck_check_debug();
 
 print 'Running Service Checks' . PHP_EOL;
@@ -112,11 +113,12 @@ if ($poller_id == 1) {
 		array(time() - 15));
 }
 
+
 $tests = db_fetch_assoc_prepared('SELECT *
 	FROM plugin_servcheck_test
 	WHERE enabled = "on"
-	AND poller_id = ? ' . $test_cond,
-	array($poller_id));
+	AND poller_id = ? AND id = ?',
+	array($poller_id, $test_id));
 
 $max_processes = 12;
 

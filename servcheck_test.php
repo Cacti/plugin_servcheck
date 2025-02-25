@@ -590,6 +590,9 @@ function servcheck_edit_test() {
 				$('#row_username').hide();
 				$('#row_password').hide();
 				$('#row_ldapsearch').hide();
+				$('#row_ca').hide();
+				$('#row_checkcert').hide();
+				$('#row_certexpirenotify').hide();
 
 				if (subcategory == 'doh') {
 					$('#row_ca').show();

@@ -169,8 +169,16 @@ while ($x < 3) {
 			$results = curl_try($test);
 			break;
 
+		case 'mqtt':
+			$results = mqtt_try($test);
+			break;
+
 		case 'dns':
-			$results = dns_try($test);
+			if ($type == 'doh') {
+				$results = doh_try($test);
+			} else {
+				$results = dns_try($test);
+			}
 			break;
 	}
 

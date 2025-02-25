@@ -303,14 +303,14 @@ function form_save() {
 	}
 
 	if ($category == 'dns') {
-		if ($type == 'dns') {
+		if ($subcategory == 'dns') {
 			if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
 				$save['dns_query'] = get_nfilter_request_var('dns_query');
 			} else {
 				raise_message(3);
 				$_SESSION['sess_error_fields']['dns_query'] = 'dns_query';
 			}
-		} else {
+		} else { // dns over https
 			if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_REGEXP, array('options' =>
 			 array('regexp' => '#^/(resolve|query-dns)\?[a-zA-Z0-9\=\.&\-]+$#')))) {
 				$save['dns_query'] = get_nfilter_request_var('dns_query');
@@ -599,20 +599,7 @@ function servcheck_edit_test() {
 				$('#row_dns_query').show();
 
 				break;
-/*
-			case 'telnet':
-				$('#row_path').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-				$('#row_dns_query').hide();
-				$('#row_ca').hide();
-				$('#row_checkcert').hide();
-				$('#row_certexpirenotify').hide();
 
-				$('#row_hostname').show();
-
-				break;
-*/
 			case 'ldap':
 				$('#row_dns_query').hide();
 				$('#row_path').hide();

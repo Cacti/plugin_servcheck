@@ -62,11 +62,11 @@ or for any message if the topic has not been specified.
 
 Do not test other servers without permission!
 
-Servcheck uses a file of certificates from common root CAs to check certificates. This will work 
-for certificates issued by common CAs. If you are using a custom CA 
-(for example, in a Microsoft AD environment), the test for that certificate will fail 
-because servcheck does not know your CA. You must upload the entire chain 
-(CA certificate and intermediate certificates). You then associate these with the test 
+Servcheck uses a file of certificates from common root CAs to check certificates. This will work
+for certificates issued by common CAs. If you are using a custom CA
+(for example, in a Microsoft AD environment), the test for that certificate will fail
+because servcheck does not know your CA. You must upload the entire chain
+(CA certificate and intermediate certificates). You then associate these with the test
 where the certificate issued by your CA
 
 ## Bugs and Feature Enhancements

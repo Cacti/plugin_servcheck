@@ -43,6 +43,8 @@ array_shift($parms);
 $debug = false;
 $force = false;
 $start = microtime(true);
+$test_id = 0;
+$test_cond = '';
 
 $poller_id = $config['poller_id'];
 
@@ -56,6 +58,14 @@ if (cacti_sizeof($parms)) {
 		}
 
 		switch ($arg) {
+			case '--id':
+				if (is_numeric($value) && $value > 0) {
+					$test_id = $value;
+				} else {
+					print "FATAL: Option 'id' is not numeric" . PHP_EOL;
+					exit(1);
+				}
+				break;
 			case '-f':
 			case '--force':
 				$force = true;
@@ -103,11 +113,12 @@ if ($poller_id == 1) {
 		array(time() - 15));
 }
 
+
 $tests = db_fetch_assoc_prepared('SELECT *
 	FROM plugin_servcheck_test
 	WHERE enabled = "on"
-	AND poller_id = ?',
-	array($poller_id));
+	AND poller_id = ? AND id = ?',
+	array($poller_id, $test_id));
 
 $max_processes = 12;
 
@@ -218,6 +229,7 @@ function display_help () {
 
 	print PHP_EOL . 'usage: poller_servcheck.php [--debug] [--force]' . PHP_EOL . PHP_EOL;
 	print 'This binary will exec all the Service check child processes.' . PHP_EOL . PHP_EOL;
+	print '--id       - Run for a specific test' . PHP_EOL . PHP_EOL;
 	print '--force    - Force all the service checks to run now' . PHP_EOL . PHP_EOL;
 	print '--debug    - Display verbose output during execution' . PHP_EOL . PHP_EOL;
 }

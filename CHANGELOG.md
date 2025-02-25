@@ -1,5 +1,10 @@
 # ChangeLog
 
+--- develop ---
+
+* issue: Unable to save poller for service check
+* feature#23: Add MQTT and DNS over HTTPS test
+
 --- 0.2 ---
 
 * issue#17: Remove dependency on thold plugin, notify lists remain if thold is installed 

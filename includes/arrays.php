@@ -56,7 +56,7 @@ $service_types = array(
 	'mail_pop3s'      => __('POP3 encrypted (POP3S), default port 995', 'servcheck'),
 
 	'dns_dns'         => __('DNS plaintext, default port 53', 'servcheck'),
-//	'dns_doh'         => __('DNS over HTTPS, default port 443', 'servcheck'),
+	'dns_doh'         => __('DNS over HTTPS, default port 443', 'servcheck'),
 
 	'ldap_ldap'       => __('LDAP plaintext, default port 389', 'servcheck'),
 	'ldap_ldaps'      => __('LDAP encrypted (LDAPS), default port 636', 'servcheck'),
@@ -70,7 +70,7 @@ $service_types = array(
 	'smb_smbs'        => __('SMB encrypted (SMBS) download file, default port 445', 'servcheck'),
 
 //	'telnet_telnet'   => __('Telnet plaintext, default port 23', 'servcheck'),
-//	'mqtt_mqtt'       => __('MQTT - default port 80', 'servcheck'),
+	'mqtt_mqtt'       => __('MQTT plaintext, default port 1883', 'servcheck'),
 );
 
 $service_types_ports = array(
@@ -91,7 +91,7 @@ $service_types_ports = array(
 	'mail_pop3s'      => 995,
 
 	'dns_dns'         => 53,
-//	'dns_doh'         => 443,
+	'dns_doh'         => 443,
 
 	'ldap_ldap'       => 389,
 	'ldap_ldaps'      => 636,
@@ -105,7 +105,7 @@ $service_types_ports = array(
 	'smb_smbs'        => 636,
 
 //	'telnet_telnet'   => 23,
-//	'mqtt_mqtt'       => 80,
+	'mqtt_mqtt'       => 1883,
 );
 
 
@@ -327,12 +327,12 @@ $servcheck_test_fields = array(
 		'value' => '|arg1:enabled|',
 		'default' => 'on',
 	),
-	'poller' => array(
+	'poller_id' => array(
 		'friendly_name' => __('Poller', 'servcheck'),
 		'method' => 'drop_sql',
 		'default' => 1,
 		'description' => __('Poller on which the test will run', 'servcheck'),
-		'value' => '|arg1:poller|',
+		'value' => '|arg1:poller_id|',
 		'sql' => 'SELECT id, name FROM poller ORDER BY id',
 	),
 	'type' => array(
@@ -347,7 +347,7 @@ $servcheck_test_fields = array(
 	'hostname' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('IP Address or DNS name of server', 'servcheck'),
-		'description' => __('You can specify another port (example.com:5000) otherwise default will be used', 'servcheck'),
+		'description' => __('You can specify another port (example.com:5000) otherwise default will be used. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)', 'servcheck'),
 		'value' => '|arg1:hostname|',
 		'max_length' => '100',
 		'size' => '30'
@@ -368,7 +368,7 @@ $servcheck_test_fields = array(
 	'username' => array(
 		'friendly_name' => __('Username', 'servcheck'),
 		'method' => 'textbox',
-		'description' => __('With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user', 'servcheck'),
+		'description' => __('With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For SMB use DOMAIN/user. MQTT supports username/password too. ', 'servcheck'),
 		'value' => '|arg1:username|',
 		'max_length' => '100',
 		'size' => '30'
@@ -392,7 +392,7 @@ $servcheck_test_fields = array(
 	'dns_query' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('DNS Name for Query', 'servcheck'),
-		'description' => __('DNS name for querying', 'servcheck'),
+		'description' => __('DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A', 'servcheck'),
 		'value' => '|arg1:dns_query|',
 		'max_length' => '40',
 		'size' => '30'
@@ -400,7 +400,7 @@ $servcheck_test_fields = array(
 	'path' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('Path Part of URL', 'servcheck'),
-		'description' => __('For web service insert at least "/" or something like "/any/path/". For FTP listing must end with char "/". For TFTP/SCP/SMB download test insert /path/file', 'servcheck'),
+		'description' => __('For web service insert at least "/" or something like "/any/path/". For FTP listing must end with char "/". For TFTP/SCP/SMB download test insert /path/file. For MQTT you can specify topic (bedroom/temp). Left blank for any topic.', 'servcheck'),
 		'value' => '|arg1:path|',
 		'max_length' => '140',
 		'size' => '30'

@@ -998,13 +998,13 @@ function list_tests() {
 	$statefilter = '';
 	if (isset_request_var('state')) {
 		if (get_request_var('state') == '-1') {
-			$statefilter = '';
+			$statefilter = '';                                     //state = Any
 		} elseif (get_request_var('state') == '2') {
-			$statefilter = "plugin_servcheck_test.enabled = ''";
+			$statefilter = "plugin_servcheck_test.enabled = ''";   //state = Disabled
 		} elseif (get_request_var('state') == '1') {
-			$statefilter = "plugin_servcheck_test.enabled = 'on'";
+			$statefilter = "plugin_servcheck_test.enabled = 'on'"; //state = Enabled
 		} elseif (get_request_var('state') == '3') {
-			$statefilter = 'plugin_servcheck_test.result != 1';
+			$statefilter = 'plugin_servcheck_test.triggered = 1';  //state = Triggered
 		}
 	}
 
@@ -1023,7 +1023,7 @@ function list_tests() {
 	$sql_where = '';
 
 	if ($statefilter != '') {
-		$sql_where .= ($sql_where == '' ? 'WHERE ' : ' AND ' . $statefilter);
+		$sql_where .= ($sql_where == '' ? 'WHERE ' : ' AND ') . $statefilter;
 	}
 
 	$sql_order = get_order_string();

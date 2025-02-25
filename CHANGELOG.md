@@ -7,6 +7,7 @@
 
 --- 0.2 ---
 
+* issue#27: Fix all tests are enabled, however, some get performed and some don't
 * issue#17: Remove dependency on thold plugin, notify lists remain if thold is installed 
 * issue#15: Fix DNS test issue
 * issue#19: Rename old thold names, fix incorrect variable

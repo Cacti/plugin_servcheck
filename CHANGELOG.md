@@ -5,6 +5,7 @@
 * issue: Unable to save poller for service check
 * feature#23: Add MQTT and DNS over HTTPS test
 * issue#27: Fix all tests are enabled, however, some get performed and some don't
+* issue#30: Fix DNS tests
 
 --- 0.2 ---
 

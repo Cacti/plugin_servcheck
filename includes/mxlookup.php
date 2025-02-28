@@ -31,20 +31,26 @@ class mxlookup {
 	var $arrMX      = array();
 	var $dns_repl_domain;
 	var $dns_reply  = '';
+	var $err_code = '';
+	var $err_mess = '';
 
-	function __construct($domain, $dns = '4.2.2.1') {
+	function __construct($domain, $dns = '4.2.2.1', $timeout = 5) {
 		$this->QNAME($domain);
 		$this->pack_dns_packet();
 
-		$dns_socket = fsockopen("udp://$dns", 53);
+		$dns_socket = fsockopen("udp://$dns", 53, $err_code, $err_mess, $timeout);
 
 		fwrite($dns_socket, $this->dns_packet, strlen($this->dns_packet));
+		stream_set_timeout($dns_socket, $timeout);
 
 		$this->dns_reply  = fread($dns_socket,1);
-		$bytes            = stream_get_meta_data($dns_socket);
-		$this->dns_reply .= fread($dns_socket,$bytes['unread_bytes']);
 
-		fclose($dns_socket);
+		if ($this->dns_reply) { // server replied
+			$bytes            = stream_get_meta_data($dns_socket);
+			$this->dns_reply .= fread($dns_socket,$bytes['unread_bytes']);
+
+			fclose($dns_socket);
+		}
 
 		$this->cIx       = 6;
 		$this->ANCOUNT   = $this->gord(2);

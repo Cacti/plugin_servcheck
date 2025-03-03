@@ -292,6 +292,7 @@ function dns_try ($test) {
 	$results['time'] = time();
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
+	$results['data'] = '';
 
 	$results['options']['http_code']       = 0;
 	$results['curl_return']                = 0;
@@ -308,50 +309,58 @@ function dns_try ($test) {
 	$s = microtime(true);
 	plugin_servcheck_debug('Querying ' . $test['hostname'] . ' for record ' . $test['dns_query']);
 
-	$a = new mxlookup($test['dns_query'], $test['hostname']);
+	$a = new mxlookup($test['dns_query'], $test['hostname'], $test['timeout_trigger']);
+
 	$t = microtime(true) - $s;
 
 	$results['options']['connect_time'] = $results['options']['total_time'] = $results['options']['namelookup_time'] = round($t, 4);
 
-	$results['data'] = '';
+	if (!cacti_sizeof($a->arrMX)) {
+		$results['result'] = 'error';
+		$results['error'] = 'Server did not respond';
+		$results['result_search'] = 'not tested';
 
-	foreach ($a->arrMX as $m) {
-		$results['data'] .= "$m\n";
-	}
+		plugin_servcheck_debug('Test failed: ' . $results['error']);
 
-	plugin_servcheck_debug('Result is ' . $results['data']);
-
-	// If we have set a failed search string, then ignore the normal searches and only alert on it
-	if ($test['search_failed'] != '') {
-		plugin_servcheck_debug('Processing search_failed');
-
-		if (strpos($results['data'], $test['search_failed']) !== false) {
-			plugin_servcheck_debug('Search failed string success');
-			$results['result_search'] = 'failed ok';
-			return $results;
+	} else {
+		foreach ($a->arrMX as $m) {
+			$results['data'] .= "$m\n";
 		}
-	}
 
-	plugin_servcheck_debug('Processing search');
+		plugin_servcheck_debug('Result is ' . $results['data']);
 
-	if ($test['search'] != '') {
-		if (strpos($results['data'], $test['search']) !== false) {
-			plugin_servcheck_debug('Search string success');
-			$results['result_search'] = 'ok';
-			return $results;
-		} else {
-			$results['result_search'] = 'not ok';
-			return $results;
+		// If we have set a failed search string, then ignore the normal searches and only alert on it
+		if ($test['search_failed'] != '') {
+			plugin_servcheck_debug('Processing search_failed');
+
+			if (strpos($results['data'], $test['search_failed']) !== false) {
+				plugin_servcheck_debug('Search failed string success');
+				$results['result_search'] = 'failed ok';
+				return $results;
+			}
 		}
-	}
 
-	if ($test['search_maint'] != '') {
-		plugin_servcheck_debug('Processing search maint');
+		plugin_servcheck_debug('Processing search');
 
-		if (strpos($results['data'], $test['search_maint']) !== false) {
-			plugin_servcheck_debug('Search maint string success');
-			$results['result_search'] = 'maint ok';
-			return $results;
+		if ($test['search'] != '') {
+			if (strpos($results['data'], $test['search']) !== false) {
+				plugin_servcheck_debug('Search string success');
+				$results['result_search'] = 'ok';
+				return $results;
+			} else {
+				$results['result_search'] = 'not ok';
+				return $results;
+			}
+		}
+
+		if ($test['search_maint'] != '') {
+			plugin_servcheck_debug('Processing search maint');
+
+			if (strpos($results['data'], $test['search_maint']) !== false) {
+				plugin_servcheck_debug('Search maint string success');
+				$results['result_search'] = 'maint ok';
+				return $results;
+			}
 		}
 	}
 

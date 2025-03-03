@@ -132,8 +132,9 @@ if ($poller == false) {
 $logs = db_fetch_cell_prepared('SELECT count(*) FROM plugin_servcheck_log WHERE test_id = ?',
 	array($test['id']));
 
-if ($logs > 0 && $test['next_run'] < time() && !$force) {
-	plugin_servcheck_debug('INFO: Test ' . $test['display_name'] . ' skipped. The test is not run every poller cycle.', $test);
+if ($logs > 0 && $test['next_run'] > time() && !$force) {
+	plugin_servcheck_debug('INFO: Test "' . $test['display_name'] . '" skipped. Not the right time to run the test.', $test);
+	exit(0);
 }
 
 if (api_plugin_is_enabled('maint')) {

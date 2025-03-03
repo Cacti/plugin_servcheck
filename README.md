@@ -44,7 +44,8 @@ LDAP and LDAPS - do searching in LDAP
 FTP, FTPS - try to login and return directory listing
 TFTP - try to download specific file
 SCP - try to login and download specific file
-SMB, SMBS - try to login and download specific file.
+SMB, SMBS - try to login and download specific file
+MQTT - try to subscribe topic or wait for any message and print result
 
 ## Important
 Recomendation for tests with download -  please download only small not binary files.
@@ -56,13 +57,16 @@ curl will return incorrect result.
 
 SCP is in insecure mode - doesn't check SSH server key!
 
+MQTT is only plaintext. You can specify username and password. MQTT test waits for the first messase from a given topic
+or for any message if the topic has not been specified.
+
 Do not test other servers without permission!
 
-Servcheck uses a file of certificates from common root CAs to check certificates. This will work 
-for certificates issued by common CAs. If you are using a custom CA 
-(for example, in a Microsoft AD environment), the test for that certificate will fail 
-because servcheck does not know your CA. You must upload the entire chain 
-(CA certificate and intermediate certificates). You then associate these with the test 
+Servcheck uses a file of certificates from common root CAs to check certificates. This will work
+for certificates issued by common CAs. If you are using a custom CA
+(for example, in a Microsoft AD environment), the test for that certificate will fail
+because servcheck does not know your CA. You must upload the entire chain
+(CA certificate and intermediate certificates). You then associate these with the test
 where the certificate issued by your CA
 
 ## Bugs and Feature Enhancements

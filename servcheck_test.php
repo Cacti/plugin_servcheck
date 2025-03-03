@@ -303,11 +303,21 @@ function form_save() {
 	}
 
 	if ($category == 'dns') {
-		if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
-			$save['dns_query'] = get_nfilter_request_var('dns_query');
-		} else {
-			raise_message(3);
-			$_SESSION['sess_error_fields']['dns_query'] = 'dns_query';
+		if ($subcategory == 'dns') {
+			if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
+				$save['dns_query'] = get_nfilter_request_var('dns_query');
+			} else {
+				raise_message(3);
+				$_SESSION['sess_error_fields']['dns_query'] = 'dns_query';
+			}
+		} else { // dns over https
+			if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_REGEXP, array('options' =>
+			 array('regexp' => '#^/(resolve|query-dns)\?[a-zA-Z0-9\=\.&\-]+$#')))) {
+				$save['dns_query'] = get_nfilter_request_var('dns_query');
+			} else {
+				raise_message(3);
+				$_SESSION['sess_error_fields']['dns_query'] = 'dns_query';
+			}
 		}
 	}
 
@@ -580,24 +590,19 @@ function servcheck_edit_test() {
 				$('#row_username').hide();
 				$('#row_password').hide();
 				$('#row_ldapsearch').hide();
-
-				$('#row_dns_query').show();
-
-				break;
-/*
-			case 'telnet':
-				$('#row_path').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-				$('#row_dns_query').hide();
 				$('#row_ca').hide();
 				$('#row_checkcert').hide();
 				$('#row_certexpirenotify').hide();
 
-				$('#row_hostname').show();
+				if (subcategory == 'doh') {
+					$('#row_ca').show();
+					$('#row_checkcert').show();
+					$('#row_certexpirenotify').show();
+				}
+				$('#row_dns_query').show();
 
 				break;
-*/
+
 			case 'ldap':
 				$('#row_dns_query').hide();
 				$('#row_path').hide();
@@ -641,6 +646,21 @@ function servcheck_edit_test() {
 
 				$('#password').attr('type', 'password');
 
+				break;
+			case 'mqtt':
+				$('#row_dns_query').hide();
+				$('#row_requiresauth').hide();
+				$('#row_proxy_server').hide();
+				$('#row_ldapsearch').hide();
+				$('#row_ca').hide();
+				$('#row_checkcert').hide();
+				$('#row_certexpirenotify').hide();
+
+				$('#row_username').show();
+				$('#row_password').show();
+				$('#row_path').show();
+
+				$('#password').attr('type', 'password');
 				break;
 		}
 	}

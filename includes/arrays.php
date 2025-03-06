@@ -323,7 +323,7 @@ $servcheck_test_fields = array(
 	'enabled' => array(
 		'method' => 'checkbox',
 		'friendly_name' => __('Enable Service Check', 'servcheck'),
-		'description' => __('Uncheck this box to disabled this test from being checked.', 'servcheck'),
+		'description' => __('Uncheck this box to disable this test from being checked.', 'servcheck'),
 		'value' => '|arg1:enabled|',
 		'default' => 'on',
 	),

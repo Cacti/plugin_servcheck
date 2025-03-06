@@ -1017,6 +1017,13 @@ function list_tests() {
 	}
 
 	$sql_order = get_order_string();
+	// `statistics` is not a table column, the columns are:
+	// `stats_ok` and `stats_bad`, hence, the ORDER BY should be based on these 2 columns
+	if ($sql_order == 'ORDER BY `statistics` ASC') {
+		$sql_order = 'ORDER BY `stats_ok` ASC, `stats_bad` ASC';
+	} elseif ($sql_order == 'ORDER BY `statistics` DESC') {
+		$sql_order = 'ORDER BY `stats_ok` DESC, `stats_bad` DESC';
+	}
 	$sql_limit = ' LIMIT ' . ($rows*(get_request_var('page')-1)) . ',' . $rows;
 
 	if (get_request_var('rfilter') != '') {

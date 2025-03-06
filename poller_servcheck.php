@@ -113,12 +113,17 @@ if ($poller_id == 1) {
 		array(time() - 15));
 }
 
-
+if ($test_id == 0) {
+	$sql_condition = ' ';
+} else {
+	$sql_condition = ' AND id = ' . $test_id;
+}
 $tests = db_fetch_assoc_prepared('SELECT *
 	FROM plugin_servcheck_test
 	WHERE enabled = "on"
-	AND poller_id = ? AND id = ?',
-	array($poller_id, $test_id));
+	AND poller_id = ? ' . 
+	$sql_condition,
+	array($poller_id));
 
 $max_processes = 12;
 

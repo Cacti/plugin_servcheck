@@ -131,7 +131,7 @@ function plugin_servcheck_graph ($id, $interval) {
 		return;
 	}
 
-	$xid = 'xx' . substr(md5($graph_interval[$interval]), 0, 7);
+	$xid = 'xx' . substr(md5($id . $graph_interval[$interval]), 0, 7);
 
 
 	foreach ($result as $row) {
@@ -143,58 +143,82 @@ function plugin_servcheck_graph ($id, $interval) {
 
 	// Start chart attributes
 	$chart = array(
-		'bindto' => "#line_$xid",
-		'size' => array(
-			'height' => 300,
-			'width'=> 600
-		),
-		'point' => array (
-			'r' => 1.5
-		),
 		'data' => array(
-			'type' => 'area',
 			'x' => 'x',
-			'xFormat' => '%Y-%m-%d %H:%M:%S' // rikam mu, jaky je format te timeserie
-		)
+			'type' => 'area-spline',
+			'axes' => array(), // Setup the Axes (keep it empty to use only the left Y-axis)
+			'labels' => true,
+			'names' => array(
+				'Total' => 'Total',
+				'Connect' => 'Connect',
+				'DNS' => 'DNS'
+			)
+		),
+		'size' => array(
+			'height' => 600,
+			'width'=> 1200
+		),
+		'axis' => array(),
+		'point' => array(
+			'pattern' => array(
+				"<circle cx='5' cy='5' r='5'></circle>",
+				"<rect x='0' y='0' width='10' height='10'></rect>",
+				"<polygon points='8 0 0 16 16 16'></polygon>"
+			)
+		),
+		'legend' => array(
+			'show' => true,
+			'usePoint' => true,
+			'tooltip' => true,
+			'contents' => array(
+				'bindto' => "#legend_$xid",
+				"<div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; border-radius: 5px;'>{=TITLE}</div>"
+			)
+		),
+		'zoom' => array('enabled' => true),
+		'bindto' => "#chart_$xid"
 	);
 
+	// Add the data columns
 	$columns = array();
-	$axis = array();
-	$axes = array();
-
-	// Add the X Axis first
 	$columns[] = array_merge(array('x'), $lastcheck);
 	$columns[] = array_merge(array('Total'), $total_time);
 	$columns[] = array_merge(array('Connect'), $connect_time);
-	$columns[] = array_merge(array('DNS '), $namelookup_time);
+	$columns[] = array_merge(array('DNS'), $namelookup_time);
+	$chart['data']['columns'] = $columns;
 
 	// Setup the Axis
+	$axis = array();
 	$axis['x'] = array(
 		'type' => 'timeseries',
 		'tick' => array(
-			'format'=> '%m-%d %H:%M',
+			'format'=> '%Y%m%d %H:%M',
 			'culling' => array('max' => 6),
+			'rotate' => -15
+		),
+		'label' => array(
+			'text' => 'Date/Time',
+			'position' => 'outer-right'
 		)
 	);
 
 	$axis['y'] = array(
-		'tick' => array(
-			'label' => array(
-				'text' => 'Response in ms',
-			),
-			'show' => true
+		'label' => array(
+			'text' => 'Response (ms)',
+			'position' => 'outer-middle'
 		)
 	);
-
-	$chart['data']['axes']= $axes;
 	$chart['axis']= $axis;
-	$chart['data']['columns'] = $columns;
 
 	$chart_data = json_encode($chart);
 
-	$content  = '<div id="line_' . $xid. '"></div>';
+	$content  = '<div id="chart_' . $xid. '"></div>';
+	$content  .= '<div id="legend_container_' . $xid. '" style="display: flex; flex-direction: column; align-items: flex-start;">';
+	$content  .= '<div id="legend_' . $xid. '" style="margin-top: 10px;"></div>';
+	$content  .= '</div>';
 	$content .= '<script type="text/javascript">';
-	$content .= 'line_' . $xid . ' = bb.generate(' . $chart_data . ');';
+	$content .= 'chart_' . $xid . ' = bb.generate(' . $chart_data . ');';
+	$content .= "setTimeout(() => {chart_$xid.flush(); }, 500);"; // Forces Billboard.js to redraw, this is a workaround to resolve the issue of styling of axis 'y' which is displayed trimmed at the left of the page. A permanent solution is required to fix the styling issue of both legend overlapping and axis 'y' shift to the left. 
 	$content .= '</script>';
 
 	print $content;

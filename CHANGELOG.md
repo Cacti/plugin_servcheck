@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* issue#2: Fix graph legend styling overlap.
 * issue#31: Fix poller_servcheck.php does not run any test when it runs automatically from cacti poller
 * issue: Unable to save poller for service check
 * feature#23: Add MQTT and DNS over HTTPS test

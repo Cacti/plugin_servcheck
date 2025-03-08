@@ -82,7 +82,7 @@ function curl_try ($test) {
 		$test['path'] = '/INBOX?NEW';
 	}
 
-	if ($service == 'pop3' || $service == 'pop3s') {	// show mesage list
+	if ($service == 'pop3' || $service == 'pop3s') {	// show message list
 		$test['path'] = '/';
 	}
 
@@ -534,7 +534,7 @@ function doh_try ($test) {
 	);
 
 	if (empty($test['hostname']) || empty($test['dns_query'])) {
-		cacti_log('Empty hsotname or dns_query, nothing to test');
+		cacti_log('Empty hostname or dns_query, nothing to test');
 		$results['result'] = 'error';
 		$results['error'] = 'Empty hostname/dns';
 		return $results;

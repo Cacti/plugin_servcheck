@@ -2,7 +2,7 @@
 
 --- develop ---
 
-* Fix certificate check does not function as expected #36
+* issue#36: Fix certificate check does not function as expected
 * issue#2: Fix graph legend overlap
 * issue#31: Fix poller_servcheck.php does not run any test when it runs automatically from cacti poller
 * issue: Unable to save poller for service check

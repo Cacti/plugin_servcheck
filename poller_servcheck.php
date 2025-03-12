@@ -23,7 +23,7 @@
 */
 
 /* let PHP run just as long as it has to */
-ini_set('max_execution_time', '120');
+//ini_set('max_execution_time', '120');
 
 $dir = dirname(__FILE__);
 chdir($dir);

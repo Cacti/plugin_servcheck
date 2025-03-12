@@ -207,6 +207,7 @@ if ($test['certexpirenotify']) {
 		$parsed = date_parse_from_format('M j H:i:s Y e', $results['options']['certinfo'][0]['Expire date']);
 		$exp = mktime($parsed['hour'], $parsed['minute'], $parsed['second'], $parsed['month'], $parsed['day'], $parsed['year']);
 		$test['days'] = round(($exp - time()) / 86400);
+		//$test['expiry_date'] = $parsed['day'] . '. ' . $parsed['month'] . '. ' . $parsed['year'];
 		$test['expiry_date'] = str_pad($parsed['day'], 2, '0', STR_PAD_LEFT) . '-' . 
 								date('M', mktime(0, 0, 0, $parsed['month'], 10)) . '-' . 
 								$parsed['year'];
@@ -232,6 +233,7 @@ if ($results['result'] == 'ok') {
 }
 
 if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $results['result_search'] ||
+	//($test['certexpirenotify'] && $test_expiry_days > 0 && $test['days'] < $cert_expiry_days)) {
 	($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days)) {
 
 	plugin_servcheck_debug('Checking for trigger', $test);
@@ -475,7 +477,8 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 				$message[1]['text'] .= 'Path: ' . $test['path'] . PHP_EOL;
 			}
 
-			$message[1]['text'] .= 'Date: ' . date('F j, Y - h:i:s', $results['time']) . PHP_EOL;
+			//$message[1]['text'] .= 'Date: ' . date('F j, Y - h:i:s', $results['time']) . PHP_EOL;
+			$message[1]['text'] .= 'Date: ' . date('%d-%b-%Y %h:%i:%s %p', $results['time']) . PHP_EOL;
 
 			if ($test['certexpirenotify']) {
 				$message[1]['text'] .= 'Certificate expires in ' . $test['days'] . ' days (' . $test['expiry_date'] . ')' . PHP_EOL;
@@ -488,12 +491,14 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			$message[1]['text'] .= 'Previous search: ' . $last_log['result_search'] . PHP_EOL;
 			$message[1]['text'] .= 'Actual search: ' . $results['result_search'] . PHP_EOL;
 
+
 			if ($test['notes'] != '') {
 				$message[1]['text'] .= PHP_EOL . 'Notes: ' . $test['notes'] . PHP_EOL;
 			}
 		}
 
 		if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days) {
+			//$message[2]['subject'] = '[Cacti servcheck] Certificate will expired in less than ' . $cert_expiry_days . ' days: ' . $test['display_name'];
 			$message[2]['subject'] = '[Cacti servcheck] Certificate will expire in less than ' . $cert_expiry_days . ' days: ' . $test['display_name'];
 			$message[2]['text'] = 'Site ' . $test['display_name'] . PHP_EOL;
 
@@ -503,8 +508,8 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 				$message[2]['text'] .= 'Path: ' . $test['path'] . PHP_EOL;
 			}
 			$message[2]['text'] .= 'Certificate expiry date:' . $test['expiry_date'] . PHP_EOL;
-
-			$message[2]['text'] .= 'Date: '       . date('F j, Y - h:i:s', $results['time']) . PHP_EOL;
+			//$message[2]['text'] .= 'Date: '       . date('F j, Y - h:i:s', $results['time']) . PHP_EOL;
+			$message[2]['text'] .= 'Date: '       . date('%d-%b-%Y %h:%i:%s %p', $results['time']) . PHP_EOL;
 
 			if ($test['notes'] != '') {
 				$message[2]['text'] .= PHP_EOL . 'Notes: ' . $test['notes'] . PHP_EOL;
@@ -530,7 +535,8 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			}
 
 			$message[0]['text'] .= '<tr><td>Status:</td><td>' . ($results['result'] == 'ok' ? 'Recovering' : 'Down') . '</td></tr>' . PHP_EOL;
-			$message[0]['text'] .= '<tr><td>Date:</td><td>' . date('F j, Y - h:i:s', $results['time']) . '</td></tr>' . PHP_EOL;
+			//$message[0]['text'] .= '<tr><td>Date:</td><td>' . date('F j, Y - h:i:s', $results['time']) . '</td></tr>' . PHP_EOL;
+			$message[0]['text'] .= '<tr><td>Date:</td><td>' . date('%d-%b-%Y %h:%i:%s %p', $results['time']) . '</td></tr>' . PHP_EOL;
 
 			if ($test['certexpirenotify']) {
 				$message[0]['text'] .= '<tr><td>Certificate expires in: </td><td> ' . $test['days'] . ' days (' . $test['expiry_date'] . ')' . '</td></tr>' . PHP_EOL;
@@ -567,6 +573,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 		// search string notification
 		if ($last_log['result_search'] != $results['result_search']) {
+			//$message[1]['subject'] = '[Cacti servcheck] Service ' . $test['display_name'] . ' - changed search string';
 			$message[1]['subject'] = '[Cacti servcheck] Service ' . $test['display_name'] . ' search result is different than last check';
 
 			$message[1]['text']  = '<h3>' . $message[1]['subject'] . '</h3>' . PHP_EOL;
@@ -579,8 +586,8 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			if (!is_null($test['path'])) {
 				$message[1]['text'] .= '<tr><td>Path:</td><td>' . $test['path'] . '</td></tr>' . PHP_EOL;
 			}
-
-			$message[1]['text'] .= '<tr><td>Date:</td><td>' . date('F j, Y - h:i:s', $results['time']) . '</td></tr>' . PHP_EOL;
+			//$message[1]['text'] .= '<tr><td>Date:</td><td>' . date('F j, Y - h:i:s', $results['time']) . '</td></tr>' . PHP_EOL;
+			$message[1]['text'] .= '<tr><td>Date:</td><td>' . date('%d-%b-%Y %h:%i:%s %p', $results['time']) . '</td></tr>' . PHP_EOL;
 
 			if ($test['certexpirenotify']) {
 				$message[1]['text'] .= '<tr><td>Certificate expires in: </td><td> ' . $test['days'] . ' days (' . $test['expiry_date'] . ')' . '</td></tr>' . PHP_EOL;
@@ -595,6 +602,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 		}
 
 		if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days) {
+			//$message[2]['subject'] = '[Cacti servcheck] Certificate will expired in less than ' . $cert_expiry_days . ' days: ' . $test['display_name'];
 			$message[2]['subject'] = '[Cacti servcheck] Certificate will expire in less than ' . $cert_expiry_days . ' days: ' . $test['display_name'];
 			$message[2]['text']  = '<h3>' . $message[2]['subject'] . '</h3>' . PHP_EOL;
 			$message[2]['text'] .= '<hr>';
@@ -606,7 +614,8 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			if (!is_null($test['path'])) {
 				$message[2]['text'] .= '<tr><td>Path:</td><td>' . $test['path'] . '</td></tr>' . PHP_EOL;
 			}
-			$message[2]['text'] .= '<tr><td>Date:</td><td>' . date('F j, Y - h:i:s', $results['time']) . '</td></tr>' . PHP_EOL;
+			//$message[2]['text'] .= '<tr><td>Date:</td><td>' . date('F j, Y - h:i:s', $results['time']) . '</td></tr>' . PHP_EOL;
+			$message[2]['text'] .= '<tr><td>Date:</td><td>' . date('%d-%b-%Y %h:%i:%s %p', $results['time']) . '</td></tr>' . PHP_EOL;
 
 			$message[2]['text'] .= '<tr><td>Certificate expires in: </td><td> ' . $test['days'] . ' days (' . $test['expiry_date'] . ')' . '</td></tr>' . PHP_EOL;
 

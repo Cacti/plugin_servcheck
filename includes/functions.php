@@ -173,7 +173,6 @@ function plugin_servcheck_graph ($id, $interval) {
 			'contents' => array(
 				'bindto' => "#legend_$xid",
 				"<div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; border-radius: 5px;'>{=TITLE}</div>"
-				//"<div style='display: inline-block; text-align: center;background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px;border-radius: 5px;'>{=TITLE}</div>"
 			)
 		),
 		'zoom' => array('enabled' => true),

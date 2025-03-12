@@ -173,6 +173,7 @@ function plugin_servcheck_graph ($id, $interval) {
 			'contents' => array(
 				'bindto' => "#legend_$xid",
 				"<div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; border-radius: 5px;'>{=TITLE}</div>"
+				//"<div style='display: inline-block; text-align: center;background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px;border-radius: 5px;'>{=TITLE}</div>"
 			)
 		),
 		'zoom' => array('enabled' => true),
@@ -211,6 +212,25 @@ function plugin_servcheck_graph ($id, $interval) {
 	$chart['axis']= $axis;
 
 	$chart_data = json_encode($chart);
+
+// The below block can be used as part of the debuggin to display the data retrieved along with the graph.
+// Uncomment/Comment as required.
+/*
+print '<style>
+    .json-output {
+        max-width: 800px; 
+        overflow-wrap: break-word; 
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        border: 1px solid #ccc;
+        padding: 10px;
+        background-color: #f9f9f9;
+    }
+</style>';
+print '<pre class="json-output">';
+var_dump($chart_data);
+print '</pre>';
+*/
 
 	$content  = '<div id="chart_' . $xid. '"></div>';
 	$content  .= '<div id="legend_container_' . $xid. '" style="display: flex; flex-direction: column; align-items: flex-start;">';

@@ -22,10 +22,8 @@
  +-------------------------------------------------------------------------+
 */
 
-// $user_agent can be of user choice e.g. Linux or Windows based
-//$user_agent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1';
+// $user_agent can be of user's choice e.g. Linux or Windows based
 $user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
-//$user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:110.0) Gecko/20100101 Firefox/110.0'
 
 $ca_info = $config['base_path'] . '/plugins/servcheck/ca-bundle.crt';
 

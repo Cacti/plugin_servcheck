@@ -357,6 +357,7 @@ function servcheck_config_settings() {
 				'3'  => __('3 days before', 'servcheck'),
 				'7'  => __('1 week before', 'servcheck'),
 				'21' => __('3 weeks before', 'servcheck'),
+				'30' => __('30 days before', 'servcheck'),
 			),
 			'default' => 7
 		),

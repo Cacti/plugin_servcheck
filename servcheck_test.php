@@ -918,12 +918,12 @@ function servcheck_show_graph() {
 		WHERE id = ?',
 		array($id));
 
-	print '<br/><br/><b>' . html_escape($result['display_name']) . ':</b><br/>';
+	print '<b>' . html_escape($result['display_name']) . ':</b><br/>';
 
 	foreach ($graph_interval as $key => $value) {
-		print ($value) . ': ';
+		print '<b>' . ($value) . ':</b>';
 		plugin_servcheck_graph ($id, $key);
-		print '<br/><br/>';
+		print '<br/><hr style="width: 50%; margin-left: 0; margin-right: auto;"><br/>'; //print line below the graph.
 	}
 }
 
@@ -944,9 +944,10 @@ function servcheck_show_last_data() {
 		WHERE id = ?',
 		array($id));
 
-	print '<br/><br/><b>' . __('Last returned data of test', 'servcheck') . ' ' . html_escape($result['display_name']) . ':</b><br/>';
+	print '<b>' . __('Last returned data of test', 'servcheck') . ' ' . html_escape($result['display_name']) . ':</b><br/>';
 
-	print '<pre>' . html_escape($result['last_returned_data']) . '</pre>';
+	//print '<pre>' . html_escape($result['last_returned_data']) . '</pre>';
+	print '<style> pre {white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word; max-width: 25%; width: 25%}</style><pre>' . html_escape($result['last_returned_data']) . '</pre>';
 }
 
 function list_tests() {

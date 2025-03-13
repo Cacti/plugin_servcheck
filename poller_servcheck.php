@@ -23,7 +23,7 @@
 */
 
 /* let PHP run just as long as it has to */
-ini_set('max_execution_time', '120');
+ini_set('max_execution_time', '270');
 
 $dir = dirname(__FILE__);
 chdir($dir);
@@ -125,7 +125,7 @@ $tests = db_fetch_assoc_prepared('SELECT *
 	$sql_condition,
 	array($poller_id));
 
-$max_processes = 12;
+$max_processes = 32;
 
 if (cacti_sizeof($tests)) {
 	foreach($tests as $test) {
@@ -140,10 +140,8 @@ if (cacti_sizeof($tests)) {
 			$command_string = read_config_option('path_php_binary');
 			$extra_args     = '-q "' . $config['base_path'] . '/plugins/servcheck/servcheck_process.php" --id=' . $test['id'] . ($debug ? ' --debug':'');
 			exec_background($command_string, $extra_args);
-
-			sleep(2);
 		} else {
-			sleep(2);
+			sleep(1);
 
 			db_execute_prepared('DELETE FROM plugin_servcheck_processes
 				WHERE time < FROM_UNIXTIME(?)

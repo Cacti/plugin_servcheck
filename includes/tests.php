@@ -22,7 +22,9 @@
  +-------------------------------------------------------------------------+
 */
 
-$user_agent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1';
+// $user_agent can be of user's choice e.g. Linux or Windows based
+$user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
+
 $ca_info = $config['base_path'] . '/plugins/servcheck/ca-bundle.crt';
 
 function curl_try ($test) {
@@ -112,8 +114,10 @@ function curl_try ($test) {
 	$process = curl_init($url);
 
 	if ($test['ca'] > 0) {
-		$ca_info = '/tmp/cert' . $test['ca'] . '.pem';
+		$ca_info = $config['base_path'] . '/plugins/servcheck/ca_cert_' . $test['ca'] . '.pem'; // The folder /plugins/servcheck does exist, hence the ca_cert_x.pem can be created here
 		plugin_servcheck_debug('Preparing own CA chain file ' . $ca_info , $test);
+		// CURLOPT_CAINFO is to updated based on the custom CA certificate
+		$options[CURLOPT_CAINFO] = $ca_info;
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
 			array($test['ca']));
@@ -186,7 +190,6 @@ function curl_try ($test) {
 	if ($test['certexpirenotify'] != '') {
 		$options[CURLOPT_CERTINFO] = true;
 	}
-
 
 	plugin_servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
 
@@ -370,7 +373,7 @@ function dns_try ($test) {
 /*
 there are 2 problems:
 - when to terminate the connection - curl can't easily set "disconnect on first received message".
-	I callcall back and if any data is returned, the connection is terminated (42).
+	I call back and if any data is returned, the connection is terminated (42).
 	If no data is returned, the test timeouts (28)
 - the data is not returned the same way as with other services, I have to capture it in a file
 */
@@ -552,9 +555,11 @@ function doh_try ($test) {
 
 	$process = curl_init($url);
 
-	if ($test['ca'] > 0) {
-		$ca_info = '/tmp/cert' . $test['ca'] . '.pem';
+	if ($test['ca'] > 0) { 
+		$ca_info = $config['base_path'] . '/plugins/servcheck/cert_' . $test['ca'] . '.pem'; // The folder /plugins/servcheck does exist, hence the ca_cert_x.pem can be created here
 		plugin_servcheck_debug('Preparing own CA chain file ' . $ca_info , $test);
+		// CURLOPT_CAINFO is to updated based on the custom CA certificate
+		$options[CURLOPT_CAINFO] = $ca_info;
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
 			array($test['ca']));

@@ -475,7 +475,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 				$message[1]['text'] .= 'Path: ' . $test['path'] . PHP_EOL;
 			}
 
-			$message[1]['text'] .= 'Date: ' . date('d-b-Y h:i:s p', $results['time']) . PHP_EOL;
+			$message[1]['text'] .= 'Date: ' . date('d-M-Y h:i:s A', $results['time']) . PHP_EOL;
 
 			if ($test['certexpirenotify']) {
 				$message[1]['text'] .= 'Certificate expires in ' . $test['days'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')' . PHP_EOL;
@@ -504,7 +504,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 				$message[2]['text'] .= 'Path: ' . $test['path'] . PHP_EOL;
 			}
 			$message[2]['text'] .= 'Certificate expiry date:' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . PHP_EOL;
-			$message[2]['text'] .= 'Date: '       . date('d-b-Y h:i:s p', $results['time']) . PHP_EOL;
+			$message[2]['text'] .= 'Date: '       . date('d-M-Y h:i:s A', $results['time']) . PHP_EOL;
 
 			if ($test['notes'] != '') {
 				$message[2]['text'] .= PHP_EOL . 'Notes: ' . $test['notes'] . PHP_EOL;
@@ -530,7 +530,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			}
 
 			$message[0]['text'] .= '<tr><td>Status:</td><td>' . ($results['result'] == 'ok' ? 'Recovering' : 'Down') . '</td></tr>' . PHP_EOL;
-			$message[0]['text'] .= '<tr><td>Date:</td><td>' . date('d-b-Y h:i:s p', $results['time']) . '</td></tr>' . PHP_EOL;
+			$message[0]['text'] .= '<tr><td>Date:</td><td>' . date('d-M-Y h:i:s A', $results['time']) . '</td></tr>' . PHP_EOL;
 
 			if ($test['certexpirenotify']) {
 				$message[0]['text'] .= '<tr><td>Certificate expires in: </td><td> ' . $test['days'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')' . '</td></tr>' . PHP_EOL;
@@ -579,7 +579,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			if (!is_null($test['path'])) {
 				$message[1]['text'] .= '<tr><td>Path:</td><td>' . $test['path'] . '</td></tr>' . PHP_EOL;
 			}
-			$message[1]['text'] .= '<tr><td>Date:</td><td>' . date('d-b-Y h:i:s p', $results['time']) . '</td></tr>' . PHP_EOL;
+			$message[1]['text'] .= '<tr><td>Date:</td><td>' . date('d-M-Y h:i:s A', $results['time']) . '</td></tr>' . PHP_EOL;
 
 			if ($test['certexpirenotify']) {
 				$message[1]['text'] .= '<tr><td>Certificate expires in: </td><td> ' . $test['days'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')' . '</td></tr>' . PHP_EOL;
@@ -605,7 +605,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			if (!is_null($test['path'])) {
 				$message[2]['text'] .= '<tr><td>Path:</td><td>' . $test['path'] . '</td></tr>' . PHP_EOL;
 			}
-			$message[2]['text'] .= '<tr><td>Date:</td><td>' . date('d-b-Y h:i:s p', $results['time']) . '</td></tr>' . PHP_EOL;
+			$message[2]['text'] .= '<tr><td>Date:</td><td>' . date('d-M-Y h:i:s A', $results['time']) . '</td></tr>' . PHP_EOL;
 
 			$message[2]['text'] .= '<tr><td>Certificate expires in: </td><td> ' . $test['days'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')' . '</td></tr>' . PHP_EOL;
 

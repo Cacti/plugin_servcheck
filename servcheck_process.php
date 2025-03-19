@@ -207,9 +207,7 @@ if ($test['certexpirenotify']) {
 		$parsed = date_parse_from_format('M j H:i:s Y e', $results['options']['certinfo'][0]['Expire date']);
 		$exp = mktime($parsed['hour'], $parsed['minute'], $parsed['second'], $parsed['month'], $parsed['day'], $parsed['year']);
 		$test['days'] = round(($exp - time()) / 86400);
-		$test['expiry_date'] = str_pad($parsed['day'], 2, '0', STR_PAD_LEFT) . '-' . 
-								date('M', mktime(0, 0, 0, $parsed['month'], 10)) . '-' . 
-								$parsed['year'];
+		$test['expiry_date'] = date(date_time_format(), $exp);
 	}
 }
 

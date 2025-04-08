@@ -25,7 +25,7 @@
 // $user_agent can be of user's choice e.g. Linux or Windows based
 $user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
 
-$ca_info = $config['base_path'] . '/plugins/servcheck/ca-bundle.crt';
+$ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 
 function curl_try ($test) {
 	global $user_agent, $config, $ca_info, $service_types_ports;
@@ -114,7 +114,7 @@ function curl_try ($test) {
 	$process = curl_init($url);
 
 	if ($test['ca'] > 0) {
-		$ca_info = $config['base_path'] . '/plugins/servcheck/ca_cert_' . $test['ca'] . '.pem'; // The folder /plugins/servcheck does exist, hence the ca_cert_x.pem can be created here
+		$ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca_cert_' . $test['ca'] . '.pem'; // The folder /plugins/servcheck/cert does exist, hence the ca_cert_x.pem can be created here
 		plugin_servcheck_debug('Preparing own CA chain file ' . $ca_info , $test);
 		// CURLOPT_CAINFO is to updated based on the custom CA certificate
 		$options[CURLOPT_CAINFO] = $ca_info;
@@ -122,7 +122,7 @@ function curl_try ($test) {
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
 			array($test['ca']));
 
-		$cert_file = fopen($ca_info, 'a');
+		$cert_file = fopen($ca_info, 'w+');
 		if ($cert_file) {
 			fwrite ($cert_file, $cert);
 			fclose($cert_file);
@@ -215,7 +215,6 @@ function curl_try ($test) {
 	}
 
 	if ($test['ca'] > 0) {
-		unlink ($ca_info);
 		plugin_servcheck_debug('Removing own CA file');
 	}
 

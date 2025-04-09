@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* feature: add dedicated folder for certificates and enhance the usage of custom certificate.
 * issue#35: Fix certificate check does not function as expected
 * issue#2: Fix graph legend overlap
 * issue#31: Fix poller_servcheck.php does not run any test when it runs automatically from cacti poller

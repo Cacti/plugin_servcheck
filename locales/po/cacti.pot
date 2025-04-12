@@ -1292,7 +1292,7 @@ msgid "Stats (OK/problem)"
 msgstr ""
 
 #: servcheck_test.php:1043
-msgid "Trigerred"
+msgid "Triggered"
 msgstr ""
 
 #: servcheck_test.php:1066 servcheck_test.php:1286

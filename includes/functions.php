@@ -212,7 +212,7 @@ function plugin_servcheck_graph ($id, $interval) {
 
 	$chart_data = json_encode($chart);
 
-// The below block can be used as part of the debuggin to display the data retrieved along with the graph.
+// The below block can be used as part of the debugging to display the data retrieved along with the graph.
 // Uncomment/Comment as required.
 /*
 print '<style>

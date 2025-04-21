@@ -27,16 +27,14 @@ include_once(__DIR__ . '/constants.php');
 global	$servcheck_actions_proxy, $servcheck_actions_test, $servcheck_actions_ca, $graph_interval,
 	$servcheck_proxy_fields, $servcheck_test_fields, $servcheck_ca_fields,
 	$servcheck_notify_accounts, $httperrors, $servcheck_seconds,
-	$search, $mail_serv, $service_types, $curl_error, $search_result;
+	$search, $mail_serv, $service_types, $curl_error, $search_result, $servcheck_tabs;
 
-$search_result = array(
-	'ok'            => __('String found', 'servcheck'),
-	'not ok'        => __('String not found', 'servcheck'),
-	'failed ok'     => __('Failed string found', 'servcheck'),
-	'failed not ok' => __('Failed string not found', 'servcheck'),
-	'maint ok'      => __('Maint string found', 'servcheck'),
-	'not yet'       => __('Not tested yet', 'servcheck'),
-	'not tested'    => __('Search not performed', 'servcheck')
+$servcheck_tabs = array(
+	'servcheck_test.php'      => __('Tests', 'servcheck'),
+	'servcheck_ca.php'        => __('CA certificates', 'servcheck'),
+	'servcheck_proxies.php'   => __('Proxies', 'servcheck'),
+	'servcheck_restapi.php'   => __('Rest API auth', 'servcheck'),
+	'servcheck_curl_code.php' => __('Curl return codes', 'servcheck'),
 );
 
 $service_types = array(
@@ -74,7 +72,6 @@ $service_types = array(
 );
 
 $service_types_ports = array(
-
 	'web_http'        => 80,
 	'web_https'       => 443,
 
@@ -220,6 +217,11 @@ $servcheck_actions_test = array(
 	SERVCHECK_ACTION_TEST_DELETE    => __('Delete', 'servcheck'),
 	SERVCHECK_ACTION_TEST_DISABLE   => __('Disable', 'servcheck'),
 	SERVCHECK_ACTION_TEST_ENABLE    => __('Enable', 'servcheck'),
+	SERVCHECK_ACTION_TEST_DUPLICATE => __('Duplicate', 'servcheck'),
+);
+
+$servcheck_actions_restapi = array(
+	SERVCHECK_ACTION_TEST_DELETE    => __('Delete', 'servcheck'),
 	SERVCHECK_ACTION_TEST_DUPLICATE => __('Duplicate', 'servcheck'),
 );
 
@@ -951,3 +953,18 @@ $curl_error = array(
 	)
 );
 
+$rest_api_auth_method = array(
+	'no_auth'       => __('Without auth', 'servcheck'),
+	'basic_auth'    => __('Basic HTTP auth', 'servcheck'),
+	'api_token'     => __('API key/token auth', 'servcheck'),
+	'bearer_token'  => __('Oauth2/bearer token auth', 'servcheck'),
+	'cookie'        => __('Cookie based auth', 'servcheck'),
+);
+
+$rest_api_auth_description = array(
+	'no_auth'       => __('No auth, just send only request and read the response.', 'servcheck'),
+	'basic_auth'    => __('Uses HTTP auth. Username and password is Base64 encoded. Credentials are not encrypted.', 'servcheck'),
+	'api_token'     => __('You need API key or token from your server. It will be send with all request.', 'servcheck'),
+	'bearer_token'  => __('Oauth2/bearer token auth. Insert your token or use your credentials for getting a token', 'servcheck'),
+	'cookie'        => __('Use your credentials for getting cookie. ', 'servcheck'),
+);

@@ -32,7 +32,7 @@ function plugin_servcheck_install () {
 	api_plugin_register_hook('servcheck', 'replicate_out',        'servcheck_replicate_out',               'setup.php');
 	api_plugin_register_hook('servcheck', 'config_settings',      'servcheck_config_settings',             'setup.php');
 
-	api_plugin_register_realm('servcheck', 'servcheck_test.php,servcheck_curl_code.php,servcheck_proxies.php,servcheck_ca.php', __('Service Check Admin', 'servcheck'), 1);
+	api_plugin_register_realm('servcheck', 'servcheck_test.php,servcheck_restapi.php,servcheck_curl_code.php,servcheck_proxies.php,servcheck_ca.php', __('Service Check Admin', 'servcheck'), 1);
 
 	plugin_servcheck_setup_table();
 }
@@ -44,6 +44,7 @@ function plugin_servcheck_uninstall () {
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_processes');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_contacts');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_ca');
+	db_execute('DROP TABLE IF EXISTS plugin_servcheck_rest_method');
 }
 
 function plugin_servcheck_check_config () {
@@ -63,10 +64,30 @@ function plugin_servcheck_upgrade() {
 	db_execute_prepared('UPDATE plugin_realms
 		SET file = ?
 		WHERE file LIKE "%servcheck_test.php%"',
-		array('servcheck_test.php,servcheck_curl_code.php,servcheck_proxies.php,servcheck_ca.php'));
+		array('servcheck_test.php,servcheck_restapi.php,servcheck_curl_code.php,servcheck_proxies.php,servcheck_ca.php'));
 
 		api_plugin_register_hook('servcheck', 'replicate_out', 'servcheck_replicate_out', 'setup.php', '1');
 		api_plugin_register_hook('servcheck', 'config_settings', 'servcheck_config_settings', 'setup.php', '1');
+
+	$api_table = db_fetch_cell("SELECT COUNT(*)
+		FROM information_schema.tables
+		WHERE table_schema = SCHEMA()
+		AND table_name = 'plugin_servcheck_rest_method'");
+
+	if (!$api_table) {
+		db_execute("CREATE TABLE `plugin_servcheck_rest_method` (
+			`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+			`name` varchar(50) DEFAULT '',
+			`type` enum('no','basic','api','bearer','cookie') NOT NULL DEFAULT 'basic',
+			`format` enum('raw','xml','json') NOT NULL DEFAULT 'raw',
+			`token_cookie_name` varchar(30) DEFAULT '',
+			`method` enum('get', 'post') NOT NULL DEFAULT 'get',
+			`username` varchar(40) DEFAULT '',
+			`password` varchar(60) DEFAULT '',
+			PRIMARY KEY (`id`),
+			ENGINE=InnoDB
+			COMMENT='Holds REST API auth settings'");
+	}
 
 	return true;
 }
@@ -127,8 +148,8 @@ function plugin_servcheck_setup_table() {
 		`test_id` int(11) unsigned NOT NULL default '0',
 		`lastcheck` timestamp NOT NULL default '0000-00-00 00:00:00',
 		`curl_return_code` int(3) NOT NULL default '0',
-		`result` enum('ok','not yet','error') NOT NULL default 'not yet',
-		`result_search` enum('ok','not ok','failed ok','failed not ok', 'maint ok','not yet', 'not tested') NOT NULL default 'not yet',
+		`result` enum('ok','not yet','error') NOT NULL DEFAULT 'not yet',
+		`result_search` enum('ok','not ok','failed ok','failed not ok', 'maint ok','not yet', 'not tested') NOT NULL DEFAULT 'not yet',
 		`http_code` int(11) unsigned default NULL,
 		`cert_expire` timestamp NOT NULL default '0000-00-00 00:00:00',
 		`error` varchar(256) default NULL,
@@ -192,6 +213,19 @@ function plugin_servcheck_setup_table() {
 		PRIMARY KEY (`id`))
 		ENGINE=InnoDB
 		COMMENT='Holds CA certificates'");
+
+	db_execute("CREATE TABLE `plugin_servcheck_rest_method` (
+		`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+		`name` varchar(50) DEFAULT '',
+		`type` enum('no','basic','api','bearer','cookie') NOT NULL DEFAULT 'basic',
+		`format` enum('raw','xml','json') NOT NULL DEFAULT 'raw',
+		`token_cookie_name` varchar(30) DEFAULT '',
+		`method` enum('get', 'post') NOT NULL DEFAULT 'get',
+		`username` varchar(40) DEFAULT '',
+		`password` varchar(60) DEFAULT '',
+		PRIMARY KEY (`id`),
+		ENGINE=InnoDB
+		COMMENT='Holds REST API auth settings'");
 }
 
 function plugin_servcheck_poller_bottom() {
@@ -239,6 +273,27 @@ function plugin_servcheck_draw_navigation_text($nav) {
 		'title' => __('Service Check Save', 'servcheck'),
 		'mapping' => 'index.php:',
 		'url' => 'servcheck_test.php',
+		'level' => '1'
+	);
+
+	$nav['servcheck_restapi.php:'] = array(
+		'title' => __('Rest API', 'servcheck'),
+		'mapping' => 'index.php:',
+		'url' => 'servcheck_restapi.php',
+		'level' => '1'
+	);
+
+	$nav['servcheck_restapi.php:edit'] = array(
+		'title' => __('Rest API Edit', 'servcheck'),
+		'mapping' => 'index.php:',
+		'url' => 'servcheck_restapi.php',
+		'level' => '1'
+	);
+
+	$nav['servcheck_restapi.php:save'] = array(
+		'title' => __('Rest API Save', 'servcheck'),
+		'mapping' => 'index.php:',
+		'url' => 'servcheck_restapi.php',
 		'level' => '1'
 	);
 
@@ -298,7 +353,8 @@ function servcheck_replicate_out($data) {
 		'plugin_servcheck_contacts',
 		'plugin_servcheck_proxies',
 		'plugin_servcheck_test',
-		'plugin_servcheck_ca'
+		'plugin_servcheck_ca',
+		'plugin_servcheck_rest_method'
 	);
 
 	if ($class == 'all') {

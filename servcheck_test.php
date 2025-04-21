@@ -130,27 +130,25 @@ function form_actions() {
 						db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "on" WHERE id = ?', array($id));
 					}
 				} elseif ($action == SERVCHECK_ACTION_TEST_DUPLICATE) { // duplicate
-					foreach($tests as $test) {
-						$newid = 1;
+					$newid = 1;
 
-						foreach ($tests as $id) {
-							$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_test WHERE id = ?', array($id));
-							$save['id']           = 0;
-							$save['display_name'] = 'New Service Check (' . $newid . ')';
-							$save['path']         = '/';
-							$save['lastcheck']    = '0000-00-00 00:00:00';
-							$save['triggered']    = 0;
-							$save['enabled']      = '';
-							$save['username']     = '';
-							$save['password']     = '';
-							$save['failures']     = 0;
-							$save['stats_ok']     = 0;
-							$save['stats_bad']    = 0;
+					foreach ($tests as $id) {
+						$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_test WHERE id = ?', array($id));
+						$save['id']           = 0;
+						$save['display_name'] = 'New Service Check (' . $newid . ')';
+						$save['path']         = '/';
+						$save['lastcheck']    = '0000-00-00 00:00:00';
+						$save['triggered']    = 0;
+						$save['enabled']      = '';
+						$save['username']     = '';
+						$save['password']     = '';
+						$save['failures']     = 0;
+						$save['stats_ok']     = 0;
+						$save['stats_bad']    = 0;
 
-							$id = sql_save($save, 'plugin_servcheck_test');
+						$id = sql_save($save, 'plugin_servcheck_test');
 
-							$newid++;
-						}
+						$newid++;
 					}
 				}
 			}

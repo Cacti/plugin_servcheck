@@ -192,7 +192,7 @@ function form_actions() {
 				</td>
 			</tr>";
 
-			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete rest', 'Delete tests', cacti_sizeof($test_array)) . "'>";
+			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete test', 'Delete tests', cacti_sizeof($test_array)) . "'>";
 		} elseif ($action == SERVCHECK_ACTION_TEST_DISABLE) {
 			print "<tr>
 				<td class='topBoxAlt'>

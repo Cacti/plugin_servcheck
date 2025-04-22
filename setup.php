@@ -77,13 +77,13 @@ function plugin_servcheck_upgrade() {
 	if (!$api_table) {
 		db_execute("CREATE TABLE `plugin_servcheck_rest_method` (
 			`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-			`name` varchar(50) DEFAULT '',
+			`name` varchar(100) DEFAULT '',
 			`type` enum('no','basic','api','bearer','cookie') NOT NULL DEFAULT 'basic',
 			`format` enum('raw','xml','json') NOT NULL DEFAULT 'raw',
-			`token_cookie_name` varchar(30) DEFAULT '',
+			`token_cookie_name` varchar(100) DEFAULT '',
 			`method` enum('get', 'post') NOT NULL DEFAULT 'get',
-			`username` varchar(40) DEFAULT '',
-			`password` varchar(60) DEFAULT '',
+			`username` varchar(100) DEFAULT '',
+			`password` varchar(100) DEFAULT '',
 			PRIMARY KEY (`id`),
 			ENGINE=InnoDB
 			COMMENT='Holds REST API auth settings'");
@@ -216,13 +216,13 @@ function plugin_servcheck_setup_table() {
 
 	db_execute("CREATE TABLE `plugin_servcheck_rest_method` (
 		`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-		`name` varchar(50) DEFAULT '',
+		`name` varchar(1000) DEFAULT '',
 		`type` enum('no','basic','api','bearer','cookie') NOT NULL DEFAULT 'basic',
 		`format` enum('raw','xml','json') NOT NULL DEFAULT 'raw',
-		`token_cookie_name` varchar(30) DEFAULT '',
+		`token_cookie_name` varchar(1000) DEFAULT '',
 		`method` enum('get', 'post') NOT NULL DEFAULT 'get',
-		`username` varchar(40) DEFAULT '',
-		`password` varchar(60) DEFAULT '',
+		`username` varchar(100) DEFAULT '',
+		`password` varchar(100) DEFAULT '',
 		PRIMARY KEY (`id`),
 		ENGINE=InnoDB
 		COMMENT='Holds REST API auth settings'");

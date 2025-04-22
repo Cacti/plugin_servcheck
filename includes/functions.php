@@ -27,15 +27,7 @@ include_once(__DIR__ . '/arrays.php');
 
 function servcheck_show_tab($current_tab) {
 	global $config, $servcheck_tabs;
-/*
-	$tabs = array(
-		'servcheck_test.php'      => __('Tests', 'servcheck'),
-		'servcheck_ca.php'        => __('CA certificates', 'servcheck'),
-		'servcheck_proxies.php'   => __('Proxies', 'servcheck'),
-		'servcheck_restapi.php'   => __('Rest API auth', 'servcheck'),
-		'servcheck_curl_code.php' => __('Curl return codes', 'servcheck'),
-	);
-*/
+
 	if (get_request_var('action') == 'history') {
 		if ($current_tab == 'servcheck_test.php') {
 			$current_tab = 'servcheck_test.php?action=history&id=' . get_filter_request_var('id');

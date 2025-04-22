@@ -27,13 +27,14 @@ include_once(__DIR__ . '/constants.php');
 global	$servcheck_actions_proxy, $servcheck_actions_test, $servcheck_actions_ca, $graph_interval,
 	$servcheck_proxy_fields, $servcheck_test_fields, $servcheck_ca_fields,
 	$servcheck_notify_accounts, $httperrors, $servcheck_seconds,
-	$search, $mail_serv, $service_types, $curl_error, $search_result, $servcheck_tabs;
+	$search, $mail_serv, $service_types, $curl_error, $search_result, $servcheck_tabs,
+	$rest_api_format, $rest_api_method, $rest_api_auth_method;
 
 $servcheck_tabs = array(
 	'servcheck_test.php'      => __('Tests', 'servcheck'),
 	'servcheck_ca.php'        => __('CA certificates', 'servcheck'),
 	'servcheck_proxies.php'   => __('Proxies', 'servcheck'),
-	'servcheck_restapi.php'   => __('Rest API auth', 'servcheck'),
+	'servcheck_restapi.php'   => __('Rest API method', 'servcheck'),
 	'servcheck_curl_code.php' => __('Curl return codes', 'servcheck'),
 );
 
@@ -550,6 +551,66 @@ $servcheck_test_fields = array(
 	),
 );
 
+
+$servcheck_restapi_fields = array(
+	'general_spacer' => array(
+		'method' => 'spacer',
+		'friendly_name' => __('General Settings', 'servcheck')
+	),
+	'name' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Rest API Name', 'servcheck'),
+		'description' => __('The name that is displayed for this Rest API.', 'servcheck'),
+		'value' => '|arg1:name|',
+		'max_length' => '100',
+	),
+	'type' => array(
+		'friendly_name' => __('Auth type', 'servcheck'),
+		'method' => 'drop_array',
+		'array' => $rest_api_auth_method,
+		'default' => 'basic_auth',
+		'description' => __('Select correct auth method.', 'servcheck'),
+		'value' => '|arg1:type|',
+	),
+	'format' => array(
+		'friendly_name' => __('Format', 'servcheck'),
+		'method' => 'drop_array',
+		'array' => $rest_api_format,
+		'default' => 'raw',
+		'description' => __('Select correct format.', 'servcheck'),
+		'value' => '|arg1:format|',
+	),
+	'token_cookie_name' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Token/cookie name', 'servcheck'),
+		'description' => __('Auth can use different token or cookie name. You can specify it here.', 'servcheck'),
+		'value' => '|arg1:token_cookie_name|',
+		'max_length' => '100',
+	),
+	'method' => array(
+		'friendly_name' => __('Method', 'servcheck'),
+		'method' => 'drop_array',
+		'array' => $rest_api_method,
+		'default' => 'get',
+		'description' => __('Select correct HTTP method.', 'servcheck'),
+		'value' => '|arg1:method|',
+	),
+	'username' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Username', 'servcheck'),
+		'description' => __('If auth uses credentials, insert it here', 'servcheck'),
+		'value' => '|arg1:username|',
+		'max_length' => '100',
+	),
+	'password' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Password', 'servcheck'),
+		'description' => __('If auth uses credentials, insert it here', 'servcheck'),
+		'value' => '|arg1:password|',
+		'max_length' => '100',
+	)
+);
+
 $curl_error = array(
 	0 => array (
 		'title'       => 'CURLE_OK',
@@ -961,6 +1022,7 @@ $rest_api_auth_method = array(
 	'cookie'        => __('Cookie based auth', 'servcheck'),
 );
 
+//!! tohle pole se mozna nepouzije - udelat mu help tab
 $rest_api_auth_description = array(
 	'no_auth'       => __('No auth, just send only request and read the response.', 'servcheck'),
 	'basic_auth'    => __('Uses HTTP auth. Username and password is Base64 encoded. Credentials are not encrypted.', 'servcheck'),
@@ -968,3 +1030,15 @@ $rest_api_auth_description = array(
 	'bearer_token'  => __('Oauth2/bearer token auth. Insert your token or use your credentials for getting a token', 'servcheck'),
 	'cookie'        => __('Use your credentials for getting cookie. ', 'servcheck'),
 );
+
+$rest_api_format = array(
+	'raw'  => 'Raw',
+	'xml'  => 'XML',
+	'json' => 'JSON'
+);
+
+$rest_api_method = array(
+	'get'  => 'GET',
+	'post' => 'POST'
+);
+

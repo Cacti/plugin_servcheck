@@ -311,8 +311,6 @@ function proxies() {
 
 			form_end_row();
 		}
-	} else {
-		print '<tr><td colspan="' . $columns . '"><em>' . __('No Servers Found', 'servcheck') . '</em></td></tr>';
 	}
 
 	html_end_box(false);

@@ -420,7 +420,6 @@ function purge_log_events($id) {
 function servcheck_edit_test() {
 	global $servcheck_test_fields, $service_types;
 
-
 	/* ================= input validation ================= */
 	get_filter_request_var('id');
 	/* ==================================================== */
@@ -847,7 +846,7 @@ function servcheck_show_history() {
 		),
 	);
 
-	$nav = html_nav_bar('servcheck_test.php?action=history', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, cacti_sizeof($display_text), __('Tests', 'servcheck'), 'page', 'main');
+	$nav = html_nav_bar('servcheck_test.php?action=history', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, cacti_sizeof($display_text), __('Records', 'servcheck'), 'page', 'main');
 
 	servcheck_show_tab('servcheck_test.php');
 
@@ -885,9 +884,6 @@ function servcheck_show_history() {
 
 			form_end_row();
 		}
-	} else {
-		form_alternate_row();
-		print '<td colspan="' . (cacti_sizeof($display_text)) . '"><i>' . __('No Service Check Events in History', 'servcheck') . '</i></td></tr>';
 	}
 
 	html_end_box(false);
@@ -1186,7 +1182,7 @@ function list_tests() {
 		}
 	} else {
 		form_alternate_row();
-		print '<td colspan="' . (cacti_sizeof($display_text) + 1) . '"><center>' . __('No Tests Found', 'servcheck') . '</center></td></tr>';
+		print '<td colspan="' . (cacti_sizeof($display_text) + 1) . '"><center>' . __('No Records Found', 'servcheck') . '</center></td></tr>';
 	}
 
 	html_end_box(false);

@@ -81,7 +81,7 @@ function plugin_servcheck_upgrade() {
 		$data['columns'][] = array('name' => 'type', 'type' => "enum('no','basic','apikey','oauth2','cookie')", 'NULL' => false, 'default' => 'basic');
 		$data['columns'][] = array('name' => 'format', 'type' => "enum('raw','xml','json')", 'NULL' => false, 'default' => 'raw');
 		$data['columns'][] = array('name' => 'authid_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-		$data['columns'][] = array('name' => 'method', 'type' => "enum('get','post')", 'NULL' => false, 'default' => 'get');
+		$data['columns'][] = array('name' => 'http_method', 'type' => "enum('get','post')", 'NULL' => false, 'default' => 'get');
 		$data['columns'][] = array('name' => 'username', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 		$data['columns'][] = array('name' => 'password', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 		$data['primary']   = 'id';
@@ -243,7 +243,7 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'type', 'type' => "enum('no','basic','apikey','oauth2','cookie')", 'NULL' => false, 'default' => 'basic');
 	$data['columns'][] = array('name' => 'format', 'type' => "enum('raw','xml','json')", 'NULL' => false, 'default' => 'raw');
 	$data['columns'][] = array('name' => 'authid_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'method', 'type' => "enum('get','post')", 'NULL' => false, 'default' => 'get');
+	$data['columns'][] = array('name' => 'http_method', 'type' => "enum('get','post')", 'NULL' => false, 'default' => 'get');
 	$data['columns'][] = array('name' => 'username', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'password', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 	$data['primary']   = 'id';

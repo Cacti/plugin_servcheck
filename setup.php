@@ -44,7 +44,7 @@ function plugin_servcheck_uninstall () {
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_processes');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_contacts');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_ca');
-	db_execute('DROP TABLE IF EXISTS plugin_servcheck_rest_method');
+	db_execute('DROP TABLE IF EXISTS plugin_servcheck_restapi_method');
 }
 
 function plugin_servcheck_check_config () {
@@ -75,18 +75,20 @@ function plugin_servcheck_upgrade() {
 		AND table_name = 'plugin_servcheck_rest_method'");
 
 	if (!$api_table) {
-		db_execute("CREATE TABLE `plugin_servcheck_rest_method` (
-			`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-			`name` varchar(100) DEFAULT '',
-			`type` enum('no','basic','api','bearer','cookie') NOT NULL DEFAULT 'basic',
-			`format` enum('raw','xml','json') NOT NULL DEFAULT 'raw',
-			`token_cookie_name` varchar(100) DEFAULT '',
-			`method` enum('get', 'post') NOT NULL DEFAULT 'get',
-			`username` varchar(100) DEFAULT '',
-			`password` varchar(100) DEFAULT '',
-			PRIMARY KEY (`id`),
-			ENGINE=InnoDB
-			COMMENT='Holds REST API auth settings'");
+		$data              = array();
+		$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
+		$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
+		$data['columns'][] = array('name' => 'type', 'type' => "enum('no','basic','apikey','oauth2','cookie')", 'NULL' => false, 'default' => 'basic');
+		$data['columns'][] = array('name' => 'format', 'type' => "enum('raw','xml','json')", 'NULL' => false, 'default' => 'raw');
+		$data['columns'][] = array('name' => 'authid_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
+		$data['columns'][] = array('name' => 'method', 'type' => "enum('get','post')", 'NULL' => false, 'default' => 'get');
+		$data['columns'][] = array('name' => 'username', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
+		$data['columns'][] = array('name' => 'password', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
+		$data['primary']   = 'id';
+		$data['type']      = 'InnoDB';
+		$data['comment']   = 'Holds Rest API auth';
+
+		api_plugin_db_table_create('servcheck', 'plugin_servcheck_restapi_method', $data);
 	}
 
 	return true;
@@ -100,133 +102,158 @@ function plugin_servcheck_version() {
 
 function plugin_servcheck_setup_table() {
 
-	db_execute("CREATE TABLE IF NOT EXISTS `plugin_servcheck_test` (
-		`id` int(11) unsigned NOT NULL auto_increment,
-		`type` varchar(30) NOT NULL default 'web_http',
-		`display_name` varchar(64) NOT NULL default '',
-		`poller_id` int(11) unsigned NOT NULL default '1',
-		`enabled` char(2) NOT NULL default 'on',
-		`hostname` varchar(120) NOT NULL default '',
-		`path` varchar(256) NOT NULL,
-		`dns_query` varchar(100) NOT NULL default '',
-		`ldapsearch` varchar(200) NOT NULL default '',
-		`search` varchar(1024) NOT NULL,
-		`search_maint` varchar(1024) NOT NULL,
-		`search_failed` varchar(1024) NOT NULL,
-		`requiresauth` char(2) NOT NULL default '',
-		`proxy_server` int(11) unsigned NOT NULL default '0',
-		`ca` int(11) unsigned NOT NULL default '0',
-		`checkcert` char(2) NOT NULL default 'on',
-		`certexpirenotify` char(2) NOT NULL default 'on',
-		`username` varchar(200) NOT NULL default '',
-		`password` varchar(100) NOT NULL default '',
-		`notify_list` int(10) unsigned NOT NULL default '0',
-		`notify_accounts` varchar(256) NOT NULL,
-		`notify_extra` varchar(256) NOT NULL,
-		`notify_format` int(3) unsigned NOT NULL default '0',
-		`notes` text NOT NULL default '',
-		`external_id` varchar(20) NOT NULL default '',
-		`how_often` int(11) unsigned NOT NULL default '1',
-		`downtrigger` int(11) unsigned NOT NULL default '3',
-		`timeout_trigger` int(11) unsigned NOT NULL default '4',
-		`stats_ok` int(11) unsigned NOT NULL default '0',
-		`stats_bad` int(11) unsigned NOT NULL default '0',
-		`failures` int(11) unsigned NOT NULL default '0',
-		`triggered` int(11) unsigned NOT NULL default '0',
-		`lastcheck` timestamp NOT NULL default '0000-00-00 00:00:00',
-		`last_exp_notify` timestamp NOT NULL default '0000-00-00 00:00:00',
-		`last_returned_data` blob default '',
-		PRIMARY KEY  (`id`),
-		KEY `lastcheck` (`lastcheck`),
-		KEY `triggered` (`triggered`),
-		KEY `enabled` (`enabled`))
-		ENGINE=InnoDB
-		COMMENT='Holds servcheck Service Check Definitions'");
+	$data              = array();
+	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
+	$data['columns'][] = array('name' => 'type', 'type' => 'varchar(30)', 'NULL' => false, 'default' => 'web_http');
+	$data['columns'][] = array('name' => 'display_name', 'type' => 'varchar(64)', 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'poller_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '1');
+	$data['columns'][] = array('name' => 'enabled', 'type' => 'varchar(2)', 'NULL' => false, 'default' => 'on');
+	$data['columns'][] = array('name' => 'hostname', 'type' => 'varchar(120)', 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'path', 'type' => 'varchar(256)', 'NULL' => false);
+	$data['columns'][] = array('name' => 'dns_query', 'type' => 'varchar(100)', 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'ldapsearch', 'type' => 'varchar(200)', 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'search', 'type' => 'varchar(1024)', 'NULL' => false);
+	$data['columns'][] = array('name' => 'search_maint', 'type' => 'varchar(1024)', 'NULL' => false);
+	$data['columns'][] = array('name' => 'search_failed', 'type' => 'varchar(1024)', 'NULL' => false);
+	$data['columns'][] = array('name' => 'requiresauth', 'type' => 'varchar(2)', 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'proxy_server', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'ca', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'checkcert', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on');
+	$data['columns'][] = array('name' => 'certexpirenotify', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on');
+	$data['columns'][] = array('name' => 'username', 'type' => 'varchar(200)', 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'password', 'type' => 'varchar(100)', 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'notify_list', 'type' => 'int(10)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'notify_accounts', 'type' => 'varchar(256)', 'NULL' => false);
+	$data['columns'][] = array('name' => 'notify_extra', 'type' => 'varchar(256)', 'NULL' => false);
+	$data['columns'][] = array('name' => 'notify_format', 'type' => 'int(3)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'notes', 'type' => 'text', 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'external_id', 'type' => 'varchar(20)', 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'how_often', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '1');
+	$data['columns'][] = array('name' => 'downtrigger', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '3');
+	$data['columns'][] = array('name' => 'timeout_trigger', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '4');
+	$data['columns'][] = array('name' => 'stats_ok', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'stats_bad', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'failures', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'triggered', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'lastcheck', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
+	$data['columns'][] = array('name' => 'last_exp_notify', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
+	$data['columns'][] = array('name' => 'last_returned_data', 'type' => 'blob', 'NULL' => true, 'default' => '');
+	$data['primary']   = 'id';
+	$data['keys'][] = array('name' => 'lastcheck', 'columns' => 'lastcheck');
+	$data['keys'][] = array('name' => 'triggered', 'columns' => 'triggered');
+	$data['keys'][] = array('name' => 'enabled', 'columns' => 'enabled');
+	$data['type']      = 'InnoDB';
+	$data['comment']   = 'Holds servcheck Service Check Definitions';
 
-	db_execute("CREATE TABLE IF NOT EXISTS `plugin_servcheck_log` (
-		`id` int(11) unsigned NOT NULL auto_increment,
-		`test_id` int(11) unsigned NOT NULL default '0',
-		`lastcheck` timestamp NOT NULL default '0000-00-00 00:00:00',
-		`curl_return_code` int(3) NOT NULL default '0',
-		`result` enum('ok','not yet','error') NOT NULL DEFAULT 'not yet',
-		`result_search` enum('ok','not ok','failed ok','failed not ok', 'maint ok','not yet', 'not tested') NOT NULL DEFAULT 'not yet',
-		`http_code` int(11) unsigned default NULL,
-		`cert_expire` timestamp NOT NULL default '0000-00-00 00:00:00',
-		`error` varchar(256) default NULL,
-		`total_time` double default NULL,
-		`namelookup_time` double default NULL,
-		`connect_time` double default NULL,
-		`redirect_time` double unsigned default NULL,
-		`redirect_count` int(11) unsigned default NULL,
-		`size_download` int(11) unsigned default NULL,
-		`speed_download` int(11) unsigned default NULL,
-		PRIMARY KEY  (`id`),
-		KEY `test_id` (`test_id`),
-		KEY `lastcheck` (`lastcheck`),
-		KEY `result` (`result`))
-		ENGINE=InnoDB
-		COMMENT='Holds servcheck Service Check Logs'");
+	api_plugin_db_table_create('servcheck', 'plugin_servcheck_test', $data);
 
-	db_execute("CREATE TABLE IF NOT EXISTS `plugin_servcheck_processes` (
-		`id` bigint unsigned NOT NULL auto_increment,
-		`poller_id` int(11) unsigned NOT NULL default '1',
-		`test_id` int(11) unsigned NOT NULL,
-		`pid` int(11) unsigned NOT NULL,
-		`time` timestamp default CURRENT_TIMESTAMP,
-		PRIMARY KEY  (`id`),
-		KEY `pid` (`pid`),
-		KEY `test_id` (`test_id`),
-		KEY `time` (`time`))
-		ENGINE=MEMORY
-		COMMENT='Holds running process information'");
 
-	db_execute("CREATE TABLE IF NOT EXISTS `plugin_servcheck_contacts` (
-		`id` int(12) NOT NULL auto_increment,
-		`user_id` int(12) NOT NULL,
-		`type` varchar(32) NOT NULL,
-		`data` text NOT NULL,
-		PRIMARY KEY (`id`),
-		UNIQUE KEY `user_id_type` (`user_id`,`type`),
-		KEY `type` (`type`),
-		KEY `user_id` (`user_id`))
-		ENGINE=InnoDB
-		COMMENT='Table of servcheck contacts'");
 
-	db_execute("CREATE TABLE `plugin_servcheck_proxies` (
-		`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-		`name` varchar(30) DEFAULT '',
-		`hostname` varchar(64) DEFAULT '',
-		`http_port` mediumint(8) unsigned DEFAULT '80',
-		`https_port` mediumint(8) unsigned DEFAULT '443',
-		`username` varchar(40) DEFAULT '',
-		`password` varchar(60) DEFAULT '',
-		PRIMARY KEY (`id`),
-		KEY `hostname` (`hostname`),
-		KEY `name` (`name`))
-		ENGINE=InnoDB
-		COMMENT='Holds Proxy Information for Connections'");
+	$data              = array();
+	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
+	$data['columns'][] = array('name' => 'test_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'lastcheck', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
+	$data['columns'][] = array('name' => 'curl_return_code', 'type' => 'int(3)', 'NULL' => false, 'default' => '0');
+	$data['columns'][] = array('name' => 'result', 'type' => "enum('ok','not yet','error')", 'NULL' => false, 'default' => 'not yet');
+	$data['columns'][] = array('name' => 'result_search', 'type' => "enum('ok','not ok','failed ok','failed not ok', 'maint ok','not yet', 'not tested')", 'NULL' => false, 'default' => 'not yet');
+	$data['columns'][] = array('name' => 'http_code', 'type' => 'int(11)', 'NULL' => true, 'unsigned' => true);
+	$data['columns'][] = array('name' => 'cert_expire', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
+	$data['columns'][] = array('name' => 'error', 'type' => 'varchar(256)', 'NULL' => true, 'default' => 'NULL');
+	$data['columns'][] = array('name' => 'total_time', 'type' => 'double', 'NULL' => true, 'unsigned' => true);
+	$data['columns'][] = array('name' => 'namelookup_time', 'type' => 'double', 'NULL' => true, 'unsigned' => true);
+	$data['columns'][] = array('name' => 'connect_time', 'type' => 'double', 'NULL' => true, 'unsigned' => true);
+	$data['columns'][] = array('name' => 'redirect_time', 'type' => 'double', 'NULL' => true, 'unsigned' => true);
+	$data['columns'][] = array('name' => 'redirect_count', 'type' => 'int(11)', 'NULL' => true, 'unsigned' => true);
+	$data['columns'][] = array('name' => 'size_download', 'type' => 'int(11)', 'NULL' => true, 'unsigned' => true);
+	$data['columns'][] = array('name' => 'speed_download', 'type' => 'int(11)', 'NULL' => true, 'unsigned' => true);
+	$data['primary']   = 'id';
+	$data['keys'][] = array('name' => 'test_id', 'columns' => 'test_id');
+	$data['keys'][] = array('name' => 'lastcheck', 'columns' => 'lastcheck');
+	$data['keys'][] = array('name' => 'result', 'columns' => 'result');
+	$data['type']      = 'InnoDB';
+	$data['comment']   = 'Holds servcheck Service Check Logs';
 
-	db_execute("CREATE TABLE `plugin_servcheck_ca` (
-		`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-		`name` varchar(100) NOT NULL DEFAULT '',
-		`cert` text,
-		PRIMARY KEY (`id`))
-		ENGINE=InnoDB
-		COMMENT='Holds CA certificates'");
+	api_plugin_db_table_create('servcheck', 'plugin_servcheck_log', $data);
 
-	db_execute("CREATE TABLE `plugin_servcheck_rest_method` (
-		`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-		`name` varchar(1000) DEFAULT '',
-		`type` enum('no','basic','api','bearer','cookie') NOT NULL DEFAULT 'basic',
-		`format` enum('raw','xml','json') NOT NULL DEFAULT 'raw',
-		`token_cookie_name` varchar(1000) DEFAULT '',
-		`method` enum('get', 'post') NOT NULL DEFAULT 'get',
-		`username` varchar(100) DEFAULT '',
-		`password` varchar(100) DEFAULT '',
-		PRIMARY KEY (`id`),
-		ENGINE=InnoDB
-		COMMENT='Holds REST API auth settings'");
+
+	$data              = array();
+	$data['columns'][] = array('name' => 'id', 'type' => 'bigint', 'NULL' => false, 'auto_increment' => true);
+	$data['columns'][] = array('name' => 'poller_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '1');
+	$data['columns'][] = array('name' => 'test_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true);
+	$data['columns'][] = array('name' => 'pid', 'type' => 'int(11)', 'NULL' => false);
+	$data['columns'][] = array('name' => 'time', 'type' => 'timestamp', 'default' => 'CURRENT_TIMESTAMP', 'NULL' => false);
+	$data['primary']   = 'id';
+	$data['keys'][] = array('name' => 'pid', 'columns' => 'pid');
+	$data['keys'][] = array('name' => 'test_id', 'columns' => 'test_id');
+	$data['keys'][] = array('name' => 'time', 'columns' => 'time');
+	$data['type']      = 'InnoDB';
+	$data['comment']   = 'Holds running process information';
+
+	api_plugin_db_table_create('servcheck', 'plugin_servcheck_processes', $data);
+
+
+	$data              = array();
+	$data['columns'][] = array('name' => 'id', 'type' => 'bigint', 'NULL' => false, 'auto_increment' => true);
+	$data['columns'][] = array('name' => 'user_id', 'type' => 'int(12)', 'NULL' => false, 'unsigned' => true);
+	$data['columns'][] = array('name' => 'type', 'type' => 'varchar(32)', 'NULL' => false);
+	$data['columns'][] = array('name' => 'data', 'type' => 'text', 'NULL' => false);
+	$data['primary']   = 'id';
+	$data['unique_keys'][] = array('name' => 'user_id_type', 'columns' => 'user_id`, `type');
+	$data['keys'][] = array('name' => 'type', 'columns' => 'type');
+	$data['keys'][] = array('name' => 'user_id', 'columns' => 'user_id');
+	$data['type']      = 'InnoDB';
+	$data['comment']   = 'Holds Plugin servcheck contacts';
+
+	api_plugin_db_table_create('servcheck', 'plugin_servcheck_contacts', $data);
+
+
+
+	$data              = array();
+	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
+	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(30)', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'hostname', 'type' => 'varchar(64)', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'http_port', 'type' => 'mediumint(8)', 'NULL' => true, 'default' => '80');
+	$data['columns'][] = array('name' => 'https_port', 'type' => 'mediumint(8)', 'NULL' => true, 'default' => '443');
+	$data['columns'][] = array('name' => 'username', 'type' => 'varchar(40)', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'password', 'type' => 'varchar(60)', 'NULL' => true, 'default' => '');
+	$data['primary']   = 'id';
+	$data['keys'][] = array('name' => 'hostname', 'columns' => 'hostname');
+	$data['keys'][] = array('name' => 'name', 'columns' => 'name');
+	$data['type']      = 'InnoDB';
+	$data['comment']   = 'Holds Proxy Information for Connections';
+
+	api_plugin_db_table_create('servcheck', 'plugin_servcheck_proxies', $data);
+
+
+
+	$data              = array();
+	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
+	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'cert', 'type' => 'text');
+	$data['primary']   = 'id';
+	$data['type']      = 'InnoDB';
+	$data['comment']   = 'Holds CA certificates';
+
+	api_plugin_db_table_create('servcheck', 'plugin_servcheck_ca', $data);
+
+
+	$data              = array();
+	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
+	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'type', 'type' => "enum('no','basic','apikey','oauth2','cookie')", 'NULL' => false, 'default' => 'basic');
+	$data['columns'][] = array('name' => 'format', 'type' => "enum('raw','xml','json')", 'NULL' => false, 'default' => 'raw');
+	$data['columns'][] = array('name' => 'authid_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'method', 'type' => "enum('get','post')", 'NULL' => false, 'default' => 'get');
+	$data['columns'][] = array('name' => 'username', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'password', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
+	$data['primary']   = 'id';
+	$data['type']      = 'InnoDB';
+	$data['comment']   = 'Holds Rest API auth';
+
+	api_plugin_db_table_create('servcheck', 'plugin_servcheck_restapi_method', $data);
 }
+
+
 
 function plugin_servcheck_poller_bottom() {
 	global $config;

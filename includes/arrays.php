@@ -1015,20 +1015,20 @@ $curl_error = array(
 );
 
 $rest_api_auth_method = array(
-	'no_auth'       => __('Without auth', 'servcheck'),
-	'basic_auth'    => __('Basic HTTP auth', 'servcheck'),
-	'api_token'     => __('API key/token auth', 'servcheck'),
-	'bearer_token'  => __('Oauth2/bearer token auth', 'servcheck'),
-	'cookie'        => __('Cookie based auth', 'servcheck'),
+	'no'       => __('Without auth - NOT TESTED', 'servcheck'),
+	'basic'    => __('Basic HTTP auth - NOT TESTED', 'servcheck'),
+	'apikey'     => __('API key auth - NOT TESTED', 'servcheck'),
+	'oauth2'  => __('Oauth2/bearer token auth - NOT TESTED', 'servcheck'),
+	'cookie'        => __('Cookie based auth - NOT TESTED', 'servcheck'),
 );
 
 //!! tohle pole se mozna nepouzije - udelat mu help tab
 $rest_api_auth_description = array(
-	'no_auth'       => __('No auth, just send only request and read the response.', 'servcheck'),
-	'basic_auth'    => __('Uses HTTP auth. Username and password is Base64 encoded. Credentials are not encrypted.', 'servcheck'),
-	'api_token'     => __('You need API key or token from your server. It will be send with all request.', 'servcheck'),
-	'bearer_token'  => __('Oauth2/bearer token auth. Insert your token or use your credentials for getting a token', 'servcheck'),
-	'cookie'        => __('Use your credentials for getting cookie. ', 'servcheck'),
+	'no'       => __('No auth, just send only request and read the response.', 'servcheck'),
+	'basic'    => __('Uses HTTP auth. Username and password is Base64 encoded. Credentials are not encrypted.', 'servcheck'),
+	'apikey'     => __('You need API key from your server. It will be send with all request.', 'servcheck'),
+	'oauth2'  => __('Oauth2/bearer token auth. Insert your token or use your credentials for getting a token.', 'servcheck'),
+	'cookie'        => __('Use your credentials for getting cookie. Cookie will be send with each request.', 'servcheck'),
 );
 
 $rest_api_format = array(

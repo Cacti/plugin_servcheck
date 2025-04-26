@@ -118,23 +118,15 @@ $rest_api_auth_method = array(
 	'no'     => __('Without auth - NOT TESTED', 'servcheck'),
 	'basic'  => __('Basic HTTP auth - NOT TESTED', 'servcheck'),
 	'apikey' => __('API key auth - NOT TESTED', 'servcheck'),
-	'oauth2' => __('Oauth2/bearer token auth - NOT TESTED', 'servcheck'),
+	'oauth2' => __('OAuth2/Bearer token auth - NOT TESTED', 'servcheck'),
 	'cookie' => __('Cookie based auth - NOT TESTED', 'servcheck'),
 );
 
-//!!pm tohle pole se mozna nepouzije - udelat mu help tab
-$rest_api_auth_description = array(
-	'no'       => __('No auth, just send only request and read the response.', 'servcheck'),
-	'basic'    => __('Uses HTTP auth. Username and password is Base64 encoded. Credentials are not encrypted.', 'servcheck'),
-	'apikey'     => __('You need API key from your server. It will be send with all request.', 'servcheck'),
-	'oauth2'  => __('Oauth2/bearer token auth. Insert your token or use your credentials for getting a token.', 'servcheck'),
-	'cookie'        => __('Use your credentials for getting cookie. Cookie will be send with each request.', 'servcheck'),
-);
 
 $rest_api_format = array(
-	'raw'  => 'Raw',
-	'xml'  => 'XML',
-	'json' => 'JSON'
+	'urlencoded'  => 'Form-urlencoded',
+	'xml'         => 'XML',
+	'json'        => 'JSON'
 );
 
 $rest_api_http_method = array(
@@ -595,9 +587,15 @@ $servcheck_restapi_fields = array(
 	'type' => array(
 		'friendly_name' => __('Auth type', 'servcheck'),
 		'method' => 'drop_array',
+		'on_change' => 'setRestAPI()',
 		'array' => $rest_api_auth_method,
 		'default' => 'basic_auth',
-		'description' => __('Select correct auth method.', 'servcheck'),
+		'description' => __('Details of auth methods:<br/>
+		No authorization - <i>just send only request and read the response.</i><br/>
+		Basic - <i>uses HTTP auth. Username and password is Base64 encoded. Credentials are not encrypted.</i><br/>
+		API key - <i>you need API key from your Rest API server. It will be send with all request.</i><br/>
+		OAuth2 - <i>Oauth2/bearer token auth. Insert your token or use your credentials for getting a token.</i><br/>
+		Cookie - <i>Use your credentials for getting cookie. Cookie will be send with each request.</i><br/>', 'servcheck'),
 		'value' => '|arg1:type|',
 	),
 	'format' => array(
@@ -608,11 +606,12 @@ $servcheck_restapi_fields = array(
 		'description' => __('Select correct format.', 'servcheck'),
 		'value' => '|arg1:format|',
 	),
-	'token_cookie_name' => array(
+	'authid_name' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('Token/cookie name', 'servcheck'),
-		'description' => __('Auth can use different token or cookie name. You can specify it here.', 'servcheck'),
-		'value' => '|arg1:token_cookie_name|',
+		'description' => __('Auth can use different token or cookie name. You can specify it here. 
+		Usually names are  \'Bearer\' for OAuth2, \'api_key\' for API Key and \'sessionid\' for cookie. You need know correct name, check your Rest API server documentation. ', 'servcheck'),
+		'value' => '|arg1:authid_name|',
 		'max_length' => '100',
 	),
 	'http_method' => array(
@@ -626,14 +625,14 @@ $servcheck_restapi_fields = array(
 	'username' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('Username', 'servcheck'),
-		'description' => __('If auth uses credentials, insert it here', 'servcheck'),
+		'description' => __('If auth uses credentials, insert it here. In the case of oauth2, this field is called client id.', 'servcheck'),
 		'value' => '|arg1:username|',
 		'max_length' => '100',
 	),
 	'password' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('Password', 'servcheck'),
-		'description' => __('If auth uses credentials, insert it here', 'servcheck'),
+		'description' => __('If auth uses credentials, insert it here. In the case of oauth2, this field is called client secret.', 'servcheck'),
 		'value' => '|arg1:password|',
 		'max_length' => '100',
 	)

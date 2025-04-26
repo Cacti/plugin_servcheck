@@ -79,7 +79,7 @@ function plugin_servcheck_upgrade() {
 		$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 		$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 		$data['columns'][] = array('name' => 'type', 'type' => "enum('no','basic','apikey','oauth2','cookie')", 'NULL' => false, 'default' => 'basic');
-		$data['columns'][] = array('name' => 'format', 'type' => "enum('raw','xml','json')", 'NULL' => false, 'default' => 'raw');
+		$data['columns'][] = array('name' => 'format', 'type' => "enum('urlencoded','xml','json')", 'NULL' => false, 'default' => 'urlencoded');
 		$data['columns'][] = array('name' => 'authid_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 		$data['columns'][] = array('name' => 'http_method', 'type' => "enum('get','post')", 'NULL' => false, 'default' => 'get');
 		$data['columns'][] = array('name' => 'username', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
@@ -89,6 +89,13 @@ function plugin_servcheck_upgrade() {
 		$data['comment']   = 'Holds Rest API auth';
 
 		api_plugin_db_table_create('servcheck', 'plugin_servcheck_restapi_method', $data);
+
+		db_add_column('plugin_servcheck_test', array(
+			'name' => 'restapi',
+			'type' => 'int(11)',
+			'NULL' => false,
+			'default' => '0',
+			'after' => 'proxy_server'));
 	}
 
 	return true;
@@ -117,6 +124,7 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'search_failed', 'type' => 'varchar(1024)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'requiresauth', 'type' => 'varchar(2)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'proxy_server', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'restapi', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'ca', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'checkcert', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on');
 	$data['columns'][] = array('name' => 'certexpirenotify', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on');
@@ -241,7 +249,7 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'type', 'type' => "enum('no','basic','apikey','oauth2','cookie')", 'NULL' => false, 'default' => 'basic');
-	$data['columns'][] = array('name' => 'format', 'type' => "enum('raw','xml','json')", 'NULL' => false, 'default' => 'raw');
+	$data['columns'][] = array('name' => 'format', 'type' => "enum('urlencoded','xml','json')", 'NULL' => false, 'default' => 'urlencoded');
 	$data['columns'][] = array('name' => 'authid_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'http_method', 'type' => "enum('get','post')", 'NULL' => false, 'default' => 'get');
 	$data['columns'][] = array('name' => 'username', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');

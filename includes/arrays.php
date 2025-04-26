@@ -595,7 +595,7 @@ $servcheck_restapi_fields = array(
 		Basic - <i>uses HTTP auth. Username and password is Base64 encoded. Credentials are not encrypted.</i><br/>
 		API key - <i>you need API key from your Rest API server. It will be send with all request.</i><br/>
 		OAuth2 - <i>Oauth2/bearer token auth. Insert your token or use your credentials for getting a token.</i><br/>
-		Cookie - <i>Use your credentials for getting cookie. Cookie will be send with each request.</i><br/>', 'servcheck'),
+		Cookie - <i>Use your credentials for getting cookie. Cookie will be send with each request.</i>', 'servcheck'),
 		'value' => '|arg1:type|',
 	),
 	'format' => array(
@@ -612,6 +612,14 @@ $servcheck_restapi_fields = array(
 		'description' => __('Auth can use different token or cookie name. You can specify it here. 
 		Usually names are  \'Bearer\' for OAuth2, \'api_key\' for API Key and \'sessionid\' for cookie. You need know correct name, check your Rest API server documentation. ', 'servcheck'),
 		'value' => '|arg1:authid_name|',
+		'max_length' => '100',
+	),
+	'token_value' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Token/API key value', 'servcheck'),
+		'description' => __('API key and OAuth2 have two flows - You can have key/token from server and insert it here 
+		or use auth flow with credentials.', 'servcheck'),
+		'value' => '|arg1:token_value|',
 		'max_length' => '100',
 	),
 	'http_method' => array(

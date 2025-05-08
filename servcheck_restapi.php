@@ -217,6 +217,10 @@ function form_save() {
 		$save['password'] = servcheck_hide_text(get_nfilter_request_var('password'));
 	}
 
+	if (isset_request_var('authid_name') && get_nfilter_request_var('authid_name') != '' && get_filter_request_var('authid_name', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\-]{1,100}$/')))) {
+		$save['authid_name'] = get_nfilter_request_var('authid_name');
+	}
+
 	if (isset_request_var('token_value') && get_nfilter_request_var('token_value') != '' && get_filter_request_var('token_value', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
 		$save['token_value'] = servcheck_hide_text(get_nfilter_request_var('token_value'));
 	}
@@ -305,12 +309,15 @@ function servcheck_edit_rest() {
 				$('#row_authid_name').hide();
 				$('#row_token_value').hide();
 				$('#row_login_url').hide();
+				$('#row_data_url').show();
 				break;
 			case 'basic':
 				$('#row_authid_name').hide();
 				$('#row_token_value').hide();
+				$('#row_login_url').hide();
 				$('#row_username').show();
 				$('#row_password').show();
+				$('#row_data_url').show();
 				$('#password').attr('type', 'password');
 				break
 			case 'apikey':
@@ -318,18 +325,24 @@ function servcheck_edit_rest() {
 				$('#row_token_value').show();
 				$('#row_username').show();
 				$('#row_password').show();
+				$('#row_login_url').show();
+				$('#row_data_url').show();
 				break;
 			case 'oauth2':
 				$('#row_authid_name').show();
 				$('#row_token_value').show();
 				$('#row_username').show();
 				$('#row_password').show();
+				$('#row_login_url').show();
+				$('#row_data_url').show();
 				$('#password').attr('type', 'password');
 				break;
 			case 'cookie':
 				$('#row_authid_name').show();
 				$('#row_username').show();
 				$('#row_password').show();
+				$('#row_login_url').show();
+				$('#row_data_url').show();
 				$('#password').attr('type', 'password');
 				break;
 		}
@@ -371,14 +384,6 @@ function servcheck_request_validation() {
 			'default' => 'ASC',
 			'options' => array('options' => 'sanitize_search_string')
 		),
-/*
-//!!pm vyhodit?
-		'state' => array(
-			'filter' => FILTER_VALIDATE_INT,
-			'pageset' => true,
-			'default' => '-1'
-		)
-*/
 	);
 
 	validate_store_request_vars($filters, 'sess_servcheck_restapi');

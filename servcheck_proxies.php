@@ -64,7 +64,8 @@ function proxy_form_actions() {
 				}
 
 				if (cacti_sizeof($proxies)) {
-					db_execute('DELETE FROM plugin_servcheck_proxies WHERE ' . array_to_sql_or($proxies, 'id'));
+					db_execute_prepared('DELETE FROM plugin_servcheck_proxies WHERE id = ?', array(array_to_sql_or($proxies, 'id')));
+					db_execute_prepared('UPDATE plugin_servcheck_test SET proxy = 0 WHERE proxy = ?', array(array_to_sql_or($proxies, 'proxy_server')));
 				}
 			}
 		}
@@ -193,7 +194,6 @@ function proxy_edit() {
 	bottom_footer();
 }
 
-/* file: rra.php, action: edit */
 /**
  *  This is a generic function for this page that makes sure that
  *  we have a good request.  We want to protect against people who
@@ -228,7 +228,7 @@ function request_validation() {
 			)
 	);
 
-	validate_store_request_vars($filters, 'sess_ws_proxy');
+	validate_store_request_vars($filters, 'sess_servcheck_proxy');
 	/* ================= input validation ================= */
 }
 

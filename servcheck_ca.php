@@ -65,7 +65,7 @@ function ca_form_actions() {
 
 				if (cacti_sizeof($cas)) {
 					db_execute('DELETE FROM plugin_servcheck_ca WHERE ' . array_to_sql_or($cas, 'id'));
-					db_execute('UPDATE plugin_servcheck_test SET ca = 0  WHERE ' . array_to_sql_or($cas, 'id'));
+					db_execute('UPDATE plugin_servcheck_test SET ca = 0  WHERE ' . array_to_sql_or($cas, 'ca'));
 				}
 			}
 		}
@@ -219,7 +219,7 @@ function request_validation() {
 			)
 	);
 
-	validate_store_request_vars($filters, 'sess_sc_ca');
+	validate_store_request_vars($filters, 'sess_servcheck_ca');
 	/* ================= input validation ================= */
 }
 

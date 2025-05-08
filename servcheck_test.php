@@ -287,7 +287,11 @@ function form_save() {
 
 	if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $service_types)) {
 		$save['type'] = get_nfilter_request_var('type');
-		list ($category, $subcategory) = explode('_', get_nfilter_request_var('type'));
+		if (get_nfilter_request_var('type') != 'restapi') {
+			list ($category, $subcategory) = explode('_', get_nfilter_request_var('type'));
+		} else {
+			$category = 'restapi';
+		}
 	} else {
 		raise_message(3);
 		$_SESSION['sess_error_fields']['type'] = 'type';
@@ -296,8 +300,10 @@ function form_save() {
 	if (get_filter_request_var('hostname', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-zA-Z0-9\.\-]+(\:[0-9]{1,5})?$/')))) {
 		$save['hostname'] = get_nfilter_request_var('hostname');
 	} else {
-		raise_message(3);
-		$_SESSION['sess_error_fields']['hostname'] = 'hostname';
+		if ($category != 'restapi') {
+			raise_message(3);
+			$_SESSION['sess_error_fields']['hostname'] = 'hostname';
+		}
 	}
 
 	if ($category == 'dns') {
@@ -325,6 +331,15 @@ function form_save() {
 		} else {
 			raise_message(3);
 			$_SESSION['sess_error_fields']['ldapsearch'] = 'ldapsearch';
+		}
+	}
+
+	if ($category == 'restapi') {
+		if (get_filter_request_var('restapi_id') && get_nfilter_request_var('restapi_id') > 0) {
+			$save['restapi_id'] = get_nfilter_request_var('restapi_id');
+		} else {
+			raise_message(3);
+			$_SESSION['sess_error_fields']['restapi_id'] = 'restapi_id';
 		}
 	}
 
@@ -534,6 +549,7 @@ function servcheck_edit_test() {
 
 		switch(category) {
 			case 'web':
+				$('#row_restapi_id').hide();
 				$('#row_dns_query').hide();
 				$('#row_username').hide();
 				$('#row_password').hide();
@@ -557,6 +573,7 @@ function servcheck_edit_test() {
 
 				break;
 			case 'mail':
+				$('#row_restapi_id').hide();
 				$('#row_path').hide();
 				$('#row_requiresauth').hide();
 				$('#row_proxy_server').hide();
@@ -581,6 +598,7 @@ function servcheck_edit_test() {
 
 				break
 			case 'dns':
+				$('#row_restapi_id').hide();
 				$('#row_path').hide();
 				$('#row_requiresauth').hide();
 				$('#row_proxy_server').hide();
@@ -601,6 +619,7 @@ function servcheck_edit_test() {
 				break;
 
 			case 'ldap':
+				$('#row_restapi_id').hide();
 				$('#row_dns_query').hide();
 				$('#row_path').hide();
 				$('#row_requiresauth').hide();
@@ -614,6 +633,7 @@ function servcheck_edit_test() {
 
 				break;
 			case 'ftp':
+				$('#row_restapi_id').hide();
 				$('#row_dns_query').hide();
 				$('#row_requiresauth').hide();
 				$('#row_proxy_server').hide();
@@ -632,6 +652,7 @@ function servcheck_edit_test() {
 
 				break;
 			case 'smb':
+				$('#row_restapi_id').hide();
 				$('#row_dns_query').hide();
 				$('#row_requiresauth').hide();
 				$('#row_proxy_server').hide();
@@ -645,6 +666,7 @@ function servcheck_edit_test() {
 
 				break;
 			case 'mqtt':
+				$('#row_restapi_id').hide();
 				$('#row_dns_query').hide();
 				$('#row_requiresauth').hide();
 				$('#row_proxy_server').hide();
@@ -658,6 +680,22 @@ function servcheck_edit_test() {
 				$('#row_path').show();
 
 				$('#password').attr('type', 'password');
+				break;
+			case 'restapi':
+				$('#row_hostname').hide();
+				$('#row_path').hide();
+				$('#row_dns_query').hide();
+				$('#row_requiresauth').hide();
+				$('#row_proxy_server').hide();
+				$('#row_ldapsearch').hide();
+				$('#row_ca').hide();
+				$('#row_checkcert').hide();
+				$('#row_certexpirenotify').hide();
+				$('#row_username').hide();
+				$('#row_password').hide();
+
+				$('#row_restapi_id').show();
+
 				break;
 		}
 	}
@@ -946,37 +984,6 @@ function servcheck_show_last_data() {
 
 function list_tests() {
 	global $servcheck_actions_test, $httperrors, $config, $hostid, $refresh;
-
-	/* ================= input validation and session storage ================= */
-	$filters = array(
-		'rows' => array(
-			'filter' => FILTER_VALIDATE_INT,
-			'pageset' => true,
-			'default' => '-1'
-		),
-		'state' => array(
-			'filter' => FILTER_VALIDATE_INT,
-			'pageset' => true,
-			'default' => '-1'
-		),
-		'refresh' => array(
-			'filter' => FILTER_VALIDATE_INT,
-			'default' => read_config_option('log_refresh_interval')
-		),
-		'sort_column' => array(
-			'filter' => FILTER_CALLBACK,
-			'default' => 'display_name',
-			'options' => array('options' => 'sanitize_search_string')
-		),
-		'sort_direction' => array(
-			'filter' => FILTER_CALLBACK,
-			'default' => 'ASC',
-			'options' => array('options' => 'sanitize_search_string')
-		)
-	);
-
-	validate_store_request_vars($filters, 'sess_wbsu');
-	/* ================= input validation ================= */
 
 	servcheck_request_validation();
 

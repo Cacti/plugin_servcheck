@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2024 The Cacti Group                                 |
+ | Copyright (C) 2004-2025 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -682,4 +682,196 @@ function doh_try ($test) {
 
 	return $results;
 }
+
+
+function restapi_try ($test) {
+	global $user_agent, $config, $ca_info, $rest_api_auth_method;
+
+	$cert_info = array();
+	$http_headers = array();
+
+	// default result
+	$results['result'] = 'ok';
+	$results['time'] = time();
+	$results['error'] = '';
+	$results['result_search'] = 'not tested';
+
+	$options = array(
+		CURLOPT_HEADER         => true,
+		CURLOPT_USERAGENT      => $user_agent,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_MAXREDIRS      => 4,
+		CURLOPT_TIMEOUT        => $test['timeout_trigger'],
+		CURLOPT_CAINFO         => $ca_info,
+	);
+
+	$api = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_restapi_method
+		WHERE id = ?', array($test['restapi_id']));
+
+	if (is_null($api)) {
+		cacti_log('Rest API method not set');
+		$results['result'] = 'error';
+		$results['error'] = 'Rest API method not set';
+		return $results;
+	}
+
+	if ($api['http_method'] == 'post') {
+		$options[CURLOPT_POST] = true;
+	} else {
+		$options[CURLOPT_POST] = false;
+	}
+
+	$url = $api['data_url'];
+
+/*
+
+ted se pustit do json a xml
+
+$xmlData = <<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<user>
+    <name>Jan</name>
+    <email>jan@example.com</email>
+</user>
+XML;
+
+
+*/
+
+	switch ($api['format']) {
+		case 'urlencoded':
+			$http_headers[] = 'Content-Type: application/x-www-form-urlencoded';
+			break;
+
+		case 'xml':
+			$http_headers[] = 'Content-Type: application/xml';
+			break;
+
+		case 'json':
+			$http_headers[] = 'Content-Type: application/json';
+			break;
+	}
+
+	$options[CURLOPT_HTTPHEADER] = $http_headers;
+
+	plugin_servcheck_debug('Using Rest API method ' . $rest_api_auth_method[$api['type']] , $test);
+
+	switch ($api['type']) {
+		case 'no':
+			// nothing to do
+			break;
+		case 'basic':
+			break;
+		case 'apikey':
+			break;
+		case 'oauth2':
+			break;
+		case 'cookie':
+			break;
+	}
+
+
+//!! toto upravit
+
+	plugin_servcheck_debug('Final url is ' . $url , $test);
+
+	$process = curl_init($url);
+
+	// Disable Cert checking for now
+	$options[CURLOPT_SSL_VERIFYPEER] = false;
+	$options[CURLOPT_SSL_VERIFYHOST] = false;
+
+// !! tady nekde uz bude reseni, jestli je to autorizace apod
+
+
+
+// !! tady budu cist data
+	plugin_servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
+
+	curl_setopt_array($process,$options);
+
+	plugin_servcheck_debug('Executing curl request', $test);
+
+	$data = curl_exec($process);
+	$data = str_replace(array("'", "\\"), array(''), $data);
+	$results['data'] = $data;
+
+	// Get information regarding a specific transfer, cert info too
+	$results['options'] = curl_getinfo($process);
+
+	$results['curl_return'] = curl_errno($process);
+
+	plugin_servcheck_debug('cURL error: ' . $results['curl_return']);
+
+	plugin_servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
+
+	if ($results['curl_return'] > 0) {
+		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
+	}
+
+	curl_close($process);
+
+		// not found?
+		if ($results['options']['http_code'] == 404) {
+			$results['result'] = 'error';
+			$results['error'] = '404 - Not found';
+			return $results;
+		}
+
+	if (empty($results['data']) && $results['curl_return'] > 0) {
+		$results['result'] = 'error';
+		$results['error'] = 'No data returned';
+
+		return $results;
+	}
+
+	// If we have set a failed search string, then ignore the normal searches and only alert on it
+	if ($test['search_failed'] != '') {
+
+		plugin_servcheck_debug('Processing search_failed');
+
+		if (strpos($data, $test['search_failed']) !== false) {
+			plugin_servcheck_debug('Search failed string success');
+			$results['result_search'] = 'failed ok';
+			return $results;
+		}
+	}
+
+	plugin_servcheck_debug('Processing search');
+
+	if ($test['search'] != '') {
+		if (strpos($data, $test['search']) !== false) {
+			plugin_servcheck_debug('Search string success');
+			$results['result_search'] = 'ok';
+			return $results;
+		} else {
+			$results['result_search'] = 'not ok';
+			return $results;
+		}
+	}
+
+	if ($test['search_maint'] != '') {
+
+		plugin_servcheck_debug('Processing search maint');
+
+		if (strpos($data, $test['search_maint']) !== false) {
+			plugin_servcheck_debug('Search maint string success');
+			$results['result_search'] = 'maint ok';
+			return $results;
+		}
+	}
+
+	if ($test['requiresauth'] != '') {
+
+		plugin_servcheck_debug('Processing requires no authentication required');
+
+		if ($results['options']['http_code'] != 401) {
+			$results['error'] = 'The requested URL returned error: ' . $results['options']['http_code'];
+		}
+	}
+
+	return $results;
+}
+
 

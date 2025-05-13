@@ -664,7 +664,7 @@ $servcheck_restapi_fields = array(
 	'data_url' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('Data URL', 'servcheck'),
-		'description' => __('URL to retrieve data.', 'servcheck'),
+		'description' => __('URL to retrieve data. Insert with http:// or https://', 'servcheck'),
 		'value' => '|arg1:data_url|',
 		'max_length' => '200',
 	)

@@ -724,37 +724,6 @@ function restapi_try ($test) {
 
 	$url = $api['data_url'];
 
-/*
-
-ted se pustit do json a xml
-
-$xmlData = <<<XML
-<?xml version="1.0" encoding="UTF-8"?>
-<user>
-    <name>Jan</name>
-    <email>jan@example.com</email>
-</user>
-XML;
-
-
-*/
-
-	switch ($api['format']) {
-		case 'urlencoded':
-			$http_headers[] = 'Content-Type: application/x-www-form-urlencoded';
-			break;
-
-		case 'xml':
-			$http_headers[] = 'Content-Type: application/xml';
-			break;
-
-		case 'json':
-			$http_headers[] = 'Content-Type: application/json';
-			break;
-	}
-
-	$options[CURLOPT_HTTPHEADER] = $http_headers;
-
 	plugin_servcheck_debug('Using Rest API method ' . $rest_api_auth_method[$api['type']] , $test);
 
 	switch ($api['type']) {
@@ -762,6 +731,8 @@ XML;
 			// nothing to do
 			break;
 		case 'basic':
+			$options[CURLOPT_USERPWD] = servcheck_show_text($api['username']) . ':' . servcheck_show_text($api['password']);
+			$options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
 			break;
 		case 'apikey':
 			break;
@@ -782,8 +753,6 @@ XML;
 	$options[CURLOPT_SSL_VERIFYPEER] = false;
 	$options[CURLOPT_SSL_VERIFYHOST] = false;
 
-// !! tady nekde uz bude reseni, jestli je to autorizace apod
-
 
 
 // !! tady budu cist data
@@ -796,6 +765,9 @@ XML;
 	$data = curl_exec($process);
 	$data = str_replace(array("'", "\\"), array(''), $data);
 	$results['data'] = $data;
+
+	// json, xml, urlencoded? It doesn't matter
+
 
 	// Get information regarding a specific transfer, cert info too
 	$results['options'] = curl_getinfo($process);

@@ -116,8 +116,8 @@ $graph_interval = array (
 );
 
 $rest_api_auth_method = array(
-	'no'     => __('Without auth - NOT TESTED', 'servcheck'),
-	'basic'  => __('Basic HTTP auth - NOT TESTED', 'servcheck'),
+	'no'     => __('Without auth', 'servcheck'),
+	'basic'  => __('Basic HTTP auth', 'servcheck'),
 	'apikey' => __('API key auth - NOT TESTED', 'servcheck'),
 	'oauth2' => __('OAuth2/Bearer token auth - NOT TESTED', 'servcheck'),
 	'cookie' => __('Cookie based auth - NOT TESTED', 'servcheck'),
@@ -612,8 +612,8 @@ $servcheck_restapi_fields = array(
 		'friendly_name' => __('Format', 'servcheck'),
 		'method' => 'drop_array',
 		'array' => $rest_api_format,
-		'default' => 'raw',
-		'description' => __('Select correct format.', 'servcheck'),
+		'default' => 'urlencoded',
+		'description' => __('Select correct output format. For the time being this parameter has no meaning, in the result test we are searching string not speciofic value.', 'servcheck'),
 		'value' => '|arg1:format|',
 	),
 	'authid_name' => array(

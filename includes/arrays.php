@@ -637,7 +637,7 @@ $servcheck_restapi_fields = array(
 		'method' => 'drop_array',
 		'array' => $rest_api_http_method,
 		'default' => 'get',
-		'description' => __('Select correct HTTP method.', 'servcheck'),
+		'description' => __('Select correct HTTP method. For OAuth2 is usually used method POST.', 'servcheck'),
 		'value' => '|arg1:http_method|',
 	),
 	'username' => array(

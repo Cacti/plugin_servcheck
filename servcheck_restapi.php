@@ -431,7 +431,7 @@ function list_restapis() {
 	}
 
 	$result = db_fetch_assoc("SELECT *, 
-		(SELECT COUNT(*) FROM plugin_servcheck_test AS st WHERE st.id= plugin_servcheck_restapi_method.id) AS used
+		(SELECT COUNT(*) FROM plugin_servcheck_test AS st WHERE st.restapi_id = plugin_servcheck_restapi_method.id) AS used
 		FROM plugin_servcheck_restapi_method
 		$sql_where
 		$sql_order

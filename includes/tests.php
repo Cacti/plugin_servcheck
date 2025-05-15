@@ -403,7 +403,6 @@ function mqtt_try ($test) {
 	if ($test['path'] == '') {
 		// try any message
 		$test['path'] = '/%23';
-//		$test['path'] = '/%24SYS/broker/uptime';
 	}
 
 	$url = 'mqtt://' . $cred . $test['hostname'] . $test['path'];
@@ -737,13 +736,37 @@ function restapi_try ($test) {
 		case 'apikey':
 			break;
 		case 'oauth2':
+			$valid = db_fetch_row_prepared('SELECT COUNT(*) FROM plugin_servcheck_restapi_method
+				WHERE id = ? AND token_validity > NOW()',
+				array($api['id']));
+
+			if (!$valid) {
+				plugin_servcheck_debug('No valid token, generating new request' , $test);
+
+				$data = http_build_query (
+					array(
+					'grant_type' => 'password',
+					'username'   => $api['username'],
+					'password'   => $api['password'])
+				);
+
+				if ($api['http_method'] == 'post') {
+					$options[CURLOPT_POSTFIELDS] = $data;
+				} else { // usually not used
+					$url = $api['data_url'] . '/' . $data;
+				}
+
+			// asi musim resit i get/post predavani credentials
+			} else {
+				plugin_servcheck_debug('Using existing token' , $test);
+//				$headers[] = 'Authorization: Bearer '. $_SESSION['token'];
+			}
+
 			break;
 		case 'cookie':
 			break;
 	}
 
-
-//!! toto upravit
 
 	plugin_servcheck_debug('Final url is ' . $url , $test);
 

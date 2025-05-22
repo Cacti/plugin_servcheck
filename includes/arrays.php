@@ -613,7 +613,7 @@ $servcheck_restapi_fields = array(
 		'method' => 'drop_array',
 		'array' => $rest_api_format,
 		'default' => 'urlencoded',
-		'description' => __('Select correct output format. For the time being this parameter has no meaning, in the result test we are searching string not speciofic value.', 'servcheck'),
+		'description' => __('Select correct output format for data query.', 'servcheck'),
 		'value' => '|arg1:format|',
 	),
 	'authid_name' => array(

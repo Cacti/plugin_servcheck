@@ -721,6 +721,10 @@ function restapi_try ($test) {
 		$options[CURLOPT_POST] = false;
 	}
 
+	// Disable Cert checking for now
+	$options[CURLOPT_SSL_VERIFYPEER] = false;
+	$options[CURLOPT_SSL_VERIFYHOST] = false;
+
 	$url = $api['data_url'];
 
 	plugin_servcheck_debug('Using Rest API method ' . $rest_api_auth_method[$api['type']] , $test);
@@ -746,8 +750,8 @@ function restapi_try ($test) {
 				$data = http_build_query (
 					array(
 					'grant_type' => 'password',
-					'username'   => $api['username'],
-					'password'   => $api['password'])
+					'username'   => servcheck_show_text($api['username']),
+					'password'   => servcheck_show_text($api['password']))
 				);
 
 				if ($api['http_method'] == 'post') {
@@ -759,11 +763,69 @@ function restapi_try ($test) {
 			// asi musim resit i get/post predavani credentials
 			} else {
 				plugin_servcheck_debug('Using existing token' , $test);
-//				$headers[] = 'Authorization: Bearer '. $_SESSION['token'];
+//				$http_headers[] = 'Authorization: Bearer '. $_SESSION['token'];
 			}
 
 			break;
 		case 'cookie':
+
+			// first we have to create login request and get cookie
+
+			$http_headers[] = "Content-Type: multipart/form-data";
+			$options[CURLOPT_HTTPHEADER] = $http_headers;
+
+			$cred_data = [
+				'username' => servcheck_show_text($api['username']),
+				'password' => servcheck_show_text($api['password'])
+			];
+
+			$cookie_file = $config['base_path'] . '/plugins/servcheck/cookie/' . $api['id']; 
+
+			$options[CURLOPT_COOKIEJAR] = $cookie_file;  // store cookie
+//			$options[CURLOPT_COOKIEFILE] = $cookie_file; // Pro odeslání cookies
+
+			$options[CURLOPT_POSTFIELDS] = $cred_data;
+
+			$process = curl_init($api['login_url']);
+
+			plugin_servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($options, true)));
+
+			curl_setopt_array($process,$options);
+
+			plugin_servcheck_debug('Executing curl request for login: ' . $api['login_url'], $test);
+
+			$response = curl_exec($process);
+
+			if (curl_errno($process) > 0) {
+				plugin_servcheck_debug('Problem with login: ' . curl_error($process) , $test);
+//!! tady to dopsat, kdyz se mi login nepovede, budu tady ukoncovat volani
+				$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
+			}
+
+			plugin_servcheck_debug('We got cookie, gathering data', $test);
+
+			curl_close($process);
+
+			// preparing query to protected restapi
+
+			unset($http_headers);
+			if ($api['format'] == 'urlencoded') {
+				$http_headers[] = "Content-Type: multipart/form-data";
+			} elseif ($api['format'] == 'xml') {
+				$http_headers[] = "Content-Type: multipart/xml";
+			} else {
+				$http_headers[] = "Content-Type: multipart/json";
+			}
+
+			$options[CURLOPT_POST] = false;
+
+			$options[CURLOPT_HTTPHEADER] = $http_headers;
+
+
+			$url = $api['data_url'];
+			unset ($options[CURLOPT_POSTFIELDS]);
+			$options[CURLOPT_COOKIEFILE] = $cookie_file; // send cookie
+
 			break;
 	}
 
@@ -771,11 +833,6 @@ function restapi_try ($test) {
 	plugin_servcheck_debug('Final url is ' . $url , $test);
 
 	$process = curl_init($url);
-
-	// Disable Cert checking for now
-	$options[CURLOPT_SSL_VERIFYPEER] = false;
-	$options[CURLOPT_SSL_VERIFYHOST] = false;
-
 
 
 // !! tady budu cist data
@@ -789,6 +846,8 @@ function restapi_try ($test) {
 	$data = str_replace(array("'", "\\"), array(''), $data);
 	$results['data'] = $data;
 
+var_dump($data);
+die();
 	// json, xml, urlencoded? It doesn't matter
 
 

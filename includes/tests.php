@@ -770,7 +770,6 @@ function restapi_try ($test) {
 		case 'cookie':
 
 			// first we have to create login request and get cookie
-
 			$http_headers[] = "Content-Type: multipart/form-data";
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
 
@@ -782,8 +781,6 @@ function restapi_try ($test) {
 			$cookie_file = $config['base_path'] . '/plugins/servcheck/cookie/' . $api['id']; 
 
 			$options[CURLOPT_COOKIEJAR] = $cookie_file;  // store cookie
-//			$options[CURLOPT_COOKIEFILE] = $cookie_file; // Pro odeslání cookies
-
 			$options[CURLOPT_POSTFIELDS] = $cred_data;
 
 			$process = curl_init($api['login_url']);
@@ -795,11 +792,17 @@ function restapi_try ($test) {
 			plugin_servcheck_debug('Executing curl request for login: ' . $api['login_url'], $test);
 
 			$response = curl_exec($process);
+			$response = str_replace(array("'", "\\"), array(''), $response);
 
 			if (curl_errno($process) > 0) {
-				plugin_servcheck_debug('Problem with login: ' . curl_error($process) , $test);
-//!! tady to dopsat, kdyz se mi login nepovede, budu tady ukoncovat volani
-				$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
+				// Get information regarding a specific transfer, cert info too
+				$results['options'] = curl_getinfo($process);
+				$results['curl_return'] = curl_errno($process);
+				$results['data'] = $response;
+
+				plugin_servcheck_debug('Problem with login: ' . $results['curl_return'] , $test);
+
+				$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
 			}
 
 			plugin_servcheck_debug('We got cookie, gathering data', $test);
@@ -821,7 +824,6 @@ function restapi_try ($test) {
 
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
 
-
 			$url = $api['data_url'];
 			unset ($options[CURLOPT_POSTFIELDS]);
 			$options[CURLOPT_COOKIEFILE] = $cookie_file; // send cookie
@@ -829,13 +831,10 @@ function restapi_try ($test) {
 			break;
 	}
 
-
 	plugin_servcheck_debug('Final url is ' . $url , $test);
 
 	$process = curl_init($url);
 
-
-// !! tady budu cist data
 	plugin_servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
 
 	curl_setopt_array($process,$options);
@@ -845,11 +844,6 @@ function restapi_try ($test) {
 	$data = curl_exec($process);
 	$data = str_replace(array("'", "\\"), array(''), $data);
 	$results['data'] = $data;
-
-var_dump($data);
-die();
-	// json, xml, urlencoded? It doesn't matter
-
 
 	// Get information regarding a specific transfer, cert info too
 	$results['options'] = curl_getinfo($process);
@@ -866,12 +860,12 @@ die();
 
 	curl_close($process);
 
-		// not found?
-		if ($results['options']['http_code'] == 404) {
-			$results['result'] = 'error';
-			$results['error'] = '404 - Not found';
-			return $results;
-		}
+	// not found?
+	if ($results['options']['http_code'] == 404) {
+		$results['result'] = 'error';
+		$results['error'] = '404 - Not found';
+		return $results;
+	}
 
 	if (empty($results['data']) && $results['curl_return'] > 0) {
 		$results['result'] = 'error';
@@ -895,11 +889,13 @@ die();
 	plugin_servcheck_debug('Processing search');
 
 	if ($test['search'] != '') {
+
 		if (strpos($data, $test['search']) !== false) {
 			plugin_servcheck_debug('Search string success');
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
+			plugin_servcheck_debug('String not found');
 			$results['result_search'] = 'not ok';
 			return $results;
 		}

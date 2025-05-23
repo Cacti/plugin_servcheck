@@ -277,7 +277,8 @@ function servcheck_edit_rest() {
 	}
 
 	form_start('servcheck_restapi.php');
-
+	// issue - id should be inserted in inject_form_variables but hidden element is missing
+	form_hidden_box('id', $restapi['id'], '');
 	html_start_box($header_label, '100%', '', '3', 'center', '');
 
 	draw_edit_form(
@@ -291,6 +292,7 @@ function servcheck_edit_rest() {
 
 	form_save_button('servcheck_restapi.php', 'return');
 
+	form_end();
 	?>
 	<script type='text/javascript'>
 

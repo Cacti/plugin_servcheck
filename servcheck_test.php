@@ -474,6 +474,8 @@ function servcheck_edit_test() {
 
 	form_save_button('servcheck_test.php', 'return');
 
+	form_end();
+
 	?>
 	<script type='text/javascript'>
 

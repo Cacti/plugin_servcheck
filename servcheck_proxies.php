@@ -161,6 +161,8 @@ function proxy_edit() {
 	get_filter_request_var('id');
 	/* ==================================================== */
 
+	$proxy = array();
+
 	if (!isempty_request_var('id')) {
 		$proxy = db_fetch_row_prepared('SELECT *
 			FROM plugin_servcheck_proxies
@@ -181,7 +183,7 @@ function proxy_edit() {
 	draw_edit_form(
 		array(
 			'config' => array('no_form_tag' => true),
-			'fields' => inject_form_variables($servcheck_proxy_fields, (isset($proxy) ? $proxy : array()))
+			'fields' => inject_form_variables($servcheck_proxy_fields, $proxy)
 		)
 	);
 

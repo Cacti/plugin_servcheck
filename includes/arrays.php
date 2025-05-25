@@ -119,15 +119,14 @@ $rest_api_auth_method = array(
 	'no'     => __('Without auth', 'servcheck'),
 	'basic'  => __('Basic HTTP auth', 'servcheck'),
 	'apikey' => __('API key auth - NOT TESTED', 'servcheck'),
-	'oauth2' => __('OAuth2/Bearer token auth - NOT TESTED', 'servcheck'),
-	'cookie' => __('Cookie based auth - NOT TESTED', 'servcheck'),
+	'oauth2' => __('OAuth2/Bearer token auth', 'servcheck'),
+	'cookie' => __('Cookie based auth', 'servcheck'),
 );
-
 
 $rest_api_format = array(
 	'urlencoded'  => 'Form-urlencoded',
-	'xml'         => 'XML',
-	'json'        => 'JSON'
+//	'xml'            => 'XML',
+	'json'           => 'JSON'
 );
 
 $rest_api_http_method = array(
@@ -609,18 +608,18 @@ $servcheck_restapi_fields = array(
 		'value' => '|arg1:type|',
 	),
 	'format' => array(
-		'friendly_name' => __('Format', 'servcheck'),
+		'friendly_name' => __('Data Format', 'servcheck'),
 		'method' => 'drop_array',
 		'array' => $rest_api_format,
 		'default' => 'urlencoded',
-		'description' => __('Select correct output format for data query.', 'servcheck'),
+		'description' => __('Select correct format for communication, check your Rest API documentation.', 'servcheck'),
 		'value' => '|arg1:format|',
 	),
 	'authid_name' => array(
 		'method' => 'textbox',
-		'friendly_name' => __('Token/cookie name', 'servcheck'),
-		'description' => __('Auth can use different token or cookie name. You can specify it here. 
-		Usually names are  \'Bearer\' for OAuth2, \'api_key\' for API Key and \'sessionid\' for cookie. You need know correct name, check your Rest API server documentation. ', 'servcheck'),
+		'friendly_name' => __('Token name', 'servcheck'),
+		'description' => __('Auth can use different token or API Key name. You can specify it here. 
+		Usually names are  \'Bearer\' for OAuth2,  \'apikey\' for API Key method. You need know correct name, check your Rest API server documentation. ', 'servcheck'),
 		'value' => '|arg1:authid_name|',
 		'max_length' => '100',
 	),
@@ -637,7 +636,7 @@ $servcheck_restapi_fields = array(
 		'method' => 'drop_array',
 		'array' => $rest_api_http_method,
 		'default' => 'get',
-		'description' => __('Select correct HTTP method. For OAuth2 is usually used method POST.', 'servcheck'),
+		'description' => __('Select correct HTTP method for data query. It is ussually GET method. Oauth2/APIkey uses POST for login, it is used automatically. This settings is related to data query.', 'servcheck'),
 		'value' => '|arg1:http_method|',
 	),
 	'username' => array(

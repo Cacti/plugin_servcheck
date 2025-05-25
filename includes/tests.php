@@ -734,55 +734,140 @@ function restapi_try ($test) {
 			// nothing to do
 			break;
 		case 'basic':
+			// we don't need set content type for login or GET/POST request because we don't set any data
 			$options[CURLOPT_USERPWD] = servcheck_show_text($api['username']) . ':' . servcheck_show_text($api['password']);
 			$options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
 			break;
 		case 'apikey':
+
+			$cred_data = [
+				$api['authid_name'] => servcheck_show_text($api['token_value'])
+			];
+
+			if ($api['format'] == 'json') {
+				$cred_data = json_encode($cred_data);
+				$http_headers[] = "Content-Type: application/json";
+			}
+
+			if ($api['http_method'] == 'post') {
+				$options[CURLOPT_POSTFIELDS] = $cred_data;
+			} else {
+				$http_headers[] = $api['authid_name'] . ': ' . servcheck_show_text($api['token_value']);
+			}
+
+			$options[CURLOPT_HTTPHEADER] = $http_headers;
+
 			break;
 		case 'oauth2':
-			$valid = db_fetch_row_prepared('SELECT COUNT(*) FROM plugin_servcheck_restapi_method
+
+			$valid = db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_restapi_method
 				WHERE id = ? AND token_validity > NOW()',
 				array($api['id']));
 
 			if (!$valid) {
 				plugin_servcheck_debug('No valid token, generating new request' , $test);
 
-				$data = http_build_query (
-					array(
+				$cred_data = [
 					'grant_type' => 'password',
 					'username'   => servcheck_show_text($api['username']),
-					'password'   => servcheck_show_text($api['password']))
-				);
+					'password'   => servcheck_show_text($api['password'])
+				];
 
-				if ($api['http_method'] == 'post') {
-					$options[CURLOPT_POSTFIELDS] = $data;
-				} else { // usually not used
-					$url = $api['data_url'] . '/' . $data;
+				if ($api['format'] == 'json') {
+					$cred_data = json_encode($cred_data);
+					$http_headers[] = "Content-Type: application/json";
 				}
 
-			// asi musim resit i get/post predavani credentials
+				if ($api['http_method'] == 'post') {
+					$options[CURLOPT_POSTFIELDS] = $cred_data;
+				} else {
+					$http_headers[] = $cred_data;
+				}
+
+				$options[CURLOPT_HTTPHEADER] = $http_headers;
+
+				$process = curl_init($api['login_url']);
+
+				plugin_servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($options, true)));
+
+				curl_setopt_array($process,$options);
+
+				plugin_servcheck_debug('Executing curl request for login: ' . $api['login_url'], $test);
+
+				$response = curl_exec($process);
+
+				if (curl_errno($process) > 0) {
+					// Get information regarding a specific transfer, cert info too
+					$results['options'] = curl_getinfo($process);
+					$results['curl_return'] = curl_errno($process);
+					$results['data'] = $response;
+
+					plugin_servcheck_debug('Problem with login: ' . $results['curl_return'] , $test);
+
+					$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
+					return $results;
+				}
+
+				curl_close($process);
+
+				$header_size = curl_getinfo($process, CURLINFO_HEADER_SIZE);
+				$header = substr($response, 0, $header_size);
+				$header = str_replace(array("'", "\\"), array(''), $header);
+
+				$body = json_decode(substr($response, $header_size), true);
+
+				if (isset($body['token']) && isset($body['expires_in'])) {
+					plugin_servcheck_debug('We got token and expiration, saving', $test);
+					db_execute_prepared ('UPDATE plugin_servcheck_restapi_method
+						SET token_value = ?, token_validity = DATE_ADD(NOW(), INTERVAL ? HOUR)
+						WHERE id = ?',
+						array($body['token'], $body['expires_in']), $api['id']);
+
+					$api['token'] = $body['token'];
+				} elseif (isset($body['token'])) {
+					plugin_servcheck_debug('We got token and don\'t know expiration. We will use it only one time.', $test);
+					$api['token'] = $body['token'];
+				} else {
+					plugin_servcheck_debug('We didn\'t get token.', $test);
+					$results['options'] = curl_getinfo($process);
+					$results['curl_return'] = curl_errno($process);
+					$results['data'] =  str_replace(array("'", "\\"), array(''), $response);
+					$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
+					return $results;
+				}
 			} else {
 				plugin_servcheck_debug('Using existing token' , $test);
-//				$http_headers[] = 'Authorization: Bearer '. $_SESSION['token'];
 			}
+
+			$http_headers = array();
+			unset ($options[CURLOPT_POSTFIELDS]);
+			$http_headers[] = 'Authorization: ' . $api['authid_name'] . ' ' . $api['token'];
+			$options[CURLOPT_HTTPHEADER] = $http_headers;
 
 			break;
 		case 'cookie':
 
 			// first we have to create login request and get cookie
-			$http_headers[] = "Content-Type: multipart/form-data";
-			$options[CURLOPT_HTTPHEADER] = $http_headers;
-
 			$cred_data = [
-				'username' => servcheck_show_text($api['username']),
-				'password' => servcheck_show_text($api['password'])
+				'username'   => servcheck_show_text($api['username']),
+				'password'   => servcheck_show_text($api['password'])
 			];
 
-			$cookie_file = $config['base_path'] . '/plugins/servcheck/cookie/' . $api['id']; 
+			if ($api['format'] == 'json') {
+				$cred_data = json_encode($cred_data);
+				$http_headers[] = "Content-Type: application/json";
+			}
 
+			if ($api['http_method'] == 'post') {
+				$options[CURLOPT_POSTFIELDS] = $cred_data;
+			} else {
+				$http_headers = $cred_data;
+			}
+
+			$options[CURLOPT_HTTPHEADER] = $http_headers;
+
+			$cookie_file = $config['base_path'] . '/plugins/servcheck/cookie/' . $api['id'];
 			$options[CURLOPT_COOKIEJAR] = $cookie_file;  // store cookie
-			$options[CURLOPT_POSTFIELDS] = $cred_data;
-
 			$process = curl_init($api['login_url']);
 
 			plugin_servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($options, true)));
@@ -792,39 +877,44 @@ function restapi_try ($test) {
 			plugin_servcheck_debug('Executing curl request for login: ' . $api['login_url'], $test);
 
 			$response = curl_exec($process);
-			$response = str_replace(array("'", "\\"), array(''), $response);
 
 			if (curl_errno($process) > 0) {
 				// Get information regarding a specific transfer, cert info too
 				$results['options'] = curl_getinfo($process);
 				$results['curl_return'] = curl_errno($process);
-				$results['data'] = $response;
+				$results['data'] =  str_replace(array("'", "\\"), array(''), $response);
 
 				plugin_servcheck_debug('Problem with login: ' . $results['curl_return'] , $test);
 
 				$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
+				return $results;
 			}
 
-			plugin_servcheck_debug('We got cookie, gathering data', $test);
+			$header_size = curl_getinfo($process, CURLINFO_HEADER_SIZE);
+			$header = substr($response, 0, $header_size);
+
+			if (preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', $header, $matches)) {
+				foreach ($matches[1] as $cookie) {
+					plugin_servcheck_debug('We got cookie', $test);
+				}
+			} else {
+				plugin_servcheck_debug('We didn\'t get cookie', $test);
+
+				// Get information regarding a specific transfer, cert info too
+				$results['options'] = curl_getinfo($process);
+				$results['curl_return'] = curl_errno($process);
+				$results['data'] =  str_replace(array("'", "\\"), array(''), $response);
+				$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
+				return $results;
+			}
+
+			$response = str_replace(array("'", "\\"), array(''), $response);
 
 			curl_close($process);
 
 			// preparing query to protected restapi
 
 			unset($http_headers);
-			if ($api['format'] == 'urlencoded') {
-				$http_headers[] = "Content-Type: multipart/form-data";
-			} elseif ($api['format'] == 'xml') {
-				$http_headers[] = "Content-Type: multipart/xml";
-			} else {
-				$http_headers[] = "Content-Type: multipart/json";
-			}
-
-			$options[CURLOPT_POST] = false;
-
-			$options[CURLOPT_HTTPHEADER] = $http_headers;
-
-			$url = $api['data_url'];
 			unset ($options[CURLOPT_POSTFIELDS]);
 			$options[CURLOPT_COOKIEFILE] = $cookie_file; // send cookie
 

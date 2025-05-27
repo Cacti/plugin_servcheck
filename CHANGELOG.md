@@ -4,11 +4,12 @@
 
 * feature: add dedicated folder for certificates and enhance the usage of custom certificate.
 * feature: add basic of rest api testing
+* feature#9: Add Rest API test
+* feature#23: Add MQTT and DNS over HTTPS test
 * issue#35: Fix certificate check does not function as expected
 * issue#2: Fix graph legend overlap
 * issue#31: Fix poller_servcheck.php does not run any test when it runs automatically from cacti poller
 * issue: Unable to save poller for service check
-* feature#23: Add MQTT and DNS over HTTPS test
 * issue#27: Fix all tests are enabled, however, some get performed and some don't
 * issue#30: Fix DNS tests
 

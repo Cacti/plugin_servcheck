@@ -85,8 +85,7 @@ function form_actions() {
 						$save['name']         = 'New Rest API (' . $newid . ')';
 						$save['type']         = 'basic';
 						$save['format']       = 'raw';
-						$save['authid_name']  = '';
-						$save['http_method']  = 'get';
+						$save['cred_name']  = '';
 						$save['username']     = '';
 						$save['password']     = '';
 						$save['login_url']    = '';
@@ -172,7 +171,7 @@ function form_actions() {
 }
 
 function form_save() {
-	global $rest_api_auth_method, $rest_api_format, $rest_api_http_method;
+	global $rest_api_auth_method, $rest_api_format;
 
 	/* ================= input validation ================= */
 	get_filter_request_var('id');
@@ -198,13 +197,6 @@ function form_save() {
 		$_SESSION['sess_error_fields']['format'] = 'format';
 	}
 
-	if (isset_request_var('http_method') && array_key_exists(get_nfilter_request_var('http_method'), $rest_api_http_method)) {
-		$save['http_method'] = get_nfilter_request_var('http_method');
-	} else {
-		raise_message(3);
-		$_SESSION['sess_error_fields']['http_method'] = 'http_method';
-	}
-
 	if (isset_request_var('name') && get_nfilter_request_var('name') != '' && get_filter_request_var('name', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
 		$save['name'] = get_nfilter_request_var('name');
 	}
@@ -217,12 +209,12 @@ function form_save() {
 		$save['password'] = servcheck_hide_text(get_nfilter_request_var('password'));
 	}
 
-	if (isset_request_var('authid_name') && get_nfilter_request_var('authid_name') != '' && get_filter_request_var('authid_name', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\-]{1,100}$/')))) {
-		$save['authid_name'] = get_nfilter_request_var('authid_name');
+	if (isset_request_var('cred_name') && get_nfilter_request_var('cred_name') != '' && get_filter_request_var('cred_name', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\-]{1,100}$/')))) {
+		$save['cred_name'] = get_nfilter_request_var('cred_name');
 	}
 
-	if (isset_request_var('token_value') && get_nfilter_request_var('token_value') != '' && get_filter_request_var('token_value', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-		$save['token_value'] = servcheck_hide_text(get_nfilter_request_var('token_value'));
+	if (isset_request_var('cred_value') && get_nfilter_request_var('cred_value') != '' && get_filter_request_var('cred_value', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+		$save['cred_value'] = servcheck_hide_text(get_nfilter_request_var('cred_value'));
 	}
 
 	if (isset_request_var('login_url') && get_nfilter_request_var('login_url') != '' && get_filter_request_var('login_url', FILTER_VALIDATE_URL)) {
@@ -272,8 +264,8 @@ function servcheck_edit_rest() {
 	if (isset($restapi['password'])) {
 		$restapi['password'] = servcheck_show_text($restapi['password']);
 	}
-	if (isset($restapi['token_value'])) {
-		$restapi['token_value'] = servcheck_show_text($restapi['token_value']);
+	if (isset($restapi['cred_value'])) {
+		$restapi['cred_value'] = servcheck_show_text($restapi['cred_value']);
 	}
 
 	form_start('servcheck_restapi.php');
@@ -310,14 +302,14 @@ function servcheck_edit_rest() {
 			case 'no':
 				$('#row_username').hide();
 				$('#row_password').hide();
-				$('#row_authid_name').hide();
-				$('#row_token_value').hide();
+				$('#row_cred_name').hide();
+				$('#row_cred_value').hide();
 				$('#row_login_url').hide();
 				$('#row_data_url').show();
 				break;
 			case 'basic':
-				$('#row_authid_name').hide();
-				$('#row_token_value').hide();
+				$('#row_cred_name').hide();
+				$('#row_cred_value').hide();
 				$('#row_login_url').hide();
 				$('#row_username').show();
 				$('#row_password').show();
@@ -325,16 +317,16 @@ function servcheck_edit_rest() {
 				$('#password').attr('type', 'password');
 				break
 			case 'apikey':
-				$('#row_authid_name').show();
-				$('#row_token_value').show();
-				$('#row_username').show();
-				$('#row_password').show();
-				$('#row_login_url').show();
+				$('#row_cred_name').show();
+				$('#row_cred_value').show();
+				$('#row_username').hide();
+				$('#row_password').hide();
+				$('#row_login_url').hide();
 				$('#row_data_url').show();
 				break;
 			case 'oauth2':
-				$('#row_authid_name').show();
-				$('#row_token_value').show();
+				$('#row_cred_name').show();
+				$('#row_cred_value').show();
 				$('#row_username').show();
 				$('#row_password').show();
 				$('#row_login_url').show();
@@ -342,7 +334,8 @@ function servcheck_edit_rest() {
 				$('#password').attr('type', 'password');
 				break;
 			case 'cookie':
-				$('#row_authid_name').show();
+				$('#row_cred_name').hide();
+				$('#row_cred_value').hide();
 				$('#row_username').show();
 				$('#row_password').show();
 				$('#row_login_url').show();
@@ -431,7 +424,7 @@ function list_restapis() {
 			'name RLIKE \'' . get_request_var('rfilter') . '\' OR ' .
 			'type RLIKE \'' . get_request_var('rfilter') . '\' OR ' .
 			'username RLIKE \'' . get_request_var('rfilter') . '\' OR ' .
-			'authid_name RLIKE \'' . get_request_var('rfilter') . '\'';
+			'cred_name RLIKE \'' . get_request_var('rfilter') . '\'';
 	}
 
 	$result = db_fetch_assoc("SELECT *, 

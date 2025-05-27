@@ -29,7 +29,7 @@ global	$servcheck_actions_proxy, $servcheck_actions_test, $servcheck_actions_ca,
 	$servcheck_proxy_fields, $servcheck_test_fields, $servcheck_ca_fields,
 	$servcheck_notify_accounts, $httperrors, $servcheck_seconds,
 	$search, $mail_serv, $service_types, $curl_error, $search_result, $servcheck_tabs,
-	$rest_api_format, $rest_api_http_method, $rest_api_auth_method, $servcheck_restapi_fields;
+	$rest_api_format, $rest_api_auth_method, $servcheck_restapi_fields;
 
 $servcheck_tabs = array(
 	'servcheck_test.php'      => __('Tests', 'servcheck'),
@@ -127,11 +127,6 @@ $rest_api_format = array(
 	'urlencoded'  => 'Form-urlencoded',
 //	'xml'            => 'XML',
 	'json'           => 'JSON'
-);
-
-$rest_api_http_method = array(
-	'get'  => 'GET',
-	'post' => 'POST'
 );
 
 
@@ -602,9 +597,10 @@ $servcheck_restapi_fields = array(
 		'description' => __('Details of auth methods:<br/>
 		No authorization - <i>just send only request and read the response.</i><br/>
 		Basic - <i>uses HTTP auth. Username and password is Base64 encoded. Credentials are not encrypted.</i><br/>
-		API key - <i>you need API key from your Rest API server. It will be send with all request.</i><br/>
+		API key - <i>you need API key from your Rest API server. It will be send with all request. Key is send ind http headers. You can also add it to the data URL.</i><br/>
 		OAuth2 - <i>Oauth2/bearer token auth. Insert your token or use your credentials for getting a token.</i><br/>
-		Cookie - <i>Use your credentials for getting cookie. Cookie will be send with each request.</i>', 'servcheck'),
+		Cookie - <i>Use your credentials for getting cookie. Cookie will be send with each request.</i><br/>
+		Note: HTTP method POST is used for login. For data query is used GET.', 'servcheck'),
 		'value' => '|arg1:type|',
 	),
 	'format' => array(
@@ -615,29 +611,21 @@ $servcheck_restapi_fields = array(
 		'description' => __('Select correct format for communication, check your Rest API documentation.', 'servcheck'),
 		'value' => '|arg1:format|',
 	),
-	'authid_name' => array(
+	'cred_name' => array(
 		'method' => 'textbox',
-		'friendly_name' => __('Token name', 'servcheck'),
-		'description' => __('Auth can use different token or API Key name. You can specify it here. 
-		Usually names are  \'Bearer\' for OAuth2,  \'apikey\' for API Key method. You need know correct name, check your Rest API server documentation. ', 'servcheck'),
-		'value' => '|arg1:authid_name|',
+		'friendly_name' => __('Token/API Key name', 'servcheck'),
+		'description' => __('Auth can use different token or API Key name. You can specify it here.
+		Commonly used names are  \'Bearer\' for OAuth2,  \'apikey\' for API Key method. You need know correct name, check your Rest API server documentation. ', 'servcheck'),
+		'value' => '|arg1:cred_name|',
 		'max_length' => '100',
 	),
-	'token_value' => array(
+	'cred_value' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('Token/API key value', 'servcheck'),
 		'description' => __('API key and OAuth2 have two flows - You can have key/token from server and insert it here 
 		or use auth flow with credentials.', 'servcheck'),
-		'value' => '|arg1:token_value|',
+		'value' => '|arg1:cred_value|',
 		'max_length' => '100',
-	),
-	'http_method' => array(
-		'friendly_name' => __('HTTP Method', 'servcheck'),
-		'method' => 'drop_array',
-		'array' => $rest_api_http_method,
-		'default' => 'get',
-		'description' => __('Select correct HTTP method for data query. It is ussually GET method. Oauth2/APIkey uses POST for login, it is used automatically. This settings is related to data query.', 'servcheck'),
-		'value' => '|arg1:http_method|',
 	),
 	'username' => array(
 		'method' => 'textbox',

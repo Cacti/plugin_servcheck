@@ -80,10 +80,9 @@ function plugin_servcheck_upgrade() {
 		$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 		$data['columns'][] = array('name' => 'type', 'type' => "enum('no','basic','apikey','oauth2','cookie')", 'NULL' => false, 'default' => 'basic');
 		$data['columns'][] = array('name' => 'format', 'type' => "enum('urlencoded','xml','json')", 'NULL' => false, 'default' => 'urlencoded');
-		$data['columns'][] = array('name' => 'authid_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-		$data['columns'][] = array('name' => 'token_value', 'type' => 'text', 'NULL' => true, 'default' => '');
-		$data['columns'][] = array('name' => 'token_validity', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
-		$data['columns'][] = array('name' => 'http_method', 'type' => "enum('get','post')", 'NULL' => false, 'default' => 'get');
+		$data['columns'][] = array('name' => 'cred_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
+		$data['columns'][] = array('name' => 'cred_value', 'type' => 'text', 'NULL' => true, 'default' => '');
+		$data['columns'][] = array('name' => 'cred_validity', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
 		$data['columns'][] = array('name' => 'username', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 		$data['columns'][] = array('name' => 'password', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 		$data['columns'][] = array('name' => 'login_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '');
@@ -254,10 +253,9 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'type', 'type' => "enum('no','basic','apikey','oauth2','cookie')", 'NULL' => false, 'default' => 'basic');
 	$data['columns'][] = array('name' => 'format', 'type' => "enum('urlencoded','xml','json')", 'NULL' => false, 'default' => 'urlencoded');
-	$data['columns'][] = array('name' => 'authid_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'token_value', 'type' => 'text', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'token_validity', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
-	$data['columns'][] = array('name' => 'http_method', 'type' => "enum('get','post')", 'NULL' => false, 'default' => 'get');
+	$data['columns'][] = array('name' => 'cred_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'cred_value', 'type' => 'text', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'cred_validity', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
 	$data['columns'][] = array('name' => 'username', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'password', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'login_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '');

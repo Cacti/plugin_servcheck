@@ -715,12 +715,6 @@ function restapi_try ($test) {
 		return $results;
 	}
 
-	if ($api['http_method'] == 'post') {
-		$options[CURLOPT_POST] = true;
-	} else {
-		$options[CURLOPT_POST] = false;
-	}
-
 	// Disable Cert checking for now
 	$options[CURLOPT_SSL_VERIFYPEER] = false;
 	$options[CURLOPT_SSL_VERIFYHOST] = false;
@@ -739,20 +733,12 @@ function restapi_try ($test) {
 			$options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
 			break;
 		case 'apikey':
-
-			$cred_data = [
-				$api['authid_name'] => servcheck_show_text($api['token_value'])
-			];
-
 			if ($api['format'] == 'json') {
 				$cred_data = json_encode($cred_data);
 				$http_headers[] = "Content-Type: application/json";
-			}
-
-			if ($api['http_method'] == 'post') {
-				$options[CURLOPT_POSTFIELDS] = $cred_data;
 			} else {
-				$http_headers[] = $api['authid_name'] . ': ' . servcheck_show_text($api['token_value']);
+			
+				$http_headers[] = $api['cred_name'] . ': ' . servcheck_show_text($api['cred_value']);
 			}
 
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
@@ -761,7 +747,7 @@ function restapi_try ($test) {
 		case 'oauth2':
 
 			$valid = db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_restapi_method
-				WHERE id = ? AND token_validity > NOW()',
+				WHERE id = ? AND cred_validity > NOW()',
 				array($api['id']));
 
 			if (!$valid) {
@@ -778,12 +764,8 @@ function restapi_try ($test) {
 					$http_headers[] = "Content-Type: application/json";
 				}
 
-				if ($api['http_method'] == 'post') {
-					$options[CURLOPT_POSTFIELDS] = $cred_data;
-				} else {
-					$http_headers[] = $cred_data;
-				}
-
+				$options[CURLOPT_POST] = true;
+				$options[CURLOPT_POSTFIELDS] = $cred_data;
 				$options[CURLOPT_HTTPHEADER] = $http_headers;
 
 				$process = curl_init($api['login_url']);
@@ -819,7 +801,7 @@ function restapi_try ($test) {
 				if (isset($body['token']) && isset($body['expires_in'])) {
 					plugin_servcheck_debug('We got token and expiration, saving', $test);
 					db_execute_prepared ('UPDATE plugin_servcheck_restapi_method
-						SET token_value = ?, token_validity = DATE_ADD(NOW(), INTERVAL ? HOUR)
+						SET cred_value = ?, cred_validity = DATE_ADD(NOW(), INTERVAL ? HOUR)
 						WHERE id = ?',
 						array($body['token'], $body['expires_in']), $api['id']);
 
@@ -840,8 +822,7 @@ function restapi_try ($test) {
 			}
 
 			$http_headers = array();
-			unset ($options[CURLOPT_POSTFIELDS]);
-			$http_headers[] = 'Authorization: ' . $api['authid_name'] . ' ' . $api['token'];
+			$http_headers[] = 'Authorization: ' . $api['cred_name'] . ' ' . $api['token'];
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
 
 			break;
@@ -858,12 +839,8 @@ function restapi_try ($test) {
 				$http_headers[] = "Content-Type: application/json";
 			}
 
-			if ($api['http_method'] == 'post') {
-				$options[CURLOPT_POSTFIELDS] = $cred_data;
-			} else {
-				$http_headers = $cred_data;
-			}
-
+			$options[CURLOPT_POST] = true;
+			$options[CURLOPT_POSTFIELDS] = $cred_data;
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
 
 			$cookie_file = $config['base_path'] . '/plugins/servcheck/cookie/' . $api['id'];
@@ -915,11 +892,14 @@ function restapi_try ($test) {
 			// preparing query to protected restapi
 
 			unset($http_headers);
-			unset ($options[CURLOPT_POSTFIELDS]);
 			$options[CURLOPT_COOKIEFILE] = $cookie_file; // send cookie
 
 			break;
 	}
+
+	// 99% ro requests are GET
+	$options[CURLOPT_POST] = false;
+	unset ($options[CURLOPT_POSTFIELDS]);
 
 	plugin_servcheck_debug('Final url is ' . $url , $test);
 

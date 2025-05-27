@@ -129,6 +129,16 @@ $rest_api_format = array(
 	'json'           => 'JSON'
 );
 
+$search_result = array(
+	'ok'            => __('String found', 'servcheck'),
+	'not ok'        => __('String not found', 'servcheck'),
+	'failed ok'     => __('Failed string found', 'servcheck'),
+	'failed not ok' => __('Failed string not found', 'servcheck'),
+	'maint ok'      => __('Maint string found', 'servcheck'),
+	'not yet'       => __('Not tested yet', 'servcheck'),
+	'not tested'    => __('Search not performed', 'servcheck')
+);
+
 
 $httperrors = array(
 	  0 => __('Unable to Connect', 'servcheck'),

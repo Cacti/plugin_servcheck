@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2024 The Cacti Group                                 |
+ | Copyright (C) 2004-2025 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -24,57 +24,57 @@
 
 include_once(__DIR__ . '/constants.php');
 
-global	$servcheck_actions_proxy, $servcheck_actions_test, $servcheck_actions_ca, $graph_interval,
+global	$servcheck_actions_proxy, $servcheck_actions_test, $servcheck_actions_ca,$servcheck_actions_restapi,
+	$graph_interval,
 	$servcheck_proxy_fields, $servcheck_test_fields, $servcheck_ca_fields,
 	$servcheck_notify_accounts, $httperrors, $servcheck_seconds,
-	$search, $mail_serv, $service_types, $curl_error, $search_result;
+	$search, $mail_serv, $service_types, $curl_error, $search_result, $servcheck_tabs,
+	$rest_api_format, $rest_api_auth_method, $servcheck_restapi_fields;
 
-$search_result = array(
-	'ok'            => __('String found', 'servcheck'),
-	'not ok'        => __('String not found', 'servcheck'),
-	'failed ok'     => __('Failed string found', 'servcheck'),
-	'failed not ok' => __('Failed string not found', 'servcheck'),
-	'maint ok'      => __('Maint string found', 'servcheck'),
-	'not yet'       => __('Not tested yet', 'servcheck'),
-	'not tested'    => __('Search not performed', 'servcheck')
+$servcheck_tabs = array(
+	'servcheck_test.php'      => __('Tests', 'servcheck'),
+	'servcheck_ca.php'        => __('CA certificates', 'servcheck'),
+	'servcheck_proxies.php'   => __('Proxies', 'servcheck'),
+	'servcheck_restapi.php'   => __('Rest API methods', 'servcheck'),
+	'servcheck_curl_code.php' => __('Curl return codes', 'servcheck'),
 );
 
 $service_types = array(
-	'web_http'        => __('HTTP plaintext, default port 80', 'servcheck'),
-	'web_https'       => __('HTTP encrypted (HTTPS), default port 443', 'servcheck'),
+	'web_http'     => __('HTTP plaintext, default port 80', 'servcheck'),
+	'web_https'    => __('HTTP encrypted (HTTPS), default port 443', 'servcheck'),
 
-	'mail_smtp'       => __('SMTP plaintext, default port 25 (or 587 for submission)', 'servcheck'),
-	'mail_smtptls'    => __('SMTP with STARTTLS, default port 25(or 587 for submission)', 'servcheck'),
-	'mail_smtps'      => __('SMTP encrypted (SMTPS), default port 465', 'servcheck'),
+	'mail_smtp'    => __('SMTP plaintext, default port 25 (or 587 for submission)', 'servcheck'),
+	'mail_smtptls' => __('SMTP with STARTTLS, default port 25(or 587 for submission)', 'servcheck'),
+	'mail_smtps'   => __('SMTP encrypted (SMTPS), default port 465', 'servcheck'),
 
-	'mail_imap'       => __('IMAP plaintext, default port 143', 'servcheck'),
-	'mail_imaptls'    => __('IMAP with STARTTLS, default port 143', 'servcheck'),
-	'mail_imaps'      => __('IMAP encrypted (IMAPS), default port 993', 'servcheck'),
+	'mail_imap'    => __('IMAP plaintext, default port 143', 'servcheck'),
+	'mail_imaptls' => __('IMAP with STARTTLS, default port 143', 'servcheck'),
+	'mail_imaps'   => __('IMAP encrypted (IMAPS), default port 993', 'servcheck'),
 
-	'mail_pop3'       => __('POP3 plaintext, default port 110', 'servcheck'),
-	'mail_pop3tls'    => __('POP3 with STARTTLS, default port 110', 'servcheck'),
-	'mail_pop3s'      => __('POP3 encrypted (POP3S), default port 995', 'servcheck'),
+	'mail_pop3'    => __('POP3 plaintext, default port 110', 'servcheck'),
+	'mail_pop3tls' => __('POP3 with STARTTLS, default port 110', 'servcheck'),
+	'mail_pop3s'   => __('POP3 encrypted (POP3S), default port 995', 'servcheck'),
 
-	'dns_dns'         => __('DNS plaintext, default port 53', 'servcheck'),
-	'dns_doh'         => __('DNS over HTTPS, default port 443', 'servcheck'),
+	'dns_dns'      => __('DNS plaintext, default port 53', 'servcheck'),
+	'dns_doh'      => __('DNS over HTTPS, default port 443', 'servcheck'),
 
-	'ldap_ldap'       => __('LDAP plaintext, default port 389', 'servcheck'),
-	'ldap_ldaps'      => __('LDAP encrypted (LDAPS), default port 636', 'servcheck'),
+	'ldap_ldap'    => __('LDAP plaintext, default port 389', 'servcheck'),
+	'ldap_ldaps'   => __('LDAP encrypted (LDAPS), default port 636', 'servcheck'),
 
-	'ftp_ftp'         => __('FTP plaintext, default port 21', 'servcheck'),
-	'ftp_ftps'        => __('FTP encrypted (FTPS), default port 990', 'servcheck'),
-	'ftp_scp'         => __('SCP download file, default port 22', 'servcheck'),
-	'ftp_tftp'        => __('TFTP protocol - download file, default port 69', 'servcheck'),
+	'ftp_ftp'      => __('FTP plaintext, default port 21', 'servcheck'),
+	'ftp_ftps'     => __('FTP encrypted (FTPS), default port 990', 'servcheck'),
+	'ftp_scp'      => __('SCP download file, default port 22', 'servcheck'),
+	'ftp_tftp'     => __('TFTP protocol - download file, default port 69', 'servcheck'),
 
-	'smb_smb'         => __('SMB plaintext download file, default port 445', 'servcheck'),
-	'smb_smbs'        => __('SMB encrypted (SMBS) download file, default port 445', 'servcheck'),
+	'smb_smb'      => __('SMB plaintext download file, default port 445', 'servcheck'),
+	'smb_smbs'     => __('SMB encrypted (SMBS) download file, default port 445', 'servcheck'),
 
-//	'telnet_telnet'   => __('Telnet plaintext, default port 23', 'servcheck'),
-	'mqtt_mqtt'       => __('MQTT plaintext, default port 1883', 'servcheck'),
+	'mqtt_mqtt'    => __('MQTT plaintext, default port 1883', 'servcheck'),
+
+	'restapi'      => __('Rest API', 'servcheck'),
 );
 
 $service_types_ports = array(
-
 	'web_http'        => 80,
 	'web_https'       => 443,
 
@@ -104,7 +104,6 @@ $service_types_ports = array(
 	'smb_smb'         => 389,
 	'smb_smbs'        => 636,
 
-//	'telnet_telnet'   => 23,
 	'mqtt_mqtt'       => 1883,
 );
 
@@ -114,6 +113,30 @@ $graph_interval = array (
 	  6 => __('Last 6 hours', 'servcheck'),
 	 24 => __('Last day', 'servcheck'),
 	168 => __('Last week', 'servcheck'),
+);
+
+$rest_api_auth_method = array(
+	'no'     => __('Without auth', 'servcheck'),
+	'basic'  => __('Basic HTTP auth', 'servcheck'),
+	'apikey' => __('API key auth - NOT TESTED', 'servcheck'),
+	'oauth2' => __('OAuth2/Bearer token auth', 'servcheck'),
+	'cookie' => __('Cookie based auth', 'servcheck'),
+);
+
+$rest_api_format = array(
+	'urlencoded'  => 'Form-urlencoded',
+//	'xml'            => 'XML',
+	'json'           => 'JSON'
+);
+
+$search_result = array(
+	'ok'            => __('String found', 'servcheck'),
+	'not ok'        => __('String not found', 'servcheck'),
+	'failed ok'     => __('Failed string found', 'servcheck'),
+	'failed not ok' => __('Failed string not found', 'servcheck'),
+	'maint ok'      => __('Maint string found', 'servcheck'),
+	'not yet'       => __('Not tested yet', 'servcheck'),
+	'not tested'    => __('Search not performed', 'servcheck')
 );
 
 
@@ -221,6 +244,11 @@ $servcheck_actions_test = array(
 	SERVCHECK_ACTION_TEST_DISABLE   => __('Disable', 'servcheck'),
 	SERVCHECK_ACTION_TEST_ENABLE    => __('Enable', 'servcheck'),
 	SERVCHECK_ACTION_TEST_DUPLICATE => __('Duplicate', 'servcheck'),
+);
+
+$servcheck_actions_restapi = array(
+	SERVCHECK_ACTION_RESTAPI_DELETE    => __('Delete', 'servcheck'),
+	SERVCHECK_ACTION_RESTAPI_DUPLICATE => __('Duplicate', 'servcheck'),
 );
 
 $servcheck_ca_fields = array(
@@ -421,6 +449,15 @@ $servcheck_test_fields = array(
 		'default' => '0',
 		'sql' => 'SELECT id, name FROM plugin_servcheck_proxies ORDER by name'
 	),
+	'restapi_id' => array(
+		'method' => 'drop_sql',
+		'friendly_name' => __('Rest API method', 'servcheck'),
+		'description' => __('Select your prepared Rest API configuration.', 'servcheck'),
+		'value' => '|arg1:restapi_id|',
+		'none_value' => __('None', 'servcheck'),
+		'default' => '0',
+		'sql' => 'SELECT id, name FROM plugin_servcheck_restapi_method ORDER by name'
+	),
 	'checkcert' => array(
 		'method' => 'checkbox',
 		'friendly_name' => __('Check Certificate', 'servcheck'),
@@ -546,6 +583,88 @@ $servcheck_test_fields = array(
 		'method' => 'hidden_zero',
 		'value' => '|arg1:id|'
 	),
+);
+
+
+$servcheck_restapi_fields = array(
+	'general_spacer' => array(
+		'method' => 'spacer',
+		'friendly_name' => __('General Settings', 'servcheck')
+	),
+	'name' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Rest API Name', 'servcheck'),
+		'description' => __('The name that is displayed for this Rest API.', 'servcheck'),
+		'value' => '|arg1:name|',
+		'max_length' => '100',
+	),
+	'type' => array(
+		'friendly_name' => __('Auth type', 'servcheck'),
+		'method' => 'drop_array',
+		'on_change' => 'setRestAPI()',
+		'array' => $rest_api_auth_method,
+		'default' => 'basic_auth',
+		'description' => __('Details of auth methods:<br/>
+		No authorization - <i>just send only request and read the response.</i><br/>
+		Basic - <i>uses HTTP auth. Username and password is Base64 encoded. Credentials are not encrypted.</i><br/>
+		API key - <i>you need API key from your Rest API server. It will be send with all request. Key is send ind http headers. You can also add it to the data URL.</i><br/>
+		OAuth2 - <i>Oauth2/bearer token auth. Insert your token or use your credentials for getting a token.</i><br/>
+		Cookie - <i>Use your credentials for getting cookie. Cookie will be send with each request.</i><br/>
+		Note: HTTP method POST is used for login. For data query is used GET.', 'servcheck'),
+		'value' => '|arg1:type|',
+	),
+	'format' => array(
+		'friendly_name' => __('Data Format', 'servcheck'),
+		'method' => 'drop_array',
+		'array' => $rest_api_format,
+		'default' => 'urlencoded',
+		'description' => __('Select correct format for communication, check your Rest API documentation.', 'servcheck'),
+		'value' => '|arg1:format|',
+	),
+	'cred_name' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Token/API Key name', 'servcheck'),
+		'description' => __('Auth can use different token or API Key name. You can specify it here.
+		Commonly used names are  \'Bearer\' for OAuth2,  \'apikey\' for API Key method. You need know correct name, check your Rest API server documentation. ', 'servcheck'),
+		'value' => '|arg1:cred_name|',
+		'max_length' => '100',
+	),
+	'cred_value' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Token/API key value', 'servcheck'),
+		'description' => __('API key and OAuth2 have two flows - You can have key/token from server and insert it here 
+		or use auth flow with credentials.', 'servcheck'),
+		'value' => '|arg1:cred_value|',
+		'max_length' => '100',
+	),
+	'username' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Username', 'servcheck'),
+		'description' => __('If auth uses credentials, insert it here. In the case of oauth2, this field is called client id.', 'servcheck'),
+		'value' => '|arg1:username|',
+		'max_length' => '100',
+	),
+	'password' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Password', 'servcheck'),
+		'description' => __('If auth uses credentials, insert it here. In the case of oauth2, this field is called client secret.', 'servcheck'),
+		'value' => '|arg1:password|',
+		'max_length' => '100',
+	),
+	'login_url' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Login URL', 'servcheck'),
+		'description' => __('URL which is used to log in or get the token.', 'servcheck'),
+		'value' => '|arg1:login_url|',
+		'max_length' => '200',
+	),
+	'data_url' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Data URL', 'servcheck'),
+		'description' => __('URL to retrieve data. Insert with http:// or https://', 'servcheck'),
+		'value' => '|arg1:data_url|',
+		'max_length' => '200',
+	)
 );
 
 $curl_error = array(
@@ -950,4 +1069,5 @@ $curl_error = array(
 		'description' => __('An internal call to poll() or select() returned error that is not recoverable.', 'servcheck')
 	)
 );
+
 

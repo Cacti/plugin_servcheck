@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2024 The Cacti Group                                 |
+ | Copyright (C) 2004-2025 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -64,7 +64,8 @@ function proxy_form_actions() {
 				}
 
 				if (cacti_sizeof($proxies)) {
-					db_execute('DELETE FROM plugin_servcheck_proxies WHERE ' . array_to_sql_or($proxies, 'id'));
+					db_execute_prepared('DELETE FROM plugin_servcheck_proxies WHERE id = ?', array(array_to_sql_or($proxies, 'id')));
+					db_execute_prepared('UPDATE plugin_servcheck_test SET proxy = 0 WHERE proxy = ?', array(array_to_sql_or($proxies, 'proxy_server')));
 				}
 			}
 		}
@@ -160,6 +161,8 @@ function proxy_edit() {
 	get_filter_request_var('id');
 	/* ==================================================== */
 
+	$proxy = array();
+
 	if (!isempty_request_var('id')) {
 		$proxy = db_fetch_row_prepared('SELECT *
 			FROM plugin_servcheck_proxies
@@ -180,7 +183,7 @@ function proxy_edit() {
 	draw_edit_form(
 		array(
 			'config' => array('no_form_tag' => true),
-			'fields' => inject_form_variables($servcheck_proxy_fields, (isset($proxy) ? $proxy : array()))
+			'fields' => inject_form_variables($servcheck_proxy_fields, $proxy)
 		)
 	);
 
@@ -193,7 +196,6 @@ function proxy_edit() {
 	bottom_footer();
 }
 
-/* file: rra.php, action: edit */
 /**
  *  This is a generic function for this page that makes sure that
  *  we have a good request.  We want to protect against people who
@@ -228,7 +230,7 @@ function request_validation() {
 			)
 	);
 
-	validate_store_request_vars($filters, 'sess_ws_proxy');
+	validate_store_request_vars($filters, 'sess_servcheck_proxy');
 	/* ================= input validation ================= */
 }
 
@@ -311,8 +313,6 @@ function proxies() {
 
 			form_end_row();
 		}
-	} else {
-		print '<tr><td colspan="' . $columns . '"><em>' . __('No Servers Found', 'servcheck') . '</em></td></tr>';
 	}
 
 	html_end_box(false);

@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2024 The Cacti Group                                 |
+ | Copyright (C) 2004-2025 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -65,7 +65,7 @@ function ca_form_actions() {
 
 				if (cacti_sizeof($cas)) {
 					db_execute('DELETE FROM plugin_servcheck_ca WHERE ' . array_to_sql_or($cas, 'id'));
-					db_execute('UPDATE plugin_servcheck_test SET ca = 0  WHERE ' . array_to_sql_or($cas, 'id'));
+					db_execute('UPDATE plugin_servcheck_test SET ca = 0  WHERE ' . array_to_sql_or($cas, 'ca'));
 				}
 			}
 		}
@@ -219,7 +219,7 @@ function request_validation() {
 			)
 	);
 
-	validate_store_request_vars($filters, 'sess_sc_ca');
+	validate_store_request_vars($filters, 'sess_servcheck_ca');
 	/* ================= input validation ================= */
 }
 
@@ -292,8 +292,6 @@ function ca() {
 
 			form_end_row();
 		}
-	} else {
-		print '<tr><td colspan="' . $columns . '"><em>' . __('No CAs Found', 'servcheck') . '</em></td></tr>';
 	}
 
 	html_end_box(false);

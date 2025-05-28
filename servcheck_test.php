@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2024 The Cacti Group                                 |
+ | Copyright (C) 2004-2025 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -130,27 +130,25 @@ function form_actions() {
 						db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "on" WHERE id = ?', array($id));
 					}
 				} elseif ($action == SERVCHECK_ACTION_TEST_DUPLICATE) { // duplicate
-					foreach($tests as $test) {
-						$newid = 1;
+					$newid = 1;
 
-						foreach ($tests as $id) {
-							$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_test WHERE id = ?', array($id));
-							$save['id']           = 0;
-							$save['display_name'] = 'New Service Check (' . $newid . ')';
-							$save['path']         = '/';
-							$save['lastcheck']    = '0000-00-00 00:00:00';
-							$save['triggered']    = 0;
-							$save['enabled']      = '';
-							$save['username']     = '';
-							$save['password']     = '';
-							$save['failures']     = 0;
-							$save['stats_ok']     = 0;
-							$save['stats_bad']    = 0;
+					foreach ($tests as $id) {
+						$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_test WHERE id = ?', array($id));
+						$save['id']           = 0;
+						$save['display_name'] = 'New Service Check (' . $newid . ')';
+						$save['path']         = '/';
+						$save['lastcheck']    = '0000-00-00 00:00:00';
+						$save['triggered']    = 0;
+						$save['enabled']      = '';
+						$save['username']     = '';
+						$save['password']     = '';
+						$save['failures']     = 0;
+						$save['stats_ok']     = 0;
+						$save['stats_bad']    = 0;
 
-							$id = sql_save($save, 'plugin_servcheck_test');
+						$id = sql_save($save, 'plugin_servcheck_test');
 
-							$newid++;
-						}
+						$newid++;
 					}
 				}
 			}
@@ -194,7 +192,7 @@ function form_actions() {
 				</td>
 			</tr>";
 
-			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete rest', 'Delete tests', cacti_sizeof($test_array)) . "'>";
+			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete test', 'Delete tests', cacti_sizeof($test_array)) . "'>";
 		} elseif ($action == SERVCHECK_ACTION_TEST_DISABLE) {
 			print "<tr>
 				<td class='topBoxAlt'>
@@ -289,7 +287,11 @@ function form_save() {
 
 	if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $service_types)) {
 		$save['type'] = get_nfilter_request_var('type');
-		list ($category, $subcategory) = explode('_', get_nfilter_request_var('type'));
+		if (get_nfilter_request_var('type') != 'restapi') {
+			list ($category, $subcategory) = explode('_', get_nfilter_request_var('type'));
+		} else {
+			$category = 'restapi';
+		}
 	} else {
 		raise_message(3);
 		$_SESSION['sess_error_fields']['type'] = 'type';
@@ -298,8 +300,10 @@ function form_save() {
 	if (get_filter_request_var('hostname', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-zA-Z0-9\.\-]+(\:[0-9]{1,5})?$/')))) {
 		$save['hostname'] = get_nfilter_request_var('hostname');
 	} else {
-		raise_message(3);
-		$_SESSION['sess_error_fields']['hostname'] = 'hostname';
+		if ($category != 'restapi') {
+			raise_message(3);
+			$_SESSION['sess_error_fields']['hostname'] = 'hostname';
+		}
 	}
 
 	if ($category == 'dns') {
@@ -327,6 +331,15 @@ function form_save() {
 		} else {
 			raise_message(3);
 			$_SESSION['sess_error_fields']['ldapsearch'] = 'ldapsearch';
+		}
+	}
+
+	if ($category == 'restapi') {
+		if (get_filter_request_var('restapi_id') && get_nfilter_request_var('restapi_id') > 0) {
+			$save['restapi_id'] = get_nfilter_request_var('restapi_id');
+		} else {
+			raise_message(3);
+			$_SESSION['sess_error_fields']['restapi_id'] = 'restapi_id';
 		}
 	}
 
@@ -422,7 +435,6 @@ function purge_log_events($id) {
 function servcheck_edit_test() {
 	global $servcheck_test_fields, $service_types;
 
-
 	/* ================= input validation ================= */
 	get_filter_request_var('id');
 	/* ==================================================== */
@@ -461,6 +473,8 @@ function servcheck_edit_test() {
 	html_end_box();
 
 	form_save_button('servcheck_test.php', 'return');
+
+	form_end();
 
 	?>
 	<script type='text/javascript'>
@@ -537,6 +551,7 @@ function servcheck_edit_test() {
 
 		switch(category) {
 			case 'web':
+				$('#row_restapi_id').hide();
 				$('#row_dns_query').hide();
 				$('#row_username').hide();
 				$('#row_password').hide();
@@ -560,6 +575,7 @@ function servcheck_edit_test() {
 
 				break;
 			case 'mail':
+				$('#row_restapi_id').hide();
 				$('#row_path').hide();
 				$('#row_requiresauth').hide();
 				$('#row_proxy_server').hide();
@@ -584,6 +600,7 @@ function servcheck_edit_test() {
 
 				break
 			case 'dns':
+				$('#row_restapi_id').hide();
 				$('#row_path').hide();
 				$('#row_requiresauth').hide();
 				$('#row_proxy_server').hide();
@@ -604,6 +621,7 @@ function servcheck_edit_test() {
 				break;
 
 			case 'ldap':
+				$('#row_restapi_id').hide();
 				$('#row_dns_query').hide();
 				$('#row_path').hide();
 				$('#row_requiresauth').hide();
@@ -617,6 +635,7 @@ function servcheck_edit_test() {
 
 				break;
 			case 'ftp':
+				$('#row_restapi_id').hide();
 				$('#row_dns_query').hide();
 				$('#row_requiresauth').hide();
 				$('#row_proxy_server').hide();
@@ -635,6 +654,7 @@ function servcheck_edit_test() {
 
 				break;
 			case 'smb':
+				$('#row_restapi_id').hide();
 				$('#row_dns_query').hide();
 				$('#row_requiresauth').hide();
 				$('#row_proxy_server').hide();
@@ -648,6 +668,7 @@ function servcheck_edit_test() {
 
 				break;
 			case 'mqtt':
+				$('#row_restapi_id').hide();
 				$('#row_dns_query').hide();
 				$('#row_requiresauth').hide();
 				$('#row_proxy_server').hide();
@@ -661,6 +682,22 @@ function servcheck_edit_test() {
 				$('#row_path').show();
 
 				$('#password').attr('type', 'password');
+				break;
+			case 'restapi':
+				$('#row_hostname').hide();
+				$('#row_path').hide();
+				$('#row_dns_query').hide();
+				$('#row_requiresauth').hide();
+				$('#row_proxy_server').hide();
+				$('#row_ldapsearch').hide();
+				$('#row_ca').hide();
+				$('#row_checkcert').hide();
+				$('#row_certexpirenotify').hide();
+				$('#row_username').hide();
+				$('#row_password').hide();
+
+				$('#row_restapi_id').show();
+
 				break;
 		}
 	}
@@ -849,7 +886,7 @@ function servcheck_show_history() {
 		),
 	);
 
-	$nav = html_nav_bar('servcheck_test.php?action=history', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, cacti_sizeof($display_text), __('Tests', 'servcheck'), 'page', 'main');
+	$nav = html_nav_bar('servcheck_test.php?action=history', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, cacti_sizeof($display_text), __('Records', 'servcheck'), 'page', 'main');
 
 	servcheck_show_tab('servcheck_test.php');
 
@@ -887,9 +924,6 @@ function servcheck_show_history() {
 
 			form_end_row();
 		}
-	} else {
-		form_alternate_row();
-		print '<td colspan="' . (cacti_sizeof($display_text)) . '"><i>' . __('No Service Check Events in History', 'servcheck') . '</i></td></tr>';
 	}
 
 	html_end_box(false);
@@ -952,37 +986,6 @@ function servcheck_show_last_data() {
 
 function list_tests() {
 	global $servcheck_actions_test, $httperrors, $config, $hostid, $refresh;
-
-	/* ================= input validation and session storage ================= */
-	$filters = array(
-		'rows' => array(
-			'filter' => FILTER_VALIDATE_INT,
-			'pageset' => true,
-			'default' => '-1'
-		),
-		'state' => array(
-			'filter' => FILTER_VALIDATE_INT,
-			'pageset' => true,
-			'default' => '-1'
-		),
-		'refresh' => array(
-			'filter' => FILTER_VALIDATE_INT,
-			'default' => read_config_option('log_refresh_interval')
-		),
-		'sort_column' => array(
-			'filter' => FILTER_CALLBACK,
-			'default' => 'display_name',
-			'options' => array('options' => 'sanitize_search_string')
-		),
-		'sort_direction' => array(
-			'filter' => FILTER_CALLBACK,
-			'default' => 'ASC',
-			'options' => array('options' => 'sanitize_search_string')
-		)
-	);
-
-	validate_store_request_vars($filters, 'sess_wbsu');
-	/* ================= input validation ================= */
 
 	servcheck_request_validation();
 
@@ -1188,7 +1191,7 @@ function list_tests() {
 		}
 	} else {
 		form_alternate_row();
-		print '<td colspan="' . (cacti_sizeof($display_text) + 1) . '"><center>' . __('No Tests Found', 'servcheck') . '</center></td></tr>';
+		print '<td colspan="' . (cacti_sizeof($display_text) + 1) . '"><center>' . __('No Records Found', 'servcheck') . '</center></td></tr>';
 	}
 
 	html_end_box(false);

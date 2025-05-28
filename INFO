@@ -1,5 +1,5 @@
 ; +-------------------------------------------------------------------------+
-; | Copyright (C) 2004-2024 The Cacti Group                                 |
+; | Copyright (C) 2004-2025 The Cacti Group                                 |
 ; |                                                                         |
 ; | This program is free software; you can redistribute it and/or           |
 ; | modify it under the terms of the GNU General Public License             |
@@ -21,7 +21,7 @@
 
 [info]
 name = servcheck
-version = 0.2
+version = 0.3
 longname = Service Monitor
 author = The Cacti Group, Petr Macek
 email = developers@cacti.net, petr.macek@kostax.cz

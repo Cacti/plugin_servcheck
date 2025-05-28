@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2024 The Cacti Group                                 |
+ | Copyright (C) 2004-2025 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -30,6 +30,10 @@ define('SERVCHECK_ACTION_TEST_DELETE',    1);
 define('SERVCHECK_ACTION_TEST_DISABLE',   2);
 define('SERVCHECK_ACTION_TEST_ENABLE',    3);
 define('SERVCHECK_ACTION_TEST_DUPLICATE', 4);
+
+define('SERVCHECK_ACTION_RESTAPI_DELETE',    1);
+define('SERVCHECK_ACTION_RESTAPI_DUPLICATE', 2);
+
 
 define('SERVCHECK_FORMAT_HTML', 0);
 define('SERVCHECK_FORMAT_PLAIN', 1);

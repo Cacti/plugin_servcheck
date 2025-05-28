@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2024 The Cacti Group                                 |
+ | Copyright (C) 2004-2025 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -403,7 +403,6 @@ function mqtt_try ($test) {
 	if ($test['path'] == '') {
 		// try any message
 		$test['path'] = '/%23';
-//		$test['path'] = '/%24SYS/broker/uptime';
 	}
 
 	$url = 'mqtt://' . $cred . $test['hostname'] . $test['path'];
@@ -682,4 +681,317 @@ function doh_try ($test) {
 
 	return $results;
 }
+
+
+function restapi_try ($test) {
+	global $user_agent, $config, $ca_info, $rest_api_auth_method;
+
+	$cert_info = array();
+	$http_headers = array();
+
+	// default result
+	$results['result'] = 'ok';
+	$results['time'] = time();
+	$results['error'] = '';
+	$results['result_search'] = 'not tested';
+
+	$options = array(
+		CURLOPT_HEADER         => true,
+		CURLOPT_USERAGENT      => $user_agent,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_MAXREDIRS      => 4,
+		CURLOPT_TIMEOUT        => $test['timeout_trigger'],
+		CURLOPT_CAINFO         => $ca_info,
+	);
+
+	$api = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_restapi_method
+		WHERE id = ?', array($test['restapi_id']));
+
+	if (is_null($api)) {
+		cacti_log('Rest API method not set');
+		$results['result'] = 'error';
+		$results['error'] = 'Rest API method not set';
+		return $results;
+	}
+
+	// Disable Cert checking for now
+	$options[CURLOPT_SSL_VERIFYPEER] = false;
+	$options[CURLOPT_SSL_VERIFYHOST] = false;
+
+	$url = $api['data_url'];
+
+	plugin_servcheck_debug('Using Rest API method ' . $rest_api_auth_method[$api['type']] , $test);
+
+	switch ($api['type']) {
+		case 'no':
+			// nothing to do
+			break;
+		case 'basic':
+			// we don't need set content type for login or GET/POST request because we don't set any data
+			$options[CURLOPT_USERPWD] = servcheck_show_text($api['username']) . ':' . servcheck_show_text($api['password']);
+			$options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
+			break;
+		case 'apikey':
+			if ($api['format'] == 'json') {
+				$cred_data = json_encode($cred_data);
+				$http_headers[] = "Content-Type: application/json";
+			} else {
+			
+				$http_headers[] = $api['cred_name'] . ': ' . servcheck_show_text($api['cred_value']);
+			}
+
+			$options[CURLOPT_HTTPHEADER] = $http_headers;
+
+			break;
+		case 'oauth2':
+
+			$valid = db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_restapi_method
+				WHERE id = ? AND cred_validity > NOW()',
+				array($api['id']));
+
+			if (!$valid) {
+				plugin_servcheck_debug('No valid token, generating new request' , $test);
+
+				$cred_data = [
+					'grant_type' => 'password',
+					'username'   => servcheck_show_text($api['username']),
+					'password'   => servcheck_show_text($api['password'])
+				];
+
+				if ($api['format'] == 'json') {
+					$cred_data = json_encode($cred_data);
+					$http_headers[] = "Content-Type: application/json";
+				}
+
+				$options[CURLOPT_POST] = true;
+				$options[CURLOPT_POSTFIELDS] = $cred_data;
+				$options[CURLOPT_HTTPHEADER] = $http_headers;
+
+				$process = curl_init($api['login_url']);
+
+				plugin_servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($options, true)));
+
+				curl_setopt_array($process,$options);
+
+				plugin_servcheck_debug('Executing curl request for login: ' . $api['login_url'], $test);
+
+				$response = curl_exec($process);
+
+				if (curl_errno($process) > 0) {
+					// Get information regarding a specific transfer, cert info too
+					$results['options'] = curl_getinfo($process);
+					$results['curl_return'] = curl_errno($process);
+					$results['data'] = $response;
+
+					plugin_servcheck_debug('Problem with login: ' . $results['curl_return'] , $test);
+
+					$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
+					return $results;
+				}
+
+				curl_close($process);
+
+				$header_size = curl_getinfo($process, CURLINFO_HEADER_SIZE);
+				$header = substr($response, 0, $header_size);
+				$header = str_replace(array("'", "\\"), array(''), $header);
+
+				$body = json_decode(substr($response, $header_size), true);
+
+				if (isset($body['token']) && isset($body['expires_in'])) {
+					plugin_servcheck_debug('We got token and expiration, saving', $test);
+					db_execute_prepared ('UPDATE plugin_servcheck_restapi_method
+						SET cred_value = ?, cred_validity = DATE_ADD(NOW(), INTERVAL ? HOUR)
+						WHERE id = ?',
+						array($body['token'], $body['expires_in']), $api['id']);
+
+					$api['token'] = $body['token'];
+				} elseif (isset($body['token'])) {
+					plugin_servcheck_debug('We got token and don\'t know expiration. We will use it only one time.', $test);
+					$api['token'] = $body['token'];
+				} else {
+					plugin_servcheck_debug('We didn\'t get token.', $test);
+					$results['options'] = curl_getinfo($process);
+					$results['curl_return'] = curl_errno($process);
+					$results['data'] =  str_replace(array("'", "\\"), array(''), $response);
+					$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
+					return $results;
+				}
+			} else {
+				plugin_servcheck_debug('Using existing token' , $test);
+			}
+
+			$http_headers = array();
+			$http_headers[] = 'Authorization: ' . $api['cred_name'] . ' ' . $api['token'];
+			$options[CURLOPT_HTTPHEADER] = $http_headers;
+
+			break;
+		case 'cookie':
+
+			// first we have to create login request and get cookie
+			$cred_data = [
+				'username'   => servcheck_show_text($api['username']),
+				'password'   => servcheck_show_text($api['password'])
+			];
+
+			if ($api['format'] == 'json') {
+				$cred_data = json_encode($cred_data);
+				$http_headers[] = "Content-Type: application/json";
+			}
+
+			$options[CURLOPT_POST] = true;
+			$options[CURLOPT_POSTFIELDS] = $cred_data;
+			$options[CURLOPT_HTTPHEADER] = $http_headers;
+
+			$cookie_file = $config['base_path'] . '/plugins/servcheck/cookie/' . $api['id'];
+			$options[CURLOPT_COOKIEJAR] = $cookie_file;  // store cookie
+			$process = curl_init($api['login_url']);
+
+			plugin_servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($options, true)));
+
+			curl_setopt_array($process,$options);
+
+			plugin_servcheck_debug('Executing curl request for login: ' . $api['login_url'], $test);
+
+			$response = curl_exec($process);
+
+			if (curl_errno($process) > 0) {
+				// Get information regarding a specific transfer, cert info too
+				$results['options'] = curl_getinfo($process);
+				$results['curl_return'] = curl_errno($process);
+				$results['data'] =  str_replace(array("'", "\\"), array(''), $response);
+
+				plugin_servcheck_debug('Problem with login: ' . $results['curl_return'] , $test);
+
+				$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
+				return $results;
+			}
+
+			$header_size = curl_getinfo($process, CURLINFO_HEADER_SIZE);
+			$header = substr($response, 0, $header_size);
+
+			if (preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', $header, $matches)) {
+				foreach ($matches[1] as $cookie) {
+					plugin_servcheck_debug('We got cookie', $test);
+				}
+			} else {
+				plugin_servcheck_debug('We didn\'t get cookie', $test);
+
+				// Get information regarding a specific transfer, cert info too
+				$results['options'] = curl_getinfo($process);
+				$results['curl_return'] = curl_errno($process);
+				$results['data'] =  str_replace(array("'", "\\"), array(''), $response);
+				$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
+				return $results;
+			}
+
+			$response = str_replace(array("'", "\\"), array(''), $response);
+
+			curl_close($process);
+
+			// preparing query to protected restapi
+
+			unset($http_headers);
+			$options[CURLOPT_COOKIEFILE] = $cookie_file; // send cookie
+
+			break;
+	}
+
+	// 99% ro requests are GET
+	$options[CURLOPT_POST] = false;
+	unset ($options[CURLOPT_POSTFIELDS]);
+
+	plugin_servcheck_debug('Final url is ' . $url , $test);
+
+	$process = curl_init($url);
+
+	plugin_servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
+
+	curl_setopt_array($process,$options);
+
+	plugin_servcheck_debug('Executing curl request', $test);
+
+	$data = curl_exec($process);
+	$data = str_replace(array("'", "\\"), array(''), $data);
+	$results['data'] = $data;
+
+	// Get information regarding a specific transfer, cert info too
+	$results['options'] = curl_getinfo($process);
+
+	$results['curl_return'] = curl_errno($process);
+
+	plugin_servcheck_debug('cURL error: ' . $results['curl_return']);
+
+	plugin_servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
+
+	if ($results['curl_return'] > 0) {
+		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
+	}
+
+	curl_close($process);
+
+	// not found?
+	if ($results['options']['http_code'] == 404) {
+		$results['result'] = 'error';
+		$results['error'] = '404 - Not found';
+		return $results;
+	}
+
+	if (empty($results['data']) && $results['curl_return'] > 0) {
+		$results['result'] = 'error';
+		$results['error'] = 'No data returned';
+
+		return $results;
+	}
+
+	// If we have set a failed search string, then ignore the normal searches and only alert on it
+	if ($test['search_failed'] != '') {
+
+		plugin_servcheck_debug('Processing search_failed');
+
+		if (strpos($data, $test['search_failed']) !== false) {
+			plugin_servcheck_debug('Search failed string success');
+			$results['result_search'] = 'failed ok';
+			return $results;
+		}
+	}
+
+	plugin_servcheck_debug('Processing search');
+
+	if ($test['search'] != '') {
+
+		if (strpos($data, $test['search']) !== false) {
+			plugin_servcheck_debug('Search string success');
+			$results['result_search'] = 'ok';
+			return $results;
+		} else {
+			plugin_servcheck_debug('String not found');
+			$results['result_search'] = 'not ok';
+			return $results;
+		}
+	}
+
+	if ($test['search_maint'] != '') {
+
+		plugin_servcheck_debug('Processing search maint');
+
+		if (strpos($data, $test['search_maint']) !== false) {
+			plugin_servcheck_debug('Search maint string success');
+			$results['result_search'] = 'maint ok';
+			return $results;
+		}
+	}
+
+	if ($test['requiresauth'] != '') {
+
+		plugin_servcheck_debug('Processing requires no authentication required');
+
+		if ($results['options']['http_code'] != 401) {
+			$results['error'] = 'The requested URL returned error: ' . $results['options']['http_code'];
+		}
+	}
+
+	return $results;
+}
+
 

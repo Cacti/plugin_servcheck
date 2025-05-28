@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2024 The Cacti Group                                 |
+ | Copyright (C) 2004-2025 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -156,9 +156,15 @@ $x = 0;
 $results = array();
 
 while ($x < 3) {
-	plugin_servcheck_debug('Service Check Number ' . $x, $test);
+	plugin_servcheck_debug('Service Check attemp ' . $x, $test);
 
-	list($category,$type) = explode('_', $test['type']);
+	if ($test['type'] != 'restapi') {
+		list($category,$type) = explode('_', $test['type']);
+	} else {
+		$type = 'none';
+		$category = 'restapi';
+	}
+
 	include_once($config['base_path'] . '/plugins/servcheck/includes/tests.php');
 
 	switch ($category) {
@@ -180,6 +186,9 @@ while ($x < 3) {
 			} else {
 				$results = dns_try($test);
 			}
+			break;
+		case 'restapi':
+			$results = restapi_try($test);
 			break;
 	}
 

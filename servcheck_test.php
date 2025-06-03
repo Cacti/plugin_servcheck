@@ -293,17 +293,13 @@ function form_save() {
 			$category = 'restapi';
 		}
 	} else {
-		raise_message(3);
 		$_SESSION['sess_error_fields']['type'] = 'type';
+		raise_message(3);
 	}
 
-	if (get_filter_request_var('hostname', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-zA-Z0-9\.\-]+(\:[0-9]{1,5})?$/')))) {
+	if (isset_request_var('hostname')) {
+		form_input_validate(get_nfilter_request_var('hostname'), 'hostname', '^[a-zA-Z0-9\.\-]+(\:[0-9]{1,5})?$', false, 3);
 		$save['hostname'] = get_nfilter_request_var('hostname');
-	} else {
-		if ($category != 'restapi') {
-			raise_message(3);
-			$_SESSION['sess_error_fields']['hostname'] = 'hostname';
-		}
 	}
 
 	if ($category == 'dns') {
@@ -311,26 +307,23 @@ function form_save() {
 			if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
 				$save['dns_query'] = get_nfilter_request_var('dns_query');
 			} else {
-				raise_message(3);
 				$_SESSION['sess_error_fields']['dns_query'] = 'dns_query';
+				raise_message(3);
 			}
 		} else { // dns over https
-			if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_REGEXP, array('options' =>
-			 array('regexp' => '#^/(resolve|query-dns)\?[a-zA-Z0-9\=\.&\-]+$#')))) {
+			if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '#^/(resolve|query-dns)\?[a-zA-Z0-9\=\.&\-]+$#')))) {
 				$save['dns_query'] = get_nfilter_request_var('dns_query');
 			} else {
-				raise_message(3);
 				$_SESSION['sess_error_fields']['dns_query'] = 'dns_query';
+				raise_message(3);
 			}
 		}
 	}
 
 	if ($category == 'ldap') {
-		if (get_filter_request_var('ldapsearch', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-zA-Z0-9\.\- \*\=,]+$/')))) {
+		if (isset_request_var('ldapsearch')) {
+			form_input_validate(get_nfilter_request_var('ldapsearch'), 'ldapsearch', '^[a-zA-Z0-9\.\- \*\=,]+$', false, 3);
 			$save['ldapsearch'] = get_nfilter_request_var('ldapsearch');
-		} else {
-			raise_message(3);
-			$_SESSION['sess_error_fields']['ldapsearch'] = 'ldapsearch';
 		}
 	}
 
@@ -381,11 +374,9 @@ function form_save() {
 	}
 
 	if ($category == 'web' || $category == 'ftp' || $category == 'smb') {
-		if (isset_request_var('path') && get_filter_request_var('path', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-zA-Z0-9_;\-\/\.\?=]+$/')))) {
+		if (isset_request_var('path')) {
+			form_input_validate(get_nfilter_request_var('path'), 'path', '^[a-zA-Z0-9_;\-\/\.\?=]+$', false, 3);
 			$save['path'] = get_nfilter_request_var('path');
-		} else {
-			raise_message(3);
-			$_SESSION['sess_error_fields']['path'] = 'path';
 		}
 	}
 
@@ -979,8 +970,6 @@ function servcheck_show_last_data() {
 		array($id));
 
 	print '<b>' . __('Last returned data of test', 'servcheck') . ' ' . html_escape($result['display_name']) . ':</b><br/>';
-
-	//print '<pre>' . html_escape($result['last_returned_data']) . '</pre>';
 	print '<style> pre {white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word; max-width: 25%; width: 25%}</style><pre>' . html_escape($result['last_returned_data']) . '</pre>';
 }
 

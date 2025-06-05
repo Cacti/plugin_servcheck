@@ -186,15 +186,15 @@ function form_save() {
 	if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $rest_api_auth_method)) {
 		$save['type'] = get_nfilter_request_var('type');
 	} else {
-		raise_message(3);
 		$_SESSION['sess_error_fields']['type'] = 'type';
+		raise_message(3);
 	}
 
 	if (isset_request_var('format') && array_key_exists(get_nfilter_request_var('format'), $rest_api_format)) {
 		$save['format'] = get_nfilter_request_var('format');
 	} else {
-		raise_message(3);
 		$_SESSION['sess_error_fields']['format'] = 'format';
+		raise_message(3);
 	}
 
 	if (isset_request_var('name') && get_nfilter_request_var('name') != '' && get_filter_request_var('name', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
@@ -224,8 +224,8 @@ function form_save() {
 	if (isset_request_var('data_url') && get_nfilter_request_var('data_url') != '' && get_filter_request_var('data_url', FILTER_VALIDATE_URL)) {
 		$save['data_url'] = get_nfilter_request_var('data_url');
 	} else {
-		raise_message(3);
 		$_SESSION['sess_error_fields']['data_url'] = 'data_url';
+		raise_message(3);
 	}
 
 	if (!is_error_message()) {

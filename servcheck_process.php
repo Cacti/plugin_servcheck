@@ -156,7 +156,7 @@ $x = 0;
 $results = array();
 
 while ($x < 3) {
-	plugin_servcheck_debug('Service Check attemp ' . $x, $test);
+	plugin_servcheck_debug('Service Check attempt ' . $x, $test);
 
 	if ($test['type'] != 'restapi') {
 		list($category,$type) = explode('_', $test['type']);

@@ -302,6 +302,17 @@ function form_save() {
 		$save['hostname'] = get_nfilter_request_var('hostname');
 	}
 
+	if ($category == 'web') {
+		if (isset_request_var('ipaddress')) {
+			if (get_nfilter_request_var('ipaddress') == '' || filter_var(get_nfilter_request_var('ipaddress'), FILTER_VALIDATE_IP)) {
+				$save['ipaddress'] = get_nfilter_request_var('ipaddress');
+			} else {
+				$_SESSION['sess_error_fields']['ipaddress'] = 'ipaddress';
+				raise_message(3);
+			}
+		}
+	}
+
 	if ($category == 'dns') {
 		if ($subcategory == 'dns') {
 			if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
@@ -555,6 +566,7 @@ function servcheck_edit_test() {
 				}
 
 				$('#row_hostname').show();
+				$('#row_ipaddress').show();
 				$('#row_path').show();
 				$('#row_requiresauth').show();
 				$('#row_proxy_server').show();
@@ -566,6 +578,7 @@ function servcheck_edit_test() {
 
 				break;
 			case 'mail':
+				$('#row_ipaddress').hide();
 				$('#row_restapi_id').hide();
 				$('#row_path').hide();
 				$('#row_requiresauth').hide();
@@ -591,6 +604,7 @@ function servcheck_edit_test() {
 
 				break
 			case 'dns':
+				$('#row_ipaddress').hide();
 				$('#row_restapi_id').hide();
 				$('#row_path').hide();
 				$('#row_requiresauth').hide();
@@ -612,6 +626,7 @@ function servcheck_edit_test() {
 				break;
 
 			case 'ldap':
+				$('#row_ipaddress').hide();
 				$('#row_restapi_id').hide();
 				$('#row_dns_query').hide();
 				$('#row_path').hide();
@@ -626,6 +641,7 @@ function servcheck_edit_test() {
 
 				break;
 			case 'ftp':
+				$('#row_ipaddress').hide();
 				$('#row_restapi_id').hide();
 				$('#row_dns_query').hide();
 				$('#row_requiresauth').hide();
@@ -645,6 +661,7 @@ function servcheck_edit_test() {
 
 				break;
 			case 'smb':
+				$('#row_ipaddress').hide();
 				$('#row_restapi_id').hide();
 				$('#row_dns_query').hide();
 				$('#row_requiresauth').hide();
@@ -659,6 +676,7 @@ function servcheck_edit_test() {
 
 				break;
 			case 'mqtt':
+				$('#row_ipaddress').hide();
 				$('#row_restapi_id').hide();
 				$('#row_dns_query').hide();
 				$('#row_requiresauth').hide();
@@ -676,6 +694,7 @@ function servcheck_edit_test() {
 				break;
 			case 'restapi':
 				$('#row_hostname').hide();
+				$('#row_ipaddress').hide();
 				$('#row_path').hide();
 				$('#row_dns_query').hide();
 				$('#row_requiresauth').hide();

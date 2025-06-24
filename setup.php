@@ -101,6 +101,17 @@ function plugin_servcheck_upgrade() {
 			'after' => 'proxy_server'));
 	}
 
+	if (cacti_version_compare($old, '0.4', '<')) {
+		if (!db_column_exists('plugin_servcheck_test', 'ipaddress')) {
+			db_add_column('plugin_servcheck_test', array(
+				'name' => 'ipaddress',
+				'type' => 'varchar(46)',
+				'NULL' => false,
+				'default' => '',
+				'after' => 'hostname'));
+		}
+	}
+
 	return true;
 }
 
@@ -119,6 +130,7 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'poller_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '1');
 	$data['columns'][] = array('name' => 'enabled', 'type' => 'varchar(2)', 'NULL' => false, 'default' => 'on');
 	$data['columns'][] = array('name' => 'hostname', 'type' => 'varchar(120)', 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'ipaddress', 'type' => 'varchar(46)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'path', 'type' => 'varchar(256)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'dns_query', 'type' => 'varchar(100)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'ldapsearch', 'type' => 'varchar(200)', 'NULL' => false, 'default' => '');

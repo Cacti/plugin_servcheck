@@ -61,6 +61,18 @@ function curl_try ($test) {
 		$test['hostname'] .=  ':' . $service_types_ports[$test['type']];
 	}
 
+	if (($test['type'] == 'web_http' || $test['type'] == 'web_https') && $test['ipaddress'] != '') {
+		if (!filter_var($test['ipaddress'], FILTER_VALIDATE_IP)) {
+			cacti_log('IP in "Resolve DNS to Address" is invalid.');
+			$results['result'] = 'error';
+			$results['error'] = 'Invalid IP';
+			return $results;
+		}
+		// By first listing the hostname with a dash in front, it will clear the host from the cache
+		$options[CURLOPT_RESOLVE] = array('-' . $test['hostname'], $test['hostname'] . ':' . $test['ipaddress']);
+		plugin_servcheck_debug('Using CURLOPT_RESOLVE: ' . $test['hostname'] . ':' . $test['ipaddress'] , $test);
+	}
+
 	// 'tls' is my service name/flag. I need remove it
 	// smtp = plaintext, smtps = encrypted on port 465, smtptls = plain + startls
 	if (strpos($service, 'tls') !== false ) {

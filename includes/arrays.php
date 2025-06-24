@@ -380,6 +380,15 @@ $servcheck_test_fields = array(
 		'max_length' => '100',
 		'size' => '30'
 	),
+	'ipaddress' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Resolve DNS to Address'),
+		'description' => __('Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resoution instead.'),
+		'value' => '|arg1:ipaddress|',
+		'max_length' => '46',
+		'size' => '40',
+		'default' => ''
+	),
 	'service_spacer' => array(
 		'method' => 'spacer',
 		'friendly_name' => __('Service settings', 'servcheck')

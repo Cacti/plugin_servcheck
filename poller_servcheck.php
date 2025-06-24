@@ -182,13 +182,13 @@ foreach ($tests as $test) {
 		ORDER BY id DESC LIMIT 1',
 		array($test['id']));
 
-	if ($test_last['result'] == 'ok' || $test_last['result'] == 'not yet') {
+	if (isset($test_last['result']) && ($test_last['result'] == 'ok' || $test_last['result'] == 'not yet')) {
 		$stat_ok++;
 	} else {
 		$stat_ko++;
 	}
 
-	if ($test_last['result_search'] == 'ok' || $test_last['result_search'] == 'not yet ' || $test_last['result_search'] == 'not tested') {
+	if (isset($test_last['result_search']) && ($test_last['result_search'] == 'ok' || $test_last['result_search'] == 'not yet ' || $test_last['result_search'] == 'not tested')) {
 		$stat_search_ok++;
 	} else {
 		$stat_search_ko++;

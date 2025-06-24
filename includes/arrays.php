@@ -24,8 +24,8 @@
 
 include_once(__DIR__ . '/constants.php');
 
-global	$servcheck_actions_proxy, $servcheck_actions_test, $servcheck_actions_ca,$servcheck_actions_restapi,
-	$graph_interval,
+global	$servcheck_actions_proxy, $servcheck_actions_test, $servcheck_actions_ca, $servcheck_actions_restapi,
+	$graph_interval, $service_types_ports, 
 	$servcheck_proxy_fields, $servcheck_test_fields, $servcheck_ca_fields,
 	$servcheck_notify_accounts, $httperrors, $servcheck_seconds,
 	$search, $mail_serv, $service_types, $curl_error, $search_result, $servcheck_tabs,

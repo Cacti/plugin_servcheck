@@ -57,7 +57,7 @@ function curl_try ($test) {
 
 	list($category,$service) = explode('_', $test['type']);
 
-	if (strpos($test['hostname'], ':') === 0) {
+	if (!str_contains($test['hostname'], ':')) {
 		$test['hostname'] .=  ':' . $service_types_ports[$test['type']];
 	}
 

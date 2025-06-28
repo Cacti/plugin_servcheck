@@ -14,6 +14,7 @@
 * issue#27: Fix all tests are enabled, however, some get performed and some don't
 * issue#30: Fix DNS tests
 * issue: Better input validation
+* issue#42: Fix tests duplicating
 
 --- 0.2 ---
 

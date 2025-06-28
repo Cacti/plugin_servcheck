@@ -25,7 +25,7 @@
 include_once(__DIR__ . '/constants.php');
 
 global	$servcheck_actions_proxy, $servcheck_actions_test, $servcheck_actions_ca, $servcheck_actions_restapi,
-	$graph_interval, $service_types_ports, 
+	$graph_interval, $service_types_ports,
 	$servcheck_proxy_fields, $servcheck_test_fields, $servcheck_ca_fields,
 	$servcheck_notify_accounts, $httperrors, $servcheck_seconds,
 	$search, $mail_serv, $service_types, $curl_error, $search_result, $servcheck_tabs,
@@ -673,7 +673,11 @@ $servcheck_restapi_fields = array(
 		'description' => __('URL to retrieve data. Insert with http:// or https://', 'servcheck'),
 		'value' => '|arg1:data_url|',
 		'max_length' => '200',
-	)
+	),
+	'id' => array(
+		'method' => 'hidden_zero',
+		'value' => '|arg1:id|'
+	),
 );
 
 $curl_error = array(

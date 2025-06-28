@@ -297,10 +297,11 @@ function form_save() {
 		raise_message(3);
 	}
 
-	if (isset_request_var('hostname')) {
+	if (isset_request_var('hostname') && $category != 'restapi') {
 		form_input_validate(get_nfilter_request_var('hostname'), 'hostname', '^[a-zA-Z0-9\.\-]+(\:[0-9]{1,5})?$', false, 3);
 		$save['hostname'] = get_nfilter_request_var('hostname');
 	}
+
 
 	if ($category == 'web') {
 		if (isset_request_var('ipaddress')) {
@@ -600,6 +601,8 @@ function servcheck_edit_test() {
 					$('#row_certexpirenotify').show();
 				}
 
+				$('#row_hostname').show();
+
 				$('#password').attr('type', 'password');
 
 				break
@@ -622,6 +625,7 @@ function servcheck_edit_test() {
 					$('#row_certexpirenotify').show();
 				}
 				$('#row_dns_query').show();
+				$('#row_hostname').show();
 
 				break;
 
@@ -636,6 +640,7 @@ function servcheck_edit_test() {
 				$('#row_username').show();
 				$('#row_password').show();
 				$('#row_ldapsearch').show();
+				$('#row_hostname').show();
 
 				$('#password').attr('type', 'password');
 
@@ -656,6 +661,7 @@ function servcheck_edit_test() {
 				$('#row_path').show();
 				$('#row_username').show();
 				$('#row_password').show();
+				$('#row_hostname').show();
 
 				$('#password').attr('type', 'password');
 
@@ -671,6 +677,7 @@ function servcheck_edit_test() {
 				$('#row_username').show();
 				$('#row_password').show();
 				$('#row_path').show();
+				$('#row_hostname').show();
 
 				$('#password').attr('type', 'password');
 
@@ -689,6 +696,7 @@ function servcheck_edit_test() {
 				$('#row_username').show();
 				$('#row_password').show();
 				$('#row_path').show();
+				$('#row_hostname').show();
 
 				$('#password').attr('type', 'password');
 				break;

@@ -8,14 +8,16 @@ msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-07-01 10:26+0000\n"
+"Last-Translator: Ekaterine papava <papava.e@gtu.ge>\n"
+"Language-Team: Georgian <https://translate.cacti.net/projects/cacti/"
+"servcheck/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: includes/arrays.php:33
 msgid "String found"
@@ -135,7 +137,7 @@ msgstr ""
 
 #: includes/arrays.php:115
 msgid "Last day"
-msgstr ""
+msgstr "ბოლო დღე"
 
 #: includes/arrays.php:116
 msgid "Last week"
@@ -149,7 +151,7 @@ msgstr ""
 #: servcheck_test.php:197 servcheck_test.php:206 servcheck_test.php:215
 #: servcheck_test.php:224
 msgid "Continue"
-msgstr ""
+msgstr "გაგრძელება"
 
 #: includes/arrays.php:123
 msgid "Switching Protocols"
@@ -157,15 +159,15 @@ msgstr ""
 
 #: includes/arrays.php:124
 msgid "OK"
-msgstr ""
+msgstr "დიახ"
 
 #: includes/arrays.php:125
 msgid "Created"
-msgstr ""
+msgstr "შეიქმნა"
 
 #: includes/arrays.php:126
 msgid "Accepted"
-msgstr ""
+msgstr "დადასტურებულია"
 
 #: includes/arrays.php:127
 msgid "Non-Authoritative Information"
@@ -193,7 +195,7 @@ msgstr ""
 
 #: includes/arrays.php:133
 msgid "Found"
-msgstr ""
+msgstr "აღმოჩენილია"
 
 #: includes/arrays.php:134
 msgid "See Other"
@@ -209,7 +211,7 @@ msgstr ""
 
 #: includes/arrays.php:137
 msgid "(Unused)"
-msgstr ""
+msgstr "(გამოუყენებელი)"
 
 #: includes/arrays.php:138
 msgid "Temporary Redirect"
@@ -217,11 +219,11 @@ msgstr ""
 
 #: includes/arrays.php:139
 msgid "Bad Request"
-msgstr ""
+msgstr "არასწორი მოთხოვნა"
 
 #: includes/arrays.php:140
 msgid "Unauthorized"
-msgstr ""
+msgstr "არაავტორიზებული"
 
 #: includes/arrays.php:141
 msgid "Payment Required"
@@ -229,11 +231,11 @@ msgstr ""
 
 #: includes/arrays.php:142
 msgid "Forbidden"
-msgstr ""
+msgstr "აკრძალულია"
 
 #: includes/arrays.php:143
 msgid "Not Found"
-msgstr ""
+msgstr "აღმოჩენილი არაა"
 
 #: includes/arrays.php:144
 msgid "Method Not Allowed"
@@ -253,11 +255,11 @@ msgstr ""
 
 #: includes/arrays.php:148
 msgid "Conflict"
-msgstr ""
+msgstr "კონფლიქტი"
 
 #: includes/arrays.php:149
 msgid "Gone"
-msgstr ""
+msgstr "დაიკარგა"
 
 #: includes/arrays.php:150
 msgid "Length Required"
@@ -328,28 +330,28 @@ msgstr ""
 #: includes/arrays.php:185 includes/arrays.php:186
 #, php-format
 msgid "%d Seconds"
-msgstr ""
+msgstr "%d წამი"
 
 #: includes/arrays.php:213 includes/arrays.php:217 includes/arrays.php:221
 msgid "Delete"
-msgstr ""
+msgstr "წაშლა"
 
 #: includes/arrays.php:222
 msgid "Disable"
-msgstr ""
+msgstr "გათიშვა"
 
 #: includes/arrays.php:223
 msgid "Enable"
-msgstr ""
+msgstr "ჩართვა"
 
 #: includes/arrays.php:224
 msgid "Duplicate"
-msgstr ""
+msgstr "დუბლირება"
 
 #: includes/arrays.php:230 includes/arrays.php:250 servcheck_ca.php:264
 #: servcheck_proxies.php:273 servcheck_test.php:793 servcheck_test.php:1023
 msgid "Name"
-msgstr ""
+msgstr "სახელი"
 
 #: includes/arrays.php:231
 msgid "A Useful Name for this CA chain."
@@ -377,7 +379,7 @@ msgstr ""
 
 #: includes/arrays.php:259 servcheck_proxies.php:277
 msgid "Hostname"
-msgstr ""
+msgstr "ჰოსტის სახელი"
 
 #: includes/arrays.php:260
 msgid "The Proxy Hostname."
@@ -393,7 +395,7 @@ msgstr ""
 
 #: includes/arrays.php:277
 msgid "HTTPS Port"
-msgstr ""
+msgstr "HTTPS პორტი"
 
 #: includes/arrays.php:278
 msgid "The HTTPS Proxy Port."
@@ -401,7 +403,7 @@ msgstr ""
 
 #: includes/arrays.php:286
 msgid "User Name"
-msgstr ""
+msgstr "მომხმარებლის სახელი"
 
 #: includes/arrays.php:287
 msgid "The user to use to authenticate with the Proxy if any."
@@ -409,7 +411,7 @@ msgstr ""
 
 #: includes/arrays.php:295 includes/arrays.php:378
 msgid "Password"
-msgstr ""
+msgstr "პაროლი"
 
 #: includes/arrays.php:296
 msgid "The user password to use to authenticate with the Proxy if any."
@@ -437,7 +439,7 @@ msgstr ""
 
 #: includes/arrays.php:332
 msgid "Poller"
-msgstr ""
+msgstr "გამომთხოვი"
 
 #: includes/arrays.php:335
 msgid "Poller on which the test will run"
@@ -466,7 +468,7 @@ msgstr ""
 #: includes/arrays.php:363 includes/arrays.php:421 includes/arrays.php:512
 #: servcheck_test.php:477
 msgid "None"
-msgstr ""
+msgstr "არცერთი"
 
 #: includes/arrays.php:365
 msgid "Your own CA and intermediate certs"
@@ -474,7 +476,7 @@ msgstr ""
 
 #: includes/arrays.php:370 servcheck_proxies.php:285
 msgid "Username"
-msgstr ""
+msgstr "მომხმარებლის სახელი"
 
 #: includes/arrays.php:372
 msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
@@ -518,7 +520,7 @@ msgstr ""
 
 #: includes/arrays.php:418
 msgid "Proxy Server"
-msgstr ""
+msgstr "პროქსი სერვერი"
 
 #: includes/arrays.php:419
 msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
@@ -554,7 +556,7 @@ msgstr ""
 
 #: includes/arrays.php:452
 msgid "Trigger"
-msgstr ""
+msgstr "ტრიგერი"
 
 #: includes/arrays.php:456
 msgid "How many poller cycles must be down before it will send an alert. After an alert is sent, in order for a 'Site Recovering' Email to be send, it must also be up this number of poller cycles."
@@ -562,7 +564,7 @@ msgstr ""
 
 #: includes/arrays.php:460
 msgid "Time Out"
-msgstr ""
+msgstr "მოლოდინის ვადა"
 
 #: includes/arrays.php:464
 msgid "How many seconds to allow the page to timeout before reporting it as down."
@@ -598,7 +600,7 @@ msgstr ""
 
 #: includes/arrays.php:497
 msgid "Notification Settings"
-msgstr ""
+msgstr "გაფრთხილებების მორგება"
 
 #: includes/arrays.php:500
 msgid "Notify Format"
@@ -610,7 +612,7 @@ msgstr ""
 
 #: includes/arrays.php:507
 msgid "Notification List"
-msgstr ""
+msgstr "გაფრთხილებების სია"
 
 #: includes/arrays.php:509
 msgid "Use this Notification List for those to be notified when this service goes down."
@@ -618,7 +620,7 @@ msgstr ""
 
 #: includes/arrays.php:515
 msgid "Notify Accounts"
-msgstr ""
+msgstr "გაფრთხილება ანგარიშებისთვის"
 
 #: includes/arrays.php:517
 msgid "This is a listing of accounts that will be notified when this service goes down."
@@ -634,7 +636,7 @@ msgstr ""
 
 #: includes/arrays.php:530
 msgid "Notes"
-msgstr ""
+msgstr "შენიშვნები"
 
 #: includes/arrays.php:534
 msgid "Notes sent in email"
@@ -642,7 +644,7 @@ msgstr ""
 
 #: includes/arrays.php:538
 msgid "External ID"
-msgstr ""
+msgstr "გარე ID"
 
 #: includes/arrays.php:540
 msgid "Enter an Eternal ID for this Thold Template."
@@ -1014,7 +1016,7 @@ msgstr ""
 
 #: includes/functions.php:32 servcheck_test.php:828
 msgid "Tests"
-msgstr ""
+msgstr "ტესტები"
 
 #: includes/functions.php:33
 msgid "CA certificates"
@@ -1023,7 +1025,7 @@ msgstr ""
 #: includes/functions.php:34 servcheck_proxies.php:292
 #: servcheck_proxies.php:349
 msgid "Proxies"
-msgstr ""
+msgstr "პროქსიები"
 
 #: includes/functions.php:35
 msgid "Curl return codes"
@@ -1035,7 +1037,7 @@ msgstr ""
 
 #: includes/functions.php:48
 msgid "Graphs"
-msgstr ""
+msgstr "გრაფიკები"
 
 #: includes/functions.php:130
 msgid "No data"
@@ -1050,7 +1052,7 @@ msgstr[1] ""
 #: servcheck_ca.php:109 servcheck_proxies.php:108 servcheck_test.php:197
 #: servcheck_test.php:206 servcheck_test.php:215 servcheck_test.php:224
 msgid "Cancel"
-msgstr ""
+msgstr "გაუქმება"
 
 #: servcheck_ca.php:109
 msgid "Delete CA"
@@ -1069,11 +1071,11 @@ msgstr ""
 
 #: servcheck_ca.php:268
 msgid "Used"
-msgstr ""
+msgstr "გამოყენებული"
 
 #: servcheck_ca.php:275 servcheck_ca.php:334
 msgid "CAs"
-msgstr ""
+msgstr "CA-ები"
 
 #: servcheck_ca.php:296
 msgid "No CAs Found"
@@ -1090,22 +1092,22 @@ msgstr ""
 #: servcheck_ca.php:328 servcheck_proxies.php:343 servcheck_test.php:510
 #: servcheck_test.php:1251
 msgid "Search"
-msgstr ""
+msgstr "ძებნა"
 
 #: servcheck_ca.php:339 servcheck_proxies.php:354 servcheck_test.php:1291
 #: servcheck_test.php:1384
 msgid "Default"
-msgstr ""
+msgstr "ნაგულისხმევი"
 
 #: servcheck_ca.php:350 servcheck_proxies.php:365 servcheck_test.php:1302
 #: servcheck_test.php:1395
 msgid "Go"
-msgstr ""
+msgstr "მიდი"
 
 #: servcheck_ca.php:351 servcheck_proxies.php:366 servcheck_test.php:1303
 #: servcheck_test.php:1396
 msgid "Clear"
-msgstr ""
+msgstr "გასუფთავება"
 
 #: servcheck_curl_code.php:55
 msgid "No error codes"
@@ -1134,11 +1136,11 @@ msgstr ""
 
 #: servcheck_proxies.php:281
 msgid "Ports (http/https)"
-msgstr ""
+msgstr "პორტები (http/https)"
 
 #: servcheck_proxies.php:309
 msgid "Not Set"
-msgstr ""
+msgstr "დაყენებული არაა"
 
 #: servcheck_proxies.php:315
 msgid "No Servers Found"
@@ -1224,15 +1226,15 @@ msgstr ""
 
 #: servcheck_test.php:476
 msgid "All"
-msgstr ""
+msgstr "ყველა"
 
 #: servcheck_test.php:790
 msgid "Date"
-msgstr ""
+msgstr "თარიღი"
 
 #: servcheck_test.php:796 servcheck_test.php:1048
 msgid "Result"
-msgstr ""
+msgstr "შედეგი"
 
 #: servcheck_test.php:799 servcheck_test.php:1053
 msgid "Search result"
@@ -1244,23 +1246,23 @@ msgstr ""
 
 #: servcheck_test.php:807
 msgid "DNS"
-msgstr ""
+msgstr "DNS"
 
 #: servcheck_test.php:812
 msgid "Connect"
-msgstr ""
+msgstr "დაკავშირება"
 
 #: servcheck_test.php:817
 msgid "Redirect"
-msgstr ""
+msgstr "გადამისამართება"
 
 #: servcheck_test.php:822
 msgid "Total"
-msgstr ""
+msgstr "სულ"
 
 #: servcheck_test.php:854
 msgid "Service Down"
-msgstr ""
+msgstr "სერვისი გამორთულია"
 
 #: servcheck_test.php:854
 msgid "Service UP"
@@ -1276,15 +1278,15 @@ msgstr ""
 
 #: servcheck_test.php:1018
 msgid "Actions"
-msgstr ""
+msgstr "ქმედებები"
 
 #: servcheck_test.php:1028 servcheck_test.php:1135
 msgid "Enabled"
-msgstr ""
+msgstr "ჩართულია"
 
 #: servcheck_test.php:1033
 msgid "Last Check"
-msgstr ""
+msgstr "ბოლო შემოწმება"
 
 #: servcheck_test.php:1038
 msgid "Stats (OK/problem)"
@@ -1292,11 +1294,11 @@ msgstr ""
 
 #: servcheck_test.php:1043
 msgid "Triggered"
-msgstr ""
+msgstr "დატრიგერებულია"
 
 #: servcheck_test.php:1066 servcheck_test.php:1286
 msgid "Checks"
-msgstr ""
+msgstr "შემოწმებები"
 
 #: servcheck_test.php:1102
 msgid "Edit Service Check"
@@ -1320,19 +1322,19 @@ msgstr ""
 
 #: servcheck_test.php:1135
 msgid "Disabled"
-msgstr ""
+msgstr "გათიშულია"
 
 #: servcheck_test.php:1138
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: servcheck_test.php:1145
 msgid "No"
-msgstr ""
+msgstr "არა"
 
 #: servcheck_test.php:1145
 msgid "Yes"
-msgstr ""
+msgstr "კი"
 
 #: servcheck_test.php:1156
 msgid "No Tests Found"
@@ -1344,15 +1346,15 @@ msgstr ""
 
 #: servcheck_test.php:1257
 msgid "State"
-msgstr ""
+msgstr "შტატი"
 
 #: servcheck_test.php:1261
 msgid "Any"
-msgstr ""
+msgstr "ნებისმიერი"
 
 #: servcheck_test.php:1270
 msgid "Refresh"
-msgstr ""
+msgstr "განახლება"
 
 #: servcheck_test.php:1364
 msgid "Service Check History"
@@ -1360,15 +1362,15 @@ msgstr ""
 
 #: servcheck_test.php:1373
 msgid "Date Search"
-msgstr ""
+msgstr "მონაცემების ძებნა"
 
 #: servcheck_test.php:1379
 msgid "Entries"
-msgstr ""
+msgstr "ჩანაწერები"
 
 #: servcheck_test.php:1397
 msgid "Purge Events"
-msgstr ""
+msgstr "მოვლენების გასუფთავება"
 
 #: setup.php:34
 msgid "Service Check Admin"
@@ -1376,7 +1378,7 @@ msgstr ""
 
 #: setup.php:214
 msgid "Management"
-msgstr ""
+msgstr "მართვა"
 
 #: setup.php:214
 msgid "Service Checker"
@@ -1404,7 +1406,7 @@ msgstr ""
 
 #: setup.php:266
 msgid "CA"
-msgstr ""
+msgstr "CA"
 
 #: setup.php:273
 msgid "CA Edit"

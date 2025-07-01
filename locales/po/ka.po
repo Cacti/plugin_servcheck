@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2025-07-01 10:26+0000\n"
+"PO-Revision-Date: 2025-07-02 19:26+0000\n"
 "Last-Translator: Ekaterine papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <https://translate.cacti.net/projects/cacti/"
 "servcheck/ka/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: includes/arrays.php:33
 msgid "String found"
-msgstr ""
+msgstr "სტრიქონი აღმოჩენილია"
 
 #: includes/arrays.php:34
 msgid "String not found"
@@ -129,7 +129,7 @@ msgstr ""
 
 #: includes/arrays.php:113
 msgid "Last hour"
-msgstr ""
+msgstr "ბოლო საათი"
 
 #: includes/arrays.php:114
 msgid "Last 6 hours"
@@ -141,7 +141,7 @@ msgstr "ბოლო დღე"
 
 #: includes/arrays.php:116
 msgid "Last week"
-msgstr ""
+msgstr "ბოლო კვირაში"
 
 #: includes/arrays.php:121
 msgid "Unable to Connect"
@@ -155,7 +155,7 @@ msgstr "გაგრძელება"
 
 #: includes/arrays.php:123
 msgid "Switching Protocols"
-msgstr ""
+msgstr "კომუტაციის პროტოკოლები"
 
 #: includes/arrays.php:124
 msgid "OK"
@@ -175,7 +175,7 @@ msgstr ""
 
 #: includes/arrays.php:128
 msgid "No Content"
-msgstr ""
+msgstr "შემცველობის გარეშე"
 
 #: includes/arrays.php:129
 msgid "Reset Content"
@@ -183,7 +183,7 @@ msgstr ""
 
 #: includes/arrays.php:130
 msgid "Partial Content"
-msgstr ""
+msgstr "ნაწილობრივი შემცველობა"
 
 #: includes/arrays.php:131
 msgid "Multiple Choices"
@@ -191,7 +191,7 @@ msgstr ""
 
 #: includes/arrays.php:132
 msgid "Moved Permanently"
-msgstr ""
+msgstr "გადატანილია სამუდამოდ"
 
 #: includes/arrays.php:133
 msgid "Found"
@@ -203,11 +203,11 @@ msgstr ""
 
 #: includes/arrays.php:135
 msgid "Not Modified"
-msgstr ""
+msgstr "არ შეცვლილა"
 
 #: includes/arrays.php:136
 msgid "Use Proxy"
-msgstr ""
+msgstr "პროქსის გამოყენება"
 
 #: includes/arrays.php:137
 msgid "(Unused)"
@@ -263,7 +263,7 @@ msgstr "დაიკარგა"
 
 #: includes/arrays.php:150
 msgid "Length Required"
-msgstr ""
+msgstr "სიგრძე აუცილებელია"
 
 #: includes/arrays.php:151
 msgid "Precondition Failed"
@@ -287,7 +287,7 @@ msgstr ""
 
 #: includes/arrays.php:156
 msgid "Expectation Failed"
-msgstr ""
+msgstr "მოლოდინი ჩავარდა"
 
 #: includes/arrays.php:157
 msgid "Internal Server Error"
@@ -303,7 +303,7 @@ msgstr ""
 
 #: includes/arrays.php:160
 msgid "Service Unavailable"
-msgstr ""
+msgstr "სერვისი ხელმიუწვდომელია"
 
 #: includes/arrays.php:161
 msgid "Gateway Timeout"
@@ -363,7 +363,7 @@ msgstr ""
 
 #: includes/arrays.php:238 includes/arrays.php:361
 msgid "CA Chain"
-msgstr ""
+msgstr "CA ჯაჭვი"
 
 #: includes/arrays.php:242
 msgid "CA and intermediate certs, PEM encoded"
@@ -419,7 +419,7 @@ msgstr ""
 
 #: includes/arrays.php:315
 msgid "General Settings"
-msgstr ""
+msgstr "ზოგადი პარამეტრები"
 
 #: includes/arrays.php:319
 msgid "Service Check Name"
@@ -512,7 +512,7 @@ msgstr ""
 
 #: includes/arrays.php:411
 msgid "Requires Authentication"
-msgstr ""
+msgstr "ითხოვს ავთენტიკაციას"
 
 #: includes/arrays.php:412
 msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
@@ -528,7 +528,7 @@ msgstr ""
 
 #: includes/arrays.php:427
 msgid "Check Certificate"
-msgstr ""
+msgstr "სერტიფიკატის შემოწმება"
 
 #: includes/arrays.php:428
 msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
@@ -604,7 +604,7 @@ msgstr "გაფრთხილებების მორგება"
 
 #: includes/arrays.php:500
 msgid "Notify Format"
-msgstr ""
+msgstr "გაფრთხილების ფორმატი"
 
 #: includes/arrays.php:502
 msgid "This is the format to use when sending the notification email"
@@ -736,7 +736,7 @@ msgstr ""
 #: includes/arrays.php:782 includes/arrays.php:802 includes/arrays.php:854
 #: includes/arrays.php:858
 msgid "Obsolete Error"
-msgstr ""
+msgstr "მოძველებული შეცდომა"
 
 #: includes/arrays.php:635 includes/arrays.php:651 includes/arrays.php:671
 #: includes/arrays.php:683 includes/arrays.php:715 includes/arrays.php:731
@@ -1020,7 +1020,7 @@ msgstr "ტესტები"
 
 #: includes/functions.php:33
 msgid "CA certificates"
-msgstr ""
+msgstr "CA სერტიფიკატები"
 
 #: includes/functions.php:34 servcheck_proxies.php:292
 #: servcheck_proxies.php:349
@@ -1033,7 +1033,7 @@ msgstr ""
 
 #: includes/functions.php:41
 msgid "Log History"
-msgstr ""
+msgstr "ჟურნალის ისტორია"
 
 #: includes/functions.php:48
 msgid "Graphs"
@@ -1041,7 +1041,7 @@ msgstr "გრაფიკები"
 
 #: includes/functions.php:130
 msgid "No data"
-msgstr ""
+msgstr "მონაცემების გარეშე"
 
 #: servcheck_ca.php:104
 msgid "Click 'Continue' to delete the following CA."
@@ -1067,7 +1067,7 @@ msgstr ""
 
 #: servcheck_ca.php:168
 msgid "CA [new]"
-msgstr ""
+msgstr "CA [ახალი]"
 
 #: servcheck_ca.php:268
 msgid "Used"
@@ -1132,7 +1132,7 @@ msgstr ""
 
 #: servcheck_proxies.php:171
 msgid "Proxy [new]"
-msgstr ""
+msgstr "პროქსი [ახალი]"
 
 #: servcheck_proxies.php:281
 msgid "Ports (http/https)"
@@ -1210,7 +1210,7 @@ msgstr ""
 
 #: servcheck_test.php:421
 msgid "Query [new]"
-msgstr ""
+msgstr "მოთხოვნა [ახალი]"
 
 #: servcheck_test.php:465
 msgid "No Users Selected"
@@ -1218,7 +1218,7 @@ msgstr ""
 
 #: servcheck_test.php:467
 msgid "Users Selected"
-msgstr ""
+msgstr "მონიშნული მომხმარებლები"
 
 #: servcheck_test.php:470
 msgid "All Users Selected"
@@ -1266,7 +1266,7 @@ msgstr "სერვისი გამორთულია"
 
 #: servcheck_test.php:854
 msgid "Service UP"
-msgstr ""
+msgstr "სერვისი ჩართულია"
 
 #: servcheck_test.php:868
 msgid "No Service Check Events in History"
@@ -1290,7 +1290,7 @@ msgstr "ბოლო შემოწმება"
 
 #: servcheck_test.php:1038
 msgid "Stats (OK/problem)"
-msgstr ""
+msgstr "შტატისტიკა (კარგადაა/პრობლემა)"
 
 #: servcheck_test.php:1043
 msgid "Triggered"
@@ -1318,7 +1318,7 @@ msgstr ""
 
 #: servcheck_test.php:1125
 msgid "View Graph"
-msgstr ""
+msgstr "გრაფიკის ნახვა"
 
 #: servcheck_test.php:1135
 msgid "Disabled"
@@ -1394,7 +1394,7 @@ msgstr ""
 
 #: setup.php:245
 msgid "Web Proxies"
-msgstr ""
+msgstr "ვებპროქსიები"
 
 #: setup.php:252
 msgid "Web Proxie Edit"
@@ -1410,7 +1410,7 @@ msgstr "CA"
 
 #: setup.php:273
 msgid "CA Edit"
-msgstr ""
+msgstr "CA-ის ჩასწორება"
 
 #: setup.php:280
 msgid "Save CA"

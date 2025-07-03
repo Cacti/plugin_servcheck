@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2025-07-02 19:26+0000\n"
+"PO-Revision-Date: 2025-07-04 04:26+0000\n"
 "Last-Translator: Ekaterine papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <https://translate.cacti.net/projects/cacti/"
 "servcheck/ka/>\n"
@@ -171,7 +171,7 @@ msgstr "დადასტურებულია"
 
 #: includes/arrays.php:127
 msgid "Non-Authoritative Information"
-msgstr ""
+msgstr "არაავტორიტეტული ინფორმაცია"
 
 #: includes/arrays.php:128
 msgid "No Content"
@@ -179,7 +179,7 @@ msgstr "შემცველობის გარეშე"
 
 #: includes/arrays.php:129
 msgid "Reset Content"
-msgstr ""
+msgstr "შემცველობის ჩამოყრა"
 
 #: includes/arrays.php:130
 msgid "Partial Content"
@@ -199,7 +199,7 @@ msgstr "აღმოჩენილია"
 
 #: includes/arrays.php:134
 msgid "See Other"
-msgstr ""
+msgstr "იხ. სხვები"
 
 #: includes/arrays.php:135
 msgid "Not Modified"
@@ -215,7 +215,7 @@ msgstr "(გამოუყენებელი)"
 
 #: includes/arrays.php:138
 msgid "Temporary Redirect"
-msgstr ""
+msgstr "დროებითი გადამისამართება"
 
 #: includes/arrays.php:139
 msgid "Bad Request"
@@ -227,7 +227,7 @@ msgstr "არაავტორიზებული"
 
 #: includes/arrays.php:141
 msgid "Payment Required"
-msgstr ""
+msgstr "საჭიროა გადახდა"
 
 #: includes/arrays.php:142
 msgid "Forbidden"
@@ -243,7 +243,7 @@ msgstr ""
 
 #: includes/arrays.php:145
 msgid "Not Acceptable"
-msgstr ""
+msgstr "მიუღებელია"
 
 #: includes/arrays.php:146
 msgid "Proxy Authentication Required"
@@ -251,7 +251,7 @@ msgstr ""
 
 #: includes/arrays.php:147
 msgid "Request Timeout"
-msgstr ""
+msgstr "მოთხოვნის მოლოდინის ვადა"
 
 #: includes/arrays.php:148
 msgid "Conflict"
@@ -295,11 +295,11 @@ msgstr ""
 
 #: includes/arrays.php:158
 msgid "Not Implemented"
-msgstr ""
+msgstr "განხორციელებული არაა"
 
 #: includes/arrays.php:159
 msgid "Bad Gateway"
-msgstr ""
+msgstr "არასწორი რაუტერი"
 
 #: includes/arrays.php:160
 msgid "Service Unavailable"
@@ -307,7 +307,7 @@ msgstr "სერვისი ხელმიუწვდომელია"
 
 #: includes/arrays.php:161
 msgid "Gateway Timeout"
-msgstr ""
+msgstr "ნაგულისხმევი რაუტერის მოლოდინის ვადა"
 
 #: includes/arrays.php:162
 msgid "HTTP Version Not Supported"
@@ -359,7 +359,7 @@ msgstr ""
 
 #: includes/arrays.php:235
 msgid "New CA"
-msgstr ""
+msgstr "ახალი CA"
 
 #: includes/arrays.php:238 includes/arrays.php:361
 msgid "CA Chain"
@@ -375,7 +375,7 @@ msgstr ""
 
 #: includes/arrays.php:255
 msgid "New Proxy"
-msgstr ""
+msgstr "ახალი პროქსი"
 
 #: includes/arrays.php:259 servcheck_proxies.php:277
 msgid "Hostname"
@@ -387,7 +387,7 @@ msgstr ""
 
 #: includes/arrays.php:268
 msgid "HTTP Port"
-msgstr ""
+msgstr "HTTP პორტი"
 
 #: includes/arrays.php:269
 msgid "The HTTP Proxy Port."
@@ -544,7 +544,7 @@ msgstr ""
 
 #: includes/arrays.php:441
 msgid "Notification Timing"
-msgstr ""
+msgstr "გაფრთხილების დრო"
 
 #: includes/arrays.php:444
 msgid "How Often to Test"
@@ -572,7 +572,7 @@ msgstr ""
 
 #: includes/arrays.php:469
 msgid "Verification Strings"
-msgstr ""
+msgstr "გადამოწმების სტრიქონები"
 
 #: includes/arrays.php:473
 msgid "Response Search String"
@@ -1238,7 +1238,7 @@ msgstr "შედეგი"
 
 #: servcheck_test.php:799 servcheck_test.php:1053
 msgid "Search result"
-msgstr ""
+msgstr "ძებნის შედეგი"
 
 #: servcheck_test.php:802 servcheck_test.php:1058
 msgid "Curl return code"
@@ -1342,7 +1342,7 @@ msgstr ""
 
 #: servcheck_test.php:1242 setup.php:224
 msgid "Service Checks"
-msgstr ""
+msgstr "სერვისის შემოწმებები"
 
 #: servcheck_test.php:1257
 msgid "State"

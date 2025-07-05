@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2025-07-04 18:20+0000\n"
+"PO-Revision-Date: 2025-07-06 04:26+0000\n"
 "Last-Translator: Ekaterine papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <https://translate.cacti.net/projects/cacti/"
 "servcheck/ka/>\n"
@@ -41,7 +41,7 @@ msgstr ""
 
 #: includes/arrays.php:38 servcheck_test.php:1146 servcheck_test.php:1147
 msgid "Not tested yet"
-msgstr ""
+msgstr "ჯერ შემოწმებული არაა"
 
 #: includes/arrays.php:39
 msgid "Search not performed"
@@ -133,7 +133,7 @@ msgstr "ბოლო საათი"
 
 #: includes/arrays.php:114
 msgid "Last 6 hours"
-msgstr ""
+msgstr "ბოლო 6 საათი"
 
 #: includes/arrays.php:115
 msgid "Last day"
@@ -187,7 +187,7 @@ msgstr "ნაწილობრივი შემცველობა"
 
 #: includes/arrays.php:131
 msgid "Multiple Choices"
-msgstr ""
+msgstr "მრავალი არჩევანი"
 
 #: includes/arrays.php:132
 msgid "Moved Permanently"
@@ -247,7 +247,7 @@ msgstr "მიუღებელია"
 
 #: includes/arrays.php:146
 msgid "Proxy Authentication Required"
-msgstr ""
+msgstr "აუცილებელია პროქსის ავთენტიკაცია"
 
 #: includes/arrays.php:147
 msgid "Request Timeout"
@@ -291,7 +291,7 @@ msgstr "მოლოდინი ჩავარდა"
 
 #: includes/arrays.php:157
 msgid "Internal Server Error"
-msgstr ""
+msgstr "სერვერის შიდა შეცდომა"
 
 #: includes/arrays.php:158
 msgid "Not Implemented"
@@ -316,7 +316,7 @@ msgstr ""
 #: includes/arrays.php:166
 #, php-format
 msgid "%d Poller run"
-msgstr ""
+msgstr "შემგროვებლის %d გაშვება"
 
 #: includes/arrays.php:167 includes/arrays.php:168 includes/arrays.php:169
 #: includes/arrays.php:170 includes/arrays.php:171 includes/arrays.php:172
@@ -383,7 +383,7 @@ msgstr "ჰოსტის სახელი"
 
 #: includes/arrays.php:260
 msgid "The Proxy Hostname."
-msgstr ""
+msgstr "პროქსის ჰოსტის სახელი."
 
 #: includes/arrays.php:268
 msgid "HTTP Port"
@@ -423,7 +423,7 @@ msgstr "ზოგადი პარამეტრები"
 
 #: includes/arrays.php:319
 msgid "Service Check Name"
-msgstr ""
+msgstr "სერვისის შემოწმების სახელი"
 
 #: includes/arrays.php:320
 msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
@@ -431,7 +431,7 @@ msgstr ""
 
 #: includes/arrays.php:326 servcheck_test.php:1107
 msgid "Enable Service Check"
-msgstr ""
+msgstr "სერვისის შემოწმებების ჩართვა"
 
 #: includes/arrays.php:327
 msgid "Uncheck this box to disabled this test from being checked."
@@ -463,7 +463,7 @@ msgstr ""
 
 #: includes/arrays.php:358
 msgid "Service settings"
-msgstr ""
+msgstr "სერვისის მორგება"
 
 #: includes/arrays.php:363 includes/arrays.php:421 includes/arrays.php:512
 #: servcheck_test.php:477
@@ -488,7 +488,7 @@ msgstr ""
 
 #: includes/arrays.php:386
 msgid "LDAP Search"
-msgstr ""
+msgstr "LDAP-ში ძებნა"
 
 #: includes/arrays.php:388
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
@@ -576,7 +576,7 @@ msgstr "გადამოწმების სტრიქონები"
 
 #: includes/arrays.php:473
 msgid "Response Search String"
-msgstr ""
+msgstr "პასუხის ძებნის სტრიქონი"
 
 #: includes/arrays.php:474
 msgid "This is the string to search for in the response for a live and working service."
@@ -628,7 +628,7 @@ msgstr ""
 
 #: includes/arrays.php:522
 msgid "Extra Alert Emails"
-msgstr ""
+msgstr "დამატებითი განგაშის ელფოსტები"
 
 #: includes/arrays.php:526
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
@@ -872,7 +872,7 @@ msgstr ""
 
 #: includes/arrays.php:799
 msgid "Unrecognized transfer encoding."
-msgstr ""
+msgstr "გადაცემის უცნობი კოდირება."
 
 #: includes/arrays.php:807
 msgid "Maximum file size exceeded."
@@ -1029,7 +1029,7 @@ msgstr "პროქსიები"
 
 #: includes/functions.php:35
 msgid "Curl return codes"
-msgstr ""
+msgstr "Curl-ის დაბრუნებული კოდები"
 
 #: includes/functions.php:41
 msgid "Log History"
@@ -1063,7 +1063,7 @@ msgstr[1] ""
 #: servcheck_ca.php:166
 #, php-format
 msgid "CA [edit: %s]"
-msgstr ""
+msgstr "CA [ჩასწორება: %s]"
 
 #: servcheck_ca.php:168
 msgid "CA [new]"
@@ -1083,7 +1083,7 @@ msgstr ""
 
 #: servcheck_ca.php:315
 msgid "Servcheck CA Management"
-msgstr ""
+msgstr "სერვისის შემოწმების CA-ის მართვა"
 
 #: servcheck_ca.php:322
 msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
@@ -1148,7 +1148,7 @@ msgstr ""
 
 #: servcheck_proxies.php:334
 msgid "Servcheck Proxy Management"
-msgstr ""
+msgstr "სერვისის შემოწმების პროქსის მართვა"
 
 #: servcheck_test.php:192
 msgid "Click 'Continue' to Delete the following tests."
@@ -1206,7 +1206,7 @@ msgstr ""
 #: servcheck_test.php:419
 #, php-format
 msgid "Query [edit: %s]"
-msgstr ""
+msgstr "მოთხოვნა [ჩასწორება: %s]"
 
 #: servcheck_test.php:421
 msgid "Query [new]"
@@ -1222,7 +1222,7 @@ msgstr "მონიშნული მომხმარებლები"
 
 #: servcheck_test.php:470
 msgid "All Users Selected"
-msgstr ""
+msgstr "ყველა მონიშნული მომხმარებელი"
 
 #: servcheck_test.php:476
 msgid "All"
@@ -1302,11 +1302,11 @@ msgstr "შემოწმებები"
 
 #: servcheck_test.php:1102
 msgid "Edit Service Check"
-msgstr ""
+msgstr "სერვისის შემოწმების ჩასწორება"
 
 #: servcheck_test.php:1111
 msgid "Disable Service Check"
-msgstr ""
+msgstr "სერვისის შემოწმების გამორთვა"
 
 #: servcheck_test.php:1116
 msgid "View Service Check History"
@@ -1382,15 +1382,15 @@ msgstr "მართვა"
 
 #: setup.php:214
 msgid "Service Checker"
-msgstr ""
+msgstr "სერვისის შემმოწმებელი"
 
 #: setup.php:231
 msgid "Service Check Edit"
-msgstr ""
+msgstr "სერვისის შემოწმების ჩასწორება"
 
 #: setup.php:238
 msgid "Service Check Save"
-msgstr ""
+msgstr "სერვისის შემოწმების შენახვა"
 
 #: setup.php:245
 msgid "Web Proxies"

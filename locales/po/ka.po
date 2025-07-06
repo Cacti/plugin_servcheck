@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2025-07-06 04:26+0000\n"
+"PO-Revision-Date: 2025-07-07 05:26+0000\n"
 "Last-Translator: Ekaterine papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <https://translate.cacti.net/projects/cacti/"
 "servcheck/ka/>\n"
@@ -25,11 +25,11 @@ msgstr "სტრიქონი აღმოჩენილია"
 
 #: includes/arrays.php:34
 msgid "String not found"
-msgstr ""
+msgstr "სტრიქონი აღმოჩენილი არაა"
 
 #: includes/arrays.php:35
 msgid "Failed string found"
-msgstr ""
+msgstr "აღმოჩენილია ჩავარდნილი სტრიქონი"
 
 #: includes/arrays.php:36
 msgid "Failed strint not found"
@@ -45,7 +45,7 @@ msgstr "ჯერ შემოწმებული არაა"
 
 #: includes/arrays.php:39
 msgid "Search not performed"
-msgstr ""
+msgstr "ძებნა არ მომხდარა"
 
 #: includes/arrays.php:43
 msgid "HTTP plaintext, default port 80"
@@ -275,11 +275,11 @@ msgstr ""
 
 #: includes/arrays.php:153
 msgid "Request-URI Too Long"
-msgstr ""
+msgstr "მოთხოვნის URI მეტისმეტად გრძელია"
 
 #: includes/arrays.php:154
 msgid "Unsupported Media Type"
-msgstr ""
+msgstr "მხარდაუჭერელი მედიის ტიპი"
 
 #: includes/arrays.php:155
 msgid "Requested Range Not Satisfiable"
@@ -447,7 +447,7 @@ msgstr ""
 
 #: includes/arrays.php:340
 msgid "Type of service"
-msgstr ""
+msgstr "სერვისის ტიპი"
 
 #: includes/arrays.php:345
 msgid "What type of service?"
@@ -808,7 +808,7 @@ msgstr ""
 
 #: includes/arrays.php:711
 msgid "LDAP search failed."
-msgstr ""
+msgstr "LDAP-ში ძებნა ჩავარდა."
 
 #: includes/arrays.php:719
 msgid "Function not found. A required zlib function was not found."
@@ -908,7 +908,7 @@ msgstr ""
 
 #: includes/arrays.php:839
 msgid "Illegal TFTP operation."
-msgstr ""
+msgstr "არასწორი TFTP ოპერაცია."
 
 #: includes/arrays.php:843
 msgid "Unknown TFTP transfer ID."
@@ -1144,7 +1144,7 @@ msgstr "დაყენებული არაა"
 
 #: servcheck_proxies.php:315
 msgid "No Servers Found"
-msgstr ""
+msgstr "სერვერები აღმოჩენილი არაა"
 
 #: servcheck_proxies.php:334
 msgid "Servcheck Proxy Management"
@@ -1374,7 +1374,7 @@ msgstr "მოვლენების გასუფთავება"
 
 #: setup.php:34
 msgid "Service Check Admin"
-msgstr ""
+msgstr "სერვისის შემოწმების ადმინისტრატორი"
 
 #: setup.php:214
 msgid "Management"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2025-07-07 05:26+0000\n"
+"PO-Revision-Date: 2025-07-12 22:39+0000\n"
 "Last-Translator: Ekaterine papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <https://translate.cacti.net/projects/cacti/"
 "servcheck/ka/>\n"
@@ -33,11 +33,11 @@ msgstr "აღმოჩენილია ჩავარდნილი სტ�
 
 #: includes/arrays.php:36
 msgid "Failed strint not found"
-msgstr ""
+msgstr "ჩავარდნილი strint აღმოჩენილი არაა"
 
 #: includes/arrays.php:37
 msgid "Maint string found"
-msgstr ""
+msgstr "აღმოჩენილია Maint სტრიქონი"
 
 #: includes/arrays.php:38 servcheck_test.php:1146 servcheck_test.php:1147
 msgid "Not tested yet"
@@ -145,7 +145,7 @@ msgstr "ბოლო კვირაში"
 
 #: includes/arrays.php:121
 msgid "Unable to Connect"
-msgstr ""
+msgstr "დაკავშირება შეუძლებელია"
 
 #: includes/arrays.php:122 servcheck_ca.php:109 servcheck_proxies.php:108
 #: servcheck_test.php:197 servcheck_test.php:206 servcheck_test.php:215
@@ -239,7 +239,7 @@ msgstr "აღმოჩენილი არაა"
 
 #: includes/arrays.php:144
 msgid "Method Not Allowed"
-msgstr ""
+msgstr "მეთოდი დაშვებული არაა"
 
 #: includes/arrays.php:145
 msgid "Not Acceptable"
@@ -271,7 +271,7 @@ msgstr "წინასწარი პირობა ჩავარდა"
 
 #: includes/arrays.php:152
 msgid "Request Entity Too Large"
-msgstr ""
+msgstr "მოთხოვნის ობიექტი მეტისმეტად დიდია"
 
 #: includes/arrays.php:153
 msgid "Request-URI Too Long"
@@ -283,7 +283,7 @@ msgstr "მხარდაუჭერელი მედიის ტიპი"
 
 #: includes/arrays.php:155
 msgid "Requested Range Not Satisfiable"
-msgstr ""
+msgstr "მოთხოვნილი შუალედი დამაკმაყოფილებელი არაა"
 
 #: includes/arrays.php:156
 msgid "Expectation Failed"
@@ -311,7 +311,7 @@ msgstr "ნაგულისხმევი რაუტერის მოლ�
 
 #: includes/arrays.php:162
 msgid "HTTP Version Not Supported"
-msgstr ""
+msgstr "HTTP-ის ვერსია მხარდაჭერილი არაა"
 
 #: includes/arrays.php:166
 #, php-format
@@ -323,7 +323,7 @@ msgstr "შემგროვებლის %d გაშვება"
 #: includes/arrays.php:173 includes/arrays.php:174 includes/arrays.php:175
 #, php-format
 msgid "%d Poller runs"
-msgstr ""
+msgstr "%d გამომთხოვის გაშვება"
 
 #: includes/arrays.php:179 includes/arrays.php:180 includes/arrays.php:181
 #: includes/arrays.php:182 includes/arrays.php:183 includes/arrays.php:184
@@ -391,7 +391,7 @@ msgstr "HTTP პორტი"
 
 #: includes/arrays.php:269
 msgid "The HTTP Proxy Port."
-msgstr ""
+msgstr "HTTP პროქსის პორტი."
 
 #: includes/arrays.php:277
 msgid "HTTPS Port"
@@ -399,7 +399,7 @@ msgstr "HTTPS პორტი"
 
 #: includes/arrays.php:278
 msgid "The HTTPS Proxy Port."
-msgstr ""
+msgstr "HTTPS პროქსის პორტი."
 
 #: includes/arrays.php:286
 msgid "User Name"
@@ -500,11 +500,11 @@ msgstr ""
 
 #: includes/arrays.php:396
 msgid "DNS name for querying"
-msgstr ""
+msgstr "DNS სახელი გამოსათხოვად"
 
 #: includes/arrays.php:403
 msgid "Path Part of URL"
-msgstr ""
+msgstr "URL-ის ბილიკის ნაწილი"
 
 #: includes/arrays.php:404
 msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
@@ -1008,7 +1008,7 @@ msgstr ""
 
 #: includes/arrays.php:947
 msgid "SSL Client Certificate required."
-msgstr ""
+msgstr "SSL კლიენტის სერტიფიკატი აუცილებელია."
 
 #: includes/arrays.php:951
 msgid "An internal call to poll() or select() returned error that is not recoverable."
@@ -1079,7 +1079,7 @@ msgstr "CA-ები"
 
 #: servcheck_ca.php:296
 msgid "No CAs Found"
-msgstr ""
+msgstr "CA-ები აღმოჩენილი არაა"
 
 #: servcheck_ca.php:315
 msgid "Servcheck CA Management"
@@ -1111,7 +1111,7 @@ msgstr "გასუფთავება"
 
 #: servcheck_curl_code.php:55
 msgid "No error codes"
-msgstr ""
+msgstr "შეცდომის კოდების გარეშე"
 
 #: servcheck_proxies.php:103
 msgid "Click 'Continue' to delete the following Proxy."
@@ -1122,13 +1122,13 @@ msgstr[1] ""
 #: servcheck_proxies.php:108
 msgid "Delete Proxy"
 msgid_plural "Delete Proxies"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "პროქსის წაშლა"
+msgstr[1] "პროქსიების წაშლა"
 
 #: servcheck_proxies.php:169
 #, php-format
 msgid "Proxy [edit: %s]"
-msgstr ""
+msgstr "პროქსი [ჩასწორება: %s]"
 
 #: servcheck_proxies.php:171
 msgid "Proxy [new]"
@@ -1159,8 +1159,8 @@ msgstr[1] ""
 #: servcheck_test.php:197
 msgid "Delete rest"
 msgid_plural "Delete tests"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ტესტის წაშლა"
+msgstr[1] "ტესტების წაშლა"
 
 #: servcheck_test.php:201
 msgid "Click 'Continue' to Disable the following test."
@@ -1171,8 +1171,8 @@ msgstr[1] ""
 #: servcheck_test.php:206
 msgid "Disable test"
 msgid_plural "Disable Tests"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ტესტის გამორთვა"
+msgstr[1] "ტესტების გამორთვა"
 
 #: servcheck_test.php:210
 msgid "Click 'Continue' to Enable the following test."
@@ -1195,8 +1195,8 @@ msgstr[1] ""
 #: servcheck_test.php:224
 msgid "Duplicate test"
 msgid_plural "Duplicate tests"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ტესტის დუბლირება"
+msgstr[1] "ტესტების დუბლირება"
 
 #: servcheck_test.php:405
 #, php-format
@@ -1214,7 +1214,7 @@ msgstr "მოთხოვნა [ახალი]"
 
 #: servcheck_test.php:465
 msgid "No Users Selected"
-msgstr ""
+msgstr "მომხმარებლები არჩეული არაა"
 
 #: servcheck_test.php:467
 msgid "Users Selected"
@@ -1242,7 +1242,7 @@ msgstr "ძებნის შედეგი"
 
 #: servcheck_test.php:802 servcheck_test.php:1058
 msgid "Curl return code"
-msgstr ""
+msgstr "Curl-ის დაბრუნებული კოდი"
 
 #: servcheck_test.php:807
 msgid "DNS"
@@ -1310,11 +1310,11 @@ msgstr "სერვისის შემოწმების გამორ�
 
 #: servcheck_test.php:1116
 msgid "View Service Check History"
-msgstr ""
+msgstr "სერვისის შემოწმების ისტორიის ნახვა"
 
 #: servcheck_test.php:1120
 msgid "View Last returned data"
-msgstr ""
+msgstr "ბოლოს დაბრუნებული მონაცემების ნახვა"
 
 #: servcheck_test.php:1125
 msgid "View Graph"
@@ -1338,7 +1338,7 @@ msgstr "კი"
 
 #: servcheck_test.php:1156
 msgid "No Tests Found"
-msgstr ""
+msgstr "შემოწმებები აღმოჩენილი არაა"
 
 #: servcheck_test.php:1242 setup.php:224
 msgid "Service Checks"
@@ -1358,7 +1358,7 @@ msgstr "განახლება"
 
 #: servcheck_test.php:1364
 msgid "Service Check History"
-msgstr ""
+msgstr "სერვისის შემოწმების ისტორია"
 
 #: servcheck_test.php:1373
 msgid "Date Search"
@@ -1398,11 +1398,11 @@ msgstr "ვებპროქსიები"
 
 #: setup.php:252
 msgid "Web Proxie Edit"
-msgstr ""
+msgstr "ვების პროქსის ჩასწორება"
 
 #: setup.php:259
 msgid "Save Web Proxy"
-msgstr ""
+msgstr "ვებ-პროქსის შენახვა"
 
 #: setup.php:266
 msgid "CA"

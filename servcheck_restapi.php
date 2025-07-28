@@ -431,7 +431,7 @@ function list_restapis() {
 		$sql_limit");
 
 	$total_rows = db_fetch_cell("SELECT COUNT(id)
-		FROM plugin_servcheck_restapi_method AS rm
+		FROM plugin_servcheck_restapi_method
 		$sql_where");
 
 	$display_text = array(

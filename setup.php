@@ -32,7 +32,7 @@ function plugin_servcheck_install () {
 	api_plugin_register_hook('servcheck', 'replicate_out',        'servcheck_replicate_out',               'setup.php');
 	api_plugin_register_hook('servcheck', 'config_settings',      'servcheck_config_settings',             'setup.php');
 
-	api_plugin_register_realm('servcheck', 'servcheck_test.php,servcheck_restapi.php,servcheck_curl_code.php,servcheck_proxies.php,servcheck_ca.php', __('Service Check Admin', 'servcheck'), 1);
+	api_plugin_register_realm('servcheck', 'servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxies.php,servcheck_ca.php', __('Service Check Admin', 'servcheck'), 1);
 
 	plugin_servcheck_setup_table();
 }
@@ -45,6 +45,7 @@ function plugin_servcheck_uninstall () {
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_contacts');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_ca');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_restapi_method');
+	db_execute('DROP TABLE IF EXISTS plugin_servcheck_credential');
 }
 
 function plugin_servcheck_check_config () {
@@ -57,6 +58,8 @@ function plugin_servcheck_upgrade() {
 	// Here we will upgrade to the newest version
 	global $config;
 
+	include_once(__DIR__ . '/includes/functions.php');
+
 	$info = plugin_servcheck_version();
 	$new  = $info['version'];
 	$old  = db_fetch_cell('SELECT version FROM plugin_config WHERE directory="servcheck"');
@@ -64,7 +67,7 @@ function plugin_servcheck_upgrade() {
 	db_execute_prepared('UPDATE plugin_realms
 		SET file = ?
 		WHERE file LIKE "%servcheck_test.php%"',
-		array('servcheck_test.php,servcheck_restapi.php,servcheck_curl_code.php,servcheck_proxies.php,servcheck_ca.php'));
+		array('servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxies.php,servcheck_ca.php'));
 
 		api_plugin_register_hook('servcheck', 'replicate_out', 'servcheck_replicate_out', 'setup.php', '1');
 		api_plugin_register_hook('servcheck', 'config_settings', 'servcheck_config_settings', 'setup.php', '1');
@@ -100,6 +103,52 @@ function plugin_servcheck_upgrade() {
 			'default' => '0',
 			'after' => 'proxy_server'));
 	}
+
+	$api_table = db_fetch_cell("SELECT COUNT(*)
+		FROM information_schema.tables
+		WHERE table_schema = SCHEMA()
+		AND table_name = 'plugin_servcheck_credential'");
+
+	if (!$api_table) {
+		$data              = array();
+		$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
+		$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
+		$data['columns'][] = array('name' => 'type', 'type' => "enum('userpass','snmp','snmp3','sshkey')", 'NULL' => false, 'default' => 'userpass');
+		$data['columns'][] = array('name' => 'data', 'type' => 'varchar(250)', 'NULL' => true, 'default' => '');
+		$data['primary']   = 'id';
+		$data['type']      = 'InnoDB';
+		$data['comment']   = 'Holds Credentials';
+
+		api_plugin_db_table_create('servcheck', 'plugin_servcheck_credential', $data);
+
+		if (!db_column_exists('plugin_servcheck_test', 'cred_id')) {
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
+		}
+
+		$tests = db_fetch_assoc("SELECT * FROM plugin_servcheck_test WHERE username != '' OR password !=''");
+		if (cacti_sizeof($tests)) {
+			foreach ($tests as $test) {
+				$cred = array();
+				$cred['id'] = $test['id'];
+				$cred['type'] = 'userpass';
+				$cred['username'] = servcheck_show_text($test['username']);
+				$cred['password'] = servcheck_show_text($test['password']);
+
+				$enc = servcheck_encrypt_credential($cred);
+
+				db_execute_prepared ('INSERT INTO plugin_servcheck_credential
+					(name, type, data) VALUES (?, ?, ?)',
+					array('upgrade/convert_' . $cred['id'], $cred['type'], $enc));
+			}
+		}
+//!!pm  podobny kod pro proxy a pro restapi
+
+//!! tady bude prevod a pak smazani sloupecku v tabulce test, restapi a proxy
+
+
+	}
+
+
 
 	if (cacti_version_compare($old, '0.4', '<')) {
 		if (!db_column_exists('plugin_servcheck_test', 'ipaddress')) {
@@ -277,6 +326,17 @@ function plugin_servcheck_setup_table() {
 	$data['comment']   = 'Holds Rest API auth';
 
 	api_plugin_db_table_create('servcheck', 'plugin_servcheck_restapi_method', $data);
+
+	$data              = array();
+	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
+	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'type', 'type' => "enum('userpass','snmp','snmp3','sshkey')", 'NULL' => false, 'default' => 'userpass');
+	$data['columns'][] = array('name' => 'data', 'type' => 'varchar(250)', 'NULL' => true, 'default' => '');
+	$data['primary']   = 'id';
+	$data['type']      = 'InnoDB';
+	$data['comment']   = 'Holds Credentials';
+
+	api_plugin_db_table_create('servcheck', 'plugin_servcheck_credential', $data);
 }
 
 
@@ -347,6 +407,27 @@ function plugin_servcheck_draw_navigation_text($nav) {
 		'title' => __('Rest API Save', 'servcheck'),
 		'mapping' => 'index.php:',
 		'url' => 'servcheck_restapi.php',
+		'level' => '1'
+	);
+
+	$nav['servcheck_credential.php:'] = array(
+		'title' => __('Credential', 'servcheck'),
+		'mapping' => 'index.php:',
+		'url' => 'servcheck_credential.php',
+		'level' => '1'
+	);
+
+	$nav['servcheck_credential.php:edit'] = array(
+		'title' => __('Credential Edit', 'servcheck'),
+		'mapping' => 'index.php:',
+		'url' => 'servcheck_credential.php',
+		'level' => '1'
+	);
+
+	$nav['servcheck_credential.php:save'] = array(
+		'title' => __('Credential Save', 'servcheck'),
+		'mapping' => 'index.php:',
+		'url' => 'servcheck_credentail.php',
 		'level' => '1'
 	);
 

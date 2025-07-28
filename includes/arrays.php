@@ -29,14 +29,16 @@ global	$servcheck_actions_proxy, $servcheck_actions_test, $servcheck_actions_ca,
 	$servcheck_proxy_fields, $servcheck_test_fields, $servcheck_ca_fields,
 	$servcheck_notify_accounts, $httperrors, $servcheck_seconds,
 	$search, $mail_serv, $service_types, $curl_error, $search_result, $servcheck_tabs,
-	$rest_api_format, $rest_api_auth_method, $servcheck_restapi_fields;
+	$rest_api_format, $rest_api_auth_method, $servcheck_restapi_fields,
+	$credential_types;
 
 $servcheck_tabs = array(
-	'servcheck_test.php'      => __('Tests', 'servcheck'),
-	'servcheck_ca.php'        => __('CA certificates', 'servcheck'),
-	'servcheck_proxies.php'   => __('Proxies', 'servcheck'),
-	'servcheck_restapi.php'   => __('Rest API methods', 'servcheck'),
-	'servcheck_curl_code.php' => __('Curl return codes', 'servcheck'),
+	'servcheck_test.php'       => __('Tests', 'servcheck'),
+	'servcheck_ca.php'         => __('CA certificates', 'servcheck'),
+	'servcheck_proxies.php'    => __('Proxies', 'servcheck'),
+	'servcheck_restapi.php'    => __('Rest API methods', 'servcheck'),
+	'servcheck_credential.php' => __('Credential', 'servcheck'),
+	'servcheck_curl_code.php'  => __('Curl return codes', 'servcheck'),
 );
 
 $service_types = array(
@@ -139,6 +141,12 @@ $search_result = array(
 	'not tested'    => __('Search not performed', 'servcheck')
 );
 
+$credential_types = array(
+	'userpass'      => __('Username and password', 'servcheck'),
+	'snmp'                   => __('SNMP v1 or v2', 'servcheck'),
+	'snmp3'                  => __('SNMP v3', 'servcheck'),
+	'ssh_key'                => __('SSH private key', 'servcheck')
+);
 
 $httperrors = array(
 	  0 => __('Unable to Connect', 'servcheck'),
@@ -249,6 +257,11 @@ $servcheck_actions_test = array(
 $servcheck_actions_restapi = array(
 	SERVCHECK_ACTION_RESTAPI_DELETE    => __('Delete', 'servcheck'),
 	SERVCHECK_ACTION_RESTAPI_DUPLICATE => __('Duplicate', 'servcheck'),
+);
+
+$servcheck_actions_credential = array(
+	SERVCHECK_ACTION_CREDENTIAL_DELETE    => __('Delete', 'servcheck'),
+	SERVCHECK_ACTION_CREDENTIAL_DUPLICATE => __('Duplicate', 'servcheck'),
 );
 
 $servcheck_ca_fields = array(
@@ -418,6 +431,7 @@ $servcheck_test_fields = array(
 		'max_length' => '100',
 		'size' => '30'
 	),
+
 	'ldapsearch' => array(
 		'friendly_name' => __('LDAP Search', 'servcheck'),
 		'method' => 'textbox',
@@ -679,6 +693,52 @@ $servcheck_restapi_fields = array(
 		'value' => '|arg1:id|'
 	),
 );
+
+
+$servcheck_credential_fields = array(
+	'general_spacer' => array(
+		'method' => 'spacer',
+		'friendly_name' => __('General Settings', 'servcheck')
+	),
+	'name' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Credential Name', 'servcheck'),
+		'description' => __('The name that is displayed for this Credential.', 'servcheck'),
+		'value' => '|arg1:name|',
+		'max_length' => '100',
+	),
+	'type' => array(
+		'friendly_name' => __('Credential type', 'servcheck'),
+		'method' => 'drop_array',
+		'on_change' => 'setCredential()',
+		'array' => $credential_types,
+		'default' => 'userpass',
+		'description' => __('Select correct Credential type.', 'servcheck'),
+		'value' => '|arg1:type|',
+	),
+	'username' => array(
+		'friendly_name' => __('Username', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For SMB use DOMAIN/user. MQTT supports username/password too. ', 'servcheck'),
+		'value' => '|arg1:username|',
+		'max_length' => '100',
+		'size' => '30'
+	),
+	'password' => array(
+		'friendly_name' => __('Password', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('For anonymous ftp insert email address here.', 'servcheck'),
+		'value' => '|arg1:password|',
+		'max_length' => '100',
+		'size' => '30'
+	),
+	'id' => array(
+		'method' => 'hidden_zero',
+		'value' => '|arg1:id|'
+	),
+);
+
+
 
 $curl_error = array(
 	0 => array (

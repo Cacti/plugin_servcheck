@@ -237,6 +237,7 @@ print '</pre>';
 }
 
 // I know, it not secure, it is better than plaintext
+// will be removed in 0.5
 
 function servcheck_hide_text ($string) {
 	$output = '';
@@ -256,5 +257,49 @@ function servcheck_show_text ($string) {
 	}
 
 	return $output;
+}
+
+
+function servcheck_encrypt_credential ($cred) {
+
+	$servcheck_iv  = read_user_setting('servcheck_iv', null);
+	$servcheck_key = read_user_setting('servcheck_key', null);
+
+	if (is_null($servcheck_iv) || is_null($servcheck_key)) {
+		$servcheck_iv = '';
+		for ($i = 0; $i < 16; $i++) {
+			$servcheck_iv .= random_int(0, 9);
+		}
+
+		$servcheck_key = hash('sha256', 'ksIBWE' . date('his'));
+	}
+
+	$ciphering = "AES-128-CTR";
+
+	// Use OpenSSl Encryption method
+	$iv_length = openssl_cipher_iv_length($ciphering);
+	$options = 0;
+
+	// Use openssl_encrypt() function to encrypt the data
+	$encryption = openssl_encrypt(json_encode($cred), $ciphering,
+		$servcheck_key, $options, $servcheck_iv);
+
+	return $encryption;
+}
+
+function servcheck_decrypt_credential ($cred) {
+
+	$servcheck_iv  = read_user_setting('servcheck_iv', null);
+	$servcheck_key = read_user_setting('servcheck_key', null);
+
+	$ciphering = "AES-128-CTR";
+
+	// Use OpenSSl Encryption method
+	$iv_length = openssl_cipher_iv_length($ciphering);
+	$options = 0;
+
+	$decryption=openssl_decrypt ($encryption, $ciphering, $servcheck_key, $options, $servcheck_iv);
+
+	return json_decode($decryption);
 }
 

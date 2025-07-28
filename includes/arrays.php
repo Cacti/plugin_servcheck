@@ -120,7 +120,7 @@ $graph_interval = array (
 $rest_api_auth_method = array(
 	'no'     => __('Without auth', 'servcheck'),
 	'basic'  => __('Basic HTTP auth', 'servcheck'),
-	'apikey' => __('API key auth - NOT TESTED', 'servcheck'),
+	'apikey' => __('API key auth', 'servcheck'),
 	'oauth2' => __('OAuth2/Bearer token auth', 'servcheck'),
 	'cookie' => __('Cookie based auth', 'servcheck'),
 );
@@ -142,10 +142,14 @@ $search_result = array(
 );
 
 $credential_types = array(
-	'userpass'      => __('Username and password', 'servcheck'),
-	'snmp'                   => __('SNMP v1 or v2', 'servcheck'),
-	'snmp3'                  => __('SNMP v3', 'servcheck'),
-	'ssh_key'                => __('SSH private key', 'servcheck')
+	'userpass'       => __('Username and password', 'servcheck'),
+	'snmp'           => __('SNMP v1 or v2', 'servcheck'),
+	'snmp3'          => __('SNMP v3', 'servcheck'),
+	'ssh_key'        => __('SSH private key', 'servcheck'),
+	'restapi_basic'  => __('Rest API - Basic HTTP auth', 'servcheck'),
+	'restapi_apikey' => __('Rest API - API key auth', 'servcheck'),
+	'restapi_oauth2' => __('Rest API - OAuth2/Bearer token auth', 'servcheck'),
+	'restapi_cookie' => __('Rest API - Cookie based auth', 'servcheck')
 );
 
 $httperrors = array(

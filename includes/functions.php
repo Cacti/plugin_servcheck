@@ -287,7 +287,11 @@ function servcheck_encrypt_credential ($cred) {
 	return $encryption;
 }
 
-function servcheck_decrypt_credential ($cred) {
+function servcheck_decrypt_credential ($cred_id) {
+
+	$encryption = db_fetch_cell_prepared('SELECT data FROM plugin_servcheck_credential
+		WHERE id = ?',
+		array($cred_id));
 
 	$servcheck_iv  = read_user_setting('servcheck_iv', null);
 	$servcheck_key = read_user_setting('servcheck_key', null);

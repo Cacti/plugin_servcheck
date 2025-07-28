@@ -125,22 +125,97 @@ function plugin_servcheck_upgrade() {
 			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
 		}
 
-		$tests = db_fetch_assoc("SELECT * FROM plugin_servcheck_test WHERE username != '' OR password !=''");
-		if (cacti_sizeof($tests)) {
-			foreach ($tests as $test) {
+		if (!db_column_exists('plugin_servcheck_proxies', 'cred_id')) {
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_proxies', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
+		}
+
+		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_test WHERE username != '' OR password !=''");
+		if (cacti_sizeof($records)) {
+			foreach ($records as $record) {
 				$cred = array();
-				$cred['id'] = $test['id'];
 				$cred['type'] = 'userpass';
-				$cred['username'] = servcheck_show_text($test['username']);
-				$cred['password'] = servcheck_show_text($test['password']);
+				$cred['username'] = servcheck_show_text($record['username']);
+				$cred['password'] = servcheck_show_text($record['password']);
 
 				$enc = servcheck_encrypt_credential($cred);
 
-				db_execute_prepared ('INSERT INTO plugin_servcheck_credential
+				db_execute_prepared('INSERT INTO plugin_servcheck_credential
 					(name, type, data) VALUES (?, ?, ?)',
-					array('upgrade/convert_' . $cred['id'], $cred['type'], $enc));
+					array('upgrade/convert_' . $record['id'], $cred['type'], $enc));
+
+				db_execute_prepared('UPDATE plugin_servcheck_test
+					SET cred_id = ? WHERE id = ?',
+					array(db_fetch_insert_id(), $record['id']));
 			}
 		}
+
+		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_proxies WHERE username != '' OR password !=''");
+		if (cacti_sizeof($records)) {
+			foreach ($records as $record) {
+				$cred = array();
+				$cred['type'] = 'userpass';
+				$cred['username'] = servcheck_show_text($record['username']);
+				$cred['password'] = servcheck_show_text($record['password']);
+
+				$enc = servcheck_encrypt_credential($cred);
+
+				db_execute_prepared('INSERT INTO plugin_servcheck_credential
+					(name, type, data) VALUES (?, ?, ?)',
+					array('upgrade/convert_' . $record['id'], $cred['type'], $enc));
+
+				db_execute_prepared('UPDATE plugin_servcheck_proxies
+					SET cred_id = ? WHERE id = ?',
+					array(db_fetch_insert_id(), $record['id']));
+			}
+		}
+
+/*
+     -->'restapi_basic'  => __('Rest API - Basic HTTP auth', 'servcheck'),
+<------>'restapi_apikey' => __('Rest API - API key auth', 'servcheck'),
+<------>'restapi_oauth2' => __('Rest API - OAuth2/Bearer token auth', 'servcheck'),
+<------>'restapi_cookie' 
+*/
+
+		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_restapi_method");
+		if (cacti_sizeof($records)) {
+			foreach ($records as $record) {
+				$cred = array();
+
+				if ($record['type'] == 'basic') {
+					$cred['type'] = 'userpass';
+					$cred['username'] = servcheck_show_text($record['username']);
+					$cred['password'] = servcheck_show_text($record['password']);
+				} elseif ($record['type'] == 'apikey') {
+					$cred['type'] = 'apikey';
+					$cred['keyname'] = $record['cred_name'];
+					$cred['keyvalue'] = servcheck_show_text($record['cred_value']);
+				} elseif ($record['type'] == 'oauth2') {
+					$cred['type'] = 'oauth2';
+					$cred['client_id'] = $record['username'];
+					$cred['client_secret'] = servcheck_show_text($record['cred_value']);
+					$cred['token_name'] = $record['cred_validity'];
+					$cred['token_value'] = servcheck_show_text($record['cred_value']);
+					$cred['token_validity'] = $record['cred_validity'];
+				} elseif ($record['type'] == 'cookie') {
+					$cred['type'] = 'userpass';
+					$cred['username'] = servcheck_show_text($record['username']);
+					$cred['password'] = servcheck_show_text($record['password']);
+				}
+
+
+				$enc = servcheck_encrypt_credential($cred);
+
+				db_execute_prepared('INSERT INTO plugin_servcheck_credential
+					(name, type, data) VALUES (?, ?, ?)',
+					array('upgrade/convert_' . $record['id'], $cred['type'], $enc));
+
+				db_execute_prepared('UPDATE plugin_servcheck_proxies
+					SET cred_id = ? WHERE id = ?',
+					array(db_fetch_insert_id(), $record['id']));
+			}
+		}
+
+
 //!!pm  podobny kod pro proxy a pro restapi
 
 //!! tady bude prevod a pak smazani sloupecku v tabulce test, restapi a proxy

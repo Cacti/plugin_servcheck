@@ -83,6 +83,7 @@ function curl_try ($test) {
 	$cred = '';
 
 	if ($service == 'imap' || $service == 'imaps' || $service == 'pop3' || $service == 'pop3s' || $service == 'scp') {
+//!!pm - tady to cele predelat na cred funkce
 		if ($test['username'] != '') {
 			// curl needs username with %40 instead of @
 			$cred = str_replace('@', '%40', servcheck_show_text($test['username']));
@@ -104,15 +105,17 @@ function curl_try ($test) {
 
 		// ldap needs credentials in options
 		$test['path'] = '/' . $test['ldapsearch'];
-
+//!!pm - taky predelat
 		$options[CURLOPT_USERPWD] = servcheck_show_text($test['username']) . ':' . servcheck_show_text($test['password']);
 	}
 
 	if ($service == 'smb' || $service == 'smbs') {
+//!!pm - taky predelat
 		$options[CURLOPT_USERPWD] = str_replace('@', '%40', servcheck_show_text($test['username'])) . ':' . servcheck_show_text($test['password']);
 	}
 
 	if ($service == 'ftp') {
+//!!pm - taky predelat
 		$cred = str_replace('@', '%40', servcheck_show_text($test['username']));
 		$cred .= ':';
 		$cred .= servcheck_show_text($test['password']);
@@ -166,7 +169,7 @@ function curl_try ($test) {
 				} else {
 					$options[CURLOPT_PROXYPORT] = $proxy['http_port'];
 				}
-
+//!!pm  - taky predelat
 				if ($proxy['proxy_username'] != '') {
 					$options[CURLOPT_PROXYUSERPWD] = $proxy['username'] . ':' . $proxy['password'];
 				}
@@ -403,7 +406,7 @@ function mqtt_try ($test) {
 	}
 
 	$cred = '';
-
+//!!pm taky predelat
 	if ($test['username'] != '') {
 		// curl needs username with %40 instead of @
 		$cred = str_replace('@', '%40', servcheck_show_text($test['username']));
@@ -740,24 +743,41 @@ function restapi_try ($test) {
 			// nothing to do
 			break;
 		case 'basic':
+//!!pm tady to otestovat
+// promenne jsou username a password, jsou ale v jsonu a sifrovane
+
+			$cred = servcheck_decrypt_credential($api['cred_id']);
+
 			// we don't need set content type for login or GET/POST request because we don't set any data
-			$options[CURLOPT_USERPWD] = servcheck_show_text($api['username']) . ':' . servcheck_show_text($api['password']);
+			$options[CURLOPT_USERPWD] = $cred['username'] . ':' . $cred['password'];
 			$options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
 			break;
 		case 'apikey':
+//!!pm tady to otestovat
+// promenne jsou keyname a keyvalue, jsou ale v json sifrovane
+
+			$cred = servcheck_decrypt_credential($api['cred_id']);
+
 			if ($api['format'] == 'json') {
+//!! cred_data tu chybelo, to jsem doplnil ale je urcite spatne. Jde vubec apikey v jsonu? Pokud ano, opravit tady
+				$cred_data = [
+					'username'   => $cred['username'],
+					'password'   => $cred['password']
+				];
+
 				$cred_data = json_encode($cred_data);
 				$http_headers[] = "Content-Type: application/json";
 			} else {
-			
-				$http_headers[] = $api['cred_name'] . ': ' . servcheck_show_text($api['cred_value']);
+
+				$http_headers[] = $cred['keyname'] . ': ' . $cred['keyvalue'];
 			}
 
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
 
 			break;
 		case 'oauth2':
-
+//!!pm tady to budu upravovat
+// promenne jsou client_id, client_secret, token_validity, token_name, token_value
 			$valid = db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_restapi_method
 				WHERE id = ? AND cred_validity > NOW()',
 				array($api['id']));
@@ -839,7 +859,8 @@ function restapi_try ($test) {
 
 			break;
 		case 'cookie':
-
+//!!pm tady to budu upravovat
+// promenne jsou username a password
 			// first we have to create login request and get cookie
 			$cred_data = [
 				'username'   => servcheck_show_text($api['username']),

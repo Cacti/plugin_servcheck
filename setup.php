@@ -114,7 +114,7 @@ function plugin_servcheck_upgrade() {
 		$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 		$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 		$data['columns'][] = array('name' => 'type', 'type' => "enum('userpass','snmp','snmp3','sshkey')", 'NULL' => false, 'default' => 'userpass');
-		$data['columns'][] = array('name' => 'data', 'type' => 'varchar(250)', 'NULL' => true, 'default' => '');
+		$data['columns'][] = array('name' => 'data', 'type' => 'text', 'NULL' => true, 'default' => '');
 		$data['primary']   = 'id';
 		$data['type']      = 'InnoDB';
 		$data['comment']   = 'Holds Credentials';
@@ -127,6 +127,10 @@ function plugin_servcheck_upgrade() {
 
 		if (!db_column_exists('plugin_servcheck_proxies', 'cred_id')) {
 			api_plugin_db_add_column('servcheck', 'plugin_servcheck_proxies', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
+		}
+
+		if (!db_column_exists('plugin_servcheck_restapi_method', 'cred_id')) {
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_restapi_method', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
 		}
 
 		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_test WHERE username != '' OR password !=''");
@@ -154,9 +158,9 @@ function plugin_servcheck_upgrade() {
 			foreach ($records as $record) {
 				$cred = array();
 				$cred['type'] = 'userpass';
-				$cred['username'] = servcheck_show_text($record['username']);
-				$cred['password'] = servcheck_show_text($record['password']);
-
+				$cred['username'] = $record['username'];
+				$cred['password'] = $record['password'];
+cacti_log('yyyy:' . print_r($cred));
 				$enc = servcheck_encrypt_credential($cred);
 
 				db_execute_prepared('INSERT INTO plugin_servcheck_credential
@@ -179,7 +183,12 @@ function plugin_servcheck_upgrade() {
 		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_restapi_method");
 		if (cacti_sizeof($records)) {
 			foreach ($records as $record) {
+				if ($record['type'] == 'no') {
+					continue;
+				}
+
 				$cred = array();
+
 
 				if ($record['type'] == 'basic') {
 					$cred['type'] = 'userpass';
@@ -191,7 +200,8 @@ function plugin_servcheck_upgrade() {
 					$cred['keyvalue'] = servcheck_show_text($record['cred_value']);
 				} elseif ($record['type'] == 'oauth2') {
 					$cred['type'] = 'oauth2';
-					$cred['client_id'] = $record['username'];
+					$cred['client_id'] = servcheck_show_text($record['username']);
+//!! blbe, mam tu dve stejne promenne cred_value
 					$cred['client_secret'] = servcheck_show_text($record['cred_value']);
 					$cred['token_name'] = $record['cred_validity'];
 					$cred['token_value'] = servcheck_show_text($record['cred_value']);
@@ -284,6 +294,8 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'lastcheck', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
 	$data['columns'][] = array('name' => 'last_exp_notify', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
 	$data['columns'][] = array('name' => 'last_returned_data', 'type' => 'blob', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+
 	$data['primary']   = 'id';
 	$data['keys'][] = array('name' => 'lastcheck', 'columns' => 'lastcheck');
 	$data['keys'][] = array('name' => 'triggered', 'columns' => 'triggered');
@@ -362,6 +374,7 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'https_port', 'type' => 'mediumint(8)', 'NULL' => true, 'default' => '443');
 	$data['columns'][] = array('name' => 'username', 'type' => 'varchar(40)', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'password', 'type' => 'varchar(60)', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['primary']   = 'id';
 	$data['keys'][] = array('name' => 'hostname', 'columns' => 'hostname');
 	$data['keys'][] = array('name' => 'name', 'columns' => 'name');
@@ -405,7 +418,8 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'type', 'type' => "enum('userpass','snmp','snmp3','sshkey')", 'NULL' => false, 'default' => 'userpass');
-	$data['columns'][] = array('name' => 'data', 'type' => 'varchar(250)', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'data', 'type' => 'text', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['primary']   = 'id';
 	$data['type']      = 'InnoDB';
 	$data['comment']   = 'Holds Credentials';

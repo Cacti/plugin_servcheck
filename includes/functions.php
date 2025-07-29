@@ -265,7 +265,7 @@ function servcheck_encrypt_credential ($cred) {
 	$servcheck_key = read_user_setting('servcheck_key', null);
 	$iv_length    = intval(openssl_cipher_iv_length(SERVCHECK_CIPHER));
 	$servcheck_iv = openssl_random_pseudo_bytes($iv_length);
-
+cacti_log('xxxx:' . print_r($cred,true));
 	if (is_null($servcheck_key)) {
 
 		$servcheck_key = hash('sha256', 'ksIBWE' . date('hisv'));
@@ -296,6 +296,8 @@ function servcheck_decrypt_credential ($cred_id) {
 		WHERE id = ?',
 		array($cred_id));
 
+//var_dump ($cred_id);
+
 	$encrypted = base64_decode($encrypted);
 
 	$iv_length     = intval(openssl_cipher_iv_length(SERVCHECK_CIPHER));
@@ -304,6 +306,6 @@ function servcheck_decrypt_credential ($cred_id) {
 
 	$decrypted=openssl_decrypt ($encrypted, SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
 
-	return json_decode($decrypted);
+	return json_decode($decrypted, true);
 }
 

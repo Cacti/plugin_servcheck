@@ -262,48 +262,48 @@ function servcheck_show_text ($string) {
 
 function servcheck_encrypt_credential ($cred) {
 
-	$servcheck_iv  = read_user_setting('servcheck_iv', null);
 	$servcheck_key = read_user_setting('servcheck_key', null);
+	$iv_length    = intval(openssl_cipher_iv_length(SERVCHECK_CIPHER));
+	$servcheck_iv = openssl_random_pseudo_bytes($iv_length);
 
-	if (is_null($servcheck_iv) || is_null($servcheck_key)) {
-		$servcheck_iv = '';
-		for ($i = 0; $i < 16; $i++) {
-			$servcheck_iv .= random_int(0, 9);
-		}
+	if (is_null($servcheck_key)) {
 
-		$servcheck_key = hash('sha256', 'ksIBWE' . date('his'));
+		$servcheck_key = hash('sha256', 'ksIBWE' . date('hisv'));
+
+		set_user_setting('servcheck_key', base64_encode($servcheck_key));
+	} else {
+		$servcheck_key = base64_decode($servcheck_key);
 	}
 
-	$ciphering = "AES-128-CTR";
-
-	// Use OpenSSl Encryption method
-	$iv_length = openssl_cipher_iv_length($ciphering);
-	$options = 0;
-
-	// Use openssl_encrypt() function to encrypt the data
-	$encryption = openssl_encrypt(json_encode($cred), $ciphering,
-		$servcheck_key, $options, $servcheck_iv);
+	$encrypted = openssl_encrypt(json_encode($cred), SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
+	return (base64_encode($servcheck_iv . $encrypted));
 
 	return $encryption;
 }
 
 function servcheck_decrypt_credential ($cred_id) {
 
-	$encryption = db_fetch_cell_prepared('SELECT data FROM plugin_servcheck_credential
+	$servcheck_key = read_user_setting('servcheck_key', null);
+
+	if (is_null($servcheck_key)) {
+		cacti_log('Cannot decrypt credential, key is missing', 'servcheck');
+		return false;
+	} else {
+		$servcheck_key = base64_decode($servcheck_key);
+	}
+
+	$encrypted = db_fetch_cell_prepared('SELECT data FROM plugin_servcheck_credential
 		WHERE id = ?',
 		array($cred_id));
 
-	$servcheck_iv  = read_user_setting('servcheck_iv', null);
-	$servcheck_key = read_user_setting('servcheck_key', null);
+	$encrypted = base64_decode($encrypted);
 
-	$ciphering = "AES-128-CTR";
+	$iv_length     = intval(openssl_cipher_iv_length(SERVCHECK_CIPHER));
+	$servcheck_iv  = substr($encrypted, 0, $iv_length);
+	$encrypted     = substr($encrypted, $iv_length);
 
-	// Use OpenSSl Encryption method
-	$iv_length = openssl_cipher_iv_length($ciphering);
-	$options = 0;
+	$decrypted=openssl_decrypt ($encrypted, SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
 
-	$decryption=openssl_decrypt ($encryption, $ciphering, $servcheck_key, $options, $servcheck_iv);
-
-	return json_decode($decryption);
+	return json_decode($decrypted);
 }
 

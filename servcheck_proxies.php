@@ -313,6 +313,8 @@ function proxies() {
 
 			form_end_row();
 		}
+var_dump( servcheck_decrypt_credential ($row['cred_id'])) . "<hr/><br/>";
+
 	}
 
 	html_end_box(false);

@@ -141,7 +141,7 @@ function plugin_servcheck_upgrade() {
 
 				db_execute_prepared('INSERT INTO plugin_servcheck_credential
 					(name, type, data) VALUES (?, ?, ?)',
-					array('upgrade/convert_' . $record['id'], $cred['type'], $enc));
+					array('upgrade/convert_test_' . $record['id'], $cred['type'], $enc));
 
 				db_execute_prepared('UPDATE plugin_servcheck_test
 					SET cred_id = ? WHERE id = ?',
@@ -161,7 +161,7 @@ function plugin_servcheck_upgrade() {
 
 				db_execute_prepared('INSERT INTO plugin_servcheck_credential
 					(name, type, data) VALUES (?, ?, ?)',
-					array('upgrade/convert_' . $record['id'], $cred['type'], $enc));
+					array('upgrade/convert_proxy_' . $record['id'], $cred['type'], $enc));
 
 				db_execute_prepared('UPDATE plugin_servcheck_proxies
 					SET cred_id = ? WHERE id = ?',
@@ -207,16 +207,15 @@ function plugin_servcheck_upgrade() {
 
 				db_execute_prepared('INSERT INTO plugin_servcheck_credential
 					(name, type, data) VALUES (?, ?, ?)',
-					array('upgrade/convert_' . $record['id'], $cred['type'], $enc));
+					array('upgrade/convert_restapi_' . $record['id'], $cred['type'], $enc));
 
-				db_execute_prepared('UPDATE plugin_servcheck_proxies
+				db_execute_prepared('UPDATE plugin_servcheck_restapi_method
 					SET cred_id = ? WHERE id = ?',
 					array(db_fetch_insert_id(), $record['id']));
 			}
 		}
 
 
-//!!pm  podobny kod pro proxy a pro restapi
 
 //!! tady bude prevod a pak smazani sloupecku v tabulce test, restapi a proxy
 

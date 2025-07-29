@@ -22,6 +22,8 @@
  +-------------------------------------------------------------------------+
 */
 
+define('SERVCHECK_CIPHER', 'aes-256-cbc');
+
 define('SERVCHECK_ACTION_PROXY_DELETE', 1);
 
 define('SERVCHECK_ACTION_CA_DELETE', 1);
@@ -39,3 +41,4 @@ define('SERVCHECK_ACTION_CREDENTIAL_DUPLICATE', 2);
 
 define('SERVCHECK_FORMAT_HTML', 0);
 define('SERVCHECK_FORMAT_PLAIN', 1);
+

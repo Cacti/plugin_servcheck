@@ -142,59 +142,16 @@ function proxy_form_save() {
 		$username = form_input_validate(get_nfilter_request_var('username'), 'username', '', true, 3);
 		$password = form_input_validate(get_nfilter_request_var('password'), 'password', '', true, 3);
 
-		if ($save['id'] == 0) { // new record, we need save new credentials
-			if ($username != '' || $password != '') {
-				$cred = array(
-					'username' => $username,
-					'password' => $password
-				);
-				$data = servcheck_encrypt_credential($cred);
+		$cred = array();
 
-				db_execute_prepared("INSERT INTO plugin_servcheck_credential
-					(type, data)
-					VALUES ('userpass', ?)",
-					array($data));
-
-				$save['cred_id'] = db_fetch_insert_id();
-			} else {
-				$save['cred_id'] = 0;
-			}
-		} else {
-			$cred_id = db_fetch_cell_prepared('SELECT cred_id
-				FROM plugin_servcheck_proxies
-				WHERE id = ?',
-				array($save['id']));
-
-			if ($username != '' || $password != '') {
-				$cred = array(
-					'username' => $username,
-					'password' => $password
-				);
-				$data = servcheck_encrypt_credential($cred);
-
-				if ($cred_id == 0) { // it was without auth, user changed it later
-					db_execute_prepared("INSERT INTO plugin_servcheck_credential
-						(type, data)
-						VALUES ('userpass', ?)",
-						array($data));
-					$save['cred_id'] = db_fetch_insert_id();
-
-				} else {
-					db_execute_prepared('UPDATE plugin_servcheck_credential
-						SET data = ?
-						WHERE id = ?',
-						array($data, $cred_id));
-
-					$save['cred_id'] = $cred_id;
-				}
-			} else { // user removed auth
-				db_execute_prepared('DELETE FROM plugin_servcheck_credential
-					WHERE id = ?',
-					array($cred_id));
-
-				$save['cred_id'] = 0;
-			}
+		if ($username != '' || $password != '') {
+			$cred = array(
+				'username' => $username,
+				'password' => $password
+			);
 		}
+
+		$save['cred_id'] = save_credential ($save['id'], 'userpass', $cred, 'For proxy ' . $save['name']);
 
 		if (!is_error_message()) {
 			$proxy_id = sql_save($save, 'plugin_servcheck_proxies');

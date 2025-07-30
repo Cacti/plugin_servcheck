@@ -30,7 +30,7 @@ global	$servcheck_actions_proxy, $servcheck_actions_test, $servcheck_actions_ca,
 	$servcheck_notify_accounts, $httperrors, $servcheck_seconds,
 	$search, $mail_serv, $service_types, $curl_error, $search_result, $servcheck_tabs,
 	$rest_api_format, $rest_api_auth_method, $servcheck_restapi_fields,
-	$credential_types;
+	$credential_types, $servcheck_credential_fields;
 
 $servcheck_tabs = array(
 	'servcheck_test.php'       => __('Tests', 'servcheck'),
@@ -145,11 +145,11 @@ $credential_types = array(
 	'userpass'       => __('Username and password', 'servcheck'),
 	'snmp'           => __('SNMP v1 or v2', 'servcheck'),
 	'snmp3'          => __('SNMP v3', 'servcheck'),
-	'ssh_key'        => __('SSH private key', 'servcheck'),
-	'restapi_basic'  => __('Rest API - Basic HTTP auth', 'servcheck'),
-	'restapi_apikey' => __('Rest API - API key auth', 'servcheck'),
-	'restapi_oauth2' => __('Rest API - OAuth2/Bearer token auth', 'servcheck'),
-	'restapi_cookie' => __('Rest API - Cookie based auth', 'servcheck')
+	'sshkey'         => __('SSH private key', 'servcheck'),
+	'basic'  => __('Rest API - Basic HTTP auth', 'servcheck'),
+	'apikey' => __('Rest API - API key auth', 'servcheck'),
+	'oauth2' => __('Rest API - OAuth2/Bearer token auth', 'servcheck'),
+	'cookie' => __('Rest API - Cookie based auth', 'servcheck')
 );
 
 $httperrors = array(
@@ -325,23 +325,13 @@ $servcheck_proxy_fields = array(
 		'size' => '5',
 		'default' => '443'
 	),
-	'username' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('User Name'),
-		'description' => __('The user to use to authenticate with the Proxy if any.'),
-		'value' => '|arg1:username|',
-		'max_length' => '64',
-		'size' => '40',
-		'default' => ''
-	),
-	'password' => array(
-		'method' => 'textbox_password',
-		'friendly_name' => __('Password'),
-		'description' => __('The user password to use to authenticate with the Proxy if any.'),
-		'value' => '|arg1:password|',
-		'max_length' => '40',
-		'size' => '40',
-		'default' => ''
+	'cred_id' => array(
+		'friendly_name' => __('Credential', 'servcheck'),
+		'method' => 'drop_sql',
+		'default' => 0,
+		'description' => __('Select correct credential', 'servcheck'),
+		'value' => '|arg1:cred_id|',
+		'sql' => "SELECT id, name FROM plugin_servcheck_credential WHERE type = 'userpass' ORDER BY name",
 	),
 	'id' => array(
 		'method' => 'hidden_zero',
@@ -410,6 +400,14 @@ $servcheck_test_fields = array(
 		'method' => 'spacer',
 		'friendly_name' => __('Service settings', 'servcheck')
 	),
+	'cred_id' => array(
+		'friendly_name' => __('Credential', 'servcheck'),
+		'method' => 'drop_sql',
+		'default' => 0,
+		'description' => __('Select correct credential', 'servcheck'),
+		'value' => '|arg1:cred_id|',
+		'sql' => "SELECT id, name FROM plugin_servcheck_credential WHERE type IN ('userpass', 'snmp', 'snmp3', 'sshkey') ORDER BY name",
+	),
 	'ca' => array(
 		'friendly_name' => __('CA Chain', 'servcheck'),
 		'method' => 'drop_sql',
@@ -419,23 +417,6 @@ $servcheck_test_fields = array(
 		'value' => '|arg1:ca|',
 		'sql' => 'SELECT id, name FROM plugin_servcheck_ca ORDER by name'
 	),
-	'username' => array(
-		'friendly_name' => __('Username', 'servcheck'),
-		'method' => 'textbox',
-		'description' => __('With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For SMB use DOMAIN/user. MQTT supports username/password too. ', 'servcheck'),
-		'value' => '|arg1:username|',
-		'max_length' => '100',
-		'size' => '30'
-	),
-	'password' => array(
-		'friendly_name' => __('Password', 'servcheck'),
-		'method' => 'textbox',
-		'description' => __('For anonymous ftp insert email address here.', 'servcheck'),
-		'value' => '|arg1:password|',
-		'max_length' => '100',
-		'size' => '30'
-	),
-
 	'ldapsearch' => array(
 		'friendly_name' => __('LDAP Search', 'servcheck'),
 		'method' => 'textbox',
@@ -640,6 +621,14 @@ $servcheck_restapi_fields = array(
 		Note: HTTP method POST is used for login. For data query is used GET.', 'servcheck'),
 		'value' => '|arg1:type|',
 	),
+	'cred_id' => array(
+		'friendly_name' => __('Credential', 'servcheck'),
+		'method' => 'drop_sql',
+		'default' => 0,
+		'description' => __('Select correct credential', 'servcheck'),
+		'value' => '|arg1:cred_id|',
+		'sql' => "SELECT id, name FROM plugin_servcheck_credential WHERE type IN ('basic', 'apikey', 'oauth2', 'cookie') ORDER BY name",
+	),
 	'format' => array(
 		'friendly_name' => __('Data Format', 'servcheck'),
 		'method' => 'drop_array',
@@ -654,28 +643,6 @@ $servcheck_restapi_fields = array(
 		'description' => __('Auth can use different token or API Key name. You can specify it here.
 		Commonly used names are  \'Bearer\' for OAuth2,  \'apikey\' for API Key method. You need know correct name, check your Rest API server documentation. ', 'servcheck'),
 		'value' => '|arg1:cred_name|',
-		'max_length' => '100',
-	),
-	'cred_value' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('Token/API key value', 'servcheck'),
-		'description' => __('API key and OAuth2 have two flows - You can have key/token from server and insert it here 
-		or use auth flow with credentials.', 'servcheck'),
-		'value' => '|arg1:cred_value|',
-		'max_length' => '100',
-	),
-	'username' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('Username', 'servcheck'),
-		'description' => __('If auth uses credentials, insert it here. In the case of oauth2, this field is called client id.', 'servcheck'),
-		'value' => '|arg1:username|',
-		'max_length' => '100',
-	),
-	'password' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('Password', 'servcheck'),
-		'description' => __('If auth uses credentials, insert it here. In the case of oauth2, this field is called client secret.', 'servcheck'),
-		'value' => '|arg1:password|',
 		'max_length' => '100',
 	),
 	'login_url' => array(
@@ -723,7 +690,7 @@ $servcheck_credential_fields = array(
 	'username' => array(
 		'friendly_name' => __('Username', 'servcheck'),
 		'method' => 'textbox',
-		'description' => __('With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For SMB use DOMAIN/user. MQTT supports username/password too. ', 'servcheck'),
+		'description' => __('With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For SMB use DOMAIN/user. MQTT supports username/password too. In the case of oauth2, this field is called client_id.', 'servcheck'),
 		'value' => '|arg1:username|',
 		'max_length' => '100',
 		'size' => '30'
@@ -731,17 +698,32 @@ $servcheck_credential_fields = array(
 	'password' => array(
 		'friendly_name' => __('Password', 'servcheck'),
 		'method' => 'textbox',
-		'description' => __('For anonymous ftp insert email address here.', 'servcheck'),
+		'description' => __('For anonymous ftp insert email address here. In the case of oauth2, this field is called client secret.', 'servcheck'),
 		'value' => '|arg1:password|',
 		'max_length' => '100',
 		'size' => '30'
 	),
+	'cred_value' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Token/API key value', 'servcheck'),
+		'description' => __('API key and OAuth2 have two flows - You can have key/token from server and insert it here or use auth flow with credentials.', 'servcheck'),
+		'value' => '|arg1:cred_value|',
+		'max_length' => '200',
+	),
+	'community' => array(
+		'friendly_name' => __('SNMP v1 or v2 community', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('SNMP community string for SNMP v1 or v2(c)', 'servcheck'),
+		'value' => '|arg1:community|',
+		'max_length' => '30',
+		'size' => '30'
+	),
+
 	'id' => array(
 		'method' => 'hidden_zero',
 		'value' => '|arg1:id|'
 	),
 );
-
 
 
 $curl_error = array(

@@ -113,7 +113,7 @@ function plugin_servcheck_upgrade() {
 		$data              = array();
 		$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 		$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-		$data['columns'][] = array('name' => 'type', 'type' => "enum('userpass','snmp','snmp3','sshkey')", 'NULL' => false, 'default' => 'userpass');
+		$data['columns'][] = array('name' => 'type', 'type' => "enum('userpass','basic','apikey', 'oauth2', 'cookie', 'snmp','snmp3','sshkey')", 'NULL' => false, 'default' => 'userpass');
 		$data['columns'][] = array('name' => 'data', 'type' => 'text', 'NULL' => true, 'default' => '');
 		$data['primary']   = 'id';
 		$data['type']      = 'InnoDB';
@@ -160,7 +160,7 @@ function plugin_servcheck_upgrade() {
 				$cred['type'] = 'userpass';
 				$cred['username'] = $record['username'];
 				$cred['password'] = $record['password'];
-cacti_log('yyyy:' . print_r($cred));
+
 				$enc = servcheck_encrypt_credential($cred);
 
 				db_execute_prepared('INSERT INTO plugin_servcheck_credential
@@ -173,13 +173,6 @@ cacti_log('yyyy:' . print_r($cred));
 			}
 		}
 
-/*
-     -->'restapi_basic'  => __('Rest API - Basic HTTP auth', 'servcheck'),
-<------>'restapi_apikey' => __('Rest API - API key auth', 'servcheck'),
-<------>'restapi_oauth2' => __('Rest API - OAuth2/Bearer token auth', 'servcheck'),
-<------>'restapi_cookie' 
-*/
-
 		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_restapi_method");
 		if (cacti_sizeof($records)) {
 			foreach ($records as $record) {
@@ -189,29 +182,24 @@ cacti_log('yyyy:' . print_r($cred));
 
 				$cred = array();
 
-
 				if ($record['type'] == 'basic') {
-					$cred['type'] = 'userpass';
+					$cred['type'] = 'basic';
 					$cred['username'] = servcheck_show_text($record['username']);
 					$cred['password'] = servcheck_show_text($record['password']);
 				} elseif ($record['type'] == 'apikey') {
 					$cred['type'] = 'apikey';
-					$cred['keyname'] = $record['cred_name'];
-					$cred['keyvalue'] = servcheck_show_text($record['cred_value']);
+					$cred['username'] = $record['cred_name'];
+					$cred['cred_value'] = servcheck_show_text($record['cred_value']);
 				} elseif ($record['type'] == 'oauth2') {
 					$cred['type'] = 'oauth2';
-					$cred['client_id'] = servcheck_show_text($record['username']);
-//!! blbe, mam tu dve stejne promenne cred_value
-					$cred['client_secret'] = servcheck_show_text($record['cred_value']);
-					$cred['token_name'] = $record['cred_validity'];
-					$cred['token_value'] = servcheck_show_text($record['cred_value']);
-					$cred['token_validity'] = $record['cred_validity'];
+					$cred['username'] = servcheck_show_text($record['username']);
+					$cred['password'] = servcheck_show_text($record['password']);
+					$cred['cred_value'] = servcheck_show_text($record['cred_value']);
 				} elseif ($record['type'] == 'cookie') {
-					$cred['type'] = 'userpass';
+					$cred['type'] = 'cookie';
 					$cred['username'] = servcheck_show_text($record['username']);
 					$cred['password'] = servcheck_show_text($record['password']);
 				}
-
 
 				$enc = servcheck_encrypt_credential($cred);
 
@@ -225,10 +213,13 @@ cacti_log('yyyy:' . print_r($cred));
 			}
 		}
 
-
-
-//!! tady bude prevod a pak smazani sloupecku v tabulce test, restapi a proxy
-
+		db_remove_column('plugin_servcheck_test', 'username');
+		db_remove_column('plugin_servcheck_test', 'password');
+		db_remove_column('plugin_servcheck_proxies', 'username');
+		db_remove_column('plugin_servcheck_proxies', 'password');
+		db_remove_column('plugin_servcheck_restapi_method', 'username');
+		db_remove_column('plugin_servcheck_restapi_method', 'password');
+		db_remove_column('plugin_servcheck_restapi_method', 'cred_value');
 
 	}
 
@@ -417,7 +408,7 @@ function plugin_servcheck_setup_table() {
 	$data              = array();
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'type', 'type' => "enum('userpass','snmp','snmp3','sshkey')", 'NULL' => false, 'default' => 'userpass');
+	$data['columns'][] = array('name' => 'type', 'type' => "enum('userpass','basic','apikey', 'oauth2', 'cookie', 'snmp','snmp3','sshkey')", 'NULL' => false, 'default' => 'userpass');
 	$data['columns'][] = array('name' => 'data', 'type' => 'text', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['primary']   = 'id';

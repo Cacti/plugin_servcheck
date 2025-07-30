@@ -33,7 +33,6 @@ if (strpos($dir, 'plugins') !== false) {
 require('./include/cli_check.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
-include_once($config['base_path'] . '/plugins/servcheck/includes/constants.php');
 
 ini_set('max_execution_time', '21');
 

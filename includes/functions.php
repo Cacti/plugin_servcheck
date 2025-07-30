@@ -295,7 +295,7 @@ function servcheck_decrypt_credential ($cred_id) {
 	$encrypted = db_fetch_cell_prepared('SELECT data FROM plugin_servcheck_credential
 		WHERE id = ?',
 		array($cred_id));
-
+//var_dump($encrypted);
 	$encrypted = base64_decode($encrypted);
 
 	$iv_length     = intval(openssl_cipher_iv_length(SERVCHECK_CIPHER));
@@ -303,12 +303,13 @@ function servcheck_decrypt_credential ($cred_id) {
 	$encrypted     = substr($encrypted, $iv_length);
 
 	$decrypted=openssl_decrypt ($encrypted, SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
-
+//var_dump($decrypted);
 //!! udelat test porovnani?
 	return json_decode($decrypted, true);
 }
 
 
+//!! ta se asi zrusi
 function save_credential ($save_id, $cred_type, $cred, $name = null) {
 
 	if (is_null($name)) {

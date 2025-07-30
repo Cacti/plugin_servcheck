@@ -30,6 +30,8 @@ $ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 function curl_try ($test) {
 	global $user_agent, $config, $ca_info, $service_types_ports;
 
+	include_once($config['base_path'] . '/plugins/servcheck/includes/constants.php');
+
 	$cert_info = array();
 
 	// default result
@@ -395,6 +397,8 @@ there are 2 problems:
 function mqtt_try ($test) {
 	global $config;
 
+	include_once($config['base_path'] . '/plugins/servcheck/includes/constants.php');
+
 	// default result
 	$results['result'] = 'ok';
 	$results['time'] = time();
@@ -701,6 +705,8 @@ function doh_try ($test) {
 function restapi_try ($test) {
 	global $user_agent, $config, $ca_info, $rest_api_auth_method;
 
+	include_once($config['base_path'] . '/plugins/servcheck/includes/constants.php');
+
 	$cert_info = array();
 	$http_headers = array();
 
@@ -754,12 +760,12 @@ function restapi_try ($test) {
 			break;
 		case 'apikey':
 //!!pm tady to otestovat
-// promenne jsou keyname a keyvalue, jsou ale v json sifrovane
+// promenne jsou username a password, jsou ale v json sifrovane
 
 			$cred = servcheck_decrypt_credential($api['cred_id']);
 
 			if ($api['format'] == 'json') {
-//!! cred_data tu chybelo, to jsem doplnil ale je urcite spatne. Jde vubec apikey v jsonu? Pokud ano, opravit tady
+//!! username,password, cred_neco tu je
 				$cred_data = [
 					'username'   => $cred['username'],
 					'password'   => $cred['password']
@@ -777,7 +783,7 @@ function restapi_try ($test) {
 			break;
 		case 'oauth2':
 //!!pm tady to budu upravovat
-// promenne jsou client_id, client_secret, token_validity, token_name, token_value
+//!! username,password, cred_neco tu je
 			$valid = db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_restapi_method
 				WHERE id = ? AND cred_validity > NOW()',
 				array($api['id']));

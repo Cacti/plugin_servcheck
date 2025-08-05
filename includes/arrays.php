@@ -73,40 +73,41 @@ $service_types = array(
 
 	'mqtt_mqtt'    => __('MQTT plaintext, default port 1883', 'servcheck'),
 
-	'restapi'      => __('Rest API', 'servcheck'),
+	'rest_no'      => __('Rest API without auth', 'servcheck'),
+	'rest_basic'   => __('Rest API with Basic HTTP auth', 'servcheck'),
+	'rest_apikey'  => __('Rest API with API key auth', 'servcheck'),
+	'rest_oauth2'  => __('Rest API with OAuth2/Bearer token auth', 'servcheck'),
+	'rest_cookie'  => __('Rest API with Cookie based auth', 'servcheck'),
 );
 
 $service_types_ports = array(
-	'web_http'        => 80,
-	'web_https'       => 443,
-
-	'mail_smtp'       => 25,
-	'mail_smtptls'    => 25,
-	'mail_smtps'      => 465,
-
-	'mail_imap'       => 143,
-	'mail_imaptls'    => 143,
-	'mail_imaps'      => 993,
-
-	'mail_pop3'       => 110,
-	'mail_pop3tls'    => 110,
-	'mail_pop3s'      => 995,
-
-	'dns_dns'         => 53,
-	'dns_doh'         => 443,
-
-	'ldap_ldap'       => 389,
-	'ldap_ldaps'      => 636,
-
-	'ftp_ftp'         => 21,
-	'ftp_ftps'        => 990,
-	'ftp_scp'         => 22,
-	'ftp_tftp'        => 69,
-
-	'smb_smb'         => 389,
-	'smb_smbs'        => 636,
-
-	'mqtt_mqtt'       => 1883,
+	'web_http'     => 80,
+	'web_https'    => 443,
+	'mail_smtp'    => 25,
+	'mail_smtptls' => 25,
+	'mail_smtps'   => 465,
+	'mail_imap'    => 143,
+	'mail_imaptls' => 143,
+	'mail_imaps'   => 993,
+	'mail_pop3'    => 110,
+	'mail_pop3tls' => 110,
+	'mail_pop3s'   => 995,
+	'dns_dns'      => 53,
+	'dns_doh'      => 443,
+	'ldap_ldap'    => 389,
+	'ldap_ldaps'   => 636,
+	'ftp_ftp'      => 21,
+	'ftp_ftps'     => 990,
+	'ftp_scp'      => 22,
+	'ftp_tftp'     => 69,
+	'smb_smb'      => 389,
+	'smb_smbs'     => 636,
+	'mqtt_mqtt'    => 1883,
+	'rest_no'      => 443,
+	'rest_basic'   => 443,
+	'rest_apikey'  => 443,
+	'rest_oauth2'  => 443,
+	'rest_cookie'  => 443,
 );
 
 
@@ -117,6 +118,7 @@ $graph_interval = array (
 	168 => __('Last week', 'servcheck'),
 );
 
+// !!pm zrusit, uz je soucast pole nahore
 $rest_api_auth_method = array(
 	'no'     => __('Without auth', 'servcheck'),
 	'basic'  => __('Basic HTTP auth', 'servcheck'),
@@ -124,6 +126,7 @@ $rest_api_auth_method = array(
 	'oauth2' => __('OAuth2/Bearer token auth', 'servcheck'),
 	'cookie' => __('Cookie based auth', 'servcheck'),
 );
+
 
 $rest_api_format = array(
 	'urlencoded'  => 'Form-urlencoded',

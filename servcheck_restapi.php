@@ -280,7 +280,9 @@ function servcheck_edit_rest() {
 
 	html_end_box();
 
-	form_save_button('servcheck_restapi.php', 'return');
+	echo '<b><font color="red">Rest API was moved to tests. Authhorization data was moved to Credential tab. This is read-only and will be removed in version 0.5</font></b>';
+
+//	form_save_button('servcheck_restapi.php', 'return');
 
 	form_end();
 	?>
@@ -423,8 +425,7 @@ function list_restapis() {
 			'cred_name RLIKE \'' . get_request_var('rfilter') . '\'';
 	}
 
-	$result = db_fetch_assoc("SELECT *, 
-		(SELECT COUNT(*) FROM plugin_servcheck_test AS st WHERE st.restapi_id = plugin_servcheck_restapi_method.id) AS used
+	$result = db_fetch_assoc("SELECT *
 		FROM plugin_servcheck_restapi_method
 		$sql_where
 		$sql_order
@@ -445,14 +446,11 @@ function list_restapis() {
 			'sort'    => 'ASC',
 			'align'   => 'left'
 		),
-		'used' => array(
-			'display' => __('Rest API using', 'servcheck'),
-			'sort'    => 'ASC',
-			'align'   => 'right'
-		),
 	);
 
 	$columns = cacti_sizeof($display_text);
+
+	echo '<b><font color="red">Rest API was moved to tests. Authhorization data was moved to Credential tab. This is read-only and will be removed in version 0.5</font></b>';
 
 	$nav = html_nav_bar('servcheck_restapi.php', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, $columns, __('Records', 'servcheck'), 'page', 'main');
 
@@ -470,7 +468,6 @@ function list_restapis() {
 			form_alternate_row('line' . $row['id'], true);
 			form_selectable_cell(filter_value($row['name'], get_request_var('filter'),'servcheck_restapi.php?header=false&action=edit&id=' . $row['id']), $row['id']);
 			form_selectable_cell($rest_api_auth_method[$row['type']], $row['id']);
-			form_selectable_cell($row['used'], $row['id']);
 			form_checkbox_cell($row['id'], $row['id']);
 			form_end_row();
 		}
@@ -482,9 +479,11 @@ function list_restapis() {
 		print $nav;
 	}
 
-	draw_actions_dropdown($servcheck_actions_restapi);
+//	draw_actions_dropdown($servcheck_actions_restapi);
 
 	form_end();
+
+	echo '<b><font color="red">Rest API was moved to tests. Authhorization data was moved to Credential tab. This is read-only and will be removed in version 0.5</font></b>';
 
 	?>
 	<script type='text/javascript'>

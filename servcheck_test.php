@@ -700,7 +700,12 @@ function servcheck_edit_test() {
 
 				$('#password').attr('type', 'password');
 				break;
-			case 'restapi':
+			case 'rest':
+
+				$('#row_format').show();
+				$('#row_data_url').show();
+				$('#row_restapi_id').show();
+
 				$('#row_hostname').hide();
 				$('#row_ipaddress').hide();
 				$('#row_path').hide();
@@ -714,7 +719,10 @@ function servcheck_edit_test() {
 				$('#row_username').hide();
 				$('#row_password').hide();
 
-				$('#row_restapi_id').show();
+				if (subcategory == 'apikey') {
+					$('#row_cred_name').show();
+				}
+//!!pm tady jsem skoncil, udelat dalsi vyjimky, schovat tam rest api v ostatnich
 
 				break;
 		}

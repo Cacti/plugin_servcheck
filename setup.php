@@ -31,7 +31,7 @@ function plugin_servcheck_install () {
 	api_plugin_register_hook('servcheck', 'poller_bottom',        'plugin_servcheck_poller_bottom',        'setup.php');
 	api_plugin_register_hook('servcheck', 'replicate_out',        'servcheck_replicate_out',               'setup.php');
 	api_plugin_register_hook('servcheck', 'config_settings',      'servcheck_config_settings',             'setup.php');
-
+//!! zrusit restapi_php
 	api_plugin_register_realm('servcheck', 'servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxies.php,servcheck_ca.php', __('Service Check Admin', 'servcheck'), 1);
 
 	plugin_servcheck_setup_table();
@@ -68,48 +68,16 @@ function plugin_servcheck_upgrade() {
 		SET file = ?
 		WHERE file LIKE "%servcheck_test.php%"',
 		array('servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxies.php,servcheck_ca.php'));
-
+//!! zrusit restapi,php
 		api_plugin_register_hook('servcheck', 'replicate_out', 'servcheck_replicate_out', 'setup.php', '1');
 		api_plugin_register_hook('servcheck', 'config_settings', 'servcheck_config_settings', 'setup.php', '1');
 
-	$api_table = db_fetch_cell("SELECT COUNT(*)
-		FROM information_schema.tables
-		WHERE table_schema = SCHEMA()
-		AND table_name = 'plugin_servcheck_rest_method'");
-
-	if (!$api_table) {
-		$data              = array();
-		$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
-		$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-		$data['columns'][] = array('name' => 'type', 'type' => "enum('no','basic','apikey','oauth2','cookie')", 'NULL' => false, 'default' => 'basic');
-		$data['columns'][] = array('name' => 'format', 'type' => "enum('urlencoded','xml','json')", 'NULL' => false, 'default' => 'urlencoded');
-		$data['columns'][] = array('name' => 'cred_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-		$data['columns'][] = array('name' => 'cred_value', 'type' => 'text', 'NULL' => true, 'default' => '');
-		$data['columns'][] = array('name' => 'cred_validity', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
-		$data['columns'][] = array('name' => 'username', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-		$data['columns'][] = array('name' => 'password', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-		$data['columns'][] = array('name' => 'login_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '');
-		$data['columns'][] = array('name' => 'data_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '');
-		$data['primary']   = 'id';
-		$data['type']      = 'InnoDB';
-		$data['comment']   = 'Holds Rest API auth';
-
-		api_plugin_db_table_create('servcheck', 'plugin_servcheck_restapi_method', $data);
-
-		db_add_column('plugin_servcheck_test', array(
-			'name' => 'restapi_id',
-			'type' => 'int(11)',
-			'NULL' => false,
-			'default' => '0',
-			'after' => 'proxy_server'));
-	}
-
-	$api_table = db_fetch_cell("SELECT COUNT(*)
+	$cred_table = db_fetch_cell("SELECT COUNT(*)
 		FROM information_schema.tables
 		WHERE table_schema = SCHEMA()
 		AND table_name = 'plugin_servcheck_credential'");
 
-	if (!$api_table) {
+	if (!$cred_table) {
 		$data              = array();
 		$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 		$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
@@ -129,11 +97,18 @@ function plugin_servcheck_upgrade() {
 			api_plugin_db_add_column('servcheck', 'plugin_servcheck_proxies', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
 		}
 
-		if (!db_column_exists('plugin_servcheck_restapi_method', 'cred_id')) {
-			api_plugin_db_add_column('servcheck', 'plugin_servcheck_restapi_method', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
+		// convert credentials to separated tab
+
+		if (!db_column_exists('plugin_servcheck_test', 'login_url')) {
+			db_add_column('plugin_servcheck_test', array('name' => 'format', 'type' => "enum('urlencoded','xml','json')", 'NULL' => false, 'default' => 'urlencoded', 'after' => 'ldapsearch'));
+			db_add_column('plugin_servcheck_test', array('name' => 'cred_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '', 'after' => 'format'));
+			db_add_column('plugin_servcheck_test', array('name' => 'cred_value', 'type' => 'text', 'NULL' => true, 'default' => '', 'after' => 'cred_name'));
+			db_add_column('plugin_servcheck_test', array('name' => 'cred_validity', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00', 'after' => 'cred_value'));
+			db_add_column('plugin_servcheck_test', array('name' => 'login_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '', 'after' => 'cred_validity'));
+			db_add_column('plugin_servcheck_test', array('name' => 'data_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '', 'after' => 'login_url'));
 		}
 
-		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_test WHERE username != '' OR password !=''");
+		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_test WHERE username != '' OR password !='' AND type != 'restapi'");
 		if (cacti_sizeof($records)) {
 			foreach ($records as $record) {
 				$cred = array();
@@ -207,33 +182,36 @@ function plugin_servcheck_upgrade() {
 					(name, type, data) VALUES (?, ?, ?)',
 					array('upgrade/convert_restapi_' . $record['id'], $cred['type'], $enc));
 
-				db_execute_prepared('UPDATE plugin_servcheck_restapi_method
-					SET cred_id = ? WHERE id = ?',
-					array(db_fetch_insert_id(), $record['id']));
+				$test_id = db_fetch_cell_prepared ('SELECT id FROM plugin_servcheck_test
+					WHERE restapi_id = ? LIMIT 1',
+					array($record['id']));
+
+				db_execute_prepared('UPDATE plugin_servcheck_test
+					set type = ?, format = ?, cred_name = ?, cred_value = ?, cred_validity = ?,
+					login_url = ?, data_url = ?, cred_id = ?
+					WHERE id = ?',
+					array('rest_' . $cred['type'], $record['format'], $record['cred_name'], $record['cred_value'], $record['cred_validity'],
+						$record['login_url'], $record['data_url'], $record['id'], $test_id)
+					);
 			}
 		}
 
 		db_remove_column('plugin_servcheck_test', 'username');
 		db_remove_column('plugin_servcheck_test', 'password');
+		db_remove_column('plugin_servcheck_test', 'restapi_id');
 		db_remove_column('plugin_servcheck_proxies', 'username');
 		db_remove_column('plugin_servcheck_proxies', 'password');
 		db_remove_column('plugin_servcheck_restapi_method', 'username');
 		db_remove_column('plugin_servcheck_restapi_method', 'password');
 		db_remove_column('plugin_servcheck_restapi_method', 'cred_value');
-
 	}
-
 
 
 	if (cacti_version_compare($old, '0.4', '<')) {
 		if (!db_column_exists('plugin_servcheck_test', 'ipaddress')) {
-			db_add_column('plugin_servcheck_test', array(
-				'name' => 'ipaddress',
-				'type' => 'varchar(46)',
-				'NULL' => false,
-				'default' => '',
-				'after' => 'hostname'));
+			db_add_column('plugin_servcheck_test', array('name' => 'ipaddress', 'type' => 'varchar(46)', 'NULL' => false, 'default' => '', 'after' => 'hostname'));
 		}
+
 	}
 
 	return true;
@@ -258,12 +236,17 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'path', 'type' => 'varchar(256)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'dns_query', 'type' => 'varchar(100)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'ldapsearch', 'type' => 'varchar(200)', 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'format', 'type' => "enum('urlencoded','xml','json')", 'NULL' => false, 'default' => 'urlencoded');
+	$data['columns'][] = array('name' => 'cred_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'cred_value', 'type' => 'text', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'cred_validity', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
+	$data['columns'][] = array('name' => 'login_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '');
+	$data['columns'][] = array('name' => 'data_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'search', 'type' => 'varchar(1024)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'search_maint', 'type' => 'varchar(1024)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'search_failed', 'type' => 'varchar(1024)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'requiresauth', 'type' => 'varchar(2)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'proxy_server', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
-	$data['columns'][] = array('name' => 'restapi_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'ca', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'checkcert', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on');
 	$data['columns'][] = array('name' => 'certexpirenotify', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on');
@@ -386,7 +369,6 @@ function plugin_servcheck_setup_table() {
 
 	api_plugin_db_table_create('servcheck', 'plugin_servcheck_ca', $data);
 
-
 	$data              = array();
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
@@ -404,6 +386,7 @@ function plugin_servcheck_setup_table() {
 	$data['comment']   = 'Holds Rest API auth';
 
 	api_plugin_db_table_create('servcheck', 'plugin_servcheck_restapi_method', $data);
+
 
 	$data              = array();
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);

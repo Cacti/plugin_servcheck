@@ -455,6 +455,7 @@ function servcheck_edit_test() {
 		$servcheck_test_fields['notify_list']['method'] = 'hidden';
 	}
 
+//!!pm tohle pujde pryc
 	if (isset($test['username'])) {
 		$test['username'] = servcheck_show_text($test['username']);
 	}
@@ -476,7 +477,7 @@ function servcheck_edit_test() {
 	html_end_box();
 
 	form_save_button('servcheck_test.php', 'return');
-
+var_dump($test);
 	form_end();
 
 	?>
@@ -552,19 +553,30 @@ function servcheck_edit_test() {
 		var category = tmp[0];
 		var subcategory = tmp[1];
 
+		$('#row_format').hide();
+		$('#row_data_url').hide();
+		$('#row_cred_id').hide();
+		$('#row_login_url').hide();
+		$('#row_cred_name').hide();
+		$('#row_dns_query').hide();
+		$('#row_restapi_id').hide();
+		$('#row_username').hide();
+		$('#row_password').hide();
+		$('#row_ldapsearch').hide();
+		$('#row_ipaddress').hide();
+		$('#row_path').hide();
+		$('#row_requiresauth').hide();
+		$('#row_proxy_server').hide();
+		$('#row_ldapsearch').hide();
+		$('#row_ca').hide();
+		$('#row_checkcert').hide();
+		$('#row_certexpirenotify').hide();
+		$('#row_hostname').hide();
+
+
+
 		switch(category) {
 			case 'web':
-				$('#row_restapi_id').hide();
-				$('#row_dns_query').hide();
-				$('#row_username').hide();
-				$('#row_password').hide();
-				$('#row_ldapsearch').hide();
-
-				if (subcategory == 'http') {
-					$('#row_ca').hide();
-					$('#row_checkcert').hide();
-					$('#row_certexpirenotify').hide();
-				}
 
 				$('#row_hostname').show();
 				$('#row_ipaddress').show();
@@ -579,21 +591,8 @@ function servcheck_edit_test() {
 
 				break;
 			case 'mail':
-				$('#row_ipaddress').hide();
-				$('#row_restapi_id').hide();
-				$('#row_path').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-				$('#row_dns_query').hide();
-				$('#row_ldapsearch').hide();
-
-				if (subcategory == 'smtp' || subcategory == 'smtps' || subcategory == 'smtptls') {
-					$('#row_username').hide();
-					$('#row_password').hide();
-				} else {
-					$('#row_username').show();
-					$('#row_password').show();
-				}
+				$('#row_hostname').show();
+				$('#password').attr('type', 'password');
 
 				if (subcategory == 'smtps') {
 					$('#row_ca').show();
@@ -601,23 +600,9 @@ function servcheck_edit_test() {
 					$('#row_certexpirenotify').show();
 				}
 
-				$('#row_hostname').show();
-
-				$('#password').attr('type', 'password');
 
 				break
 			case 'dns':
-				$('#row_ipaddress').hide();
-				$('#row_restapi_id').hide();
-				$('#row_path').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-				$('#row_username').hide();
-				$('#row_password').hide();
-				$('#row_ldapsearch').hide();
-				$('#row_ca').hide();
-				$('#row_checkcert').hide();
-				$('#row_certexpirenotify').hide();
 
 				if (subcategory == 'doh') {
 					$('#row_ca').show();
@@ -630,50 +615,21 @@ function servcheck_edit_test() {
 				break;
 
 			case 'ldap':
-				$('#row_ipaddress').hide();
-				$('#row_restapi_id').hide();
-				$('#row_dns_query').hide();
-				$('#row_path').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-
 				$('#row_username').show();
 				$('#row_password').show();
 				$('#row_ldapsearch').show();
 				$('#row_hostname').show();
-
 				$('#password').attr('type', 'password');
 
 				break;
 			case 'ftp':
-				$('#row_ipaddress').hide();
-				$('#row_restapi_id').hide();
-				$('#row_dns_query').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-				$('#row_ldapsearch').hide();
-
-				if (subcategory == 'tftp') {
-					$('#row_username').hide();
-					$('#row_password').hide();
-				}
-
 				$('#row_path').show();
-				$('#row_username').show();
-				$('#row_password').show();
 				$('#row_hostname').show();
 
 				$('#password').attr('type', 'password');
 
 				break;
 			case 'smb':
-				$('#row_ipaddress').hide();
-				$('#row_restapi_id').hide();
-				$('#row_dns_query').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-				$('#row_ldapsearch').hide();
-
 				$('#row_username').show();
 				$('#row_password').show();
 				$('#row_path').show();
@@ -683,50 +639,33 @@ function servcheck_edit_test() {
 
 				break;
 			case 'mqtt':
-				$('#row_ipaddress').hide();
-				$('#row_restapi_id').hide();
-				$('#row_dns_query').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-				$('#row_ldapsearch').hide();
-				$('#row_ca').hide();
-				$('#row_checkcert').hide();
-				$('#row_certexpirenotify').hide();
-
-				$('#row_username').show();
-				$('#row_password').show();
 				$('#row_path').show();
 				$('#row_hostname').show();
 
 				$('#password').attr('type', 'password');
 				break;
 			case 'rest':
-
 				$('#row_format').show();
 				$('#row_data_url').show();
-				$('#row_restapi_id').show();
+				$('#row_cred_id').show();
 
-				$('#row_hostname').hide();
-				$('#row_ipaddress').hide();
-				$('#row_path').hide();
-				$('#row_dns_query').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-				$('#row_ldapsearch').hide();
-				$('#row_ca').hide();
-				$('#row_checkcert').hide();
-				$('#row_certexpirenotify').hide();
-				$('#row_username').hide();
-				$('#row_password').hide();
-
-				if (subcategory == 'apikey') {
+				if (subcategory == 'no') {
 					$('#row_cred_name').show();
 				}
-//!!pm tady jsem skoncil, udelat dalsi vyjimky, schovat tam rest api v ostatnich
+
+				if (subcategory == 'cookie') {
+					$('#row_login_url').show();
+				}
+
+				if (subcategory == 'oauth2') {
+					$('#row_cred_name').show();
+					$('#row_login_url').show();
+				}
 
 				break;
 		}
 	}
+
 	</script>
 	<?php
 }

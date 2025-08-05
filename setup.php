@@ -178,20 +178,21 @@ function plugin_servcheck_upgrade() {
 
 				$enc = servcheck_encrypt_credential($cred);
 
+				$test_id = db_fetch_cell_prepared ('SELECT id FROM plugin_servcheck_test
+					WHERE restapi_id = ? LIMIT 1',
+					array($record['id']));
+
 				db_execute_prepared('INSERT INTO plugin_servcheck_credential
 					(name, type, data) VALUES (?, ?, ?)',
 					array('upgrade/convert_restapi_' . $record['id'], $cred['type'], $enc));
 
-				$test_id = db_fetch_cell_prepared ('SELECT id FROM plugin_servcheck_test
-					WHERE restapi_id = ? LIMIT 1',
-					array($record['id']));
 
 				db_execute_prepared('UPDATE plugin_servcheck_test
 					set type = ?, format = ?, cred_name = ?, cred_value = ?, cred_validity = ?,
 					login_url = ?, data_url = ?, cred_id = ?
 					WHERE id = ?',
 					array('rest_' . $cred['type'], $record['format'], $record['cred_name'], $record['cred_value'], $record['cred_validity'],
-						$record['login_url'], $record['data_url'], $record['id'], $test_id)
+						$record['login_url'], $record['data_url'], db_fetch_insert_id(), $test_id)
 					);
 			}
 		}

@@ -409,8 +409,39 @@ $servcheck_test_fields = array(
 		'default' => 0,
 		'description' => __('Select correct credential', 'servcheck'),
 		'value' => '|arg1:cred_id|',
-		'sql' => "SELECT id, name FROM plugin_servcheck_credential WHERE type IN ('userpass', 'snmp', 'snmp3', 'sshkey') ORDER BY name",
+		'sql' => "SELECT id, name FROM plugin_servcheck_credential ORDER BY name",
 	),
+	'format' => array(
+		'friendly_name' => __('Data Format', 'servcheck'),
+		'method' => 'drop_array',
+		'array' => $rest_api_format,
+		'default' => 'urlencoded',
+		'description' => __('Select correct format for communication, check your Rest API documentation.', 'servcheck'),
+		'value' => '|arg1:format|',
+	),
+	'cred_name' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Token/API Key name', 'servcheck'),
+		'description' => __('Auth can use different token or API Key name. You can specify it here.
+		Commonly used names are  \'Bearer\' for OAuth2,  \'apikey\' for API Key method. You need know correct name, check your Rest API server documentation. ', 'servcheck'),
+		'value' => '|arg1:cred_name|',
+		'max_length' => '100',
+	),
+	'login_url' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Login URL', 'servcheck'),
+		'description' => __('URL which is used to log in or get the token.', 'servcheck'),
+		'value' => '|arg1:login_url|',
+		'max_length' => '200',
+	),
+	'data_url' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Data URL', 'servcheck'),
+		'description' => __('URL to retrieve data. Insert with http:// or https://', 'servcheck'),
+		'value' => '|arg1:data_url|',
+		'max_length' => '200',
+	),
+
 	'ca' => array(
 		'friendly_name' => __('CA Chain', 'servcheck'),
 		'method' => 'drop_sql',
@@ -459,15 +490,6 @@ $servcheck_test_fields = array(
 		'none_value' => __('None', 'servcheck'),
 		'default' => '0',
 		'sql' => 'SELECT id, name FROM plugin_servcheck_proxies ORDER by name'
-	),
-	'restapi_id' => array(
-		'method' => 'drop_sql',
-		'friendly_name' => __('Rest API method', 'servcheck'),
-		'description' => __('Select your prepared Rest API configuration.', 'servcheck'),
-		'value' => '|arg1:restapi_id|',
-		'none_value' => __('None', 'servcheck'),
-		'default' => '0',
-		'sql' => 'SELECT id, name FROM plugin_servcheck_restapi_method ORDER by name'
 	),
 	'checkcert' => array(
 		'method' => 'checkbox',

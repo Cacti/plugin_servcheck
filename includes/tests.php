@@ -57,6 +57,31 @@ function curl_try ($test) {
 		return $results;
 	}
 
+//!!pm - tohle pak pouzit i u dalsich testu
+	if ($test['cred_id'] > 0) {
+		$cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', 
+			array($test['cred_id']));
+
+		if (!$cred) {
+			plugin_servcheck_debug('Credential is set but not found!' , $test);
+			cacti_log('Credential not found');
+			$results['result'] = 'error';
+			$results['error'] = 'Credential not found';
+			return $results;
+		} else {
+			plugin_servcheck_debug('Decrypting credential' , $test);
+			$cred  = servcheck_decrypt_credential($test['cred_id']);
+
+			if (empty($cred)) {
+				plugin_servcheck_debug('Credential is empty!' , $test);
+				cacti_log('Credential is empty');
+				$results['result'] = 'error';
+				$results['error'] = 'Credential is empty';
+				return $results;
+			}
+		}
+	}
+
 	list($category,$service) = explode('_', $test['type']);
 
 	if (!str_contains($test['hostname'], ':')) {
@@ -78,14 +103,17 @@ function curl_try ($test) {
 	// 'tls' is my service name/flag. I need remove it
 	// smtp = plaintext, smtps = encrypted on port 465, smtptls = plain + startls
 	if (strpos($service, 'tls') !== false ) {
-
 		$service = substr($service, 0, -3);
 	}
 
 	$cred = '';
+//!! testovat, jestli test['cred_id']  == nejake existujici, pokud ne, tak test ukoncit
 
 	if ($service == 'imap' || $service == 'imaps' || $service == 'pop3' || $service == 'pop3s' || $service == 'scp') {
-//!!pm - tady to cele predelat na cred funkce
+
+//		$cred = servcheck_decrypt_credential($test['id']);
+//var_dump($cred);
+
 		if ($test['username'] != '') {
 			// curl needs username with %40 instead of @
 			$cred = str_replace('@', '%40', servcheck_show_text($test['username']));
@@ -752,7 +780,7 @@ function restapi_try ($test) {
 //!!pm tady to otestovat
 // promenne jsou username a password, jsou ale v jsonu a sifrovane
 
-			$cred = servcheck_decrypt_credential($api['cred_id']);
+//			$cred = servcheck_decrypt_credential($api['cred_id']);
 
 			// we don't need set content type for login or GET/POST request because we don't set any data
 			$options[CURLOPT_USERPWD] = $cred['username'] . ':' . $cred['password'];
@@ -762,7 +790,7 @@ function restapi_try ($test) {
 //!!pm tady to otestovat
 // promenne jsou username a password, jsou ale v json sifrovane
 
-			$cred = servcheck_decrypt_credential($api['cred_id']);
+//			$cred = servcheck_decrypt_credential($api['cred_id']);
 
 			if ($api['format'] == 'json') {
 //!! username,password, cred_neco tu je

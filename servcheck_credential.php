@@ -81,7 +81,7 @@ function form_actions() {
 				} elseif ($action == SERVCHECK_ACTION_CREDENTIAL_DUPLICATE) {
 					$newid = 1;
 
-					foreach ($restapis as $id) {
+					foreach ($credentials as $id) {
 						$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', array($id));
 						$save['id']           = 0;
 						$save['name']         = 'New Credential (' . $newid . ')';
@@ -192,14 +192,23 @@ function form_save() {
 		$save['name'] = get_nfilter_request_var('name');
 	}
 
-	if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-		$save['username'] = servcheck_hide_text(get_nfilter_request_var('username'));
+	switch(get_nfilter_request_var('type')) {
+		case 'userpass':
+			if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+				$cred['username'] = get_nfilter_request_var('username');
+			}
+
+			if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+				$cred['password'] = get_nfilter_request_var('password');
+			}
+
+			$save['data'] = servcheck_encrypt_credential($cred);
+
+			break;
+	
+//!!pm dodelat i ostatni metody
 	}
 
-	if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-		$save['password'] = servcheck_hide_text(get_nfilter_request_var('password'));
-	}
-//!! tady budou dalsi parametry z restapi
 
 	if (!is_error_message()) {
 		$id = sql_save($save, 'plugin_servcheck_credential', 'id');
@@ -222,7 +231,7 @@ function servcheck_edit_credential() {
 	get_filter_request_var('id');
 	/* ==================================================== */
 
-	$restapi = array();
+	$credential = array();
 
 	if (!isempty_request_var('id')) {
 		$credential = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', array(get_request_var('id')), false);
@@ -232,17 +241,13 @@ function servcheck_edit_credential() {
 	}
 
 	if (isset($credential['id'])) {
-		$credential = servcheck_decrypt_credential($credential['id']);
-		
-		// if it is used, change type is not allowed
-//!!pm dodelat
-		
+		$credential += servcheck_decrypt_credential($credential['id']);
 
+		
 /*
-// tadybych to mel plnit do jednotlivych poli, ale mozna staci ten decod
 		switch($credential['type']) {
 			case 'userpass':
-				$credential
+				$credential['username'] = 
 				break;
 			case 'basic':
 			
@@ -269,6 +274,7 @@ function servcheck_edit_credential() {
 */
 	}
 
+
 	form_start('servcheck_credential.php');
 	html_start_box($header_label, '100%', '', '3', 'center', '');
 
@@ -278,7 +284,7 @@ function servcheck_edit_credential() {
 			'fields' => inject_form_variables($servcheck_credential_fields, $credential)
 		)
 	);
-var_dump($credential);
+
 	html_end_box();
 
 	form_save_button('servcheck_credential.php', 'return');
@@ -295,38 +301,31 @@ var_dump($credential);
 	function setCredential() {
 		var credential_type = $('#type').val();
 
-//!! tady upravovat ty form pole - jeste doladit
-		switch(credential_type) {
-			case 'no':
 				$('#row_username').hide();
 				$('#row_password').hide();
 				$('#row_cred_value').hide();
 				$('#row_login_url').hide();
 				$('#row_community').hide();
+
+
+//!! tady upravovat ty form pole - jeste doladit
+		switch(credential_type) {
+			case 'no':
 				break;
 			case 'userpass':
 				$('#row_username').show();
 				$('#row_password').show();
 				$('#password').attr('type', 'password');
-				$('#row_cred_value').hide();
-				$('#row_login_url').hide();
-				$('#row_community').hide();
 				break
 			case 'basic':
 				$('#row_username').show();
 				$('#row_password').show();
 				$('#password').attr('type', 'password');
-				$('#row_cred_value').hide();
-				$('#row_login_url').hide();
-				$('#row_community').hide();
 				break;
 			case 'apikey':
 				$('#row_username').show();
 				$('#row_cred_value').show();
 				$('#cred_value').attr('type', 'password');
-				$('#row_password').hide();
-				$('#row_login_url').hide();
-				$('#row_community').hide();
 				break;
 			case 'oauth2':
 				$('#row_username').show();
@@ -335,21 +334,14 @@ var_dump($credential);
 				$('#row_login_url').show();
 				$('#password').attr('type', 'password');
 				$('#cred_value').attr('type', 'password');
-				$('#row_community').hide();
 				break;
 			case 'cookie':
 				$('#row_username').show();
 				$('#row_password').show();
 				$('#password').attr('type', 'password');
-				$('#row_cred_value').hide();
-				$('#row_login_url').hide();
-				$('#row_community').hide();
 				break;
 			case 'snmp':
 				$('#row_community').show();
-				$('#row_username').hide();
-				$('#row_password').hide();
-				$('#row_cred_value').hide();
 				$('#row_community').show();
 				break;
 
@@ -495,8 +487,8 @@ function list_credentials() {
 			$used += db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_proxies WHERE cred_id = ?',
 				array($row['id']));
 
-			$used += db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_restapi_method WHERE cred_id = ?',
-				array($row['id']));
+//			$used += db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_restapi_method WHERE cred_id = ?',
+//				array($row['id']));
 
 			form_alternate_row('line' . $row['id'], true);
 			form_selectable_cell(filter_value($row['name'], get_request_var('filter'),'servcheck_credential.php?header=false&action=edit&id=' . $row['id']), $row['id']);
@@ -576,7 +568,7 @@ function servcheck_credential_filter() {
 	</script>
 	<?php
 
-	html_start_box(__('Credential', 'servcheck') , '100%', '', '3', 'center', 'servcheck_credentail.php?action=edit');
+	html_start_box(__('Credential', 'servcheck') , '100%', '', '3', 'center', 'servcheck_credential.php?action=edit');
 
 	?>
 	<tr class='even noprint'>

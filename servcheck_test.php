@@ -252,6 +252,7 @@ function form_save() {
 	get_filter_request_var('downtrigger');
 	get_filter_request_var('timeout_trigger');
 	get_filter_request_var('how_often');
+	get_filter_request_var('cred_id');
 	/* ==================================================== */
 
 	if (isset_request_var('id')) {
@@ -302,6 +303,11 @@ function form_save() {
 		$save['hostname'] = get_nfilter_request_var('hostname');
 	}
 
+	if (isset_request_var('cred_id')) {
+		$save['cred_id'] = get_filter_request_var('cred_id');
+	} else {
+		$save['cred_id'] = 0;
+	}
 
 	if ($category == 'web') {
 		if (isset_request_var('ipaddress')) {
@@ -455,14 +461,6 @@ function servcheck_edit_test() {
 		$servcheck_test_fields['notify_list']['method'] = 'hidden';
 	}
 
-//!!pm tohle pujde pryc
-	if (isset($test['username'])) {
-		$test['username'] = servcheck_show_text($test['username']);
-	}
-	if (isset($test['password'])) {
-		$test['password'] = servcheck_show_text($test['password']);
-	}
-
 	form_start('servcheck_test.php');
 
 	html_start_box($header_label, '100%', '', '3', 'center', '');
@@ -477,7 +475,7 @@ function servcheck_edit_test() {
 	html_end_box();
 
 	form_save_button('servcheck_test.php', 'return');
-var_dump($test);
+//var_dump($test);
 	form_end();
 
 	?>
@@ -573,8 +571,6 @@ var_dump($test);
 		$('#row_certexpirenotify').hide();
 		$('#row_hostname').hide();
 
-
-
 		switch(category) {
 			case 'web':
 
@@ -583,6 +579,8 @@ var_dump($test);
 				$('#row_path').show();
 				$('#row_requiresauth').show();
 				$('#row_proxy_server').show();
+				$('#row_cred_id').show();
+
 				if (subcategory == 'https') {
 					$('#row_ca').show();
 					$('#row_checkcert').show();
@@ -592,7 +590,7 @@ var_dump($test);
 				break;
 			case 'mail':
 				$('#row_hostname').show();
-				$('#password').attr('type', 'password');
+				$('#row_cred_id').show();
 
 				if (subcategory == 'smtps') {
 					$('#row_ca').show();
@@ -619,30 +617,25 @@ var_dump($test);
 				$('#row_password').show();
 				$('#row_ldapsearch').show();
 				$('#row_hostname').show();
-				$('#password').attr('type', 'password');
 
 				break;
 			case 'ftp':
 				$('#row_path').show();
 				$('#row_hostname').show();
-
-				$('#password').attr('type', 'password');
+				$('#row_cred_id').show();
 
 				break;
 			case 'smb':
-				$('#row_username').show();
-				$('#row_password').show();
 				$('#row_path').show();
 				$('#row_hostname').show();
-
-				$('#password').attr('type', 'password');
+				$('#row_cred_id').show();
 
 				break;
 			case 'mqtt':
 				$('#row_path').show();
 				$('#row_hostname').show();
-
-				$('#password').attr('type', 'password');
+//!!pm ???
+				$('#row_cred_id').show();
 				break;
 			case 'rest':
 				$('#row_format').show();

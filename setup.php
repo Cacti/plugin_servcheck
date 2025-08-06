@@ -394,7 +394,6 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'type', 'type' => "enum('userpass','basic','apikey', 'oauth2', 'cookie', 'snmp','snmp3','sshkey')", 'NULL' => false, 'default' => 'userpass');
 	$data['columns'][] = array('name' => 'data', 'type' => 'text', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['primary']   = 'id';
 	$data['type']      = 'InnoDB';
 	$data['comment']   = 'Holds Credentials';
@@ -490,7 +489,7 @@ function plugin_servcheck_draw_navigation_text($nav) {
 	$nav['servcheck_credential.php:save'] = array(
 		'title' => __('Credential Save', 'servcheck'),
 		'mapping' => 'index.php:',
-		'url' => 'servcheck_credentail.php',
+		'url' => 'servcheck_credential.php',
 		'level' => '1'
 	);
 

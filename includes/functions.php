@@ -262,12 +262,12 @@ function servcheck_show_text ($string) {
 
 function servcheck_encrypt_credential ($cred) {
 
-	$servcheck_key = read_user_setting('servcheck_key', null);
+	$servcheck_key = read_user_setting('servcheck_key', null, true, 1);
 	$iv_length    = intval(openssl_cipher_iv_length(SERVCHECK_CIPHER));
 	$servcheck_iv = openssl_random_pseudo_bytes($iv_length);
 
 	if (is_null($servcheck_key)) {
-
+		cacti_log('Creating new cipher key', 'servcheck');
 		$servcheck_key = hash('sha256', 'ksIBWE' . date('hisv'));
 
 		set_user_setting('servcheck_key', base64_encode($servcheck_key));
@@ -276,14 +276,13 @@ function servcheck_encrypt_credential ($cred) {
 	}
 
 	$encrypted = openssl_encrypt(json_encode($cred), SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
-	return (base64_encode($servcheck_iv . $encrypted));
+	return base64_encode($servcheck_iv . $encrypted);
 
-	return $encryption;
 }
 
 function servcheck_decrypt_credential ($cred_id) {
 
-	$servcheck_key = read_user_setting('servcheck_key', null);
+	$servcheck_key = read_user_setting('servcheck_key', null, true, 1);
 
 	if (is_null($servcheck_key)) {
 		cacti_log('Cannot decrypt credential, key is missing', 'servcheck');

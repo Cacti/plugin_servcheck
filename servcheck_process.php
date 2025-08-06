@@ -32,7 +32,7 @@ if (strpos($dir, 'plugins') !== false) {
 
 require('./include/cli_check.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
-include_once($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
 ini_set('max_execution_time', '21');
 
@@ -289,7 +289,7 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 	if ($sendemail) {
 		plugin_servcheck_debug('Time to send email', $test);
 
-		if ($test['notify_format'] == SERVCHECK_FORMAT_PLAIN) {
+		if ($test['notify_format'] == 'plain') {
 			plugin_servcheck_send_notification($results, $test, 'text', $last_log);
 		} else {
 			plugin_servcheck_send_notification($results, $test, '', $last_log);

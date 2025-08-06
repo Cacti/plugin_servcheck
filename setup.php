@@ -22,7 +22,6 @@
  +-------------------------------------------------------------------------+
 */
 
-include_once(__DIR__ . '/includes/constants.php');
 include_once(__DIR__ . '/includes/arrays.php');
 
 function plugin_servcheck_install () {
@@ -55,7 +54,6 @@ function plugin_servcheck_check_config () {
 }
 
 function plugin_servcheck_upgrade() {
-	// Here we will upgrade to the newest version
 	global $config;
 
 	include_once(__DIR__ . '/includes/functions.php');
@@ -101,11 +99,14 @@ function plugin_servcheck_upgrade() {
 
 		if (!db_column_exists('plugin_servcheck_test', 'login_url')) {
 			db_add_column('plugin_servcheck_test', array('name' => 'format', 'type' => "enum('urlencoded','xml','json')", 'NULL' => false, 'default' => 'urlencoded', 'after' => 'ldapsearch'));
+/*
+ jen format zustane u testu, mozna ani ten
 			db_add_column('plugin_servcheck_test', array('name' => 'cred_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '', 'after' => 'format'));
 			db_add_column('plugin_servcheck_test', array('name' => 'cred_value', 'type' => 'text', 'NULL' => true, 'default' => '', 'after' => 'cred_name'));
 			db_add_column('plugin_servcheck_test', array('name' => 'cred_validity', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00', 'after' => 'cred_value'));
 			db_add_column('plugin_servcheck_test', array('name' => 'login_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '', 'after' => 'cred_validity'));
 			db_add_column('plugin_servcheck_test', array('name' => 'data_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '', 'after' => 'login_url'));
+*/
 		}
 
 		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_test WHERE username != '' OR password !='' AND type != 'restapi'");
@@ -161,19 +162,27 @@ function plugin_servcheck_upgrade() {
 					$cred['type'] = 'basic';
 					$cred['username'] = servcheck_show_text($record['username']);
 					$cred['password'] = servcheck_show_text($record['password']);
+					$cred['data_url'] = $record['data_url'];
 				} elseif ($record['type'] == 'apikey') {
 					$cred['type'] = 'apikey';
 					$cred['username'] = $record['cred_name'];
+					$cred['data_url'] = $record['data_url'];
 					$cred['cred_value'] = servcheck_show_text($record['cred_value']);
 				} elseif ($record['type'] == 'oauth2') {
 					$cred['type'] = 'oauth2';
 					$cred['username'] = servcheck_show_text($record['username']);
 					$cred['password'] = servcheck_show_text($record['password']);
 					$cred['cred_value'] = servcheck_show_text($record['cred_value']);
+					$cred['cred_name'] = $record['cred_name'];
+					$cred['cred_valiedity'] = $record['cred_validity'];
+					$cred['data_url'] = $record['data_url'];
+					$cred['login_url'] = $record['login_url'];
 				} elseif ($record['type'] == 'cookie') {
 					$cred['type'] = 'cookie';
 					$cred['username'] = servcheck_show_text($record['username']);
 					$cred['password'] = servcheck_show_text($record['password']);
+					$cred['data_url'] = $record['data_url'];
+					$cred['login_url'] = $record['login_url'];
 				}
 
 				$enc = servcheck_encrypt_credential($cred);
@@ -186,14 +195,10 @@ function plugin_servcheck_upgrade() {
 					(name, type, data) VALUES (?, ?, ?)',
 					array('upgrade/convert_restapi_' . $record['id'], $cred['type'], $enc));
 
-
 				db_execute_prepared('UPDATE plugin_servcheck_test
-					set type = ?, format = ?, cred_name = ?, cred_value = ?, cred_validity = ?,
-					login_url = ?, data_url = ?, cred_id = ?
+					set type = ?, format = ?, cred_id = ?
 					WHERE id = ?',
-					array('rest_' . $cred['type'], $record['format'], $record['cred_name'], $record['cred_value'], $record['cred_validity'],
-						$record['login_url'], $record['data_url'], db_fetch_insert_id(), $test_id)
-					);
+					array('rest_' . $cred['type'], $record['format'], db_fetch_insert_id(), $test_id));
 			}
 		}
 
@@ -202,11 +207,12 @@ function plugin_servcheck_upgrade() {
 		db_remove_column('plugin_servcheck_test', 'restapi_id');
 		db_remove_column('plugin_servcheck_proxies', 'username');
 		db_remove_column('plugin_servcheck_proxies', 'password');
-		db_remove_column('plugin_servcheck_restapi_method', 'username');
-		db_remove_column('plugin_servcheck_restapi_method', 'password');
-		db_remove_column('plugin_servcheck_restapi_method', 'cred_value');
+//!!! tady mozna nemenit? Stejne si to bude tahat z credential a tohle se casem zahodi
+// asi tedy nemenit
+//		db_remove_column('plugin_servcheck_restapi_method', 'username');
+//		db_remove_column('plugin_servcheck_restapi_method', 'password');
+//		db_remove_column('plugin_servcheck_restapi_method', 'cred_value');
 	}
-
 
 	if (cacti_version_compare($old, '0.4', '<')) {
 		if (!db_column_exists('plugin_servcheck_test', 'ipaddress')) {
@@ -238,11 +244,6 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'dns_query', 'type' => 'varchar(100)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'ldapsearch', 'type' => 'varchar(200)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'format', 'type' => "enum('urlencoded','xml','json')", 'NULL' => false, 'default' => 'urlencoded');
-	$data['columns'][] = array('name' => 'cred_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'cred_value', 'type' => 'text', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'cred_validity', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
-	$data['columns'][] = array('name' => 'login_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'data_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'search', 'type' => 'varchar(1024)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'search_maint', 'type' => 'varchar(1024)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'search_failed', 'type' => 'varchar(1024)', 'NULL' => false);

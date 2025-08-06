@@ -30,8 +30,6 @@ $ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 function curl_try ($test) {
 	global $user_agent, $config, $ca_info, $service_types_ports;
 
-	include_once($config['base_path'] . '/plugins/servcheck/includes/constants.php');
-
 	$cert_info = array();
 
 	// default result
@@ -57,7 +55,6 @@ function curl_try ($test) {
 		return $results;
 	}
 
-//!!pm - tohle pak pouzit i u dalsich testu
 	if ($test['cred_id'] > 0) {
 		$cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', 
 			array($test['cred_id']));
@@ -425,20 +422,15 @@ there are 2 problems:
 function mqtt_try ($test) {
 	global $config;
 
-	include_once($config['base_path'] . '/plugins/servcheck/includes/constants.php');
-
 	// default result
 	$results['result'] = 'ok';
 	$results['time'] = time();
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
 
-	if (strpos($test['hostname'], ':') === 0) {
-		$test['hostname'] .=  ':' . $service_types_ports[$test['type']];
-	}
 
 	$cred = '';
-//!!pm taky predelat
+//!!pm taky predelat, nize je zaklad
 	if ($test['username'] != '') {
 		// curl needs username with %40 instead of @
 		$cred = str_replace('@', '%40', servcheck_show_text($test['username']));
@@ -446,6 +438,36 @@ function mqtt_try ($test) {
 		$cred .= servcheck_show_text($test['password']);
 		$cred .= '@';
 	}
+
+
+	if ($test['cred_id'] > 0) {
+		$cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', 
+			array($test['cred_id']));
+
+		if (!$cred) {
+			plugin_servcheck_debug('Credential is set but not found!' , $test);
+			cacti_log('Credential not found');
+			$results['result'] = 'error';
+			$results['error'] = 'Credential not found';
+			return $results;
+		} else {
+			plugin_servcheck_debug('Decrypting credential' , $test);
+			$cred  = servcheck_decrypt_credential($test['cred_id']);
+
+			if (empty($cred)) {
+				plugin_servcheck_debug('Credential is empty!' , $test);
+				cacti_log('Credential is empty');
+				$results['result'] = 'error';
+				$results['error'] = 'Credential is empty';
+				return $results;
+			}
+		}
+	}
+
+	if (strpos($test['hostname'], ':') === 0) {
+		$test['hostname'] .=  ':' . $service_types_ports[$test['type']];
+	}
+
 
 	if ($test['path'] == '') {
 		// try any message
@@ -733,8 +755,6 @@ function doh_try ($test) {
 function restapi_try ($test) {
 	global $user_agent, $config, $ca_info, $rest_api_auth_method;
 
-	include_once($config['base_path'] . '/plugins/servcheck/includes/constants.php');
-
 	$cert_info = array();
 	$http_headers = array();
 
@@ -754,6 +774,31 @@ function restapi_try ($test) {
 		CURLOPT_CAINFO         => $ca_info,
 	);
 
+	if ($test['cred_id'] > 0) {
+		$cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', 
+			array($test['cred_id']));
+
+		if (!$cred) {
+			plugin_servcheck_debug('Credential is set but not found!' , $test);
+			cacti_log('Credential not found');
+			$results['result'] = 'error';
+			$results['error'] = 'Credential not found';
+			return $results;
+		} else {
+			plugin_servcheck_debug('Decrypting credential' , $test);
+			$cred  = servcheck_decrypt_credential($test['cred_id']);
+
+			if (empty($cred)) {
+				plugin_servcheck_debug('Credential is empty!' , $test);
+				cacti_log('Credential is empty');
+				$results['result'] = 'error';
+				$results['error'] = 'Credential is empty';
+				return $results;
+			}
+		}
+	}
+
+//!! tohle se zmeni
 	$api = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_restapi_method
 		WHERE id = ?', array($test['restapi_id']));
 
@@ -777,18 +822,14 @@ function restapi_try ($test) {
 			// nothing to do
 			break;
 		case 'basic':
-//!!pm tady to otestovat
-// promenne jsou username a password, jsou ale v jsonu a sifrovane
 
-//			$cred = servcheck_decrypt_credential($api['cred_id']);
+//!!pm tady to predelat a otestovat
 
 			// we don't need set content type for login or GET/POST request because we don't set any data
 			$options[CURLOPT_USERPWD] = $cred['username'] . ':' . $cred['password'];
 			$options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
 			break;
 		case 'apikey':
-//!!pm tady to otestovat
-// promenne jsou username a password, jsou ale v json sifrovane
 
 //			$cred = servcheck_decrypt_credential($api['cred_id']);
 
@@ -964,7 +1005,7 @@ function restapi_try ($test) {
 			break;
 	}
 
-	// 99% ro requests are GET
+	// 99% requests are GET
 	$options[CURLOPT_POST] = false;
 	unset ($options[CURLOPT_POSTFIELDS]);
 

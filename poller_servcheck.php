@@ -35,6 +35,8 @@ if (strpos($dir, 'plugins') !== false) {
 include('./include/cli_check.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 include_once($config['base_path'] . '/lib/poller.php');
+include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+
 
 /* process calling arguments */
 $parms = $_SERVER['argv'];

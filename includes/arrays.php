@@ -22,15 +22,11 @@
  +-------------------------------------------------------------------------+
 */
 
-include_once(__DIR__ . '/constants.php');
+// for encrypt credentials
+if (!defined('SERVCHECK_CIPHER')) {
+	define('SERVCHECK_CIPHER', 'aes-256-cbc');
+}
 
-global	$servcheck_actions_proxy, $servcheck_actions_test, $servcheck_actions_ca, $servcheck_actions_restapi,
-	$graph_interval, $service_types_ports,
-	$servcheck_proxy_fields, $servcheck_test_fields, $servcheck_ca_fields,
-	$servcheck_notify_accounts, $httperrors, $servcheck_seconds,
-	$search, $mail_serv, $service_types, $curl_error, $search_result, $servcheck_tabs,
-	$rest_api_format, $rest_api_auth_method, $servcheck_restapi_fields,
-	$credential_types, $servcheck_credential_fields;
 
 $servcheck_tabs = array(
 	'servcheck_test.php'       => __('Tests', 'servcheck'),
@@ -225,8 +221,8 @@ $servcheck_seconds = array(
 );
 
 $servcheck_notify_formats = array(
-	SERVCHECK_FORMAT_HTML  => 'html',
-	SERVCHECK_FORMAT_PLAIN => 'plain',
+	'html' => 'html',
+	'plain' => 'plain',
 );
 
 if (db_table_exists('plugin_servcheck_contacts')) {
@@ -247,28 +243,28 @@ if (!empty($servcheck_contact_users)) {
 }
 
 $servcheck_actions_proxy = array(
-	SERVCHECK_ACTION_PROXY_DELETE => __('Delete', 'servcheck'),
+	'delete' => __('Delete', 'servcheck'),
 );
 
 $servcheck_actions_ca = array(
-	SERVCHECK_ACTION_CA_DELETE => __('Delete', 'servcheck'),
+	'delete' => __('Delete', 'servcheck'),
 );
 
 $servcheck_actions_test = array(
-	SERVCHECK_ACTION_TEST_DELETE    => __('Delete', 'servcheck'),
-	SERVCHECK_ACTION_TEST_DISABLE   => __('Disable', 'servcheck'),
-	SERVCHECK_ACTION_TEST_ENABLE    => __('Enable', 'servcheck'),
-	SERVCHECK_ACTION_TEST_DUPLICATE => __('Duplicate', 'servcheck'),
+	'delete'    => __('Delete', 'servcheck'),
+	'disable'   => __('Disable', 'servcheck'),
+	'enable'    => __('Enable', 'servcheck'),
+	'duplicate' => __('Duplicate', 'servcheck'),
 );
 
 $servcheck_actions_restapi = array(
-	SERVCHECK_ACTION_RESTAPI_DELETE    => __('Delete', 'servcheck'),
-	SERVCHECK_ACTION_RESTAPI_DUPLICATE => __('Duplicate', 'servcheck'),
+	'delete'    => __('Delete', 'servcheck'),
+	'duplicate' => __('Duplicate', 'servcheck'),
 );
 
 $servcheck_actions_credential = array(
-	SERVCHECK_ACTION_CREDENTIAL_DELETE    => __('Delete', 'servcheck'),
-	SERVCHECK_ACTION_CREDENTIAL_DUPLICATE => __('Duplicate', 'servcheck'),
+	'delete'    => __('Delete', 'servcheck'),
+	'duplicate' => __('Duplicate', 'servcheck'),
 );
 
 $servcheck_ca_fields = array(
@@ -418,28 +414,6 @@ $servcheck_test_fields = array(
 		'default' => 'urlencoded',
 		'description' => __('Select correct format for communication, check your Rest API documentation.', 'servcheck'),
 		'value' => '|arg1:format|',
-	),
-	'cred_name' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('Token/API Key name', 'servcheck'),
-		'description' => __('Auth can use different token or API Key name. You can specify it here.
-		Commonly used names are  \'Bearer\' for OAuth2,  \'apikey\' for API Key method. You need know correct name, check your Rest API server documentation. ', 'servcheck'),
-		'value' => '|arg1:cred_name|',
-		'max_length' => '100',
-	),
-	'login_url' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('Login URL', 'servcheck'),
-		'description' => __('URL which is used to log in or get the token.', 'servcheck'),
-		'value' => '|arg1:login_url|',
-		'max_length' => '200',
-	),
-	'data_url' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('Data URL', 'servcheck'),
-		'description' => __('URL to retrieve data. Insert with http:// or https://', 'servcheck'),
-		'value' => '|arg1:data_url|',
-		'max_length' => '200',
 	),
 
 	'ca' => array(
@@ -715,7 +689,10 @@ $servcheck_credential_fields = array(
 	'username' => array(
 		'friendly_name' => __('Username', 'servcheck'),
 		'method' => 'textbox',
-		'description' => __('With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For SMB use DOMAIN/user. MQTT supports username/password too. In the case of oauth2, this field is called client_id.', 'servcheck'),
+		'description' => __('<i>LDAP -</i> insert something like cn=John Doe,OU=anygroup,DC=example,DC=com<br/>
+					<i>SMB -</i> use DOMAIN/user<br/>
+					<i>MQTT -</i> username<br/>
+					<i>OAuth2-</i> client_id<br/>', 'servcheck'),
 		'value' => '|arg1:username|',
 		'max_length' => '100',
 		'size' => '30'
@@ -723,10 +700,34 @@ $servcheck_credential_fields = array(
 	'password' => array(
 		'friendly_name' => __('Password', 'servcheck'),
 		'method' => 'textbox',
-		'description' => __('For anonymous ftp insert email address here. In the case of oauth2, this field is called client secret.', 'servcheck'),
+		'description' => __('<i>OAuth2 -</i> client_secret<br/>
+			<i>Anonymous FTP -</i>email address', 'servcheck'),
 		'value' => '|arg1:password|',
 		'max_length' => '100',
 		'size' => '30'
+	),
+	'cred_name' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Token/API Key name', 'servcheck'),
+		'description' => __('Auth can use different token or API Key name. You can specify it here. You need know correct name, check your Rest API server documentation.<br/>
+			<i>OAuth2 -</i> Commonly used name is \'Bearer\'<br/>
+			<i>API Key -</i> commonly used name is \'apikey\'<br/> ', 'servcheck'),
+		'value' => '|arg1:cred_name|',
+		'max_length' => '100',
+	),
+	'login_url' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Login URL', 'servcheck'),
+		'description' => __('URL which is used to log in or get the token.', 'servcheck'),
+		'value' => '|arg1:login_url|',
+		'max_length' => '200',
+	),
+	'data_url' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Data URL', 'servcheck'),
+		'description' => __('URL to retrieve data. Insert with http:// or https://', 'servcheck'),
+		'value' => '|arg1:data_url|',
+		'max_length' => '200',
 	),
 	'cred_value' => array(
 		'method' => 'textbox',
@@ -743,7 +744,6 @@ $servcheck_credential_fields = array(
 		'max_length' => '30',
 		'size' => '30'
 	),
-
 	'id' => array(
 		'method' => 'hidden_zero',
 		'value' => '|arg1:id|'

@@ -55,7 +55,7 @@ function ca_form_actions() {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
 
 		if ($selected_items != false) {
-			if (get_nfilter_request_var('drp_action') == SERVCHECK_ACTION_CA_DELETE) { // delete
+			if (get_nfilter_request_var('drp_action') == 'delete') {
 				/* do a referential integrity check */
 				if (cacti_sizeof($selected_items)) {
 					foreach($selected_items as $ca) {
@@ -98,7 +98,7 @@ function ca_form_actions() {
 	html_start_box($servcheck_actions_ca[get_nfilter_request_var('drp_action')], '60%', '', '3', 'center', '');
 
 	if (cacti_sizeof($ca_array) > 0) {
-		if (get_nfilter_request_var('drp_action') == SERVCHECK_ACTION_CA_DELETE) { // delete
+		if (get_nfilter_request_var('drp_action') == 'delete') {
 			print "	<tr>
 					<td class='topBoxAlt'>
 						<p>" . __n('Click \'Continue\' to delete the following CA.', 'Click \'Continue\' to delete following CA.', cacti_sizeof($ca_array)) . "</p>

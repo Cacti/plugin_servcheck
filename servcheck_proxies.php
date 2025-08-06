@@ -25,6 +25,8 @@
 chdir('../../');
 include_once('./include/auth.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
+include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+
 
 set_default_action();
 
@@ -55,7 +57,7 @@ function proxy_form_actions() {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
 
 		if ($selected_items != false) {
-			if (get_nfilter_request_var('drp_action') == SERVCHECK_ACTION_PROXY_DELETE) { // delete
+			if (get_nfilter_request_var('drp_action') == 'delete') { // delete
 				/* do a referential integrity check */
 				if (cacti_sizeof($selected_items)) {
 					foreach($selected_items as $proxy) {
@@ -98,7 +100,7 @@ function proxy_form_actions() {
 	html_start_box($servcheck_actions_proxy[get_nfilter_request_var('drp_action')], '60%', '', '3', 'center', '');
 
 	if (cacti_sizeof($proxy_array) > 0) {
-		if (get_nfilter_request_var('drp_action') == SERVCHECK_ACTION_PROXY_DELETE) { // delete
+		if (get_nfilter_request_var('drp_action') == 'delete') { // delete
 			print "	<tr>
 					<td class='topBoxAlt'>
 						<p>" . __n('Click \'Continue\' to delete the following Proxy.', 'Click \'Continue\' to delete following Proxies.', cacti_sizeof($proxy_array)) . "</p>

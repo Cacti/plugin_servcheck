@@ -25,7 +25,7 @@
 chdir('../../');
 include_once('./include/auth.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
-include_once($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
 global $refresh;
 
@@ -71,12 +71,12 @@ function form_actions() {
 			}
 
 			if (cacti_sizeof($restapis)) {
-				if ($action == SERVCHECK_ACTION_RESTAPI_DELETE) {
+				if ($action == 'delete') {
 					foreach ($restapis as $id) {
 						db_execute_prepared('DELETE FROM plugin_servcheck_restapi_method WHERE id = ?', array($id));
 						db_execute_prepared('UPDATE plugin_servcheck_test SET restapi_id = 0  WHERE restapi_id = ?', array($id));
 					}
-				} elseif ($action == SERVCHECK_ACTION_RESTAPI_DUPLICATE) {
+				} elseif ($action == 'duplicate') {
 					$newid = 1;
 
 					foreach ($restapis as $id) {
@@ -129,7 +129,7 @@ function form_actions() {
 	$action = get_nfilter_request_var('drp_action');
 
 	if (cacti_sizeof($restapi_array)) {
-		if ($action == SERVCHECK_ACTION_RESTAPI_DELETE) {
+		if ($action == 'delete') {
 			print"	<tr>
 				<td class='topBoxAlt'>
 					<p>" . __n('Click \'Continue\' to Delete the following Rest API.', 'Click \'Continue\' to Delete following Rest API.', cacti_sizeof($restapi_array)) . "</p>
@@ -138,7 +138,7 @@ function form_actions() {
 			</tr>";
 
 			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete Rest API', 'Delete Rest API', cacti_sizeof($restapi_array)) . "'>";
-		} elseif ($action == SERVCHECK_ACTION_RESTAPI_DUPLICATE) {
+		} elseif ($action == 'duplicate') {
 			print "<tr>
 				<td class='topBoxAlt'>
 					<p>" . __n('Click \'Continue\' to Duplicate the following Rest API.', 'Click \'Continue\' to Duplicate following Rest APIs.', cacti_sizeof($restapi_array)) . "</p>

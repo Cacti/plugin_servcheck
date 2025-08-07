@@ -461,6 +461,8 @@ function servcheck_edit_test() {
 		$servcheck_test_fields['notify_list']['method'] = 'hidden';
 	}
 
+//	top_header();
+
 	form_start('servcheck_test.php');
 
 	html_start_box($header_label, '100%', '', '3', 'center', '');
@@ -476,7 +478,7 @@ function servcheck_edit_test() {
 
 	form_save_button('servcheck_test.php', 'return');
 //var_dump($test);
-	form_end();
+//	form_end();
 
 	?>
 	<script type='text/javascript'>
@@ -661,6 +663,8 @@ function servcheck_edit_test() {
 
 	</script>
 	<?php
+
+//	bottom_footer();
 }
 
 /**

@@ -550,6 +550,7 @@ function servcheck_replicate_out($data) {
 		'plugin_servcheck_contacts',
 		'plugin_servcheck_proxies',
 		'plugin_servcheck_test',
+		'plugin_servcheck_credential',
 		'plugin_servcheck_ca',
 		'plugin_servcheck_rest_method'
 	);

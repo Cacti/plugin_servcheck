@@ -24,18 +24,18 @@
 
 chdir('../../');
 include_once('./include/auth.php');
-include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
+include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
 set_default_action();
 
 switch (get_request_var('action')) {
 	case 'save':
-		form_save();
+		credential_form_save();
 
 		break;
 	case 'actions':
-		form_actions();
+		credential_form_actions();
 
 		break;
 	case 'edit':
@@ -45,18 +45,21 @@ switch (get_request_var('action')) {
 
 		break;
 	default:
+		top_header();
 		list_credentials();
+		bottom_footer();
 
 		break;
 }
 
-exit;
+//exit;
 
-function form_actions() {
+
+function credential_form_actions() {
 	global $servcheck_actions_credential;
 
 
-	/* if we are to save this form, instead of display it */
+	// if we are to save this form, instead of display it 
 	if (isset_request_var('selected_items')) {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
 		$action         = get_nfilter_request_var('drp_action');
@@ -100,17 +103,17 @@ function form_actions() {
 		exit;
 	}
 
-	/* setup some variables */
+	// setup some variables
 	$credential_list  = '';
 	$credential_array = array();
 
-	/* loop through each of the credentials selected on the previous page and get more info about them */
+	// loop through each of the credentials selected on the previous page and get more info about them 
 	foreach ($_POST as $var => $val) {
 		if (preg_match('/^chk_([0-9]+)$/', $var, $matches)) {
-			/* ================= input validation ================= */
+			// ================= input validation ================= 
 			input_validate_input_number($matches[1]);
-			/* ==================================================== */
-
+			// ==================================================== 
+//!! tady by slo udelat, ze je nesmazu, jen vypisu
 			$credential_list .= '<li>' . __esc(db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_credential WHERE id = ?', array($matches[1]))) . '</li>';
 			$credential_array[] = $matches[1];
 		}
@@ -166,18 +169,21 @@ function form_actions() {
 	bottom_footer();
 }
 
-function form_save() {
+
+function credential_form_save() {
 	global $credential_types;
 
-	/* ================= input validation ================= */
-	get_filter_request_var('id');
-	/* ==================================================== */
+	if (isset_request_var('save_component_credential')) {
+
+	$save['id'] = get_filter_request_var('id');
+/*
 
 	if (isset_request_var('id')) {
 		$save['id'] = get_request_var('id');
 	} else {
 		$save['id'] = 0;
 	}
+*/
 
 	if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $credential_types)) {
 		$save['type'] = get_nfilter_request_var('type');
@@ -335,7 +341,6 @@ function form_save() {
 			}
 
 			break;
-
 	}
 
 	$save['data'] = servcheck_encrypt_credential($cred);
@@ -350,8 +355,10 @@ function form_save() {
 		}
 	}
 
-	header('Location: servcheck_credential.php?action=edit&id=' . (isset($id)? $id : get_request_var('id')) . '&header=false');
+	header('Location: servcheck_credential.php?action=edit&header=false&id=' . (isset($id)? $id : get_request_var('id')));
 	exit;
+	}
+
 }
 
 function servcheck_edit_credential() {
@@ -359,7 +366,8 @@ function servcheck_edit_credential() {
 	/* ================= input validation ================= */
 	get_filter_request_var('id');
 	/* ==================================================== */
-
+//var_dump(get_request_var('username'));
+//echo "<hr/>";
 	$credential = array();
 
 	if (!isempty_request_var('id')) {
@@ -371,7 +379,7 @@ function servcheck_edit_credential() {
 
 	if (isset($credential['id'])) {
 		$credential += servcheck_decrypt_credential($credential['id']);
-
+//echo "tady";
 /*
 tohle tu asi nebude
 		switch($credential['type']) {
@@ -401,25 +409,33 @@ tohle tu asi nebude
 				break;
 		}
 */
+	} else {
+		$credential['username'] = get_request_var('username');
+//echo "tady2";
 	}
-
+//var_dump($credential);
 
 	form_start('servcheck_credential.php');
+
 	html_start_box($header_label, '100%', '', '3', 'center', '');
 
 	draw_edit_form(
 		array(
-			'config' => array('form_name' => 'chk'),
+//			'config' => array('form_name' => 'chk'),
+			'config' => array('no_form_tag' => true),
 			'fields' => inject_form_variables($servcheck_credential_fields, $credential)
 		)
 	);
+
+	form_hidden_box('save_component_credential', '1', '');
 
 	html_end_box();
 
 	form_save_button('servcheck_credential.php', 'return');
 
-	form_end();
+
 	?>
+
 	<script type='text/javascript'>
 
 	$(function() {
@@ -488,6 +504,9 @@ tohle tu asi nebude
 	}
 	</script>
 	<?php
+
+//	form_end();
+
 }
 
 /**
@@ -643,6 +662,7 @@ function list_credentials() {
 
 	?>
 	<script type='text/javascript'>
+	/* //!!pm potrebuju?
 	$(function() {
 		$('#servcheck2_child').find('.cactiTooltipHint').each(function() {
 			var title = $(this).attr('title');
@@ -654,7 +674,7 @@ function list_credentials() {
 			}
 		});
 	});
-
+*/
 	</script>
 	<?php
 

@@ -22,9 +22,15 @@
  +-------------------------------------------------------------------------+
 */
 
+
 chdir('../../');
 include_once('./include/auth.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
+include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+
+$servcheck_actions_ca = array(
+	1 => __('Delete', 'servcheck'),
+);
 
 set_default_action();
 
@@ -44,34 +50,38 @@ switch (get_request_var('action')) {
 
 		break;
 	default:
-		ca();
+		top_header();
+		ca_list();
+		bottom_footer();
+
+		break;
 }
 
 function ca_form_actions() {
 	global $servcheck_actions_ca;
+
+	/* ================= input validation ================= */
+	get_filter_request_var('drp_action', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^([a-zA-Z0-9_]+)$/')));
+	/* ==================================================== */
 
 	/* if we are to save this form, instead of display it */
 	if (isset_request_var('selected_items')) {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
 
 		if ($selected_items != false) {
-			if (get_nfilter_request_var('drp_action') == 'delete') {
-				/* do a referential integrity check */
+			if (get_nfilter_request_var('drp_action') == 1) {
 				if (cacti_sizeof($selected_items)) {
 					foreach($selected_items as $ca) {
-						$cas[] = $ca;
+						db_execute_prepared('DELETE FROM plugin_servcheck_proxies WHERE id = ?', array($proxy));
+						db_execute_prepared('UPDATE plugin_servcheck_test SET proxy_server = 0 WHERE proxy_server = ?',array($proxy));
+						db_execute_prepared('DELETE FROM plugin_servcheck_ca WHERE id = ?', array($ca));
+						db_execute_prepared('UPDATE plugin_servcheck_test SET proxy_server = 0 WHERE proxy_server = ?', array($ca));
 					}
-				}
-
-				if (cacti_sizeof($cas)) {
-					db_execute('DELETE FROM plugin_servcheck_ca WHERE ' . array_to_sql_or($cas, 'id'));
-					db_execute('UPDATE plugin_servcheck_test SET ca = 0  WHERE ' . array_to_sql_or($cas, 'ca'));
 				}
 			}
 		}
 
 		header('Location: servcheck_ca.php?header=false');
-
 		exit;
 	}
 
@@ -110,7 +120,7 @@ function ca_form_actions() {
 		}
 	} else {
 		raise_message(40);
-		header('Location: servcheck_ca.php');
+		header('Location: servcheck_ca.php?header=false');
 		exit;
 	}
 
@@ -130,11 +140,35 @@ function ca_form_actions() {
 	bottom_footer();
 }
 
+
 function ca_form_save() {
 	if (isset_request_var('save_component_ca')) {
-		$save['id']         = get_filter_request_var('id');
+
+		get_filter_request_var('id');
+
+		$save['id']         = get_nfilter_request_var('id');
+
 		$save['name']       = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
 		$save['cert']       = form_input_validate(get_nfilter_request_var('cert'), 'cert', '^-----BEGIN CERTIFICATE-----.*', false, 3);
+
+		if (!is_error_message()) {
+			$ca_id = sql_save($save, 'plugin_servcheck_ca');
+
+			if ($ca_id) {
+				raise_message(1);
+			} else {
+				raise_message(2);
+			}
+		}
+
+		if (is_error_message()) {
+			header('Location: servcheck_ca.php?header=false&action=edit&id=' . (empty($ca_id) ? get_nfilter_reques
+		} else {
+			header('Location: servcheck_ca.php?header=false');
+		}
+	}
+	exit;
+}
 
 		if (!is_error_message()) {
 			$ca_id = sql_save($save, 'plugin_servcheck_ca');

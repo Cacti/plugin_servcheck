@@ -242,13 +242,6 @@ if (!empty($servcheck_contact_users)) {
 	}
 }
 
-$servcheck_actions_proxy = array(
-	'delete' => __('Delete', 'servcheck'),
-);
-
-$servcheck_actions_ca = array(
-	'delete' => __('Delete', 'servcheck'),
-);
 
 $servcheck_actions_test = array(
 	'delete'    => __('Delete', 'servcheck'),
@@ -266,6 +259,7 @@ $servcheck_actions_credential = array(
 	'delete'    => __('Delete', 'servcheck'),
 	'duplicate' => __('Duplicate', 'servcheck'),
 );
+
 
 $servcheck_ca_fields = array(
 	'name' => array(
@@ -331,14 +325,11 @@ $servcheck_proxy_fields = array(
 		'description' => __('Select correct credential', 'servcheck'),
 		'value' => '|arg1:cred_id|',
 		'sql' => "SELECT id, name FROM plugin_servcheck_credential WHERE type = 'userpass' ORDER BY name",
+		'none_value' => __('None', 'servcheck'),
 	),
 	'id' => array(
 		'method' => 'hidden_zero',
 		'value' => '|arg1:id|'
-	),
-	'save_component_proxy' => array(
-		'method' => 'hidden',
-		'value' => '1'
 	)
 );
 
@@ -406,6 +397,7 @@ $servcheck_test_fields = array(
 		'description' => __('Select correct credential', 'servcheck'),
 		'value' => '|arg1:cred_id|',
 		'sql' => "SELECT id, name FROM plugin_servcheck_credential ORDER BY name",
+		'none_value' => __('None', 'servcheck'),
 	),
 	'format' => array(
 		'friendly_name' => __('Data Format', 'servcheck'),

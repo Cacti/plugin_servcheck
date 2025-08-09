@@ -155,14 +155,14 @@ function curl_try ($test) {
 
 	$process = curl_init($url);
 
-	if ($test['ca'] > 0) {
-		$ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca_cert_' . $test['ca'] . '.pem'; // The folder /plugins/servcheck/cert does exist, hence the ca_cert_x.pem can be created here
+	if ($test['ca_id'] > 0) {
+		$ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca_cert_' . $test['ca_id'] . '.pem'; // The folder /plugins/servcheck/cert does exist, hence the ca_cert_x.pem can be created here
 		plugin_servcheck_debug('Preparing own CA chain file ' . $ca_info , $test);
 		// CURLOPT_CAINFO is to updated based on the custom CA certificate
 		$options[CURLOPT_CAINFO] = $ca_info;
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
-			array($test['ca']));
+			array($test['ca_id']));
 
 		$cert_file = fopen($ca_info, 'w+');
 		if ($cert_file) {
@@ -180,12 +180,12 @@ function curl_try ($test) {
 		$options[CURLOPT_FAILONERROR] = $test['requiresauth'] == '' ? true : false;
 
 		// use proxy?
-		if ($test['proxy_server'] > 0) {
+		if ($test['proxy_id'] > 0) {
 
 			$proxy = db_fetch_row_prepared('SELECT *
-				FROM plugin_servcheck_proxies
+				FROM plugin_servcheck_proxy
 				WHERE id = ?',
-				array($test['proxy_server']));
+				array($test['proxy_id']));
 
 			if (cacti_sizeof($proxy)) {
 				$options[CURLOPT_PROXY] = $proxy['hostname'];
@@ -256,10 +256,10 @@ function curl_try ($test) {
 		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
 	}
 
-	if ($test['ca'] > 0) {
+	if ($test['ca_id'] > 0) {
 		plugin_servcheck_debug('Removing own CA file');
 	}
-
+//!!pm tady ten soubor nejak neodebiram
 	curl_close($process);
 
 	if ($test['type'] == 'web_http' || $test['type'] == 'web_https') {
@@ -622,14 +622,14 @@ function doh_try ($test) {
 
 	$process = curl_init($url);
 
-	if ($test['ca'] > 0) { 
-		$ca_info = $config['base_path'] . '/plugins/servcheck/cert_' . $test['ca'] . '.pem'; // The folder /plugins/servcheck does exist, hence the ca_cert_x.pem can be created here
+	if ($test['ca_id'] > 0) { 
+		$ca_info = $config['base_path'] . '/plugins/servcheck/cert_' . $test['ca_id'] . '.pem'; // The folder /plugins/servcheck does exist, hence the ca_cert_x.pem can be created here
 		plugin_servcheck_debug('Preparing own CA chain file ' . $ca_info , $test);
 		// CURLOPT_CAINFO is to updated based on the custom CA certificate
 		$options[CURLOPT_CAINFO] = $ca_info;
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
-			array($test['ca']));
+			array($test['ca_id']));
 
 		$cert_file = fopen($ca_info, 'a');
 		if ($cert_file) {
@@ -679,7 +679,7 @@ function doh_try ($test) {
 		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
 	}
 
-	if ($test['ca'] > 0) {
+	if ($test['ca_id'] > 0) {
 		unlink ($ca_info);
 		plugin_servcheck_debug('Removing own CA file');
 	}

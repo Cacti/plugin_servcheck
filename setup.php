@@ -31,7 +31,7 @@ function plugin_servcheck_install () {
 	api_plugin_register_hook('servcheck', 'replicate_out',        'servcheck_replicate_out',               'setup.php');
 	api_plugin_register_hook('servcheck', 'config_settings',      'servcheck_config_settings',             'setup.php');
 //!! zrusit restapi_php
-	api_plugin_register_realm('servcheck', 'servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxies.php,servcheck_ca.php', __('Service Check Admin', 'servcheck'), 1);
+	api_plugin_register_realm('servcheck', 'servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxy.php,servcheck_ca.php', __('Service Check Admin', 'servcheck'), 1);
 
 	plugin_servcheck_setup_table();
 }
@@ -40,6 +40,7 @@ function plugin_servcheck_uninstall () {
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_test');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_log');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_proxies');
+	db_execute('DROP TABLE IF EXISTS plugin_servcheck_proxy');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_processes');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_contacts');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_ca');
@@ -65,17 +66,35 @@ function plugin_servcheck_upgrade() {
 	db_execute_prepared('UPDATE plugin_realms
 		SET file = ?
 		WHERE file LIKE "%servcheck_test.php%"',
-		array('servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxies.php,servcheck_ca.php'));
+		array('servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxy.php,servcheck_ca.php'));
 //!! zrusit restapi,php
 		api_plugin_register_hook('servcheck', 'replicate_out', 'servcheck_replicate_out', 'setup.php', '1');
 		api_plugin_register_hook('servcheck', 'config_settings', 'servcheck_config_settings', 'setup.php', '1');
 
-	$cred_table = db_fetch_cell("SELECT COUNT(*)
+	if (db_column_exists('plugin_servcheck_test', 'display_name')) {
+		db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN display_name TO name');
+	}
+
+	if (db_column_exists('plugin_servcheck_test', 'proxy_server')) {
+		db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN proxy_server TO proxy_id');
+	}
+
+	$exist = db_fetch_cell("SELECT COUNT(*)
+		FROM information_schema.tables
+		WHERE table_schema = SCHEMA()
+		AND table_name = 'plugin_servcheck_proxies'");
+
+	if ($exist) {
+		db_execute('ALTER TABLE plugin_servcheck_proxies RENAME TO plugin_servcheck_proxy');
+	}
+
+
+	$exist = db_fetch_cell("SELECT COUNT(*)
 		FROM information_schema.tables
 		WHERE table_schema = SCHEMA()
 		AND table_name = 'plugin_servcheck_credential'");
 
-	if (!$cred_table) {
+	if (!$exist) {
 		$data              = array();
 		$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 		$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
@@ -87,12 +106,13 @@ function plugin_servcheck_upgrade() {
 
 		api_plugin_db_table_create('servcheck', 'plugin_servcheck_credential', $data);
 
+
 		if (!db_column_exists('plugin_servcheck_test', 'cred_id')) {
 			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
 		}
 
-		if (!db_column_exists('plugin_servcheck_proxies', 'cred_id')) {
-			api_plugin_db_add_column('servcheck', 'plugin_servcheck_proxies', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
+		if (!db_column_exists('plugin_servcheck_proxy', 'cred_id')) {
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_proxy', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
 		}
 
 		// convert credentials to separated tab
@@ -129,7 +149,7 @@ function plugin_servcheck_upgrade() {
 			}
 		}
 
-		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_proxies WHERE username != '' OR password !=''");
+		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_proxy WHERE username != '' OR password !=''");
 		if (cacti_sizeof($records)) {
 			foreach ($records as $record) {
 				$cred = array();
@@ -143,7 +163,7 @@ function plugin_servcheck_upgrade() {
 					(name, type, data) VALUES (?, ?, ?)',
 					array('upgrade/convert_proxy_' . $record['id'], $cred['type'], $enc));
 
-				db_execute_prepared('UPDATE plugin_servcheck_proxies
+				db_execute_prepared('UPDATE plugin_servcheck_proxy
 					SET cred_id = ? WHERE id = ?',
 					array(db_fetch_insert_id(), $record['id']));
 			}
@@ -205,8 +225,8 @@ function plugin_servcheck_upgrade() {
 		db_remove_column('plugin_servcheck_test', 'username');
 		db_remove_column('plugin_servcheck_test', 'password');
 		db_remove_column('plugin_servcheck_test', 'restapi_id');
-		db_remove_column('plugin_servcheck_proxies', 'username');
-		db_remove_column('plugin_servcheck_proxies', 'password');
+		db_remove_column('plugin_servcheck_proxy', 'username');
+		db_remove_column('plugin_servcheck_proxy', 'password');
 //!!! tady mozna nemenit? Stejne si to bude tahat z credential a tohle se casem zahodi
 // asi tedy nemenit
 //		db_remove_column('plugin_servcheck_restapi_method', 'username');
@@ -235,7 +255,7 @@ function plugin_servcheck_setup_table() {
 	$data              = array();
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 	$data['columns'][] = array('name' => 'type', 'type' => 'varchar(30)', 'NULL' => false, 'default' => 'web_http');
-	$data['columns'][] = array('name' => 'display_name', 'type' => 'varchar(64)', 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(64)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'poller_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '1');
 	$data['columns'][] = array('name' => 'enabled', 'type' => 'varchar(2)', 'NULL' => false, 'default' => 'on');
 	$data['columns'][] = array('name' => 'hostname', 'type' => 'varchar(120)', 'NULL' => false, 'default' => '');
@@ -248,7 +268,7 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'search_maint', 'type' => 'varchar(1024)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'search_failed', 'type' => 'varchar(1024)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'requiresauth', 'type' => 'varchar(2)', 'NULL' => false, 'default' => '');
-	$data['columns'][] = array('name' => 'proxy_server', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'proxy_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'ca', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'checkcert', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on');
 	$data['columns'][] = array('name' => 'certexpirenotify', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on');
@@ -357,7 +377,7 @@ function plugin_servcheck_setup_table() {
 	$data['type']      = 'InnoDB';
 	$data['comment']   = 'Holds Proxy Information for Connections';
 
-	api_plugin_db_table_create('servcheck', 'plugin_servcheck_proxies', $data);
+	api_plugin_db_table_create('servcheck', 'plugin_servcheck_proxy', $data);
 
 
 
@@ -494,24 +514,24 @@ function plugin_servcheck_draw_navigation_text($nav) {
 		'level' => '1'
 	);
 
-	$nav['servcheck_proxies.php:'] = array(
-		'title' => __('Web Proxies', 'servcheck'),
+	$nav['servcheck_proxy.php:'] = array(
+		'title' => __('Web Proxy', 'servcheck'),
 		'mapping' => 'index.php:',
-		'url' => 'servcheck_proxies.php',
+		'url' => 'servcheck_proxy.php',
 		'level' => '1'
 	);
 
-	$nav['servcheck_proxies.php:edit'] = array(
-		'title' => __('Web Proxie Edit', 'servcheck'),
+	$nav['servcheck_proxy.php:edit'] = array(
+		'title' => __('Web Proxy Edit', 'servcheck'),
 		'mapping' => 'index.php:',
-		'url' => 'servcheck_proxies.php',
+		'url' => 'servcheck_proxy.php',
 		'level' => '1'
 	);
 
-	$nav['servcheck_proxies.php:save'] = array(
+	$nav['servcheck_proxy.php:save'] = array(
 		'title' => __('Save Web Proxy', 'servcheck'),
 		'mapping' => 'index.php:',
-		'url' => 'servcheck_proxies.php',
+		'url' => 'servcheck_proxy.php',
 		'level' => '1'
 	);
 
@@ -548,7 +568,7 @@ function servcheck_replicate_out($data) {
 
 	$tables = array(
 		'plugin_servcheck_contacts',
-		'plugin_servcheck_proxies',
+		'plugin_servcheck_proxy',
 		'plugin_servcheck_test',
 		'plugin_servcheck_credential',
 		'plugin_servcheck_ca',

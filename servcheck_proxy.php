@@ -68,11 +68,11 @@ function form_actions() {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
 
 		if ($selected_items != false) {
-			if (get_nfilter_request_var('drp_action') == 1) {
+			if (get_filter_request_var('drp_action') == 1) {
 				if (cacti_sizeof($selected_items)) {
 					foreach($selected_items as $item) {
-						db_execute_prepared('DELETE FROM plugin_servcheck_proxies WHERE id = ?', array($item));
-						db_execute_prepared('UPDATE plugin_servcheck_test SET proxy_server = 0 WHERE proxy_server = ?', array($item));
+						db_execute_prepared('DELETE FROM plugin_servcheck_proxy WHERE id = ?', array($item));
+						db_execute_prepared('UPDATE plugin_servcheck_test SET proxy_id = 0 WHERE proxy_id = ?', array($item));
 					}
 				}
 			}
@@ -93,7 +93,7 @@ function form_actions() {
 			input_validate_input_number($matches[1]);
 			/* ==================================================== */
 
-			$item_list .= '<li>' . db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_proxies WHERE id = ?', array($matches[1])) . '</li>';
+			$item_list .= '<li>' . db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_proxy WHERE id = ?', array($matches[1])) . '</li>';
 			$items_array[] = $matches[1];
 		}
 	}
@@ -102,13 +102,13 @@ function form_actions() {
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
-	html_start_box($servcheck_actions_menu[get_nfilter_request_var('drp_action')], '60%', '', '3', 'center', '');
+	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', '', '3', 'center', '');
 
 	if (cacti_sizeof($items_array) > 0) {
-		if (get_nfilter_request_var('drp_action') == 1) {
+		if (get_request_var('drp_action') == 1) {
 			print "	<tr>
 					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following Proxies.', cacti_sizeof($items_array)) . "</p>
+						<p>" . __n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', cacti_sizeof($items_array)) . "</p>
 						<div class='itemlist'><ul>$item_list</ul></div>
 					</td>
 				</tr>";
@@ -131,7 +131,9 @@ function form_actions() {
 	</tr>";
 
 	html_end_box();
+
 	form_end();
+
 	bottom_footer();
 }
 
@@ -143,16 +145,15 @@ function form_save() {
 		get_filter_request_var('id');
 		/* ==================================================== */
 
-		$save['id']        = get_nfilter_request_var('id');
-
+		$save['id']         = get_nfilter_request_var('id');
 		$save['name']       = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
 		$save['hostname']   = form_input_validate(get_nfilter_request_var('hostname'), 'hostname', '', false, 3);
-
 		$save['http_port']  = form_input_validate(get_nfilter_request_var('http_port'), 'http_port', '', false, 3);
 		$save['https_port'] = form_input_validate(get_nfilter_request_var('https_port'), 'https_port', '', false, 3);
+		$save['cred_id']    = get_filter_request_var('cred_id');
 
 		if (!is_error_message()) {
-			$saved_id = sql_save($save, 'plugin_servcheck_proxies');
+			$saved_id = sql_save($save, 'plugin_servcheck_proxy');
 
 			if ($saved_id) {
 				raise_message(1);
@@ -178,11 +179,10 @@ function data_edit() {
 	/* ==================================================== */
 
 	$data = array();
-	$cred = array();
 
 	if (!isempty_request_var('id')) {
 		$data = db_fetch_row_prepared('SELECT *
-			FROM plugin_servcheck_proxies
+			FROM plugin_servcheck_proxy
 			WHERE id = ?',
 			array(get_request_var('id')));
 
@@ -203,13 +203,16 @@ function data_edit() {
 	);
 
 	form_hidden_box('save_component', '1', '');
+
 	html_end_box(true, true);
+
 	form_save_button(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
+
 }
 
 
 function request_validation() {
-	/* ================= input validation and session storage ================= */
+
 	$filters = array(
 		'rows' => array(
 			'filter' => FILTER_VALIDATE_INT,
@@ -266,12 +269,12 @@ function data_list() {
 	$sql_limit = ' LIMIT ' . ($rows*(get_request_var('page')-1)) . ',' . $rows;
 
 	$total_rows = db_fetch_cell("SELECT COUNT(id)
-		FROM plugin_servcheck_proxies
+		FROM plugin_servcheck_proxy
 		$sql_where");
 
 	$result = db_fetch_assoc("SELECT *,
-		(SELECT COUNT(*) FROM plugin_servcheck_test WHERE plugin_servcheck_proxies.id=proxy_server) AS `used`
-		FROM plugin_servcheck_proxies
+		(SELECT COUNT(*) FROM plugin_servcheck_test WHERE plugin_servcheck_proxy.id=proxy_id) AS `used`
+		FROM plugin_servcheck_proxy
 		$sql_where
 		$sql_order
 		$sql_limit");
@@ -329,7 +332,6 @@ function data_list() {
 	} else {
 		print "<tr class='tableRow'><td colspan='" . $columns . "'><em>" . __('Empty', 'servcheck') . "</em></td></tr>\n";
 	}
-
 
 	html_end_box(false);
 

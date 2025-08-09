@@ -133,7 +133,7 @@ $logs = db_fetch_cell_prepared('SELECT count(*) FROM plugin_servcheck_log WHERE 
 	array($test['id']));
 
 if ($logs > 0 && $test['next_run'] > time() && !$force) {
-	plugin_servcheck_debug('INFO: Test "' . $test['display_name'] . '" skipped. Not the right time to run the test.', $test);
+	plugin_servcheck_debug('INFO: Test "' . $test['name'] . '" skipped. Not the right time to run the test.', $test);
 	exit(0);
 }
 
@@ -262,8 +262,6 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 		}
 			$test['triggered'] = 0;
 			$test['failures'] = 0;
-		
-
 	}
 
 	if ($last_log['result_search'] != $results['result_search']) {
@@ -301,7 +299,7 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 	if ($command_enable && $command != '') {
 		plugin_servcheck_debug('Time to run command', $test);
 
-		putenv('SERVCHECK_TEST_NAME='              . $test['display_name']);
+		putenv('SERVCHECK_TEST_NAME='              . $test['name']);
 		putenv('SERVCHECK_EXTERNAL_ID='            . $test['external_id']);
 		putenv('SERVCHECK_TEST_TYPE='              . $test['type']);
 		putenv('SERVCHECK_POLLER='                 . $test['poller_id']);
@@ -405,7 +403,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 	global $httperrors, $cert_expiry_days;
 
 	if (read_config_option('servcheck_disable_notification') == 'on') {
-		cacti_log('Notifications are disabled, notification will not send for test ' . $test['display_name'], false, 'SERVCHECK');
+		cacti_log('Notifications are disabled, notification will not send for test ' . $test['name'], false, 'SERVCHECK');
 		plugin_servcheck_debug('Notification disabled globally', $test);
 
 		return true;
@@ -421,14 +419,14 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 	}
 
 	if ($users == '' && (isset($test['notify_extra']) && $test['notify_extra'] == '') && (api_plugin_installed('thold') && $test['notify_list'] <= 0)) {
-		cacti_log('ERROR: No users to send SERVCHECK Notification for ' . $test['display_name'], false, 'SERVCHECK');
+		cacti_log('ERROR: No users to send SERVCHECK Notification for ' . $test['name'], false, 'SERVCHECK');
 		return;
 	}
 
 	$to = $users;
 
 	if (read_config_option('servcheck_disable_notification') == 'on' && ($to != '' || $test['notify_extra'] != '')) {
-		cacti_log(sprintf('WARNING: Service Check %s has individual Emails specified and Disable Legacy Notification is Enabled.', $test['display_name']), false, 'SERVCHECK');
+		cacti_log(sprintf('WARNING: Service Check %s has individual Emails specified and Disable Legacy Notification is Enabled.', $test['name']), false, 'SERVCHECK');
 	}
 
 	if ($test['notify_extra'] != '') {
@@ -450,9 +448,9 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 		if ($test['status_change']) {
 			if ($results['result'] == 'ok') {
 
-				$message[0]['subject'] = '[Cacti servcheck] Service recovered: ' . $test['display_name'];
+				$message[0]['subject'] = '[Cacti servcheck] Service recovered: ' . $test['name'];
 			} else {
-				$message[0]['subject'] = '[Cacti servcheck] Service down: ' . $test['display_name'];
+				$message[0]['subject'] = '[Cacti servcheck] Service down: ' . $test['name'];
 			}
 
 			$message[0]['text']  = 'Service state: ' . ($results['result'] == 'ok' ? 'Recovering' : 'Down') . PHP_EOL;
@@ -474,7 +472,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 		// search string notification
 		if ($last_log['result_search'] != $results['result_search']) {
-			$message[1]['subject'] = '[Cacti servcheck] Service: ' . $test['display_name'] . ' search result is different than last check';
+			$message[1]['subject'] = '[Cacti servcheck] Service: ' . $test['name'] . ' search result is different than last check';
 
 			$message[1]['text'] = 'Hostname: ' . $test['hostname'] . PHP_EOL;
 
@@ -502,8 +500,8 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 		}
 
 		if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days) {
-			$message[2]['subject'] = '[Cacti servcheck] Certificate will expire in less than ' . $cert_expiry_days . ' days: ' . $test['display_name'];
-			$message[2]['text'] = 'Site ' . $test['display_name'] . PHP_EOL;
+			$message[2]['subject'] = '[Cacti servcheck] Certificate will expire in less than ' . $cert_expiry_days . ' days: ' . $test['name'];
+			$message[2]['text'] = 'Site ' . $test['name'] . PHP_EOL;
 
 			$message[2]['text'] .= 'Hostname: ' . $test['hostname'] . PHP_EOL;
 
@@ -521,9 +519,9 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 		if ($test['status_change']) {
 
 			if ($results['result'] == 'ok') {
-				$message['0']['subject'] = '[Cacti servcheck] Service Recovered: ' . $test['display_name'];
+				$message['0']['subject'] = '[Cacti servcheck] Service Recovered: ' . $test['name'];
 			} else {
-				$message['0']['subject'] = '[Cacti servcheck] Service Down: ' . $test['display_name'];
+				$message['0']['subject'] = '[Cacti servcheck] Service Down: ' . $test['name'];
 			}
 
 			$message[0]['text']  = '<h3>' . $message[0]['subject'] . '</h3>' . PHP_EOL;
@@ -574,7 +572,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 		// search string notification
 		if ($last_log['result_search'] != $results['result_search']) {
-			$message[1]['subject'] = '[Cacti servcheck] Service ' . $test['display_name'] . ' search result is different than last check';
+			$message[1]['subject'] = '[Cacti servcheck] Service ' . $test['name'] . ' search result is different than last check';
 
 			$message[1]['text']  = '<h3>' . $message[1]['subject'] . '</h3>' . PHP_EOL;
 			$message[1]['text'] .= '<hr>';
@@ -601,7 +599,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 		}
 
 		if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days) {
-			$message[2]['subject'] = '[Cacti servcheck] Certificate will expire in less than ' . $cert_expiry_days . ' days: ' . $test['display_name'];
+			$message[2]['subject'] = '[Cacti servcheck] Certificate will expire in less than ' . $cert_expiry_days . ' days: ' . $test['name'];
 			$message[2]['text']  = '<h3>' . $message[2]['subject'] . '</h3>' . PHP_EOL;
 			$message[2]['text'] .= '<hr>';
 

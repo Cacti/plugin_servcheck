@@ -27,11 +27,25 @@ if (!defined('SERVCHECK_CIPHER')) {
 	define('SERVCHECK_CIPHER', 'aes-256-cbc');
 }
 
+// tohle pujde pryc, az to zpracuju
+
+$servcheck_actions_restapi = array(
+	'delete'    => __('Delete', 'servcheck'),
+	'duplicate' => __('Duplicate', 'servcheck'),
+);
+
+$servcheck_actions_credential = array(
+	'delete'    => __('Delete', 'servcheck'),
+	'duplicate' => __('Duplicate', 'servcheck'),
+);
+// az sem pryc
+
+
 
 $servcheck_tabs = array(
 	'servcheck_test.php'       => __('Tests', 'servcheck'),
 	'servcheck_ca.php'         => __('CA certificates', 'servcheck'),
-	'servcheck_proxies.php'    => __('Proxies', 'servcheck'),
+	'servcheck_proxy.php'      => __('Proxies', 'servcheck'),
 	'servcheck_restapi.php'    => __('Rest API methods', 'servcheck'),
 	'servcheck_credential.php' => __('Credential', 'servcheck'),
 	'servcheck_curl_code.php'  => __('Curl return codes', 'servcheck'),
@@ -243,23 +257,6 @@ if (!empty($servcheck_contact_users)) {
 }
 
 
-$servcheck_actions_test = array(
-	'delete'    => __('Delete', 'servcheck'),
-	'disable'   => __('Disable', 'servcheck'),
-	'enable'    => __('Enable', 'servcheck'),
-	'duplicate' => __('Duplicate', 'servcheck'),
-);
-
-$servcheck_actions_restapi = array(
-	'delete'    => __('Delete', 'servcheck'),
-	'duplicate' => __('Duplicate', 'servcheck'),
-);
-
-$servcheck_actions_credential = array(
-	'delete'    => __('Delete', 'servcheck'),
-	'duplicate' => __('Duplicate', 'servcheck'),
-);
-
 
 $servcheck_ca_fields = array(
 	'name' => array(
@@ -278,6 +275,10 @@ $servcheck_ca_fields = array(
 		'textarea_cols' => 100,
 		'description' => __('CA and intermediate certs, PEM encoded', 'servcheck'),
 		'value' => '|arg1:cert|'
+	),
+	'id' => array(
+		'method' => 'hidden_zero',
+		'value' => '|arg1:id|'
 	)
 );
 
@@ -338,11 +339,11 @@ $servcheck_test_fields = array(
 		'method' => 'spacer',
 		'friendly_name' => __('General Settings', 'servcheck')
 	),
-	'display_name' => array(
+	'name' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('Service Check Name', 'servcheck'),
 		'description' => __('The name that is displayed for this Service Check, and is included in any Alert notifications.', 'servcheck'),
-		'value' => '|arg1:display_name|',
+		'value' => '|arg1:name|',
 		'max_length' => '256',
 	),
 	'enabled' => array(
@@ -407,14 +408,13 @@ $servcheck_test_fields = array(
 		'description' => __('Select correct format for communication, check your Rest API documentation.', 'servcheck'),
 		'value' => '|arg1:format|',
 	),
-
-	'ca' => array(
+	'ca_id' => array(
 		'friendly_name' => __('CA Chain', 'servcheck'),
 		'method' => 'drop_sql',
 		'none_value' => __('None', 'servcheck'),
 		'default' => '0',
 		'description' => __('Your own CA and intermediate certs', 'servcheck'),
-		'value' => '|arg1:ca|',
+		'value' => '|arg1:ca_id|',
 		'sql' => 'SELECT id, name FROM plugin_servcheck_ca ORDER by name'
 	),
 	'ldapsearch' => array(
@@ -448,14 +448,14 @@ $servcheck_test_fields = array(
 		'value' => '|arg1:requiresauth|',
 		'default' => '',
 	),
-	'proxy_server' => array(
+	'proxy_id' => array(
 		'method' => 'drop_sql',
 		'friendly_name' => __('Proxy Server', 'servcheck'),
 		'description' => __('If this connection text requires a proxy, select it here.  Otherwise choose \'None\'.', 'servcheck'),
-		'value' => '|arg1:proxy_server|',
+		'value' => '|arg1:proxy_id|',
 		'none_value' => __('None', 'servcheck'),
 		'default' => '0',
-		'sql' => 'SELECT id, name FROM plugin_servcheck_proxies ORDER by name'
+		'sql' => 'SELECT id, name FROM plugin_servcheck_proxy ORDER by name'
 	),
 	'checkcert' => array(
 		'method' => 'checkbox',

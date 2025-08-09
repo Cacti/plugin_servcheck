@@ -635,7 +635,7 @@ function list_credentials() {
 			$used += db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_test WHERE cred_id = ?',
 			array($row['id']));
 
-			$used += db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_proxies WHERE cred_id = ?',
+			$used += db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_proxy WHERE cred_id = ?',
 				array($row['id']));
 
 //			$used += db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_restapi_method WHERE cred_id = ?',

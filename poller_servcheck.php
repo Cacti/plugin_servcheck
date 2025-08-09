@@ -137,7 +137,7 @@ if (cacti_sizeof($tests)) {
 			array($poller_id));
 
 		if ($max_processes - $running_processes > 0) {
-			plugin_servcheck_debug('Launching Service Check ' . $test['display_name'], $test);
+			plugin_servcheck_debug('Launching Service Check ' . $test['name'], $test);
 
 			$command_string = read_config_option('path_php_binary');
 			$extra_args     = '-q "' . $config['base_path'] . '/plugins/servcheck/servcheck_process.php" --id=' . $test['id'] . ($debug ? ' --debug':'');

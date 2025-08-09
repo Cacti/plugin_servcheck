@@ -317,7 +317,7 @@ function save_credential ($save_id, $cred_type, $cred, $name = null) {
 	if (!cacti_sizeof($cred)) {
 		if ($save_id) { // user removed credentials
 			$cred_id = db_fetch_cell_prepared('SELECT cred_id
-				FROM plugin_servcheck_proxies
+				FROM plugin_servcheck_proxy
 				WHERE id = ?',
 				array($save_id));
 
@@ -340,7 +340,7 @@ function save_credential ($save_id, $cred_type, $cred, $name = null) {
 		$cred_id = db_fetch_insert_id();
 	} else {
 		$cred_id = db_fetch_cell_prepared('SELECT cred_id
-			FROM plugin_servcheck_proxies
+			FROM plugin_servcheck_proxy
 			WHERE id = ?',
 			array($save_id));
 

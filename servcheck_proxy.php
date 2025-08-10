@@ -252,7 +252,7 @@ function data_list() {
 	if (get_request_var('rows') == '-1') {
 		$rows = read_config_option('num_rows_table');
 	} else {
-		$rows = get_request_var('rows');
+		$rows = get_filter_request_var('rows');
 	}
 
 	servcheck_show_tab(htmlspecialchars(basename($_SERVER['PHP_SELF'])));

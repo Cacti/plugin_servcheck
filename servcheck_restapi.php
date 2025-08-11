@@ -27,6 +27,12 @@ include_once('./include/auth.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
+$servcheck_actions_restapi = array(
+	'delete'    => __('Delete', 'servcheck'),
+	'duplicate' => __('Duplicate', 'servcheck'),
+);
+
+
 global $refresh;
 
 set_default_action();

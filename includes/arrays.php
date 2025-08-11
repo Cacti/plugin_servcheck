@@ -27,21 +27,6 @@ if (!defined('SERVCHECK_CIPHER')) {
 	define('SERVCHECK_CIPHER', 'aes-256-cbc');
 }
 
-// tohle pujde pryc, az to zpracuju
-
-$servcheck_actions_restapi = array(
-	'delete'    => __('Delete', 'servcheck'),
-	'duplicate' => __('Duplicate', 'servcheck'),
-);
-
-$servcheck_actions_credential = array(
-	'delete'    => __('Delete', 'servcheck'),
-	'duplicate' => __('Duplicate', 'servcheck'),
-);
-// az sem pryc
-
-
-
 $servcheck_tabs = array(
 	'servcheck_test.php'       => __('Tests', 'servcheck'),
 	'servcheck_ca.php'         => __('CA certificates', 'servcheck'),
@@ -54,35 +39,26 @@ $servcheck_tabs = array(
 $service_types = array(
 	'web_http'     => __('HTTP plaintext, default port 80', 'servcheck'),
 	'web_https'    => __('HTTP encrypted (HTTPS), default port 443', 'servcheck'),
-
 	'mail_smtp'    => __('SMTP plaintext, default port 25 (or 587 for submission)', 'servcheck'),
 	'mail_smtptls' => __('SMTP with STARTTLS, default port 25(or 587 for submission)', 'servcheck'),
 	'mail_smtps'   => __('SMTP encrypted (SMTPS), default port 465', 'servcheck'),
-
 	'mail_imap'    => __('IMAP plaintext, default port 143', 'servcheck'),
 	'mail_imaptls' => __('IMAP with STARTTLS, default port 143', 'servcheck'),
 	'mail_imaps'   => __('IMAP encrypted (IMAPS), default port 993', 'servcheck'),
-
 	'mail_pop3'    => __('POP3 plaintext, default port 110', 'servcheck'),
 	'mail_pop3tls' => __('POP3 with STARTTLS, default port 110', 'servcheck'),
 	'mail_pop3s'   => __('POP3 encrypted (POP3S), default port 995', 'servcheck'),
-
 	'dns_dns'      => __('DNS plaintext, default port 53', 'servcheck'),
 	'dns_doh'      => __('DNS over HTTPS, default port 443', 'servcheck'),
-
 	'ldap_ldap'    => __('LDAP plaintext, default port 389', 'servcheck'),
 	'ldap_ldaps'   => __('LDAP encrypted (LDAPS), default port 636', 'servcheck'),
-
 	'ftp_ftp'      => __('FTP plaintext, default port 21', 'servcheck'),
 	'ftp_ftps'     => __('FTP encrypted (FTPS), default port 990', 'servcheck'),
 	'ftp_scp'      => __('SCP download file, default port 22', 'servcheck'),
 	'ftp_tftp'     => __('TFTP protocol - download file, default port 69', 'servcheck'),
-
 	'smb_smb'      => __('SMB plaintext download file, default port 445', 'servcheck'),
 	'smb_smbs'     => __('SMB encrypted (SMBS) download file, default port 445', 'servcheck'),
-
 	'mqtt_mqtt'    => __('MQTT plaintext, default port 1883', 'servcheck'),
-
 	'rest_no'      => __('Rest API without auth', 'servcheck'),
 	'rest_basic'   => __('Rest API with Basic HTTP auth', 'servcheck'),
 	'rest_apikey'  => __('Rest API with API key auth', 'servcheck'),
@@ -120,6 +96,17 @@ $service_types_ports = array(
 	'rest_cookie'  => 443,
 );
 
+$credential_types = array(
+	'userpass' => __('Username and password', 'servcheck'),
+	'basic'    => __('Basic HTTP auth', 'servcheck'),
+	'apikey'   => __('API key auth', 'servcheck'),
+	'oauth2'   => __('OAuth2/Bearer token auth', 'servcheck'),
+	'cookie'   => __('Cookie based auth', 'servcheck'),
+	'snmp'     => __('SNMP v1 or v2', 'servcheck'),
+	'snmp3'    => __('SNMP v3', 'servcheck'),
+	'sshkey'   => __('SSH key', 'servcheck'),
+);
+
 
 $graph_interval = array (
 	  1 => __('Last hour', 'servcheck'),
@@ -128,14 +115,6 @@ $graph_interval = array (
 	168 => __('Last week', 'servcheck'),
 );
 
-// !!pm zrusit, uz je soucast pole nahore
-$rest_api_auth_method = array(
-	'no'     => __('Without auth', 'servcheck'),
-	'basic'  => __('Basic HTTP auth', 'servcheck'),
-	'apikey' => __('API key auth', 'servcheck'),
-	'oauth2' => __('OAuth2/Bearer token auth', 'servcheck'),
-	'cookie' => __('Cookie based auth', 'servcheck'),
-);
 
 
 $rest_api_format = array(
@@ -255,8 +234,6 @@ if (!empty($servcheck_contact_users)) {
 		$servcheck_notify_accounts[$servcheck_contact_user['id']] = $servcheck_contact_user['full_name'] . ' - ' . ucfirst($servcheck_contact_user['type']);
 	}
 }
-
-
 
 $servcheck_ca_fields = array(
 	'name' => array(
@@ -584,6 +561,16 @@ $servcheck_test_fields = array(
 	),
 );
 
+// this part will be removed in 0.5
+
+$rest_api_auth_method = array(
+	'no'     => __('Without auth', 'servcheck'),
+	'basic'  => __('Basic HTTP auth', 'servcheck'),
+	'apikey' => __('API key auth', 'servcheck'),
+	'oauth2' => __('OAuth2/Bearer token auth', 'servcheck'),
+	'cookie' => __('Cookie based auth', 'servcheck'),
+);
+
 
 $servcheck_restapi_fields = array(
 	'general_spacer' => array(
@@ -655,6 +642,8 @@ $servcheck_restapi_fields = array(
 		'value' => '|arg1:id|'
 	),
 );
+
+// end
 
 
 $servcheck_credential_fields = array(

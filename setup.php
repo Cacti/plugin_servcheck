@@ -119,14 +119,6 @@ function plugin_servcheck_upgrade() {
 
 		if (!db_column_exists('plugin_servcheck_test', 'login_url')) {
 			db_add_column('plugin_servcheck_test', array('name' => 'format', 'type' => "enum('urlencoded','xml','json')", 'NULL' => false, 'default' => 'urlencoded', 'after' => 'ldapsearch'));
-/*
- jen format zustane u testu, mozna ani ten
-			db_add_column('plugin_servcheck_test', array('name' => 'cred_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '', 'after' => 'format'));
-			db_add_column('plugin_servcheck_test', array('name' => 'cred_value', 'type' => 'text', 'NULL' => true, 'default' => '', 'after' => 'cred_name'));
-			db_add_column('plugin_servcheck_test', array('name' => 'cred_validity', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00', 'after' => 'cred_value'));
-			db_add_column('plugin_servcheck_test', array('name' => 'login_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '', 'after' => 'cred_validity'));
-			db_add_column('plugin_servcheck_test', array('name' => 'data_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '', 'after' => 'login_url'));
-*/
 		}
 
 		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_test WHERE username != '' OR password !='' AND type != 'restapi'");
@@ -227,11 +219,6 @@ function plugin_servcheck_upgrade() {
 		db_remove_column('plugin_servcheck_test', 'restapi_id');
 		db_remove_column('plugin_servcheck_proxy', 'username');
 		db_remove_column('plugin_servcheck_proxy', 'password');
-//!!! tady mozna nemenit? Stejne si to bude tahat z credential a tohle se casem zahodi
-// asi tedy nemenit
-//		db_remove_column('plugin_servcheck_restapi_method', 'username');
-//		db_remove_column('plugin_servcheck_restapi_method', 'password');
-//		db_remove_column('plugin_servcheck_restapi_method', 'cred_value');
 	}
 
 	if (cacti_version_compare($old, '0.4', '<')) {
@@ -269,11 +256,9 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'search_failed', 'type' => 'varchar(1024)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'requiresauth', 'type' => 'varchar(2)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'proxy_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
-	$data['columns'][] = array('name' => 'ca', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'ca_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'checkcert', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on');
 	$data['columns'][] = array('name' => 'certexpirenotify', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on');
-	$data['columns'][] = array('name' => 'username', 'type' => 'varchar(200)', 'NULL' => false, 'default' => '');
-	$data['columns'][] = array('name' => 'password', 'type' => 'varchar(100)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'notify_list', 'type' => 'int(10)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'notify_accounts', 'type' => 'varchar(256)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'notify_extra', 'type' => 'varchar(256)', 'NULL' => false);
@@ -379,8 +364,6 @@ function plugin_servcheck_setup_table() {
 
 	api_plugin_db_table_create('servcheck', 'plugin_servcheck_proxy', $data);
 
-
-
 	$data              = array();
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => false, 'default' => '');
@@ -391,6 +374,7 @@ function plugin_servcheck_setup_table() {
 
 	api_plugin_db_table_create('servcheck', 'plugin_servcheck_ca', $data);
 
+/*
 	$data              = array();
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
@@ -408,7 +392,7 @@ function plugin_servcheck_setup_table() {
 	$data['comment']   = 'Holds Rest API auth';
 
 	api_plugin_db_table_create('servcheck', 'plugin_servcheck_restapi_method', $data);
-
+*/
 
 	$data              = array();
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);

@@ -536,21 +536,14 @@ function data_edit() {
 		var subcategory = tmp[1];
 
 		$('#row_format').hide();
-		$('#row_data_url').hide();
-		$('#row_cred_id').hide();
-		$('#row_login_url').hide();
-		$('#row_cred_name').hide();
 		$('#row_dns_query').hide();
-		$('#row_restapi_id').hide();
-		$('#row_username').hide();
-		$('#row_password').hide();
 		$('#row_ldapsearch').hide();
 		$('#row_ipaddress').hide();
 		$('#row_path').hide();
 		$('#row_requiresauth').hide();
-		$('#row_proxy_server').hide();
+		$('#row_proxy_id').hide();
 		$('#row_ldapsearch').hide();
-		$('#row_ca').hide();
+		$('#row_ca_id').hide();
 		$('#row_checkcert').hide();
 		$('#row_certexpirenotify').hide();
 		$('#row_hostname').hide();
@@ -562,11 +555,10 @@ function data_edit() {
 				$('#row_ipaddress').show();
 				$('#row_path').show();
 				$('#row_requiresauth').show();
-				$('#row_proxy_server').show();
-				$('#row_cred_id').show();
+				$('#row_proxy_id').show();
 
 				if (subcategory == 'https') {
-					$('#row_ca').show();
+					$('#row_ca_id').show();
 					$('#row_checkcert').show();
 					$('#row_certexpirenotify').show();
 				}
@@ -574,31 +566,34 @@ function data_edit() {
 				break;
 			case 'mail':
 				$('#row_hostname').show();
-				$('#row_cred_id').show();
+
+				if (subcategory != 'smtp' && subcategory != 'smtps' && subcategory != 'smtptls') {
+					$('#row_cred_id').show();
+				}
 
 				if (subcategory == 'smtps') {
-					$('#row_ca').show();
+					$('#row_ca_id').show();
 					$('#row_checkcert').show();
 					$('#row_certexpirenotify').show();
 				}
 
 				break
 			case 'dns':
+				$('#row_dns_query').show();
+				$('#row_hostname').show();
+
 				if (subcategory == 'doh') {
-					$('#row_ca').show();
+					$('#row_ca_id').show();
 					$('#row_checkcert').show();
 					$('#row_certexpirenotify').show();
 				}
-				$('#row_dns_query').show();
-				$('#row_hostname').show();
 
 				break;
 
 			case 'ldap':
-				$('#row_username').show();
-				$('#row_password').show();
 				$('#row_ldapsearch').show();
 				$('#row_hostname').show();
+				$('#row_cred_id').show();
 
 				break;
 			case 'ftp':
@@ -606,6 +601,9 @@ function data_edit() {
 				$('#row_hostname').show();
 				$('#row_cred_id').show();
 
+				if (subcategory == 'tftp') {
+					$('#row_cred_id').hide();
+				}
 				break;
 			case 'smb':
 				$('#row_path').show();
@@ -616,26 +614,10 @@ function data_edit() {
 			case 'mqtt':
 				$('#row_path').show();
 				$('#row_hostname').show();
-//!!pm ???
 				$('#row_cred_id').show();
 				break;
 			case 'rest':
 				$('#row_format').show();
-				$('#row_data_url').show();
-				$('#row_cred_id').show();
-
-				if (subcategory == 'no') {
-					$('#row_cred_name').show();
-				}
-
-				if (subcategory == 'cookie') {
-					$('#row_login_url').show();
-				}
-
-				if (subcategory == 'oauth2') {
-					$('#row_cred_name').show();
-					$('#row_login_url').show();
-				}
 
 				break;
 		}

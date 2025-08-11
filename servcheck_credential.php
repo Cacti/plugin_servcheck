@@ -27,121 +27,117 @@ include_once('./include/auth.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
+$servcheck_actions_menu = array(
+	'delete'    => __('Delete', 'servcheck'),
+	'duplicate' => __('Duplicate', 'servcheck'),
+);
+
+
+
 set_default_action();
 
 switch (get_request_var('action')) {
 	case 'save':
-		credential_form_save();
+		form_save();
 
 		break;
 	case 'actions':
-		credential_form_actions();
+		form_actions();
 
 		break;
 	case 'edit':
 		top_header();
-		servcheck_edit_credential();
+		data_edit();
 		bottom_footer();
 
 		break;
 	default:
 		top_header();
-		list_credentials();
+		data_list();
 		bottom_footer();
 
 		break;
 }
 
-//exit;
 
+function form_actions() {
+	global $servcheck_actions_menu;
 
-function credential_form_actions() {
-	global $servcheck_actions_credential;
+	/* ================= input validation ================= */
+	get_filter_request_var('drp_action', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^([a-zA-Z0-9_]+)$/')));
+	/* ==================================================== */
 
-
-	// if we are to save this form, instead of display it 
+	/* if we are to save this form, instead of display it */
 	if (isset_request_var('selected_items')) {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
-		$action         = get_nfilter_request_var('drp_action');
 
 		if ($selected_items != false) {
-			if (cacti_sizeof($selected_items)) {
-				foreach($selected_items as $row) {
-					$credentials[] = $row;
-				}
-			}
-
-			if (cacti_sizeof($credentials)) {
-				if ($action == 'delete') {
-					foreach ($credentials as $id) {
-//!!pm - testovat, zda je smazatelne?
+			if (get_filter_request_var('drp_action') == 1) {
+				if (cacti_sizeof($selected_items)) {
+					foreach($selected_items as $item) {
 						db_execute_prepared('DELETE FROM plugin_servcheck_credential WHERE id = ?', array($id));
-//!!pm - tady to bude na vice mistech? asi v testech a restapi, mozna i proxy?
-						db_execute_prepared('UPDATE plugin_servcheck_test SET credential_id = 0  WHERE credential_id = ?', array($id));
+						db_execute_prepared('UPDATE plugin_servcheck_test SET cred_id = 0 WHERE cred_id = ?', array($id));
+						db_execute_prepared('UPDATE plugin_servcheck_proxy SET cred_id = 0 WHERE cred_id = ?', array($id));
 					}
-				} elseif ($action == 'duplicate') {
-					$newid = 1;
+				}
+			} elseif (get_filter_request_var('drp_action') == 2) { // duplicate
+				$newid = 1;
 
-					foreach ($credentials as $id) {
-						$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', array($id));
-						$save['id']           = 0;
-						$save['name']         = 'New Credential (' . $newid . ')';
-						$save['type']         = 'upserpass';
-						$save['username']     = '';
-						$save['password']     = '';
+				foreach ($credentials as $id) {
+					$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', array($id));
+					$save['id']       = 0;
+					$save['name']     = 'New Credential (' . $newid . ')';
+					$save['type']     = 'userpass';
+					$save['username'] = '';
+					$save['password'] = '';
 
-						$id = sql_save($save, 'plugin_servcheck_credential');
+					$id = sql_save($save, 'plugin_servcheck_credential');
 
-						$newid++;
-					}
+					$newid++;
 				}
 			}
 		}
 
-		header('Location: servcheck_credential.php?header=false');
-
+		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
 	}
 
-	// setup some variables
-	$credential_list  = '';
-	$credential_array = array();
+	/* setup some variables */
+	$item_list  = '';
+	$items_array = array();
 
-	// loop through each of the credentials selected on the previous page and get more info about them 
+	/* loop through each of the graphs selected on the previous page and get more info about them */
 	foreach ($_POST as $var => $val) {
 		if (preg_match('/^chk_([0-9]+)$/', $var, $matches)) {
-			// ================= input validation ================= 
+			/* ================= input validation ================= */
 			input_validate_input_number($matches[1]);
-			// ==================================================== 
-//!! tady by slo udelat, ze je nesmazu, jen vypisu
-			$credential_list .= '<li>' . __esc(db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_credential WHERE id = ?', array($matches[1]))) . '</li>';
-			$credential_array[] = $matches[1];
+			/* ==================================================== */
+
+			$item_list .= '<li>' . db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_credential WHERE id = ?', array($matches[1])) . '</li>';
+			$items_array[] = $matches[1];
 		}
 	}
 
 	top_header();
 
-	form_start('servcheck_credential.php');
+	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
-	html_start_box($servcheck_actions_credential[get_nfilter_request_var('drp_action')], '60%', '', '3', 'center', '');
+	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', '', '3', 'center', '');
 
-	$action = get_nfilter_request_var('drp_action');
+	if (cacti_sizeof($items_array) > 0) {
+		if (get_request_var('drp_action') == 1) { // delete
+			print "	<tr>
+					<td class='topBoxAlt'>
+						<p>" . __n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', cacti_sizeof($items_array)) . "</p>
+						<div class='itemlist'><ul>$item_list</ul></div>
+					</td>
+				</tr>";
 
-	if (cacti_sizeof($credential_array)) {
-		if ($action == 'delete') {
-			print"	<tr>
-				<td class='topBoxAlt'>
-					<p>" . __n('Click \'Continue\' to Delete the following Credentail.', 'Click \'Continue\' to Delete following Credential.', cacti_sizeof($credential_array)) . "</p>
-					<div class='itemlist'><ul>$credential_list</ul></div>
-				</td>
-			</tr>";
-
-			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete Credential', 'Delete Credential', cacti_sizeof($credential_array)) . "'>";
-		} elseif ($action == 'duplicate') {
+			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete item', 'Delete items', cacti_sizeof($items_array)) . "'>";
+		} elseif ($action == 2) { // duplicate
 			print "<tr>
 				<td class='topBoxAlt'>
-					<p>" . __n('Click \'Continue\' to Duplicate the following Credential.', 'Click \'Continue\' to Duplicate following Credential.', cacti_sizeof($credential_array)) . "</p>
-					<div class='itemlist'><ul>$credential_list</ul></div>
+					<p>" . __n('Click \'Continue\' to Duplicate the following Credential.', 'Click \'Continue\' to Duplicate following Credential.', cacti_sizeof($credential_array)) . "</p><div class='itemlist'><ul>$credential_list</ul></div>
 				</td>
 			</tr>";
 
@@ -149,15 +145,15 @@ function credential_form_actions() {
 		}
 	} else {
 		raise_message(40);
-		header('Location: servcheck_credential.php');
+		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
 	}
 
 	print "<tr>
 		<td class='saveRow'>
 			<input type='hidden' name='action' value='actions'>
-			<input type='hidden' name='selected_items' value='" . (isset($credential_array) ? serialize($credential_array) : '') . "'>
-			<input type='hidden' name='drp_action' value='" . get_nfilter_request_var('drp_action') . "'>
+			<input type='hidden' name='selected_items' value='" . (isset($items_array) ? serialize($items_array) : '') . "'>
+			<input type='hidden' name='drp_action' value='" . get_request_var('drp_action') . "'>
 			$save_html
 		</td>
 	</tr>";
@@ -169,273 +165,251 @@ function credential_form_actions() {
 	bottom_footer();
 }
 
-
-function credential_form_save() {
+function form_save() {
 	global $credential_types;
 
-	if (isset_request_var('save_component_credential')) {
+	if (isset_request_var('save_component')) {
+		/* ================= input validation ================= */
+		get_filter_request_var('id');
+		/* ==================================================== */
 
-	$save['id'] = get_filter_request_var('id');
-/*
+		$save['id']         = get_nfilter_request_var('id');
 
-	if (isset_request_var('id')) {
-		$save['id'] = get_request_var('id');
-	} else {
-		$save['id'] = 0;
-	}
-*/
+		if (isset_request_var('name') && get_nfilter_request_var('name') != '' && get_filter_request_var('name', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+			$save['name'] = get_nfilter_request_var('name');
+		}
 
-	if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $credential_types)) {
-		$save['type'] = get_nfilter_request_var('type');
-	} else {
-		$_SESSION['sess_error_fields']['type'] = 'type';
-		raise_message(3);
-	}
-
-	if (isset_request_var('name') && get_nfilter_request_var('name') != '' && get_filter_request_var('name', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-		$save['name'] = get_nfilter_request_var('name');
-	}
-
-	switch(get_nfilter_request_var('type')) {
-		case 'userpass':
-			if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-				$cred['username'] = get_nfilter_request_var('username');
-			} else {
-				$_SESSION['sess_error_fields']['username'] = 'username';
-				raise_message(3);
-			}
-
-			if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-				$cred['password'] = get_nfilter_request_var('password');
-			} else {
-				$_SESSION['sess_error_fields']['password'] = 'password';
-				raise_message(3);
-			}
-
-			break;
-
-		case 'snmp':
-			if (isset_request_var('community') && get_nfilter_request_var('community') != '' && get_filter_request_var('community', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-				$cred['community'] = get_nfilter_request_var('community');
-			} else {
-				$_SESSION['sess_error_fields']['community'] = 'community';
-				raise_message(3);
-			}
-
-			break;
-
-		case 'snmp3':
-
-			break;
-
-		case 'sshkey':
-		
-			break;
-
-		case 'basic':
-			if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-				$cred['username'] = get_nfilter_request_var('username');
-			} else {
-				$_SESSION['sess_error_fields']['username'] = 'username';
-				raise_message(3);
-			}
-
-			if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-				$cred['password'] = get_nfilter_request_var('password');
-			} else {
-				$_SESSION['sess_error_fields']['password'] = 'password';
-				raise_message(3);
-			}
-
-			if (isset_request_var('data_url') && get_nfilter_request_var('data_url') != '' && get_filter_request_var('data_url', FILTER_VALIDATE_URL)) {
-				$cred['data_url'] = get_nfilter_request_var('data_url');
-			} else {
-				$_SESSION['sess_error_fields']['data_url'] = 'data_url';
-				raise_message(3);
-			}
-
-			break;
-
-		case 'apikey':
-			if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-				$cred['username'] = get_nfilter_request_var('username');
-			} else {
-				$_SESSION['sess_error_fields']['username'] = 'username';
-				raise_message(3);
-			}
-
-			if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-				$cred['password'] = get_nfilter_request_var('password');
-			} else {
-				$_SESSION['sess_error_fields']['password'] = 'password';
-				raise_message(3);
-			}
-
-			if (isset_request_var('data_url') && get_nfilter_request_var('data_url') != '' && get_filter_request_var('data_url', FILTER_VALIDATE_URL)) {
-				$cred['data_url'] = get_nfilter_request_var('data_url');
-			} else {
-				$_SESSION['sess_error_fields']['data_url'] = 'data_url';
-				raise_message(3);
-			}
-
-			break;
-
-		case 'oauth2':
-			if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-				$cred['username'] = get_nfilter_request_var('username');
-			} else {
-				$_SESSION['sess_error_fields']['username'] = 'username';
-				raise_message(3);
-			}
-
-			if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-				$cred['password'] = get_nfilter_request_var('password');
-			} else {
-				$_SESSION['sess_error_fields']['password'] = 'password';
-				raise_message(3);
-			}
-
-			if (isset_request_var('data_url') && get_nfilter_request_var('data_url') != '' && get_filter_request_var('data_url', FILTER_VALIDATE_URL)) {
-				$cred['data_url'] = get_nfilter_request_var('data_url');
-			} else {
-				$_SESSION['sess_error_fields']['data_url'] = 'data_url';
-				raise_message(3);
-			}
-
-			if (isset_request_var('data_url') && get_nfilter_request_var('data_url') != '' && get_filter_request_var('data_url', FILTER_VALIDATE_URL)) {
-				$cred['data_url'] = get_nfilter_request_var('data_url');
-			} else {
-				$_SESSION['sess_error_fields']['data_url'] = 'data_url';
-				raise_message(3);
-			}
-
-			break;
-
-		case 'cookie':
-			if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-				$cred['username'] = get_nfilter_request_var('username');
-			} else {
-				$_SESSION['sess_error_fields']['username'] = 'username';
-				raise_message(3);
-			}
-
-			if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-				$cred['password'] = get_nfilter_request_var('password');
-			} else {
-				$_SESSION['sess_error_fields']['password'] = 'password';
-				raise_message(3);
-			}
-
-			if (isset_request_var('data_url') && get_nfilter_request_var('data_url') != '' && get_filter_request_var('data_url', FILTER_VALIDATE_URL)) {
-				$cred['data_url'] = get_nfilter_request_var('data_url');
-			} else {
-				$_SESSION['sess_error_fields']['data_url'] = 'data_url';
-				raise_message(3);
-			}
-
-			if (isset_request_var('login_url') && get_nfilter_request_var('login_url') != '' && get_filter_request_var('login_url', FILTER_VALIDATE_URL)) {
-				$cred['login_url'] = get_nfilter_request_var('login_url');
-			} else {
-				$_SESSION['sess_error_fields']['login_url'] = 'login_url';
-				raise_message(3);
-			}
-
-			break;
-	}
-
-	$save['data'] = servcheck_encrypt_credential($cred);
-
-	if (!is_error_message()) {
-		$id = sql_save($save, 'plugin_servcheck_credential', 'id');
-
-		if ($id) {
-			raise_message(1);
+		if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $credential_types)) {
+			$save['type'] = get_nfilter_request_var('type');
 		} else {
-			raise_message(2);
+			$_SESSION['sess_error_fields']['type'] = 'type';
+			raise_message(3);
+		}
+
+		switch(get_nfilter_request_var('type')) {
+			case 'userpass':
+				if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['username'] = get_nfilter_request_var('username');
+				} else {
+					$_SESSION['sess_error_fields']['username'] = 'username';
+					raise_message(3);
+				}
+
+				if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['password'] = get_nfilter_request_var('password');
+				} else {
+					$_SESSION['sess_error_fields']['password'] = 'password';
+					raise_message(3);
+				}
+
+				break;
+
+			case 'snmp':
+				if (isset_request_var('community') && get_nfilter_request_var('community') != '' && get_filter_request_var('community', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['community'] = get_nfilter_request_var('community');
+				} else {
+					$_SESSION['sess_error_fields']['community'] = 'community';
+					raise_message(3);
+				}
+
+				break;
+
+			case 'snmp3':
+
+				break;
+
+			case 'sshkey':
+
+				break;
+
+			case 'basic':
+				if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['username'] = get_nfilter_request_var('username');
+				} else {
+					$_SESSION['sess_error_fields']['username'] = 'username';
+					raise_message(3);
+				}
+
+				if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['password'] = get_nfilter_request_var('password');
+				} else {
+					$_SESSION['sess_error_fields']['password'] = 'password';
+					raise_message(3);
+				}
+
+				if (isset_request_var('data_url') && get_nfilter_request_var('data_url') != '' && get_filter_request_var('data_url', FILTER_VALIDATE_URL)) {
+					$cred['data_url'] = get_nfilter_request_var('data_url');
+				} else {
+					$_SESSION['sess_error_fields']['data_url'] = 'data_url';
+					raise_message(3);
+				}
+
+				break;
+
+			case 'apikey':
+				if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['username'] = get_nfilter_request_var('username');
+				} else {
+					$_SESSION['sess_error_fields']['username'] = 'username';
+					raise_message(3);
+				}
+
+				if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['password'] = get_nfilter_request_var('password');
+				} else {
+					$_SESSION['sess_error_fields']['password'] = 'password';
+					raise_message(3);
+				}
+
+				if (isset_request_var('data_url') && get_nfilter_request_var('data_url') != '' && get_filter_request_var('data_url', FILTER_VALIDATE_URL)) {
+					$cred['data_url'] = get_nfilter_request_var('data_url');
+				} else {
+					$_SESSION['sess_error_fields']['data_url'] = 'data_url';
+					raise_message(3);
+				}
+
+				break;
+
+			case 'oauth2':
+
+				if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['username'] = get_nfilter_request_var('username');
+				} else {
+					$_SESSION['sess_error_fields']['username'] = 'username';
+					raise_message(3);
+				}
+
+				if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['password'] = get_nfilter_request_var('password');
+				} else {
+					$_SESSION['sess_error_fields']['password'] = 'password';
+					raise_message(3);
+				}
+
+				if (isset_request_var('data_url') && get_nfilter_request_var('data_url') != '' && get_filter_request_var('data_url', FILTER_VALIDATE_URL)) {
+					$cred['data_url'] = get_nfilter_request_var('data_url');
+				} else {
+					$_SESSION['sess_error_fields']['data_url'] = 'data_url';
+					raise_message(3);
+				}
+
+				if (isset_request_var('login_url') && get_nfilter_request_var('login_url') != '' && get_filter_request_var('login_url', FILTER_VALIDATE_URL)) {
+					$cred['login_url'] = get_nfilter_request_var('login_url');
+				} else {
+					$_SESSION['sess_error_fields']['login_url'] = 'login_url';
+					raise_message(3);
+				}
+
+				if (isset_request_var('cred_name') && get_nfilter_request_var('cred_name') != '' && get_filter_request_var('cred_name', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,30}$/')))) {
+					$cred['cred_name'] = get_nfilter_request_var('cred_name');
+				} else {
+					$_SESSION['sess_error_fields']['cred_name'] = 'cred_name';
+					raise_message(3);
+				}
+
+				if (isset_request_var('cred_value') && (get_nfilter_request_var('cred_value') != '' && get_filter_request_var('cred_value', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,250}$/'))))) {
+					$cred['value_name'] = get_nfilter_request_var('cred_value');
+				} else {
+					$_SESSION['sess_error_fields']['cred_value'] = 'cred_value';
+					raise_message(3);
+				}
+
+				break;
+
+			case 'cookie':
+				if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['username'] = get_nfilter_request_var('username');
+				} else {
+					$_SESSION['sess_error_fields']['username'] = 'username';
+					raise_message(3);
+				}
+
+				if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['password'] = get_nfilter_request_var('password');
+				} else {
+					$_SESSION['sess_error_fields']['password'] = 'password';
+					raise_message(3);
+				}
+
+				if (isset_request_var('data_url') && get_nfilter_request_var('data_url') != '' && get_filter_request_var('data_url', FILTER_VALIDATE_URL)) {
+					$cred['data_url'] = get_nfilter_request_var('data_url');
+				} else {
+					$_SESSION['sess_error_fields']['data_url'] = 'data_url';
+					raise_message(3);
+				}
+
+				if (isset_request_var('login_url') && get_nfilter_request_var('login_url') != '' && get_filter_request_var('login_url', FILTER_VALIDATE_URL)) {
+					$cred['login_url'] = get_nfilter_request_var('login_url');
+				} else {
+					$_SESSION['sess_error_fields']['login_url'] = 'login_url';
+					raise_message(3);
+				}
+
+				break;
+		}
+
+		$save['data'] = servcheck_encrypt_credential($cred);
+
+		if (!is_error_message()) {
+			$saved_id = sql_save($save, 'plugin_servcheck_credential');
+
+			if ($saved_id) {
+				raise_message(1);
+			} else {
+				raise_message(2);
+			}
+		}
+
+		if (is_error_message()) {
+			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false&action=edit&id=' . (empty($saved_id) ? get_nfilter_request_var('id') : $saved_id));
+		} else {
+			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		}
 	}
-
-	header('Location: servcheck_credential.php?action=edit&header=false&id=' . (isset($id)? $id : get_request_var('id')));
 	exit;
-	}
-
 }
 
-function servcheck_edit_credential() {
+
+function data_edit() {
 	global $servcheck_credential_fields;
+
 	/* ================= input validation ================= */
 	get_filter_request_var('id');
 	/* ==================================================== */
-//var_dump(get_request_var('username'));
-//echo "<hr/>";
-	$credential = array();
+
+	$data = array();
 
 	if (!isempty_request_var('id')) {
-		$credential = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', array(get_request_var('id')), false);
-		$header_label = __('Query [edit: %s]', $credential['name'], 'servcheck');
+		$data = db_fetch_row_prepared('SELECT *
+			FROM plugin_servcheck_credential
+			WHERE id = ?',
+			array(get_request_var('id')));
+
+		$header_label = __('Credential [edit: %s]', $data['name']);
+
+		$data += servcheck_decrypt_credential($data['id']);
 	} else {
-		$header_label = __('Query [new]', 'servcheck');
+		$header_label = __('Credential [new]');
 	}
 
-	if (isset($credential['id'])) {
-		$credential += servcheck_decrypt_credential($credential['id']);
-//echo "tady";
-/*
-tohle tu asi nebude
-		switch($credential['type']) {
-			case 'userpass':
-				$credential['username'] = 
-				break;
-			case 'basic':
-			
-				break;
-			case 'apikey':
-			
-				break;
-			case 'oauth2':
-			
-				break;
-			case 'cookie
-			
-				break;
-			case 'snmp':
-			
-				break;
-			case 'snmp3':
-			
-				break;
-			case 'sshkey':
-			
-				break;
-		}
-*/
-	} else {
-		$credential['username'] = get_request_var('username');
-//echo "tady2";
-	}
-//var_dump($credential);
+	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
-	form_start('servcheck_credential.php');
-
-	html_start_box($header_label, '100%', '', '3', 'center', '');
+	html_start_box($header_label, '100%', true, '3', 'center', '');
 
 	draw_edit_form(
 		array(
-//			'config' => array('form_name' => 'chk'),
 			'config' => array('no_form_tag' => true),
-			'fields' => inject_form_variables($servcheck_credential_fields, $credential)
+			'fields' => inject_form_variables($servcheck_credential_fields, $data)
 		)
 	);
 
-	form_hidden_box('save_component_credential', '1', '');
+	form_hidden_box('save_component', '1', '');
 
-	html_end_box();
+	html_end_box(true, true);
 
-	form_save_button('servcheck_credential.php', 'return');
-
+	form_save_button(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
 	?>
-
 	<script type='text/javascript'>
 
 	$(function() {
@@ -477,6 +451,7 @@ tohle tu asi nebude
 			case 'oauth2':
 				$('#row_username').show();
 				$('#row_password').show();
+				$('#row_cred_name').show();
 				$('#row_cred_value').show();
 				$('#row_login_url').show();
 				$('#row_data_url').show();
@@ -490,7 +465,7 @@ tohle tu asi nebude
 				$('#password').attr('type', 'password');
 				break;
 			case 'snmp':
-				$('#row_community').show();
+
 				break;
 
 			case 'snmp3':
@@ -504,150 +479,127 @@ tohle tu asi nebude
 	}
 	</script>
 	<?php
-
-//	form_end();
-
 }
 
-/**
- *  This is a generic function for this page that makes sure that
- *  we have a good request.  We want to protect against people who
- *  like to create issues with Cacti.
-*/
-function servcheck_request_validation() {
-	/* ================= input validation and session storage ================= */
+
+function request_validation() {
+
 	$filters = array(
 		'rows' => array(
 			'filter' => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => '-1'
-		),
+			),
 		'page' => array(
 			'filter' => FILTER_VALIDATE_INT,
 			'default' => '1'
-		),
-		'rfilter' => array(
-			'filter' => FILTER_VALIDATE_IS_REGEX,
-			'default' => '',
+			),
+		'filter' => array(
+			'filter' => FILTER_DEFAULT,
 			'pageset' => true,
-			'options' => array('options' => 'sanitize_search_string')
-		),
+			'default' => ''
+			),
 		'sort_column' => array(
 			'filter' => FILTER_CALLBACK,
 			'default' => 'name',
 			'options' => array('options' => 'sanitize_search_string')
-		),
+			),
 		'sort_direction' => array(
 			'filter' => FILTER_CALLBACK,
 			'default' => 'ASC',
 			'options' => array('options' => 'sanitize_search_string')
-		),
+			)
 	);
 
 	validate_store_request_vars($filters, 'sess_servcheck_credential');
-	/* ================= input validation ================= */
 }
 
 
-function list_credentials() {
-	global $servcheck_actions_credential, $config, $credential_types;
+function data_list() {
+	global $servcheck_actions_menu, $credential_types;
 
-	servcheck_request_validation();
-
-	top_header();
-
-	servcheck_show_tab('servcheck_credential.php');
-
-	servcheck_credential_filter();
+	request_validation();
 
 	if (get_request_var('rows') == '-1') {
 		$rows = read_config_option('num_rows_table');
 	} else {
-		$rows = get_request_var('rows');
+		$rows = get_filter_request_var('rows');
 	}
+
+	servcheck_show_tab(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
+
+	servcheck_filter();
 
 	$sql_where = '';
 
+	if (get_request_var('filter') != '') {
+		$sql_where .= ($sql_where == '' ? 'WHERE ' : ' AND ') . ' name LIKE "%' . get_request_var('filter') . '%" OR hostname LIKE "%' . get_request_var('filter') . '%"';
+	}
+
 	$sql_order = get_order_string();
-
-
 	$sql_limit = ' LIMIT ' . ($rows*(get_request_var('page')-1)) . ',' . $rows;
-
-	if (get_request_var('type') && array_key_exists(get_request_var('type'), $credential_types)) {
-		$sql_where .= ($sql_where == '' ? 'WHERE ' : ' AND ') .
-			'type = "' . get_request_var('type') . '"';
-	} else {
-		set_request_var('type', -1);
-	}
-
-	if (get_request_var('rfilter') != '') {
-		$sql_where .= ($sql_where == '' ? 'WHERE ' : ' AND ') .
-			'name RLIKE \'' . get_request_var('rfilter') . '\' OR ' .
-			'type RLIKE \'' . get_request_var('rfilter') . '\' OR ' .
-			'username RLIKE \'' . get_request_var('rfilter') . '\' OR ';
-	}
-
-	$result = db_fetch_assoc("SELECT *
-		FROM plugin_servcheck_credential
-		$sql_where
-		$sql_order
-		$sql_limit");
 
 	$total_rows = db_fetch_cell("SELECT COUNT(id)
 		FROM plugin_servcheck_credential
 		$sql_where");
 
+	$result = db_fetch_assoc("SELECT * FROM plugin_servcheck_credential
+		$sql_where
+		$sql_order
+		$sql_limit");
+
 	$display_text = array(
 		'name' => array(
 			'display' => __('Name', 'servcheck'),
-			'sort'    => 'ASC',
-			'align'   => 'left'
+			'sort'    => 'ASC'
 		),
 		'type' => array(
-			'display' => __('Credential', 'servcheck'),
-			'sort'    => 'ASC',
-			'align'   => 'left'
+			'display' => __('Type', 'servcheck'),
+			'sort'    => 'ASC'
 		),
 		'used' => array(
-			'display' => __('Credentail using', 'servcheck'),
-			'sort'    => 'ASC',
-			'align'   => 'right'
+			'display' => __('Used', 'servcheck'),
+			'sort'    => 'ASC'
 		),
 	);
 
 	$columns = cacti_sizeof($display_text);
 
-	$nav = html_nav_bar('servcheck_credential.php', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, $columns, __('Records', 'servcheck'), 'page', 'main');
+	$nav = html_nav_bar(htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?filter=' . get_request_var('filter'), MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, $columns, __('Proxies', 'servcheck'), 'page', 'main');
 
-	form_start('servcheck_credential.php', 'chk');
+	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])), 'chk');
 
 	print $nav;
 
-	html_start_box('', '100%', '', '4', 'center', '');
+	html_start_box('', '100%', '', '3', 'center', '');
 
 	html_header_sort_checkbox($display_text, get_request_var('sort_column'), get_request_var('sort_direction'), false);
 
 	if (cacti_sizeof($result)) {
 		foreach ($result as $row) {
-
-			$used = 0;
-
-			$used += db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_test WHERE cred_id = ?',
-			array($row['id']));
-
-			$used += db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_proxy WHERE cred_id = ?',
+			$row['used'] = 0;
+			$row['used'] += db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_proxy WHERE cred_id = ?',
+				array($row['id']));
+			$row['used'] += db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_test WHERE cred_id = ?',
 				array($row['id']));
 
-//			$used += db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_restapi_method WHERE cred_id = ?',
-//				array($row['id']));
+			if ($row['used'] == 0) {
+				$disabled = false;
+			} else {
+				$disabled = true;
+			}
 
-			form_alternate_row('line' . $row['id'], true);
-			form_selectable_cell(filter_value($row['name'], get_request_var('filter'),'servcheck_credential.php?header=false&action=edit&id=' . $row['id']), $row['id']);
+			form_alternate_row('line' . $row['id'], false, $disabled);
+
+			form_selectable_cell("<a class='linkEditMain' href='" . html_escape(htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false&action=edit&id=' . $row['id']) . "'>" . $row['name'] . '</a>', $row['id']);
 			form_selectable_cell($credential_types[$row['type']], $row['id']);
-			form_selectable_cell($used, $row['id']);
-			form_checkbox_cell($row['id'], $row['id']);
+			form_selectable_cell($row['used'], $row['id']);
+			form_checkbox_cell($row['name'], $row['id'], $disabled);
+
 			form_end_row();
 		}
+	} else {
+		print "<tr class='tableRow'><td colspan='" . $columns . "'><em>" . __('Empty', 'servcheck') . "</em></td></tr>\n";
 	}
 
 	html_end_box(false);
@@ -656,117 +608,86 @@ function list_credentials() {
 		print $nav;
 	}
 
-	draw_actions_dropdown($servcheck_actions_credential);
+	draw_actions_dropdown($servcheck_actions_menu, 1);
 
 	form_end();
 
-	?>
-	<script type='text/javascript'>
-	/* //!!pm potrebuju?
-	$(function() {
-		$('#servcheck2_child').find('.cactiTooltipHint').each(function() {
-			var title = $(this).attr('title');
-
-			if (title != undefined && title.indexOf('/') >= 0) {
-				$(this).click(function() {
-					window.open(title, 'servcheck');
-				});
-			}
-		});
-	});
-*/
-	</script>
-	<?php
-
-	bottom_footer();
 }
 
-function servcheck_credential_filter() {
-	global $item_rows, $credential_types;
+function servcheck_filter() {
+	global $item_rows;
+
+	html_start_box(__('Servcheck Credential Management', 'servcheck') , '100%', '', '3', 'center', htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=edit');
 
 	?>
-	<script type='text/javascript'>
-	function applyFilter() {
-		strURL  = 'servcheck_credential.php?header=false';
-		strURL += '&rfilter=' + base64_encode($('#rfilter').val());
-		strURL += '&type=' + $('#type').val();
-		strURL += '&rows=' + $('#rows').val();
-		loadPageNoHeader(strURL);
-	}
-
-	function clearFilter() {
-		strURL = 'servcheck_credential.php?clear=1&header=false';
-		loadPageNoHeader(strURL);
-	}
-
-	$(function() {
-		$('#type, #rfilter').change(function() {
-			applyFilter();
-		});
-
-		$('#go').click(function() {
-			applyFilter();
-		});
-
-		$('#clear').click(function() {
-			clearFilter();
-		});
-
-		$('#form_servcheck').submit(function(event) {
-			event.preventDefault();
-			applyFilter();
-		});
-	});
-	</script>
-	<?php
-
-	html_start_box(__('Credential', 'servcheck') , '100%', '', '3', 'center', 'servcheck_credential.php?action=edit');
-
-	?>
-	<tr class='even noprint'>
-		<td class='noprint'>
-			<form id='form_servcheck' action='servcheck_credential.php'>
-			<input type='hidden' name='search' value='search'>
+	<tr class='even'>
+		<td>
+		<form id='form_servcheck_item' action='<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>'>
 			<table class='filterTable'>
-				<tr class='noprint'>
+				<tr>
 					<td>
 						<?php print __('Search', 'servcheck');?>
 					</td>
 					<td>
-						<input type='text' class='ui-state-default ui-corner-all' id='rfilter' size='30' value='<?php print html_escape_request_var('rfilter');?>'>
+						<input type='text' class='ui-state-default ui-corner-all' id='filter' name='filter' size='25' value='<?php print html_escape_request_var('filter');?>'>
 					</td>
 					<td>
-						<?php print __('Type', 'servcheck');?>
+						<?php print __('Credentials', 'servcheck');?>
 					</td>
 					<td>
-
-						<select id='type'>
+						<select id='rows' onChange='applyFilter()'>
 							<?php
-
-							print "<option value='-1'" . (get_request_var('type') == -1 ? ' selected':'') . ">" . __('Any', 'servcheck') . "</option>";
-							foreach ($credential_types as $key => $value) {
-								print "<option value='" . $key . "'";
-								print get_request_var('type') == $key ? ' selected="selected">' : '>';
-								print html_escape($value) . "</option>";
+							print "<option value='-1'" . (get_request_var('rows') == -1 ? ' selected':'') . ">" . __('Default', 'servcheck') . "</option>";
+							if (cacti_sizeof($item_rows)) {
+								foreach ($item_rows as $key => $value) {
+									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . htmlspecialchars($value) . "</option>";
+								}
 							}
-
 							?>
 						</select>
-
 					</td>
-
 					<td>
 						<span class='nowrap'>
-							<input type='button' id='go' value='<?php print __esc('Go', 'servcheck');?>'>
-							<input type='button' id='clear' value='<?php print __esc('Clear', 'servcheck');?>'>
+							<input type='button' class='ui-button ui-corner-all ui-widget' id='refresh' value='<?php print __esc('Go');?>' title='<?php print __esc('Set/Refresh Filters', 'servcheck');?>'>
+							<input type='button' class='ui-button ui-corner-all ui-widget' id='clear' value='<?php print __esc('Clear');?>' title='<?php print __esc('Clear Filters', 'servcheck');?>'>
 						</span>
 					</td>
 				</tr>
 			</table>
 		</form>
+		<script type='text/javascript'>
+
+		function applyFilter() {
+			strURL  = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?header=false';
+			strURL += '&filter=' + $('#filter').val();
+			strURL += '&rows=' + $('#rows').val();
+			loadPageNoHeader(strURL);
+		}
+
+		function clearFilter() {
+			strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?clear=1&header=false';
+			loadPageNoHeader(strURL);
+		}
+
+		$(function() {
+			$('#rows').click(function() {
+				applyFilter();
+			});
+
+			$('#clear').click(function() {
+				clearFilter();
+			});
+
+			$('#form_servcheck_item').submit(function(event) {
+				event.preventDefault();
+				applyFilter();
+			});
+		});
+
+		</script>
 		</td>
 	</tr>
 	<?php
-
 	html_end_box();
 }
+

@@ -56,7 +56,7 @@ function curl_try ($test) {
 	}
 
 	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', 
+		$cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
 			array($test['cred_id']));
 
 		if (!$cred) {
@@ -103,20 +103,13 @@ function curl_try ($test) {
 		$service = substr($service, 0, -3);
 	}
 
-	$cred = '';
-//!! testovat, jestli test['cred_id']  == nejake existujici, pokud ne, tak test ukoncit
-
 	if ($service == 'imap' || $service == 'imaps' || $service == 'pop3' || $service == 'pop3s' || $service == 'scp') {
-
-//		$cred = servcheck_decrypt_credential($test['id']);
-//var_dump($cred);
-
-		if ($test['username'] != '') {
+		if ($cred['username'] != '') {
 			// curl needs username with %40 instead of @
-			$cred = str_replace('@', '%40', servcheck_show_text($test['username']));
-			$cred .= ':';
-			$cred .= servcheck_show_text($test['password']);
-			$cred .= '@';
+			$credential = str_replace('@', '%40', $cred['username']);
+			$credential .= ':';
+			$credential .= $cred['password'];
+			$credential .= '@';
 		}
 	}
 
@@ -132,24 +125,22 @@ function curl_try ($test) {
 
 		// ldap needs credentials in options
 		$test['path'] = '/' . $test['ldapsearch'];
-//!!pm - taky predelat
-		$options[CURLOPT_USERPWD] = servcheck_show_text($test['username']) . ':' . servcheck_show_text($test['password']);
+
+		$options[CURLOPT_USERPWD] = $cred['username'] . ':' . $cred['password'];
 	}
 
 	if ($service == 'smb' || $service == 'smbs') {
-//!!pm - taky predelat
-		$options[CURLOPT_USERPWD] = str_replace('@', '%40', servcheck_show_text($test['username'])) . ':' . servcheck_show_text($test['password']);
+		$options[CURLOPT_USERPWD] = str_replace('@', '%40', $cred['username']) . ':' . $cred['password'];
 	}
 
 	if ($service == 'ftp') {
-//!!pm - taky predelat
-		$cred = str_replace('@', '%40', servcheck_show_text($test['username']));
-		$cred .= ':';
-		$cred .= servcheck_show_text($test['password']);
-		$cred .= '@';
+		$credential = str_replace('@', '%40', $cred['username']);
+		$credential .= ':';
+		$credential .= $cred['password'];
+		$credential .= '@';
 	}
 
-	$url = $service . '://' . $cred . $test['hostname'] . $test['path'];
+	$url = $service . '://' . $credential . $test['hostname'] . $test['path'];
 
 	plugin_servcheck_debug('Final url is ' . $url , $test);
 
@@ -196,9 +187,34 @@ function curl_try ($test) {
 				} else {
 					$options[CURLOPT_PROXYPORT] = $proxy['http_port'];
 				}
-//!!pm  - taky predelat
-				if ($proxy['proxy_username'] != '') {
-					$options[CURLOPT_PROXYUSERPWD] = $proxy['username'] . ':' . $proxy['password'];
+
+
+				if ($proxy['cred_id'] > 0) {
+					$proxy_cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
+						array($proxy['cred_id']));
+
+					if (!$cred) {
+						plugin_servcheck_debug('Proxy credential is set but not found!' , $test);
+						cacti_log('Credential not found');
+						$results['result'] = 'error';
+						$results['error'] = 'Credential not found';
+						return $results;
+					} else {
+						plugin_servcheck_debug('Decrypting proxy credential' , $test);
+						$proxy_cred = servcheck_decrypt_credential($proxy['cred_id']);
+
+						if (empty($proxy_cred)) {
+							plugin_servcheck_debug('Proxy credential is empty!' , $test);
+							cacti_log('Credential is empty');
+							$results['result'] = 'error';
+							$results['error'] = 'Credential is empty';
+							return $results;
+						}
+					}
+				}
+
+				if ($proxy_cred['username'] != '') {
+					$options[CURLOPT_PROXYUSERPWD] = $proxy_cred['username'] . ':' . $proxy_cred['password'];
 				}
 
 			} else {
@@ -257,9 +273,10 @@ function curl_try ($test) {
 	}
 
 	if ($test['ca_id'] > 0) {
+		unlink ($ca_info);
 		plugin_servcheck_debug('Removing own CA file');
 	}
-//!!pm tady ten soubor nejak neodebiram
+
 	curl_close($process);
 
 	if ($test['type'] == 'web_http' || $test['type'] == 'web_https') {
@@ -365,7 +382,6 @@ function dns_try ($test) {
 		$results['result_search'] = 'not tested';
 
 		plugin_servcheck_debug('Test failed: ' . $results['error']);
-
 	} else {
 		foreach ($a->arrMX as $m) {
 			$results['data'] .= "$m\n";
@@ -428,18 +444,6 @@ function mqtt_try ($test) {
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
 
-
-	$cred = '';
-//!!pm taky predelat, nize je zaklad
-	if ($test['username'] != '') {
-		// curl needs username with %40 instead of @
-		$cred = str_replace('@', '%40', servcheck_show_text($test['username']));
-		$cred .= ':';
-		$cred .= servcheck_show_text($test['password']);
-		$cred .= '@';
-	}
-
-
 	if ($test['cred_id'] > 0) {
 		$cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', 
 			array($test['cred_id']));
@@ -464,17 +468,26 @@ function mqtt_try ($test) {
 		}
 	}
 
+	$credential = '';
+
+	if ($cred['username'] != '') {
+		// curl needs username with %40 instead of @
+		$credential = str_replace('@', '%40', $cred['username']);
+		$credential .= ':';
+		$credential .= $cred['password'];
+		$credential .= '@';
+	}
+
 	if (strpos($test['hostname'], ':') === 0) {
 		$test['hostname'] .=  ':' . $service_types_ports[$test['type']];
 	}
-
 
 	if ($test['path'] == '') {
 		// try any message
 		$test['path'] = '/%23';
 	}
 
-	$url = 'mqtt://' . $cred . $test['hostname'] . $test['path'];
+	$url = 'mqtt://' . $credential . $test['hostname'] . $test['path'];
 
 	plugin_servcheck_debug('Final url is ' . $url , $test);
 
@@ -753,7 +766,7 @@ function doh_try ($test) {
 
 
 function restapi_try ($test) {
-	global $user_agent, $config, $ca_info, $rest_api_auth_method;
+	global $user_agent, $config, $ca_info, $service_types;
 
 	$cert_info = array();
 	$http_headers = array();
@@ -786,7 +799,7 @@ function restapi_try ($test) {
 			return $results;
 		} else {
 			plugin_servcheck_debug('Decrypting credential' , $test);
-			$cred  = servcheck_decrypt_credential($test['cred_id']);
+			$credential = servcheck_decrypt_credential($test['cred_id']);
 
 			if (empty($cred)) {
 				plugin_servcheck_debug('Credential is empty!' , $test);
@@ -798,11 +811,7 @@ function restapi_try ($test) {
 		}
 	}
 
-//!! tohle se zmeni
-	$api = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_restapi_method
-		WHERE id = ?', array($test['restapi_id']));
-
-	if (is_null($api)) {
+	if (is_null($cred['type'])) {
 		cacti_log('Rest API method not set');
 		$results['result'] = 'error';
 		$results['error'] = 'Rest API method not set';
@@ -813,57 +822,47 @@ function restapi_try ($test) {
 	$options[CURLOPT_SSL_VERIFYPEER] = false;
 	$options[CURLOPT_SSL_VERIFYHOST] = false;
 
-	$url = $api['data_url'];
 
-	plugin_servcheck_debug('Using Rest API method ' . $rest_api_auth_method[$api['type']] , $test);
+	$url = $test['data_url'];
 
-	switch ($api['type']) {
-		case 'no':
-			// nothing to do
-			break;
+	plugin_servcheck_debug('Using Rest API method ' . $service_types[$api['type']] , $test);
+
+	switch ($cred['type']) {
 		case 'basic':
-
-//!!pm tady to predelat a otestovat
-
 			// we don't need set content type for login or GET/POST request because we don't set any data
-			$options[CURLOPT_USERPWD] = $cred['username'] . ':' . $cred['password'];
+			$options[CURLOPT_USERPWD] = $credential['username'] . ':' . $credential['password'];
 			$options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
 			break;
 		case 'apikey':
-
-//			$cred = servcheck_decrypt_credential($api['cred_id']);
-
+// TADY JE BLBOST, delam usernama a password a s jinym formatem pak key???
 			if ($api['format'] == 'json') {
-//!! username,password, cred_neco tu je
 				$cred_data = [
-					'username'   => $cred['username'],
-					'password'   => $cred['password']
+					'username'   => $credential['username'],
+					'password'   => $credential['password']
 				];
 
 				$cred_data = json_encode($cred_data);
 				$http_headers[] = "Content-Type: application/json";
 			} else {
 
-				$http_headers[] = $cred['keyname'] . ': ' . $cred['keyvalue'];
+				$http_headers[] = $credential['keyname'] . ': ' . $credential['keyvalue'];
 			}
 
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
 
 			break;
 		case 'oauth2':
-//!!pm tady to budu upravovat
-//!! username,password, cred_neco tu je
-			$valid = db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_restapi_method
+			$valid = db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_test
 				WHERE id = ? AND cred_validity > NOW()',
-				array($api['id']));
+				array($test['id']));
 
 			if (!$valid) {
 				plugin_servcheck_debug('No valid token, generating new request' , $test);
 
 				$cred_data = [
 					'grant_type' => 'password',
-					'username'   => servcheck_show_text($api['username']),
-					'password'   => servcheck_show_text($api['password'])
+					'username'   => $credential['username'],
+					'password'   => $credential['password']
 				];
 
 				if ($api['format'] == 'json') {
@@ -907,6 +906,9 @@ function restapi_try ($test) {
 
 				if (isset($body['token']) && isset($body['expires_in'])) {
 					plugin_servcheck_debug('We got token and expiration, saving', $test);
+//!!pm tady si musim ulozit token
+// tady jsem celkove skoncil
+
 					db_execute_prepared ('UPDATE plugin_servcheck_restapi_method
 						SET cred_value = ?, cred_validity = DATE_ADD(NOW(), INTERVAL ? HOUR)
 						WHERE id = ?',

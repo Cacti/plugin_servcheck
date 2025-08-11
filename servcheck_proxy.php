@@ -141,11 +141,8 @@ function form_actions() {
 function form_save() {
 
 	if (isset_request_var('save_component')) {
-		/* ================= input validation ================= */
-		get_filter_request_var('id');
-		/* ==================================================== */
 
-		$save['id']         = get_nfilter_request_var('id');
+		$save['id']         = get_filter_request_var('id');
 		$save['name']       = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
 		$save['hostname']   = form_input_validate(get_nfilter_request_var('hostname'), 'hostname', '', false, 3);
 		$save['http_port']  = form_input_validate(get_nfilter_request_var('http_port'), 'http_port', '', false, 3);

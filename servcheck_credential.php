@@ -465,6 +465,7 @@ function data_edit() {
 				$('#password').attr('type', 'password');
 				break;
 			case 'snmp':
+				$('#row_community').show();
 
 				break;
 

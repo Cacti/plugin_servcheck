@@ -345,7 +345,7 @@ function form_save() {
 		}
 
 		if ($category == 'snmp') {
-			if (filter_var(get_nfilter_request_var('snmp_oid'), FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '#^/0-9\.]+$#')))) {
+			if (filter_var(get_nfilter_request_var('snmp_oid'), FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '#^[0-9\.]+$#')))) {
 				$save['snmp_oid'] = get_nfilter_request_var('snmp_oid');
 			} else {
 				$_SESSION['sess_error_fields']['snmp_oid'] = 'snmp_oid';

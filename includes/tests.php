@@ -56,7 +56,7 @@ function curl_try ($test) {
 	}
 
 	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
+		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
 			array($test['cred_id']));
 
 		if (!$cred) {
@@ -445,7 +445,7 @@ function mqtt_try ($test) {
 	$results['result_search'] = 'not tested';
 
 	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', 
+		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', 
 			array($test['cred_id']));
 
 		if (!$cred) {
@@ -788,7 +788,7 @@ function restapi_try ($test) {
 	);
 
 	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', 
+		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', 
 			array($test['cred_id']));
 
 		if (!$cred) {
@@ -1107,6 +1107,8 @@ function restapi_try ($test) {
 function snmp_try ($test) {
 	global $config, $service_types;
 
+	include_once($config['base_path'] . '/lib/snmp.php');
+
 	$version = 2;
 	$port = 161;
 
@@ -1114,10 +1116,13 @@ function snmp_try ($test) {
 	$results['result'] = 'ok';
 	$results['time'] = time();
 	$results['error'] = '';
+	$results['curl_return'] = 'N/A';
+	$results['options'] = 'N/A';
+//!!pm - options musim naplnit casama apod.
 	$results['result_search'] = 'not tested';
 
 	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
+		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
 			array($test['cred_id']));
 
 		if (!$cred) {
@@ -1128,9 +1133,9 @@ function snmp_try ($test) {
 			return $results;
 		} else {
 			plugin_servcheck_debug('Decrypting credential' , $test);
-			$cred  = servcheck_decrypt_credential($test['cred_id']);
+			$credential = servcheck_decrypt_credential($test['cred_id']);
 
-			if (empty($cred)) {
+			if (empty($credential)) {
 				plugin_servcheck_debug('Credential is empty!' , $test);
 				cacti_log('Credential is empty');
 				$results['result'] = 'error';
@@ -1150,24 +1155,31 @@ function snmp_try ($test) {
 		$port = substr($test['hostname'], strpos($test['hostname'], ':') + 1);
 	}
 
-
 	if ($cred['type'] == 'snmp3') {
 		$version = 3;
+	} else {
+		$credential['auth_user'] = '';
+		$credential['auh_pass'] = '';
+		$credential['auth_proto'] = '';
+		$credential['priv_pass'] = '';
+		$credential['priv_proto'] = '';
+		$credential['context'] = '';
+
 	}
 
-	plugin_servcheck_debug('SNMP request: ' . clean_up_lines(var_export($cred, true)));
+	plugin_servcheck_debug('SNMP request: ' . $test['snmp_oid']);
 	plugin_servcheck_debug('SNMP options: ' . clean_up_lines(var_export($cred, true)));
 
 	if ($test['type'] == 'snmp_get') {
-		plugin_servcheck_debug('SNMP GET request, hostname ' . $test['hostname']);
-		$data = cacti_snmp_get($test['hostname'], $test['community'], $test['snmp_oid'], $version,
-		$cred['auth_user'], $cred['auh_pass'], $cred['auth_proto'], $cred['priv_pass'],
-		$cred['priv_proto'], $cred['context'], $port);
+		plugin_servcheck_debug('SNMP GET request, hostname ' . $test['hostname'] . ':' . $port);
+		$data = cacti_snmp_get($test['hostname'], $credential['community'], $test['snmp_oid'], $version,
+		$credential['auth_user'], $credential['auh_pass'], $credential['auth_proto'], $credential['priv_pass'],
+		$credential['priv_proto'], $credential['context'], $port);
 	} else {
-		plugin_servcheck_debug('SNMP WALK request, hostname ' . $test['hostname']);
-		$data = cacti_snmp_walk($test['hostname'], $test['community'], $test['snmp_oid'], $version,
-		$cred['auth_user'], $cred['auh_pass'], $cred['auth_proto'], $cred['priv_pass'],
-		$cred['priv_proto'], $cred['context'], $port);
+		plugin_servcheck_debug('SNMP WALK request, hostname ' . $test['hostname'] . ':' . $port);
+		$data = cacti_snmp_walk($test['hostname'], $credential['community'], $test['snmp_oid'], $version,
+		$credential['auth_user'], $credential['auh_pass'], $credential['auth_proto'], $credential['priv_pass'],
+		$credential['priv_proto'], $credential['context'], $port);
 	}
 
 	plugin_servcheck_debug('SNMP response is ' . $data);

@@ -344,6 +344,24 @@ function form_save() {
 			}
 		}
 
+		if ($category == 'snmp') {
+			if (filter_var(get_nfilter_request_var('snmp_oid'), FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '#^/0-9\.]+$#')))) {
+				$save['snmp_oid'] = get_nfilter_request_var('snmp_oid');
+			} else {
+				$_SESSION['sess_error_fields']['snmp_oid'] = 'snmp_oid';
+				raise_message(3);
+			}
+		}
+
+		if ($category == 'ssh') {
+			if (filter_var(get_nfilter_request_var('ssh_cmd'), FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '#^/a-zA-Z0-9\./\-]+$#')))) {
+				$save['ssh_cmd'] = get_nfilter_request_var('ssh_cmd');
+			} else {
+				$_SESSION['sess_error_fields']['ssh_cmd'] = 'ssh_cmd';
+				raise_message(3);
+			}
+		}
+
 		if (isset_request_var('notes')) {
 			$save['notes'] = get_nfilter_request_var('notes');
 		}
@@ -547,6 +565,8 @@ function data_edit() {
 		$('#row_checkcert').hide();
 		$('#row_certexpirenotify').hide();
 		$('#row_hostname').hide();
+		$('#row_snmp_oid').hide();
+		$('#row_ssh_command').hide();
 
 		switch(category) {
 			case 'web':
@@ -618,6 +638,20 @@ function data_edit() {
 				break;
 			case 'rest':
 				$('#row_format').show();
+
+				break;
+
+			case 'snmp':
+				$('#row_hostname').show();
+				$('#row_cred_id').show();
+				$('#row_snmp_oid').show();
+
+				break;
+
+			case 'ssh':
+				$('#row_hostname').show();
+				$('#row_cred_id').show();
+				$('#row_ssh_cmd').show();
 
 				break;
 		}

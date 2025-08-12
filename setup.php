@@ -106,6 +106,10 @@ function plugin_servcheck_upgrade() {
 
 		api_plugin_db_table_create('servcheck', 'plugin_servcheck_credential', $data);
 
+		if (!db_column_exists('plugin_servcheck_test', 'snmp_method')) {
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'snmp_oid', 'type' => "varchar(255)", 'NULL' => false, 'default' => ''));
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'ssh_command', 'type' => "varchar(255)", 'NULL' => false, 'default' => ''));
+		}
 
 		if (!db_column_exists('plugin_servcheck_test', 'cred_id')) {
 			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
@@ -250,6 +254,8 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'path', 'type' => 'varchar(256)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'dns_query', 'type' => 'varchar(100)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'ldapsearch', 'type' => 'varchar(200)', 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'snmp_oid', 'type' => "varchar(255)", 'NULL' => false, 'default' => '');
+	$data['columns'][] = array('name' => 'ssh_command', 'type' => "varchar(255)", 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'format', 'type' => "enum('urlencoded','xml','json')", 'NULL' => false, 'default' => 'urlencoded');
 	$data['columns'][] = array('name' => 'search', 'type' => 'varchar(1024)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'search_maint', 'type' => 'varchar(1024)', 'NULL' => false);

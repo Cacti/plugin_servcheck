@@ -1104,4 +1104,112 @@ function restapi_try ($test) {
 	return $results;
 }
 
+function snmp_try ($test) {
+	global $config, $service_types;
 
+	$version = 2;
+	$port = 161;
+
+	// default result
+	$results['result'] = 'ok';
+	$results['time'] = time();
+	$results['error'] = '';
+	$results['result_search'] = 'not tested';
+
+	if ($test['cred_id'] > 0) {
+		$cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
+			array($test['cred_id']));
+
+		if (!$cred) {
+			plugin_servcheck_debug('Credential is set but not found!' , $test);
+			cacti_log('Credential not found');
+			$results['result'] = 'error';
+			$results['error'] = 'Credential not found';
+			return $results;
+		} else {
+			plugin_servcheck_debug('Decrypting credential' , $test);
+			$cred  = servcheck_decrypt_credential($test['cred_id']);
+
+			if (empty($cred)) {
+				plugin_servcheck_debug('Credential is empty!' , $test);
+				cacti_log('Credential is empty');
+				$results['result'] = 'error';
+				$results['error'] = 'Credential is empty';
+				return $results;
+			}
+		}
+	} else {
+		plugin_servcheck_debug('No credential set!' , $test);
+		cacti_log('No credential set');
+		$results['result'] = 'error';
+		$results['error'] = 'No credential set';
+		return $results;
+	}
+
+	if (str_contains($test['hostname'], ':')) {
+		$port = substr($test['hostname'], strpos($test['hostname'], ':') + 1);
+	}
+
+
+	if ($cred['type'] == 'snmp3') {
+		$version = 3;
+	}
+
+	plugin_servcheck_debug('SNMP request: ' . clean_up_lines(var_export($cred, true)));
+	plugin_servcheck_debug('SNMP options: ' . clean_up_lines(var_export($cred, true)));
+
+	if ($test['type'] == 'snmp_get') {
+		plugin_servcheck_debug('SNMP GET request, hostname ' . $test['hostname']);
+		$data = cacti_snmp_get($test['hostname'], $test['community'], $test['snmp_oid'], $version,
+		$cred['auth_user'], $cred['auh_pass'], $cred['auth_proto'], $cred['priv_pass'],
+		$cred['priv_proto'], $cred['context'], $port);
+	} else {
+		plugin_servcheck_debug('SNMP WALK request, hostname ' . $test['hostname']);
+		$data = cacti_snmp_walk($test['hostname'], $test['community'], $test['snmp_oid'], $version,
+		$cred['auth_user'], $cred['auh_pass'], $cred['auth_proto'], $cred['priv_pass'],
+		$cred['priv_proto'], $cred['context'], $port);
+	}
+
+	plugin_servcheck_debug('SNMP response is ' . $data);
+
+	$results['data'] = $data;
+
+	// If we have set a failed search string, then ignore the normal searches and only alert on it
+	if ($test['search_failed'] != '') {
+
+		plugin_servcheck_debug('Processing search_failed');
+
+		if (strpos($data, $test['search_failed']) !== false) {
+			plugin_servcheck_debug('Search failed string success');
+			$results['result_search'] = 'failed ok';
+			return $results;
+		}
+	}
+
+	plugin_servcheck_debug('Processing search');
+
+	if ($test['search'] != '') {
+		if (strpos($data, $test['search']) !== false) {
+			plugin_servcheck_debug('Search string success');
+			$results['result_search'] = 'ok';
+			return $results;
+		} else {
+			$results['result_search'] = 'not ok';
+			return $results;
+		}
+	}
+
+	if ($test['search_maint'] != '') {
+
+		plugin_servcheck_debug('Processing search maint');
+
+		if (strpos($data, $test['search_maint']) !== false) {
+			plugin_servcheck_debug('Search maint string success');
+			$results['result_search'] = 'maint ok';
+			return $results;
+		}
+	}
+
+	return $results;
+
+}

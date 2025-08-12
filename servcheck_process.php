@@ -187,8 +187,16 @@ while ($x < 3) {
 				$results = dns_try($test);
 			}
 			break;
-		case 'restapi':
+		case 'rest':
 			$results = restapi_try($test);
+			break;
+
+		case 'snmp':
+			$results = snmp_try($test);
+			break;
+
+		case 'ssh':
+			$results = ssh_try($test);
 			break;
 	}
 

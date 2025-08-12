@@ -64,6 +64,9 @@ $service_types = array(
 	'rest_apikey'  => __('Rest API with API key auth', 'servcheck'),
 	'rest_oauth2'  => __('Rest API with OAuth2/Bearer token auth', 'servcheck'),
 	'rest_cookie'  => __('Rest API with Cookie based auth', 'servcheck'),
+	'snmp_get'     => __('SNMP get', 'servcheck'),
+	'snmp_walk'    => __('SNMP walk', 'servcheck'),
+	'ssh_cmd'      => __('SSH command on remote system', 'servcheck'),
 );
 
 $service_types_ports = array(
@@ -94,14 +97,17 @@ $service_types_ports = array(
 	'rest_apikey'  => 443,
 	'rest_oauth2'  => 443,
 	'rest_cookie'  => 443,
+	'snmp_get'     => 161,
+	'snmp_walk'    => 161,
+	'ssh_cmd'      => 22,
 );
 
 $credential_types = array(
 	'userpass' => __('Username and password', 'servcheck'),
-	'basic'    => __('Basic HTTP auth', 'servcheck'),
-	'apikey'   => __('API key auth', 'servcheck'),
-	'oauth2'   => __('OAuth2/Bearer token auth', 'servcheck'),
-	'cookie'   => __('Cookie based auth', 'servcheck'),
+	'basic'    => __('Rest API - Basic HTTP auth', 'servcheck'),
+	'apikey'   => __('Rest API - API key auth', 'servcheck'),
+	'oauth2'   => __('Rest API - OAuth2/Bearer token auth', 'servcheck'),
+	'cookie'   => __('Rest API - Cookie based auth', 'servcheck'),
 	'snmp'     => __('SNMP v1 or v2', 'servcheck'),
 	'snmp3'    => __('SNMP v3', 'servcheck'),
 	'sshkey'   => __('SSH key', 'servcheck'),
@@ -119,7 +125,6 @@ $graph_interval = array (
 
 $rest_api_format = array(
 	'urlencoded'  => 'Form-urlencoded',
-//	'xml'            => 'XML',
 	'json'           => 'JSON'
 );
 
@@ -131,17 +136,6 @@ $search_result = array(
 	'maint ok'      => __('Maint string found', 'servcheck'),
 	'not yet'       => __('Not tested yet', 'servcheck'),
 	'not tested'    => __('Search not performed', 'servcheck')
-);
-
-$credential_types = array(
-	'userpass'       => __('Username and password', 'servcheck'),
-	'snmp'           => __('SNMP v1 or v2', 'servcheck'),
-	'snmp3'          => __('SNMP v3', 'servcheck'),
-	'sshkey'         => __('SSH private key', 'servcheck'),
-	'basic'  => __('Rest API - Basic HTTP auth', 'servcheck'),
-	'apikey' => __('Rest API - API key auth', 'servcheck'),
-	'oauth2' => __('Rest API - OAuth2/Bearer token auth', 'servcheck'),
-	'cookie' => __('Rest API - Cookie based auth', 'servcheck')
 );
 
 $httperrors = array(
@@ -384,6 +378,22 @@ $servcheck_test_fields = array(
 		'default' => 'urlencoded',
 		'description' => __('Select correct format for communication, check your Rest API documentation.', 'servcheck'),
 		'value' => '|arg1:format|',
+	),
+	'snmp_oid' => array(
+		'friendly_name' => __('SNMP OID', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('Insert SNMP OID', 'servcheck'),
+		'value' => '|arg1:snmp_oid|',
+		'max_length' => '255',
+		'size' => '50'
+	),
+	'ssh_command' => array(
+		'friendly_name' => __('SSH command', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('Insert SSH command with full path, result of command will be returned', 'servcheck'),
+		'value' => '|arg1:ssh_command|',
+		'max_length' => '255',
+		'size' => '50'
 	),
 	'ca_id' => array(
 		'friendly_name' => __('CA Chain', 'servcheck'),

@@ -308,7 +308,7 @@ function form_save() {
 				}
 
 				if (isset_request_var('cred_value') && (get_nfilter_request_var('cred_value') != '' && get_filter_request_var('cred_value', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,250}$/'))))) {
-					$cred['value_name'] = get_nfilter_request_var('cred_value');
+					$cred['cred_value'] = get_nfilter_request_var('cred_value');
 				} else {
 					$_SESSION['sess_error_fields']['cred_value'] = 'cred_value';
 					raise_message(3);

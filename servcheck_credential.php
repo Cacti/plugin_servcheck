@@ -28,10 +28,9 @@ include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php')
 include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
 $servcheck_actions_menu = array(
-	'delete'    => __('Delete', 'servcheck'),
-	'duplicate' => __('Duplicate', 'servcheck'),
+	1 => __('Delete', 'servcheck'),
+	2 => __('Duplicate', 'servcheck'),
 );
-
 
 
 set_default_action();
@@ -75,9 +74,9 @@ function form_actions() {
 			if (get_filter_request_var('drp_action') == 1) {
 				if (cacti_sizeof($selected_items)) {
 					foreach($selected_items as $item) {
-						db_execute_prepared('DELETE FROM plugin_servcheck_credential WHERE id = ?', array($id));
-						db_execute_prepared('UPDATE plugin_servcheck_test SET cred_id = 0 WHERE cred_id = ?', array($id));
-						db_execute_prepared('UPDATE plugin_servcheck_proxy SET cred_id = 0 WHERE cred_id = ?', array($id));
+						db_execute_prepared('DELETE FROM plugin_servcheck_credential WHERE id = ?', array($item));
+						db_execute_prepared('UPDATE plugin_servcheck_test SET cred_id = 0 WHERE cred_id = ?', array($item));
+						db_execute_prepared('UPDATE plugin_servcheck_proxy SET cred_id = 0 WHERE cred_id = ?', array($item));
 					}
 				}
 			} elseif (get_filter_request_var('drp_action') == 2) { // duplicate
@@ -125,7 +124,7 @@ function form_actions() {
 	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', '', '3', 'center', '');
 
 	if (cacti_sizeof($items_array) > 0) {
-		if (get_request_var('drp_action') == 1) { // delete
+		if (get_filter_request_var('drp_action') == 1) { // delete
 			print "	<tr>
 					<td class='topBoxAlt'>
 						<p>" . __n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', cacti_sizeof($items_array)) . "</p>
@@ -134,7 +133,7 @@ function form_actions() {
 				</tr>";
 
 			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete item', 'Delete items', cacti_sizeof($items_array)) . "'>";
-		} elseif ($action == 2) { // duplicate
+		} elseif (get_filter_request_var('drp_action') == 2) { // duplicate
 			print "<tr>
 				<td class='topBoxAlt'>
 					<p>" . __n('Click \'Continue\' to Duplicate the following Credential.', 'Click \'Continue\' to Duplicate following Credential.', cacti_sizeof($credential_array)) . "</p><div class='itemlist'><ul>$credential_list</ul></div>
@@ -204,23 +203,6 @@ function form_save() {
 
 				break;
 
-			case 'snmp':
-				if (isset_request_var('community') && get_nfilter_request_var('community') != '' && get_filter_request_var('community', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-					$cred['community'] = get_nfilter_request_var('community');
-				} else {
-					$_SESSION['sess_error_fields']['community'] = 'community';
-					raise_message(3);
-				}
-
-				break;
-
-			case 'snmp3':
-
-				break;
-
-			case 'sshkey':
-
-				break;
 
 			case 'basic':
 				if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
@@ -346,6 +328,44 @@ function form_save() {
 				}
 
 				break;
+
+			case 'snmp':
+				if (isset_request_var('community') && get_nfilter_request_var('community') != '' && get_filter_request_var('community', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['community'] = get_nfilter_request_var('community');
+				} else {
+					$_SESSION['sess_error_fields']['community'] = 'community';
+					raise_message(3);
+				}
+
+				break;
+
+			case 'snmp3':
+
+				break;
+
+			case 'sshkey':
+				if (isset_request_var('ssh_username') && get_nfilter_request_var('ssh_username') != '' && get_filter_request_var('ssh_username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\-]{1,100}$/')))) {
+					$cred['ssh_username'] = get_nfilter_request_var('ssh_username');
+				} else {
+					$_SESSION['sess_error_fields']['ssh_username'] = 'ssh_username';
+					raise_message(3);
+				}
+
+				if (isset_request_var('sshkey') && get_nfilter_request_var('sshkey') != '' && get_filter_request_var('sshkey', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^-----BEGIN OPENSSH PRIVATE KEY-----.*/')))) {
+					$cred['sshkey'] = get_nfilter_request_var('sshkey');
+				} else {
+					$_SESSION['sess_error_fields']['sshkey'] = 'sshkey';
+					raise_message(3);
+				}
+
+				if (isset_request_var('sshkey_passphrase') && get_nfilter_request_var('sshkey_passphrase') != '' && get_filter_request_var('sshkey_passphrase', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['sshkey_passphrase'] = get_nfilter_request_var('sshkey_passphrase');
+				} else {
+					$_SESSION['sess_error_fields']['sshkey_passphrase'] = 'sshkey_passphrase';
+					raise_message(3);
+				}
+
+				break;
 		}
 
 		$save['data'] = servcheck_encrypt_credential($cred);
@@ -427,6 +447,9 @@ function data_edit() {
 				$('#row_login_url').hide();
 				$('#row_data_url').hide();
 				$('#row_community').hide();
+				$('#row_ssh_username').hide();
+				$('#row_sshkey').hide();
+				$('#row_sshkey_passphrase').hide();
 
 		switch(credential_type) {
 			case 'no':
@@ -466,7 +489,6 @@ function data_edit() {
 				break;
 			case 'snmp':
 				$('#row_community').show();
-
 				break;
 
 			case 'snmp3':
@@ -474,7 +496,10 @@ function data_edit() {
 				break;
 
 			case 'sshkey':
-//!!pm dodelat
+				$('#row_ssh_username').show();
+				$('#row_sshkey').show();
+				$('#row_sshkey_passphrase').show();
+				$('#sshkey_passphrase').attr('type', 'password');
 				break;
 		}
 	}

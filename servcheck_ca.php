@@ -144,6 +144,7 @@ function form_save() {
 
 		$save['id']   = get_filter_request_var('id');
 		$save['name'] = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
+// tady testovat, jestli je neco vlozeno
 		$save['cert'] = form_input_validate(get_nfilter_request_var('cert'), 'cert', '^-----BEGIN CERTIFICATE-----.*', false, 3);
 
 		if (!is_error_message()) {

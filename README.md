@@ -41,11 +41,12 @@ POP3, POP3S - try to login and display first unread message
 IMAP, IMAPS - try to login and display unread messages in inbox
 DNS - try to resolve A record and return answer
 LDAP and LDAPS - do searching in LDAP
-FTP, FTPS - try to login and return directory listing
+FTP, FTPS, SFTP - try to login and return directory listing
 TFTP - try to download specific file
 SCP - try to login and download specific file
 SMB, SMBS - try to login and download specific file
 MQTT - try to subscribe topic or wait for any message and print result
+SNMP - get or walk specified OID and return answer
 
 ## Important
 Recommendation for tests with download -  please download only small not binary files.
@@ -59,6 +60,8 @@ SCP is in insecure mode - doesn't check SSH server key!
 
 MQTT is only plaintext. You can specify username and password. MQTT test waits for the first messase from a given topic
 or for any message if the topic has not been specified.
+
+For SFTP, SCP or remote command you can use SSH key.
 
 Do not test other servers without permission!
 
@@ -78,5 +81,5 @@ in GitHub - https://github.com/Cacti/plugin_servcheck
 You can find more information on our forum - http://forums.cacti.net/viewtopic.php?t=62934
 
 -----------------------------------------------
-Copyright (c) 2004-2024 - The Cacti Group, Inc.
+Copyright (c) 2004-2025 - The Cacti Group, Inc.
 

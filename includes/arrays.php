@@ -27,6 +27,7 @@ if (!defined('SERVCHECK_CIPHER')) {
 	define('SERVCHECK_CIPHER', 'aes-256-cbc');
 }
 
+
 $servcheck_tabs = array(
 	'servcheck_test.php'       => __('Tests', 'servcheck'),
 	'servcheck_ca.php'         => __('CA certificates', 'servcheck'),
@@ -67,7 +68,7 @@ $service_types = array(
 	'rest_cookie'  => __('Rest API with Cookie based auth', 'servcheck'),
 	'snmp_get'     => __('SNMP get', 'servcheck'),
 	'snmp_walk'    => __('SNMP walk', 'servcheck'),
-	'ssh_cmd'      => __('SSH command on remote system', 'servcheck'),
+	'ssh_command'  => __('SSH command on remote system', 'servcheck'),
 );
 
 $service_types_ports = array(
@@ -101,7 +102,7 @@ $service_types_ports = array(
 	'rest_cookie'  => 443,
 	'snmp_get'     => 161,
 	'snmp_walk'    => 161,
-	'ssh_cmd'      => 22,
+	'ssh_command'  => 22,
 );
 
 $credential_types = array(
@@ -112,7 +113,7 @@ $credential_types = array(
 	'cookie'   => __('Rest API - Cookie based auth', 'servcheck'),
 	'snmp'     => __('SNMP v1 or v2', 'servcheck'),
 	'snmp3'    => __('SNMP v3', 'servcheck'),
-	'sshkey'   => __('SSH key', 'servcheck'),
+	'sshkey'   => __('SSH private key', 'servcheck'),
 );
 
 
@@ -735,6 +736,30 @@ $servcheck_credential_fields = array(
 		'description' => __('SNMP community string for SNMP v1 or v2(c)', 'servcheck'),
 		'value' => '|arg1:community|',
 		'max_length' => '30',
+		'size' => '30'
+	),
+	'ssh_username'  => array(
+		'friendly_name' => __('SSH user', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('Insert username here', 'servcheck'),
+		'value' => '|arg1:ssh_username|',
+		'max_length' => '40',
+		'size' => '20'
+	),
+	'sshkey'  => array(
+		'friendly_name' => __('SSH private key', 'servcheck'),
+		'method' => 'textarea',
+		'textarea_rows' => 10,
+		'textarea_cols' => 100,
+		'description' => __('SSH private key ', 'servcheck'),
+		'value' => '|arg1:sshkey|'
+	),
+	'sshkey_passphrase'  => array(
+		'friendly_name' => __('SSH private key passphrase', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('If your key is password protected, insert password here', 'servcheck'),
+		'value' => '|arg1:sshkey_passphrase|',
+		'max_length' => '60',
 		'size' => '30'
 	),
 	'id' => array(

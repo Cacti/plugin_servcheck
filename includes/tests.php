@@ -67,7 +67,7 @@ function curl_try ($test) {
 			return $results;
 		} else {
 			plugin_servcheck_debug('Decrypting credential' , $test);
-			$cred  = servcheck_decrypt_credential($test['cred_id']);
+			$credential = servcheck_decrypt_credential($test['cred_id']);
 
 			if (empty($cred)) {
 				plugin_servcheck_debug('Credential is empty!' , $test);
@@ -103,6 +103,7 @@ function curl_try ($test) {
 		$service = substr($service, 0, -3);
 	}
 
+//!!pm scp je tu jen s heslem
 	if ($service == 'imap' || $service == 'imaps' || $service == 'pop3' || $service == 'pop3s' || $service == 'scp') {
 		if ($cred['username'] != '') {
 			// curl needs username with %40 instead of @
@@ -133,6 +134,7 @@ function curl_try ($test) {
 		$options[CURLOPT_USERPWD] = str_replace('@', '%40', $cred['username']) . ':' . $cred['password'];
 	}
 
+//!! tady to musi byt vic rozdelene pro sluzby, ktere pouzivaji sshkey
 	if ($service == 'ftp') {
 		$credential = str_replace('@', '%40', $cred['username']);
 		$credential .= ':';
@@ -147,7 +149,7 @@ function curl_try ($test) {
 	$process = curl_init($url);
 
 	if ($test['ca_id'] > 0) {
-		$ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca_cert_' . $test['ca_id'] . '.pem'; // The folder /plugins/servcheck/cert does exist, hence the ca_cert_x.pem can be created here
+		$ca_info = $config['base_path'] . '/plugins/servcheck/tmp_data/ca_cert_' . $test['ca_id'] . '.pem'; // The folder /plugins/servcheck/tmp_data does exist, hence the ca_cert_x.pem can be created here
 		plugin_servcheck_debug('Preparing own CA chain file ' . $ca_info , $test);
 		// CURLOPT_CAINFO is to updated based on the custom CA certificate
 		$options[CURLOPT_CAINFO] = $ca_info;
@@ -456,7 +458,7 @@ function mqtt_try ($test) {
 			return $results;
 		} else {
 			plugin_servcheck_debug('Decrypting credential' , $test);
-			$cred  = servcheck_decrypt_credential($test['cred_id']);
+			$credential = servcheck_decrypt_credential($test['cred_id']);
 
 			if (empty($cred)) {
 				plugin_servcheck_debug('Credential is empty!' , $test);
@@ -492,7 +494,7 @@ function mqtt_try ($test) {
 	plugin_servcheck_debug('Final url is ' . $url , $test);
 
 	$process = curl_init($url);
-
+//!!pm - pak to po sobe nemazu
 	$filename = '/tmp/mqtt_' . time() . '.txt';
 	$file = fopen($filename, 'w');
 
@@ -777,6 +779,9 @@ function restapi_try ($test) {
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
 
+
+
+
 	$options = array(
 		CURLOPT_HEADER         => true,
 		CURLOPT_USERAGENT      => $user_agent,
@@ -953,7 +958,7 @@ function restapi_try ($test) {
 			$options[CURLOPT_POSTFIELDS] = $cred_data;
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
 
-			$cookie_file = $config['base_path'] . '/plugins/servcheck/cookie/' . $api['id'];
+			$cookie_file = $config['base_path'] . '/plugins/servcheck/tmp_data/' . $api['id'];
 			$options[CURLOPT_COOKIEJAR] = $cookie_file;  // store cookie
 			$process = curl_init($api['login_url']);
 
@@ -1117,8 +1122,20 @@ function snmp_try ($test) {
 	$results['time'] = time();
 	$results['error'] = '';
 	$results['curl_return'] = 'N/A';
-	$results['options'] = 'N/A';
-//!!pm - options musim naplnit casama apod.
+
+	$results['options']['http_code']       = 0;
+	$results['curl_return']                = 0;
+	$results['options']['total_time']      = 0;
+	$results['options']['namelookup_time'] = 0;
+	$results['options']['connect_time']    = 0;
+	$results['options']['redirect_time']   = 0;
+	$results['options']['redirect_count']  = 0;
+	$results['options']['size_download']   = 0;
+	$results['options']['speed_download']  = 0;
+	$results['time']                       = time();
+
+	$s = microtime(true);
+
 	$results['result_search'] = 'not tested';
 
 	if ($test['cred_id'] > 0) {
@@ -1164,11 +1181,10 @@ function snmp_try ($test) {
 		$credential['priv_pass'] = '';
 		$credential['priv_proto'] = '';
 		$credential['context'] = '';
-
 	}
 
 	plugin_servcheck_debug('SNMP request: ' . $test['snmp_oid']);
-	plugin_servcheck_debug('SNMP options: ' . clean_up_lines(var_export($cred, true)));
+	plugin_servcheck_debug('SNMP options: ' . clean_up_lines(var_export($credential, true)));
 
 	if ($test['type'] == 'snmp_get') {
 		plugin_servcheck_debug('SNMP GET request, hostname ' . $test['hostname'] . ':' . $port);
@@ -1185,6 +1201,11 @@ function snmp_try ($test) {
 	plugin_servcheck_debug('SNMP response is ' . $data);
 
 	$results['data'] = $data;
+
+	$t = microtime(true) - $s;
+
+	$results['options']['connect_time'] = $results['options']['total_time'] = $results['options']['namelookup_time'] = round($t, 4);
+
 
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
@@ -1223,5 +1244,172 @@ function snmp_try ($test) {
 	}
 
 	return $results;
+}
 
+
+function ssh_try ($test) {
+	global $config, $service_types_ports;
+
+	set_include_path($config['include_path'] . '/vendor/phpseclib/');
+	include('Net/SSH2.php');
+	include('Crypt/RSA.php');
+
+	// default result
+	$results['result'] = 'ok';
+	$results['time'] = time();
+	$results['error'] = '';
+	$results['result_search'] = 'not tested';
+
+
+	$options = array(
+	);
+
+	if (empty($test['hostname'])) {
+		cacti_log('Empty hostname, nothing to test');
+		$results['result'] = 'error';
+		$results['error'] = 'Empty hostname';
+		return $results;
+	}
+
+	list($category,$service) = explode('_', $test['type']);
+
+	if (strpos($test['hostname'], ':') === 0) {
+		$test['hostname'] .=  ':' . $service_types_ports[$test['type']];
+	}
+
+	plugin_servcheck_debug('Final address is ' . $test['hostname'] , $test);
+
+	if ($test['cred_id'] > 0) {
+		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
+			array($test['cred_id']));
+
+		if (!$cred) {
+			plugin_servcheck_debug('Credential is set but not found!' , $test);
+			cacti_log('Credential not found');
+			$results['result'] = 'error';
+			$results['error'] = 'Credential not found';
+			return $results;
+		} else {
+			plugin_servcheck_debug('Decrypting credential' , $test);
+			$credential = servcheck_decrypt_credential($test['cred_id']);
+
+			if (empty($cred)) {
+				plugin_servcheck_debug('Credential is empty!' , $test);
+				cacti_log('Credential is empty');
+				$results['result'] = 'error';
+				$results['error'] = 'Credential is empty';
+				return $results;
+			}
+			
+			if ($cred['type'] != 'userpass' && $cred['type'] != 'sshkey') {
+				plugin_servcheck_debug('Incorrect credential type, user user/pass or sshkey' , $test);
+				cacti_log('Incorrect credential type, user user/pass or sshkey');
+				$results['result'] = 'error';
+				$results['error'] = 'Incorrect credential type';
+				return $results;
+			}
+		}
+	} else {
+		plugin_servcheck_debug('Credential is not set!' , $test);
+		cacti_log('Credential is not set');
+		$results['result'] = 'error';
+		$results['error'] = 'Credential is not set';
+		return $results;
+	}
+
+	plugin_servcheck_debug('Creating ssh connection' , $test);
+
+	$ssh = new SSH2($test['hostname']);
+
+	if ($credential['type'] == 'sshkey') {
+		plugin_servcheck_debug('Preparing ssh private key file' , $test);
+
+		$keyfilename = $config['base_path'] . '/plugins/servcheck/tmp_data/sshkey_' . $cred['id'];
+		$keyfile = fopen($keyfilename, 'w+');
+		if ($keyfile) {
+			fwrite ($keyfile, $credential['sshkey']);
+			fclose($keyfile);
+
+			$key = new RSA();
+			$key->loadKey(file_get_contents($keyfilename));
+			
+			if ($credential['sshkey_passphrase']) {
+				plugin_servcheck_debug('Using passphrase for private key' , $test);
+				$key->setPassword($credential['sshkey_passphrase']);
+			}
+
+			if (!$ssh->login($credential['ssh_username'], $key)) {
+				plugin_servcheck_debug('Connection failed', $test);
+				$results['result'] = 'error';
+				$results['error'] = 'Connection failed';
+				return $results;
+			}
+			
+		} else {
+			cacti_log('Cannot create private key file ' . $keyfilename);
+			$results['result'] = 'error';
+			$results['error'] = 'Cannot create private key file';
+			return $results;
+		}
+	} elseif ($credential['type'] == 'userpass') {
+		if (!$ssh->login('uzivatel', 'heslo')) {
+			plugin_servcheck_debug('Connection failed', $test);
+			$results['result'] = 'error';
+			$results['error'] = 'Connection failed';
+			return $results;
+		}
+	}
+
+	plugin_servcheck_debug('Connected, running command ' . $test['ssh_command'], $test);
+
+
+	$data = $ssh->exec($test['ssh_command']);
+
+	plugin_servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
+
+	$results['data'] = $data;
+
+	if (isset($key_filename)) {
+		unlink ($key_filename);
+		plugin_servcheck_debug('Removing private key file');
+	}
+
+
+	// If we have set a failed search string, then ignore the normal searches and only alert on it
+	if ($test['search_failed'] != '') {
+
+		plugin_servcheck_debug('Processing search_failed');
+
+		if (strpos($data, $test['search_failed']) !== false) {
+			plugin_servcheck_debug('Search failed string success');
+			$results['result_search'] = 'failed ok';
+			return $results;
+		}
+	}
+
+	plugin_servcheck_debug('Processing search');
+
+	if ($test['search'] != '') {
+		if (strpos($data, $test['search']) !== false) {
+			plugin_servcheck_debug('Search string success');
+			$results['result_search'] = 'ok';
+			return $results;
+		} else {
+			$results['result_search'] = 'not ok';
+			return $results;
+		}
+	}
+
+	if ($test['search_maint'] != '') {
+
+		plugin_servcheck_debug('Processing search maint');
+
+		if (strpos($data, $test['search_maint']) !== false) {
+			plugin_servcheck_debug('Search maint string success');
+			$results['result_search'] = 'maint ok';
+			return $results;
+		}
+	}
+
+	return $results;
 }

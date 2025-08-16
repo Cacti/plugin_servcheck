@@ -158,29 +158,25 @@ $results = array();
 while ($x < 3) {
 	plugin_servcheck_debug('Service Check attempt ' . $x, $test);
 
-	if ($test['type'] != 'restapi') {
-		list($category,$type) = explode('_', $test['type']);
-	} else {
-		$type = 'none';
-		$category = 'restapi';
-	}
-
-	include_once($config['base_path'] . '/plugins/servcheck/includes/tests.php');
+	list($category, $type) = explode('_', $test['type']);
 
 	switch ($category) {
+
 		case 'web':
 		case 'mail':
 		case 'ldap':
-		case 'ftp':
 		case 'smb':
+			include_once($config['base_path'] . '/plugins/servcheck/includes/test_curl.php');
 			$results = curl_try($test);
 			break;
 
 		case 'mqtt':
+			include_once($config['base_path'] . '/plugins/servcheck/includes/test_mqtt.php');
 			$results = mqtt_try($test);
 			break;
 
 		case 'dns':
+			include_once($config['base_path'] . '/plugins/servcheck/includes/test_dns.php');
 			if ($type == 'doh') {
 				$results = doh_try($test);
 			} else {
@@ -188,16 +184,23 @@ while ($x < 3) {
 			}
 			break;
 		case 'rest':
+			include_once($config['base_path'] . '/plugins/servcheck/includes/test_restapi.php');
 			$results = restapi_try($test);
 			break;
 
 		case 'snmp':
+			include_once($config['base_path'] . '/plugins/servcheck/includes/test_snmp.php');
 			$results = snmp_try($test);
 			break;
 
 		case 'ssh':
+			include_once($config['base_path'] . '/plugins/servcheck/includes/test_ssh.php');
 			$results = ssh_try($test);
 			break;
+
+		case 'ftp':
+			include_once($config['base_path'] . '/plugins/servcheck/includes/test_ftp.php');
+			$results = ftp_try($test);
 	}
 
 	if (isset($results['result'])) {
@@ -215,6 +218,19 @@ if (cacti_sizeof($results) == 0) {
 }
 
 plugin_servcheck_debug('failures:'. $test['stats_bad'] . ', triggered:' . $test['triggered'], $test);
+
+// not all tests returns all
+$results['options']['http_code']       = isset($results['options']['http_code']) ? $results['options']['http_code'] : null;
+$results['curl_return']                = isset($results['curl_return']) ? $results['curl_return'] : null;
+$results['options']['total_time']      = isset($results['options']['total_time']) ? $results['options']['total_time'] : null;
+$results['options']['namelookup_time'] = isset($results['options']['namelookup_time']) ? $results['options']['namelookup_time'] : null;
+$results['options']['connect_time']    = isset($results['options']['connect_time']) ? $results['options']['connect_time'] : null;
+$results['options']['redirect_time']   = isset($results['options']['redirect_time']) ? $results['options']['redirect_time'] : null;
+$results['options']['redirect_count']  = isset($results['options']['redirect_count']) ? $results['options']['redirect_count'] : null;
+$results['options']['size_download']   = isset($results['options']['size_download']) ? $results['options']['size_download'] : null;
+$results['options']['speed_download']  = isset($results['options']['speed_download']) ? $results['options']['speed_download'] : null;
+$results['time']                       = time();
+
 
 if ($test['certexpirenotify']) {
 

@@ -875,8 +875,6 @@ function servcheck_show_history() {
 		print $nav;
 	}
 
-	draw_actions_dropdown($servcheck_actions_menu, 1);
-
 	form_end();
 }
 
@@ -885,6 +883,7 @@ function servcheck_show_graph() {
 	global $graph_interval;
 
 	servcheck_show_tab('servcheck_test.php');
+	$id = get_filter_request_var('id');
 
 	$result = db_fetch_row_prepared('SELECT name
 		FROM plugin_servcheck_test
@@ -1121,6 +1120,7 @@ function data_list() {
 //!!pm -  je ten skript nutny?
 	?>
 	<script type='text/javascript'>
+/*
 	$(function() {
 		$('#servcheck2_child').find('.cactiTooltipHint').each(function() {
 			var title = $(this).attr('title');
@@ -1132,7 +1132,7 @@ function data_list() {
 			}
 		});
 	});
-
+*/
 	</script>
 	<?php
 

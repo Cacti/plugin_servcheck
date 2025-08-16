@@ -113,7 +113,7 @@ $credential_types = array(
 	'cookie'   => __('Rest API - Cookie based auth', 'servcheck'),
 	'snmp'     => __('SNMP v1 or v2', 'servcheck'),
 	'snmp3'    => __('SNMP v3', 'servcheck'),
-	'sshkey'   => __('SSH private key', 'servcheck'),
+	'sshkey'   => __('SSH private key - NOT TESTED', 'servcheck'),
 );
 
 
@@ -737,6 +737,76 @@ $servcheck_credential_fields = array(
 		'value' => '|arg1:community|',
 		'max_length' => '30',
 		'size' => '30'
+	),
+	'snmp_security_level' => array(
+		'method' => 'drop_array',
+		'friendly_name' => __('SNMP Security Level'),
+		'description' => __('SNMP v3 Security Level to use when querying the device.'),
+		'on_change' => 'setCredential()',
+		'value' => '|arg1:snmp_security_level|',
+		'default' => read_config_option('snmp_security_level'),
+		'array' => $snmp_security_levels
+	),
+	'snmp_auth_protocol' => array(
+		'method' => 'drop_array',
+		'friendly_name' => __('SNMP Auth Protocol (v3)'),
+		'description' => __('Choose the SNMPv3 Authorization Protocol.'),
+		'value' => '|arg1:snmp_auth_protocol|',
+		'default' => read_config_option('snmp_auth_protocol'),
+		'array' => $snmp_auth_protocols,
+	),
+	'snmp_username' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('SNMP Username (v3)'),
+		'description' => __('SNMP v3 username for this device.'),
+		'value' => '|arg1:snmp_username|',
+		'default' => read_config_option('snmp_username'),
+		'max_length' => '50',
+		'size' => '40'
+	),
+	'snmp_password' => array(
+		'method' => 'textbox_password',
+		'friendly_name' => __('SNMP Password (v3)'),
+		'description' => __('SNMP v3 password for this device.'),
+		'value' => '|arg1:snmp_password|',
+		'default' => read_config_option('snmp_password'),
+		'max_length' => '50',
+		'size' => '40'
+	),
+	'snmp_priv_protocol' => array(
+		'method' => 'drop_array',
+		'friendly_name' => __('SNMP Privacy Protocol (v3)'),
+		'description' => __('Choose the SNMPv3 Privacy Protocol.'),
+		'value' => '|arg1:snmp_priv_protocol|',
+		'default' => read_config_option('snmp_priv_protocol'),
+		'array' => $snmp_priv_protocols,
+	),
+	'snmp_priv_passphrase' => array(
+		'method' => 'textbox_password',
+		'friendly_name' => __('SNMP Privacy Passphrase (v3)'),
+		'description' => __('Choose the SNMPv3 Privacy Passphrase.'),
+		'value' => '|arg1:snmp_priv_passphrase|',
+		'default' => read_config_option('snmp_priv_passphrase'),
+		'max_length' => '200',
+		'size' => '80'
+	),
+	'snmp_context' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('SNMP Context (v3)'),
+		'description' => __('Enter the SNMP Context to use for this device.'),
+		'value' => '|arg1:snmp_context|',
+		'default' => '',
+		'max_length' => '64',
+		'size' => '40'
+	),
+	'snmp_engine_id' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('SNMP Engine ID (v3)'),
+		'description' => __('Enter the SNMP v3 Engine Id or empty.'),
+		'value' => '|arg1:snmp_engine_id|',
+		'default' => '',
+		'max_length' => '64',
+		'size' => '40'
 	),
 	'ssh_username'  => array(
 		'friendly_name' => __('SSH user', 'servcheck'),

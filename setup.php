@@ -79,6 +79,9 @@ function plugin_servcheck_upgrade() {
 		db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN proxy_server TO proxy_id');
 	}
 
+	db_execute('ALTER TABLE plugin_servcheck_log MODIFY curl_return_code int(3) default NULL');
+	db_execute('ALTER TABLE plugin_servcheck_log MODIFY cert_expire timestamp default NULL');
+
 	$exist = db_fetch_cell("SELECT COUNT(*)
 		FROM information_schema.tables
 		WHERE table_schema = SCHEMA()
@@ -298,11 +301,11 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 	$data['columns'][] = array('name' => 'test_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'lastcheck', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
-	$data['columns'][] = array('name' => 'curl_return_code', 'type' => 'int(3)', 'NULL' => false, 'default' => '0');
+	$data['columns'][] = array('name' => 'curl_return_code', 'type' => 'int(3)', 'NULL' => true, 'default' => NULL);
 	$data['columns'][] = array('name' => 'result', 'type' => "enum('ok','not yet','error')", 'NULL' => false, 'default' => 'not yet');
 	$data['columns'][] = array('name' => 'result_search', 'type' => "enum('ok','not ok','failed ok','failed not ok', 'maint ok','not yet', 'not tested')", 'NULL' => false, 'default' => 'not yet');
 	$data['columns'][] = array('name' => 'http_code', 'type' => 'int(11)', 'NULL' => true, 'unsigned' => true);
-	$data['columns'][] = array('name' => 'cert_expire', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
+	$data['columns'][] = array('name' => 'cert_expire', 'type' => 'timestamp', 'NULL' => true, 'default' => 'NULL');
 	$data['columns'][] = array('name' => 'error', 'type' => 'varchar(256)', 'NULL' => true, 'default' => 'NULL');
 	$data['columns'][] = array('name' => 'total_time', 'type' => 'double', 'NULL' => true, 'unsigned' => true);
 	$data['columns'][] = array('name' => 'namelookup_time', 'type' => 'double', 'NULL' => true, 'unsigned' => true);

@@ -27,7 +27,6 @@ if (!defined('SERVCHECK_CIPHER')) {
 	define('SERVCHECK_CIPHER', 'aes-256-cbc');
 }
 
-
 $servcheck_tabs = array(
 	'servcheck_test.php'       => __('Tests', 'servcheck'),
 	'servcheck_ca.php'         => __('CA certificates', 'servcheck'),
@@ -140,6 +139,36 @@ $search_result = array(
 	'not yet'       => __('Not tested yet', 'servcheck'),
 	'not tested'    => __('Search not performed', 'servcheck')
 );
+
+
+$snmp_security_levels = array(
+	'noAuthNoPriv' => 'noAuthNoPriv',
+	'authNoPriv' => 'authNoPriv',
+	'authPriv' => 'authPriv'
+);
+
+
+$snmp_auth_protocols = array(
+	'[None]' => __('[None]'),
+	'MD5'    => __('MD5'),
+	'SHA'    => __('SHA'),
+	'SHA224' => __('SHA-224'),
+	'SHA256' => __('SHA-256'),
+	'SHA392' => __('SHA-392'),
+	'SHA512' => __('SHA-512'),
+);
+
+$snmp_priv_protocols = array(
+	'[None]' => __('[None]'),
+	'DES'    => __('DES'),
+	'AES'    => __('AES'),
+	'AES128' => __('AES-128'),
+	'AES192' => __('AES-192'),
+	'AES192C' => __('AES-192-C'),
+	'AES256' => __('AES-256'),
+	'AES256C' => __('AES-256-C')
+);
+
 
 $httperrors = array(
 	  0 => __('Unable to Connect', 'servcheck'),
@@ -297,7 +326,7 @@ $servcheck_proxy_fields = array(
 		'friendly_name' => __('Credential', 'servcheck'),
 		'method' => 'drop_sql',
 		'default' => 0,
-		'description' => __('Select correct credential', 'servcheck'),
+		'description' => __('Select correct credential or left empty.', 'servcheck'),
 		'value' => '|arg1:cred_id|',
 		'sql' => "SELECT id, name FROM plugin_servcheck_credential WHERE type = 'userpass' ORDER BY name",
 		'none_value' => __('None', 'servcheck'),

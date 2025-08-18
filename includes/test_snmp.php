@@ -37,6 +37,10 @@ function snmp_try ($test) {
 	$results['error'] = '';
 	$results['curl_return'] = 'N/A';
 
+	list($category,$service) = explode('_', $test['type']);
+	plugin_servcheck_debug('Category: ' . $category , $test);
+	plugin_servcheck_debug('Service: ' . $service , $test);
+
 	$s = microtime(true);
 
 	$results['result_search'] = 'not tested';
@@ -77,6 +81,7 @@ function snmp_try ($test) {
 
 	if ($cred['type'] == 'snmp3') {
 		$version = 3;
+		$credential['community'] = '';
 	} else {
 		$credential['snmp_username'] = '';
 		$credential['snmp_password'] = '';
@@ -99,9 +104,11 @@ function snmp_try ($test) {
 		$data = cacti_snmp_walk($test['hostname'], $credential['community'], $test['snmp_oid'], $version,
 		$credential['snmp_username'], $credential['snmp_password'], $credential['snmp_auth_protocol'],
 		$credential['snmp_priv_passphrase'], $credential['snmp_priv_protocol'], $credential['snmp_context'], $port);
+
+		$data = var_export($data, true);
 	}
 
-	plugin_servcheck_debug('SNMP response is ' . $data);
+	plugin_servcheck_debug('Result: ' . clean_up_lines(var_export($data, true)));
 
 	$results['data'] = $data;
 
@@ -129,6 +136,7 @@ function snmp_try ($test) {
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
+			plugin_servcheck_debug('String not found');
 			$results['result_search'] = 'not ok';
 			return $results;
 		}

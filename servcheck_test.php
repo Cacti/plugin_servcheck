@@ -27,18 +27,14 @@ include_once('./include/auth.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
-
 global $refresh;
 
-
-$servcheck_actions_test = array(
+$servcheck_actions_menu = array(
 	1 => __('Delete', 'servcheck'),
 	2 => __('Disable', 'servcheck'),
 	3 => __('Enable', 'servcheck'),
 	4 => __('Duplicate', 'servcheck'),
 );
-
-
 
 set_default_action();
 
@@ -66,6 +62,7 @@ switch (get_request_var('action')) {
 			SET enabled = "on"
 			WHERE id = ?', array($id));
 		}
+
 		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) .'?header=false');
 		exit;
 
@@ -138,24 +135,24 @@ function form_actions() {
 			if (get_filter_request_var('drp_action') == 1) { // delete
 				if (cacti_sizeof($selected_items)) {
 					foreach($selected_items as $item) {
-						db_execute_prepared('DELETE FROM plugin_servcheck_test WHERE id = ?', array($id));
-						db_execute_prepared('DELETE FROM plugin_servcheck_log WHERE test_id = ?', array($id));
+						db_execute_prepared('DELETE FROM plugin_servcheck_test WHERE id = ?', array($item));
+						db_execute_prepared('DELETE FROM plugin_servcheck_log WHERE test_id = ?', array($item));
 					}
 				}
 			} elseif (get_filter_request_var('drp_action') == 2) { // disable
-				foreach ($tests as $id) {
-					db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "" WHERE id = ?', array($id));
+				foreach ($selected_items as $item) {
+					db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "" WHERE id = ?', array($item));
 				}
 			} elseif (get_filter_request_var('drp_action') == 3) { // enable
-				foreach ($tests as $id) {
-					db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "on" WHERE id = ?', array($id));
+				foreach ($selected_items as $item) {
+					db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "on" WHERE id = ?', array($item));
 				}
 			} elseif (get_filter_request_var('drp_action') == 4) { // duplicate
 				$newid = 1;
 
-				foreach ($tests as $id) {
-					$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_test 
-						WHERE id = ?', array($id));
+				foreach ($selected_items as $item) {
+					$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_test
+						WHERE id = ?', array($item));
 
 					$save['id']           = 0;
 					$save['name'] = 'New Service Check (' . $newid . ')';
@@ -567,6 +564,7 @@ function data_edit() {
 		$('#row_hostname').hide();
 		$('#row_snmp_oid').hide();
 		$('#row_ssh_command').hide();
+		$('#row_cred_id').hide();
 
 		switch(category) {
 			case 'web':
@@ -587,7 +585,7 @@ function data_edit() {
 			case 'mail':
 				$('#row_hostname').show();
 
-				if (subcategory != 'smtp' && subcategory != 'smtps' && subcategory != 'smtptls') {
+				if (subcategory == 'smtps' || subcategory == 'smtptls') {
 					$('#row_cred_id').show();
 				}
 

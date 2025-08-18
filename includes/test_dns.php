@@ -34,6 +34,10 @@ function dns_try ($test) {
 	$results['result_search'] = 'not tested';
 	$results['data'] = '';
 
+	list($category,$service) = explode('_', $test['type']);
+	plugin_servcheck_debug('Category: ' . $category , $test);
+	plugin_servcheck_debug('Service: ' . $service , $test);
+
 	$s = microtime(true);
 	plugin_servcheck_debug('Querying ' . $test['hostname'] . ' for record ' . $test['dns_query']);
 
@@ -114,14 +118,16 @@ function doh_try ($test) {
 		CURLOPT_CAINFO         => $ca_info,
 	);
 
+	list($category,$service) = explode('_', $test['type']);
+	plugin_servcheck_debug('Category: ' . $category , $test);
+	plugin_servcheck_debug('Service: ' . $service , $test);
+
 	if (empty($test['hostname']) || empty($test['dns_query'])) {
 		cacti_log('Empty hostname or dns_query, nothing to test');
 		$results['result'] = 'error';
 		$results['error'] = 'Empty hostname/dns';
 		return $results;
 	}
-
-	list($category,$service) = explode('_', $test['type']);
 
 	if (strpos($test['hostname'], ':') === 0) {
 		$test['hostname'] .=  ':' . $service_types_ports[$test['type']];

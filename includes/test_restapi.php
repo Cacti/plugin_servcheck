@@ -45,6 +45,10 @@ function restapi_try ($test) {
 		CURLOPT_CAINFO         => $ca_info,
 	);
 
+	list($category,$service) = explode('_', $test['type']);
+	plugin_servcheck_debug('Category: ' . $category , $test);
+	plugin_servcheck_debug('Service: ' . $service , $test);
+
 	if ($test['cred_id'] > 0) {
 		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', 
 			array($test['cred_id']));

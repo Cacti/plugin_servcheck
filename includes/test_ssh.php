@@ -48,6 +48,10 @@ function ssh_try ($test) {
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
 
+	list($category,$service) = explode('_', $test['type']);
+	plugin_servcheck_debug('Category: ' . $category , $test);
+	plugin_servcheck_debug('Service: ' . $service , $test);
+
 	$s = microtime(true);
 
 	if (empty($test['hostname'])) {

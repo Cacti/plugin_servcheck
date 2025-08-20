@@ -184,15 +184,15 @@ function plugin_servcheck_upgrade() {
 					$cred['data_url'] = $record['data_url'];
 				} elseif ($record['type'] == 'apikey') {
 					$cred['type'] = 'apikey';
-					$cred['username'] = $record['cred_name'];
+					$cred['token_name'] = $record['username'];
 					$cred['data_url'] = $record['data_url'];
-					$cred['cred_value'] = servcheck_show_text($record['cred_value']);
+					$cred['token_value'] = servcheck_show_text($record['cred_value']);
 				} elseif ($record['type'] == 'oauth2') {
 					$cred['type'] = 'oauth2';
-					$cred['username'] = servcheck_show_text($record['username']);
-					$cred['password'] = servcheck_show_text($record['password']);
-					$cred['cred_value'] = servcheck_show_text($record['cred_value']);
-					$cred['cred_name'] = $record['cred_name'];
+					$cred['oauth_client_id'] = servcheck_show_text($record['username']);
+					$cred['oauth_client_secret'] = servcheck_show_text($record['password']);
+					$cred['token_value'] = servcheck_show_text($record['cred_value']);
+					$cred['token_name'] = $record['cred_name'];
 					$cred['cred_valiedity'] = $record['cred_validity'];
 					$cred['data_url'] = $record['data_url'];
 					$cred['login_url'] = $record['login_url'];

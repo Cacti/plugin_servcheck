@@ -163,11 +163,15 @@ while ($x < 3) {
 	switch ($category) {
 
 		case 'web':
-		case 'mail':
 		case 'ldap':
 		case 'smb':
 			include_once($config['base_path'] . '/plugins/servcheck/includes/test_curl.php');
 			$results = curl_try($test);
+			break;
+
+		case 'mail':
+			include_once($config['base_path'] . '/plugins/servcheck/includes/test_mail.php');
+			$results = mail_try($test);
 			break;
 
 		case 'mqtt':
@@ -209,7 +213,7 @@ while ($x < 3) {
 	}
 
 	$x++;
-	usleep(10000);
+	usleep(5000);
 }
 
 if (cacti_sizeof($results) == 0) {

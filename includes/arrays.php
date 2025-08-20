@@ -712,10 +712,7 @@ $servcheck_credential_fields = array(
 	'username' => array(
 		'friendly_name' => __('Username', 'servcheck'),
 		'method' => 'textbox',
-		'description' => __('<i>LDAP -</i> insert something like cn=John Doe,OU=anygroup,DC=example,DC=com<br/>
-					<i>SMB -</i> use DOMAIN/user<br/>
-					<i>MQTT -</i> username<br/>
-					<i>OAuth2-</i> client_id<br/>', 'servcheck'),
+		'description' => __('Username', 'servcheck'),
 		'value' => '|arg1:username|',
 		'max_length' => '100',
 		'size' => '30'
@@ -723,8 +720,7 @@ $servcheck_credential_fields = array(
 	'password' => array(
 		'friendly_name' => __('Password', 'servcheck'),
 		'method' => 'textbox',
-		'description' => __('<i>OAuth2 -</i> client_secret<br/>
-			<i>Anonymous FTP -</i>email address', 'servcheck'),
+		'description' => __('For anonymous FTP insert email address', 'servcheck'),
 		'value' => '|arg1:password|',
 		'max_length' => '100',
 		'size' => '30'
@@ -861,11 +857,109 @@ $servcheck_credential_fields = array(
 		'max_length' => '60',
 		'size' => '30'
 	),
+	'oauth_client_id' => array(
+		'friendly_name' => __('Client ID', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('Oauth Client ID', 'servcheck'),
+		'value' => '|arg1:oauth_client_id|',
+		'max_length' => '100',
+		'size' => '30'
+	),
+	'oauth_client_secret' => array(
+		'friendly_name' => __('Client secret', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('OAuth Client secret', 'servcheck'),
+		'value' => '|arg1:oauth_client_secret|',
+		'max_length' => '100',
+		'size' => '30'
+	),
+	'token_name' => array(
+		'friendly_name' => __('Token name', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('Token name', 'servcheck'),
+		'value' => '|arg1:token_name|',
+		'max_length' => '100',
+		'size' => '30'
+	),
+	'token_value' => array(
+		'friendly_name' => __('Token value', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('Token value', 'servcheck'),
+		'value' => '|arg1:token_value|',
+		'max_length' => '100',
+		'size' => '30'
+	),
+
+
 	'id' => array(
 		'method' => 'hidden_zero',
 		'value' => '|arg1:id|'
 	),
+	'help_spacer' => array(
+		'method' => 'spacer',
+		'friendly_name' => __('Help', 'servcheck')
+	),
 );
+
+$servcheck_credential_help = array(
+	'userpass' => __('<b>Can be used for a lot of service checks:</b><br/>\
+		<i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/>\
+		<i>SMTP on port 587 - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/>\
+		<i>Imap, imaps, pop3, pop3s, ftp, ftps</i> - mandatory. For anonymous ftp, use username \"anonymous\" and email address as password<br/>\
+		<i>LDAP, smb, smbs</i> - mandatory<br/>\
+		<i>MQTT</i> - optional<br/>\
+		<i>SCP, SSH command</i> - you can use this method or private key method', 'servcheck'),
+
+	'basic'    => __('Rest API - Basic HTTP auth. Here is username and password mandatory', 'servcheck'),
+	'apikey'   => __('Rest API - API key auth<br/>Insert API key name and value. Both values are mandatory ', 'servcheck'),
+	'oauth2'   => __('Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials.', 'servcheck'),
+	'cookie'   => __('Rest API - Cookie based auth - both values are mandatory. After login, cookie is returned', 'servcheck'),
+	'snmp'     => __('SNMP v1 or v2 - mandatory, insert community name here', 'servcheck'),
+	'snmp3'    => __('SNMP v3 - The security level determines which parameters are mandatory', 'servcheck'),
+	'sshkey'   => __('SSH private key - Can be used for SCP or SSH command test. These test can use username/password too', 'servcheck'),
+);
+
+
+/*
+
+	'mail_smtptls' => 25,
+	'mail_smtps'   => 465,
+	'mail_imap'    => 143,
+	'mail_imaptls' => 143,
+	'mail_imaps'   => 993,
+	'mail_pop3'    => 110,
+	'mail_pop3tls' => 110,
+	'mail_pop3s'   => 995,
+	'dns_dns'      => 53,
+	'dns_doh'      => 443,
+	'ldap_ldap'    => 389,
+	'ldap_ldaps'   => 636,
+	'ftp_ftp'      => 21,
+	'ftp_ftps'     => 990,
+	'ftp_scp'      => 22,
+	'ftp_tftp'     => 69,
+	'ftp_sftp'     => 22,
+	'smb_smb'      => 389,
+	'smb_smbs'     => 636,
+	'mqtt_mqtt'    => 1883,
+	'rest_no'      => 443,
+	'rest_basic'   => 443,
+	'rest_apikey'  => 443,
+	'rest_oauth2'  => 443,
+	'rest_cookie'  => 443,
+	'snmp_get'     => 161,
+	'snmp_walk'    => 161,
+	'ssh_command'  => 22,
+*/
+
+$servcheck_test_help = array(
+
+	'web_http'  => __('It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth.'),
+	'web_https' => __('The same as HTTP plaintext but adds the ability to test certificates.'),
+	'mail_smtp' => __('It only checks whether the SMTP server is responding. No authentication. You will see server login banner as response.'),
+	'mail_smtptls' => __('tohle dopsat'),
+);
+
 
 
 $curl_error = array(

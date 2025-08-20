@@ -574,6 +574,7 @@ function data_edit() {
 				$('#row_path').show();
 				$('#row_requiresauth').show();
 				$('#row_proxy_id').show();
+				$('#row_cred_id').show();
 
 				if (subcategory == 'https') {
 					$('#row_ca_id').show();

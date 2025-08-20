@@ -228,17 +228,17 @@ function form_save() {
 				break;
 
 			case 'apikey':
-				if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-					$cred['username'] = get_nfilter_request_var('username');
+				if (isset_request_var('token_name') && get_nfilter_request_var('token_name') != '' && get_filter_request_var('token_name', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['token_name'] = get_nfilter_request_var('token_name');
 				} else {
-					$_SESSION['sess_error_fields']['username'] = 'username';
+					$_SESSION['sess_error_fields']['token_name'] = 'token_name';
 					raise_message(3);
 				}
 
-				if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-					$cred['password'] = get_nfilter_request_var('password');
+				if (isset_request_var('token_value') && get_nfilter_request_var('token_value') != '' && get_filter_request_var('token_value', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['token_value'] = get_nfilter_request_var('token_value');
 				} else {
-					$_SESSION['sess_error_fields']['password'] = 'password';
+					$_SESSION['sess_error_fields']['token_value'] = 'token_value';
 					raise_message(3);
 				}
 
@@ -253,17 +253,17 @@ function form_save() {
 
 			case 'oauth2':
 
-				if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-					$cred['username'] = get_nfilter_request_var('username');
+				if (isset_request_var('oauth_client_id') && get_nfilter_request_var('oauth_client_id') != '' && get_filter_request_var('oauth_client_id', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['oauth_client_id'] = get_nfilter_request_var('oauth_client_id');
 				} else {
-					$_SESSION['sess_error_fields']['username'] = 'username';
+					$_SESSION['sess_error_fields']['oauth_client_id'] = 'oauth_client_id';
 					raise_message(3);
 				}
 
-				if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
-					$cred['password'] = get_nfilter_request_var('password');
+				if (isset_request_var('oauth_client_secret') && get_nfilter_request_var('oauth_client_secret') != '' && get_filter_request_var('oauth_client_secret', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+					$cred['oauth_client_secret'] = get_nfilter_request_var('oauth_client_secret');
 				} else {
-					$_SESSION['sess_error_fields']['password'] = 'password';
+					$_SESSION['sess_error_fields']['oauth_client_secret'] = 'oauth_client_secret';
 					raise_message(3);
 				}
 
@@ -281,17 +281,17 @@ function form_save() {
 					raise_message(3);
 				}
 
-				if (isset_request_var('cred_name') && get_nfilter_request_var('cred_name') != '' && get_filter_request_var('cred_name', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,30}$/')))) {
-					$cred['cred_name'] = get_nfilter_request_var('cred_name');
+				if (isset_request_var('token_name') && get_nfilter_request_var('token_name') != '' && get_filter_request_var('token_name', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,30}$/')))) {
+					$cred['token_name'] = get_nfilter_request_var('token_name');
 				} else {
-					$_SESSION['sess_error_fields']['cred_name'] = 'cred_name';
+					$_SESSION['sess_error_fields']['token_name'] = 'token_name';
 					raise_message(3);
 				}
 
-				if (isset_request_var('cred_value') && (get_nfilter_request_var('cred_value') != '' && get_filter_request_var('cred_value', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,250}$/'))))) {
-					$cred['cred_value'] = get_nfilter_request_var('cred_value');
+				if (isset_request_var('token_value') && (get_nfilter_request_var('token_value') != '' && get_filter_request_var('token_value', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,250}$/'))))) {
+					$cred['token_value'] = get_nfilter_request_var('token_value');
 				} else {
-					$_SESSION['sess_error_fields']['cred_value'] = 'cred_value';
+					$_SESSION['sess_error_fields']['token_value'] = 'token_value';
 					raise_message(3);
 				}
 
@@ -418,7 +418,7 @@ function form_save() {
 
 
 function data_edit() {
-	global $servcheck_credential_fields;
+	global $servcheck_credential_fields, $servcheck_credential_help;
 
 	/* ================= input validation ================= */
 	get_filter_request_var('id');
@@ -450,6 +450,8 @@ function data_edit() {
 		)
 	);
 
+	print '<div name="specific_help" id="specific_help" class="left"></div>';
+
 	form_hidden_box('save_component', '1', '');
 
 	html_end_box(true, true);
@@ -459,32 +461,49 @@ function data_edit() {
 	?>
 	<script type='text/javascript'>
 
-	$(function() {
+	<?php
+	print 'if (typeof myVar !== "undefined") {';
+	print 'let servcheck_help = {};';
+	foreach ($servcheck_credential_help as $key => $value) {
+		print 'servcheck_help["' . $key . '"] = "' . $value . '";';
+	}
+	print '}';
+	?>
 
+
+	$(function() {
 		setCredential();
 	});
+
 
 	function setCredential() {
 		var credential_type = $('#type').val();
 
-				$('#row_username').hide();
-				$('#row_password').hide();
-				$('#row_cred_value').hide();
-				$('#row_cred_name').hide();
-				$('#row_login_url').hide();
-				$('#row_data_url').hide();
-				$('#row_community').hide();
-				$('#row_ssh_username').hide();
-				$('#row_sshkey').hide();
-				$('#row_sshkey_passphrase').hide();
-				$('#row_snmp_security_level').hide();
-				$('#row_snmp_username').hide();
-				$('#row_snmp_password').hide();
-				$('#row_snmp_auth_protocol').hide();
-				$('#row_snmp_priv_passphrase').hide();
-				$('#row_snmp_priv_protocol').hide();
-				$('#row_snmp_context').hide();
-				$('#row_snmp_engine_id').hide();
+		$('#row_username').hide();
+		$('#row_password').hide();
+		$('#row_cred_value').hide();
+		$('#row_cred_name').hide();
+		$('#row_login_url').hide();
+		$('#row_data_url').hide();
+		$('#row_community').hide();
+		$('#row_ssh_username').hide();
+		$('#row_sshkey').hide();
+		$('#row_sshkey_passphrase').hide();
+		$('#row_snmp_security_level').hide();
+		$('#row_snmp_username').hide();
+		$('#row_snmp_password').hide();
+		$('#row_snmp_auth_protocol').hide();
+		$('#row_snmp_priv_passphrase').hide();
+		$('#row_snmp_priv_protocol').hide();
+		$('#row_snmp_context').hide();
+		$('#row_snmp_engine_id').hide();
+		$('#row_oauth_client_id').hide();
+		$('#row_oauth_client_secret').hide();
+		$('#row_token_name').hide();
+		$('#row_token_value').hide();
+
+
+		$('#specific_help').html(servcheck_help[credential_type]);
 
 		switch(credential_type) {
 			case 'no':
@@ -501,20 +520,17 @@ function data_edit() {
 				$('#password').attr('type', 'password');
 				break;
 			case 'apikey':
-				$('#row_username').show();
-				$('#row_cred_value').show();
+				$('#row_token_name').show();
+				$('#row_token_value').show();
 				$('#row_data_url').hide();
-				$('#cred_value').attr('type', 'password');
 				break;
 			case 'oauth2':
-				$('#row_username').show();
-				$('#row_password').show();
-				$('#row_cred_name').show();
-				$('#row_cred_value').show();
+				$('#row_oauth_client_id').show();
+				$('#row_oauth_client_secret').show();
+				$('#row_token_name').show();
+				$('#row_token_value').show();
 				$('#row_login_url').show();
 				$('#row_data_url').show();
-				$('#password').attr('type', 'password');
-				$('#cred_value').attr('type', 'password');
 				break;
 			case 'cookie':
 				$('#row_username').show();
@@ -525,7 +541,6 @@ function data_edit() {
 			case 'snmp':
 				$('#row_community').show();
 				break;
-
 			case 'snmp3':
 				$('#row_snmp_security_level').show();
 				$('#row_snmp_username').show();

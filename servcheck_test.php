@@ -586,11 +586,8 @@ function data_edit() {
 			case 'mail':
 				$('#row_hostname').show();
 
-				if (subcategory == 'smtps' || subcategory == 'smtptls') {
+				if (subcategory != 'smtp') {
 					$('#row_cred_id').show();
-				}
-
-				if (subcategory == 'smtps') {
 					$('#row_ca_id').show();
 					$('#row_checkcert').show();
 					$('#row_certexpirenotify').show();

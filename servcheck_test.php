@@ -794,30 +794,16 @@ function servcheck_show_history() {
 		'result_search' => array(
 			'display' => __('Search result', 'servcheck'),
 		),
-		'curl_return_code' => array(
-			'display' => __('Curl return code', 'servcheck'),
+		'duration' => array(
+			'display' => __('Duration', 'servcheck'),
 			'align'   => 'right',
 			'sort'    => 'DESC'
 		),
-		'namelookup_time' => array(
-			'display' => __('DNS', 'servcheck'),
-			'align'   => 'right',
-			'sort'    => 'DESC'
+		'certificate' => array(
+			'display' => __('Certificate', 'servcheck'),
 		),
-		'connect_time' => array(
-			'display' => __('Connect', 'servcheck'),
-			'align'   => 'right',
-			'sort'    => 'DESC'
-		),
-		'redirect_time' => array(
-			'display' => __('Redirect', 'servcheck'),
-			'align'   => 'right',
-			'sort'    => 'DESC'
-		),
-		'total_time' => array(
-			'display' => __('Total', 'servcheck'),
-			'align'   => 'right',
-			'sort'    => 'DESC'
+		'curl' => array(
+			'display' => __('Curl', 'servcheck'),
 		),
 	);
 
@@ -839,6 +825,13 @@ function servcheck_show_history() {
 
 	if (count($result)) {
 		foreach ($result as $row) {
+
+			if ($row['cert_expire'] == '0000-00-00 00:00:00') {
+				$days = 'N/A';
+			} else {
+				$days = floor((strtotime($row['cert_expire']) - time())/86400) . ' ' . __('days', 'servcheck') ;
+			}
+
 			if ($row['result_search'] != 'ok') {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 100, 0.6)";
 			} elseif ($row['result'] == 'ok') {
@@ -854,12 +847,9 @@ function servcheck_show_history() {
 			form_selectable_cell(($row['result'] == 'ok' ? __('Service UP', 'servcheck') : __('Service Down', 'servcheck')), $row['id']);
 			form_selectable_cell($search_result[$row['result_search']], $row['id']);
 
-			form_selectable_cell('<a href="' . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_curl_code.php?findcode=' . $row['curl_return_code']) . '">' . $row['curl_return_code'] . '<a/>', $row['id'], '', 'right');
-
-			form_selectable_cell(round($row['namelookup_time'], 4), $row['id'], '', ($row['namelookup_time'] > 4 ? 'background-color: red;text-align:right' : ($row['namelookup_time'] > 1 ? 'background-color: yellow;text-align:right':'text-align:right')));
-			form_selectable_cell(round($row['connect_time'], 4), $row['id'], '', ($row['connect_time'] > 4 ? 'background-color: red;text-align:right' : ($row['connect_time'] > 1 ? 'background-color: yellow;text-align:right':'text-align:right')));
-			form_selectable_cell(round($row['redirect_time'], 4), $row['id'], '', ($row['redirect_time'] > 4 ? 'background-color: red;text-align:right' : ($row['redirect_time'] > 1 ? 'background-color: yellow;text-align:right':'text-align:right')));
-			form_selectable_cell(round($row['total_time'], 4), $row['id'], '', ($row['total_time'] > 4 ? 'background-color: red;text-align:right' : ($row['total_time'] > 1 ? 'background-color: yellow;text-align:right':'text-align:right')));
+			form_selectable_cell($row['duration'], $row['id'], '', 'right');
+			form_selectable_cell($days, $row['id']);
+			form_selectable_cell($row['curl_response'], $row['id']);
 
 			form_end_row();
 		}

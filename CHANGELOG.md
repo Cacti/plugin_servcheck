@@ -7,6 +7,7 @@
 * feature#9: Add Rest API test
 * feature#23: Add MQTT and DNS over HTTPS test
 * feature: Add ability to bypass resolver for HTTP/HTTPS tests
+* feature: Add long duration test notification
 * issue#35: Fix certificate check does not function as expected
 * issue#2: Fix graph legend overlap
 * issue#31: Fix poller_servcheck.php does not run any test when it runs automatically from cacti poller
@@ -15,6 +16,7 @@
 * issue#30: Fix DNS tests
 * issue: Better input validation
 * issue#42: Fix tests duplicating
+
 
 --- 0.2 ---
 

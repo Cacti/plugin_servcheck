@@ -36,7 +36,7 @@ Each test has icon for display last result. You can use it for creation  of sear
 
 Each tests return specific data:
 HTTP and HTTPS - returns webpage
-SMTP, SMTPS - only connect to SMTP server and displays EHLO/HELO
+SMTP, SMTPS - connect to SMTP server and displays banner and EHLO/HELO
 POP3, POP3S - try to login and display first unread message
 IMAP, IMAPS - try to login and display unread messages in inbox
 DNS - try to resolve A record and return answer
@@ -47,6 +47,7 @@ SCP - try to login and download specific file
 SMB, SMBS - try to login and download specific file
 MQTT - try to subscribe topic or wait for any message and print result
 SNMP - get or walk specified OID and return answer
+SSH_COMMAND - ssh connect, run command and return output
 
 ## Important
 Recommendation for tests with download -  please download only small not binary files.

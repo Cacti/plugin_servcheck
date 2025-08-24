@@ -23,12 +23,12 @@
 */
 
 
-
 function dns_try ($test) {
 	include_once(__DIR__ . '/../includes/mxlookup.php');
 
 	// default result
 	$results['result'] = 'ok';
+	$results['curl'] = false;
 	$results['time'] = time();
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
@@ -41,10 +41,9 @@ function dns_try ($test) {
 	$s = microtime(true);
 	plugin_servcheck_debug('Querying ' . $test['hostname'] . ' for record ' . $test['dns_query']);
 
-	$a = new mxlookup($test['dns_query'], $test['hostname'], $test['timeout_trigger']);
+	$a = new mxlookup($test['dns_query'], $test['hostname'], $test['timeout_trigger'] > 0 ? ($test['timeout_trigger']+1) : 5);
 
 	$t = microtime(true) - $s;
-	$results['options']['connect_time'] = $results['options']['total_time'] = $results['options']['namelookup_time'] = round($t, 4);
 
 	if (!cacti_sizeof($a->arrMX)) {
 		$results['result'] = 'error';
@@ -105,6 +104,7 @@ function doh_try ($test) {
 
 	// default result
 	$results['result'] = 'ok';
+	$results['curl'] = true;
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
 
@@ -114,7 +114,7 @@ function doh_try ($test) {
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_MAXREDIRS      => 4,
-		CURLOPT_TIMEOUT        => $test['timeout_trigger'],
+		CURLOPT_TIMEOUT        => $test['timeout_trigger'] > 0 ? ($test['timeout_trigger'] + 1) : 5 ,
 		CURLOPT_CAINFO         => $ca_info,
 	);
 

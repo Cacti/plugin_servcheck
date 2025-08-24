@@ -35,6 +35,7 @@ function mqtt_try ($test) {
 
 	// default result
 	$results['result'] = 'ok';
+	$results['curl'] = true;
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
 

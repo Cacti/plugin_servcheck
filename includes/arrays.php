@@ -511,11 +511,12 @@ $servcheck_test_fields = array(
 		'value' => '|arg1:downtrigger|',
 	),
 	'timeout_trigger' => array(
-		'friendly_name' => __('Time Out', 'servcheck'),
-		'method' => 'drop_array',
-		'array' => $servcheck_seconds,
-		'default' => 4,
-		'description' => __('How many seconds to allow the page to timeout before reporting it as down.', 'servcheck'),
+		'friendly_name' => __('Long duration alert', 'servcheck'),
+		'method' => 'textbox',
+		'default' => 0,
+		'max_length' => '2',
+		'size' => '30',
+		'description' => __('If the test time is greater than this value three times in a row, send a notification.', 'servcheck'),
 		'value' => '|arg1:timeout_trigger|',
 	),
 	'verifications_spacer' => array(
@@ -600,6 +601,10 @@ $servcheck_test_fields = array(
 	'id' => array(
 		'method' => 'hidden_zero',
 		'value' => '|arg1:id|'
+	),
+	'help_spacer' => array(
+		'method' => 'spacer',
+		'friendly_name' => __('Help', 'servcheck')
 	),
 );
 
@@ -889,8 +894,6 @@ $servcheck_credential_fields = array(
 		'max_length' => '100',
 		'size' => '30'
 	),
-
-
 	'id' => array(
 		'method' => 'hidden_zero',
 		'value' => '|arg1:id|'
@@ -921,7 +924,6 @@ $servcheck_credential_help = array(
 
 
 /*
-
 	'mail_smtptls' => 25,
 	'mail_smtps'   => 465,
 	'mail_imap'    => 143,
@@ -953,7 +955,6 @@ $servcheck_credential_help = array(
 */
 
 $servcheck_test_help = array(
-
 	'web_http'  => __('It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth.'),
 	'web_https' => __('The same as HTTP plaintext but adds the ability to test certificates.'),
 	'mail_smtp' => __('It only checks whether the SMTP server is responding. No authentication. You will see server login banner as response.'),

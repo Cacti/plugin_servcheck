@@ -33,6 +33,7 @@ function snmp_try ($test) {
 
 	// default result
 	$results['result'] = 'ok';
+	$results['curl'] = false;
 	$results['time'] = time();
 	$results['error'] = '';
 	$results['curl_return'] = 'N/A';
@@ -113,8 +114,6 @@ function snmp_try ($test) {
 	$results['data'] = $data;
 
 	$t = microtime(true) - $s;
-
-	$results['options']['connect_time'] = $results['options']['total_time'] = $results['options']['namelookup_time'] = round($t, 4);
 
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {

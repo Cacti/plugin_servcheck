@@ -31,6 +31,7 @@ function restapi_try ($test) {
 
 	// default result
 	$results['result'] = 'ok';
+	$results['curl'] = true;
 	$results['time'] = time();
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
@@ -41,7 +42,7 @@ function restapi_try ($test) {
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_MAXREDIRS      => 4,
-		CURLOPT_TIMEOUT        => $test['timeout_trigger'],
+		CURLOPT_TIMEOUT        => $test['timeout_trigger'] > 0 ? ($test['timeout_trigger'] + 1) : 5,
 		CURLOPT_CAINFO         => $ca_info,
 	);
 
@@ -290,8 +291,8 @@ function restapi_try ($test) {
 	$results['data'] = $data;
 
 	$t = microtime(true) - $s;
-	$results['options']['connect_time'] = $results['options']['total_time'] = $results['options']['namelookup_time'] = round($t, 4);
-
+	
+//!! tohle tu asi byt nemusi	$results['options']['connect_time'] = $results['options']['total_time'] = $results['options']['namelookup_time'] = round($t, 4);
 
 	// Get information regarding a specific transfer, cert info too
 	$results['options'] = curl_getinfo($process);

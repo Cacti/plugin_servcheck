@@ -116,10 +116,42 @@ function plugin_servcheck_upgrade() {
 
 		if (!db_column_exists('plugin_servcheck_test', 'cred_id')) {
 			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'triggered_duration', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
+
 		}
 
 		if (!db_column_exists('plugin_servcheck_proxy', 'cred_id')) {
 			api_plugin_db_add_column('servcheck', 'plugin_servcheck_proxy', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
+		}
+
+		// convert log data
+
+		if (!db_column_exists('plugin_servcheck_log', 'duration')) {
+			$data['columns'][] = array('name' => 'curl_response', 'type' => 'text', 'NULL' => true, 'default' => NULL);
+			$data['columns'][] = array('name' => 'duration', 'type' => 'float', 'NULL' => false, 'default' => 0);
+
+			db_execute('UPDATE plugin_servcheck_log SET total_time = 0  WHERE total_time IS NULL');
+			db_execute('UPDATE plugin_servcheck_log SET duration = total_time');
+			db_execute("UPDATE plugin_servcheck_log SET curl_response = CONCAT(
+				'HTTP code: ', http_code, ', ',
+				'DNS time: ', ROUND(namelookup_time,3), ', ',
+				'Conn. time: ', ROUND(connect_time,3), ', ',
+				'Redir. time: ', ROUND(redirect_time,3), ', ',
+				'Redir. count: ', redirect_count, ', ',
+				'Download: ', ROUND(size_download,3), ', ',
+				'Speed: ', ROUND(speed_download,3), ', ',
+				'CURL code: ', curl_return_code
+				)");
+
+			db_remove_column('plugin_servcheck_log', 'http_code');
+			db_remove_column('plugin_servcheck_log', 'total_time');
+			db_remove_column('plugin_servcheck_log', 'namelookup_time');
+			db_remove_column('plugin_servcheck_log', 'connect_time');
+			db_remove_column('plugin_servcheck_log', 'redirect_time');
+			db_remove_column('plugin_servcheck_log', 'redirect_count');
+			db_remove_column('plugin_servcheck_log', 'size_download');
+			db_remove_column('plugin_servcheck_log', 'speed_download');
+			db_remove_column('plugin_servcheck_log', 'curl_return_code');
 		}
 
 		// convert credentials to separated tab
@@ -276,7 +308,7 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'external_id', 'type' => 'varchar(20)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'how_often', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '1');
 	$data['columns'][] = array('name' => 'downtrigger', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '3');
-	$data['columns'][] = array('name' => 'timeout_trigger', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '4');
+	$data['columns'][] = array('name' => 'timeout_trigger', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'stats_ok', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'stats_bad', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'failures', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
@@ -301,19 +333,14 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 	$data['columns'][] = array('name' => 'test_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'lastcheck', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
-	$data['columns'][] = array('name' => 'curl_return_code', 'type' => 'int(3)', 'NULL' => true, 'default' => NULL);
 	$data['columns'][] = array('name' => 'result', 'type' => "enum('ok','not yet','error')", 'NULL' => false, 'default' => 'not yet');
 	$data['columns'][] = array('name' => 'result_search', 'type' => "enum('ok','not ok','failed ok','failed not ok', 'maint ok','not yet', 'not tested')", 'NULL' => false, 'default' => 'not yet');
-	$data['columns'][] = array('name' => 'http_code', 'type' => 'int(11)', 'NULL' => true, 'unsigned' => true);
+	$data['columns'][] = array('name' => 'curl_response', 'type' => 'text', 'NULL' => true, 'default' => NULL);
 	$data['columns'][] = array('name' => 'cert_expire', 'type' => 'timestamp', 'NULL' => true, 'default' => 'NULL');
 	$data['columns'][] = array('name' => 'error', 'type' => 'varchar(256)', 'NULL' => true, 'default' => 'NULL');
-	$data['columns'][] = array('name' => 'total_time', 'type' => 'double', 'NULL' => true, 'unsigned' => true);
-	$data['columns'][] = array('name' => 'namelookup_time', 'type' => 'double', 'NULL' => true, 'unsigned' => true);
-	$data['columns'][] = array('name' => 'connect_time', 'type' => 'double', 'NULL' => true, 'unsigned' => true);
-	$data['columns'][] = array('name' => 'redirect_time', 'type' => 'double', 'NULL' => true, 'unsigned' => true);
-	$data['columns'][] = array('name' => 'redirect_count', 'type' => 'int(11)', 'NULL' => true, 'unsigned' => true);
-	$data['columns'][] = array('name' => 'size_download', 'type' => 'int(11)', 'NULL' => true, 'unsigned' => true);
-	$data['columns'][] = array('name' => 'speed_download', 'type' => 'int(11)', 'NULL' => true, 'unsigned' => true);
+	$data['columns'][] = array('name' => 'duration', 'type' => 'float', 'NULL' => false, 'default' => 0);
+
+
 	$data['primary']   = 'id';
 	$data['keys'][] = array('name' => 'test_id', 'columns' => 'test_id');
 	$data['keys'][] = array('name' => 'lastcheck', 'columns' => 'lastcheck');
@@ -608,7 +635,7 @@ function servcheck_config_settings() {
 		),
 		'servcheck_change_command' => array(
 			'friendly_name' => __('Status Change Command', 'servcheck'),
-			'description' => __('When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CURL_RETURN_CODE&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062', 'servcheck'),
+			'description' => __('When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062', 'servcheck'),
 			'method' => 'filepath',
 			'file_type' => 'binary',
 			'size' => '100',

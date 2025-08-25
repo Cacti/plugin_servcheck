@@ -112,7 +112,7 @@ function plugin_servcheck_graph ($id, $interval) {
 	global $config, $graph_interval;
 
 	$result = db_fetch_assoc_prepared("SELECT
-		lastcheck, total_time, namelookup_time, connect_time
+		lastcheck, duration
 		FROM plugin_servcheck_log
 		WHERE test_id = ? AND
 		lastcheck > DATE_SUB(NOW(), INTERVAL ? HOUR)
@@ -128,9 +128,7 @@ function plugin_servcheck_graph ($id, $interval) {
 
 	foreach ($result as $row) {
 		$lastcheck[]       = $row['lastcheck'];
-		$total_time[]      = round($row['total_time'], 5);
-		$namelookup_time[] = round($row['namelookup_time'], 5);
-		$connect_time[]    = round($row['connect_time'], 5);
+		$duration[]      = round($row['duration'], 5);
 	}
 
 	// Start chart attributes
@@ -141,9 +139,7 @@ function plugin_servcheck_graph ($id, $interval) {
 			'axes' => array(), // Setup the Axes (keep it empty to use only the left Y-axis)
 			'labels' => true,
 			'names' => array(
-				'Total' => 'Total',
-				'Connect' => 'Connect',
-				'DNS' => 'DNS'
+				'Duration' => 'Duration',
 			)
 		),
 		'size' => array(
@@ -174,9 +170,7 @@ function plugin_servcheck_graph ($id, $interval) {
 	// Add the data columns
 	$columns = array();
 	$columns[] = array_merge(array('x'), $lastcheck);
-	$columns[] = array_merge(array('Total'), $total_time);
-	$columns[] = array_merge(array('Connect'), $connect_time);
-	$columns[] = array_merge(array('DNS'), $namelookup_time);
+	$columns[] = array_merge(array('Duration'), $total_time);
 	$chart['data']['columns'] = $columns;
 
 	// Setup the Axis
@@ -276,7 +270,6 @@ function servcheck_encrypt_credential ($cred) {
 
 	$encrypted = openssl_encrypt(json_encode($cred), SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
 	return base64_encode($servcheck_iv . $encrypted);
-
 }
 
 function servcheck_decrypt_credential ($cred_id) {
@@ -293,7 +286,7 @@ function servcheck_decrypt_credential ($cred_id) {
 	$encrypted = db_fetch_cell_prepared('SELECT data FROM plugin_servcheck_credential
 		WHERE id = ?',
 		array($cred_id));
-//var_dump($encrypted);
+
 	$encrypted = base64_decode($encrypted);
 
 	$iv_length     = intval(openssl_cipher_iv_length(SERVCHECK_CIPHER));
@@ -301,65 +294,8 @@ function servcheck_decrypt_credential ($cred_id) {
 	$encrypted     = substr($encrypted, $iv_length);
 
 	$decrypted=openssl_decrypt ($encrypted, SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
-//var_dump($decrypted);
 //!! udelat test porovnani?
 	return json_decode($decrypted, true);
 }
 
 
-//!! ta se asi zrusi
-function save_credential ($save_id, $cred_type, $cred, $name = null) {
-
-	if (is_null($name)) {
-		$name = 'new_' . time();
-	}
-
-	if (!cacti_sizeof($cred)) {
-		if ($save_id) { // user removed credentials
-			$cred_id = db_fetch_cell_prepared('SELECT cred_id
-				FROM plugin_servcheck_proxy
-				WHERE id = ?',
-				array($save_id));
-
-			db_execute_prepared('DELETE FROM plugin_servcheck_credential
-				WHERE id = ?',
-				array($cred_id));
-		}
-
-		return 0;
-	}
-
-	if ($save_id == 0) { // new record, we need save new credentials
-		$data = servcheck_encrypt_credential($cred);
-
-		db_execute_prepared("INSERT INTO plugin_servcheck_credential
-			(name, type, data)
-			VALUES (?, 'userpass', ?)",
-			array($name, $data));
-
-		$cred_id = db_fetch_insert_id();
-	} else {
-		$cred_id = db_fetch_cell_prepared('SELECT cred_id
-			FROM plugin_servcheck_proxy
-			WHERE id = ?',
-			array($save_id));
-
-		$data = servcheck_encrypt_credential($cred);
-
-		if ($cred_id == 0) { // it was without auth, user changed it later
-			db_execute_prepared("INSERT INTO plugin_servcheck_credential
-				(name, type, data)
-				VALUES (?, 'userpass', ?)",
-				array($name, $data));
-			$cred_id = db_fetch_insert_id();
-
-		} else {
-			db_execute_prepared('UPDATE plugin_servcheck_credential
-				SET data = ?
-				WHERE id = ?',
-				array($data, $cred_id));
-		}
-	}
-
-	return $cred_id;
-}

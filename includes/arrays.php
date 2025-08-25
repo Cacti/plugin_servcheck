@@ -53,14 +53,10 @@ $service_types = array(
 	'ldap_ldap'    => __('LDAP plaintext, default port 389', 'servcheck'),
 	'ldap_ldaps'   => __('LDAP encrypted (LDAPS), default port 636', 'servcheck'),
 	'ftp_ftp'      => __('FTP plaintext, default port 21', 'servcheck'),
-	'ftp_ftps'     => __('FTP encrypted (FTPS), default port 990', 'servcheck'),
-	'ftp_scp'      => __('SCP download file, default port 22', 'servcheck'),
 	'ftp_tftp'     => __('TFTP protocol - download file, default port 69', 'servcheck'),
-	'ftp_sftp'     => __('SFTP protocol - directory listing, default port 22', 'servcheck'),
 	'smb_smb'      => __('SMB plaintext download file, default port 445', 'servcheck'),
 	'smb_smbs'     => __('SMB encrypted (SMBS) download file, default port 445', 'servcheck'),
 	'mqtt_mqtt'    => __('MQTT plaintext, default port 1883', 'servcheck'),
-	'rest_no'      => __('Rest API without auth', 'servcheck'),
 	'rest_basic'   => __('Rest API with Basic HTTP auth', 'servcheck'),
 	'rest_apikey'  => __('Rest API with API key auth', 'servcheck'),
 	'rest_oauth2'  => __('Rest API with OAuth2/Bearer token auth', 'servcheck'),
@@ -68,6 +64,8 @@ $service_types = array(
 	'snmp_get'     => __('SNMP get', 'servcheck'),
 	'snmp_walk'    => __('SNMP walk', 'servcheck'),
 	'ssh_command'  => __('SSH command on remote system', 'servcheck'),
+	'ssh_scp'      => __('SCP download file, default port 22', 'servcheck'),
+	'ssh_sftp'     => __('SFTP protocol - directory listing, default port 22', 'servcheck'),
 );
 
 $service_types_ports = array(
@@ -87,14 +85,12 @@ $service_types_ports = array(
 	'ldap_ldap'    => 389,
 	'ldap_ldaps'   => 636,
 	'ftp_ftp'      => 21,
-	'ftp_ftps'     => 990,
 	'ftp_scp'      => 22,
 	'ftp_tftp'     => 69,
 	'ftp_sftp'     => 22,
 	'smb_smb'      => 389,
 	'smb_smbs'     => 636,
 	'mqtt_mqtt'    => 1883,
-	'rest_no'      => 443,
 	'rest_basic'   => 443,
 	'rest_apikey'  => 443,
 	'rest_oauth2'  => 443,
@@ -904,11 +900,11 @@ $servcheck_credential_fields = array(
 	),
 );
 
-$servcheck_credential_help = array(
+$servcheck_help_credential = array(
 	'userpass' => __('<b>Can be used for a lot of service checks:</b><br/>\
 		<i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/>\
 		<i>SMTP on port 587 - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/>\
-		<i>Imap, imaps, pop3, pop3s, ftp, ftps</i> - mandatory. For anonymous ftp, use username \"anonymous\" and email address as password<br/>\
+		<i>Imap, imaps, pop3, pop3s, ftp</i> - mandatory. For anonymous ftp, use username \"anonymous\" and email address as password<br/>\
 		<i>LDAP, smb, smbs</i> - mandatory<br/>\
 		<i>MQTT</i> - optional<br/>\
 		<i>SCP, SSH command</i> - you can use this method or private key method', 'servcheck'),
@@ -923,44 +919,43 @@ $servcheck_credential_help = array(
 );
 
 
-/*
-	'mail_smtptls' => 25,
-	'mail_smtps'   => 465,
-	'mail_imap'    => 143,
-	'mail_imaptls' => 143,
-	'mail_imaps'   => 993,
-	'mail_pop3'    => 110,
-	'mail_pop3tls' => 110,
-	'mail_pop3s'   => 995,
-	'dns_dns'      => 53,
-	'dns_doh'      => 443,
-	'ldap_ldap'    => 389,
-	'ldap_ldaps'   => 636,
-	'ftp_ftp'      => 21,
-	'ftp_ftps'     => 990,
-	'ftp_scp'      => 22,
-	'ftp_tftp'     => 69,
-	'ftp_sftp'     => 22,
-	'smb_smb'      => 389,
-	'smb_smbs'     => 636,
-	'mqtt_mqtt'    => 1883,
-	'rest_no'      => 443,
-	'rest_basic'   => 443,
-	'rest_apikey'  => 443,
-	'rest_oauth2'  => 443,
-	'rest_cookie'  => 443,
-	'snmp_get'     => 161,
-	'snmp_walk'    => 161,
-	'ssh_command'  => 22,
-*/
 
-$servcheck_test_help = array(
-	'web_http'  => __('It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth.'),
-	'web_https' => __('The same as HTTP plaintext but adds the ability to test certificates.'),
-	'mail_smtp' => __('It only checks whether the SMTP server is responding. No authentication. You will see server login banner as response.'),
-	'mail_smtptls' => __('tohle dopsat'),
+$servcheck_help_test = array(
+	'web_http'     => __('It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth.', 'servcheck'),
+	'web_https'    => __('The same as HTTP plaintext but adds the ability to test certificates.', 'servcheck'),
+	'mail_smtp'    => __('It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response.', 'servcheck'),
+	'mail_smtptls' => __('Unecrypted + STARTTL. It is also possible to test the validity of the certificate. Without username and password, \
+		you will see server login banner and ehlo response. With credential, login will be performed', 'servcheck'),
+	'mail_smtps'   => __('Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password\
+		AUTH LOGIN will be tested.', 'servcheck') ,
+	'mail_imap'    => __('Unecrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. \
+		With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method.', 'servcheck'),
+	'mail_imaptls' => __('The same as unecrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS.', 'servcheck'),
+	'mail_imaps'   => __('Encrypted IMAP, you can try login and test certificate and user login', 'servcheck'),
+	'mail_pop3'    => __('Unecrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. \
+		With credential login will be tested and try to read list of messages', 'servcheck'),
+	'mail_pop3tls' => __('The same as unecrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS.', 'servcheck'),
+	'mail_pop3s'   => __('Encrypted POP3, you can try login and test certificate and user login.', 'servcheck'),
+	'dns_dns'      => __('Try to resolve DNS record on specified DNS server', 'servcheck'),
+	'dns_doh'      => __('Try DNS over HTTPS.', 'servcheck'),
+	'ldap_ldap'    => __('All parameters are mandatory. Perform unecrypted LDAP login and search', 'servcheck'),
+	'ldap_ldaps'   => __('All parameters are mandatory. Perform encrypted LDAP login and search', 'servcheck'),
+	'ftp_ftp'      => __('Unecrypted FTP connection, login and try to download specific file. For anonymous connection use login *anonymous* and email address as password. The content \
+		of the file is returned.', 'servcheck'),
+	'ftp_tftp'     => __('Try to download file from TFTP server. The content of the file is returned.', 'servcheck'),
+	'smb_smb'      => __('Try SMB protocol, username and password are mandatory. Try to login and download file.', 'servcheck'),
+	'smb_smbs'     => __('Try SMB protocol, username and password are mandatory. Try to login and download file.', 'servcheck'),
+	'mqtt_mqtt'    => __('Connetct to MQTT server and listen for any message. ', 'servcheck'),
+	'rest_basic'   => __('REST API test with basic HTTP auth. Prepare credential first.', 'servcheck'),
+	'rest_apikey'  => __('REST API test with API key auth. Prepare credential first.', 'servcheck'),
+	'rest_oauth2'  => __('REST API test with Oauth2. Prepare credential first.', 'servcheck'),
+	'rest_cookie'  => __('REST API test with cookie auth. Prepare credential first.', 'servcheck'),
+	'snmp_get'     => __('Try SNMP get method. Output for specified OID is returned. Credential is mandatory, you have to prepare SNMP v.1,2 or v3 credential first.', 'servcheck'),
+	'snmp_walk'    => __('Try SNMP walk method. Output for specified OID is returned. Credential is mandatory, you have to prepare SNMP v.1,2 or v3 credential first.', 'servcheck'),
+	'ssh_command'  => __('Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible.', 'srvcheck'),
+	'ssh_scp'      => __('Encrypted SCP connection, login and try to download specific file.', 'servcheck'),
+	'ssh_sftp'     => __('SFTP protocol on port 22, username and password are mandatory. Try to login and download file.', 'servcheck'),
 );
-
 
 
 $curl_error = array(

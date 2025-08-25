@@ -33,17 +33,13 @@ function dns_try ($test) {
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
 	$results['data'] = '';
+	$results['start'] = microtime(true);
 
 	list($category,$service) = explode('_', $test['type']);
-	plugin_servcheck_debug('Category: ' . $category , $test);
-	plugin_servcheck_debug('Service: ' . $service , $test);
 
-	$s = microtime(true);
 	plugin_servcheck_debug('Querying ' . $test['hostname'] . ' for record ' . $test['dns_query']);
 
 	$a = new mxlookup($test['dns_query'], $test['hostname'], $test['timeout_trigger'] > 0 ? ($test['timeout_trigger']+1) : 5);
-
-	$t = microtime(true) - $s;
 
 	if (!cacti_sizeof($a->arrMX)) {
 		$results['result'] = 'error';
@@ -107,6 +103,7 @@ function doh_try ($test) {
 	$results['curl'] = true;
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
+	$results['start'] = microtime(true);
 
 	$options = array(
 		CURLOPT_HEADER         => true,
@@ -119,8 +116,6 @@ function doh_try ($test) {
 	);
 
 	list($category,$service) = explode('_', $test['type']);
-	plugin_servcheck_debug('Category: ' . $category , $test);
-	plugin_servcheck_debug('Service: ' . $service , $test);
 
 	if (empty($test['hostname']) || empty($test['dns_query'])) {
 		cacti_log('Empty hostname or dns_query, nothing to test');
@@ -136,8 +131,6 @@ function doh_try ($test) {
 	$url = 'https://' . $test['hostname'] . '/' . $test['dns_query'];
 
 	plugin_servcheck_debug('Final url is ' . $url , $test);
-
-	$s = microtime(true);
 
 	$process = curl_init($url);
 
@@ -184,9 +177,6 @@ function doh_try ($test) {
 	$data = curl_exec($process);
 	$data = str_replace(array("'", "\\"), array(''), $data);
 	$results['data'] = $data;
-
-	$t = microtime(true) - $s;
-	$results['options']['connect_time'] = $results['options']['total_time'] = $results['options']['namelookup_time'] = round($t, 4);
 
 	// Get information regarding a specific transfer, cert info too
 	$results['options'] = curl_getinfo($process);

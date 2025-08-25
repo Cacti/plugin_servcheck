@@ -50,8 +50,6 @@ function ssh_try ($test) {
 	$results['result_search'] = 'not tested';
 
 	list($category,$service) = explode('_', $test['type']);
-	plugin_servcheck_debug('Category: ' . $category , $test);
-	plugin_servcheck_debug('Service: ' . $service , $test);
 
 	$s = microtime(true);
 
@@ -134,9 +132,8 @@ function ssh_try ($test) {
 			if (!$ssh->login($credential['ssh_username'], $key)) {
 				plugin_servcheck_debug('Connection failed', $test);
 
-	$errors = $ssh->getStdError();
-	plugin_servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
-
+				$errors = $ssh->getStdError();
+				plugin_servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
 
 				$results['result'] = 'error';
 				$results['error'] = 'Connection failed';
@@ -153,8 +150,8 @@ function ssh_try ($test) {
 		if (!$ssh->login($credential['username'], $credential['password'])) {
 			plugin_servcheck_debug('Connection failed', $test);
 
-	$errors = $ssh->getStdError();
-	plugin_servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+			$errors = $ssh->getStdError();
+			plugin_servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
 
 			$results['result'] = 'error';
 			$results['error'] = 'Connection failed';

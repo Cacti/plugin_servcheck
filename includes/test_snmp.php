@@ -39,8 +39,6 @@ function snmp_try ($test) {
 	$results['curl_return'] = 'N/A';
 
 	list($category,$service) = explode('_', $test['type']);
-	plugin_servcheck_debug('Category: ' . $category , $test);
-	plugin_servcheck_debug('Service: ' . $service , $test);
 
 	$s = microtime(true);
 

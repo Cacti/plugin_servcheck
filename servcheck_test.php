@@ -437,7 +437,7 @@ function purge_log_events($id) {
 
 
 function data_edit() {
-	global $servcheck_test_fields, $service_types;
+	global $servcheck_test_fields, $service_types, $servcheck_help_test;
 
 	/* ================= input validation ================= */
 	get_filter_request_var('id');
@@ -482,6 +482,15 @@ function data_edit() {
 	<script type='text/javascript'>
 	$(function() {
 		var msWidth = 100;
+
+	<?php
+	print 'if (typeof servcheck_help === "undefined") {';
+	print 'var servcheck_help = {};';
+	foreach ($servcheck_help_test as $key => $value) {
+		print 'servcheck_help["' . $key . '"] = "' . $value . '";';
+	}
+	print '}';
+	?>
 
 		$('#notify_accounts option').each(function() {
 			if ($(this).textWidth() > msWidth) {
@@ -616,6 +625,12 @@ function data_edit() {
 				$('#row_path').show();
 				$('#row_hostname').show();
 				$('#row_cred_id').show();
+
+				if (subcategory == 'ftps') {
+					$('#row_ca_id').show();
+					$('#row_checkcert').show();
+					$('#row_certexpirenotify').show();
+				}
 
 				if (subcategory == 'tftp') {
 					$('#row_cred_id').hide();

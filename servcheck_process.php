@@ -148,6 +148,7 @@ if (function_exists('plugin_maint_check_servcheck_test')) {
 	}
 }
 
+
 $test['days'] = 0;
 $test['duration'] = false;
 register_startup($test_id);
@@ -159,7 +160,10 @@ $results = array();
 while ($x < 3) {
 	plugin_servcheck_debug('Service Check attempt ' . $x, $test);
 
-	list($category, $type) = explode('_', $test['type']);
+	list($category, $service) = explode('_', $test['type']);
+
+	plugin_servcheck_debug('Category: ' . $category , $test);
+	plugin_servcheck_debug('Service: ' . $service , $test);
 
 	switch ($category) {
 
@@ -182,7 +186,7 @@ while ($x < 3) {
 
 		case 'dns':
 			include_once($config['base_path'] . '/plugins/servcheck/includes/test_dns.php');
-			if ($type == 'doh') {
+			if ($service == 'doh') {
 				$results = doh_try($test);
 			} else {
 				$results = dns_try($test);
@@ -399,10 +403,14 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 plugin_servcheck_debug('Updating Statistics', $test);
 
 if ($results['curl']) {
+	if (!isset($results['curl_return'])) {
+		$results['curl_return'] = 'N/A';
+	}
+
 	$curl  = 'HTTP code: ' . $results['options']['http_code'] . ', DNS time: ' . round($results['options']['namelookup_time'], 3) . ', ';
 	$curl .= 'Conn. time: ' . round($results['options']['connect_time'],3) . ', Redir. time: ' . round($results['options']['redirect_time'], 3) . ', ';
 	$curl .= 'Redir. count: ' . $results['options']['redirect_time'] . ', Download: ' . round($results['options']['size_download'], 3) . ', ';
-	$curl .= 'Speed: ' . $results['options']['speed_download'] . ', CURL code: ' . $results['options']['curl_return_code'];
+	$curl .= 'Speed: ' . $results['options']['speed_download'] . ', CURL code: ' . $results['curl_return'];
 } else {
 	$curl = 'N/A';
 }

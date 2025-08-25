@@ -418,7 +418,7 @@ function form_save() {
 
 
 function data_edit() {
-	global $servcheck_credential_fields, $servcheck_credential_help;
+	global $servcheck_credential_fields, $servcheck_help_credential;
 
 	/* ================= input validation ================= */
 	get_filter_request_var('id');
@@ -462,14 +462,13 @@ function data_edit() {
 	<script type='text/javascript'>
 
 	<?php
-	print 'if (typeof myVar !== "undefined") {';
-	print 'let servcheck_help = {};';
-	foreach ($servcheck_credential_help as $key => $value) {
+	print 'if (typeof servcheck_help === "undefined") {';
+	print 'var servcheck_help = {};';
+	foreach ($servcheck_help_credential as $key => $value) {
 		print 'servcheck_help["' . $key . '"] = "' . $value . '";';
 	}
 	print '}';
 	?>
-
 
 	$(function() {
 		setCredential();

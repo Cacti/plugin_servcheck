@@ -37,10 +37,9 @@ function snmp_try ($test) {
 	$results['time'] = time();
 	$results['error'] = '';
 	$results['curl_return'] = 'N/A';
+	$results['start'] = microtime(true);
 
 	list($category,$service) = explode('_', $test['type']);
-
-	$s = microtime(true);
 
 	$results['result_search'] = 'not tested';
 
@@ -110,8 +109,6 @@ function snmp_try ($test) {
 	plugin_servcheck_debug('Result: ' . clean_up_lines(var_export($data, true)));
 
 	$results['data'] = $data;
-
-	$t = microtime(true) - $s;
 
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {

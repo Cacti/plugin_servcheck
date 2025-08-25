@@ -54,6 +54,7 @@ $service_types = array(
 	'ldap_ldaps'   => __('LDAP encrypted (LDAPS), default port 636', 'servcheck'),
 	'ftp_ftp'      => __('FTP plaintext, default port 21', 'servcheck'),
 	'ftp_tftp'     => __('TFTP protocol - download file, default port 69', 'servcheck'),
+	'ftp_scp'      => __('SCP download file, default port 22', 'servcheck'),
 	'smb_smb'      => __('SMB plaintext download file, default port 445', 'servcheck'),
 	'smb_smbs'     => __('SMB encrypted (SMBS) download file, default port 445', 'servcheck'),
 	'mqtt_mqtt'    => __('MQTT plaintext, default port 1883', 'servcheck'),
@@ -64,7 +65,6 @@ $service_types = array(
 	'snmp_get'     => __('SNMP get', 'servcheck'),
 	'snmp_walk'    => __('SNMP walk', 'servcheck'),
 	'ssh_command'  => __('SSH command on remote system', 'servcheck'),
-	'ssh_scp'      => __('SCP download file, default port 22', 'servcheck'),
 	'ssh_sftp'     => __('SFTP protocol - directory listing, default port 22', 'servcheck'),
 );
 
@@ -87,7 +87,6 @@ $service_types_ports = array(
 	'ftp_ftp'      => 21,
 	'ftp_scp'      => 22,
 	'ftp_tftp'     => 69,
-	'ftp_sftp'     => 22,
 	'smb_smb'      => 389,
 	'smb_smbs'     => 636,
 	'mqtt_mqtt'    => 1883,
@@ -98,6 +97,7 @@ $service_types_ports = array(
 	'snmp_get'     => 161,
 	'snmp_walk'    => 161,
 	'ssh_command'  => 22,
+	'ssh_sftp'     => 22,
 );
 
 $credential_types = array(
@@ -108,7 +108,7 @@ $credential_types = array(
 	'cookie'   => __('Rest API - Cookie based auth', 'servcheck'),
 	'snmp'     => __('SNMP v1 or v2', 'servcheck'),
 	'snmp3'    => __('SNMP v3', 'servcheck'),
-	'sshkey'   => __('SSH private key - NOT TESTED', 'servcheck'),
+	'sshkey'   => __('SSH private key - Cacti 1.2.31+', 'servcheck'),
 );
 
 
@@ -451,7 +451,7 @@ $servcheck_test_fields = array(
 	'path' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('Path Part of URL', 'servcheck'),
-		'description' => __('For web service insert at least "/" or something like "/any/path/". For FTP listing must end with char "/". For TFTP/SCP/SMB download test insert /path/file. For MQTT you can specify topic (bedroom/temp). Left blank for any topic.', 'servcheck'),
+		'description' => __('For web service insert at least "/" or something like "/any/path/".', 'servcheck'),
 		'value' => '|arg1:path|',
 		'max_length' => '140',
 		'size' => '30'
@@ -940,12 +940,13 @@ $servcheck_help_test = array(
 	'dns_doh'      => __('Try DNS over HTTPS.', 'servcheck'),
 	'ldap_ldap'    => __('All parameters are mandatory. Perform unecrypted LDAP login and search', 'servcheck'),
 	'ldap_ldaps'   => __('All parameters are mandatory. Perform encrypted LDAP login and search', 'servcheck'),
-	'ftp_ftp'      => __('Unecrypted FTP connection, login and try to download specific file. For anonymous connection use login *anonymous* and email address as password. The content \
+	'ftp_ftp'      => __('Unecrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content \
 		of the file is returned.', 'servcheck'),
-	'ftp_tftp'     => __('Try to download file from TFTP server. The content of the file is returned.', 'servcheck'),
+	'ftp_tftp'     => __('Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned.', 'servcheck'),
+	'ftp_scp'      => __('Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt).', 'servcheck'),
 	'smb_smb'      => __('Try SMB protocol, username and password are mandatory. Try to login and download file.', 'servcheck'),
 	'smb_smbs'     => __('Try SMB protocol, username and password are mandatory. Try to login and download file.', 'servcheck'),
-	'mqtt_mqtt'    => __('Connetct to MQTT server and listen for any message. ', 'servcheck'),
+	'mqtt_mqtt'    => __('Connetct to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic', 'servcheck'),
 	'rest_basic'   => __('REST API test with basic HTTP auth. Prepare credential first.', 'servcheck'),
 	'rest_apikey'  => __('REST API test with API key auth. Prepare credential first.', 'servcheck'),
 	'rest_oauth2'  => __('REST API test with Oauth2. Prepare credential first.', 'servcheck'),
@@ -953,8 +954,7 @@ $servcheck_help_test = array(
 	'snmp_get'     => __('Try SNMP get method. Output for specified OID is returned. Credential is mandatory, you have to prepare SNMP v.1,2 or v3 credential first.', 'servcheck'),
 	'snmp_walk'    => __('Try SNMP walk method. Output for specified OID is returned. Credential is mandatory, you have to prepare SNMP v.1,2 or v3 credential first.', 'servcheck'),
 	'ssh_command'  => __('Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible.', 'srvcheck'),
-	'ssh_scp'      => __('Encrypted SCP connection, login and try to download specific file.', 'servcheck'),
-	'ssh_sftp'     => __('SFTP protocol on port 22, username and password are mandatory. Try to login and download file.', 'servcheck'),
+	'ssh_sftp'     => __('SFTP protocol on port 22, username and password are mandatory. Try to login and download file specified in path (/path/to/file.txt).', 'servcheck'),
 );
 
 

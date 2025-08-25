@@ -80,11 +80,9 @@ function ftp_try ($test) {
 		$test['hostname'] .=  ':' . $service_types_ports[$test['type']];
 	}
 
-	if ($service == 'ftp')  {
+	if ($service == 'ftp' || $service == 'scp')  {
 
 		if ($cred['type'] == 'userpass') {
-
-
 			// curl needs username with %40 instead of @
 			$final_cred  = str_replace('@', '%40', $credential['username']);
 			$final_cred .= ':';

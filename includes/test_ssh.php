@@ -27,31 +27,15 @@
 function ssh_try ($test) {
 	global $config, $service_types_ports;
 
-	set_include_path($config['include_path'] . '/vendor/phpseclib/');
-	include('Net/SSH2.php');
-	include('Crypt/Base.php');
-	include('Crypt/Blowfish.php');
-	include('Crypt/Rijndael.php');
-	include('Crypt/RSA.php');
-	include('Crypt/AES.php');
-	include('Crypt/Hash.php');
-	include('Crypt/RC4.php');
-	include('Crypt/Twofish.php');
-	include('Crypt/DES.php');
-	include('Crypt/Random.php');
-	include('Crypt/TripleDES.php');
-	include('Math/BigInteger.php');
-
 	// default result
 	$results['result'] = 'ok';
 	$results['curl'] = false;
 	$results['time'] = time();
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
+	$results['start'] = microtime(true);
 
 	list($category,$service) = explode('_', $test['type']);
-
-	$s = microtime(true);
 
 	if (empty($test['hostname'])) {
 		cacti_log('Empty hostname, nothing to test');
@@ -70,8 +54,13 @@ function ssh_try ($test) {
 
 	plugin_servcheck_debug('Creating ssh connection' , $test);
 
-	$ssh = new \phpseclib\Net\SSH2($test['hostname']);
-	$ssh->enableQuietMode();
+	if ($service == 'command') {
+		$ssh = new \phpseclib3\Net\SSH2($test['hostname']);
+		$ssh->enableQuietMode();
+	} else {
+		$ssh = new \phpseclib3\Net\SFTP($test['hostname']);
+		$ssh->enableQuietMode();
+	}
 
 	if ($test['cred_id'] > 0) {
 		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
@@ -121,12 +110,10 @@ function ssh_try ($test) {
 			fwrite ($keyfile, $credential['sshkey']);
 			fclose($keyfile);
 
-			$key = new \phpseclib\Crypt\RSA();
-			$key->loadKey(file_get_contents($keyfilename));
-			
-			if ($credential['sshkey_passphrase']) {
-				plugin_servcheck_debug('Using passphrase for private key' , $test);
-				$key->setPassword($credential['sshkey_passphrase']);
+			if (isset($credential['sshkey_passphrase'])) {
+				$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename),$credential['sshkey_passphrase']);
+			} else {
+				$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename));
 			}
 
 			if (!$ssh->login($credential['ssh_username'], $key)) {
@@ -161,7 +148,11 @@ function ssh_try ($test) {
 
 	plugin_servcheck_debug('Connected, running command ' . $test['ssh_command'], $test);
 
-	$data = $ssh->exec($test['ssh_command']);
+	if ($service == 'command') {
+		$data = $ssh->exec($test['ssh_command']);
+	} else {
+		$data = $ssh->nlist();
+	}
 
 	$errors = $ssh->getStdError();
 	plugin_servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
@@ -174,8 +165,6 @@ function ssh_try ($test) {
 		unlink ($key_filename);
 		plugin_servcheck_debug('Removing private key file');
 	}
-
-	$t = microtime(true) - $s;
 
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {

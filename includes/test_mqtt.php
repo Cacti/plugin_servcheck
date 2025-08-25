@@ -38,6 +38,7 @@ function mqtt_try ($test) {
 	$results['curl'] = true;
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
+	$results['start'] = microtime(true);
 
 	list($category,$service) = explode('_', $test['type']);
 
@@ -88,8 +89,6 @@ function mqtt_try ($test) {
 
 	plugin_servcheck_debug('Final url is ' . $url , $test);
 
-	$s = microtime(true);
-
 	$process = curl_init($url);
 //!!pm - pak to po sobe nemazu
 	$filename = '/tmp/mqtt_' . time() . '.txt';
@@ -116,10 +115,6 @@ function mqtt_try ($test) {
 
 	curl_exec($process);
 	$x = fclose($file);
-
-	$t = microtime(true) - $s;
-	$results['options']['connect_time'] = $results['options']['total_time'] = $results['options']['namelookup_time'] = round($t, 4);
-
 
 	$data = str_replace(array("'", "\\"), array(''), file_get_contents($filename));
 	$results['data'] = $data;

@@ -35,6 +35,7 @@ function restapi_try ($test) {
 	$results['time'] = time();
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
+	$results['start'] = microtime(true);
 
 	$options = array(
 		CURLOPT_HEADER         => true,
@@ -274,8 +275,6 @@ function restapi_try ($test) {
 
 	plugin_servcheck_debug('Final url is ' . $url , $test);
 
-	$s = microtime(true);
-
 	$process = curl_init($url);
 
 	plugin_servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
@@ -287,10 +286,6 @@ function restapi_try ($test) {
 	$data = curl_exec($process);
 	$data = str_replace(array("'", "\\"), array(''), $data);
 	$results['data'] = $data;
-
-	$t = microtime(true) - $s;
-	
-//!! tohle tu asi byt nemusi	$results['options']['connect_time'] = $results['options']['total_time'] = $results['options']['namelookup_time'] = round($t, 4);
 
 	// Get information regarding a specific transfer, cert info too
 	$results['options'] = curl_getinfo($process);

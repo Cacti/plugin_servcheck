@@ -350,8 +350,8 @@ function form_save() {
 			}
 		}
 
-		if ($category == 'ssh') {
-			if (filter_var(get_nfilter_request_var('ssh_command'), FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '#^[a-zA-Z0-9\./\-]+$#')))) {
+		if ($service == 'command') {
+			if (filter_var(get_nfilter_request_var('ssh_command'), FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '#^[a-zA-Z0-9\./\- ]+$#')))) {
 				$save['ssh_command'] = get_nfilter_request_var('ssh_command');
 			} else {
 				$_SESSION['sess_error_fields']['ssh_command'] = 'ssh_command';
@@ -662,8 +662,10 @@ function data_edit() {
 			case 'ssh':
 				$('#row_hostname').show();
 				$('#row_cred_id').show();
-				$('#row_ssh_command').show();
 
+				if (subcategory == 'command') {
+					$('#row_ssh_command').show();
+				}
 				break;
 		}
 	}

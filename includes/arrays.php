@@ -506,14 +506,14 @@ $servcheck_test_fields = array(
 		'description' => __('How many poller cycles the service must be DOWN before an alert email is triggered. The same number is applicable in case of \'Site Recovering\'.', 'servcheck'),
 		'value' => '|arg1:downtrigger|',
 	),
-	'timeout_trigger' => array(
+	'duration_trigger' => array(
 		'friendly_name' => __('Long duration alert', 'servcheck'),
 		'method' => 'textbox',
 		'default' => 0,
 		'max_length' => '2',
 		'size' => '30',
 		'description' => __('If the test time is greater than this value three times in a row, send a notification.', 'servcheck'),
-		'value' => '|arg1:timeout_trigger|',
+		'value' => '|arg1:duration_trigger|',
 	),
 	'verifications_spacer' => array(
 		'method' => 'spacer',
@@ -954,7 +954,7 @@ $servcheck_help_test = array(
 	'snmp_get'     => __('Try SNMP get method. Output for specified OID is returned. Credential is mandatory, you have to prepare SNMP v.1,2 or v3 credential first.', 'servcheck'),
 	'snmp_walk'    => __('Try SNMP walk method. Output for specified OID is returned. Credential is mandatory, you have to prepare SNMP v.1,2 or v3 credential first.', 'servcheck'),
 	'ssh_command'  => __('Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible.', 'srvcheck'),
-	'ssh_sftp'     => __('SFTP protocol on port 22, username and password are mandatory. Try to login and download file specified in path (/path/to/file.txt).', 'servcheck'),
+	'ssh_sftp'     => __('SFTP protocol on port 22, username and password and path are mandatory. Try to do directory listing of path.', 'servcheck'),
 );
 
 

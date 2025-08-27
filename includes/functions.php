@@ -112,6 +112,88 @@ function plugin_servcheck_graph ($id, $interval) {
 	global $config, $graph_interval;
 
 	$result = db_fetch_assoc_prepared("SELECT
+		lastcheck, duration FROM plugin_servcheck_log
+		WHERE test_id = ? AND
+		lastcheck > DATE_SUB(NOW(), INTERVAL ? HOUR)
+		ORDER BY id", array($id, $interval));
+
+	if (cacti_sizeof($result) < 5) {
+		print __('No data', 'servcheck');
+		return;
+	}
+
+	$xid = 'xx' . substr(md5($graph_interval[$interval]), 0, 7);
+
+
+	foreach ($result as $row) {
+		$lastcheck[]       = $row['lastcheck'];
+		$duration[]      = round($row['duration'], 5);
+	}
+
+	// Start chart attributes
+	$chart = array(
+		'bindto' => "#line_$xid",
+		'size' => array(
+			'height' => 300,
+			'width'=> 600
+		),
+		'point' => array (
+			'r' => 1.5
+		),
+		'data' => array(
+			'type' => 'area',
+			'x' => 'x',
+			'xFormat' => '%Y-%m-%d %H:%M:%S' // rikam mu, jaky je format te timeserie
+		)
+	);
+
+	$columns = array();
+	$axis = array();
+	$axes = array();
+
+	// Add the X Axis first
+	$columns[] = array_merge(array('x'), $lastcheck);
+	$columns[] = array_merge(array('Duration'), $duration);
+//	$columns[] = array_merge(array('Connect'), $connect_time);
+//	$columns[] = array_merge(array('DNS '), $namelookup_time);
+
+	// Setup the Axis
+	$axis['x'] = array(
+		'type' => 'timeseries',
+		'tick' => array(
+			'format'=> '%m-%d %H:%M',
+			'culling' => array('max' => 6),
+		)
+	);
+
+	$axis['y'] = array(
+		'tick' => array(
+			'label' => array(
+				'text' => 'Response in ms',
+			),
+			'show' => true
+		)
+	);
+
+	$chart['data']['axes']= $axes;
+	$chart['axis']= $axis;
+	$chart['data']['columns'] = $columns;
+
+	$chart_data = json_encode($chart);
+
+	$content  = '<div id="line_' . $xid. '"></div>';
+	$content .= '<script type="text/javascript">';
+	$content .= 'line_' . $xid . ' = bb.generate(' . $chart_data . ');';
+	$content .= '</script>';
+
+	print $content;
+}
+
+/*
+function plugin_servcheck_graph ($id, $interval) {
+	global $config, $graph_interval;
+
+	$result = db_fetch_assoc_prepared("SELECT
 		lastcheck, duration
 		FROM plugin_servcheck_log
 		WHERE test_id = ? AND
@@ -170,7 +252,7 @@ function plugin_servcheck_graph ($id, $interval) {
 	// Add the data columns
 	$columns = array();
 	$columns[] = array_merge(array('x'), $lastcheck);
-	$columns[] = array_merge(array('Duration'), $total_time);
+	$columns[] = array_merge(array('Duration'), $duration);
 	$chart['data']['columns'] = $columns;
 
 	// Setup the Axis
@@ -200,22 +282,22 @@ function plugin_servcheck_graph ($id, $interval) {
 
 // The below block can be used as part of the debugging to display the data retrieved along with the graph.
 // Uncomment/Comment as required.
-/*
-print '<style>
-    .json-output {
-        max-width: 800px; 
-        overflow-wrap: break-word; 
-        word-wrap: break-word;
-        white-space: pre-wrap;
-        border: 1px solid #ccc;
-        padding: 10px;
-        background-color: #f9f9f9;
-    }
-</style>';
-print '<pre class="json-output">';
-var_dump($chart_data);
-print '</pre>';
-*/
+
+//print '<style>
+   // .json-output {
+   //     max-width: 800px; 
+  //      overflow-wrap: break-word; 
+ //       word-wrap: break-word;
+ //       white-space: pre-wrap;
+ //       border: 1px solid #ccc;
+   //     padding: 10px;
+  //      background-color: #f9f9f9;
+ //   }
+//</style>';
+//print '<pre class="json-output">';
+//var_dump($chart_data);
+//print '</pre>';
+//
 
 	$content  = '<div id="chart_' . $xid. '"></div>';
 	$content  .= '<div id="legend_container_' . $xid. '" style="display: flex; flex-direction: column; align-items: flex-start;">';
@@ -228,6 +310,7 @@ print '</pre>';
 
 	print $content;
 }
+*/
 
 // I know, it not secure, it is better than plaintext
 // will be removed in 0.5

@@ -151,7 +151,7 @@ function ssh_try ($test) {
 	if ($service == 'command') {
 		$data = $ssh->exec($test['ssh_command']);
 	} else {
-		$data = $ssh->nlist();
+		$data = $ssh->nlist($test['path']);
 	}
 
 	$errors = $ssh->getStdError();

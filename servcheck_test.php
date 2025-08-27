@@ -269,9 +269,9 @@ function form_save() {
 		$save['ca_id']       = get_filter_request_var('ca_id');
 		$save['external_id'] = get_filter_request_var('external_id');
 		$save['proxy_id']    = get_filter_request_var('proxy_id');
-		$save['downtrigger']     = get_filter_request_var('downtrigger');
-		$save['timeout_trigger'] = get_filter_request_var('timeout_trigger');
-		$save['how_often']       = get_filter_request_var('how_often');
+		$save['downtrigger']      = get_filter_request_var('downtrigger');
+		$save['duration_trigger'] = get_filter_request_var('duration_trigger');
+		$save['how_often']        = get_filter_request_var('how_often');
 
 		if (isset_request_var('enabled')) {
 			$save['enabled'] = 'on';
@@ -381,16 +381,15 @@ function form_save() {
 			$save['certexpirenotify'] = '';
 		}
 
-		if ($category == 'web' || $category == 'ftp' || $category == 'smb') {
+		if ($category == 'web' || $category == 'ftp' || $category == 'smb'  || $subcategory == 'sftp') {
 			if (isset_request_var('path')) {
 				form_input_validate(get_nfilter_request_var('path'), 'path', '^[a-zA-Z0-9_;\-\/\.\?=]+$', false, 3);
 				$save['path'] = get_nfilter_request_var('path');
 			}
 		}
 
-
 		$save['name']    = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
-//!!pm - tyhle bych mel nejak osetrovat asi
+
 		$save['search']          = get_nfilter_request_var('search');
 		$save['search_maint']    = get_nfilter_request_var('search_maint');
 		$save['search_failed']   = get_nfilter_request_var('search_failed');
@@ -399,7 +398,6 @@ function form_save() {
 		if (api_plugin_installed('thold')) {
 			$save['notify_list']     = get_filter_request_var('notify_list');
 		}
-
 
 		plugin_servcheck_remove_old_users();
 
@@ -459,7 +457,6 @@ function data_edit() {
 	if (!api_plugin_installed('thold')) {
 		$servcheck_test_fields['notify_list']['method'] = 'hidden';
 	}
-
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
@@ -577,7 +574,6 @@ function data_edit() {
 
 		switch(category) {
 			case 'web':
-
 				$('#row_hostname').show();
 				$('#row_ipaddress').show();
 				$('#row_path').show();
@@ -626,12 +622,6 @@ function data_edit() {
 				$('#row_hostname').show();
 				$('#row_cred_id').show();
 
-				if (subcategory == 'ftps') {
-					$('#row_ca_id').show();
-					$('#row_checkcert').show();
-					$('#row_certexpirenotify').show();
-				}
-
 				if (subcategory == 'tftp') {
 					$('#row_cred_id').hide();
 				}
@@ -666,6 +656,10 @@ function data_edit() {
 				if (subcategory == 'command') {
 					$('#row_ssh_command').show();
 				}
+				if (subcategory == 'sftp') {
+					$('#row_path').show();
+				}
+
 				break;
 		}
 	}
@@ -843,9 +837,10 @@ function servcheck_show_history() {
 	if (count($result)) {
 		foreach ($result as $row) {
 
-			if ($row['cert_expire'] == '0000-00-00 00:00:00') {
+			if ($row['cert_expire'] == '0000-00-00 00:00:00' || is_null($row['cert_expire'])) {
 				$days = 'N/A';
 			} else {
+			echo "aaa-";
 				$days = floor((strtotime($row['cert_expire']) - time())/86400) . ' ' . __('days', 'servcheck') ;
 			}
 
@@ -867,7 +862,6 @@ function servcheck_show_history() {
 			form_selectable_cell($row['duration'], $row['id'], '', 'right');
 			form_selectable_cell($days, $row['id']);
 			form_selectable_cell($row['curl_response'], $row['id']);
-
 			form_end_row();
 		}
 	}
@@ -992,6 +986,11 @@ function data_list() {
 			'sort'    => 'ASC',
 			'align'   => 'right'
 		),
+		'duration' => array(
+			'display' => __('Duration', 'servcheck'),
+			'sort'    => 'ASC',
+			'align'   => 'right'
+		),
 		'triggered' => array(
 			'display' => __('Triggered', 'servcheck'),
 			'sort'    => 'ASC',
@@ -1004,11 +1003,6 @@ function data_list() {
 		),
 		'result_search' => array(
 			'display' => __('Search result', 'servcheck'),
-			'sort'    => 'ASC',
-			'align'   => 'right'
-		),
-		'curl_result' => array(
-			'display' => __('Curl return code', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
 		),
@@ -1038,6 +1032,7 @@ function data_list() {
 				$last_log['result'] = 'not yet';
 				$last_log['result_search'] = 'not yet';
 				$last_log['curl_return_code'] = '0';
+				$last_log['duration'] = '0';
 				$last_log['count'] = 0;
 			}
 
@@ -1097,10 +1092,10 @@ function data_list() {
 
 			form_selectable_cell($row['stats_ok'] . '/' . $row['stats_bad'], $row['id'], '', 'right');
 			$tmp = ' (' . $row['failures'] . ' of ' . $row['downtrigger'] . ')';
+			form_selectable_cell($last_log['duration'], $row['id'], '', 'right');
 			form_selectable_cell($row['triggered'] == '0' ? __('No', 'servcheck') . $tmp : __('Yes', 'servcheck') . $tmp, $row['id'], '', 'right');
 			form_selectable_cell($last_log['result'] == 'not yet' ? __('Not tested yet', 'servcheck'): $last_log['result'], $row['id'], '', 'right');
 			form_selectable_cell($last_log['result_search'] == 'not yet' ? __('Not tested yet', 'servcheck'): $last_log['result_search'], $row['id'], '', 'right');
-			form_selectable_cell('<a href="' . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_curl_code.php?findcode=' . $last_log['curl_return_code']) . '">' . $last_log['curl_return_code'] . '<a/>', $row['id'], '', 'right');
 
 			form_checkbox_cell($row['id'], $row['id']);
 
@@ -1119,26 +1114,6 @@ function data_list() {
 	draw_actions_dropdown($servcheck_actions_menu, 1);
 
 	form_end();
-
-//!!pm -  je ten skript nutny?
-	?>
-	<script type='text/javascript'>
-/*
-	$(function() {
-		$('#servcheck2_child').find('.cactiTooltipHint').each(function() {
-			var title = $(this).attr('title');
-
-			if (title != undefined && title.indexOf('/') >= 0) {
-				$(this).click(function() {
-					window.open(title, 'servcheck');
-				});
-			}
-		});
-	});
-*/
-	</script>
-	<?php
-
 }
 
 
@@ -1273,9 +1248,6 @@ function servcheck_filter() {
 	<?php
 	html_end_box();
 }
-
-
-
 
 
 function servcheck_log_filter() {

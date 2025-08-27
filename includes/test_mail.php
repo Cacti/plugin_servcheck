@@ -167,7 +167,6 @@ function mail_try ($test) {
 			plugin_servcheck_debug('Connected');
 
 			if ($test['checkcert'] || $test['certexpirenotify']) {
-
 				plugin_servcheck_debug('Gathering certificate information');
 				$con_params = stream_context_get_params($fp);
 				$certinfo = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
@@ -243,9 +242,12 @@ function mail_try ($test) {
 				return $results;
 			}
 
-			$context = stream_context_get_options($fp);
-			$certinfo = openssl_x509_parse($context['ssl']['peer_certificate']);
-			$results['cert_valid_to'] = $certinfo['validTo_time_t'];
+			if ($test['checkcert'] || $test['certexpirenotify']) {
+				plugin_servcheck_debug('Gathering certificate information');
+				$context = stream_context_get_options($fp);
+				$certinfo = openssl_x509_parse($context['ssl']['peer_certificate']);
+				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
+			}
 
 			// we need ehlo again
 			send($fp, "EHLO servcheck.cacti.net");
@@ -298,11 +300,9 @@ function mail_try ($test) {
 			plugin_servcheck_debug('Connected');
 
 			if ($service == 'imaps' && ($test['checkcert'] || $test['certexpirenotify'])) {
-
 				plugin_servcheck_debug('Gathering certificate information');
 				$con_params = stream_context_get_params($fp);
 				$certinfo = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
-
 				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
 			}
 
@@ -320,10 +320,12 @@ function mail_try ($test) {
 					return $results;
 				}
 
-				$context = stream_context_get_options($fp);
-				$certinfo = openssl_x509_parse($context['ssl']['peer_certificate']);
-				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
-
+				if ($test['checkcert'] || $test['certexpirenotify']) {
+					plugin_servcheck_debug('Gathering certificate information');
+					$context = stream_context_get_options($fp);
+					$certinfo = openssl_x509_parse($context['ssl']['peer_certificate']);
+					$results['cert_valid_to'] = $certinfo['validTo_time_t'];
+				}
 			}
 
 			if ($test['cred_id'] > 0) {
@@ -384,11 +386,9 @@ function mail_try ($test) {
 			$data .= fgets($fp); // welcome banner
 
 			if ($service == 'pop3s' && ($test['checkcert'] || $test['certexpirenotify'])) {
-
 				plugin_servcheck_debug('Gathering certificate information');
 				$con_params = stream_context_get_params($fp);
 				$certinfo = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
-
 				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
 			}
 
@@ -404,9 +404,12 @@ function mail_try ($test) {
 					return $results;
 				}
 
-				$context = stream_context_get_options($fp);
-				$certinfo = openssl_x509_parse($context['ssl']['peer_certificate']);
-				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
+				if ($test['checkcert'] || $test['certexpirenotify']) {
+					plugin_servcheck_debug('Gathering certificate information');
+					$context = stream_context_get_options($fp);
+					$certinfo = openssl_x509_parse($context['ssl']['peer_certificate']);
+					$results['cert_valid_to'] = $certinfo['validTo_time_t'];
+				}
 			}
 
 			if ($test['cred_id'] > 0) {

@@ -39,7 +39,7 @@ function dns_try ($test) {
 
 	plugin_servcheck_debug('Querying ' . $test['hostname'] . ' for record ' . $test['dns_query']);
 
-	$a = new mxlookup($test['dns_query'], $test['hostname'], $test['timeout_trigger'] > 0 ? ($test['timeout_trigger']+1) : 5);
+	$a = new mxlookup($test['dns_query'], $test['hostname'], $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 3) : 5);
 
 	if (!cacti_sizeof($a->arrMX)) {
 		$results['result'] = 'error';
@@ -96,6 +96,14 @@ function dns_try ($test) {
 function doh_try ($test) {
 	global $user_agent, $config, $ca_info, $service_types_ports;
 
+	if (!function_exists('curl_init')) {
+		print "FATAL: You must install php-curl to use this test" . PHP_EOL;
+		plugin_servcheck_debug('Test ' . $test['id'] . ' requires php-curl library', $test);
+		$results['result'] = 'error';
+		$results['error'] = 'missing php-curl library';
+		return $results;
+	}
+
 	$cert_info = array();
 
 	// default result
@@ -111,7 +119,7 @@ function doh_try ($test) {
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_MAXREDIRS      => 4,
-		CURLOPT_TIMEOUT        => $test['timeout_trigger'] > 0 ? ($test['timeout_trigger'] + 1) : 5 ,
+		CURLOPT_TIMEOUT        => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 3) : 5 ,
 		CURLOPT_CAINFO         => $ca_info,
 	);
 

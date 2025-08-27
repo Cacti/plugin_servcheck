@@ -48,7 +48,6 @@ $test_id = 0;
 
 $poller_interval   = read_config_option('poller_interval');
 $cert_expiry_days  = read_config_option('servcheck_certificate_expiry_days');
-$exp               = 0;
 $new_notify_expire = false;
 
 if (cacti_sizeof($parms)) {
@@ -91,9 +90,6 @@ if (cacti_sizeof($parms)) {
 	}
 }
 
-if (!function_exists('curl_init')) {
-	print 'FATAL: You must install php-curl to use this Plugin' . PHP_EOL;
-}
 
 if (empty($test_id) || !is_int($test_id)) {
 	print 'ERROR: You must specify a test id' . PHP_EOL;
@@ -170,6 +166,7 @@ while ($x < 3) {
 		case 'web':
 		case 'ldap':
 		case 'smb':
+
 			include_once($config['base_path'] . '/plugins/servcheck/includes/test_curl.php');
 			$results = curl_try($test);
 			break;
@@ -240,10 +237,11 @@ if ($test['certexpirenotify']) {
 		$test['days'] = round(($exp - time()) / 86400);
 		$test['expiry_date'] = date(date_time_format(), $exp);
 	} elseif (isset($results['cert_valid_to'])) {
-//!!pm - jeste otestovat, jestli tyhle dve hodnoty jsou OK
-		$test['days'] = floor($results['cert_valid_to'] - time()/86400);
+		$test['days'] = floor(($results['cert_valid_to'] - time())/86400);
 		$test['expiry_date'] = date(date_time_format(), $results['cert_valid_to']);
 	}
+} else {
+	$test['expiry_date'] = '0000-00-00 00:00:00';
 }
 
 $test['status_change'] = false;
@@ -311,23 +309,23 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 	}
 
 	// long duration
-	if ($test['timeout_trigger'] > 0) {
+	if ($test['duration_trigger'] > 0) {
 
 		$trig = 0;
 		$test['durs'] = array();
 
 		plugin_servcheck_debug('Checking test for log duration', $test);
-		if ($results['duration'] > $test['timeout_trigger']) {
+		if ($results['duration'] > $test['duration_trigger']) {
 
 			$test['durs'][] = $results['duration'];
 
 			$durations = db_fetch_assoc_prepared('SELECT duration FROM plugin_servcheck_log
 				WHERE test_id = ? ORDER BY id DESC LIMIT 2',
-				array($test['test_id']));
+				array($test['id']));
 
 			if (cacti_sizeof($durations) == 2) {
 				foreach ($durations as $d) {
-					if ($d['duration'] > $test['timeout_trigger']) {
+					if ($d['duration'] > $test['duration_trigger']) {
 						$trig++;
 					}
 					$test['durs'][] = $d['duration'];
@@ -345,7 +343,7 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 				$test['duration_state'] = 'ok';
 				$sendemail = true;
 			}
-		} elseif ($results['duration'] < $test['timeout_trigger'] && $test['trigger_duration'] > 3) {
+		} elseif ($results['duration'] < $test['duration_trigger'] && $test['trigger_duration'] > 3) {
 				plugin_servcheck_debug('Normal duration detected, sending notification', $test);
 				$test['duration'] = true;
 				$test['duration_state'] = 'ok';
@@ -418,7 +416,7 @@ if ($results['curl']) {
 db_execute_prepared('INSERT INTO plugin_servcheck_log
 	(test_id, duration, lastcheck, cert_expire, result, error, result_search, curl_response)
 	VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-	array($test['id'], $results['duration'], date('Y-m-d H:i:s', $results['time']), date('Y-m-d H:i:s', $exp),
+	array($test['id'], $results['duration'], date('Y-m-d H:i:s', $results['time']),  $test['expiry_date'],
 		$results['result'], $results['error'], $results['result_search'], $curl)
 );
 

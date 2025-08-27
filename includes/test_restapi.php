@@ -26,6 +26,14 @@
 function restapi_try ($test) {
 	global $user_agent, $config, $ca_info, $service_types;
 
+	if (!function_exists('curl_init')) {
+		print "FATAL: You must install php-curl to use this test" . PHP_EOL;
+		plugin_servcheck_debug('Test ' . $test['id'] . ' requires php-curl library', $test);
+		$results['result'] = 'error';
+		$results['error'] = 'missing php-curl library';
+		return $results;
+	}
+
 	$cert_info = array();
 	$http_headers = array();
 
@@ -43,7 +51,7 @@ function restapi_try ($test) {
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_MAXREDIRS      => 4,
-		CURLOPT_TIMEOUT        => $test['timeout_trigger'] > 0 ? ($test['timeout_trigger'] + 1) : 5,
+		CURLOPT_TIMEOUT        => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 3) : 5,
 		CURLOPT_CAINFO         => $ca_info,
 	);
 

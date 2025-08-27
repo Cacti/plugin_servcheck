@@ -30,7 +30,7 @@ function plugin_servcheck_install () {
 	api_plugin_register_hook('servcheck', 'poller_bottom',        'plugin_servcheck_poller_bottom',        'setup.php');
 	api_plugin_register_hook('servcheck', 'replicate_out',        'servcheck_replicate_out',               'setup.php');
 	api_plugin_register_hook('servcheck', 'config_settings',      'servcheck_config_settings',             'setup.php');
-//!! zrusit restapi_php
+
 	api_plugin_register_realm('servcheck', 'servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxy.php,servcheck_ca.php', __('Service Check Admin', 'servcheck'), 1);
 
 	plugin_servcheck_setup_table();
@@ -67,7 +67,6 @@ function plugin_servcheck_upgrade() {
 		SET file = ?
 		WHERE file LIKE "%servcheck_test.php%"',
 		array('servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxy.php,servcheck_ca.php'));
-//!! zrusit restapi,php
 		api_plugin_register_hook('servcheck', 'replicate_out', 'servcheck_replicate_out', 'setup.php', '1');
 		api_plugin_register_hook('servcheck', 'config_settings', 'servcheck_config_settings', 'setup.php', '1');
 
@@ -79,8 +78,13 @@ function plugin_servcheck_upgrade() {
 		db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN proxy_server TO proxy_id');
 	}
 
+	if (db_column_exists('plugin_servcheck_test', 'timeout_trigger')) {
+		db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN timeout_trigger TO duration_trigger');
+	}
+
+
 	db_execute('ALTER TABLE plugin_servcheck_log MODIFY curl_return_code int(3) default NULL');
-	db_execute('ALTER TABLE plugin_servcheck_log MODIFY cert_expire timestamp default NULL');
+	db_execute('ALTER TABLE plugin_servcheck_log MODIFY cert_expire timestamp default "0000-00-00 00:00:00"');
 
 	$exist = db_fetch_cell("SELECT COUNT(*)
 		FROM information_schema.tables
@@ -90,7 +94,6 @@ function plugin_servcheck_upgrade() {
 	if ($exist) {
 		db_execute('ALTER TABLE plugin_servcheck_proxies RENAME TO plugin_servcheck_proxy');
 	}
-
 
 	$exist = db_fetch_cell("SELECT COUNT(*)
 		FROM information_schema.tables
@@ -117,18 +120,17 @@ function plugin_servcheck_upgrade() {
 		if (!db_column_exists('plugin_servcheck_test', 'cred_id')) {
 			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
 			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'triggered_duration', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
-
 		}
 
 		if (!db_column_exists('plugin_servcheck_proxy', 'cred_id')) {
 			api_plugin_db_add_column('servcheck', 'plugin_servcheck_proxy', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
 		}
 
-		// convert log data
+		// convert log data from 0.2 version
 
 		if (!db_column_exists('plugin_servcheck_log', 'duration')) {
-			$data['columns'][] = array('name' => 'curl_response', 'type' => 'text', 'NULL' => true, 'default' => NULL);
-			$data['columns'][] = array('name' => 'duration', 'type' => 'float', 'NULL' => false, 'default' => 0);
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_log', array('name' => 'curl_response', 'type' => 'text', 'NULL' => true, 'default' => NULL));
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_log', array('name' => 'duration', 'type' => 'float', 'NULL' => false, 'default' => 0));
 
 			db_execute('UPDATE plugin_servcheck_log SET total_time = 0  WHERE total_time IS NULL');
 			db_execute('UPDATE plugin_servcheck_log SET duration = total_time');
@@ -264,7 +266,6 @@ function plugin_servcheck_upgrade() {
 		if (!db_column_exists('plugin_servcheck_test', 'ipaddress')) {
 			db_add_column('plugin_servcheck_test', array('name' => 'ipaddress', 'type' => 'varchar(46)', 'NULL' => false, 'default' => '', 'after' => 'hostname'));
 		}
-
 	}
 
 	return true;
@@ -308,7 +309,7 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'external_id', 'type' => 'varchar(20)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'how_often', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '1');
 	$data['columns'][] = array('name' => 'downtrigger', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '3');
-	$data['columns'][] = array('name' => 'timeout_trigger', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'duration_trigger', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'stats_ok', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'stats_bad', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'failures', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
@@ -328,7 +329,6 @@ function plugin_servcheck_setup_table() {
 	api_plugin_db_table_create('servcheck', 'plugin_servcheck_test', $data);
 
 
-
 	$data              = array();
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 	$data['columns'][] = array('name' => 'test_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
@@ -336,10 +336,9 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'result', 'type' => "enum('ok','not yet','error')", 'NULL' => false, 'default' => 'not yet');
 	$data['columns'][] = array('name' => 'result_search', 'type' => "enum('ok','not ok','failed ok','failed not ok', 'maint ok','not yet', 'not tested')", 'NULL' => false, 'default' => 'not yet');
 	$data['columns'][] = array('name' => 'curl_response', 'type' => 'text', 'NULL' => true, 'default' => NULL);
-	$data['columns'][] = array('name' => 'cert_expire', 'type' => 'timestamp', 'NULL' => true, 'default' => 'NULL');
+	$data['columns'][] = array('name' => 'cert_expire', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
 	$data['columns'][] = array('name' => 'error', 'type' => 'varchar(256)', 'NULL' => true, 'default' => 'NULL');
 	$data['columns'][] = array('name' => 'duration', 'type' => 'float', 'NULL' => false, 'default' => 0);
-
 
 	$data['primary']   = 'id';
 	$data['keys'][] = array('name' => 'test_id', 'columns' => 'test_id');
@@ -382,15 +381,12 @@ function plugin_servcheck_setup_table() {
 	api_plugin_db_table_create('servcheck', 'plugin_servcheck_contacts', $data);
 
 
-
 	$data              = array();
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(30)', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'hostname', 'type' => 'varchar(64)', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'http_port', 'type' => 'mediumint(8)', 'NULL' => true, 'default' => '80');
 	$data['columns'][] = array('name' => 'https_port', 'type' => 'mediumint(8)', 'NULL' => true, 'default' => '443');
-	$data['columns'][] = array('name' => 'username', 'type' => 'varchar(40)', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'password', 'type' => 'varchar(60)', 'NULL' => true, 'default' => '');
 	$data['columns'][] = array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['primary']   = 'id';
 	$data['keys'][] = array('name' => 'hostname', 'columns' => 'hostname');
@@ -399,6 +395,7 @@ function plugin_servcheck_setup_table() {
 	$data['comment']   = 'Holds Proxy Information for Connections';
 
 	api_plugin_db_table_create('servcheck', 'plugin_servcheck_proxy', $data);
+
 
 	$data              = array();
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
@@ -410,25 +407,6 @@ function plugin_servcheck_setup_table() {
 
 	api_plugin_db_table_create('servcheck', 'plugin_servcheck_ca', $data);
 
-/*
-	$data              = array();
-	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
-	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'type', 'type' => "enum('no','basic','apikey','oauth2','cookie')", 'NULL' => false, 'default' => 'basic');
-	$data['columns'][] = array('name' => 'format', 'type' => "enum('urlencoded','xml','json')", 'NULL' => false, 'default' => 'urlencoded');
-	$data['columns'][] = array('name' => 'cred_name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'cred_value', 'type' => 'text', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'cred_validity', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
-	$data['columns'][] = array('name' => 'username', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'password', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'login_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '');
-	$data['columns'][] = array('name' => 'data_url', 'type' => 'varchar(200)', 'NULL' => true, 'default' => '');
-	$data['primary']   = 'id';
-	$data['type']      = 'InnoDB';
-	$data['comment']   = 'Holds Rest API auth';
-
-	api_plugin_db_table_create('servcheck', 'plugin_servcheck_restapi_method', $data);
-*/
 
 	$data              = array();
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
@@ -592,7 +570,7 @@ function servcheck_replicate_out($data) {
 		'plugin_servcheck_test',
 		'plugin_servcheck_credential',
 		'plugin_servcheck_ca',
-		'plugin_servcheck_rest_method'
+		'plugin_servcheck_restapi_method'
 	);
 
 	if ($class == 'all') {

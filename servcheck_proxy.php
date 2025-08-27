@@ -204,7 +204,6 @@ function data_edit() {
 	html_end_box(true, true);
 
 	form_save_button(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
-
 }
 
 
@@ -339,7 +338,6 @@ function data_list() {
 	draw_actions_dropdown($servcheck_actions_menu, 1);
 
 	form_end();
-
 }
 
 function servcheck_filter() {

@@ -474,7 +474,6 @@ function data_edit() {
 		setCredential();
 	});
 
-
 	function setCredential() {
 		var credential_type = $('#type').val();
 

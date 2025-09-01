@@ -226,7 +226,7 @@ if (cacti_sizeof($results) == 0) {
 plugin_servcheck_debug('failures:'. $test['stats_bad'] . ', triggered:' . $test['triggered'], $test);
 
 $results['time'] = time();
-
+$test['expiry_date'] = null;
 
 if ($test['certexpirenotify']) {
 
@@ -240,8 +240,6 @@ if ($test['certexpirenotify']) {
 		$test['days'] = floor(($results['cert_valid_to'] - time())/86400);
 		$test['expiry_date'] = date(date_time_format(), $results['cert_valid_to']);
 	}
-} else {
-	$test['expiry_date'] = '0000-00-00 00:00:00';
 }
 
 $test['status_change'] = false;
@@ -311,43 +309,38 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 	// long duration
 	if ($test['duration_trigger'] > 0) {
 
+		plugin_servcheck_debug('Checking test for log duration', $test);
+
 		$trig = 0;
 		$test['durs'] = array();
 
-		plugin_servcheck_debug('Checking test for log duration', $test);
-		if ($results['duration'] > $test['duration_trigger']) {
+		$test['durs'][] = $results['duration'] . ' (' . $results['time'] . ')';
 
-			$test['durs'][] = $results['duration'];
+		$durations = db_fetch_assoc_prepared('SELECT duration, lastcheck FROM plugin_servcheck_log
+			WHERE test_id = ? ORDER BY id DESC LIMIT 2',
+			array($test['id']));
 
-			$durations = db_fetch_assoc_prepared('SELECT duration FROM plugin_servcheck_log
-				WHERE test_id = ? ORDER BY id DESC LIMIT 2',
-				array($test['id']));
-
-			if (cacti_sizeof($durations) == 2) {
-				foreach ($durations as $d) {
-					if ($d['duration'] > $test['duration_trigger']) {
-						$trig++;
-					}
-					$test['durs'][] = $d['duration'];
+		if (cacti_sizeof($durations) == 2) {
+			foreach ($durations as $d) {
+				if ($d['duration'] > $test['duration_trigger']) {
+					$trig++;
 				}
+				$test['durs'][] = $d['duration'] . ' (' . $d['lastcheck'] . ')';
 			}
+		}
 
-			if ($trig == 2) {
+		if ($trig == 2) {
+			if ($results['duration'] > $test['duration_trigger']) {
 				plugin_servcheck_debug('Long duration detected, sending notification', $test);
 				$test['duration'] = true;
 				$test['duration_state'] = 'ko';
 				$sendemail = true;
-			} else {
+			} elseif ($results['duration'] < $test['duration_trigger']) {
 				plugin_servcheck_debug('Normal duration detected, sending notification', $test);
 				$test['duration'] = true;
 				$test['duration_state'] = 'ok';
 				$sendemail = true;
 			}
-		} elseif ($results['duration'] < $test['duration_trigger'] && $test['trigger_duration'] > 3) {
-				plugin_servcheck_debug('Normal duration detected, sending notification', $test);
-				$test['duration'] = true;
-				$test['duration_state'] = 'ok';
-				$sendemail = true;
 		}
 	}
 
@@ -372,7 +365,7 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 		putenv('SERVCHECK_POLLER='                 . $test['poller_id']);
 		putenv('SERVCHECK_RESULT='                 . $results['result']);
 		putenv('SERVCHECK_RESULT_SEARCH='          . $results['result_search']);
-		putenv('SERVCHECK_CERTIFICATE_EXPIRATION=' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Not tested'));
+		putenv('SERVCHECK_CERTIFICATE_EXPIRATION=' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Not tested or unknown '));
 
 		if (file_exists($command) && is_executable($command)) {
 			$output = array();
@@ -413,10 +406,16 @@ if ($results['curl']) {
 	$curl = 'N/A';
 }
 
+if (!isset($test['expiry_date'])) {
+	$save_exp = '0000-00-00 00:00:00';
+} else {
+	$save_exp = $test['expiry_date'];
+}
+
 db_execute_prepared('INSERT INTO plugin_servcheck_log
 	(test_id, duration, lastcheck, cert_expire, result, error, result_search, curl_response)
 	VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-	array($test['id'], $results['duration'], date('Y-m-d H:i:s', $results['time']),  $test['expiry_date'],
+	array($test['id'], $results['duration'], date('Y-m-d H:i:s', $results['time']), $save_exp,
 		$results['result'], $results['error'], $results['result_search'], $curl)
 );
 
@@ -517,7 +516,6 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 	if ($type == 'text') {
 		if ($test['status_change']) {
 			if ($results['result'] == 'ok') {
-
 				$message[0]['subject'] = '[Cacti servcheck] Service recovered: ' . $test['name'];
 			} else {
 				$message[0]['subject'] = '[Cacti servcheck] Service down: ' . $test['name'];
@@ -525,10 +523,11 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 			$message[0]['text']  = 'Service state: ' . ($results['result'] == 'ok' ? 'Recovering' : 'Down') . PHP_EOL;
 
-			if (!is_null($test['path'])) {
+			if (!is_null($test['path']) && $test['path'] != '') {
 				$message[0]['text'] .= 'Path: ' . $test['path'] . PHP_EOL;
 			}
 			$message[0]['text'] .= 'Error: ' . $results['error'] . PHP_EOL;
+			$message[0]['text'] .= 'Date: ' . date(date_time_format(), $results['time']) . PHP_EOL;
 			$message[0]['text'] .= 'Duration: ' . $results['duration'] . PHP_EOL;
 
 			if ($test['certexpirenotify']) {
@@ -554,7 +553,6 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 			$message[0]['text'] .= 'Last three durations: ' . implode(', ', $test['durs']) . PHP_EOL;
 
-
 			if ($test['notes'] != '') {
 				$message[0]['text'] .= PHP_EOL . 'Notes: ' . $test['notes'] . PHP_EOL;
 			}
@@ -566,7 +564,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 			$message[1]['text'] = 'Hostname: ' . $test['hostname'] . PHP_EOL;
 
-			if (!is_null($test['path'])) {
+			if (!is_null($test['path']) && $test['path'] != '') {
 				$message[1]['text'] .= 'Path: ' . $test['path'] . PHP_EOL;
 			}
 
@@ -588,7 +586,6 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			$message[1]['text'] .= 'Previous search: ' . $last_log['result_search'] . PHP_EOL;
 			$message[1]['text'] .= 'Actual search: ' . $results['result_search'] . PHP_EOL;
 
-
 			if ($test['notes'] != '') {
 				$message[1]['text'] .= PHP_EOL . 'Notes: ' . $test['notes'] . PHP_EOL;
 			}
@@ -604,13 +601,12 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 			$message[2]['text'] .= 'Hostname: ' . $test['hostname'] . PHP_EOL;
 
-			if (!is_null($test['path'])) {
+			if (!is_null($test['path']) && $test['path'] != '') {
 				$message[2]['text'] .= 'Path: ' . $test['path'] . PHP_EOL;
 			}
 			$message[2]['text'] .= 'Certificate expiry date:' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . PHP_EOL;
-			$message[2]['text'] .= 'Date: '       . date(date_time_format(), $results['time']) . PHP_EOL;
+			$message[2]['text'] .= 'Date: ' . date(date_time_format(), $results['time']) . PHP_EOL;
 			$message[2]['text'] .= 'Duration: ' . $results['duration'] . PHP_EOL;
-
 
 			if ($test['notes'] != '') {
 				$message[2]['text'] .= PHP_EOL . 'Notes: ' . $test['notes'] . PHP_EOL;
@@ -631,7 +627,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			$message[0]['text'] .= '<table>' . PHP_EOL;
 			$message[0]['text'] .= '<tr><td>Hostname:</td><td>' . $test['hostname'] . '</td></tr>' . PHP_EOL;
 
-			if (!is_null($test['path'])) {
+			if (!is_null($test['path']) && $test['path'] != '') {
 				$message[0]['text'] .= '<tr><td>Path:</td><td>' . $test['path'] . '</td></tr>' . PHP_EOL;
 			}
 
@@ -641,9 +637,9 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 			if ($test['certexpirenotify']) {
 				if ($test['days'] < 0) {
-					$message[0]['text'] .= 'Certificate expired ' . ($test['days'] * -1) . ' days ago' . PHP_EOL;
+					$message[0]['text'] .= '<tr><td>Certificate expired:</td><td>' . ($test['days'] * -1) . ' days ago</td></tr>' . PHP_EOL;
 				} else {
-					$message[0]['text'] .= 'Certificate expires in ' . $test['days'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')' . PHP_EOL;
+					$message[0]['text'] .= '<tr><td>Certificate expires in:</td><td>' . $test['days'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
 				}
 			}
 
@@ -699,7 +695,6 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			$message[0]['text'] .= '</table>' . PHP_EOL;
 		}
 
-
 		// search string notification
 		if ($last_log['result_search'] != $results['result_search']) {
 			$message[1]['subject'] = '[Cacti servcheck] Service ' . $test['name'] . ' search result is different than last check';
@@ -711,17 +706,17 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 			$message[1]['text'] .= '<tr><td>Hostname:</td><td>' . $test['hostname'] . '</td></tr>' . PHP_EOL;
 
-			if (!is_null($test['path'])) {
+			if (!is_null($test['path']) && $test['path'] != '') {
 				$message[1]['text'] .= '<tr><td>Path:</td><td>' . $test['path'] . '</td></tr>' . PHP_EOL;
 			}
 			$message[1]['text'] .= '<tr><td>Date:</td><td>' . date(date_time_format(), $results['time']) . '</td></tr>' . PHP_EOL;
-			$message[1]['text'] .= 'Duration: ' . $results['duration'] . PHP_EOL;
+			$message[1]['text'] .= '<tr><td>Duration:</td><td>' . $results['duration'] . '</td></tr>' . PHP_EOL;
 
 			if ($test['certexpirenotify']) {
 				if ($test['days'] < 0) {
-					$message[1]['text'] .= 'Certificate expired ' . ($test['days'] * -1) . ' days ago' . PHP_EOL;
+					$message[1]['text'] .= '<tr><td>Certificate expired:</td><td>' . ($test['days'] * -1) . ' days ago</td></tr>' . PHP_EOL;
 				} else {
-					$message[1]['text'] .= 'Certificate expires in ' . $test['days'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')' . PHP_EOL;
+					$message[1]['text'] .= '<tr><td>Certificate expires in:</td><td>' . $test['days'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
 				}
 			}
 
@@ -731,6 +726,8 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			if ($test['notes'] != '') {
 				$message[1]['text'] .= '<tr><td>Notes:</td><td>' . $test['notes'] . '</td></tr>' . PHP_EOL;
 			}
+
+			$message[1]['text'] .= '</table>' . PHP_EOL;
 		}
 
 		if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days) {
@@ -742,25 +739,26 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 			$message[2]['text'] .= '<tr><td>Hostname:</td><td>' . $test['hostname'] . '</td></tr>' . PHP_EOL;
 
-			if (!is_null($test['path'])) {
+			if (!is_null($test['path']) && $test['path'] != '') {
 				$message[2]['text'] .= '<tr><td>Path:</td><td>' . $test['path'] . '</td></tr>' . PHP_EOL;
 			}
 			$message[2]['text'] .= '<tr><td>Date:</td><td>' . date(date_time_format(), $results['time']) . '</td></tr>' . PHP_EOL;
-			$message[2]['text'] .= 'Duration: ' . $results['duration'] . PHP_EOL;
+			$message[2]['text'] .= '<tr><td>Duration:</td><td>' . $results['duration'] . '</td></tr>' . PHP_EOL;
 
 			if ($test['certexpirenotify']) {
 				if ($test['days'] < 0) {
-					$message[2]['text'] .= 'Certificate expired ' . ($test['days'] * -1) . ' days ago' . PHP_EOL;
+					$message[2]['text'] .= '<tr><td>Certificate expired:</td><td>' . ($test['days'] * -1) . ' days ago</td></tr>' . PHP_EOL;
 				} else {
-					$message[2]['text'] .= 'Certificate expires in ' . $test['days'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')' . PHP_EOL;
+					$message[2]['text'] .= '<tr><td>Certificate expires in:</td><td>' . $test['days'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
 				}
 			}
-
-			$message[2]['text'] .= '</table>' . PHP_EOL;
 
 			if ($test['notes'] != '') {
 				$message[2]['text'] .= '<tr><td>Notes:</td><td>' . $test['notes'] . '</td></tr>' . PHP_EOL;
 			}
+
+			$message[2]['text'] .= '</table>' . PHP_EOL;
+
 		}
 	}
 

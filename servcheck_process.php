@@ -150,10 +150,10 @@ $test['duration'] = false;
 register_startup($test_id);
 
 /* attempt to get results 3 times before exiting */
-$x = 0;
+$x = 1;
 $results = array();
 
-while ($x < 3) {
+while ($x < 4) {
 	plugin_servcheck_debug('Service Check attempt ' . $x, $test);
 
 	list($category, $service) = explode('_', $test['type']);
@@ -211,11 +211,14 @@ while ($x < 3) {
 
 	if (isset($results['result'])) {
 		$results['duration'] = round(microtime(true) - $results['start'], 4);
+		$results['x'] = $x;
 		break;
 	}
+//!!pm - tady musi byt slozitejsi logika, protoze i kdyz se mi vrati chyba nebo se to vubec nepovede, tak musim zkouset znovu
+//!!pm - budu pocitat i pokusy
 
 	$x++;
-	usleep(5000);
+	usleep(3000);
 }
 
 if (cacti_sizeof($results) == 0) {
@@ -314,7 +317,7 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 		$trig = 0;
 		$test['durs'] = array();
 
-		$test['durs'][] = $results['duration'] . ' (' . $results['time'] . ')';
+		$test['durs'][] = $results['duration'] . ' (' . date('Y-m-d H:i:s', $results['time']) . ')';
 
 		$durations = db_fetch_assoc_prepared('SELECT duration, lastcheck FROM plugin_servcheck_log
 			WHERE test_id = ? ORDER BY id DESC LIMIT 2',

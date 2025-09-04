@@ -264,13 +264,13 @@ function form_save() {
 	if (isset_request_var('save_component')) {
 
 		$save['id']          = get_filter_request_var('id');
+		$save['attempt']     = get_filter_request_var('attempt');
 		$save['poller_id']   = get_filter_request_var('poller_id');
 		$save['cred_id']     = get_filter_request_var('cred_id');
 		$save['ca_id']       = get_filter_request_var('ca_id');
 		$save['external_id'] = get_filter_request_var('external_id');
 		$save['proxy_id']    = get_filter_request_var('proxy_id');
 		$save['downtrigger']      = get_filter_request_var('downtrigger');
-		$save['duration_trigger'] = get_filter_request_var('duration_trigger');
 		$save['how_often']        = get_filter_request_var('how_often');
 
 		if (isset_request_var('enabled')) {
@@ -387,6 +387,8 @@ function form_save() {
 				$save['path'] = get_nfilter_request_var('path');
 			}
 		}
+
+		$save['duration_trigger'] = is_numeric(get_nfilter_request_var('duration_trigger')) ? get_nfilter_request_var('duration_trigger') : 0;
 
 		$save['name']    = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
 
@@ -840,7 +842,6 @@ function servcheck_show_history() {
 			if ($row['cert_expire'] == '0000-00-00 00:00:00' || is_null($row['cert_expire'])) {
 				$days = 'N/A';
 			} else {
-			echo "aaa-";
 				$days = floor((strtotime($row['cert_expire']) - time())/86400) . ' ' . __('days', 'servcheck') ;
 			}
 

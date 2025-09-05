@@ -272,6 +272,10 @@ function plugin_servcheck_upgrade() {
 		db_add_column('plugin_servcheck_test', array('name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '3', 'after' => 'type'));
 	}
 
+	if (db_column_exists('plugin_servcheck_log', 'attempt')) {
+		db_add_column('plugin_servcheck_log', array('name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '0', 'after' => 'lastcheck'));
+	}
+
 
 	if (cacti_version_compare($old, '0.4', '<')) {
 		if (!db_column_exists('plugin_servcheck_test', 'ipaddress')) {
@@ -293,7 +297,7 @@ function plugin_servcheck_setup_table() {
 	$data              = array();
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 	$data['columns'][] = array('name' => 'type', 'type' => 'varchar(30)', 'NULL' => false, 'default' => 'web_http');
-	$data['columns'][] = array('name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '3', 'after' => 'type');
+	$data['columns'][] = array('name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '3');
 	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(64)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'poller_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '1');
 	$data['columns'][] = array('name' => 'enabled', 'type' => 'varchar(2)', 'NULL' => false, 'default' => 'on');
@@ -345,6 +349,7 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 	$data['columns'][] = array('name' => 'test_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'lastcheck', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
+	$data['columns'][] = array('name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '0');
 	$data['columns'][] = array('name' => 'result', 'type' => "enum('ok','not yet','error')", 'NULL' => false, 'default' => 'not yet');
 	$data['columns'][] = array('name' => 'result_search', 'type' => "enum('ok','not ok','failed ok','failed not ok', 'maint ok','not yet', 'not tested')", 'NULL' => false, 'default' => 'not yet');
 	$data['columns'][] = array('name' => 'curl_response', 'type' => 'text', 'NULL' => true, 'default' => NULL);

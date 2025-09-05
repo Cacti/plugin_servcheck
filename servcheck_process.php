@@ -153,7 +153,7 @@ register_startup($test_id);
 $x = 1;
 $results = array();
 
-while ($x < 4) {
+while ($x <= $test['attempt']) {
 	plugin_servcheck_debug('Service Check attempt ' . $x, $test);
 
 	list($category, $service) = explode('_', $test['type']);
@@ -416,10 +416,10 @@ if (!isset($test['expiry_date'])) {
 }
 
 db_execute_prepared('INSERT INTO plugin_servcheck_log
-	(test_id, duration, lastcheck, cert_expire, result, error, result_search, curl_response)
-	VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+	(test_id, duration, lastcheck, cert_expire, result, error, result_search, curl_response, attempt)
+	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
 	array($test['id'], $results['duration'], date('Y-m-d H:i:s', $results['time']), $save_exp,
-		$results['result'], $results['error'], $results['result_search'], $curl)
+		$results['result'], $results['error'], $results['result_search'], $curl, $results['x'])
 );
 
 if ($new_notify_expire) {

@@ -801,6 +801,9 @@ function servcheck_show_history() {
 		'name' => array(
 			'display' => __('Name', 'servcheck'),
 		),
+		'attempt' => array(
+			'display' => __('Attempt', 'servcheck'),
+		),
 		'result' => array(
 			'display' => __('Result', 'servcheck'),
 		),
@@ -857,6 +860,7 @@ function servcheck_show_history() {
 
 			form_selectable_cell($row['lastcheck'], $row['id']);
 			form_selectable_cell($row['name'], $row['id']);
+			form_selectable_cell($row['attempt'], $row['id']);
 			form_selectable_cell(($row['result'] == 'ok' ? __('Service UP', 'servcheck') : __('Service Down', 'servcheck')), $row['id']);
 			form_selectable_cell($search_result[$row['result_search']], $row['id']);
 
@@ -978,7 +982,7 @@ function data_list() {
 			'align'   => 'right'
 		),
 		'lastcheck' => array(
-			'display' => __('Last Check', 'servcheck'),
+			'display' => __('Last Check (attempt)', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
 		),
@@ -1035,6 +1039,7 @@ function data_list() {
 				$last_log['curl_return_code'] = '0';
 				$last_log['duration'] = '0';
 				$last_log['count'] = 0;
+				$last_log['attempt'] = 0;
 			}
 
 			if ($row['enabled'] == '') {
@@ -1086,9 +1091,9 @@ function data_list() {
 			form_selectable_cell(($row['enabled'] == 'on' ? __('Enabled', 'servcheck') : __('Disabled', 'servcheck')), $row['id'], '', 'right');
 
 			if ($row['lastcheck'] == '0000-00-00 00:00:00') {
-				form_selectable_cell(__('N/A', 'servcheck'), $row['id'], '', 'right');
+				form_selectable_cell(__('N/A (N/A)', 'servcheck'), $row['id'], '', 'right');
 			} else {
-				form_selectable_cell($row['lastcheck'], $row['id'], '', 'right');
+				form_selectable_cell($row['lastcheck'] . ' (' . $last_log['attempt'] . ')', $row['id'], '', 'right');
 			}
 
 			form_selectable_cell($row['stats_ok'] . '/' . $row['stats_bad'], $row['id'], '', 'right');

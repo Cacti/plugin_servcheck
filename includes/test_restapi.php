@@ -38,7 +38,7 @@ function restapi_try ($test) {
 	$http_headers = array();
 
 	// default result
-	$results['result'] = 'ok';
+	$results['result'] = 'failed';
 	$results['curl'] = true;
 	$results['time'] = time();
 	$results['error'] = '';
@@ -191,6 +191,7 @@ function restapi_try ($test) {
 				} else {
 					plugin_servcheck_debug('We didn\'t get token.', $test);
 					$results['options'] = curl_getinfo($process);
+					$results['result'] = 'error';
 					$results['curl_return'] = curl_errno($process);
 					$results['data'] =  str_replace(array("'", "\\"), array(''), $response);
 					$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
@@ -242,7 +243,7 @@ function restapi_try ($test) {
 				$results['data'] =  str_replace(array("'", "\\"), array(''), $response);
 
 				plugin_servcheck_debug('Problem with login: ' . $results['curl_return'] , $test);
-
+				$results['result'] = 'error';
 				$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
 				return $results;
 			}
@@ -262,6 +263,7 @@ function restapi_try ($test) {
 				$results['curl_return'] = curl_errno($process);
 				$results['data'] =  str_replace(array("'", "\\"), array(''), $response);
 				$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
+				$results['result'] = 'error';
 				return $results;
 			}
 
@@ -331,6 +333,7 @@ function restapi_try ($test) {
 
 		if (strpos($data, $test['search_failed']) !== false) {
 			plugin_servcheck_debug('Search failed string success');
+			$results['result'] = 'ok';
 			$results['result_search'] = 'failed ok';
 			return $results;
 		}
@@ -342,10 +345,12 @@ function restapi_try ($test) {
 
 		if (strpos($data, $test['search']) !== false) {
 			plugin_servcheck_debug('Search string success');
+			$results['result'] = 'ok';
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
 			plugin_servcheck_debug('String not found');
+			$results['result'] = 'ok';
 			$results['result_search'] = 'not ok';
 			return $results;
 		}
@@ -357,17 +362,9 @@ function restapi_try ($test) {
 
 		if (strpos($data, $test['search_maint']) !== false) {
 			plugin_servcheck_debug('Search maint string success');
+			$results['result'] = 'ok';
 			$results['result_search'] = 'maint ok';
 			return $results;
-		}
-	}
-
-	if ($test['requiresauth'] != '') {
-
-		plugin_servcheck_debug('Processing requires no authentication required');
-
-		if ($results['options']['http_code'] != 401) {
-			$results['error'] = 'The requested URL returned error: ' . $results['options']['http_code'];
 		}
 	}
 

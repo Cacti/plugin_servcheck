@@ -209,17 +209,19 @@ while ($x <= $test['attempt']) {
 			$results = ftp_try($test);
 	}
 
-	if (isset($results['result'])) {
+	if ($results['result'] != 'failed') {
 		$results['duration'] = round(microtime(true) - $results['start'], 4);
 		$results['x'] = $x;
 		break;
 	}
-//!!pm - tady musi byt slozitejsi logika, protoze i kdyz se mi vrati chyba nebo se to vubec nepovede, tak musim zkouset znovu
-//!!pm - budu pocitat i pokusy
 
 	$x++;
 	usleep(3000);
+
+//!! muze to selhat 3x za sebou, mozna to jeste tady musim osetrit
 }
+
+//!! asi tady to rovnou ulozit
 
 if (cacti_sizeof($results) == 0) {
 	plugin_servcheck_debug('Unknown error for test ' . $test['id'], $test);

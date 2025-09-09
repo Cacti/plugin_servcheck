@@ -27,7 +27,7 @@ function dns_try ($test) {
 	include_once(__DIR__ . '/../includes/mxlookup.php');
 
 	// default result
-	$results['result'] = 'ok';
+	$results['result'] = 'failed';
 	$results['curl'] = false;
 	$results['time'] = time();
 	$results['error'] = '';
@@ -60,6 +60,7 @@ function dns_try ($test) {
 
 			if (strpos($results['data'], $test['search_failed']) !== false) {
 				plugin_servcheck_debug('Search failed string success');
+				$results['result'] = 'ok';
 				$results['result_search'] = 'failed ok';
 				return $results;
 			}
@@ -70,9 +71,11 @@ function dns_try ($test) {
 		if ($test['search'] != '') {
 			if (strpos($results['data'], $test['search']) !== false) {
 				plugin_servcheck_debug('Search string success');
+				$results['result'] = 'ok';
 				$results['result_search'] = 'ok';
 				return $results;
 			} else {
+				$results['result'] = 'ok';
 				$results['result_search'] = 'not ok';
 				return $results;
 			}
@@ -80,9 +83,9 @@ function dns_try ($test) {
 
 		if ($test['search_maint'] != '') {
 			plugin_servcheck_debug('Processing search maint');
-
 			if (strpos($results['data'], $test['search_maint']) !== false) {
 				plugin_servcheck_debug('Search maint string success');
+				$results['result'] = 'ok';
 				$results['result_search'] = 'maint ok';
 				return $results;
 			}

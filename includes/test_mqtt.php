@@ -42,7 +42,7 @@ function mqtt_try ($test) {
 	}
 
 	// default result
-	$results['result'] = 'ok';
+	$results['result'] = 'failed';
 	$results['curl'] = true;
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
@@ -159,6 +159,7 @@ function mqtt_try ($test) {
 
 		if (strpos($data, $test['search_failed']) !== false) {
 			plugin_servcheck_debug('Search failed string success');
+			$results['result'] = 'ok';
 			$results['result_search'] = 'failed ok';
 			return $results;
 		}
@@ -169,6 +170,7 @@ function mqtt_try ($test) {
 	if ($test['search'] != '') {
 		if (strpos($data, $test['search']) !== false) {
 			plugin_servcheck_debug('Search string success');
+			$results['result'] = 'ok';
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
@@ -183,17 +185,9 @@ function mqtt_try ($test) {
 
 		if (strpos($data, $test['search_maint']) !== false) {
 			plugin_servcheck_debug('Search maint string success');
+			$results['result'] = 'ok';
 			$results['result_search'] = 'maint ok';
 			return $results;
-		}
-	}
-
-	if ($test['requiresauth'] != '') {
-
-		plugin_servcheck_debug('Processing requires no authentication required');
-
-		if ($results['options']['http_code'] != 401) {
-			$results['error'] = 'The requested URL returned error: ' . $results['options']['http_code'];
 		}
 	}
 

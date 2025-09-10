@@ -842,14 +842,22 @@ function servcheck_show_history() {
 	if (count($result)) {
 		foreach ($result as $row) {
 
+			if ($row['result'] == 'not yet') {
+				$res = __('Not tested yet', 'servcheck');
+			} elseif ($row['result'] == 'ok') {
+				$res = 'OK';
+			} else {
+				$res  = $row['result'] . ' (' . $row['error'] . ')';
+			}
+
 			if ($row['cert_expire'] == '0000-00-00 00:00:00' || is_null($row['cert_expire'])) {
 				$days = 'N/A';
 			} else {
 				$days = floor((strtotime($row['cert_expire']) - time())/86400) . ' ' . __('days', 'servcheck') ;
 			}
 
-			if ($row['result_search'] != 'ok') {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 100, 0.6)";
+			if ($row['result_search'] == 'partial') {
+				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 0, 0.6)";
 			} elseif ($row['result'] == 'ok') {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(204, 255, 204, 0.6)";
 			} else {
@@ -861,7 +869,7 @@ function servcheck_show_history() {
 			form_selectable_cell($row['lastcheck'], $row['id']);
 			form_selectable_cell($row['name'], $row['id']);
 			form_selectable_cell($row['attempt'], $row['id']);
-			form_selectable_cell(($row['result'] == 'ok' ? __('Service UP', 'servcheck') : __('Service Down', 'servcheck')), $row['id']);
+			form_selectable_cell($res, $row['id']);
 			form_selectable_cell($search_result[$row['result_search']], $row['id']);
 
 			form_selectable_cell($row['duration'], $row['id'], '', 'right');
@@ -976,11 +984,6 @@ function data_list() {
 			'sort'    => 'ASC',
 			'align'   => 'left'
 		),
-		'enabled' => array(
-			'display' => __('Enabled', 'servcheck'),
-			'sort'    => 'ASC',
-			'align'   => 'right'
-		),
 		'lastcheck' => array(
 			'display' => __('Last Check (attempt)', 'servcheck'),
 			'sort'    => 'ASC',
@@ -1042,14 +1045,24 @@ function data_list() {
 				$last_log['attempt'] = 0;
 			}
 
+			if ($last_log['result'] == 'not yet') {
+				$res = __('Not tested yet', 'servcheck');
+			} elseif ($last_log['result'] == 'ok') {
+				$res = 'OK';
+			} else {
+				$res  = $last_log['result'] . ' (' . $last_log['error'] . ')';
+			}
+
 			if ($row['enabled'] == '') {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(205, 207, 196, 0.6)";
 			} elseif ($row['failures'] > 0 && $row['failures'] < $row['downtrigger']) {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 36, 0.6);";
-			} elseif ($last_log['result'] != 'ok' && strtotime($row['lastcheck']) > 0) {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 25, 36, 0.6);";
+			} elseif ($last_log['result'] == 'ok' && strtotime($row['lastcheck']) > 0) {
+				$style = "color:rgba(10,10,10,0.8);background-color:rgba(50, 255, 50, 0.6)";
+			} elseif ($last_log['result'] == 'partial' && strtotime($row['lastcheck']) > 0) {
+				$style = "color:rgba(10,10,10,0.8);background-color:rgba(240, 240, 0, 0.6);";
 			} else {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(204, 255, 204, 0.6)";
+				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 25, 36, 0.6);";
 			}
 
 			print "<tr class='tableRow selectable' style='$style' id='line" . $row['id'] . "'>";
@@ -1088,7 +1101,6 @@ function data_list() {
 			}
 
 			form_selectable_cell($row['name'], $row['id']);
-			form_selectable_cell(($row['enabled'] == 'on' ? __('Enabled', 'servcheck') : __('Disabled', 'servcheck')), $row['id'], '', 'right');
 
 			if ($row['lastcheck'] == '0000-00-00 00:00:00') {
 				form_selectable_cell(__('N/A (N/A)', 'servcheck'), $row['id'], '', 'right');
@@ -1100,9 +1112,8 @@ function data_list() {
 			$tmp = ' (' . $row['failures'] . ' of ' . $row['downtrigger'] . ')';
 			form_selectable_cell($last_log['duration'], $row['id'], '', 'right');
 			form_selectable_cell($row['triggered'] == '0' ? __('No', 'servcheck') . $tmp : __('Yes', 'servcheck') . $tmp, $row['id'], '', 'right');
-			form_selectable_cell($last_log['result'] == 'not yet' ? __('Not tested yet', 'servcheck'): $last_log['result'], $row['id'], '', 'right');
+			form_selectable_cell($res, $row['id'], '', 'right');
 			form_selectable_cell($last_log['result_search'] == 'not yet' ? __('Not tested yet', 'servcheck'): $last_log['result_search'], $row['id'], '', 'right');
-
 			form_checkbox_cell($row['id'], $row['id']);
 
 			form_end_row();

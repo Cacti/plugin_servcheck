@@ -31,7 +31,7 @@ function mail_try ($test) {
 	$data = '';
 
 	// default result
-	$results['result'] = 'failed';
+	$results['result'] = 'error';
 	$results['curl'] = false;
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
@@ -274,6 +274,7 @@ function mail_try ($test) {
 
 			break;
 
+
 		case 'imap':
 		case 'imaptls':
 		case 'imaps':
@@ -457,6 +458,10 @@ function mail_try ($test) {
 		return $results;
 	}
 
+	$results['result'] = 'ok';
+	$results['error'] = 'Some data returned';
+
+
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
 
@@ -464,7 +469,6 @@ function mail_try ($test) {
 
 		if (strpos($data, $test['search_failed']) !== false) {
 			plugin_servcheck_debug('Search failed string success');
-			$results['result'] = 'ok';
 			$results['result_search'] = 'failed ok';
 			return $results;
 		}
@@ -475,11 +479,10 @@ function mail_try ($test) {
 	if ($test['search'] != '') {
 		if (strpos($data, $test['search']) !== false) {
 			plugin_servcheck_debug('Search string success');
-			$results['result'] = 'ok';
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
-			$results['result'] = 'ok';
+			$results['result'] = 'partial';
 			$results['result_search'] = 'not ok';
 			return $results;
 		}
@@ -496,6 +499,11 @@ function mail_try ($test) {
 			return $results;
 		}
 	}
+
+
+//!!pm smazat
+$results['return'] = 'NEVER!';
+
 
 	return $results;
 }

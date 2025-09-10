@@ -42,7 +42,7 @@ function mqtt_try ($test) {
 	}
 
 	// default result
-	$results['result'] = 'failed';
+	$results['result'] = 'error';
 	$results['curl'] = true;
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
@@ -152,6 +152,9 @@ function mqtt_try ($test) {
 		return $results;
 	}
 
+	$results['result'] = 'ok';
+	$results['error'] = 'Some data returned';
+
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
 
@@ -159,7 +162,6 @@ function mqtt_try ($test) {
 
 		if (strpos($data, $test['search_failed']) !== false) {
 			plugin_servcheck_debug('Search failed string success');
-			$results['result'] = 'ok';
 			$results['result_search'] = 'failed ok';
 			return $results;
 		}
@@ -170,10 +172,10 @@ function mqtt_try ($test) {
 	if ($test['search'] != '') {
 		if (strpos($data, $test['search']) !== false) {
 			plugin_servcheck_debug('Search string success');
-			$results['result'] = 'ok';
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
+			$results['result'] = 'partial';
 			$results['result_search'] = 'not ok';
 			return $results;
 		}
@@ -185,11 +187,15 @@ function mqtt_try ($test) {
 
 		if (strpos($data, $test['search_maint']) !== false) {
 			plugin_servcheck_debug('Search maint string success');
-			$results['result'] = 'ok';
 			$results['result_search'] = 'maint ok';
 			return $results;
 		}
 	}
+
+
+//!!pm smazat
+$results['return'] = 'NEVER!';
+
 
 	return $results;
 }

@@ -27,7 +27,7 @@ function dns_try ($test) {
 	include_once(__DIR__ . '/../includes/mxlookup.php');
 
 	// default result
-	$results['result'] = 'failed';
+	$results['result'] = 'error';
 	$results['curl'] = false;
 	$results['time'] = time();
 	$results['error'] = '';
@@ -52,6 +52,9 @@ function dns_try ($test) {
 			$results['data'] .= "$m\n";
 		}
 
+		$results['result'] = 'ok';
+		$results['error'] = 'Some data returned';
+
 		plugin_servcheck_debug('Result is ' . $results['data']);
 
 		// If we have set a failed search string, then ignore the normal searches and only alert on it
@@ -71,11 +74,10 @@ function dns_try ($test) {
 		if ($test['search'] != '') {
 			if (strpos($results['data'], $test['search']) !== false) {
 				plugin_servcheck_debug('Search string success');
-				$results['result'] = 'ok';
 				$results['result_search'] = 'ok';
 				return $results;
 			} else {
-				$results['result'] = 'ok';
+				$results['result'] = 'partial';
 				$results['result_search'] = 'not ok';
 				return $results;
 			}
@@ -85,12 +87,15 @@ function dns_try ($test) {
 			plugin_servcheck_debug('Processing search maint');
 			if (strpos($results['data'], $test['search_maint']) !== false) {
 				plugin_servcheck_debug('Search maint string success');
-				$results['result'] = 'ok';
 				$results['result_search'] = 'maint ok';
 				return $results;
 			}
 		}
 	}
+
+
+//!!pm smazat
+$results['return'] = 'NEVER!';
 
 	return $results;
 }
@@ -110,7 +115,7 @@ function doh_try ($test) {
 	$cert_info = array();
 
 	// default result
-	$results['result'] = 'ok';
+	$results['result'] = 'error';
 	$results['curl'] = true;
 	$results['error'] = '';
 	$results['result_search'] = 'not tested';
@@ -198,13 +203,15 @@ function doh_try ($test) {
 
 	plugin_servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
 
-	if ($results['curl_return'] > 0) {
-		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
-	}
-
 	if ($test['ca_id'] > 0) {
 		unlink ($ca_info);
 		plugin_servcheck_debug('Removing own CA file');
+	}
+
+	if ($results['curl_return'] > 0) {
+		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
+		$results['result'] = 'error';
+		return $results;
 	}
 
 	curl_close($process);
@@ -226,6 +233,9 @@ function doh_try ($test) {
 		return $results;
 	}
 
+	$results['result'] = 'ok';
+	$results['error'] = 'Some data returned';
+
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
 
@@ -246,6 +256,7 @@ function doh_try ($test) {
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
+			$results['result'] = 'partial';
 			$results['result_search'] = 'not ok';
 			return $results;
 		}
@@ -262,14 +273,8 @@ function doh_try ($test) {
 		}
 	}
 
-	if ($test['requiresauth'] != '') {
-
-		plugin_servcheck_debug('Processing requires no authentication required');
-
-		if ($results['options']['http_code'] != 401) {
-			$results['error'] = 'The requested URL returned error: ' . $results['options']['http_code'];
-		}
-	}
+//!!pm smazat
+$results['return'] = 'NEVER!';
 
 	return $results;
 }

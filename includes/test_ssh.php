@@ -28,7 +28,7 @@ function ssh_try ($test) {
 	global $config, $service_types_ports;
 
 	// default result
-	$results['result'] = 'failed';
+	$results['result'] = 'error';
 	$results['curl'] = false;
 	$results['time'] = time();
 	$results['error'] = '';
@@ -100,7 +100,6 @@ function ssh_try ($test) {
 		return $results;
 	}
 
-
 	if ($cred['type'] == 'sshkey') {
 		plugin_servcheck_debug('Preparing ssh private key file' , $test);
 
@@ -159,6 +158,9 @@ function ssh_try ($test) {
 
 	plugin_servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
 
+	$results['result'] = 'ok';
+	$results['error'] = 'Some data returned';
+
 	$results['data'] = $data;
 
 	if (isset($key_filename)) {
@@ -173,7 +175,6 @@ function ssh_try ($test) {
 
 		if (strpos($data, $test['search_failed']) !== false) {
 			plugin_servcheck_debug('Search failed string success');
-			$results['result'] = 'ok';
 			$results['result_search'] = 'failed ok';
 			return $results;
 		}
@@ -184,11 +185,10 @@ function ssh_try ($test) {
 	if ($test['search'] != '') {
 		if (strpos($data, $test['search']) !== false) {
 			plugin_servcheck_debug('Search string success');
-			$results['result'] = 'ok';
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
-			$results['result'] = 'ok';
+			$results['result'] = 'partial';
 			$results['result_search'] = 'not ok';
 			return $results;
 		}
@@ -200,11 +200,13 @@ function ssh_try ($test) {
 
 		if (strpos($data, $test['search_maint']) !== false) {
 			plugin_servcheck_debug('Search maint string success');
-			$results['result'] = 'ok';
 			$results['result_search'] = 'maint ok';
 			return $results;
 		}
 	}
+
+//!!pm smazat
+$results['return'] = 'NEVER!';
 
 	return $results;
 }

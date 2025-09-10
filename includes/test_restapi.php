@@ -38,7 +38,7 @@ function restapi_try ($test) {
 	$http_headers = array();
 
 	// default result
-	$results['result'] = 'failed';
+	$results['result'] = 'error';
 	$results['curl'] = true;
 	$results['time'] = time();
 	$results['error'] = '';
@@ -91,7 +91,6 @@ function restapi_try ($test) {
 	// Disable Cert checking for now
 	$options[CURLOPT_SSL_VERIFYPEER] = false;
 	$options[CURLOPT_SSL_VERIFYHOST] = false;
-
 
 	$url = $test['data_url'];
 
@@ -161,7 +160,7 @@ function restapi_try ($test) {
 					$results['data'] = $response;
 
 					plugin_servcheck_debug('Problem with login: ' . $results['curl_return'] , $test);
-
+					$results['result'] = 'error';
 					$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
 					return $results;
 				}
@@ -308,9 +307,12 @@ function restapi_try ($test) {
 
 	if ($results['curl_return'] > 0) {
 		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
+		$results['result'] = 'error';
+		return $results;
 	}
 
 	curl_close($process);
+
 
 	// not found?
 	if ($results['options']['http_code'] == 404) {
@@ -326,6 +328,9 @@ function restapi_try ($test) {
 		return $results;
 	}
 
+	$results['error'] =  'Some data returned';
+	$results['result'] = 'ok';
+
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
 
@@ -333,7 +338,6 @@ function restapi_try ($test) {
 
 		if (strpos($data, $test['search_failed']) !== false) {
 			plugin_servcheck_debug('Search failed string success');
-			$results['result'] = 'ok';
 			$results['result_search'] = 'failed ok';
 			return $results;
 		}
@@ -345,12 +349,11 @@ function restapi_try ($test) {
 
 		if (strpos($data, $test['search']) !== false) {
 			plugin_servcheck_debug('Search string success');
-			$results['result'] = 'ok';
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
 			plugin_servcheck_debug('String not found');
-			$results['result'] = 'ok';
+			$results['result'] = 'partial';
 			$results['result_search'] = 'not ok';
 			return $results;
 		}
@@ -362,11 +365,15 @@ function restapi_try ($test) {
 
 		if (strpos($data, $test['search_maint']) !== false) {
 			plugin_servcheck_debug('Search maint string success');
-			$results['result'] = 'ok';
 			$results['result_search'] = 'maint ok';
 			return $results;
 		}
 	}
+
+
+//!!pm smazat
+$results['return'] = 'NEVER!';
+
 
 	return $results;
 }

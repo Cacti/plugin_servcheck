@@ -39,7 +39,7 @@ function ftp_try ($test) {
 	}
 
 	// default result
-	$results['result'] = 'failed';
+	$results['result'] = 'error';
 	$results['curl'] = true;
 	$results['time'] = time();
 	$results['error'] = '';
@@ -166,6 +166,8 @@ function ftp_try ($test) {
 
 	if ($results['curl_return'] > 0) {
 		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
+		$results['result'] = 'error';
+		return $result;
 	}
 
 	if ($test['ca_id'] > 0) {
@@ -175,22 +177,14 @@ function ftp_try ($test) {
 
 	curl_close($process);
 
-	if ($test['type'] == 'web_http' || $test['type'] == 'web_https') {
-
-		// not found?
-		if ($results['options']['http_code'] == 404) {
-			$results['result'] = 'error';
-			$results['error'] = '404 - Not found';
-			return $results;
-		}
-	}
-
 	if (empty($results['data']) && $results['curl_return'] > 0) {
 		$results['result'] = 'error';
 		$results['error'] = 'No data returned';
-
 		return $results;
 	}
+
+	$results['result'] = 'ok';
+	$results['error'] = 'Some data returned';
 
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
@@ -231,6 +225,10 @@ function ftp_try ($test) {
 			return $results;
 		}
 	}
+
+
+//!!pm smazat
+$results['return'] = 'NEVER!';
 
 	return $results;
 }

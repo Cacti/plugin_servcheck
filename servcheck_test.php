@@ -34,6 +34,8 @@ $servcheck_actions_menu = array(
 	2 => __('Disable', 'servcheck'),
 	3 => __('Enable', 'servcheck'),
 	4 => __('Duplicate', 'servcheck'),
+	5 => __('Clear statistics', 'servcheck'),
+	6 => __('Clear log', 'servcheck'),
 );
 
 set_default_action();
@@ -167,6 +169,16 @@ function form_actions() {
 
 					$newid++;
 				}
+			} elseif (get_filter_request_var('drp_action') == 5) { // clear statistics
+				foreach ($selected_items as $item) {
+					db_execute_prepared('UPDATE plugin_servcheck_test SET 
+						stats_ok = 0, stats_bad = 0, failures = 0, triggered = 0
+						WHERE id = ?', array($item));
+				}
+			} elseif (get_filter_request_var('drp_action') == 6) { // clear log
+				foreach ($selected_items as $item) {
+					db_execute_prepared('DELETE FROM plugin_servcheck_log WHERE test_id = ?', array($item));
+				}
 			}
 		}
 
@@ -228,6 +240,24 @@ function form_actions() {
 			print "	<tr>
 					<td class='topBoxAlt'>
 						<p>" . __n('Click \'Continue\' to duplicate the following items.', 'Click \'Continue\' to duplicate following items.', cacti_sizeof($items_array)) . "</p>
+						<div class='itemlist'><ul>$item_list</ul></div>
+					</td>
+				</tr>";
+
+			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate item', 'Duplicate items', cacti_sizeof($items_array)) . "'>";
+		} elseif (get_filter_request_var('drp_action') == 5) { // clear statistics
+			print "	<tr>
+					<td class='topBoxAlt'>
+						<p>" . __n('Click \'Continue\' to clear statistics of following items.', 'Click \'Continue\' to clear statistics of following items.', cacti_sizeof($items_array)) . "</p>
+						<div class='itemlist'><ul>$item_list</ul></div>
+					</td>
+				</tr>";
+
+			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate item', 'Duplicate items', cacti_sizeof($items_array)) . "'>";
+		} elseif (get_filter_request_var('drp_action') == 6) { // clear log
+			print "	<tr>
+					<td class='topBoxAlt'>
+						<p>" . __n('Click \'Continue\' to clear log of following items.', 'Click \'Continue\' to clear log of following items.', cacti_sizeof($items_array)) . "</p>
 						<div class='itemlist'><ul>$item_list</ul></div>
 					</td>
 				</tr>";
@@ -749,7 +779,6 @@ function servcheck_log_request_validation() {
 	validate_store_request_vars($filters, 'sess_servcheck_log');
 }
 
-
 function servcheck_show_history() {
 	global $config, $httperrors, $search_result;
 
@@ -776,7 +805,7 @@ function servcheck_show_history() {
 	}
 
 	$sql_order = get_order_string();
-	$sql_limit = ' LIMIT ' . ($rows*(get_request_var('page')-1)) . ',' . $rows;
+	$sql_limit = ' LIMIT ' . ($rows*(get_filter_request_var('page')-1)) . ',' . $rows;
 
 	$result = db_fetch_assoc_prepared("SELECT sl.*, st.name
 		FROM plugin_servcheck_log AS sl
@@ -825,7 +854,7 @@ function servcheck_show_history() {
 
 	$columns = cacti_sizeof($display_text);
 
-	$nav = html_nav_bar(htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?filter=' . get_request_var('filter'), MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, $columns, __('Proxies', 'servcheck'), 'page', 'main');
+	$nav = html_nav_bar(htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=history&filter=' . get_request_var('filter'), MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, $columns, __('Logs', 'servcheck'), 'page', 'main');
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])), 'chk');
 
@@ -856,7 +885,7 @@ function servcheck_show_history() {
 				$days = floor((strtotime($row['cert_expire']) - time())/86400) . ' ' . __('days', 'servcheck') ;
 			}
 
-			if ($row['result_search'] == 'partial') {
+			if  ($row['result'] == 'ok' && $row['result_search'] == 'not ok') {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 0, 0.6)";
 			} elseif ($row['result'] == 'ok') {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(204, 255, 204, 0.6)";
@@ -1059,7 +1088,7 @@ function data_list() {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 36, 0.6);";
 			} elseif ($last_log['result'] == 'ok' && strtotime($row['lastcheck']) > 0) {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(50, 255, 50, 0.6)";
-			} elseif ($last_log['result'] == 'partial' && strtotime($row['lastcheck']) > 0) {
+			} elseif ($last_log['result'] == 'ok' && $last_log['result_search'] == 'not ok') {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(240, 240, 0, 0.6);";
 			} else {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 25, 36, 0.6);";
@@ -1108,7 +1137,7 @@ function data_list() {
 				form_selectable_cell($row['lastcheck'] . ' (' . $last_log['attempt'] . ')', $row['id'], '', 'right');
 			}
 
-			form_selectable_cell($row['stats_ok'] . '/' . $row['stats_bad'], $row['id'], '', 'right');
+			form_selectable_cell($row['stats_ok'] . ' / ' . $row['stats_bad'], $row['id'], '', 'right');
 			$tmp = ' (' . $row['failures'] . ' of ' . $row['downtrigger'] . ')';
 			form_selectable_cell($last_log['duration'], $row['id'], '', 'right');
 			form_selectable_cell($row['triggered'] == '0' ? __('No', 'servcheck') . $tmp : __('Yes', 'servcheck') . $tmp, $row['id'], '', 'right');

@@ -133,7 +133,6 @@ function snmp_try ($test) {
 			return $results;
 		} else {
 			plugin_servcheck_debug('String not found');
-			$results['result'] = 'partial';
 			$results['result_search'] = 'not ok';
 			return $results;
 		}

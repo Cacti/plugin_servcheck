@@ -214,7 +214,7 @@ while ($x < $test['attempt']) {
 
 	$results['duration'] = round(microtime(true) - $results['start'], 4);
 
-	if ($results['result'] != 'failed') {
+	if ($results['result'] == 'ok') {
 		break;
 	} else {
 		plugin_servcheck_debug('Attempt ' . $x . ' was unsuccessful', $test);
@@ -237,7 +237,7 @@ plugin_servcheck_debug('failures:'. $test['stats_bad'] . ', triggered:' . $test[
 $results['time'] = time();
 $test['expiry_date'] = null;
 
-if ($test['result'] !== 'failed' && $test['certexpirenotify']) {
+if ($results['result'] == 'ok' && $test['certexpirenotify']) {
 	if (isset($results['options']['certinfo'][0])) { // curl
 		plugin_servcheck_debug('Returned certificate info: ' .  clean_up_lines(var_export($results['options']['certinfo'], true))  , $test);
 		$parsed = date_parse_from_format('M j H:i:s Y e', $results['options']['certinfo'][0]['Expire date']);
@@ -294,11 +294,13 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 			$test['failures'] = 0;
 	}
 
-	if ($last_log['result_search'] != $results['result_search']) {
+	// next checks only if test passed
+
+	if ($last_log['result_search'] != $results['result_search'] && $results['result'] == 'ok') {
 		$sendemail = true;
 	}
 
-	if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days) {
+	if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days && $results['result'] == 'ok') {
 
 		// notify once per day
 		$new_notify = db_fetch_cell_prepared('SELECT UNIX_TIMESTAMP(DATE_ADD(last_exp_notify, INTERVAL 1 DAY))
@@ -315,7 +317,7 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 	}
 
 	// long duration
-	if ($test['duration_trigger'] > 0) {
+	if ($test['duration_trigger'] > 0 && $results['result'] == 'ok') {
 
 		plugin_servcheck_debug('Checking test for log duration', $test);
 
@@ -521,8 +523,6 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 		}
 	}
 
-//!!pm asi kdyz se zmeni status blbe, tak uz neposilat long time duration
-
 	if ($type == 'text') {
 		if ($test['status_change']) {
 			if ($results['result'] == 'ok') {
@@ -536,7 +536,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			if (!is_null($test['path']) && $test['path'] != '') {
 				$message[0]['text'] .= 'Path: ' . $test['path'] . PHP_EOL;
 			}
-			$message[0]['text'] .= 'Error: ' . $results['error'] . PHP_EOL;
+			$message[0]['text'] .= 'Error/Reason: ' . $results['error'] . PHP_EOL;
 			$message[0]['text'] .= 'Attempt: ' . $results['x'] . '/' . $test['attempt'] . PHP_EOL;
 			$message[0]['text'] .= 'Date: ' . date(date_time_format(), $results['time']) . PHP_EOL;
 			$message[0]['text'] .= 'Duration: ' . $results['duration'] . PHP_EOL;
@@ -554,7 +554,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			}
 		}
 
-		if ($test['duration'] && $results['result'] != 'failed') {
+		if ($test['duration'] && $results['result'] == 'ok') {
 			if ($test['duration_state'] == 'ok') {
 				$message[1]['subject'] = '[Cacti servcheck] Service long duration restored to normal: ' . $test['name'];
 			} else {
@@ -568,9 +568,9 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 				$message[1]['text'] .= PHP_EOL . 'Notes: ' . $test['notes'] . PHP_EOL;
 			}
 		}
-//!! cele to predelat, tady hledat, jen kdyz je test ok
+
 		// search string notification
-		if ($last_log['result_search'] != $results['result_search']) {
+		if ($last_log['result_search'] != $results['result_search'] && $results['result'] == 'ok') {
 			$message[2]['subject'] = '[Cacti servcheck] Service: ' . $test['name'] . ' search result is different than last check';
 			$message[2]['text'] = 'Hostname: ' . $test['hostname'] . PHP_EOL;
 
@@ -602,7 +602,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			}
 		}
 
-		if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days) {
+		if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days && $results['result'] == 'ok') {
 			if ($test['days'] < 0) {
 				$message[3]['subject'] = '[Cacti servcheck] Certificate will expire in less than ' . $cert_expiry_days . ' days: ' . $test['days'];
 			} else {
@@ -647,7 +647,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			$message[0]['text'] .= '<tr><td>Attempt:</td><td>' . $results['x'] . '/' . $test['attempt'] . '</td></tr>'. PHP_EOL;
 			$message[0]['text'] .= '<tr><td>Duration:</td><td>' . $results['duration'] . '</td></tr>' . PHP_EOL;
 
-			if ($test['certexpirenotify']) {
+			if ($test['certexpirenotify'] && $results['result'] == 'ok') {
 				if ($test['days'] < 0) {
 					$message[0]['text'] .= '<tr><td>Certificate expired:</td><td>' . ($test['days'] * -1) . ' days ago</td></tr>' . PHP_EOL;
 				} else {
@@ -660,7 +660,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			}
 
 			if ($results['error'] != '') {
-				$message[0]['text'] .= '<tr><td>Error:</td><td>' . $results['error'] . '</td></tr>' . PHP_EOL;
+				$message[0]['text'] .= '<tr><td>Error/Reason:</td><td>' . $results['error'] . '</td></tr>' . PHP_EOL;
 			}
 
 			if ($test['notes'] != '') {
@@ -684,7 +684,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			}
 		}
 
-		if ($test['duration']) {
+		if ($test['duration'] && $results['result'] == 'ok') {
 
 			if ($test['duration_state'] == 'ok') {
 				$message[1]['subject'] = '[Cacti servcheck] Service long duration restored to normal: ' . $test['name'];
@@ -707,7 +707,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 		}
 
 		// search string notification
-		if ($last_log['result_search'] != $results['result_search']) {
+		if ($last_log['result_search'] != $results['result_search'] && $results['result'] == 'ok') {
 			$message[2]['subject'] = '[Cacti servcheck] Service ' . $test['name'] . ' search result is different than last check';
 			$message[2]['text']  = '<h3>' . $message[1]['subject'] . '</h3>' . PHP_EOL;
 			$message[2]['text'] .= '<hr>';
@@ -739,7 +739,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 			$message[2]['text'] .= '</table>' . PHP_EOL;
 		}
 
-		if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days) {
+		if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days'] < $cert_expiry_days && $results['result'] == 'ok') {
 			$message[3]['subject'] = '[Cacti servcheck] Certificate will expire in less than ' . $cert_expiry_days . ' days: ' . $test['name'];
 			$message[3]['text']  = '<h3>' . $message[2]['subject'] . '</h3>' . PHP_EOL;
 			$message[3]['text'] .= '<hr>';

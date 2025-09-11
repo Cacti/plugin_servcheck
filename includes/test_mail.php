@@ -482,7 +482,6 @@ function mail_try ($test) {
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
-			$results['result'] = 'partial';
 			$results['result_search'] = 'not ok';
 			return $results;
 		}
@@ -494,7 +493,6 @@ function mail_try ($test) {
 
 		if (strpos($data, $test['search_maint']) !== false) {
 			plugin_servcheck_debug('Search maint string success');
-			$results['result'] = 'ok';
 			$results['result_search'] = 'maint ok';
 			return $results;
 		}

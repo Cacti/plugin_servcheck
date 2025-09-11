@@ -83,12 +83,6 @@ function plugin_servcheck_upgrade() {
 		db_execute('ALTER TABLE plugin_servcheck_test MODIFY duration_trigger decimal(4,2) default "0"');
 	}
 
-	if (db_column_exists('plugin_servcheck_log', 'attempt')) {
-		db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN timeout_trigger TO duration_trigger');
-	}
-
-
-	db_execute("ALTER TABLE plugin_servcheck_log MODIFY `result` enum('ok','not yet','error','partial') NOT NULL DEFAULT 'not yet'");
 	db_execute('ALTER TABLE plugin_servcheck_log MODIFY curl_return_code int(3) default NULL');
 	db_execute('ALTER TABLE plugin_servcheck_log MODIFY cert_expire timestamp default "0000-00-00 00:00:00"');
 
@@ -350,7 +344,7 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'test_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'lastcheck', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
 	$data['columns'][] = array('name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '0');
-	$data['columns'][] = array('name' => 'result', 'type' => "enum('ok','not yet','error','partial')", 'NULL' => false, 'default' => 'not yet');
+	$data['columns'][] = array('name' => 'result', 'type' => "enum('ok','not yet','error')", 'NULL' => false, 'default' => 'not yet');
 	$data['columns'][] = array('name' => 'result_search', 'type' => "enum('ok','not ok','failed ok','failed not ok', 'maint ok','not yet', 'not tested')", 'NULL' => false, 'default' => 'not yet');
 	$data['columns'][] = array('name' => 'curl_response', 'type' => 'text', 'NULL' => true, 'default' => NULL);
 	$data['columns'][] = array('name' => 'cert_expire', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');

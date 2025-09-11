@@ -77,7 +77,6 @@ function dns_try ($test) {
 				$results['result_search'] = 'ok';
 				return $results;
 			} else {
-				$results['result'] = 'partial';
 				$results['result_search'] = 'not ok';
 				return $results;
 			}
@@ -256,7 +255,6 @@ function doh_try ($test) {
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
-			$results['result'] = 'partial';
 			$results['result_search'] = 'not ok';
 			return $results;
 		}

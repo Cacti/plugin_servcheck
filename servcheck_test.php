@@ -1086,10 +1086,10 @@ function data_list() {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(205, 207, 196, 0.6)";
 			} elseif ($row['failures'] > 0 && $row['failures'] < $row['downtrigger']) {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 36, 0.6);";
-			} elseif ($last_log['result'] == 'ok' && strtotime($row['lastcheck']) > 0) {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(50, 255, 50, 0.6)";
 			} elseif ($last_log['result'] == 'ok' && $last_log['result_search'] == 'not ok') {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(240, 240, 0, 0.6);";
+			} elseif ($last_log['result'] == 'ok' && strtotime($row['lastcheck']) > 0) {
+				$style = "color:rgba(10,10,10,0.8);background-color:rgba(50, 255, 50, 0.6)";
 			} else {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 25, 36, 0.6);";
 			}

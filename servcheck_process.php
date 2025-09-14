@@ -144,7 +144,6 @@ if (function_exists('plugin_maint_check_servcheck_test')) {
 	}
 }
 
-
 $test['days'] = 0;
 $test['duration'] = false;
 register_startup($test_id);
@@ -163,6 +162,21 @@ while ($x < $test['attempt']) {
 
 	plugin_servcheck_debug('Category: ' . $category , $test);
 	plugin_servcheck_debug('Service: ' . $service , $test);
+
+	if (!function_exists('curl_init') && $category == 'web' || $category == 'smb' || $category == 'ldap' ||
+		$category == 'ftp' || $category == 'mqtt' || $category == 'rest' ||  $service == 'doh') {
+
+		print "FATAL: You must install php-curl to use this test" . PHP_EOL;
+		plugin_servcheck_debug('Test ' . $test['id'] . ' requires php-curl library', $test);
+		$results['result'] = 'error';
+		$results['curl'] = false;
+		$results['error'] = 'missing php-curl library';
+		$results['result_search'] = 'not tested';
+		$results['start'] = microtime(true);
+		$results['duration'] = 0;
+		$results['data'] = '';
+		continue;
+	}
 
 	switch ($category) {
 
@@ -327,10 +341,10 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 		$test['durs'][] = $results['duration'] . ' (' . date('Y-m-d H:i:s', $results['time']) . ')';
 
 		$durations = db_fetch_assoc_prepared('SELECT duration, lastcheck FROM plugin_servcheck_log
-			WHERE test_id = ? ORDER BY id DESC LIMIT 2',
-			array($test['id']));
+			WHERE test_id = ? ORDER BY id DESC LIMIT ?',
+			array($test['id'], ($test['duration_count']-1)));
 
-		if (cacti_sizeof($durations) == 2) {
+		if (cacti_sizeof($durations) == ($test['duration_count']-1)) {
 			foreach ($durations as $d) {
 				if ($d['duration'] > $test['duration_trigger']) {
 					$trig++;
@@ -339,7 +353,7 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 			}
 		}
 
-		if ($trig == 2) {
+		if ($trig == ($test['duration_count']-1)) {
 			if ($results['duration'] > $test['duration_trigger']) {
 				plugin_servcheck_debug('Long duration detected, sending notification', $test);
 				$test['duration'] = true;

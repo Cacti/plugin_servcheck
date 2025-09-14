@@ -36,7 +36,6 @@ function snmp_try ($test) {
 	$results['curl'] = false;
 	$results['time'] = time();
 	$results['error'] = '';
-	$results['curl_return'] = 'N/A';
 	$results['start'] = microtime(true);
 
 	list($category,$service) = explode('_', $test['type']);

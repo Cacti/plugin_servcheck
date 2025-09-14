@@ -81,6 +81,7 @@ function plugin_servcheck_upgrade() {
 	if (db_column_exists('plugin_servcheck_test', 'timeout_trigger')) {
 		db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN timeout_trigger TO duration_trigger');
 		db_execute('ALTER TABLE plugin_servcheck_test MODIFY duration_trigger decimal(4,2) default "0"');
+		api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'duration_count', 'type' => 'int(3)', 'NULL' => false, 'unsigned' => true, 'default' => '3', 'after' => 'duration_trigger'));
 	}
 
 	db_execute('ALTER TABLE plugin_servcheck_log MODIFY curl_return_code int(3) default NULL');
@@ -320,6 +321,7 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'how_often', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '1');
 	$data['columns'][] = array('name' => 'downtrigger', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '3');
 	$data['columns'][] = array('name' => 'duration_trigger', 'type' => 'decimal(4,2)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'duration_count', 'type' => 'int(3)', 'NULL' => false, 'unsigned' => true, 'default' => '3');
 	$data['columns'][] = array('name' => 'stats_ok', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'stats_bad', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'failures', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');

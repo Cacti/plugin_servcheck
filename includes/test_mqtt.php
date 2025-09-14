@@ -33,14 +33,6 @@ there are 2 problems:
 function mqtt_try ($test) {
 	global $config;
 
-	if (!function_exists('curl_init')) {
-		print "FATAL: You must install php-curl to use this test" . PHP_EOL;
-		plugin_servcheck_debug('Test ' . $test['id'] . ' requires php-curl library', $test);
-		$results['result'] = 'error';
-		$results['error'] = 'missing php-curl library';
-		return $results;
-	}
-
 	// default result
 	$results['result'] = 'error';
 	$results['curl'] = true;

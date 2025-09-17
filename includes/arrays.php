@@ -121,11 +121,6 @@ $graph_interval = array (
 
 
 
-$rest_api_format = array(
-	'urlencoded'  => 'Form-urlencoded',
-	'json'           => 'JSON'
-);
-
 $search_result = array(
 	'ok'            => __('String found', 'servcheck'),
 	'not ok'        => __('String not found', 'servcheck'),
@@ -240,20 +235,13 @@ $servcheck_notify_formats = array(
 	'plain' => 'plain',
 );
 
-if (db_table_exists('plugin_servcheck_contacts')) {
-	$servcheck_contact_users = db_fetch_assoc("SELECT pwc.id, pwc.data, pwc.type, ua.full_name
-		FROM plugin_servcheck_contacts AS pwc
-		LEFT JOIN user_auth AS ua
-		ON ua.id=pwc.user_id
-		WHERE pwc.data != ''");
-} else {
-	$servcheck_contact_users = array();
-}
+$accounts = db_fetch_assoc("SELECT id, username, email_address
+	FROM user_auth
+	WHERE email_address != ''");
 
-$servcheck_notify_accounts = array();
-if (!empty($servcheck_contact_users)) {
-	foreach ($servcheck_contact_users as $servcheck_contact_user) {
-		$servcheck_notify_accounts[$servcheck_contact_user['id']] = $servcheck_contact_user['full_name'] . ' - ' . ucfirst($servcheck_contact_user['type']);
+if (!empty($accounts)) {
+	foreach ($accounts as $account) {
+		$servcheck_notify_accounts[$account['id']] = $account['username'] . ' - ' . $account['email_address'];
 	}
 }
 
@@ -408,14 +396,6 @@ $servcheck_test_fields = array(
 		'sql' => "SELECT id, name FROM plugin_servcheck_credential ORDER BY name",
 		'none_value' => __('None', 'servcheck'),
 	),
-	'format' => array(
-		'friendly_name' => __('Data Format', 'servcheck'),
-		'method' => 'drop_array',
-		'array' => $rest_api_format,
-		'default' => 'urlencoded',
-		'description' => __('Select correct format for communication, check your Rest API documentation.', 'servcheck'),
-		'value' => '|arg1:format|',
-	),
 	'snmp_oid' => array(
 		'friendly_name' => __('SNMP OID', 'servcheck'),
 		'method' => 'textbox',
@@ -521,8 +501,17 @@ $servcheck_test_fields = array(
 		'default' => 0,
 		'max_length' => '5',
 		'size' => '30',
-		'description' => __('If the test time is greater than this value three times in a row, send a notification.', 'servcheck'),
+		'description' => __('If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count.', 'servcheck'),
 		'value' => '|arg1:duration_trigger|',
+	),
+	'duration_count' => array(
+		'friendly_name' => __('Number of duration violations in a row', 'servcheck'),
+		'method' => 'textbox',
+		'default' => 3,
+		'max_length' => '2',
+		'size' => '30',
+		'description' => __('How many times the duration trigger must be exceeded in a row for a notification to be sent', 'servcheck'),
+		'value' => '|arg1:duration_count|',
 	),
 	'verifications_spacer' => array(
 		'method' => 'spacer',
@@ -623,6 +612,13 @@ $rest_api_auth_method = array(
 	'cookie' => __('Cookie based auth', 'servcheck'),
 );
 
+$rest_api_apikey_option = array(
+	'http'   => __('Auth in HTTP headers', 'servcheck'),
+	'custom' => __('Custom HTTP header', 'servcheck'),
+	'post'   => __('POST method', 'servcheck'),
+);
+
+
 
 $servcheck_restapi_fields = array(
 	'general_spacer' => array(
@@ -658,14 +654,6 @@ $servcheck_restapi_fields = array(
 		'description' => __('Select correct credential', 'servcheck'),
 		'value' => '|arg1:cred_id|',
 		'sql' => "SELECT id, name FROM plugin_servcheck_credential WHERE type IN ('basic', 'apikey', 'oauth2', 'cookie') ORDER BY name",
-	),
-	'format' => array(
-		'friendly_name' => __('Data Format', 'servcheck'),
-		'method' => 'drop_array',
-		'array' => $rest_api_format,
-		'default' => 'urlencoded',
-		'description' => __('Select correct format for communication, check your Rest API documentation.', 'servcheck'),
-		'value' => '|arg1:format|',
 	),
 	'cred_name' => array(
 		'method' => 'textbox',
@@ -719,6 +707,14 @@ $servcheck_credential_fields = array(
 		'description' => __('Select correct Credential type.', 'servcheck'),
 		'value' => '|arg1:type|',
 	),
+	'option' => array(
+		'friendly_name' => __('Options', 'servcheck'),
+		'method' => 'drop_array',
+		'array' => $rest_api_apikey_option,
+		'default' => 'http',
+		'description' => __('Set according to your REST API server', 'servcheck'),
+		'value' => '|arg1:option|',
+	),
 	'username' => array(
 		'friendly_name' => __('Username', 'servcheck'),
 		'method' => 'textbox',
@@ -735,14 +731,21 @@ $servcheck_credential_fields = array(
 		'max_length' => '100',
 		'size' => '30'
 	),
-	'cred_name' => array(
+	'token_name' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('Token/API Key name', 'servcheck'),
 		'description' => __('Auth can use different token or API Key name. You can specify it here. You need know correct name, check your Rest API server documentation.<br/>
 			<i>OAuth2 -</i> Commonly used name is \'Bearer\'<br/>
 			<i>API Key -</i> commonly used name is \'apikey\'<br/> ', 'servcheck'),
-		'value' => '|arg1:cred_name|',
+		'value' => '|arg1:token_name|',
 		'max_length' => '100',
+	),
+	'token_value' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Token/API key value', 'servcheck'),
+		'description' => __('API key and OAuth2 have two flows - You can have key/token from server and insert it here or use auth flow with credentials.', 'servcheck'),
+		'value' => '|arg1:token_value|',
+		'max_length' => '200',
 	),
 	'login_url' => array(
 		'method' => 'textbox',
@@ -756,13 +759,6 @@ $servcheck_credential_fields = array(
 		'friendly_name' => __('Data URL', 'servcheck'),
 		'description' => __('URL to retrieve data. Insert with http:// or https://', 'servcheck'),
 		'value' => '|arg1:data_url|',
-		'max_length' => '200',
-	),
-	'cred_value' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('Token/API key value', 'servcheck'),
-		'description' => __('API key and OAuth2 have two flows - You can have key/token from server and insert it here or use auth flow with credentials.', 'servcheck'),
-		'value' => '|arg1:cred_value|',
 		'max_length' => '200',
 	),
 	'community' => array(
@@ -913,17 +909,17 @@ $servcheck_help_credential = array(
 	'userpass' => __('<b>Can be used for a lot of service checks:</b><br/>\
 		<i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/>\
 		<i>SMTP on port 587 - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/>\
-		<i>Imap, imaps, pop3, pop3s, ftp</i> - mandatory. For anonymous ftp, use username \"anonymous\" and email address as password<br/>\
-		<i>LDAP, smb, smbs</i> - mandatory<br/>\
+		<i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/>\
+		<i>LDAP, smb, smbs</i> - required<br/>\
 		<i>MQTT</i> - optional<br/>\
 		<i>SCP, SSH command</i> - you can use this method or private key method', 'servcheck'),
-
-	'basic'    => __('Rest API - Basic HTTP auth. Here is username and password mandatory', 'servcheck'),
-	'apikey'   => __('Rest API - API key auth<br/>Insert API key name and value. Both values are mandatory ', 'servcheck'),
+	'basic'    => __('Rest API - Basic HTTP auth. Username and password are required', 'servcheck'),
+	'apikey'   => __('Rest API - API key auth<br/>Auth is send in HTTP header, custom header or POST method. Credentials in URL is not supported.<br/>Insert API key name and value. Both values are required.\
+		For HTTP header the name <i>Bearer</i> is usually used. For custom header <i>X-API-Key</i> is usually used. For POST <i>api_key</i> is usually used.', 'servcheck'),
 	'oauth2'   => __('Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials.', 'servcheck'),
-	'cookie'   => __('Rest API - Cookie based auth - both values are mandatory. After login, cookie is returned', 'servcheck'),
-	'snmp'     => __('SNMP v1 or v2 - mandatory, insert community name here', 'servcheck'),
-	'snmp3'    => __('SNMP v3 - The security level determines which parameters are mandatory', 'servcheck'),
+	'cookie'   => __('Rest API - Cookie based auth - both values are required. After login, cookie is returned', 'servcheck'),
+	'snmp'     => __('SNMP v1 or v2 - required, insert community name here', 'servcheck'),
+	'snmp3'    => __('SNMP v3 - The security level determines which parameters are required', 'servcheck'),
 	'sshkey'   => __('SSH private key - Can be used for SCP or SSH command test. These test can use username/password too', 'servcheck'),
 );
 
@@ -947,23 +943,23 @@ $servcheck_help_test = array(
 	'mail_pop3s'   => __('Encrypted POP3, you can try login and test certificate and user login.', 'servcheck'),
 	'dns_dns'      => __('Try to resolve DNS record on specified DNS server', 'servcheck'),
 	'dns_doh'      => __('Try DNS over HTTPS.', 'servcheck'),
-	'ldap_ldap'    => __('All parameters are mandatory. Perform unecrypted LDAP login and search', 'servcheck'),
-	'ldap_ldaps'   => __('All parameters are mandatory. Perform encrypted LDAP login and search', 'servcheck'),
+	'ldap_ldap'    => __('All parameters are required. Perform unecrypted LDAP login and search', 'servcheck'),
+	'ldap_ldaps'   => __('All parameters are required. Perform encrypted LDAP login and search', 'servcheck'),
 	'ftp_ftp'      => __('Unecrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content \
 		of the file is returned.', 'servcheck'),
 	'ftp_tftp'     => __('Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned.', 'servcheck'),
 	'ftp_scp'      => __('Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt).', 'servcheck'),
-	'smb_smb'      => __('Try SMB protocol, username and password are mandatory. Try to login and download file.', 'servcheck'),
-	'smb_smbs'     => __('Try SMB protocol, username and password are mandatory. Try to login and download file.', 'servcheck'),
+	'smb_smb'      => __('Try SMB protocol, username and password are required. Try to login and download file.', 'servcheck'),
+	'smb_smbs'     => __('Try SMB protocol, username and password are required. Try to login and download file.', 'servcheck'),
 	'mqtt_mqtt'    => __('Connetct to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic', 'servcheck'),
 	'rest_basic'   => __('REST API test with basic HTTP auth. Prepare credential first.', 'servcheck'),
 	'rest_apikey'  => __('REST API test with API key auth. Prepare credential first.', 'servcheck'),
 	'rest_oauth2'  => __('REST API test with Oauth2. Prepare credential first.', 'servcheck'),
 	'rest_cookie'  => __('REST API test with cookie auth. Prepare credential first.', 'servcheck'),
-	'snmp_get'     => __('Try SNMP get method. Output for specified OID is returned. Credential is mandatory, you have to prepare SNMP v.1,2 or v3 credential first.', 'servcheck'),
-	'snmp_walk'    => __('Try SNMP walk method. Output for specified OID is returned. Credential is mandatory, you have to prepare SNMP v.1,2 or v3 credential first.', 'servcheck'),
+	'snmp_get'     => __('Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first.', 'servcheck'),
+	'snmp_walk'    => __('Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first.', 'servcheck'),
 	'ssh_command'  => __('Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible.', 'srvcheck'),
-	'ssh_sftp'     => __('SFTP protocol on port 22, username and password and path are mandatory. Try to do directory listing of path.', 'servcheck'),
+	'ssh_sftp'     => __('SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path.', 'servcheck'),
 );
 
 

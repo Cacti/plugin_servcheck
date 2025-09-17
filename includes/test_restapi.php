@@ -80,13 +80,14 @@ function restapi_try ($test) {
 		return $results;
 	}
 
+//!! tady asi nebudu vypinat certifikaty
 	// Disable Cert checking for now
 	$options[CURLOPT_SSL_VERIFYPEER] = false;
 	$options[CURLOPT_SSL_VERIFYHOST] = false;
 
 	$url = $test['data_url'];
 
-	plugin_servcheck_debug('Using Rest API method ' . $service_types[$api['type']] , $test);
+	plugin_servcheck_debug('Using Rest API method ' . $service_types[$credential['type']] , $test);
 
 	switch ($cred['type']) {
 		case 'basic':
@@ -95,18 +96,23 @@ function restapi_try ($test) {
 			$options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
 			break;
 		case 'apikey':
-// TADY JE BLBOST, delam usernama a password a s jinym formatem pak key???
-			if ($api['format'] == 'json') {
-				$cred_data = [
-					'username'   => $credential['username'],
-					'password'   => $credential['password']
-				];
+//!! do helpu dat, ze post je zaroven na cteni dat
+			switch ($credential['option']) {
+				case 'http':
+					$http_headers[] = 'Authorization: ' . $credential['token_name'] . ' ' . $credential['token_value'];
+					break;
+				case 'custom':
+					$http_headers[] = $credential['token_name'] . ': ' . $credential['token_value'];
+					break;
+				case 'post':
+					$data = json_encode(array(
+						$credential['token_name'] => $credential['token_value']
+					));
 
-				$cred_data = json_encode($cred_data);
-				$http_headers[] = "Content-Type: application/json";
-			} else {
-
-				$http_headers[] = $credential['keyname'] . ': ' . $credential['keyvalue'];
+					$options[CURLOPT_POST] = true;
+					$options[CURLOPT_POSTFIELDS] = $data;
+					$http_headers[] = 'Content-Type: application/json';
+					break;
 			}
 
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
@@ -120,28 +126,25 @@ function restapi_try ($test) {
 			if (!$valid) {
 				plugin_servcheck_debug('No valid token, generating new request' , $test);
 
-				$cred_data = [
+				$cred_data = json_encode(array(
 					'grant_type' => 'password',
 					'username'   => $credential['username'],
 					'password'   => $credential['password']
-				];
-
-				if ($api['format'] == 'json') {
-					$cred_data = json_encode($cred_data);
-					$http_headers[] = "Content-Type: application/json";
-				}
+				));
 
 				$options[CURLOPT_POST] = true;
 				$options[CURLOPT_POSTFIELDS] = $cred_data;
+				$http_headers[] = 'Content-Type: application/json';
+
 				$options[CURLOPT_HTTPHEADER] = $http_headers;
 
-				$process = curl_init($api['login_url']);
+				$process = curl_init($credential['login_url']);
 
 				plugin_servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($options, true)));
 
 				curl_setopt_array($process,$options);
 
-				plugin_servcheck_debug('Executing curl request for login: ' . $api['login_url'], $test);
+				plugin_servcheck_debug('Executing curl request for login: ' . $credential['login_url'], $test);
 
 				$response = curl_exec($process);
 
@@ -165,20 +168,28 @@ function restapi_try ($test) {
 
 				$body = json_decode(substr($response, $header_size), true);
 
-				if (isset($body['token']) && isset($body['expires_in'])) {
+				if (isset($body['token'])) {
 					plugin_servcheck_debug('We got token and expiration, saving', $test);
-//!!pm tady si musim ulozit token
-// tady jsem celkove skoncil
 
-					db_execute_prepared ('UPDATE plugin_servcheck_restapi_method
-						SET cred_value = ?, cred_validity = DATE_ADD(NOW(), INTERVAL ? HOUR)
-						WHERE id = ?',
-						array($body['token'], $body['expires_in']), $api['id']);
+					if (isset($body['expires_in'])) {
+						$cred['cred_validity'] = time() + $body['expires_in'];
+					} else {
+						plugin_servcheck_debug('We got token and don\'t know expiration. We will use it only one time.', $test);
+					}
 
-					$api['token'] = $body['token'];
-				} elseif (isset($body['token'])) {
-					plugin_servcheck_debug('We got token and don\'t know expiration. We will use it only one time.', $test);
-					$api['token'] = $body['token'];
+					$cred['type'] = 'oauth2';
+					$cred['oauth_client_id'] = $credential['username'];
+					$cred['oauth_client_secret'] = $credential['password'];
+					$cred['token_value'] = $body['token'];
+					$cred['token_name'] = $credential['token_name'];
+					$cred['data_url'] = $credential['data_url'];
+					$cred['login_url'] = $credential['login_url'];
+
+					$enc = servcheck_encrypt_credential($cred);
+
+					db_execute_prepared ('UPDATE plugin_servcheck_credential
+						SET data = ? WHERE id = ?',
+						array($enc, $credential['id']));
 				} else {
 					plugin_servcheck_debug('We didn\'t get token.', $test);
 					$results['options'] = curl_getinfo($process);
@@ -193,37 +204,36 @@ function restapi_try ($test) {
 			}
 
 			$http_headers = array();
-			$http_headers[] = 'Authorization: ' . $api['cred_name'] . ' ' . $api['token'];
+			$http_headers[] = 'Authorization: ' . $credential['token_name'] . ' ' . $credential['token_value'];
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
+			$options[CURLOPT_POST] = false;
+			unset ($options[CURLOPT_POSTFIELDS]);
 
 			break;
-		case 'cookie':
-//!!pm tady to budu upravovat
-// promenne jsou username a password
-			// first we have to create login request and get cookie
-			$cred_data = [
-				'username'   => servcheck_show_text($api['username']),
-				'password'   => servcheck_show_text($api['password'])
-			];
 
-			if ($api['format'] == 'json') {
-				$cred_data = json_encode($cred_data);
-				$http_headers[] = "Content-Type: application/json";
-			}
+		case 'cookie':
+
+			// first we have to create login request and get cookie
+			$cred_data = json_encode(array(
+				'username'   => $credentail['username'],
+				'password'   => $credential['password']
+			));
+
+			$http_headers[] = 'Content-Type: application/json';
 
 			$options[CURLOPT_POST] = true;
 			$options[CURLOPT_POSTFIELDS] = $cred_data;
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
 
-			$cookie_file = $config['base_path'] . '/plugins/servcheck/tmp_data/' . $api['id'];
+			$cookie_file = $config['base_path'] . '/plugins/servcheck/tmp_data/' . $credential['id'];
 			$options[CURLOPT_COOKIEJAR] = $cookie_file;  // store cookie
-			$process = curl_init($api['login_url']);
+			$process = curl_init($credential['login_url']);
 
 			plugin_servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($options, true)));
 
 			curl_setopt_array($process,$options);
 
-			plugin_servcheck_debug('Executing curl request for login: ' . $api['login_url'], $test);
+			plugin_servcheck_debug('Executing curl request for login: ' . $credential['login_url'], $test);
 
 			$response = curl_exec($process);
 
@@ -266,13 +276,11 @@ function restapi_try ($test) {
 
 			unset($http_headers);
 			$options[CURLOPT_COOKIEFILE] = $cookie_file; // send cookie
+			$options[CURLOPT_POST] = false;
+			unset ($options[CURLOPT_POSTFIELDS]);
 
 			break;
 	}
-
-	// 99% requests are GET
-	$options[CURLOPT_POST] = false;
-	unset ($options[CURLOPT_POSTFIELDS]);
 
 	plugin_servcheck_debug('Final url is ' . $url , $test);
 
@@ -364,7 +372,6 @@ function restapi_try ($test) {
 
 //!!pm smazat
 $results['return'] = 'NEVER!';
-
 
 	return $results;
 }

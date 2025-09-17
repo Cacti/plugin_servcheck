@@ -293,15 +293,16 @@ function form_save() {
 
 	if (isset_request_var('save_component')) {
 
-		$save['id']          = get_filter_request_var('id');
-		$save['attempt']     = get_filter_request_var('attempt');
-		$save['poller_id']   = get_filter_request_var('poller_id');
-		$save['cred_id']     = get_filter_request_var('cred_id');
-		$save['ca_id']       = get_filter_request_var('ca_id');
-		$save['external_id'] = get_filter_request_var('external_id');
-		$save['proxy_id']    = get_filter_request_var('proxy_id');
-		$save['downtrigger']      = get_filter_request_var('downtrigger');
-		$save['how_often']        = get_filter_request_var('how_often');
+		$save['id']             = get_filter_request_var('id');
+		$save['attempt']        = get_filter_request_var('attempt');
+		$save['duration_count'] = get_filter_request_var('duration_count');
+		$save['poller_id']      = get_filter_request_var('poller_id');
+		$save['cred_id']        = get_filter_request_var('cred_id');
+		$save['ca_id']          = get_filter_request_var('ca_id');
+		$save['external_id']    = get_filter_request_var('external_id');
+		$save['proxy_id']       = get_filter_request_var('proxy_id');
+		$save['downtrigger']    = get_filter_request_var('downtrigger');
+		$save['how_often']      = get_filter_request_var('how_often');
 
 		if (isset_request_var('enabled')) {
 			$save['enabled'] = 'on';
@@ -431,8 +432,6 @@ function form_save() {
 			$save['notify_list']     = get_filter_request_var('notify_list');
 		}
 
-		plugin_servcheck_remove_old_users();
-
 		if (!is_error_message()) {
 			$saved_id = sql_save($save, 'plugin_servcheck_test');
 
@@ -501,6 +500,8 @@ function data_edit() {
 		)
 	);
 
+	print '<div name="specific_help" id="specific_help" class="left"></div>';
+
 	form_hidden_box('save_component', '1', '');
 
 	html_end_box(true, true);
@@ -509,17 +510,19 @@ function data_edit() {
 
 	?>
 	<script type='text/javascript'>
-	$(function() {
-		var msWidth = 100;
 
 	<?php
-	print 'if (typeof servcheck_help === "undefined") {';
-	print 'var servcheck_help = {};';
+	print 'if (typeof servcheck_help === "undefined") {' . PHP_EOL;
+	print 'var servcheck_help = {};' . PHP_EOL;
 	foreach ($servcheck_help_test as $key => $value) {
-		print 'servcheck_help["' . $key . '"] = "' . $value . '";';
+		print 'servcheck_help["' . $key . '"] = "' . $value . '";' . PHP_EOL;
 	}
-	print '}';
+	print '}' . PHP_EOL;
 	?>
+
+
+	$(function() {
+		var msWidth = 100;
 
 		$('#notify_accounts option').each(function() {
 			if ($(this).textWidth() > msWidth) {
@@ -603,6 +606,8 @@ function data_edit() {
 		$('#row_snmp_oid').hide();
 		$('#row_ssh_command').hide();
 		$('#row_cred_id').hide();
+
+		$('#specific_help').html(servcheck_help[test_type]);
 
 		switch(category) {
 			case 'web':
@@ -1141,7 +1146,7 @@ function data_list() {
 			$tmp = ' (' . $row['failures'] . ' of ' . $row['downtrigger'] . ')';
 			form_selectable_cell($last_log['duration'], $row['id'], '', 'right');
 			form_selectable_cell($row['triggered'] == '0' ? __('No', 'servcheck') . $tmp : __('Yes', 'servcheck') . $tmp, $row['id'], '', 'right');
-			form_selectable_cell($res, $row['id'], '', 'right');
+			form_selectable_cell(substr($res, 0, 30), $row['id'], '', 'right', $res);
 			form_selectable_cell($last_log['result_search'] == 'not yet' ? __('Not tested yet', 'servcheck'): $last_log['result_search'], $row['id'], '', 'right');
 			form_checkbox_cell($row['id'], $row['id']);
 

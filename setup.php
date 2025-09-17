@@ -87,6 +87,8 @@ function plugin_servcheck_upgrade() {
 	db_execute('ALTER TABLE plugin_servcheck_log MODIFY curl_return_code int(3) default NULL');
 	db_execute('ALTER TABLE plugin_servcheck_log MODIFY cert_expire timestamp default "0000-00-00 00:00:00"');
 
+	db_execute('DROP TABLE IF EXISTS plugin_servcheck_contacts');
+
 	$exist = db_fetch_cell("SELECT COUNT(*)
 		FROM information_schema.tables
 		WHERE table_schema = SCHEMA()
@@ -158,10 +160,6 @@ function plugin_servcheck_upgrade() {
 		}
 
 		// convert credentials to separated tab
-
-		if (!db_column_exists('plugin_servcheck_test', 'login_url')) {
-			db_add_column('plugin_servcheck_test', array('name' => 'format', 'type' => "enum('urlencoded','xml','json')", 'NULL' => false, 'default' => 'urlencoded', 'after' => 'ldapsearch'));
-		}
 
 		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_test WHERE username != '' OR password !='' AND type != 'restapi'");
 		if (cacti_sizeof($records)) {
@@ -250,9 +248,9 @@ function plugin_servcheck_upgrade() {
 					array('upgrade/convert_restapi_' . $record['id'], $cred['type'], $enc));
 
 				db_execute_prepared('UPDATE plugin_servcheck_test
-					set type = ?, format = ?, cred_id = ?
+					set type = ?, cred_id = ?
 					WHERE id = ?',
-					array('rest_' . $cred['type'], $record['format'], db_fetch_insert_id(), $test_id));
+					array('rest_' . $cred['type'], db_fetch_insert_id(), $test_id));
 			}
 		}
 
@@ -303,7 +301,6 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'ldapsearch', 'type' => 'varchar(200)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'snmp_oid', 'type' => "varchar(255)", 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'ssh_command', 'type' => "varchar(255)", 'NULL' => false, 'default' => '');
-	$data['columns'][] = array('name' => 'format', 'type' => "enum('urlencoded','xml','json')", 'NULL' => false, 'default' => 'urlencoded');
 	$data['columns'][] = array('name' => 'search', 'type' => 'varchar(1024)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'search_maint', 'type' => 'varchar(1024)', 'NULL' => false);
 	$data['columns'][] = array('name' => 'search_failed', 'type' => 'varchar(1024)', 'NULL' => false);
@@ -377,21 +374,6 @@ function plugin_servcheck_setup_table() {
 	$data['comment']   = 'Holds running process information';
 
 	api_plugin_db_table_create('servcheck', 'plugin_servcheck_processes', $data);
-
-
-	$data              = array();
-	$data['columns'][] = array('name' => 'id', 'type' => 'bigint', 'NULL' => false, 'auto_increment' => true);
-	$data['columns'][] = array('name' => 'user_id', 'type' => 'int(12)', 'NULL' => false, 'unsigned' => true);
-	$data['columns'][] = array('name' => 'type', 'type' => 'varchar(32)', 'NULL' => false);
-	$data['columns'][] = array('name' => 'data', 'type' => 'text', 'NULL' => false);
-	$data['primary']   = 'id';
-	$data['unique_keys'][] = array('name' => 'user_id_type', 'columns' => 'user_id`, `type');
-	$data['keys'][] = array('name' => 'type', 'columns' => 'type');
-	$data['keys'][] = array('name' => 'user_id', 'columns' => 'user_id');
-	$data['type']      = 'InnoDB';
-	$data['comment']   = 'Holds Plugin servcheck contacts';
-
-	api_plugin_db_table_create('servcheck', 'plugin_servcheck_contacts', $data);
 
 
 	$data              = array();
@@ -578,7 +560,6 @@ function servcheck_replicate_out($data) {
 	cacti_log('INFO: Replicating for the servcheck Plugin', false, 'REPLICATE');
 
 	$tables = array(
-		'plugin_servcheck_contacts',
 		'plugin_servcheck_proxy',
 		'plugin_servcheck_test',
 		'plugin_servcheck_credential',

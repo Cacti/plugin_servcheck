@@ -462,12 +462,12 @@ function data_edit() {
 	<script type='text/javascript'>
 
 	<?php
-	print 'if (typeof servcheck_help === "undefined") {';
-	print 'var servcheck_help = {};';
+	print 'if (typeof servcheck_help === "undefined") {' . PHP_EOL;
+	print 'var servcheck_help = {};' . PHP_EOL;
 	foreach ($servcheck_help_credential as $key => $value) {
-		print 'servcheck_help["' . $key . '"] = "' . $value . '";';
+		print 'servcheck_help["' . $key . '"] = "' . $value . '";' . PHP_EOL;
 	}
-	print '}';
+	print '}' . PHP_EOL;
 	?>
 
 	$(function() {
@@ -499,7 +499,7 @@ function data_edit() {
 		$('#row_oauth_client_secret').hide();
 		$('#row_token_name').hide();
 		$('#row_token_value').hide();
-
+		$('#row_option').hide();
 
 		$('#specific_help').html(servcheck_help[credential_type]);
 
@@ -514,13 +514,14 @@ function data_edit() {
 			case 'basic':
 				$('#row_username').show();
 				$('#row_password').show();
-				$('#row_data_url').hide();
+				$('#row_data_url').show();
 				$('#password').attr('type', 'password');
 				break;
 			case 'apikey':
 				$('#row_token_name').show();
 				$('#row_token_value').show();
-				$('#row_data_url').hide();
+				$('#row_option').show();
+				$('#row_data_url').show();
 				break;
 			case 'oauth2':
 				$('#row_oauth_client_id').show();
@@ -533,7 +534,8 @@ function data_edit() {
 			case 'cookie':
 				$('#row_username').show();
 				$('#row_password').show();
-				$('#row_data_url').hide();
+				$('#row_data_url').show();
+				$('#row_login_url').show();
 				$('#password').attr('type', 'password');
 				break;
 			case 'snmp':

@@ -159,7 +159,7 @@ function ftp_try ($test) {
 	if ($results['curl_return'] > 0) {
 		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
 		$results['result'] = 'error';
-		return $result;
+		return $results;
 	}
 
 	if ($test['ca_id'] > 0) {

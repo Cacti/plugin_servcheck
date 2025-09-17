@@ -196,10 +196,18 @@ function form_save() {
 		raise_message(3);
 	}
 
+//!!pm format uz tu neni, ale mozna ho sem vratim
 	if (isset_request_var('format') && array_key_exists(get_nfilter_request_var('format'), $rest_api_format)) {
 		$save['format'] = get_nfilter_request_var('format');
 	} else {
 		$_SESSION['sess_error_fields']['format'] = 'format';
+		raise_message(3);
+	}
+
+	if (isset_request_var('option') && array_key_exists(get_nfilter_request_var('option'), $rest_api_apikey_option)) {
+		$save['option'] = get_nfilter_request_var('option');
+	} else {
+		$_SESSION['sess_error_fields']['option'] = 'option';
 		raise_message(3);
 	}
 
@@ -323,6 +331,7 @@ function servcheck_edit_rest() {
 			case 'apikey':
 				$('#row_cred_name').show();
 				$('#row_cred_value').show();
+				$('#row_option').show();
 				$('#row_username').hide();
 				$('#row_password').hide();
 				$('#row_login_url').hide();

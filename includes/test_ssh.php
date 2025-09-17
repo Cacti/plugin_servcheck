@@ -22,7 +22,6 @@
  +-------------------------------------------------------------------------+
 */
 
-// for ssh command test, scp and sftp
 
 function ssh_try ($test) {
 	global $config, $service_types_ports;

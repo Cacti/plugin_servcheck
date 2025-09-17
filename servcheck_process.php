@@ -163,8 +163,8 @@ while ($x < $test['attempt']) {
 	plugin_servcheck_debug('Category: ' . $category , $test);
 	plugin_servcheck_debug('Service: ' . $service , $test);
 
-	if (!function_exists('curl_init') && $category == 'web' || $category == 'smb' || $category == 'ldap' ||
-		$category == 'ftp' || $category == 'mqtt' || $category == 'rest' ||  $service == 'doh') {
+	if (!function_exists('curl_init') && ($category == 'web' || $category == 'smb' || $category == 'ldap' ||
+		$category == 'ftp' || $category == 'mqtt' || $category == 'rest' ||  $service == 'doh')) {
 
 		print "FATAL: You must install php-curl to use this test" . PHP_EOL;
 		plugin_servcheck_debug('Test ' . $test['id'] . ' requires php-curl library', $test);
@@ -506,6 +506,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 	$users = '';
 	if ($test['notify_accounts'] != '') {
+//!!pm tady se jeste zbavuju contacts
 		$users = db_fetch_cell("SELECT GROUP_CONCAT(DISTINCT data) AS emails
 			FROM plugin_servcheck_contacts
 			WHERE id IN (" . $test['notify_accounts'] . ")");
@@ -563,6 +564,10 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 				}
 			}
 
+			if (isset($results['options']['http_code'])  && $results['options']['http_code'] != 0) {
+				$message[0]['text'] .= 'HTTP Code: ' . $httperrors[$results['options']['http_code']] . PHP_EOL;
+			}
+
 			if ($test['notes'] != '') {
 				$message[0]['text'] .= PHP_EOL . 'Notes: ' . $test['notes'] . PHP_EOL;
 			}
@@ -602,10 +607,6 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 				} else {
 					$message[2]['text'] .= 'Certificate expires in ' . $test['days'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')' . PHP_EOL;
 				}
-			}
-
-			if (isset($results['options']['http_code'])) {
-				$message[2]['text'] .= 'HTTP Code: ' . $httperrors[$results['options']['http_code']] . PHP_EOL;
 			}
 
 			$message[2]['text'] .= 'Previous search: ' . $last_log['result_search'] . PHP_EOL;
@@ -669,7 +670,7 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 				}
 			}
 
-			if (isset($results['options']['http_code'])) {
+			if (isset($results['options']['http_code'])  && $results['options']['http_code'] != 0) {
 				$message[0]['text'] .= '<tr><td>HTTP Code:</td><td>' . $httperrors[$results['options']['http_code']] . '</td></tr>' . PHP_EOL;
 			}
 

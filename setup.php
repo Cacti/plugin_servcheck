@@ -261,14 +261,17 @@ function plugin_servcheck_upgrade() {
 		db_remove_column('plugin_servcheck_proxy', 'password');
 	}
 
-	if (db_column_exists('plugin_servcheck_test', 'attempt')) {
+	if (!db_column_exists('plugin_servcheck_test', 'attempt')) {
 		db_add_column('plugin_servcheck_test', array('name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '3', 'after' => 'type'));
 	}
 
-	if (db_column_exists('plugin_servcheck_log', 'attempt')) {
+	if (!db_column_exists('plugin_servcheck_log', 'attempt')) {
 		db_add_column('plugin_servcheck_log', array('name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '0', 'after' => 'lastcheck'));
 	}
 
+	if (!db_column_exists('plugin_servcheck_test', 'notify')) {
+		db_add_column('plugin_servcheck_test', array('name' => 'notify', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on'));
+	}
 
 	if (cacti_version_compare($old, '0.4', '<')) {
 		if (!db_column_exists('plugin_servcheck_test', 'ipaddress')) {
@@ -290,6 +293,7 @@ function plugin_servcheck_setup_table() {
 	$data              = array();
 	$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 	$data['columns'][] = array('name' => 'type', 'type' => 'varchar(30)', 'NULL' => false, 'default' => 'web_http');
+	$data['columns'][] = array('name' => 'notify', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on');
 	$data['columns'][] = array('name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '3');
 	$data['columns'][] = array('name' => 'name', 'type' => 'varchar(64)', 'NULL' => false, 'default' => '');
 	$data['columns'][] = array('name' => 'poller_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '1');

@@ -27,6 +27,9 @@ if (!defined('SERVCHECK_CIPHER')) {
 	define('SERVCHECK_CIPHER', 'aes-256-cbc');
 }
 
+// $user_agent can be of user's choice e.g. Linux or Windows based
+$user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
+
 $servcheck_tabs = array(
 	'servcheck_test.php'       => __('Tests', 'servcheck'),
 	'servcheck_ca.php'         => __('CA certificates', 'servcheck'),
@@ -229,6 +232,13 @@ $servcheck_seconds = array(
 	9  => __('%d Seconds', 9, 'servcheck'),
 	10 => __('%d Seconds', 10, 'servcheck'),
 );
+
+$rest_api_apikey_option = array(
+	'http'   => __('Auth in HTTP headers', 'servcheck'),
+	'custom' => __('Custom HTTP header', 'servcheck'),
+	'post'   => __('POST method', 'servcheck'),
+);
+
 
 $servcheck_notify_formats = array(
 	'html' => 'html',
@@ -602,88 +612,6 @@ $servcheck_test_fields = array(
 	),
 );
 
-// this part will be removed in 0.5
-
-$rest_api_auth_method = array(
-	'no'     => __('Without auth', 'servcheck'),
-	'basic'  => __('Basic HTTP auth', 'servcheck'),
-	'apikey' => __('API key auth', 'servcheck'),
-	'oauth2' => __('OAuth2/Bearer token auth', 'servcheck'),
-	'cookie' => __('Cookie based auth', 'servcheck'),
-);
-
-$rest_api_apikey_option = array(
-	'http'   => __('Auth in HTTP headers', 'servcheck'),
-	'custom' => __('Custom HTTP header', 'servcheck'),
-	'post'   => __('POST method', 'servcheck'),
-);
-
-
-
-$servcheck_restapi_fields = array(
-	'general_spacer' => array(
-		'method' => 'spacer',
-		'friendly_name' => __('General Settings', 'servcheck')
-	),
-	'name' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('Rest API Name', 'servcheck'),
-		'description' => __('The name that is displayed for this Rest API.', 'servcheck'),
-		'value' => '|arg1:name|',
-		'max_length' => '100',
-	),
-	'type' => array(
-		'friendly_name' => __('Auth type', 'servcheck'),
-		'method' => 'drop_array',
-		'on_change' => 'setRestAPI()',
-		'array' => $rest_api_auth_method,
-		'default' => 'basic_auth',
-		'description' => __('Details of auth methods:<br/>
-		No authorization - <i>just send only request and read the response.</i><br/>
-		Basic - <i>uses HTTP auth. Username and password is Base64 encoded. Credentials are not encrypted.</i><br/>
-		API key - <i>you need API key from your Rest API server. It will be send with all request. Key is send ind http headers. You can also add it to the data URL.</i><br/>
-		OAuth2 - <i>Oauth2/bearer token auth. Insert your token or use your credentials for getting a token.</i><br/>
-		Cookie - <i>Use your credentials for getting cookie. Cookie will be send with each request.</i><br/>
-		Note: HTTP method POST is used for login. For data query is used GET.', 'servcheck'),
-		'value' => '|arg1:type|',
-	),
-	'cred_id' => array(
-		'friendly_name' => __('Credential', 'servcheck'),
-		'method' => 'drop_sql',
-		'default' => 0,
-		'description' => __('Select correct credential', 'servcheck'),
-		'value' => '|arg1:cred_id|',
-		'sql' => "SELECT id, name FROM plugin_servcheck_credential WHERE type IN ('basic', 'apikey', 'oauth2', 'cookie') ORDER BY name",
-	),
-	'cred_name' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('Token/API Key name', 'servcheck'),
-		'description' => __('Auth can use different token or API Key name. You can specify it here.
-		Commonly used names are  \'Bearer\' for OAuth2,  \'apikey\' for API Key method. You need know correct name, check your Rest API server documentation. ', 'servcheck'),
-		'value' => '|arg1:cred_name|',
-		'max_length' => '100',
-	),
-	'login_url' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('Login URL', 'servcheck'),
-		'description' => __('URL which is used to log in or get the token.', 'servcheck'),
-		'value' => '|arg1:login_url|',
-		'max_length' => '200',
-	),
-	'data_url' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('Data URL', 'servcheck'),
-		'description' => __('URL to retrieve data. Insert with http:// or https://', 'servcheck'),
-		'value' => '|arg1:data_url|',
-		'max_length' => '200',
-	),
-	'id' => array(
-		'method' => 'hidden_zero',
-		'value' => '|arg1:id|'
-	),
-);
-
-// end
 
 
 $servcheck_credential_fields = array(
@@ -1367,3 +1295,78 @@ $curl_error = array(
 );
 
 
+// this part will be removed in 0.5
+
+$rest_api_auth_method = array(
+	'no'     => __('Without auth', 'servcheck'),
+	'basic'  => __('Basic HTTP auth', 'servcheck'),
+	'apikey' => __('API key auth', 'servcheck'),
+	'oauth2' => __('OAuth2/Bearer token auth', 'servcheck'),
+	'cookie' => __('Cookie based auth', 'servcheck'),
+);
+
+
+$servcheck_restapi_fields = array(
+	'general_spacer' => array(
+		'method' => 'spacer',
+		'friendly_name' => __('General Settings', 'servcheck')
+	),
+	'name' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Rest API Name', 'servcheck'),
+		'description' => __('The name that is displayed for this Rest API.', 'servcheck'),
+		'value' => '|arg1:name|',
+		'max_length' => '100',
+	),
+	'type' => array(
+		'friendly_name' => __('Auth type', 'servcheck'),
+		'method' => 'drop_array',
+		'on_change' => 'setRestAPI()',
+		'array' => $rest_api_auth_method,
+		'default' => 'basic_auth',
+		'description' => __('Details of auth methods:<br/>
+		No authorization - <i>just send only request and read the response.</i><br/>
+		Basic - <i>uses HTTP auth. Username and password is Base64 encoded. Credentials are not encrypted.</i><br/>
+		API key - <i>you need API key from your Rest API server. It will be send with all request. Key is send ind http headers. You can also add it to the data URL.</i><br/>
+		OAuth2 - <i>Oauth2/bearer token auth. Insert your token or use your credentials for getting a token.</i><br/>
+		Cookie - <i>Use your credentials for getting cookie. Cookie will be send with each request.</i><br/>
+		Note: HTTP method POST is used for login. For data query is used GET.', 'servcheck'),
+		'value' => '|arg1:type|',
+	),
+	'cred_id' => array(
+		'friendly_name' => __('Credential', 'servcheck'),
+		'method' => 'drop_sql',
+		'default' => 0,
+		'description' => __('Select correct credential', 'servcheck'),
+		'value' => '|arg1:cred_id|',
+		'sql' => "SELECT id, name FROM plugin_servcheck_credential WHERE type IN ('basic', 'apikey', 'oauth2', 'cookie') ORDER BY name",
+	),
+	'cred_name' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Token/API Key name', 'servcheck'),
+		'description' => __('Auth can use different token or API Key name. You can specify it here.
+		Commonly used names are  \'Bearer\' for OAuth2,  \'apikey\' for API Key method. You need know correct name, check your Rest API server documentation. ', 'servcheck'),
+		'value' => '|arg1:cred_name|',
+		'max_length' => '100',
+	),
+	'login_url' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Login URL', 'servcheck'),
+		'description' => __('URL which is used to log in or get the token.', 'servcheck'),
+		'value' => '|arg1:login_url|',
+		'max_length' => '200',
+	),
+	'data_url' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Data URL', 'servcheck'),
+		'description' => __('URL to retrieve data. Insert with http:// or https://', 'servcheck'),
+		'value' => '|arg1:data_url|',
+		'max_length' => '200',
+	),
+	'id' => array(
+		'method' => 'hidden_zero',
+		'value' => '|arg1:id|'
+	),
+);
+
+// end

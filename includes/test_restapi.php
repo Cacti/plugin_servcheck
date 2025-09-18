@@ -85,9 +85,9 @@ function restapi_try ($test) {
 	$options[CURLOPT_SSL_VERIFYPEER] = false;
 	$options[CURLOPT_SSL_VERIFYHOST] = false;
 
-	$url = $test['data_url'];
+	$url = $credential['data_url'];
 
-	plugin_servcheck_debug('Using Rest API method ' . $service_types[$credential['type']] , $test);
+	plugin_servcheck_debug('Using Rest API method ' . $service_types[$test['type']] , $test);
 
 	switch ($cred['type']) {
 		case 'basic':

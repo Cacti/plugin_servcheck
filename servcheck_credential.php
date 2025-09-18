@@ -165,7 +165,7 @@ function form_actions() {
 }
 
 function form_save() {
-	global $credential_types, $snmp_security_levels, $snmp_auth_protocols, $snmp_priv_protocols;
+	global $credential_types, $snmp_security_levels, $snmp_auth_protocols, $snmp_priv_protocols, $rest_api_apikey_option;
 
 	if (isset_request_var('save_component')) {
 		/* ================= input validation ================= */
@@ -246,6 +246,13 @@ function form_save() {
 					$cred['data_url'] = get_nfilter_request_var('data_url');
 				} else {
 					$_SESSION['sess_error_fields']['data_url'] = 'data_url';
+					raise_message(3);
+				}
+
+				if (isset_request_var('option') && array_key_exists(get_nfilter_request_var('option'), $rest_api_apikey_option)) {
+					$cred['option'] = get_nfilter_request_var('option');
+				} else {
+					$_SESSION['sess_error_fields']['option'] = 'option';
 					raise_message(3);
 				}
 

@@ -304,6 +304,14 @@ function form_save() {
 		$save['downtrigger']    = get_filter_request_var('downtrigger');
 		$save['how_often']      = get_filter_request_var('how_often');
 
+		if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $service_types)) {
+			$save['type'] = get_nfilter_request_var('type');
+			list ($category, $service) = explode('_', get_nfilter_request_var('type'));
+		} else {
+			$_SESSION['sess_error_fields']['type'] = 'type';
+			raise_message(3);
+		}
+
 		if (isset_request_var('enabled')) {
 			$save['enabled'] = 'on';
 		} else {
@@ -323,15 +331,8 @@ function form_save() {
 			$save['notify_accounts'] = '';
 		}
 
-		if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $service_types)) {
-			$save['type'] = get_nfilter_request_var('type');
-			list ($category, $subcategory) = explode('_', get_nfilter_request_var('type'));
-		} else {
-			$_SESSION['sess_error_fields']['type'] = 'type';
-			raise_message(3);
-		}
 
-		if (isset_request_var('hostname')) {
+		if ($category != 'rest' && isset_request_var('hostname')) {
 			form_input_validate(get_nfilter_request_var('hostname'), 'hostname', '^[a-zA-Z0-9\.\-]+(\:[0-9]{1,5})?$', false, 3);
 			$save['hostname'] = get_nfilter_request_var('hostname');
 		}
@@ -348,7 +349,7 @@ function form_save() {
 		}
 
 		if ($category == 'dns') {
-			if ($subcategory == 'dns') {
+			if ($service == 'dns') {
 				if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
 					$save['dns_query'] = get_nfilter_request_var('dns_query');
 				} else {
@@ -412,7 +413,7 @@ function form_save() {
 			$save['certexpirenotify'] = '';
 		}
 
-		if ($category == 'web' || $category == 'ftp' || $category == 'smb'  || $subcategory == 'sftp') {
+		if ($category == 'web' || $category == 'ftp' || $category == 'smb'  || $service == 'sftp') {
 			if (isset_request_var('path')) {
 				form_input_validate(get_nfilter_request_var('path'), 'path', '^[a-zA-Z0-9_;\-\/\.\?=]+$', false, 3);
 				$save['path'] = get_nfilter_request_var('path');
@@ -589,7 +590,7 @@ function data_edit() {
 		var tmp = test_type.split('_');
 
 		var category = tmp[0];
-		var subcategory = tmp[1];
+		var service = tmp[1];
 
 		$('#row_format').hide();
 		$('#row_dns_query').hide();
@@ -618,17 +619,18 @@ function data_edit() {
 				$('#row_proxy_id').show();
 				$('#row_cred_id').show();
 
-				if (subcategory == 'https') {
+				if (service == 'https') {
 					$('#row_ca_id').show();
 					$('#row_checkcert').show();
 					$('#row_certexpirenotify').show();
 				}
 
 				break;
+
 			case 'mail':
 				$('#row_hostname').show();
 
-				if (subcategory != 'smtp') {
+				if (service != 'smtp') {
 					$('#row_cred_id').show();
 					$('#row_ca_id').show();
 					$('#row_checkcert').show();
@@ -636,11 +638,12 @@ function data_edit() {
 				}
 
 				break
+
 			case 'dns':
 				$('#row_dns_query').show();
 				$('#row_hostname').show();
 
-				if (subcategory == 'doh') {
+				if (service == 'doh') {
 					$('#row_ca_id').show();
 					$('#row_checkcert').show();
 					$('#row_certexpirenotify').show();
@@ -654,28 +657,34 @@ function data_edit() {
 				$('#row_cred_id').show();
 
 				break;
+
 			case 'ftp':
 				$('#row_path').show();
 				$('#row_hostname').show();
 				$('#row_cred_id').show();
 
-				if (subcategory == 'tftp') {
+				if (service == 'tftp') {
 					$('#row_cred_id').hide();
 				}
+
 				break;
+
 			case 'smb':
 				$('#row_path').show();
 				$('#row_hostname').show();
 				$('#row_cred_id').show();
 
 				break;
+
 			case 'mqtt':
 				$('#row_path').show();
 				$('#row_hostname').show();
 				$('#row_cred_id').show();
+
 				break;
+
 			case 'rest':
-				$('#row_format').show();
+				$('#row_cred_id').show();
 
 				break;
 
@@ -690,10 +699,10 @@ function data_edit() {
 				$('#row_hostname').show();
 				$('#row_cred_id').show();
 
-				if (subcategory == 'command') {
+				if (service == 'command') {
 					$('#row_ssh_command').show();
 				}
-				if (subcategory == 'sftp') {
+				if (service == 'sftp') {
 					$('#row_path').show();
 				}
 

@@ -22,9 +22,6 @@
  +-------------------------------------------------------------------------+
 */
 
-// $user_agent can be of user's choice e.g. Linux or Windows based
-$user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
-
 $ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 
 function ftp_try ($test) {

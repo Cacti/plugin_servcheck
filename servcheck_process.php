@@ -369,12 +369,17 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 	}
 
 	if ($sendemail) {
-		plugin_servcheck_debug('Time to send email', $test);
 
-		if ($test['notify_format'] == 'plain') {
-			plugin_servcheck_send_notification($results, $test, 'text', $last_log);
+		if ($test['notify'] != '') {
+			plugin_servcheck_debug('Time to send email', $test);
+
+			if ($test['notify_format'] == 'plain') {
+				plugin_servcheck_send_notification($results, $test, 'text', $last_log);
+			} else {
+				plugin_servcheck_send_notification($results, $test, '', $last_log);
+			}
 		} else {
-			plugin_servcheck_send_notification($results, $test, '', $last_log);
+			plugin_servcheck_debug('Time to send email, but email notification for this test is disabled', $test);
 		}
 	}
 

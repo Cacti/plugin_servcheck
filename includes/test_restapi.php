@@ -97,7 +97,7 @@ function restapi_try ($test) {
 			break;
 		case 'apikey':
 //!! do helpu dat, ze post je zaroven na cteni dat
-			switch ($credential['option']) {
+			switch ($credential['option_apikey']) {
 				case 'http':
 					$http_headers[] = 'Authorization: ' . $credential['token_name'] . ' ' . $credential['token_value'];
 					break;
@@ -105,6 +105,14 @@ function restapi_try ($test) {
 					$http_headers[] = $credential['token_name'] . ': ' . $credential['token_value'];
 					break;
 				case 'post':
+					$data = array(
+						$credential['token_name'] => $credential['token_value']
+					);
+
+					$options[CURLOPT_POST] = true;
+					$options[CURLOPT_POSTFIELDS] = $data;
+					break;
+				case 'post_json':
 					$data = json_encode(array(
 						$credential['token_name'] => $credential['token_value']
 					));
@@ -113,6 +121,7 @@ function restapi_try ($test) {
 					$options[CURLOPT_POSTFIELDS] = $data;
 					$http_headers[] = 'Content-Type: application/json';
 					break;
+
 			}
 
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
@@ -128,8 +137,8 @@ function restapi_try ($test) {
 
 				$cred_data = json_encode(array(
 					'grant_type' => 'password',
-					'username'   => $credential['username'],
-					'password'   => $credential['password']
+					'username'   => $credential['oauth_client_id'],
+					'password'   => $credential['oauth_client_secret']
 				));
 
 				$options[CURLOPT_POST] = true;
@@ -178,8 +187,8 @@ function restapi_try ($test) {
 					}
 
 					$cred['type'] = 'oauth2';
-					$cred['oauth_client_id'] = $credential['username'];
-					$cred['oauth_client_secret'] = $credential['password'];
+					$cred['oauth_client_id'] = $credential['oauth_client_id'];
+					$cred['oauth_client_secret'] = $credential['oauth_client_secret'];
 					$cred['token_value'] = $body['token'];
 					$cred['token_name'] = $credential['token_name'];
 					$cred['data_url'] = $credential['data_url'];
@@ -189,7 +198,7 @@ function restapi_try ($test) {
 
 					db_execute_prepared ('UPDATE plugin_servcheck_credential
 						SET data = ? WHERE id = ?',
-						array($enc, $credential['id']));
+						array($enc, $cred['id']));
 				} else {
 					plugin_servcheck_debug('We didn\'t get token.', $test);
 					$results['options'] = curl_getinfo($process);
@@ -204,7 +213,7 @@ function restapi_try ($test) {
 			}
 
 			$http_headers = array();
-			$http_headers[] = 'Authorization: ' . $credential['token_name'] . ' ' . $credential['token_value'];
+			$http_headers[] = 'Authorization: ' . $cred['token_name'] . ' ' . $cred['token_value'];
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
 			$options[CURLOPT_POST] = false;
 			unset ($options[CURLOPT_POSTFIELDS]);
@@ -214,18 +223,22 @@ function restapi_try ($test) {
 		case 'cookie':
 
 			// first we have to create login request and get cookie
-			$cred_data = json_encode(array(
-				'username'   => $credentail['username'],
-				'password'   => $credential['password']
-			));
 
-			$http_headers[] = 'Content-Type: application/json';
+			$cred_data = array(
+				'username'   => $credential['username'],
+				'password'   => $credential['password']
+			);
+
+			if ($credential['option_cookie'] == 'json') {
+				$cred_data = json_encode($cred_data);
+				$http_headers[] = 'Content-Type: application/json';
+			}
 
 			$options[CURLOPT_POST] = true;
 			$options[CURLOPT_POSTFIELDS] = $cred_data;
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
 
-			$cookie_file = $config['base_path'] . '/plugins/servcheck/tmp_data/' . $credential['id'];
+			$cookie_file = $config['base_path'] . '/plugins/servcheck/tmp_data/' . $test['cred_id'];
 			$options[CURLOPT_COOKIEJAR] = $cookie_file;  // store cookie
 			$process = curl_init($credential['login_url']);
 

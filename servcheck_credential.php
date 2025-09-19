@@ -165,7 +165,7 @@ function form_actions() {
 }
 
 function form_save() {
-	global $credential_types, $snmp_security_levels, $snmp_auth_protocols, $snmp_priv_protocols, $rest_api_apikey_option;
+	global $credential_types, $snmp_security_levels, $snmp_auth_protocols, $snmp_priv_protocols, $rest_api_apikey_option, $rest_api_cookie_option;
 
 	if (isset_request_var('save_component')) {
 		/* ================= input validation ================= */
@@ -249,10 +249,10 @@ function form_save() {
 					raise_message(3);
 				}
 
-				if (isset_request_var('option') && array_key_exists(get_nfilter_request_var('option'), $rest_api_apikey_option)) {
-					$cred['option'] = get_nfilter_request_var('option');
+				if (isset_request_var('option_apikey') && array_key_exists(get_nfilter_request_var('option_apikey'), $rest_api_apikey_option)) {
+					$cred['option_apikey'] = get_nfilter_request_var('option_apikey');
 				} else {
-					$_SESSION['sess_error_fields']['option'] = 'option';
+					$_SESSION['sess_error_fields']['option_apikey'] = 'option_apikey';
 					raise_message(3);
 				}
 
@@ -295,11 +295,13 @@ function form_save() {
 					raise_message(3);
 				}
 
-				if (isset_request_var('token_value') && (get_nfilter_request_var('token_value') != '' && get_filter_request_var('token_value', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,250}$/'))))) {
-					$cred['token_value'] = get_nfilter_request_var('token_value');
-				} else {
-					$_SESSION['sess_error_fields']['token_value'] = 'token_value';
-					raise_message(3);
+				if (get_nfilter_request_var('token_value') != '') {
+					if (isset_request_var('token_value') && (get_nfilter_request_var('token_value') != '' && get_filter_request_var('token_value', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,250}$/'))))) {
+						$cred['token_value'] = get_nfilter_request_var('token_value');
+					} else {
+						$_SESSION['sess_error_fields']['token_value'] = 'token_value';
+						raise_message(3);
+					}
 				}
 
 				break;
@@ -330,6 +332,13 @@ function form_save() {
 					$cred['login_url'] = get_nfilter_request_var('login_url');
 				} else {
 					$_SESSION['sess_error_fields']['login_url'] = 'login_url';
+					raise_message(3);
+				}
+
+				if (isset_request_var('option_cookie') && array_key_exists(get_nfilter_request_var('option_cookie'), $rest_api_cookie_option)) {
+					$cred['option_cookie'] = get_nfilter_request_var('option_cookie');
+				} else {
+					$_SESSION['sess_error_fields']['option_cookie'] = 'option';
 					raise_message(3);
 				}
 
@@ -506,7 +515,8 @@ function data_edit() {
 		$('#row_oauth_client_secret').hide();
 		$('#row_token_name').hide();
 		$('#row_token_value').hide();
-		$('#row_option').hide();
+		$('#row_option_apikey').hide();
+		$('#row_option_cookie').hide();
 
 		$('#specific_help').html(servcheck_help[credential_type]);
 
@@ -527,7 +537,7 @@ function data_edit() {
 			case 'apikey':
 				$('#row_token_name').show();
 				$('#row_token_value').show();
-				$('#row_option').show();
+				$('#row_option_apikey').show();
 				$('#row_data_url').show();
 				break;
 			case 'oauth2':
@@ -541,6 +551,7 @@ function data_edit() {
 			case 'cookie':
 				$('#row_username').show();
 				$('#row_password').show();
+				$('#row_option_cookie').show();
 				$('#row_data_url').show();
 				$('#row_login_url').show();
 				$('#password').attr('type', 'password');
@@ -724,7 +735,7 @@ function data_list() {
 	$sql_where = '';
 
 	if (get_request_var('filter') != '') {
-		$sql_where .= ($sql_where == '' ? 'WHERE ' : ' AND ') . ' name LIKE "%' . get_request_var('filter') . '%" OR hostname LIKE "%' . get_request_var('filter') . '%"';
+		$sql_where .= ($sql_where == '' ? 'WHERE ' : ' AND ') . ' name LIKE "%' . get_request_var('filter') . '%"';
 	}
 
 	$sql_order = get_order_string();
@@ -861,7 +872,7 @@ function servcheck_filter() {
 		}
 
 		$(function() {
-			$('#rows').click(function() {
+			$('#refresh').click(function() {
 				applyFilter();
 			});
 

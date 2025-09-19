@@ -236,7 +236,13 @@ $servcheck_seconds = array(
 $rest_api_apikey_option = array(
 	'http'   => __('Auth in HTTP headers', 'servcheck'),
 	'custom' => __('Custom HTTP header', 'servcheck'),
-	'post'   => __('POST method', 'servcheck'),
+	'post'      => __('POST method, form-urlencoded', 'servcheck'),
+	'post_json' => __('POST method, JSON encoded', 'servcheck'),
+);
+
+$rest_api_cookie_option = array(
+	'json'   => __('JSON encoded', 'servcheck'),
+	'x-www-form-urlencoded' => __('Form urlencoded', 'servcheck'),
 );
 
 
@@ -487,7 +493,7 @@ $servcheck_test_fields = array(
 	),
 	'timings_spacer' => array(
 		'method' => 'spacer',
-		'friendly_name' => __('Notification Timing', 'servcheck')
+		'friendly_name' => __('Parameters', 'servcheck')
 	),
 	'how_often' => array(
 		'friendly_name' => __('How Often to Test', 'servcheck'),
@@ -502,7 +508,7 @@ $servcheck_test_fields = array(
 		'method' => 'drop_array',
 		'array' => $servcheck_cycles,
 		'default' => 1,
-		'description' => __('How many poller cycles the service must be DOWN before an alert email is triggered. The same number is applicable in case of \'Site Recovering\'.', 'servcheck'),
+		'description' => __('How many poller cycles the service must be DOWN before an alert email is triggered.', 'servcheck'),
 		'value' => '|arg1:downtrigger|',
 	),
 	'duration_trigger' => array(
@@ -554,6 +560,13 @@ $servcheck_test_fields = array(
 	'notification_spacer' => array(
 		'method' => 'spacer',
 		'friendly_name' => __('Notification Settings', 'servcheck')
+	),
+	'notify' => array(
+		'method' => 'checkbox',
+		'friendly_name' => __('Email notification', 'servcheck'),
+		'description' => __('If enabled email notification about state, duration and search result will be send', 'servcheck'),
+		'value' => '|arg1:notify|',
+		'default' => 'on',
 	),
 	'notify_format' => array(
 		'friendly_name' => __('Notify Format', 'servcheck'),
@@ -635,13 +648,21 @@ $servcheck_credential_fields = array(
 		'description' => __('Select correct Credential type.', 'servcheck'),
 		'value' => '|arg1:type|',
 	),
-	'option' => array(
+	'option_apikey' => array(
 		'friendly_name' => __('Options', 'servcheck'),
 		'method' => 'drop_array',
 		'array' => $rest_api_apikey_option,
 		'default' => 'http',
 		'description' => __('Set according to your REST API server', 'servcheck'),
-		'value' => '|arg1:option|',
+		'value' => '|arg1:option_apikey|',
+	),
+	'option_cookie' => array(
+		'friendly_name' => __('Options', 'servcheck'),
+		'method' => 'drop_array',
+		'array' => $rest_api_cookie_option,
+		'default' => 'http',
+		'description' => __('Set according to your REST API server', 'servcheck'),
+		'value' => '|arg1:option_cookie|',
 	),
 	'username' => array(
 		'friendly_name' => __('Username', 'servcheck'),
@@ -843,14 +864,15 @@ $servcheck_help_credential = array(
 		<i>SCP, SSH command</i> - you can use this method or private key method', 'servcheck'),
 	'basic'    => __('Rest API - Basic HTTP auth. Username and password are required', 'servcheck'),
 	'apikey'   => __('Rest API - API key auth<br/>Auth is send in HTTP header, custom header or POST method. Credentials in URL is not supported.<br/>Insert API key name and value. Both values are required.\
-		For HTTP header the name <i>Bearer</i> is usually used. For custom header <i>X-API-Key</i> is usually used. For POST <i>api_key</i> is usually used.', 'servcheck'),
-	'oauth2'   => __('Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials.', 'servcheck'),
+		For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue).\
+		For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue).\
+		For POST <i>api_key</i> is usually used.', 'servcheck'),
+	'oauth2'   => __('Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are send Json encoded.', 'servcheck'),
 	'cookie'   => __('Rest API - Cookie based auth - both values are required. After login, cookie is returned', 'servcheck'),
 	'snmp'     => __('SNMP v1 or v2 - required, insert community name here', 'servcheck'),
 	'snmp3'    => __('SNMP v3 - The security level determines which parameters are required', 'servcheck'),
 	'sshkey'   => __('SSH private key - Can be used for SCP or SSH command test. These test can use username/password too', 'servcheck'),
 );
-
 
 
 $servcheck_help_test = array(

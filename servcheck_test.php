@@ -337,7 +337,6 @@ function form_save() {
 			$save['notify_accounts'] = '';
 		}
 
-
 		if ($category != 'rest' && isset_request_var('hostname')) {
 			form_input_validate(get_nfilter_request_var('hostname'), 'hostname', '^[a-zA-Z0-9\.\-]+(\:[0-9]{1,5})?$', false, 3);
 			$save['hostname'] = get_nfilter_request_var('hostname');

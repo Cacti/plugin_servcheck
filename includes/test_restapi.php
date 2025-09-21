@@ -382,10 +382,6 @@ function restapi_try ($test) {
 		}
 	}
 
-
-//!!pm smazat
-$results['return'] = 'NEVER!';
-
 	return $results;
 }
 

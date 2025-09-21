@@ -308,9 +308,9 @@ if ($last_log['result'] != $results['result'] || $last_log['result_search'] != $
 			$test['failures'] = 0;
 	}
 
-	// next checks only if test passed
+	// checks only if test passed
 
-	if ($last_log['result_search'] != $results['result_search'] && $results['result'] == 'ok') {
+	if ($last_log['result_search'] != $results['result_search'] && $last_log['result_search'] != 'not tested' && $results['result'] == 'ok') {
 		$sendemail = true;
 	}
 
@@ -500,6 +500,10 @@ function register_shutdown($test_id) {
 function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 	global $httperrors, $cert_expiry_days;
 
+	$notify_list = array();
+	$notify_extra = array();
+	$notify_account = array();
+
 	if (read_config_option('servcheck_disable_notification') == 'on') {
 		cacti_log('Notifications are disabled, notification will not send for test ' . $test['name'], false, 'SERVCHECK');
 		plugin_servcheck_debug('Notification disabled globally', $test);
@@ -509,38 +513,26 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 	$servcheck_send_email_separately = read_config_option('servcheck_send_email_separately');
 
-	$users = '';
 	if ($test['notify_accounts'] != '') {
-//!!pm tady se jeste zbavuju contacts
-		$users = db_fetch_cell("SELECT GROUP_CONCAT(DISTINCT data) AS emails
-			FROM plugin_servcheck_contacts
+		$notify_accounts = db_fetch_cell("SELECT email_address
+			FROM user_auth
 			WHERE id IN (" . $test['notify_accounts'] . ")");
 	}
 
-	if ($users == '' && (isset($test['notify_extra']) && $test['notify_extra'] == '') && (api_plugin_installed('thold') && $test['notify_list'] <= 0)) {
-		cacti_log('ERROR: No users to send SERVCHECK Notification for ' . $test['name'], false, 'SERVCHECK');
-		return;
-	}
-
-	$to = $users;
-
-	if (read_config_option('servcheck_disable_notification') == 'on' && ($to != '' || $test['notify_extra'] != '')) {
-		cacti_log(sprintf('WARNING: Service Check %s has individual Emails specified and Disable Legacy Notification is Enabled.', $test['name']), false, 'SERVCHECK');
-	}
-
-	if ($test['notify_extra'] != '') {
-		$to .= ($to != '' ? ', ':'') . $test['notify_extra'];
-	}
-
 	if (api_plugin_installed('thold') && $test['notify_list'] > 0) {
-		$emails = db_fetch_cell_prepared('SELECT emails
+		$notify_list = db_fetch_cell_prepared('SELECT emails
 			FROM plugin_notification_lists
 			WHERE id = ?',
 			array($test['notify_list']));
+	}
 
-		if ($emails != '') {
-			$to .= ($to != '' ? ', ':'') . $emails;
-		}
+	if (isset($test['notify_extra']) && $test['notify_extra'] != '') {
+		$notify_extra = explode(',', $test['notify_extra']);
+	}
+
+	if (cacti_sizeof($notify_accounts) == 0 && $cacti_sizeof($notify_extra) > 0 && cacti_sizeof($test['notify_list'] > 0)) {
+		cacti_log('ERROR: No users to send SERVCHECK Notification for ' . $test['name'], false, 'SERVCHECK');
+		return true;
 	}
 
 	if ($type == 'text') {
@@ -789,6 +781,8 @@ function plugin_servcheck_send_notification($results, $test, $type, $last_log) {
 
 		}
 	}
+
+	$to = array_merge($notify_list, $notify_accounts, $nofify_extra);
 
 	if ($servcheck_send_email_separately != 'on') {
 		foreach ($message as $m) {

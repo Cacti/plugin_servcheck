@@ -196,7 +196,6 @@ function form_save() {
 		raise_message(3);
 	}
 
-//!!pm format uz tu neni, ale mozna ho sem vratim
 	if (isset_request_var('format') && array_key_exists(get_nfilter_request_var('format'), $rest_api_format)) {
 		$save['format'] = get_nfilter_request_var('format');
 	} else {

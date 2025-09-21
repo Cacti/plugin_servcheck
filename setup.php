@@ -70,40 +70,58 @@ function plugin_servcheck_upgrade() {
 		api_plugin_register_hook('servcheck', 'replicate_out', 'servcheck_replicate_out', 'setup.php', '1');
 		api_plugin_register_hook('servcheck', 'config_settings', 'servcheck_config_settings', 'setup.php', '1');
 
-	if (db_column_exists('plugin_servcheck_test', 'display_name')) {
-		db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN display_name TO name');
-	}
 
-	if (db_column_exists('plugin_servcheck_test', 'proxy_server')) {
-		db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN proxy_server TO proxy_id');
-	}
+	if (cacti_version_compare($old, '0.4', '<')) {
 
-	if (db_column_exists('plugin_servcheck_test', 'timeout_trigger')) {
-		db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN timeout_trigger TO duration_trigger');
-		db_execute('ALTER TABLE plugin_servcheck_test MODIFY duration_trigger decimal(4,2) default "0"');
+		if (!db_column_exists('plugin_servcheck_test', 'ipaddress')) {
+			db_add_column('plugin_servcheck_test', array('name' => 'ipaddress', 'type' => 'varchar(46)', 'NULL' => false, 'default' => '', 'after' => 'hostname'));
+		}
+
+		// 0.3 contains a lot of changes. I tried to convert old data but for sure make a backup
+
+		db_execute('DROP TABLE IF EXISTS plugin_servcheck_contacts');
+
+		db_execute('CREATE TABLE plugin_servcheck_test_backup AS SELECT * FROM plugin_servcheck_test');
+		db_execute('CREATE TABLE plugin_servcheck_log_backup AS SELECT * FROM plugin_servcheck_log');
+		db_execute('CREATE TABLE plugin_servcheck_proxies_backup AS SELECT * FROM plugin_servcheck_proxies');
+		db_execute('CREATE TABLE plugin_servcheck_restapi_method_backup AS SELECT * FROM plugin_servcheck_restapi_method');
+
+		if (db_column_exists('plugin_servcheck_test', 'display_name')) {
+			db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN display_name TO name');
+		}
+
+		if (db_column_exists('plugin_servcheck_test', 'proxy_server')) {
+			db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN proxy_server TO proxy_id');
+		}
+
+		if (db_column_exists('plugin_servcheck_test', 'timeout_trigger')) {
+			db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN timeout_trigger TO duration_trigger');
+			db_execute('ALTER TABLE plugin_servcheck_test MODIFY duration_trigger decimal(4,2) default "0"');
+		}
+
 		api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'duration_count', 'type' => 'int(3)', 'NULL' => false, 'unsigned' => true, 'default' => '3', 'after' => 'duration_trigger'));
-	}
+		api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'snmp_oid', 'type' => "varchar(255)", 'NULL' => false, 'default' => ''));
+		api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'ssh_command', 'type' => "varchar(255)", 'NULL' => false, 'default' => ''));
+		api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
+		api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'triggered_duration', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
+		db_add_column('plugin_servcheck_test', array('name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '3', 'after' => 'type'));
+		db_add_column('plugin_servcheck_test', array('name' => 'notify', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on'));
 
-	db_execute('ALTER TABLE plugin_servcheck_log MODIFY curl_return_code int(3) default NULL');
-	db_execute('ALTER TABLE plugin_servcheck_log MODIFY cert_expire timestamp default "0000-00-00 00:00:00"');
+		db_execute('ALTER TABLE plugin_servcheck_log MODIFY curl_return_code int(3) default NULL');
+		db_execute('ALTER TABLE plugin_servcheck_log MODIFY cert_expire timestamp default "0000-00-00 00:00:00"');
+		db_add_column('plugin_servcheck_log', array('name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '0', 'after' => 'lastcheck'));
 
-	db_execute('DROP TABLE IF EXISTS plugin_servcheck_contacts');
+		$exist = db_fetch_cell("SELECT COUNT(*)
+			FROM information_schema.tables
+			WHERE table_schema = SCHEMA()
+			AND table_name = 'plugin_servcheck_proxies'");
 
-	$exist = db_fetch_cell("SELECT COUNT(*)
-		FROM information_schema.tables
-		WHERE table_schema = SCHEMA()
-		AND table_name = 'plugin_servcheck_proxies'");
+		if ($exist) {
+			db_execute('ALTER TABLE plugin_servcheck_proxies RENAME TO plugin_servcheck_proxy');
+		}
 
-	if ($exist) {
-		db_execute('ALTER TABLE plugin_servcheck_proxies RENAME TO plugin_servcheck_proxy');
-	}
+		api_plugin_db_add_column('servcheck', 'plugin_servcheck_proxy', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
 
-	$exist = db_fetch_cell("SELECT COUNT(*)
-		FROM information_schema.tables
-		WHERE table_schema = SCHEMA()
-		AND table_name = 'plugin_servcheck_credential'");
-
-	if (!$exist) {
 		$data              = array();
 		$data['columns'][] = array('name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true);
 		$data['columns'][] = array('name' => 'name', 'type' => 'varchar(100)', 'NULL' => true, 'default' => '');
@@ -112,22 +130,8 @@ function plugin_servcheck_upgrade() {
 		$data['primary']   = 'id';
 		$data['type']      = 'InnoDB';
 		$data['comment']   = 'Holds Credentials';
-
 		api_plugin_db_table_create('servcheck', 'plugin_servcheck_credential', $data);
 
-		if (!db_column_exists('plugin_servcheck_test', 'snmp_method')) {
-			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'snmp_oid', 'type' => "varchar(255)", 'NULL' => false, 'default' => ''));
-			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'ssh_command', 'type' => "varchar(255)", 'NULL' => false, 'default' => ''));
-		}
-
-		if (!db_column_exists('plugin_servcheck_test', 'cred_id')) {
-			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
-			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', array('name' => 'triggered_duration', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
-		}
-
-		if (!db_column_exists('plugin_servcheck_proxy', 'cred_id')) {
-			api_plugin_db_add_column('servcheck', 'plugin_servcheck_proxy', array('name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'));
-		}
 
 		// convert log data from 0.2 version
 
@@ -217,6 +221,7 @@ function plugin_servcheck_upgrade() {
 					$cred['data_url'] = $record['data_url'];
 				} elseif ($record['type'] == 'apikey') {
 					$cred['type'] = 'apikey';
+					$cred['option_apikey'] = 'post';
 					$cred['token_name'] = $record['username'];
 					$cred['data_url'] = $record['data_url'];
 					$cred['token_value'] = servcheck_show_text($record['cred_value']);
@@ -231,6 +236,7 @@ function plugin_servcheck_upgrade() {
 					$cred['login_url'] = $record['login_url'];
 				} elseif ($record['type'] == 'cookie') {
 					$cred['type'] = 'cookie';
+					$cred['option_cookie'] = 'json';
 					$cred['username'] = servcheck_show_text($record['username']);
 					$cred['password'] = servcheck_show_text($record['password']);
 					$cred['data_url'] = $record['data_url'];
@@ -259,24 +265,6 @@ function plugin_servcheck_upgrade() {
 		db_remove_column('plugin_servcheck_test', 'restapi_id');
 		db_remove_column('plugin_servcheck_proxy', 'username');
 		db_remove_column('plugin_servcheck_proxy', 'password');
-	}
-
-	if (!db_column_exists('plugin_servcheck_test', 'attempt')) {
-		db_add_column('plugin_servcheck_test', array('name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '3', 'after' => 'type'));
-	}
-
-	if (!db_column_exists('plugin_servcheck_log', 'attempt')) {
-		db_add_column('plugin_servcheck_log', array('name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '0', 'after' => 'lastcheck'));
-	}
-
-	if (!db_column_exists('plugin_servcheck_test', 'notify')) {
-		db_add_column('plugin_servcheck_test', array('name' => 'notify', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on'));
-	}
-
-	if (cacti_version_compare($old, '0.4', '<')) {
-		if (!db_column_exists('plugin_servcheck_test', 'ipaddress')) {
-			db_add_column('plugin_servcheck_test', array('name' => 'ipaddress', 'type' => 'varchar(46)', 'NULL' => false, 'default' => '', 'after' => 'hostname'));
-		}
 	}
 
 	return true;
@@ -599,7 +587,7 @@ function servcheck_config_settings() {
 		),
 		'servcheck_disable_notification' => array(
 			'friendly_name' => __('Stop sending all notification', 'servcheck'),
-			'description'   => __('If checked, servcheck will not send any emails.', 'servcheck'),
+			'description'   => __('If checked, servcheck will not send any emails. You can also disable notification only for specific tests', 'servcheck'),
 			'method'        => 'checkbox',
 			'default'       => '',
 		),
@@ -619,8 +607,8 @@ function servcheck_config_settings() {
 			'default' => ''
 		),
 		'servcheck_certificate_expiry_days' => array(
-			'friendly_name' => __('Check certificate expiration', 'servcheck'),
-			'description' => __('If SSL/TLS service certificate expiration is enabled, notify about soon expiration ', 'sercheck'),
+			'friendly_name' => __('How long before expiration send notification', 'servcheck'),
+			'description' => __('If SSL/TLS service certificate expiration is enabled, notify about soon certificate expiration', 'sercheck'),
 			'method' => 'drop_array',
 			'array' => array(
 				'-1' => __('Disabled', 'servcheck'),

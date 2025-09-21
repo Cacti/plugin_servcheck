@@ -203,9 +203,6 @@ function ssh_try ($test) {
 		}
 	}
 
-//!!pm smazat
-$results['return'] = 'NEVER!';
-
 	return $results;
 }
 

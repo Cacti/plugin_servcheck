@@ -92,10 +92,6 @@ function dns_try ($test) {
 		}
 	}
 
-
-//!!pm smazat
-$results['return'] = 'NEVER!';
-
 	return $results;
 }
 
@@ -262,9 +258,6 @@ function doh_try ($test) {
 			return $results;
 		}
 	}
-
-//!!pm smazat
-$results['return'] = 'NEVER!';
 
 	return $results;
 }

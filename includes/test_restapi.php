@@ -80,7 +80,6 @@ function restapi_try ($test) {
 		return $results;
 	}
 
-//!! tady asi nebudu vypinat certifikaty
 	// Disable Cert checking for now
 	$options[CURLOPT_SSL_VERIFYPEER] = false;
 	$options[CURLOPT_SSL_VERIFYHOST] = false;
@@ -96,7 +95,6 @@ function restapi_try ($test) {
 			$options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
 			break;
 		case 'apikey':
-//!! do helpu dat, ze post je zaroven na cteni dat
 			switch ($credential['option_apikey']) {
 				case 'http':
 					$http_headers[] = 'Authorization: ' . $credential['token_name'] . ' ' . $credential['token_value'];

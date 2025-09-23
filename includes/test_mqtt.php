@@ -90,7 +90,7 @@ function mqtt_try ($test) {
 	plugin_servcheck_debug('Final url is ' . $url , $test);
 
 	$process = curl_init($url);
-//!!pm - pak to po sobe nemazu
+
 	$filename = '/tmp/mqtt_' . time() . '.txt';
 	$file = fopen($filename, 'w');
 
@@ -100,7 +100,7 @@ function mqtt_try ($test) {
 		CURLOPT_FILE             => $file,
 		CURLOPT_TIMEOUT          => 5,
 		CURLOPT_NOPROGRESS       => false,
-		CURLOPT_XFERINFOFUNCTION =>function(  $download_size, $downloaded, $upload_size, $uploaded){
+		CURLOPT_XFERINFOFUNCTION => function(  $download_size, $downloaded, $upload_size, $uploaded){
 			if ($downloaded > 0) {
 				return 1;
 			}

@@ -71,7 +71,7 @@ function plugin_servcheck_upgrade() {
 		api_plugin_register_hook('servcheck', 'config_settings', 'servcheck_config_settings', 'setup.php', '1');
 
 
-	if (cacti_version_compare($old, '0.4', '<')) {
+	if (cacti_version_compare($old, '0.3', '<')) {
 
 		if (!db_column_exists('plugin_servcheck_test', 'ipaddress')) {
 			db_add_column('plugin_servcheck_test', array('name' => 'ipaddress', 'type' => 'varchar(46)', 'NULL' => false, 'default' => '', 'after' => 'hostname'));
@@ -165,7 +165,8 @@ function plugin_servcheck_upgrade() {
 
 		// convert credentials to separated tab
 
-		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_test WHERE username != '' OR password !='' AND type != 'restapi'");
+		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_test 
+			WHERE username != '' OR password !='' AND type != 'restapi'");
 		if (cacti_sizeof($records)) {
 			foreach ($records as $record) {
 				$cred = array();
@@ -265,6 +266,13 @@ function plugin_servcheck_upgrade() {
 		db_remove_column('plugin_servcheck_test', 'restapi_id');
 		db_remove_column('plugin_servcheck_proxy', 'username');
 		db_remove_column('plugin_servcheck_proxy', 'password');
+
+		// Set the new version
+		db_execute_prepared("UPDATE plugin_config
+			SET version = ?, author = ?, webpage = ?
+			WHERE directory = 'servcheck'",
+			array($info['version'], $info['author'], $info['homepage'])
+		);
 	}
 
 	return true;

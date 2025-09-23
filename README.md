@@ -3,8 +3,9 @@
 ## Cacti Service checker Plugin
 
 This is Cacti's Services monitoring plugin. Based on Webseer plugin.
-This plugin allows you to add service monitoring to Cacti. 
-You simply add service check, allow service specific test (like certificate test)
+This plugin allows you to add service monitoring to Cacti.
+You simply add service check, allow service specific test 
+(like certificate test, long duration, ...)
 and you can add the expected response. Servcheck periodically run test 
 and notify if a service check fails. The plugin records statistics
 about the connection, it's response, and can alert when the
@@ -15,31 +16,25 @@ plugin so you can setup maintenance schedules so that known times when a service
 is going to be down can be configured so that escallation does not needlessly
 take place during maintenance periods.
 
-## Installation
-
-To install the servcheck plugin, simply copy the plugin_servcheck directory to
-Cacti's plugins directory and rename it to simply 'servcheck'. Once you have done
-this, goto Cacti's Plugin Management page, Install and Enable the servcheck. Once
-this is complete, you can grant users permission to create service checks for
-various services.
-
-Go to Management -> Service Checker
-
-You need install libcurl library. For more information about Curl/libcurl 
-visit https://www.php.net/manual/en/book.curl.php
 
 ## Tests and results
-Test can return more results. First result is from curl. There is a lot of  information 
-about curl connection. Second result is returned data on which you can perform searches.
+The test will run a maximum of 3 times. If successful on the first attempt, no further
+tests will be performed. Main result is ok/error. A lot of information
+are returned with main result. After the test is completed, statistics are generated. 
+Based on the statistics, email notifications can be sent:
+- service state change
+- search text in result change
+- certificate expiration
+- long duration of test
 
-Each test has icon for display last result. You can use it for creation  of search string.
+Retuned data are stored too.
 
 Each tests return specific data:
 HTTP and HTTPS - returns webpage
-SMTP, SMTPS - connect to SMTP server and displays banner and EHLO/HELO
+SMTP, SMTPS - connect to SMTP server and displays banner and EHLO/HELO or authentication result
 POP3, POP3S - try to login and display first unread message
 IMAP, IMAPS - try to login and display unread messages in inbox
-DNS - try to resolve A record and return answer
+DNS, DOH - try to resolve A record and return answer
 LDAP and LDAPS - do searching in LDAP
 FTP, FTPS, SFTP - try to login and return directory listing
 TFTP - try to download specific file
@@ -49,13 +44,14 @@ MQTT - try to subscribe topic or wait for any message and print result
 SNMP - get or walk specified OID and return answer
 SSH_COMMAND - ssh connect, run command and return output
 
+
 ## Important
 Recommendation for tests with download -  please download only small not binary files.
 
 Default Libcurl build doesn't compile all services. You have to compile again for SMB, LDAP, ...
 
 For POP3 and IMAP tests is better insert correct username and password. Without credentials, 
-curl will return incorrect result.
+curl can will return incorrect result.
 
 SCP is in insecure mode - doesn't check SSH server key!
 
@@ -72,6 +68,21 @@ for certificates issued by common CAs. If you are using a custom CA
 because servcheck does not know your CA. You must upload the entire chain
 (CA certificate and intermediate certificates). You then associate these with the test
 where the certificate issued by your CA
+
+
+## Installation
+
+To install the servcheck plugin, simply copy the plugin_servcheck directory to
+Cacti's plugins directory and rename it to simply 'servcheck'. Once you have done
+this, goto Cacti's Plugin Management page, Install and Enable the servcheck. Once
+this is complete, you can grant users permission to create service checks for
+various services.
+
+Go to Management -> Service Checker
+
+For some tests you need install libcurl library. For more information about Curl/libcurl 
+visit https://www.php.net/manual/en/book.curl.php
+
 
 ## Bugs and Feature Enhancements
 

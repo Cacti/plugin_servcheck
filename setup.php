@@ -323,6 +323,7 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = array('name' => 'stats_bad', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'failures', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'triggered', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
+	$data['columns'][] = array('name' => 'triggered_duration', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0');
 	$data['columns'][] = array('name' => 'lastcheck', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
 	$data['columns'][] = array('name' => 'last_exp_notify', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00');
 	$data['columns'][] = array('name' => 'last_returned_data', 'type' => 'blob', 'NULL' => true, 'default' => '');

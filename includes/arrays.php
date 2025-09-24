@@ -30,6 +30,8 @@ if (!defined('SERVCHECK_CIPHER')) {
 // $user_agent can be of user's choice e.g. Linux or Windows based
 $user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
 
+$ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
+
 $servcheck_tabs = array(
 	'servcheck_test.php'       => __('Tests', 'servcheck'),
 	'servcheck_ca.php'         => __('CA certificates', 'servcheck'),
@@ -124,7 +126,7 @@ $graph_interval = array (
 
 
 
-$search_result = array(
+$text_result_search = array(
 	'ok'            => __('String found', 'servcheck'),
 	'not ok'        => __('String not found', 'servcheck'),
 	'failed ok'     => __('Failed string found', 'servcheck'),
@@ -132,6 +134,12 @@ $search_result = array(
 	'maint ok'      => __('Maint string found', 'servcheck'),
 	'not yet'       => __('Not tested yet', 'servcheck'),
 	'not tested'    => __('Search not performed', 'servcheck')
+);
+
+$text_result = array(
+	'ok'            => __('OK', 'servcheck'),
+	'not yet'       => __('Not tested yet', 'servcheck'),
+	'error'         => __('Error/failed', 'servcheck'),
 );
 
 

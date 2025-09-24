@@ -225,5 +225,3 @@ function servcheck_decrypt_credential ($cred_id) {
 
 	return json_decode($decrypted, true);
 }
-
-

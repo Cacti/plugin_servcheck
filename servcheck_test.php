@@ -1106,6 +1106,8 @@ function data_list() {
 
 			if ($row['enabled'] == '') {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(205, 207, 196, 0.6)";
+			} elseif ($last_log['result'] == 'ok' && $row['triggered_duration'] >= $row['duration_count']) {
+				$style = "color:rgba(10,10,10,0.8);background-color:rgba(240, 150, 150, 0.6);";
 			} elseif ($row['failures'] > 0 && $row['failures'] < $row['downtrigger']) {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 36, 0.6);";
 			} elseif ($last_log['result'] == 'ok' && $last_log['result_search'] == 'not ok') {

@@ -22,89 +22,96 @@
  +-------------------------------------------------------------------------+
 */
 
-include_once(__DIR__ . '/constants.php');
+// for encrypt credentials
+if (!defined('SERVCHECK_CIPHER')) {
+	define('SERVCHECK_CIPHER', 'aes-256-cbc');
+}
 
-global	$servcheck_actions_proxy, $servcheck_actions_test, $servcheck_actions_ca, $servcheck_actions_restapi,
-	$graph_interval, $service_types_ports,
-	$servcheck_proxy_fields, $servcheck_test_fields, $servcheck_ca_fields,
-	$servcheck_notify_accounts, $httperrors, $servcheck_seconds,
-	$search, $mail_serv, $service_types, $curl_error, $search_result, $servcheck_tabs,
-	$rest_api_format, $rest_api_auth_method, $servcheck_restapi_fields;
+// $user_agent can be of user's choice e.g. Linux or Windows based
+$user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
 
 $servcheck_tabs = array(
-	'servcheck_test.php'      => __('Tests', 'servcheck'),
-	'servcheck_ca.php'        => __('CA certificates', 'servcheck'),
-	'servcheck_proxies.php'   => __('Proxies', 'servcheck'),
-	'servcheck_restapi.php'   => __('Rest API methods', 'servcheck'),
-	'servcheck_curl_code.php' => __('Curl return codes', 'servcheck'),
+	'servcheck_test.php'       => __('Tests', 'servcheck'),
+	'servcheck_ca.php'         => __('CA certificates', 'servcheck'),
+	'servcheck_proxy.php'      => __('Proxies', 'servcheck'),
+	'servcheck_restapi.php'    => __('Rest API methods', 'servcheck'),
+	'servcheck_credential.php' => __('Credential', 'servcheck'),
+	'servcheck_curl_code.php'  => __('Curl return codes', 'servcheck'),
 );
 
 $service_types = array(
 	'web_http'     => __('HTTP plaintext, default port 80', 'servcheck'),
 	'web_https'    => __('HTTP encrypted (HTTPS), default port 443', 'servcheck'),
-
 	'mail_smtp'    => __('SMTP plaintext, default port 25 (or 587 for submission)', 'servcheck'),
 	'mail_smtptls' => __('SMTP with STARTTLS, default port 25(or 587 for submission)', 'servcheck'),
 	'mail_smtps'   => __('SMTP encrypted (SMTPS), default port 465', 'servcheck'),
-
 	'mail_imap'    => __('IMAP plaintext, default port 143', 'servcheck'),
 	'mail_imaptls' => __('IMAP with STARTTLS, default port 143', 'servcheck'),
 	'mail_imaps'   => __('IMAP encrypted (IMAPS), default port 993', 'servcheck'),
-
 	'mail_pop3'    => __('POP3 plaintext, default port 110', 'servcheck'),
 	'mail_pop3tls' => __('POP3 with STARTTLS, default port 110', 'servcheck'),
 	'mail_pop3s'   => __('POP3 encrypted (POP3S), default port 995', 'servcheck'),
-
 	'dns_dns'      => __('DNS plaintext, default port 53', 'servcheck'),
 	'dns_doh'      => __('DNS over HTTPS, default port 443', 'servcheck'),
-
 	'ldap_ldap'    => __('LDAP plaintext, default port 389', 'servcheck'),
 	'ldap_ldaps'   => __('LDAP encrypted (LDAPS), default port 636', 'servcheck'),
-
 	'ftp_ftp'      => __('FTP plaintext, default port 21', 'servcheck'),
-	'ftp_ftps'     => __('FTP encrypted (FTPS), default port 990', 'servcheck'),
-	'ftp_scp'      => __('SCP download file, default port 22', 'servcheck'),
 	'ftp_tftp'     => __('TFTP protocol - download file, default port 69', 'servcheck'),
-
+	'ftp_scp'      => __('SCP download file, default port 22', 'servcheck'),
 	'smb_smb'      => __('SMB plaintext download file, default port 445', 'servcheck'),
 	'smb_smbs'     => __('SMB encrypted (SMBS) download file, default port 445', 'servcheck'),
-
 	'mqtt_mqtt'    => __('MQTT plaintext, default port 1883', 'servcheck'),
-
-	'restapi'      => __('Rest API', 'servcheck'),
+	'rest_basic'   => __('Rest API with Basic HTTP auth', 'servcheck'),
+	'rest_apikey'  => __('Rest API with API key auth', 'servcheck'),
+	'rest_oauth2'  => __('Rest API with OAuth2/Bearer token auth', 'servcheck'),
+	'rest_cookie'  => __('Rest API with Cookie based auth', 'servcheck'),
+	'snmp_get'     => __('SNMP get', 'servcheck'),
+	'snmp_walk'    => __('SNMP walk', 'servcheck'),
+	'ssh_command'  => __('SSH command on remote system', 'servcheck'),
+	'ssh_sftp'     => __('SFTP protocol - directory listing, default port 22', 'servcheck'),
 );
 
 $service_types_ports = array(
-	'web_http'        => 80,
-	'web_https'       => 443,
+	'web_http'     => 80,
+	'web_https'    => 443,
+	'mail_smtp'    => 25,
+	'mail_smtptls' => 25,
+	'mail_smtps'   => 465,
+	'mail_imap'    => 143,
+	'mail_imaptls' => 143,
+	'mail_imaps'   => 993,
+	'mail_pop3'    => 110,
+	'mail_pop3tls' => 110,
+	'mail_pop3s'   => 995,
+	'dns_dns'      => 53,
+	'dns_doh'      => 443,
+	'ldap_ldap'    => 389,
+	'ldap_ldaps'   => 636,
+	'ftp_ftp'      => 21,
+	'ftp_scp'      => 22,
+	'ftp_tftp'     => 69,
+	'smb_smb'      => 389,
+	'smb_smbs'     => 636,
+	'mqtt_mqtt'    => 1883,
+	'rest_basic'   => 443,
+	'rest_apikey'  => 443,
+	'rest_oauth2'  => 443,
+	'rest_cookie'  => 443,
+	'snmp_get'     => 161,
+	'snmp_walk'    => 161,
+	'ssh_command'  => 22,
+	'ssh_sftp'     => 22,
+);
 
-	'mail_smtp'       => 25,
-	'mail_smtptls'    => 25,
-	'mail_smtps'      => 465,
-
-	'mail_imap'       => 143,
-	'mail_imaptls'    => 143,
-	'mail_imaps'      => 993,
-
-	'mail_pop3'       => 110,
-	'mail_pop3tls'    => 110,
-	'mail_pop3s'      => 995,
-
-	'dns_dns'         => 53,
-	'dns_doh'         => 443,
-
-	'ldap_ldap'       => 389,
-	'ldap_ldaps'      => 636,
-
-	'ftp_ftp'         => 21,
-	'ftp_ftps'        => 990,
-	'ftp_scp'         => 22,
-	'ftp_tftp'        => 69,
-
-	'smb_smb'         => 389,
-	'smb_smbs'        => 636,
-
-	'mqtt_mqtt'       => 1883,
+$credential_types = array(
+	'userpass' => __('Username and password', 'servcheck'),
+	'basic'    => __('Rest API - Basic HTTP auth', 'servcheck'),
+	'apikey'   => __('Rest API - API key auth', 'servcheck'),
+	'oauth2'   => __('Rest API - OAuth2/Bearer token auth', 'servcheck'),
+	'cookie'   => __('Rest API - Cookie based auth', 'servcheck'),
+	'snmp'     => __('SNMP v1 or v2', 'servcheck'),
+	'snmp3'    => __('SNMP v3', 'servcheck'),
+	'sshkey'   => __('SSH private key - Cacti 1.2.31+', 'servcheck'),
 );
 
 
@@ -115,19 +122,7 @@ $graph_interval = array (
 	168 => __('Last week', 'servcheck'),
 );
 
-$rest_api_auth_method = array(
-	'no'     => __('Without auth', 'servcheck'),
-	'basic'  => __('Basic HTTP auth', 'servcheck'),
-	'apikey' => __('API key auth - NOT TESTED', 'servcheck'),
-	'oauth2' => __('OAuth2/Bearer token auth', 'servcheck'),
-	'cookie' => __('Cookie based auth', 'servcheck'),
-);
 
-$rest_api_format = array(
-	'urlencoded'  => 'Form-urlencoded',
-//	'xml'            => 'XML',
-	'json'           => 'JSON'
-);
 
 $search_result = array(
 	'ok'            => __('String found', 'servcheck'),
@@ -137,6 +132,35 @@ $search_result = array(
 	'maint ok'      => __('Maint string found', 'servcheck'),
 	'not yet'       => __('Not tested yet', 'servcheck'),
 	'not tested'    => __('Search not performed', 'servcheck')
+);
+
+
+$snmp_security_levels = array(
+	'noAuthNoPriv' => 'noAuthNoPriv',
+	'authNoPriv' => 'authNoPriv',
+	'authPriv' => 'authPriv'
+);
+
+
+$snmp_auth_protocols = array(
+	'[None]' => __('[None]'),
+	'MD5'    => __('MD5'),
+	'SHA'    => __('SHA'),
+	'SHA224' => __('SHA-224'),
+	'SHA256' => __('SHA-256'),
+	'SHA392' => __('SHA-392'),
+	'SHA512' => __('SHA-512'),
+);
+
+$snmp_priv_protocols = array(
+	'[None]' => __('[None]'),
+	'DES'    => __('DES'),
+	'AES'    => __('AES'),
+	'AES128' => __('AES-128'),
+	'AES192' => __('AES-192'),
+	'AES192C' => __('AES-192-C'),
+	'AES256' => __('AES-256'),
+	'AES256C' => __('AES-256-C')
 );
 
 
@@ -209,47 +233,33 @@ $servcheck_seconds = array(
 	10 => __('%d Seconds', 10, 'servcheck'),
 );
 
-$servcheck_notify_formats = array(
-	SERVCHECK_FORMAT_HTML  => 'html',
-	SERVCHECK_FORMAT_PLAIN => 'plain',
+$rest_api_apikey_option = array(
+	'http'   => __('Auth in HTTP headers', 'servcheck'),
+	'custom' => __('Custom HTTP header', 'servcheck'),
+	'post'      => __('POST method, form-urlencoded', 'servcheck'),
+	'post_json' => __('POST method, JSON encoded', 'servcheck'),
 );
 
-if (db_table_exists('plugin_servcheck_contacts')) {
-	$servcheck_contact_users = db_fetch_assoc("SELECT pwc.id, pwc.data, pwc.type, ua.full_name
-		FROM plugin_servcheck_contacts AS pwc
-		LEFT JOIN user_auth AS ua
-		ON ua.id=pwc.user_id
-		WHERE pwc.data != ''");
-} else {
-	$servcheck_contact_users = array();
-}
+$rest_api_cookie_option = array(
+	'json'   => __('JSON encoded', 'servcheck'),
+	'x-www-form-urlencoded' => __('Form urlencoded', 'servcheck'),
+);
 
-$servcheck_notify_accounts = array();
-if (!empty($servcheck_contact_users)) {
-	foreach ($servcheck_contact_users as $servcheck_contact_user) {
-		$servcheck_notify_accounts[$servcheck_contact_user['id']] = $servcheck_contact_user['full_name'] . ' - ' . ucfirst($servcheck_contact_user['type']);
+
+$servcheck_notify_formats = array(
+	'html' => 'html',
+	'plain' => 'plain',
+);
+
+$accounts = db_fetch_assoc("SELECT id, username, email_address
+	FROM user_auth
+	WHERE email_address != ''");
+
+if (!empty($accounts)) {
+	foreach ($accounts as $account) {
+		$servcheck_notify_accounts[$account['id']] = $account['username'] . ' - ' . $account['email_address'];
 	}
 }
-
-$servcheck_actions_proxy = array(
-	SERVCHECK_ACTION_PROXY_DELETE => __('Delete', 'servcheck'),
-);
-
-$servcheck_actions_ca = array(
-	SERVCHECK_ACTION_CA_DELETE => __('Delete', 'servcheck'),
-);
-
-$servcheck_actions_test = array(
-	SERVCHECK_ACTION_TEST_DELETE    => __('Delete', 'servcheck'),
-	SERVCHECK_ACTION_TEST_DISABLE   => __('Disable', 'servcheck'),
-	SERVCHECK_ACTION_TEST_ENABLE    => __('Enable', 'servcheck'),
-	SERVCHECK_ACTION_TEST_DUPLICATE => __('Duplicate', 'servcheck'),
-);
-
-$servcheck_actions_restapi = array(
-	SERVCHECK_ACTION_RESTAPI_DELETE    => __('Delete', 'servcheck'),
-	SERVCHECK_ACTION_RESTAPI_DUPLICATE => __('Duplicate', 'servcheck'),
-);
 
 $servcheck_ca_fields = array(
 	'name' => array(
@@ -268,6 +278,10 @@ $servcheck_ca_fields = array(
 		'textarea_cols' => 100,
 		'description' => __('CA and intermediate certs, PEM encoded', 'servcheck'),
 		'value' => '|arg1:cert|'
+	),
+	'id' => array(
+		'method' => 'hidden_zero',
+		'value' => '|arg1:id|'
 	)
 );
 
@@ -308,31 +322,18 @@ $servcheck_proxy_fields = array(
 		'size' => '5',
 		'default' => '443'
 	),
-	'username' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('User Name'),
-		'description' => __('The user to use to authenticate with the Proxy if any.'),
-		'value' => '|arg1:username|',
-		'max_length' => '64',
-		'size' => '40',
-		'default' => ''
-	),
-	'password' => array(
-		'method' => 'textbox_password',
-		'friendly_name' => __('Password'),
-		'description' => __('The user password to use to authenticate with the Proxy if any.'),
-		'value' => '|arg1:password|',
-		'max_length' => '40',
-		'size' => '40',
-		'default' => ''
+	'cred_id' => array(
+		'friendly_name' => __('Credential', 'servcheck'),
+		'method' => 'drop_sql',
+		'default' => 0,
+		'description' => __('Select correct credential or left empty.', 'servcheck'),
+		'value' => '|arg1:cred_id|',
+		'sql' => "SELECT id, name FROM plugin_servcheck_credential WHERE type = 'userpass' ORDER BY name",
+		'none_value' => __('None', 'servcheck'),
 	),
 	'id' => array(
 		'method' => 'hidden_zero',
 		'value' => '|arg1:id|'
-	),
-	'save_component_proxy' => array(
-		'method' => 'hidden',
-		'value' => '1'
 	)
 );
 
@@ -341,12 +342,21 @@ $servcheck_test_fields = array(
 		'method' => 'spacer',
 		'friendly_name' => __('General Settings', 'servcheck')
 	),
-	'display_name' => array(
+	'name' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('Service Check Name', 'servcheck'),
 		'description' => __('The name that is displayed for this Service Check, and is included in any Alert notifications.', 'servcheck'),
-		'value' => '|arg1:display_name|',
+		'value' => '|arg1:name|',
 		'max_length' => '256',
+	),
+	'attempt' => array(
+		'friendly_name' => __('How many attemps', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High numer causes log test duration.', 'servcheck'),
+		'default' => '3',
+		'size' => '20',
+		'max_length' => '1',
+		'value' => '|arg1:attempt|',
 	),
 	'enabled' => array(
 		'method' => 'checkbox',
@@ -393,30 +403,39 @@ $servcheck_test_fields = array(
 		'method' => 'spacer',
 		'friendly_name' => __('Service settings', 'servcheck')
 	),
-	'ca' => array(
+	'cred_id' => array(
+		'friendly_name' => __('Credential', 'servcheck'),
+		'method' => 'drop_sql',
+		'default' => 0,
+		'description' => __('Select correct credential', 'servcheck'),
+		'value' => '|arg1:cred_id|',
+		'sql' => "SELECT id, name FROM plugin_servcheck_credential ORDER BY name",
+		'none_value' => __('None', 'servcheck'),
+	),
+	'snmp_oid' => array(
+		'friendly_name' => __('SNMP OID', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('Insert SNMP OID', 'servcheck'),
+		'value' => '|arg1:snmp_oid|',
+		'max_length' => '255',
+		'size' => '50'
+	),
+	'ssh_command' => array(
+		'friendly_name' => __('SSH command', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('Insert SSH command with full path, result of command will be returned', 'servcheck'),
+		'value' => '|arg1:ssh_command|',
+		'max_length' => '255',
+		'size' => '50'
+	),
+	'ca_id' => array(
 		'friendly_name' => __('CA Chain', 'servcheck'),
 		'method' => 'drop_sql',
 		'none_value' => __('None', 'servcheck'),
 		'default' => '0',
 		'description' => __('Your own CA and intermediate certs', 'servcheck'),
-		'value' => '|arg1:ca|',
+		'value' => '|arg1:ca_id|',
 		'sql' => 'SELECT id, name FROM plugin_servcheck_ca ORDER by name'
-	),
-	'username' => array(
-		'friendly_name' => __('Username', 'servcheck'),
-		'method' => 'textbox',
-		'description' => __('With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For SMB use DOMAIN/user. MQTT supports username/password too. ', 'servcheck'),
-		'value' => '|arg1:username|',
-		'max_length' => '100',
-		'size' => '30'
-	),
-	'password' => array(
-		'friendly_name' => __('Password', 'servcheck'),
-		'method' => 'textbox',
-		'description' => __('For anonymous ftp insert email address here.', 'servcheck'),
-		'value' => '|arg1:password|',
-		'max_length' => '100',
-		'size' => '30'
 	),
 	'ldapsearch' => array(
 		'friendly_name' => __('LDAP Search', 'servcheck'),
@@ -437,7 +456,7 @@ $servcheck_test_fields = array(
 	'path' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('Path Part of URL', 'servcheck'),
-		'description' => __('For web service insert at least "/" or something like "/any/path/". For FTP listing must end with char "/". For TFTP/SCP/SMB download test insert /path/file. For MQTT you can specify topic (bedroom/temp). Left blank for any topic.', 'servcheck'),
+		'description' => __('For web service insert at least "/" or something like "/any/path/".', 'servcheck'),
 		'value' => '|arg1:path|',
 		'max_length' => '140',
 		'size' => '30'
@@ -449,23 +468,14 @@ $servcheck_test_fields = array(
 		'value' => '|arg1:requiresauth|',
 		'default' => '',
 	),
-	'proxy_server' => array(
+	'proxy_id' => array(
 		'method' => 'drop_sql',
 		'friendly_name' => __('Proxy Server', 'servcheck'),
 		'description' => __('If this connection text requires a proxy, select it here.  Otherwise choose \'None\'.', 'servcheck'),
-		'value' => '|arg1:proxy_server|',
+		'value' => '|arg1:proxy_id|',
 		'none_value' => __('None', 'servcheck'),
 		'default' => '0',
-		'sql' => 'SELECT id, name FROM plugin_servcheck_proxies ORDER by name'
-	),
-	'restapi_id' => array(
-		'method' => 'drop_sql',
-		'friendly_name' => __('Rest API method', 'servcheck'),
-		'description' => __('Select your prepared Rest API configuration.', 'servcheck'),
-		'value' => '|arg1:restapi_id|',
-		'none_value' => __('None', 'servcheck'),
-		'default' => '0',
-		'sql' => 'SELECT id, name FROM plugin_servcheck_restapi_method ORDER by name'
+		'sql' => 'SELECT id, name FROM plugin_servcheck_proxy ORDER by name'
 	),
 	'checkcert' => array(
 		'method' => 'checkbox',
@@ -483,31 +493,42 @@ $servcheck_test_fields = array(
 	),
 	'timings_spacer' => array(
 		'method' => 'spacer',
-		'friendly_name' => __('Notification Timing', 'servcheck')
+		'friendly_name' => __('Parameters', 'servcheck')
 	),
 	'how_often' => array(
 		'friendly_name' => __('How Often to Test', 'servcheck'),
 		'method' => 'drop_array',
 		'array' => $servcheck_cycles,
 		'default' => 1,
-		'description' => __('Test every (N * (poller cycle - 10 seconds))', 'servcheck'),
+		'description' => __('Test every xth poller run', 'servcheck'),
 		'value' => '|arg1:how_often|',
 	),
 	'downtrigger' => array(
 		'friendly_name' => __('Trigger', 'servcheck'),
-		'method' => 'drop_array',
-		'array' => $servcheck_cycles,
+		'method' => 'textbox',
 		'default' => 1,
-		'description' => __('How many poller cycles the service must be DOWN before an alert email is triggered. The same number is applicable in case of \'Site Recovering\'.', 'servcheck'),
+		'max_length' => '2',
+		'size' => '30',
+		'description' => __('How many times the service must be DOWN before an alert email is triggered.', 'servcheck'),
 		'value' => '|arg1:downtrigger|',
 	),
-	'timeout_trigger' => array(
-		'friendly_name' => __('Time Out', 'servcheck'),
-		'method' => 'drop_array',
-		'array' => $servcheck_seconds,
-		'default' => 4,
-		'description' => __('How many seconds to allow the page to timeout before reporting it as down.', 'servcheck'),
-		'value' => '|arg1:timeout_trigger|',
+	'duration_trigger' => array(
+		'friendly_name' => __('Long duration alert', 'servcheck'),
+		'method' => 'textbox',
+		'default' => 0,
+		'max_length' => '5',
+		'size' => '30',
+		'description' => __('If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count.', 'servcheck'),
+		'value' => '|arg1:duration_trigger|',
+	),
+	'duration_count' => array(
+		'friendly_name' => __('Number of duration violations in a row', 'servcheck'),
+		'method' => 'textbox',
+		'default' => 3,
+		'max_length' => '2',
+		'size' => '30',
+		'description' => __('How many times the duration trigger must be exceeded in a row for a notification to be sent', 'servcheck'),
+		'value' => '|arg1:duration_count|',
 	),
 	'verifications_spacer' => array(
 		'method' => 'spacer',
@@ -540,6 +561,13 @@ $servcheck_test_fields = array(
 	'notification_spacer' => array(
 		'method' => 'spacer',
 		'friendly_name' => __('Notification Settings', 'servcheck')
+	),
+	'notify' => array(
+		'method' => 'checkbox',
+		'friendly_name' => __('Email notification', 'servcheck'),
+		'description' => __('If enabled email notification about state, duration and search result will be send', 'servcheck'),
+		'value' => '|arg1:notify|',
+		'default' => 'on',
 	),
 	'notify_format' => array(
 		'friendly_name' => __('Notify Format', 'servcheck'),
@@ -592,73 +620,82 @@ $servcheck_test_fields = array(
 		'method' => 'hidden_zero',
 		'value' => '|arg1:id|'
 	),
+	'help_spacer' => array(
+		'method' => 'spacer',
+		'friendly_name' => __('Help', 'servcheck')
+	),
 );
 
 
-$servcheck_restapi_fields = array(
+
+$servcheck_credential_fields = array(
 	'general_spacer' => array(
 		'method' => 'spacer',
 		'friendly_name' => __('General Settings', 'servcheck')
 	),
 	'name' => array(
 		'method' => 'textbox',
-		'friendly_name' => __('Rest API Name', 'servcheck'),
-		'description' => __('The name that is displayed for this Rest API.', 'servcheck'),
+		'friendly_name' => __('Credential Name', 'servcheck'),
+		'description' => __('The name that is displayed for this Credential.', 'servcheck'),
 		'value' => '|arg1:name|',
 		'max_length' => '100',
 	),
 	'type' => array(
-		'friendly_name' => __('Auth type', 'servcheck'),
+		'friendly_name' => __('Credential type', 'servcheck'),
 		'method' => 'drop_array',
-		'on_change' => 'setRestAPI()',
-		'array' => $rest_api_auth_method,
-		'default' => 'basic_auth',
-		'description' => __('Details of auth methods:<br/>
-		No authorization - <i>just send only request and read the response.</i><br/>
-		Basic - <i>uses HTTP auth. Username and password is Base64 encoded. Credentials are not encrypted.</i><br/>
-		API key - <i>you need API key from your Rest API server. It will be send with all request. Key is send ind http headers. You can also add it to the data URL.</i><br/>
-		OAuth2 - <i>Oauth2/bearer token auth. Insert your token or use your credentials for getting a token.</i><br/>
-		Cookie - <i>Use your credentials for getting cookie. Cookie will be send with each request.</i><br/>
-		Note: HTTP method POST is used for login. For data query is used GET.', 'servcheck'),
+		'on_change' => 'setCredential()',
+		'array' => $credential_types,
+		'default' => 'userpass',
+		'description' => __('Select correct Credential type.', 'servcheck'),
 		'value' => '|arg1:type|',
 	),
-	'format' => array(
-		'friendly_name' => __('Data Format', 'servcheck'),
+	'option_apikey' => array(
+		'friendly_name' => __('Options', 'servcheck'),
 		'method' => 'drop_array',
-		'array' => $rest_api_format,
-		'default' => 'urlencoded',
-		'description' => __('Select correct format for communication, check your Rest API documentation.', 'servcheck'),
-		'value' => '|arg1:format|',
+		'array' => $rest_api_apikey_option,
+		'default' => 'http',
+		'description' => __('Set according to your REST API server', 'servcheck'),
+		'value' => '|arg1:option_apikey|',
 	),
-	'cred_name' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('Token/API Key name', 'servcheck'),
-		'description' => __('Auth can use different token or API Key name. You can specify it here.
-		Commonly used names are  \'Bearer\' for OAuth2,  \'apikey\' for API Key method. You need know correct name, check your Rest API server documentation. ', 'servcheck'),
-		'value' => '|arg1:cred_name|',
-		'max_length' => '100',
-	),
-	'cred_value' => array(
-		'method' => 'textbox',
-		'friendly_name' => __('Token/API key value', 'servcheck'),
-		'description' => __('API key and OAuth2 have two flows - You can have key/token from server and insert it here 
-		or use auth flow with credentials.', 'servcheck'),
-		'value' => '|arg1:cred_value|',
-		'max_length' => '100',
+	'option_cookie' => array(
+		'friendly_name' => __('Options', 'servcheck'),
+		'method' => 'drop_array',
+		'array' => $rest_api_cookie_option,
+		'default' => 'http',
+		'description' => __('Set according to your REST API server', 'servcheck'),
+		'value' => '|arg1:option_cookie|',
 	),
 	'username' => array(
-		'method' => 'textbox',
 		'friendly_name' => __('Username', 'servcheck'),
-		'description' => __('If auth uses credentials, insert it here. In the case of oauth2, this field is called client id.', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('Username', 'servcheck'),
 		'value' => '|arg1:username|',
 		'max_length' => '100',
+		'size' => '30'
 	),
 	'password' => array(
-		'method' => 'textbox',
 		'friendly_name' => __('Password', 'servcheck'),
-		'description' => __('If auth uses credentials, insert it here. In the case of oauth2, this field is called client secret.', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('For anonymous FTP insert email address', 'servcheck'),
 		'value' => '|arg1:password|',
 		'max_length' => '100',
+		'size' => '30'
+	),
+	'token_name' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Token/API Key name', 'servcheck'),
+		'description' => __('Auth can use different token or API Key name. You can specify it here. You need know correct name, check your Rest API server documentation.<br/>
+			<i>OAuth2 -</i> Commonly used name is \'Bearer\'<br/>
+			<i>API Key -</i> commonly used name is \'apikey\'<br/> ', 'servcheck'),
+		'value' => '|arg1:token_name|',
+		'max_length' => '100',
+	),
+	'token_value' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Token/API key value', 'servcheck'),
+		'description' => __('API key and OAuth2 have two flows - You can have key/token from server and insert it here or use auth flow with credentials.', 'servcheck'),
+		'value' => '|arg1:token_value|',
+		'max_length' => '200',
 	),
 	'login_url' => array(
 		'method' => 'textbox',
@@ -674,11 +711,208 @@ $servcheck_restapi_fields = array(
 		'value' => '|arg1:data_url|',
 		'max_length' => '200',
 	),
+	'community' => array(
+		'friendly_name' => __('SNMP v1 or v2 community', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('SNMP community string for SNMP v1 or v2(c)', 'servcheck'),
+		'value' => '|arg1:community|',
+		'max_length' => '30',
+		'size' => '30'
+	),
+	'snmp_security_level' => array(
+		'method' => 'drop_array',
+		'friendly_name' => __('SNMP Security Level'),
+		'description' => __('SNMP v3 Security Level to use when querying the device.'),
+		'on_change' => 'setCredential()',
+		'value' => '|arg1:snmp_security_level|',
+		'default' => read_config_option('snmp_security_level'),
+		'array' => $snmp_security_levels
+	),
+	'snmp_auth_protocol' => array(
+		'method' => 'drop_array',
+		'friendly_name' => __('SNMP Auth Protocol (v3)'),
+		'description' => __('Choose the SNMPv3 Authorization Protocol.'),
+		'value' => '|arg1:snmp_auth_protocol|',
+		'default' => read_config_option('snmp_auth_protocol'),
+		'array' => $snmp_auth_protocols,
+	),
+	'snmp_username' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('SNMP Username (v3)'),
+		'description' => __('SNMP v3 username for this device.'),
+		'value' => '|arg1:snmp_username|',
+		'default' => read_config_option('snmp_username'),
+		'max_length' => '50',
+		'size' => '40'
+	),
+	'snmp_password' => array(
+		'method' => 'textbox_password',
+		'friendly_name' => __('SNMP Password (v3)'),
+		'description' => __('SNMP v3 password for this device.'),
+		'value' => '|arg1:snmp_password|',
+		'default' => read_config_option('snmp_password'),
+		'max_length' => '50',
+		'size' => '40'
+	),
+	'snmp_priv_protocol' => array(
+		'method' => 'drop_array',
+		'friendly_name' => __('SNMP Privacy Protocol (v3)'),
+		'description' => __('Choose the SNMPv3 Privacy Protocol.'),
+		'value' => '|arg1:snmp_priv_protocol|',
+		'default' => read_config_option('snmp_priv_protocol'),
+		'array' => $snmp_priv_protocols,
+	),
+	'snmp_priv_passphrase' => array(
+		'method' => 'textbox_password',
+		'friendly_name' => __('SNMP Privacy Passphrase (v3)'),
+		'description' => __('Choose the SNMPv3 Privacy Passphrase.'),
+		'value' => '|arg1:snmp_priv_passphrase|',
+		'default' => read_config_option('snmp_priv_passphrase'),
+		'max_length' => '200',
+		'size' => '80'
+	),
+	'snmp_context' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('SNMP Context (v3)'),
+		'description' => __('Enter the SNMP Context to use for this device.'),
+		'value' => '|arg1:snmp_context|',
+		'default' => '',
+		'max_length' => '64',
+		'size' => '40'
+	),
+	'snmp_engine_id' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('SNMP Engine ID (v3)'),
+		'description' => __('Enter the SNMP v3 Engine Id or empty.'),
+		'value' => '|arg1:snmp_engine_id|',
+		'default' => '',
+		'max_length' => '64',
+		'size' => '40'
+	),
+	'ssh_username'  => array(
+		'friendly_name' => __('SSH user', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('Insert username here', 'servcheck'),
+		'value' => '|arg1:ssh_username|',
+		'max_length' => '40',
+		'size' => '20'
+	),
+	'sshkey'  => array(
+		'friendly_name' => __('SSH private key', 'servcheck'),
+		'method' => 'textarea',
+		'textarea_rows' => 10,
+		'textarea_cols' => 100,
+		'description' => __('SSH private key ', 'servcheck'),
+		'value' => '|arg1:sshkey|'
+	),
+	'sshkey_passphrase'  => array(
+		'friendly_name' => __('SSH private key passphrase', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('If your key is password protected, insert password here', 'servcheck'),
+		'value' => '|arg1:sshkey_passphrase|',
+		'max_length' => '60',
+		'size' => '30'
+	),
+	'oauth_client_id' => array(
+		'friendly_name' => __('Client ID', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('Oauth Client ID', 'servcheck'),
+		'value' => '|arg1:oauth_client_id|',
+		'max_length' => '100',
+		'size' => '30'
+	),
+	'oauth_client_secret' => array(
+		'friendly_name' => __('Client secret', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('OAuth Client secret', 'servcheck'),
+		'value' => '|arg1:oauth_client_secret|',
+		'max_length' => '100',
+		'size' => '30'
+	),
+	'token_name' => array(
+		'friendly_name' => __('Token name', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('Token name', 'servcheck'),
+		'value' => '|arg1:token_name|',
+		'max_length' => '100',
+		'size' => '30'
+	),
+	'token_value' => array(
+		'friendly_name' => __('Token value', 'servcheck'),
+		'method' => 'textbox',
+		'description' => __('Token value', 'servcheck'),
+		'value' => '|arg1:token_value|',
+		'max_length' => '100',
+		'size' => '30'
+	),
 	'id' => array(
 		'method' => 'hidden_zero',
 		'value' => '|arg1:id|'
 	),
+	'help_spacer' => array(
+		'method' => 'spacer',
+		'friendly_name' => __('Help', 'servcheck')
+	),
 );
+
+$servcheck_help_credential = array(
+	'userpass' => __('<b>Can be used for a lot of service checks:</b><br/>\
+		<i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/>\
+		<i>SMTP on port 587 - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/>\
+		<i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/>\
+		<i>LDAP, smb, smbs</i> - required<br/>\
+		<i>MQTT</i> - optional<br/>\
+		<i>SCP, SSH command</i> - you can use this method or private key method', 'servcheck'),
+	'basic'    => __('Rest API - Basic HTTP auth. Username and password are required', 'servcheck'),
+	'apikey'   => __('Rest API - API key auth<br/>Auth is send in HTTP header, custom header or POST method. Credentials in URL is not supported.<br/>Insert API key name and value. Both values are required.\
+		For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue).\
+		For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue).\
+		For POST <i>api_key</i> is usually used.', 'servcheck'),
+	'oauth2'   => __('Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are send Json encoded.', 'servcheck'),
+	'cookie'   => __('Rest API - Cookie based auth - both values are required. After login, cookie is returned', 'servcheck'),
+	'snmp'     => __('SNMP v1 or v2 - required, insert community name here', 'servcheck'),
+	'snmp3'    => __('SNMP v3 - The security level determines which parameters are required', 'servcheck'),
+	'sshkey'   => __('SSH private key - Can be used for SCP or SSH command test. These test can use username/password too', 'servcheck'),
+);
+
+
+$servcheck_help_test = array(
+	'web_http'     => __('It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth.', 'servcheck'),
+	'web_https'    => __('The same as HTTP plaintext but adds the ability to test certificates.', 'servcheck'),
+	'mail_smtp'    => __('It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response.', 'servcheck'),
+	'mail_smtptls' => __('Unecrypted + STARTTL. It is also possible to test the validity of the certificate. Without username and password, \
+		you will see server login banner and ehlo response. With credential, login will be performed', 'servcheck'),
+	'mail_smtps'   => __('Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password\
+		AUTH LOGIN will be tested.', 'servcheck') ,
+	'mail_imap'    => __('Unecrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. \
+		With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method.', 'servcheck'),
+	'mail_imaptls' => __('The same as unecrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS.', 'servcheck'),
+	'mail_imaps'   => __('Encrypted IMAP, you can try login and test certificate and user login', 'servcheck'),
+	'mail_pop3'    => __('Unecrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. \
+		With credential login will be tested and try to read list of messages', 'servcheck'),
+	'mail_pop3tls' => __('The same as unecrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS.', 'servcheck'),
+	'mail_pop3s'   => __('Encrypted POP3, you can try login and test certificate and user login.', 'servcheck'),
+	'dns_dns'      => __('Try to resolve DNS record on specified DNS server', 'servcheck'),
+	'dns_doh'      => __('Try DNS over HTTPS.', 'servcheck'),
+	'ldap_ldap'    => __('All parameters are required. Perform unecrypted LDAP login and search', 'servcheck'),
+	'ldap_ldaps'   => __('All parameters are required. Perform encrypted LDAP login and search', 'servcheck'),
+	'ftp_ftp'      => __('Unecrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content \
+		of the file is returned.', 'servcheck'),
+	'ftp_tftp'     => __('Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned.', 'servcheck'),
+	'ftp_scp'      => __('Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt).', 'servcheck'),
+	'smb_smb'      => __('Try SMB protocol, username and password are required. Try to login and download file.', 'servcheck'),
+	'smb_smbs'     => __('Try SMB protocol, username and password are required. Try to login and download file.', 'servcheck'),
+	'mqtt_mqtt'    => __('Connetct to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic', 'servcheck'),
+	'rest_basic'   => __('REST API test with basic HTTP auth. Prepare credential first.', 'servcheck'),
+	'rest_apikey'  => __('REST API test with API key auth. Prepare credential first.', 'servcheck'),
+	'rest_oauth2'  => __('REST API test with Oauth2. Prepare credential first.', 'servcheck'),
+	'rest_cookie'  => __('REST API test with cookie auth. Prepare credential first.', 'servcheck'),
+	'snmp_get'     => __('Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first.', 'servcheck'),
+	'snmp_walk'    => __('Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first.', 'servcheck'),
+	'ssh_command'  => __('Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible.', 'srvcheck'),
+	'ssh_sftp'     => __('SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path.', 'servcheck'),
+);
+
 
 $curl_error = array(
 	0 => array (
@@ -1084,3 +1318,78 @@ $curl_error = array(
 );
 
 
+// this part will be removed in 0.5
+
+$rest_api_auth_method = array(
+	'no'     => __('Without auth', 'servcheck'),
+	'basic'  => __('Basic HTTP auth', 'servcheck'),
+	'apikey' => __('API key auth', 'servcheck'),
+	'oauth2' => __('OAuth2/Bearer token auth', 'servcheck'),
+	'cookie' => __('Cookie based auth', 'servcheck'),
+);
+
+
+$servcheck_restapi_fields = array(
+	'general_spacer' => array(
+		'method' => 'spacer',
+		'friendly_name' => __('General Settings', 'servcheck')
+	),
+	'name' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Rest API Name', 'servcheck'),
+		'description' => __('The name that is displayed for this Rest API.', 'servcheck'),
+		'value' => '|arg1:name|',
+		'max_length' => '100',
+	),
+	'type' => array(
+		'friendly_name' => __('Auth type', 'servcheck'),
+		'method' => 'drop_array',
+		'on_change' => 'setRestAPI()',
+		'array' => $rest_api_auth_method,
+		'default' => 'basic_auth',
+		'description' => __('Details of auth methods:<br/>
+		No authorization - <i>just send only request and read the response.</i><br/>
+		Basic - <i>uses HTTP auth. Username and password is Base64 encoded. Credentials are not encrypted.</i><br/>
+		API key - <i>you need API key from your Rest API server. It will be send with all request. Key is send ind http headers. You can also add it to the data URL.</i><br/>
+		OAuth2 - <i>Oauth2/bearer token auth. Insert your token or use your credentials for getting a token.</i><br/>
+		Cookie - <i>Use your credentials for getting cookie. Cookie will be send with each request.</i><br/>
+		Note: HTTP method POST is used for login. For data query is used GET.', 'servcheck'),
+		'value' => '|arg1:type|',
+	),
+	'cred_id' => array(
+		'friendly_name' => __('Credential', 'servcheck'),
+		'method' => 'drop_sql',
+		'default' => 0,
+		'description' => __('Select correct credential', 'servcheck'),
+		'value' => '|arg1:cred_id|',
+		'sql' => "SELECT id, name FROM plugin_servcheck_credential WHERE type IN ('basic', 'apikey', 'oauth2', 'cookie') ORDER BY name",
+	),
+	'cred_name' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Token/API Key name', 'servcheck'),
+		'description' => __('Auth can use different token or API Key name. You can specify it here.
+		Commonly used names are  \'Bearer\' for OAuth2,  \'apikey\' for API Key method. You need know correct name, check your Rest API server documentation. ', 'servcheck'),
+		'value' => '|arg1:cred_name|',
+		'max_length' => '100',
+	),
+	'login_url' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Login URL', 'servcheck'),
+		'description' => __('URL which is used to log in or get the token.', 'servcheck'),
+		'value' => '|arg1:login_url|',
+		'max_length' => '200',
+	),
+	'data_url' => array(
+		'method' => 'textbox',
+		'friendly_name' => __('Data URL', 'servcheck'),
+		'description' => __('URL to retrieve data. Insert with http:// or https://', 'servcheck'),
+		'value' => '|arg1:data_url|',
+		'max_length' => '200',
+	),
+	'id' => array(
+		'method' => 'hidden_zero',
+		'value' => '|arg1:id|'
+	),
+);
+
+// end

@@ -25,59 +25,66 @@
 chdir('../../');
 include_once('./include/auth.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
+include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+
+$servcheck_actions_menu = array(
+	1 => __('Delete', 'servcheck'),
+);
 
 set_default_action();
 
 switch (get_request_var('action')) {
 	case 'save':
-		ca_form_save();
+		form_save();
 
 		break;
 	case 'actions':
-		ca_form_actions();
+		form_actions();
 
 		break;
 	case 'edit':
 		top_header();
-		ca_edit();
+		data_edit();
 		bottom_footer();
 
 		break;
 	default:
-		ca();
+		top_header();
+		data_list();
+		bottom_footer();
+
+		break;
 }
 
-function ca_form_actions() {
-	global $servcheck_actions_ca;
+function form_actions() {
+	global $servcheck_actions_menu;
+
+	/* ================= input validation ================= */
+	get_filter_request_var('drp_action', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^([a-zA-Z0-9_]+)$/')));
+	/* ==================================================== */
 
 	/* if we are to save this form, instead of display it */
 	if (isset_request_var('selected_items')) {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
 
 		if ($selected_items != false) {
-			if (get_nfilter_request_var('drp_action') == SERVCHECK_ACTION_CA_DELETE) { // delete
-				/* do a referential integrity check */
+			if (get_filter_request_var('drp_action') == 1) {
 				if (cacti_sizeof($selected_items)) {
-					foreach($selected_items as $ca) {
-						$cas[] = $ca;
+					foreach($selected_items as $item) {
+						db_execute_prepared('DELETE FROM plugin_servcheck_ca WHERE id = ?', array($item));
+						db_execute_prepared('UPDATE plugin_servcheck_test SET ca_id = 0 WHERE ca_id = ?', array($item));
 					}
-				}
-
-				if (cacti_sizeof($cas)) {
-					db_execute('DELETE FROM plugin_servcheck_ca WHERE ' . array_to_sql_or($cas, 'id'));
-					db_execute('UPDATE plugin_servcheck_test SET ca = 0  WHERE ' . array_to_sql_or($cas, 'ca'));
 				}
 			}
 		}
 
-		header('Location: servcheck_ca.php?header=false');
-
+		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
 	}
 
 	/* setup some variables */
-	$ca_list  = '';
-	$ca_array = array();
+	$item_list  = '';
+	$items_array = array();
 
 	/* loop through each of the graphs selected on the previous page and get more info about them */
 	foreach ($_POST as $var => $val) {
@@ -86,39 +93,39 @@ function ca_form_actions() {
 			input_validate_input_number($matches[1]);
 			/* ==================================================== */
 
-			$ca_list .= '<li>' . db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_ca WHERE id = ?', array($matches[1])) . '</li>';
-			$ca_array[] = $matches[1];
+			$item_list .= '<li>' . db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_ca WHERE id = ?', array($matches[1])) . '</li>';
+			$items_array[] = $matches[1];
 		}
 	}
 
 	top_header();
 
-	form_start('servcheck_ca.php');
+	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
-	html_start_box($servcheck_actions_ca[get_nfilter_request_var('drp_action')], '60%', '', '3', 'center', '');
+	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', '', '3', 'center', '');
 
-	if (cacti_sizeof($ca_array) > 0) {
-		if (get_nfilter_request_var('drp_action') == SERVCHECK_ACTION_CA_DELETE) { // delete
+	if (cacti_sizeof($items_array) > 0) {
+		if (get_filter_request_var('drp_action') == 1) {
 			print "	<tr>
 					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to delete the following CA.', 'Click \'Continue\' to delete following CA.', cacti_sizeof($ca_array)) . "</p>
-						<div class='itemlist'><ul>$ca_list</ul></div>
+						<p>" . __n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', cacti_sizeof($items_array)) . "</p>
+						<div class='itemlist'><ul>$item_list</ul></div>
 					</td>
 				</tr>";
 
-			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete CA', 'Delete CA', cacti_sizeof($ca_array)) . "'>";
+			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete item', 'Delete items', cacti_sizeof($items_array)) . "'>";
 		}
 	} else {
 		raise_message(40);
-		header('Location: servcheck_ca.php');
+		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
 	}
 
 	print "<tr>
 		<td class='saveRow'>
 			<input type='hidden' name='action' value='actions'>
-			<input type='hidden' name='selected_items' value='" . (isset($ca_array) ? serialize($ca_array) : '') . "'>
-			<input type='hidden' name='drp_action' value='" . get_nfilter_request_var('drp_action') . "'>
+			<input type='hidden' name='selected_items' value='" . (isset($items_array) ? serialize($items_array) : '') . "'>
+			<input type='hidden' name='drp_action' value='" . get_request_var('drp_action') . "'>
 			$save_html
 		</td>
 	</tr>";
@@ -130,68 +137,76 @@ function ca_form_actions() {
 	bottom_footer();
 }
 
-function ca_form_save() {
-	if (isset_request_var('save_component_ca')) {
-		$save['id']         = get_filter_request_var('id');
-		$save['name']       = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
-		$save['cert']       = form_input_validate(get_nfilter_request_var('cert'), 'cert', '^-----BEGIN CERTIFICATE-----.*', false, 3);
+
+function form_save() {
+
+	if (isset_request_var('save_component')) {
+
+		$save['id']   = get_filter_request_var('id');
+		$save['name'] = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
+		$save['cert'] = form_input_validate(get_nfilter_request_var('cert'), 'cert', '^-----BEGIN CERTIFICATE-----.*', false, 3);
 
 		if (!is_error_message()) {
-			$ca_id = sql_save($save, 'plugin_servcheck_ca');
+			$saved_id = sql_save($save, 'plugin_servcheck_ca');
 
-			if ($ca_id) {
+			if ($saved_id) {
 				raise_message(1);
 			} else {
 				raise_message(2);
 			}
 		}
 
-		header('Location: servcheck_ca.php?action=edit&header=false&id=' . (empty($ca_id) ? get_request_var('id') : $ca_id));
+		if (is_error_message()) {
+			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false&action=edit&id=' . (empty($saved_id) ? get_nfilter_request_var('id') : $saved_id));
+		} else {
+			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
+		}
 	}
+	exit;
 }
 
-function ca_edit() {
+function data_edit() {
 	global $servcheck_ca_fields;
 
 	/* ================= input validation ================= */
 	get_filter_request_var('id');
 	/* ==================================================== */
 
+	$data = array();
+	$cred = array();
+
 	if (!isempty_request_var('id')) {
-		$ca = db_fetch_row_prepared('SELECT *
+		$data = db_fetch_row_prepared('SELECT *
 			FROM plugin_servcheck_ca
 			WHERE id = ?',
 			array(get_request_var('id')));
 
-		$header_label = __('CA [edit: %s]', $ca['name']);
+		$header_label = __('CA [edit: %s]', $data['name']);
 	} else {
 		$header_label = __('CA [new]');
 	}
 
-	top_header();
-
-	form_start('servcheck_ca.php');
+	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
 	html_start_box($header_label, '100%', true, '3', 'center', '');
 
 	draw_edit_form(
 		array(
 			'config' => array('no_form_tag' => true),
-			'fields' => inject_form_variables($servcheck_ca_fields, (isset($ca) ? $ca : array()))
+			'fields' => inject_form_variables($servcheck_ca_fields, $data)
 		)
 	);
 
+	form_hidden_box('save_component', '1', '');
+
 	html_end_box(true, true);
 
-	form_hidden_box('save_component_ca', '1', '');
-
-	form_save_button('servcheck_ca.php', 'return');
-
-	bottom_footer();
+	form_save_button(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 }
 
+
 function request_validation() {
-	/* ================= input validation and session storage ================= */
+
 	$filters = array(
 		'rows' => array(
 			'filter' => FILTER_VALIDATE_INT,
@@ -202,10 +217,10 @@ function request_validation() {
 			'filter' => FILTER_VALIDATE_INT,
 			'default' => '1'
 			),
-		'refresh' => array(
-			'filter' => FILTER_VALIDATE_INT,
+		'filter' => array(
+			'filter' => FILTER_DEFAULT,
 			'pageset' => true,
-			'default' => '20',
+			'default' => ''
 			),
 		'sort_column' => array(
 			'filter' => FILTER_CALLBACK,
@@ -219,26 +234,24 @@ function request_validation() {
 			)
 	);
 
-	validate_store_request_vars($filters, 'sess_servcheck_ca');
-	/* ================= input validation ================= */
+	validate_store_request_vars($filters, 'sess_servcheck_proxy');
 }
 
-function ca() {
-	global $servcheck_actions_ca;
+
+function data_list() {
+	global $servcheck_actions_menu;
 
 	request_validation();
-
-	top_header();
-
-	servcheck_show_tab('servcheck_ca.php');
-
-	servcheck_filter();
 
 	if (get_request_var('rows') == '-1') {
 		$rows = read_config_option('num_rows_table');
 	} else {
 		$rows = get_request_var('rows');
 	}
+
+	servcheck_show_tab(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
+
+	servcheck_filter();
 
 	$sql_where = '';
 
@@ -249,15 +262,16 @@ function ca() {
 	$sql_order = get_order_string();
 	$sql_limit = ' LIMIT ' . ($rows*(get_request_var('page')-1)) . ',' . $rows;
 
-	$result = db_fetch_assoc("SELECT id, name,
-			(SELECT COUNT(*) FROM plugin_servcheck_test WHERE plugin_servcheck_ca.id=ca) AS `used`
-		FROM plugin_servcheck_ca
-		$sql_where
-		$sql_limit");
-
 	$total_rows = db_fetch_cell("SELECT COUNT(id)
 		FROM plugin_servcheck_ca
 		$sql_where");
+
+	$result = db_fetch_assoc("SELECT *,
+		(SELECT COUNT(*) FROM plugin_servcheck_test WHERE plugin_servcheck_ca.id=ca_id) AS `used`
+		FROM plugin_servcheck_ca
+		$sql_where
+		$sql_order
+		$sql_limit");
 
 	$display_text = array(
 		'name' => array(
@@ -272,9 +286,9 @@ function ca() {
 
 	$columns = cacti_sizeof($display_text);
 
-	$nav = html_nav_bar('servcheck_ca.php', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, $columns, __('CAs', 'servcheck'), 'page', 'main');
+	$nav = html_nav_bar(htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?filter=' . get_request_var('filter'), MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, $columns, __('CAs', 'servcheck'), 'page', 'main');
 
-	form_start('servcheck_ca.php', 'chk');
+	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])), 'chk');
 
 	print $nav;
 
@@ -284,14 +298,21 @@ function ca() {
 
 	if (cacti_sizeof($result)) {
 		foreach ($result as $row) {
-			form_alternate_row('line' . $row['id'], true);
+			if ($row['used'] == 0) {
+				$disabled = false;
+			} else {
+				$disabled = true;
+			}
 
-			form_selectable_cell(filter_value($row['name'], get_request_var('filter'), 'servcheck_ca.php?header=false&action=edit&id=' . $row['id']), $row['id']);
+			form_alternate_row('line' . $row['id'], false, $disabled);
+			form_selectable_cell("<a class='linkEditMain' href='" . html_escape(htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false&action=edit&id=' . $row['id']) . "'>" . $row['name'] . '</a>', $row['id']);
 			form_selectable_cell($row['used'], $row['id']);
-			form_checkbox_cell($row['name'], $row['id']);
+			form_checkbox_cell($row['name'], $row['id'], $disabled);
 
 			form_end_row();
 		}
+	} else {
+		print "<tr class='tableRow'><td colspan='" . $columns . "'><em>" . __('Empty', 'servcheck') . "</em></td></tr>\n";
 	}
 
 	html_end_box(false);
@@ -300,44 +321,39 @@ function ca() {
 		print $nav;
 	}
 
-	draw_actions_dropdown($servcheck_actions_ca);
+	draw_actions_dropdown($servcheck_actions_menu, 1);
 
 	form_end();
 
-	bottom_footer();
 }
 
 function servcheck_filter() {
 	global $item_rows;
 
-	html_start_box(__('Servcheck CA Management', 'servcheck') , '100%', '', '3', 'center', 'servcheck_ca.php?action=edit&header=false');
+	html_start_box(__('Servcheck CA Management', 'servcheck') , '100%', '', '3', 'center', htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=edit');
 
 	?>
-	<tr class='even noprint'>
-		<td class='noprint'>
-
-		<?php
-		print __('Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is.', 'servcheck');
-		?>
-		<form id='servcheck' action='servcheck_ca.php' method='post'>
+	<tr class='even'>
+		<td>
+		<form id='form_servcheck_item' action='<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>'>
 			<table class='filterTable'>
-				<tr class='noprint'>
+				<tr>
 					<td>
 						<?php print __('Search', 'servcheck');?>
 					</td>
 					<td>
-						<input type='text' size='30' id='filter' value='<?php print html_escape_request_var('filter');?>'>
+						<input type='text' class='ui-state-default ui-corner-all' id='filter' name='filter' size='25' value='<?php print html_escape_request_var('filter');?>'>
 					</td>
 					<td>
 						<?php print __('CAs', 'servcheck');?>
 					</td>
 					<td>
-						<select id='rows'>
+						<select id='rows' onChange='applyFilter()'>
 							<?php
 							print "<option value='-1'" . (get_request_var('rows') == -1 ? ' selected':'') . ">" . __('Default', 'servcheck') . "</option>";
 							if (cacti_sizeof($item_rows)) {
 								foreach ($item_rows as $key => $value) {
-									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . html_escape($value) . "</option>";
+									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . htmlspecialchars($value) . "</option>";
 								}
 							}
 							?>
@@ -345,8 +361,8 @@ function servcheck_filter() {
 					</td>
 					<td>
 						<span class='nowrap'>
-							<input type='submit' id='go' value='<?php print __esc('Go', 'servcheck');?>'>
-							<input type='button' id='clear' value='<?php print __esc('Clear', 'servcheck');?>'>
+							<input type='button' class='ui-button ui-corner-all ui-widget' id='refresh' value='<?php print __esc('Go');?>' title='<?php print __esc('Set/Refresh Filters', 'servcheck');?>'>
+							<input type='button' class='ui-button ui-corner-all ui-widget' id='clear' value='<?php print __esc('Clear');?>' title='<?php print __esc('Clear Filters', 'servcheck');?>'>
 						</span>
 					</td>
 				</tr>
@@ -355,19 +371,19 @@ function servcheck_filter() {
 		<script type='text/javascript'>
 
 		function applyFilter() {
-			strURL  = 'servcheck_ca.php?header=false';
+			strURL  = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?header=false';
 			strURL += '&filter=' + $('#filter').val();
 			strURL += '&rows=' + $('#rows').val();
 			loadPageNoHeader(strURL);
 		}
 
 		function clearFilter() {
-			strURL = 'servcheck_ca.php?clear=1&header=false';
+			strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?clear=1&header=false';
 			loadPageNoHeader(strURL);
 		}
 
 		$(function() {
-			$('#rows').change(function() {
+			$('#rows').click(function() {
 				applyFilter();
 			});
 
@@ -375,7 +391,7 @@ function servcheck_filter() {
 				clearFilter();
 			});
 
-			$('#servcheck').submit(function(event) {
+			$('#form_servcheck_item').submit(function(event) {
 				event.preventDefault();
 				applyFilter();
 			});
@@ -387,4 +403,5 @@ function servcheck_filter() {
 	<?php
 	html_end_box();
 }
+
 

@@ -22,8 +22,7 @@
  +-------------------------------------------------------------------------+
 */
 
-include_once(__DIR__ . '/constants.php');
-include_once(__DIR__ . '/arrays.php');
+//include_once(__DIR__ . '/arrays.php');
 
 function servcheck_show_tab($current_tab) {
 	global $config, $servcheck_tabs;
@@ -55,40 +54,6 @@ function servcheck_show_tab($current_tab) {
 }
 
 
-function plugin_servcheck_remove_old_users () {
-	$users = db_fetch_assoc('SELECT id FROM user_auth');
-
-	$u = array();
-
-	foreach ($users as $user) {
-		$u[] = $user['id'];
-	}
-
-	$contacts = db_fetch_assoc('SELECT DISTINCT user_id FROM plugin_servcheck_contacts');
-
-	foreach ($contacts as $c) {
-		if (!in_array($c['user_id'], $u)) {
-			db_execute_prepared('DELETE FROM plugin_servcheck_contacts WHERE user_id = ?', array($c['user_id']));
-		}
-	}
-}
-
-
-function plugin_servcheck_update_contacts() {
-	$users = db_fetch_assoc("SELECT id, 'email' AS type, email_address FROM user_auth WHERE email_address!=''");
-
-	if (cacti_sizeof($users)) {
-		foreach($users as $u) {
-			$cid = db_fetch_cell('SELECT id FROM plugin_servcheck_contacts WHERE type="email" AND user_id=' . $u['id']);
-
-			if ($cid) {
-				db_execute("REPLACE INTO plugin_servcheck_contacts (id, user_id, type, data) VALUES ($cid, " . $u['id'] . ", 'email', '" . $u['email_address'] . "')");
-			} else {
-				db_execute("REPLACE INTO plugin_servcheck_contacts (user_id, type, data) VALUES (" . $u['id'] . ", 'email', '" . $u['email_address'] . "')");
-			}
-		}
-	}
-}
 
 function plugin_servcheck_check_debug() {
 	global $debug;
@@ -113,8 +78,7 @@ function plugin_servcheck_graph ($id, $interval) {
 	global $config, $graph_interval;
 
 	$result = db_fetch_assoc_prepared("SELECT
-		lastcheck, total_time, namelookup_time, connect_time
-		FROM plugin_servcheck_log
+		lastcheck, duration FROM plugin_servcheck_log
 		WHERE test_id = ? AND
 		lastcheck > DATE_SUB(NOW(), INTERVAL ? HOUR)
 		ORDER BY id", array($id, $interval));
@@ -124,119 +88,76 @@ function plugin_servcheck_graph ($id, $interval) {
 		return;
 	}
 
-	$xid = 'xx' . substr(md5($id . $graph_interval[$interval]), 0, 7);
+	$xid = 'xx' . substr(md5($graph_interval[$interval]), 0, 7);
 
 
 	foreach ($result as $row) {
 		$lastcheck[]       = $row['lastcheck'];
-		$total_time[]      = round($row['total_time'], 5);
-		$namelookup_time[] = round($row['namelookup_time'], 5);
-		$connect_time[]    = round($row['connect_time'], 5);
+		$duration[]      = round($row['duration'], 5);
 	}
 
 	// Start chart attributes
 	$chart = array(
-		'data' => array(
-			'x' => 'x',
-			'type' => 'area-spline',
-			'axes' => array(), // Setup the Axes (keep it empty to use only the left Y-axis)
-			'labels' => true,
-			'names' => array(
-				'Total' => 'Total',
-				'Connect' => 'Connect',
-				'DNS' => 'DNS'
-			)
-		),
+		'bindto' => "#line_$xid",
 		'size' => array(
-			'height' => 600,
-			'width'=> 1200
+			'height' => 300,
+			'width'=> 600
 		),
-		'axis' => array(),
-		'point' => array(
-			'pattern' => array(
-				"<circle cx='5' cy='5' r='5'></circle>",
-				"<rect x='0' y='0' width='10' height='10'></rect>",
-				"<polygon points='8 0 0 16 16 16'></polygon>"
-			)
+		'point' => array (
+			'r' => 1.5
 		),
-		'legend' => array(
-			'show' => true,
-			'usePoint' => true,
-			'tooltip' => true,
-			'contents' => array(
-				'bindto' => "#legend_$xid",
-				"<div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; border-radius: 5px;'>{=TITLE}</div>"
-			)
-		),
-		'zoom' => array('enabled' => true),
-		'bindto' => "#chart_$xid"
+		'data' => array(
+			'type' => 'area',
+			'x' => 'x',
+			'xFormat' => '%Y-%m-%d %H:%M:%S' // rikam mu, jaky je format te timeserie
+		)
 	);
 
-	// Add the data columns
 	$columns = array();
+	$axis = array();
+	$axes = array();
+
+	// Add the X Axis first
 	$columns[] = array_merge(array('x'), $lastcheck);
-	$columns[] = array_merge(array('Total'), $total_time);
-	$columns[] = array_merge(array('Connect'), $connect_time);
-	$columns[] = array_merge(array('DNS'), $namelookup_time);
-	$chart['data']['columns'] = $columns;
+	$columns[] = array_merge(array('Duration'), $duration);
+//	$columns[] = array_merge(array('Connect'), $connect_time);
+//	$columns[] = array_merge(array('DNS '), $namelookup_time);
 
 	// Setup the Axis
-	$axis = array();
 	$axis['x'] = array(
 		'type' => 'timeseries',
 		'tick' => array(
-			'format'=> '%Y%m%d %H:%M',
+			'format'=> '%m-%d %H:%M',
 			'culling' => array('max' => 6),
-			'rotate' => -15
-		),
-		'label' => array(
-			'text' => 'Date/Time',
-			'position' => 'outer-right'
 		)
 	);
 
 	$axis['y'] = array(
-		'label' => array(
-			'text' => 'Response (ms)',
-			'position' => 'outer-middle'
+		'tick' => array(
+			'label' => array(
+				'text' => 'Response in ms',
+			),
+			'show' => true
 		)
 	);
+
+	$chart['data']['axes']= $axes;
 	$chart['axis']= $axis;
+	$chart['data']['columns'] = $columns;
 
 	$chart_data = json_encode($chart);
 
-// The below block can be used as part of the debugging to display the data retrieved along with the graph.
-// Uncomment/Comment as required.
-/*
-print '<style>
-    .json-output {
-        max-width: 800px; 
-        overflow-wrap: break-word; 
-        word-wrap: break-word;
-        white-space: pre-wrap;
-        border: 1px solid #ccc;
-        padding: 10px;
-        background-color: #f9f9f9;
-    }
-</style>';
-print '<pre class="json-output">';
-var_dump($chart_data);
-print '</pre>';
-*/
-
-	$content  = '<div id="chart_' . $xid. '"></div>';
-	$content  .= '<div id="legend_container_' . $xid. '" style="display: flex; flex-direction: column; align-items: flex-start;">';
-	$content  .= '<div id="legend_' . $xid. '" style="margin-top: 10px;"></div>';
-	$content  .= '</div>';
+	$content  = '<div id="line_' . $xid. '"></div>';
 	$content .= '<script type="text/javascript">';
-	$content .= 'chart_' . $xid . ' = bb.generate(' . $chart_data . ');';
-	$content .= "setTimeout(() => {chart_$xid.flush(); }, 500);"; // Forces Billboard.js to redraw, this is a workaround to resolve the issue of styling of axis 'y' which is displayed trimmed at the left of the page. A permanent solution is required to fix the styling issue of both legend overlapping and axis 'y' shift to the left. 
+	$content .= 'line_' . $xid . ' = bb.generate(' . $chart_data . ');';
 	$content .= '</script>';
 
 	print $content;
 }
 
-// I know, it not secure, it is better than plaintext
+
+// It is not secure, it is better than plaintext
+// will be removed in 0.5
 
 function servcheck_hide_text ($string) {
 	$output = '';
@@ -257,4 +178,52 @@ function servcheck_show_text ($string) {
 
 	return $output;
 }
+
+
+function servcheck_encrypt_credential ($cred) {
+
+	$servcheck_key = read_user_setting('servcheck_key', null, true, 1);
+	$iv_length    = intval(openssl_cipher_iv_length(SERVCHECK_CIPHER));
+	$servcheck_iv = openssl_random_pseudo_bytes($iv_length);
+
+	if (is_null($servcheck_key)) {
+		cacti_log('Creating new cipher key', 'servcheck');
+		$servcheck_key = hash('sha256', 'ksIBWE' . date('hisv'));
+
+		set_user_setting('servcheck_key', base64_encode($servcheck_key));
+	} else {
+		$servcheck_key = base64_decode($servcheck_key);
+	}
+
+	$encrypted = openssl_encrypt(json_encode($cred), SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
+	return base64_encode($servcheck_iv . $encrypted);
+}
+
+function servcheck_decrypt_credential ($cred_id) {
+
+	$servcheck_key = read_user_setting('servcheck_key', null, true, 1);
+
+	if (is_null($servcheck_key)) {
+		cacti_log('Cannot decrypt credential, key is missing', 'servcheck');
+		return false;
+	} else {
+		$servcheck_key = base64_decode($servcheck_key);
+	}
+
+	$encrypted = db_fetch_cell_prepared('SELECT data FROM plugin_servcheck_credential
+		WHERE id = ?',
+		array($cred_id));
+
+	$encrypted = base64_decode($encrypted);
+
+	$iv_length     = intval(openssl_cipher_iv_length(SERVCHECK_CIPHER));
+	$servcheck_iv  = substr($encrypted, 0, $iv_length);
+	$encrypted     = substr($encrypted, $iv_length);
+
+	$decrypted=openssl_decrypt ($encrypted, SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
+
+
+	return json_decode($decrypted, true);
+}
+
 

@@ -35,6 +35,8 @@ if (strpos($dir, 'plugins') !== false) {
 include('./include/cli_check.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 include_once($config['base_path'] . '/lib/poller.php');
+include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+
 
 /* process calling arguments */
 $parms = $_SERVER['argv'];
@@ -92,25 +94,15 @@ if (cacti_sizeof($parms)) {
 	}
 }
 
-if (!function_exists('curl_init')) {
-	print "FATAL: You must install php-curl to use this Plugin" . PHP_EOL;
-}
-
 plugin_servcheck_check_debug();
 
 print 'Running Service Checks' . PHP_EOL;
 
-// Remove old logs
-$t = time() - (86400 * 30);
 
 if ($poller_id == 1) {
-	db_execute_prepared('DELETE FROM plugin_servcheck_log
-		WHERE lastcheck < FROM_UNIXTIME(?)',
-		array($t));
-
 	db_execute_prepared('DELETE FROM plugin_servcheck_processes
 		WHERE time < FROM_UNIXTIME(?)',
-		array(time() - 15));
+		array(time() - 30));
 }
 
 if ($test_id == 0) {
@@ -118,6 +110,7 @@ if ($test_id == 0) {
 } else {
 	$sql_condition = ' AND id = ' . $test_id;
 }
+
 $tests = db_fetch_assoc_prepared('SELECT *
 	FROM plugin_servcheck_test
 	WHERE enabled = "on"
@@ -128,6 +121,7 @@ $tests = db_fetch_assoc_prepared('SELECT *
 $max_processes = 32;
 
 if (cacti_sizeof($tests)) {
+
 	foreach($tests as $test) {
 		$running_processes = db_fetch_cell_prepared('SELECT COUNT(id)
 			FROM plugin_servcheck_processes
@@ -135,7 +129,7 @@ if (cacti_sizeof($tests)) {
 			array($poller_id));
 
 		if ($max_processes - $running_processes > 0) {
-			plugin_servcheck_debug('Launching Service Check ' . $test['display_name'], $test);
+			plugin_servcheck_debug('Launching Service Check ' . $test['name'], $test);
 
 			$command_string = read_config_option('path_php_binary');
 			$extra_args     = '-q "' . $config['base_path'] . '/plugins/servcheck/servcheck_process.php" --id=' . $test['id'] . ($debug ? ' --debug':'');
@@ -149,6 +143,8 @@ if (cacti_sizeof($tests)) {
 				array(time() - 15, $poller_id));
 		}
 	}
+} else {
+	plugin_servcheck_debug('No enabled tests, nothing to do.', $test);
 }
 
 while(true) {
@@ -206,6 +202,14 @@ cacti_log("SERVCHECK STATS: $stats", false, 'SYSTEM');
 
 if ($poller_id == 1) {
 	set_config_option('stats_servcheck', $stats);
+
+	// Remove old logs
+	$t = time() - (86400 * 30);
+
+	db_execute_prepared('DELETE FROM plugin_servcheck_log
+		WHERE lastcheck < FROM_UNIXTIME(?)',
+		array($t));
+
 }
 
 set_config_option('stats_servcheck_' . $poller_id, $stats);

@@ -25,9 +25,18 @@
 chdir('../../');
 include_once('./include/auth.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
-include_once($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
 global $refresh;
+
+$servcheck_actions_menu = array(
+	1 => __('Delete', 'servcheck'),
+	2 => __('Disable', 'servcheck'),
+	3 => __('Enable', 'servcheck'),
+	4 => __('Duplicate', 'servcheck'),
+	5 => __('Clear statistics', 'servcheck'),
+	6 => __('Clear log', 'servcheck'),
+);
 
 set_default_action();
 
@@ -40,14 +49,23 @@ switch (get_request_var('action')) {
 		form_actions();
 
 		break;
+	case 'edit':
+		top_header();
+		data_edit();
+		bottom_footer();
+
+		break;
+
 	case 'enable':
 		$id = get_filter_request_var('id');
 
 		if ($id > 0) {
-			db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "on" WHERE id = ?', array($id));
+			db_execute_prepared('UPDATE plugin_servcheck_test
+			SET enabled = "on"
+			WHERE id = ?', array($id));
 		}
 
-		header('Location: servcheck_test.php?header=false');
+		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) .'?header=false');
 		exit;
 
 		break;
@@ -55,10 +73,12 @@ switch (get_request_var('action')) {
 		$id = get_filter_request_var('id');
 
 		if ($id > 0) {
-			db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "" WHERE id = ?', array($id));
+			db_execute_prepared('UPDATE plugin_servcheck_test
+			SET enabled = ""
+			WHERE id = ?', array($id));
 		}
 
-		header('Location: servcheck_test.php?header=false');
+		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) .'?header=false');
 		exit;
 
 		break;
@@ -69,169 +89,192 @@ switch (get_request_var('action')) {
 			purge_log_events($id);
 		}
 
-		header('Location: servcheck_test.php?header=false');
+		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) .'?header=false');
 		exit;
 
 		break;
-	case 'edit':
+
+	case 'history':
 		top_header();
-		servcheck_edit_test();
+		servcheck_show_history();
 		bottom_footer();
 
 		break;
-	case 'history':
-		servcheck_show_history();
-
-		break;
 	case 'graph':
+		top_header();
 		servcheck_show_graph();
+		bottom_footer();
 
 		break;
 
 	case 'last_data':
+		top_header();
 		servcheck_show_last_data();
+		bottom_footer();
 
 		break;
+
 	default:
-		list_tests();
+		top_header();
+		data_list();
+		bottom_footer();
 
 		break;
 }
 
-exit;
-
 function form_actions() {
-	global $servcheck_actions_test;
+	global $servcheck_actions_menu;
+
+	/* ================= input validation ================= */
+	get_filter_request_var('drp_action', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^([a-zA-Z0-9_]+)$/')));
+	/* ==================================================== */
 
 	/* if we are to save this form, instead of display it */
 	if (isset_request_var('selected_items')) {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
-		$action         = get_nfilter_request_var('drp_action');
 
 		if ($selected_items != false) {
-			if (cacti_sizeof($selected_items)) {
-				foreach($selected_items as $test) {
-					$tests[] = $test;
+			if (get_filter_request_var('drp_action') == 1) { // delete
+				if (cacti_sizeof($selected_items)) {
+					foreach($selected_items as $item) {
+						db_execute_prepared('DELETE FROM plugin_servcheck_test WHERE id = ?', array($item));
+						db_execute_prepared('DELETE FROM plugin_servcheck_log WHERE test_id = ?', array($item));
+					}
 				}
-			}
+			} elseif (get_filter_request_var('drp_action') == 2) { // disable
+				foreach ($selected_items as $item) {
+					db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "" WHERE id = ?', array($item));
+				}
+			} elseif (get_filter_request_var('drp_action') == 3) { // enable
+				foreach ($selected_items as $item) {
+					db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "on" WHERE id = ?', array($item));
+				}
+			} elseif (get_filter_request_var('drp_action') == 4) { // duplicate
+				$newid = 1;
 
-			if (cacti_sizeof($tests)) {
-				if ($action == SERVCHECK_ACTION_TEST_DELETE) { // delete
-					foreach ($tests as $id) {
-						db_execute_prepared('DELETE FROM plugin_servcheck_test WHERE id = ?', array($id));
-						db_execute_prepared('DELETE FROM plugin_servcheck_log WHERE test_id = ?', array($id));
-					}
-				} elseif ($action == SERVCHECK_ACTION_TEST_DISABLE) { // disable
-					foreach ($tests as $id) {
-						db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "" WHERE id = ?', array($id));
-					}
-				} elseif ($action == SERVCHECK_ACTION_TEST_ENABLE) { // enable
-					foreach ($tests as $id) {
-						db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "on" WHERE id = ?', array($id));
-					}
-				} elseif ($action == SERVCHECK_ACTION_TEST_DUPLICATE) { // duplicate
-					$newid = 1;
+				foreach ($selected_items as $item) {
+					$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_test
+						WHERE id = ?', array($item));
 
-					foreach ($tests as $id) {
-						$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_test WHERE id = ?', array($id));
-						$save['id']           = 0;
-						$save['display_name'] = 'New Service Check (' . $newid . ')';
-						$save['path']         = '/';
-						$save['lastcheck']    = '0000-00-00 00:00:00';
-						$save['triggered']    = 0;
-						$save['enabled']      = '';
-						$save['username']     = '';
-						$save['password']     = '';
-						$save['failures']     = 0;
-						$save['stats_ok']     = 0;
-						$save['stats_bad']    = 0;
+					$save['id']           = 0;
+					$save['name'] = 'New Service Check (' . $newid . ')';
+					$save['lastcheck']    = '0000-00-00 00:00:00';
+					$save['triggered']    = 0;
+					$save['enabled']      = '';
+					$save['failures']     = 0;
+					$save['stats_ok']     = 0;
+					$save['stats_bad']    = 0;
 
-						$id = sql_save($save, 'plugin_servcheck_test');
+					$id = sql_save($save, 'plugin_servcheck_test');
 
-						$newid++;
-					}
+					$newid++;
+				}
+			} elseif (get_filter_request_var('drp_action') == 5) { // clear statistics
+				foreach ($selected_items as $item) {
+					db_execute_prepared('UPDATE plugin_servcheck_test SET 
+						stats_ok = 0, stats_bad = 0, failures = 0, triggered = 0
+						WHERE id = ?', array($item));
+				}
+			} elseif (get_filter_request_var('drp_action') == 6) { // clear log
+				foreach ($selected_items as $item) {
+					db_execute_prepared('DELETE FROM plugin_servcheck_log WHERE test_id = ?', array($item));
 				}
 			}
 		}
 
-		header('Location: servcheck_test.php?header=false');
-
+		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
 	}
 
 	/* setup some variables */
-	$test_list  = '';
-	$test_array = array();
+	$item_list  = '';
+	$items_array = array();
 
-	/* loop through each of the tests selected on the previous page and get more info about them */
+	/* loop through each of the graphs selected on the previous page and get more info about them */
 	foreach ($_POST as $var => $val) {
 		if (preg_match('/^chk_([0-9]+)$/', $var, $matches)) {
 			/* ================= input validation ================= */
 			input_validate_input_number($matches[1]);
 			/* ==================================================== */
 
-			$test_list .= '<li>' . __esc(db_fetch_cell_prepared('SELECT display_name FROM plugin_servcheck_test WHERE id = ?', array($matches[1]))) . '</li>';
-			$test_array[] = $matches[1];
+			$item_list .= '<li>' . db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_test WHERE id = ?', array($matches[1])) . '</li>';
+			$items_array[] = $matches[1];
 		}
 	}
 
 	top_header();
 
-	form_start('servcheck_test.php');
+	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
-	html_start_box($servcheck_actions_test[get_nfilter_request_var('drp_action')], '60%', '', '3', 'center', '');
+	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', '', '3', 'center', '');
 
-	$action = get_nfilter_request_var('drp_action');
+	if (cacti_sizeof($items_array) > 0) {
+		if (get_filter_request_var('drp_action') == 1) { // delete
+			print "	<tr>
+					<td class='topBoxAlt'>
+						<p>" . __n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', cacti_sizeof($items_array)) . "</p>
+						<div class='itemlist'><ul>$item_list</ul></div>
+					</td>
+				</tr>";
 
-	if (cacti_sizeof($test_array)) {
-		if ($action == SERVCHECK_ACTION_TEST_DELETE) {
-			print"	<tr>
-				<td class='topBoxAlt'>
-					<p>" . __n('Click \'Continue\' to Delete the following tests.', 'Click \'Continue\' to Delete following tests.', cacti_sizeof($test_array)) . "</p>
-					<div class='itemlist'><ul>$test_list</ul></div>
-				</td>
-			</tr>";
+			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete item', 'Delete items', cacti_sizeof($items_array)) . "'>";
+		} elseif (get_filter_request_var('drp_action') == 2) { // disable
+			print "	<tr>
+					<td class='topBoxAlt'>
+						<p>" . __n('Click \'Continue\' to disable the following items.', 'Click \'Continue\' to disable following items.', cacti_sizeof($items_array)) . "</p>
+						<div class='itemlist'><ul>$item_list</ul></div>
+					</td>
+				</tr>";
 
-			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete test', 'Delete tests', cacti_sizeof($test_array)) . "'>";
-		} elseif ($action == SERVCHECK_ACTION_TEST_DISABLE) {
-			print "<tr>
-				<td class='topBoxAlt'>
-					<p>" . __n('Click \'Continue\' to Disable the following test.', 'Click \'Continue\' to Disable following Tests.', cacti_sizeof($test_array)) . "</p>
-					<div class='itemlist'><ul>$test_list</ul></div>
-				</td>
-			</tr>";
+			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Disable item', 'Disable items', cacti_sizeof($items_array)) . "'>";
+		} elseif (get_filter_request_var('drp_action') == 3) { // enable
+			print "	<tr>
+					<td class='topBoxAlt'>
+						<p>" . __n('Click \'Continue\' to enable the following items.', 'Click \'Continue\' to enable following items.', cacti_sizeof($items_array)) . "</p>
+						<div class='itemlist'><ul>$item_list</ul></div>
+					</td>
+				</tr>";
 
-			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Disable test', 'Disable Tests', cacti_sizeof($test_array)) . "'>";
-		} elseif ($action == SERVCHECK_ACTION_TEST_ENABLE) {
-			print "<tr>
-				<td class='topBoxAlt'>
-					<p>" . __n('Click \'Continue\' to Enable the following test.', 'Click \'Continue\' to Enable following tests.', cacti_sizeof($test_array)) . "</p>
-					<div class='itemlist'><ul>$test_list</ul></div>
-				</td>
-			</tr>";
+			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Enable item', 'Enable items', cacti_sizeof($items_array)) . "'>";
+		} elseif (get_filter_request_var('drp_action') == 4) { // duplicate
+			print "	<tr>
+					<td class='topBoxAlt'>
+						<p>" . __n('Click \'Continue\' to duplicate the following items.', 'Click \'Continue\' to duplicate following items.', cacti_sizeof($items_array)) . "</p>
+						<div class='itemlist'><ul>$item_list</ul></div>
+					</td>
+				</tr>";
 
-			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Enable test', 'Enable tests', cacti_sizeof($test_array)) . "'>";
-		} elseif ($action == SERVCHECK_ACTION_TEST_DUPLICATE) {
-			print "<tr>
-				<td class='topBoxAlt'>
-					<p>" . __n('Click \'Continue\' to Duplicate the following test.', 'Click \'Continue\' to Duplicate following tests.', cacti_sizeof($test_array)) . "</p>
-					<div class='itemlist'><ul>$test_list</ul></div>
-				</td>
-			</tr>";
+			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate item', 'Duplicate items', cacti_sizeof($items_array)) . "'>";
+		} elseif (get_filter_request_var('drp_action') == 5) { // clear statistics
+			print "	<tr>
+					<td class='topBoxAlt'>
+						<p>" . __n('Click \'Continue\' to clear statistics of following items.', 'Click \'Continue\' to clear statistics of following items.', cacti_sizeof($items_array)) . "</p>
+						<div class='itemlist'><ul>$item_list</ul></div>
+					</td>
+				</tr>";
 
-			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate test', 'Duplicate tests', cacti_sizeof($test_array)) . "'>";
+			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate item', 'Duplicate items', cacti_sizeof($items_array)) . "'>";
+		} elseif (get_filter_request_var('drp_action') == 6) { // clear log
+			print "	<tr>
+					<td class='topBoxAlt'>
+						<p>" . __n('Click \'Continue\' to clear log of following items.', 'Click \'Continue\' to clear log of following items.', cacti_sizeof($items_array)) . "</p>
+						<div class='itemlist'><ul>$item_list</ul></div>
+					</td>
+				</tr>";
+
+			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate item', 'Duplicate items', cacti_sizeof($items_array)) . "'>";
 		}
 	} else {
 		raise_message(40);
-		header('Location: servcheck_test.php');
+		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
 	}
 
 	print "<tr>
 		<td class='saveRow'>
 			<input type='hidden' name='action' value='actions'>
-			<input type='hidden' name='selected_items' value='" . (isset($test_array) ? serialize($test_array) : '') . "'>
-			<input type='hidden' name='drp_action' value='" . get_nfilter_request_var('drp_action') . "'>
+			<input type='hidden' name='selected_items' value='" . (isset($items_array) ? serialize($items_array) : '') . "'>
+			<input type='hidden' name='drp_action' value='" . get_request_var('drp_action') . "'>
 			$save_html
 		</td>
 	</tr>";
@@ -243,189 +286,179 @@ function form_actions() {
 	bottom_footer();
 }
 
+
+
 function form_save() {
 	global $service_types;
 
-	/* ================= input validation ================= */
-	get_filter_request_var('id');
-	get_filter_request_var('poller_id');
-	get_filter_request_var('downtrigger');
-	get_filter_request_var('timeout_trigger');
-	get_filter_request_var('how_often');
-	/* ==================================================== */
+	if (isset_request_var('save_component')) {
 
-	if (isset_request_var('id')) {
-		$save['id'] = get_request_var('id');
-	} else {
-		$save['id'] = 0;
-	}
+		$save['id']             = get_filter_request_var('id');
+		$save['attempt']        = get_filter_request_var('attempt');
+		$save['duration_count'] = get_filter_request_var('duration_count');
+		$save['poller_id']      = get_filter_request_var('poller_id');
+		$save['cred_id']        = get_filter_request_var('cred_id');
+		$save['ca_id']          = get_filter_request_var('ca_id');
+		$save['external_id']    = get_filter_request_var('external_id');
+		$save['proxy_id']       = get_filter_request_var('proxy_id');
+		$save['downtrigger']    = get_filter_request_var('downtrigger');
+		$save['how_often']      = get_filter_request_var('how_often');
 
-	if (isset_request_var('poller_id')) {
-		$save['poller_id'] = get_request_var('poller_id');
-	} else {
-		$save['poller_id'] = 1;
-	}
-
-	if (isset_request_var('enabled')) {
-		$save['enabled'] = 'on';
-	} else {
-		$save['enabled'] = '';
-	}
-
-	if (isset_request_var('notify_accounts')) {
-		if (is_array(get_nfilter_request_var('notify_accounts'))) {
-			foreach (get_nfilter_request_var('notify_accounts') as $na) {
-				input_validate_input_number($na);
-			}
-			$save['notify_accounts'] = implode(',', get_nfilter_request_var('notify_accounts'));
+		if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $service_types)) {
+			$save['type'] = get_nfilter_request_var('type');
+			list ($category, $service) = explode('_', get_nfilter_request_var('type'));
 		} else {
-			set_request_var('notify_accounts', '');
-		}
-	} else {
-		$save['notify_accounts'] = '';
-	}
-
-	if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $service_types)) {
-		$save['type'] = get_nfilter_request_var('type');
-		if (get_nfilter_request_var('type') != 'restapi') {
-			list ($category, $subcategory) = explode('_', get_nfilter_request_var('type'));
-		} else {
-			$category = 'restapi';
-		}
-	} else {
-		$_SESSION['sess_error_fields']['type'] = 'type';
-		raise_message(3);
-	}
-
-	if (isset_request_var('hostname') && $category != 'restapi') {
-		form_input_validate(get_nfilter_request_var('hostname'), 'hostname', '^[a-zA-Z0-9\.\-]+(\:[0-9]{1,5})?$', false, 3);
-		$save['hostname'] = get_nfilter_request_var('hostname');
-	}
-
-
-	if ($category == 'web') {
-		if (isset_request_var('ipaddress')) {
-			if (get_nfilter_request_var('ipaddress') == '' || filter_var(get_nfilter_request_var('ipaddress'), FILTER_VALIDATE_IP)) {
-				$save['ipaddress'] = get_nfilter_request_var('ipaddress');
-			} else {
-				$_SESSION['sess_error_fields']['ipaddress'] = 'ipaddress';
-				raise_message(3);
-			}
-		}
-	}
-
-	if ($category == 'dns') {
-		if ($subcategory == 'dns') {
-			if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
-				$save['dns_query'] = get_nfilter_request_var('dns_query');
-			} else {
-				$_SESSION['sess_error_fields']['dns_query'] = 'dns_query';
-				raise_message(3);
-			}
-		} else { // dns over https
-			if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '#^/(resolve|query-dns)\?[a-zA-Z0-9\=\.&\-]+$#')))) {
-				$save['dns_query'] = get_nfilter_request_var('dns_query');
-			} else {
-				$_SESSION['sess_error_fields']['dns_query'] = 'dns_query';
-				raise_message(3);
-			}
-		}
-	}
-
-	if ($category == 'ldap') {
-		if (isset_request_var('ldapsearch')) {
-			form_input_validate(get_nfilter_request_var('ldapsearch'), 'ldapsearch', '^[a-zA-Z0-9\.\- \*\=,]+$', false, 3);
-			$save['ldapsearch'] = get_nfilter_request_var('ldapsearch');
-		}
-	}
-
-	if ($category == 'restapi') {
-		if (get_filter_request_var('restapi_id') && get_nfilter_request_var('restapi_id') > 0) {
-			$save['restapi_id'] = get_nfilter_request_var('restapi_id');
-		} else {
+			$_SESSION['sess_error_fields']['type'] = 'type';
 			raise_message(3);
-			$_SESSION['sess_error_fields']['restapi_id'] = 'restapi_id';
 		}
-	}
 
-	if (isset_request_var('notes')) {
-		$save['notes'] = get_nfilter_request_var('notes');
-	}
-
-	if (isset_request_var('external_id')) {
-		$save['external_id'] = get_nfilter_request_var('external_id');
-	}
-
-	if (get_filter_request_var('ca') > 0) {
-		$save['ca'] = get_filter_request_var('ca');
-	} else {
-		$save['ca'] = 0;
-	}
-
-	if (isset_request_var('requiresauth')) {
-		$save['requiresauth'] = 'on';
-	} else {
-		$save['requiresauth'] = '';
-	}
-
-	if (isset_request_var('checkcert')) {
-		$save['checkcert'] = 'on';
-	} else {
-		$save['checkcert'] = '';
-	}
-
-	if (isset_request_var('certexpirenotify')) {
-		$save['certexpirenotify'] = 'on';
-	} else {
-		$save['certexpirenotify'] = '';
-	}
-
-	if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,}$/')))) {
-		$save['username'] = servcheck_hide_text(get_nfilter_request_var('username'));
-		$save['password'] = servcheck_hide_text(get_nfilter_request_var('password'));
-	}
-
-	if ($category == 'web' || $category == 'ftp' || $category == 'smb') {
-		if (isset_request_var('path')) {
-			form_input_validate(get_nfilter_request_var('path'), 'path', '^[a-zA-Z0-9_;\-\/\.\?=]+$', false, 3);
-			$save['path'] = get_nfilter_request_var('path');
-		}
-	}
-
-	$save['proxy_server']    = get_nfilter_request_var('proxy_server');
-	$save['display_name']    = form_input_validate(get_nfilter_request_var('display_name'), 'display_name', '', false, 3);
-	$save['search']          = get_nfilter_request_var('search');
-	$save['search_maint']    = get_nfilter_request_var('search_maint');
-	$save['search_failed']   = get_nfilter_request_var('search_failed');
-
-	if (api_plugin_installed('thold')) {
-		$save['notify_list']     = get_filter_request_var('notify_list');
-	}
-
-	$save['notify_extra']    = get_nfilter_request_var('notify_extra');
-	$save['downtrigger']     = get_filter_request_var('downtrigger');
-	$save['timeout_trigger'] = get_filter_request_var('timeout_trigger');
-	$save['how_often']       = get_filter_request_var('how_often');
-
-	plugin_servcheck_remove_old_users();
-
-	if (!is_error_message()) {
-		$id = sql_save($save, 'plugin_servcheck_test', 'id');
-
-		if ($id) {
-			raise_message(1);
+		if (isset_request_var('enabled')) {
+			$save['enabled'] = 'on';
 		} else {
-			raise_message(2);
+			$save['enabled'] = '';
+		}
+
+		if (isset_request_var('notify')) {
+			$save['notify'] = 'on';
+		} else {
+			$save['notify'] = '';
+		}
+
+		if (isset_request_var('notify_accounts')) {
+			if (is_array(get_nfilter_request_var('notify_accounts'))) {
+				foreach (get_nfilter_request_var('notify_accounts') as $na) {
+					input_validate_input_number($na);
+				}
+				$save['notify_accounts'] = implode(',', get_nfilter_request_var('notify_accounts'));
+			} else {
+				set_request_var('notify_accounts', '');
+			}
+		} else {
+			$save['notify_accounts'] = '';
+		}
+
+		if ($category != 'rest' && isset_request_var('hostname')) {
+			form_input_validate(get_nfilter_request_var('hostname'), 'hostname', '^[a-zA-Z0-9\.\-]+(\:[0-9]{1,5})?$', false, 3);
+			$save['hostname'] = get_nfilter_request_var('hostname');
+		}
+
+		if ($category == 'web') {
+			if (isset_request_var('ipaddress')) {
+				if (get_nfilter_request_var('ipaddress') == '' || filter_var(get_nfilter_request_var('ipaddress'), FILTER_VALIDATE_IP)) {
+					$save['ipaddress'] = get_nfilter_request_var('ipaddress');
+				} else {
+					$_SESSION['sess_error_fields']['ipaddress'] = 'ipaddress';
+					raise_message(3);
+				}
+			}
+		}
+
+		if ($category == 'dns') {
+			if ($service == 'dns') {
+				if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
+					$save['dns_query'] = get_nfilter_request_var('dns_query');
+				} else {
+					$_SESSION['sess_error_fields']['dns_query'] = 'dns_query';
+					raise_message(3);
+				}
+			} else { // dns over https
+				if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '#^/(resolve|query-dns)\?[a-zA-Z0-9\=\.&\-]+$#')))) {
+					$save['dns_query'] = get_nfilter_request_var('dns_query');
+				} else {
+					$_SESSION['sess_error_fields']['dns_query'] = 'dns_query';
+					raise_message(3);
+				}
+			}
+		}
+
+		if ($category == 'ldap') {
+			if (isset_request_var('ldapsearch')) {
+				form_input_validate(get_nfilter_request_var('ldapsearch'), 'ldapsearch', '^[a-zA-Z0-9\.\- \*\=,]+$', false, 3);
+				$save['ldapsearch'] = get_nfilter_request_var('ldapsearch');
+			}
+		}
+
+		if ($category == 'snmp') {
+			if (filter_var(get_nfilter_request_var('snmp_oid'), FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '#^[0-9\.]+$#')))) {
+				$save['snmp_oid'] = get_nfilter_request_var('snmp_oid');
+			} else {
+				$_SESSION['sess_error_fields']['snmp_oid'] = 'snmp_oid';
+				raise_message(3);
+			}
+		}
+
+		if ($service == 'command') {
+			if (filter_var(get_nfilter_request_var('ssh_command'), FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '#^[a-zA-Z0-9\./\- ]+$#')))) {
+				$save['ssh_command'] = get_nfilter_request_var('ssh_command');
+			} else {
+				$_SESSION['sess_error_fields']['ssh_command'] = 'ssh_command';
+				raise_message(3);
+			}
+		}
+
+		if (isset_request_var('notes')) {
+			$save['notes'] = get_nfilter_request_var('notes');
+		}
+
+		if (isset_request_var('requiresauth')) {
+			$save['requiresauth'] = 'on';
+		} else {
+			$save['requiresauth'] = '';
+		}
+
+		if (isset_request_var('checkcert')) {
+			$save['checkcert'] = 'on';
+		} else {
+			$save['checkcert'] = '';
+		}
+
+		if (isset_request_var('certexpirenotify')) {
+			$save['certexpirenotify'] = 'on';
+		} else {
+			$save['certexpirenotify'] = '';
+		}
+
+		if ($category == 'web' || $category == 'ftp' || $category == 'smb'  || $service == 'sftp') {
+			if (isset_request_var('path')) {
+				form_input_validate(get_nfilter_request_var('path'), 'path', '^[a-zA-Z0-9_;\-\/\.\?=]+$', false, 3);
+				$save['path'] = get_nfilter_request_var('path');
+			}
+		}
+
+		$save['duration_trigger'] = is_numeric(get_nfilter_request_var('duration_trigger')) ? get_nfilter_request_var('duration_trigger') : 0;
+
+		$save['name']    = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
+
+		$save['search']          = get_nfilter_request_var('search');
+		$save['search_maint']    = get_nfilter_request_var('search_maint');
+		$save['search_failed']   = get_nfilter_request_var('search_failed');
+		$save['notify_extra']    = get_nfilter_request_var('notify_extra');
+
+		if (api_plugin_installed('thold')) {
+			$save['notify_list']     = get_filter_request_var('notify_list');
+		}
+
+		if (!is_error_message()) {
+			$saved_id = sql_save($save, 'plugin_servcheck_test');
+
+			if ($saved_id) {
+				raise_message(1);
+			} else {
+				raise_message(2);
+			}
+		}
+
+		if (is_error_message()) {
+			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false&action=edit&id=' . (empty($saved_id) ? get_nfilter_request_var('id') : $saved_id));
+		} else {
+			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		}
 	}
-
-	header('Location: servcheck_test.php?action=edit&id=' . (isset($id)? $id : get_request_var('id')) . '&header=false');
 	exit;
-
 }
 
 function purge_log_events($id) {
-	$name = db_fetch_cell_prepared('SELECT display_name
+	$name = db_fetch_cell_prepared('SELECT name
 		FROM plugin_servcheck_test
 		WHERE id = ?',
 		array($id));
@@ -435,52 +468,64 @@ function purge_log_events($id) {
 	raise_message('test_log_purged', __('The Service Check history was purged for %s', $name, 'servcheck'), MESSAGE_LEVEL_INFO);
 }
 
-function servcheck_edit_test() {
-	global $servcheck_test_fields, $service_types;
+
+
+
+function data_edit() {
+	global $servcheck_test_fields, $service_types, $servcheck_help_test;
 
 	/* ================= input validation ================= */
 	get_filter_request_var('id');
 	/* ==================================================== */
 
-	$test = array();
+	$data = array();
 
 	if (!isempty_request_var('id')) {
-		$test = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_test WHERE id = ?', array(get_request_var('id')), false);
-		$header_label = __('Query [edit: %s]', $test['display_name'], 'servcheck');
+		$data = db_fetch_row_prepared('SELECT *
+			FROM plugin_servcheck_test
+			WHERE id = ?',
+			array(get_request_var('id')));
+
+		$header_label = __('Test [edit: %s]', $data['name']);
 	} else {
-		$header_label = __('Query [new]', 'servcheck');
+		$header_label = __('Test [new]');
 	}
 
 	if (!api_plugin_installed('thold')) {
 		$servcheck_test_fields['notify_list']['method'] = 'hidden';
 	}
 
-	if (isset($test['username'])) {
-		$test['username'] = servcheck_show_text($test['username']);
-	}
-	if (isset($test['password'])) {
-		$test['password'] = servcheck_show_text($test['password']);
-	}
+	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
-	form_start('servcheck_test.php');
-
-	html_start_box($header_label, '100%', '', '3', 'center', '');
+	html_start_box($header_label, '100%', true, '3', 'center', '');
 
 	draw_edit_form(
 		array(
-			'config' => array('form_name' => 'chk'),
-			'fields' => inject_form_variables($servcheck_test_fields, $test)
+			'config' => array('no_form_tag' => true),
+			'fields' => inject_form_variables($servcheck_test_fields, $data)
 		)
 	);
 
-	html_end_box();
+	print '<div name="specific_help" id="specific_help" class="left"></div>';
 
-	form_save_button('servcheck_test.php', 'return');
+	form_hidden_box('save_component', '1', '');
 
-	form_end();
+	html_end_box(true, true);
+
+	form_save_button(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
 	?>
 	<script type='text/javascript'>
+
+	<?php
+	print 'if (typeof servcheck_help === "undefined") {' . PHP_EOL;
+	print 'var servcheck_help = {};' . PHP_EOL;
+	foreach ($servcheck_help_test as $key => $value) {
+		print 'servcheck_help["' . $key . '"] = "' . $value . '";' . PHP_EOL;
+	}
+	print '}' . PHP_EOL;
+	?>
+
 
 	$(function() {
 		var msWidth = 100;
@@ -550,196 +595,142 @@ function servcheck_edit_test() {
 		var tmp = test_type.split('_');
 
 		var category = tmp[0];
-		var subcategory = tmp[1];
+		var service = tmp[1];
+
+		$('#row_format').hide();
+		$('#row_dns_query').hide();
+		$('#row_ldapsearch').hide();
+		$('#row_ipaddress').hide();
+		$('#row_path').hide();
+		$('#row_requiresauth').hide();
+		$('#row_proxy_id').hide();
+		$('#row_ldapsearch').hide();
+		$('#row_ca_id').hide();
+		$('#row_checkcert').hide();
+		$('#row_certexpirenotify').hide();
+		$('#row_hostname').hide();
+		$('#row_snmp_oid').hide();
+		$('#row_ssh_command').hide();
+		$('#row_cred_id').hide();
+
+		$('#specific_help').html(servcheck_help[test_type]);
 
 		switch(category) {
 			case 'web':
-				$('#row_restapi_id').hide();
-				$('#row_dns_query').hide();
-				$('#row_username').hide();
-				$('#row_password').hide();
-				$('#row_ldapsearch').hide();
-
-				if (subcategory == 'http') {
-					$('#row_ca').hide();
-					$('#row_checkcert').hide();
-					$('#row_certexpirenotify').hide();
-				}
-
 				$('#row_hostname').show();
 				$('#row_ipaddress').show();
 				$('#row_path').show();
 				$('#row_requiresauth').show();
-				$('#row_proxy_server').show();
-				if (subcategory == 'https') {
-					$('#row_ca').show();
+				$('#row_proxy_id').show();
+				$('#row_cred_id').show();
+
+				if (service == 'https') {
+					$('#row_ca_id').show();
 					$('#row_checkcert').show();
 					$('#row_certexpirenotify').show();
 				}
 
 				break;
+
 			case 'mail':
-				$('#row_ipaddress').hide();
-				$('#row_restapi_id').hide();
-				$('#row_path').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-				$('#row_dns_query').hide();
-				$('#row_ldapsearch').hide();
+				$('#row_hostname').show();
 
-				if (subcategory == 'smtp' || subcategory == 'smtps' || subcategory == 'smtptls') {
-					$('#row_username').hide();
-					$('#row_password').hide();
-				} else {
-					$('#row_username').show();
-					$('#row_password').show();
-				}
-
-				if (subcategory == 'smtps') {
-					$('#row_ca').show();
+				if (service != 'smtp') {
+					$('#row_cred_id').show();
+					$('#row_ca_id').show();
 					$('#row_checkcert').show();
 					$('#row_certexpirenotify').show();
 				}
-
-				$('#row_hostname').show();
-
-				$('#password').attr('type', 'password');
 
 				break
-			case 'dns':
-				$('#row_ipaddress').hide();
-				$('#row_restapi_id').hide();
-				$('#row_path').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-				$('#row_username').hide();
-				$('#row_password').hide();
-				$('#row_ldapsearch').hide();
-				$('#row_ca').hide();
-				$('#row_checkcert').hide();
-				$('#row_certexpirenotify').hide();
 
-				if (subcategory == 'doh') {
-					$('#row_ca').show();
+			case 'dns':
+				$('#row_dns_query').show();
+				$('#row_hostname').show();
+
+				if (service == 'doh') {
+					$('#row_ca_id').show();
 					$('#row_checkcert').show();
 					$('#row_certexpirenotify').show();
 				}
-				$('#row_dns_query').show();
-				$('#row_hostname').show();
 
 				break;
 
 			case 'ldap':
-				$('#row_ipaddress').hide();
-				$('#row_restapi_id').hide();
-				$('#row_dns_query').hide();
-				$('#row_path').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-
-				$('#row_username').show();
-				$('#row_password').show();
 				$('#row_ldapsearch').show();
 				$('#row_hostname').show();
-
-				$('#password').attr('type', 'password');
+				$('#row_cred_id').show();
 
 				break;
-			case 'ftp':
-				$('#row_ipaddress').hide();
-				$('#row_restapi_id').hide();
-				$('#row_dns_query').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-				$('#row_ldapsearch').hide();
 
-				if (subcategory == 'tftp') {
-					$('#row_username').hide();
-					$('#row_password').hide();
+			case 'ftp':
+				$('#row_path').show();
+				$('#row_hostname').show();
+				$('#row_cred_id').show();
+
+				if (service == 'tftp') {
+					$('#row_cred_id').hide();
 				}
 
-				$('#row_path').show();
-				$('#row_username').show();
-				$('#row_password').show();
-				$('#row_hostname').show();
-
-				$('#password').attr('type', 'password');
-
 				break;
+
 			case 'smb':
-				$('#row_ipaddress').hide();
-				$('#row_restapi_id').hide();
-				$('#row_dns_query').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-				$('#row_ldapsearch').hide();
-
-				$('#row_username').show();
-				$('#row_password').show();
 				$('#row_path').show();
 				$('#row_hostname').show();
-
-				$('#password').attr('type', 'password');
+				$('#row_cred_id').show();
 
 				break;
+
 			case 'mqtt':
-				$('#row_ipaddress').hide();
-				$('#row_restapi_id').hide();
-				$('#row_dns_query').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-				$('#row_ldapsearch').hide();
-				$('#row_ca').hide();
-				$('#row_checkcert').hide();
-				$('#row_certexpirenotify').hide();
-
-				$('#row_username').show();
-				$('#row_password').show();
 				$('#row_path').show();
 				$('#row_hostname').show();
+				$('#row_cred_id').show();
 
-				$('#password').attr('type', 'password');
 				break;
-			case 'restapi':
-				$('#row_hostname').hide();
-				$('#row_ipaddress').hide();
-				$('#row_path').hide();
-				$('#row_dns_query').hide();
-				$('#row_requiresauth').hide();
-				$('#row_proxy_server').hide();
-				$('#row_ldapsearch').hide();
-				$('#row_ca').hide();
-				$('#row_checkcert').hide();
-				$('#row_certexpirenotify').hide();
-				$('#row_username').hide();
-				$('#row_password').hide();
 
-				$('#row_restapi_id').show();
+			case 'rest':
+				$('#row_cred_id').show();
+
+				break;
+
+			case 'snmp':
+				$('#row_hostname').show();
+				$('#row_cred_id').show();
+				$('#row_snmp_oid').show();
+
+				break;
+
+			case 'ssh':
+				$('#row_hostname').show();
+				$('#row_cred_id').show();
+
+				if (service == 'command') {
+					$('#row_ssh_command').show();
+				}
+				if (service == 'sftp') {
+					$('#row_path').show();
+				}
 
 				break;
 		}
 	}
+
 	</script>
 	<?php
 }
 
-/**
- *  This is a generic function for this page that makes sure that
- *  we have a good request.  We want to protect against people who
- *  like to create issues with Cacti.
-*/
-function servcheck_request_validation() {
-	/* ================= input validation and session storage ================= */
+function request_validation() {
+
 	$filters = array(
 		'rows' => array(
 			'filter' => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => '-1'
-		),
+			),
 		'page' => array(
 			'filter' => FILTER_VALIDATE_INT,
 			'default' => '1'
-		),
+			),
 		'refresh' => array(
 			'filter' => FILTER_VALIDATE_INT,
 			'pageset' => true,
@@ -753,14 +744,14 @@ function servcheck_request_validation() {
 		),
 		'sort_column' => array(
 			'filter' => FILTER_CALLBACK,
-			'default' => 'display_name',
+			'default' => 'name',
 			'options' => array('options' => 'sanitize_search_string')
-		),
+			),
 		'sort_direction' => array(
 			'filter' => FILTER_CALLBACK,
 			'default' => 'ASC',
 			'options' => array('options' => 'sanitize_search_string')
-		),
+			),
 		'state' => array(
 			'filter' => FILTER_VALIDATE_INT,
 			'pageset' => true,
@@ -768,14 +759,11 @@ function servcheck_request_validation() {
 		)
 	);
 
-	validate_store_request_vars($filters, 'sess_servchecktest');
-	/* ================= input validation ================= */
+	validate_store_request_vars($filters, 'sess_servcheck_test');
 }
 
 function servcheck_log_request_validation() {
-	global $title, $rows_selector, $config, $reset_multi;
 
-	/* ================= input validation and session storage ================= */
 	$filters = array(
 		'id' => array(
 			'filter' => FILTER_VALIDATE_INT,
@@ -808,7 +796,6 @@ function servcheck_log_request_validation() {
 	);
 
 	validate_store_request_vars($filters, 'sess_servcheck_log');
-	/* ================= input validation ================= */
 }
 
 function servcheck_show_history() {
@@ -816,20 +803,11 @@ function servcheck_show_history() {
 
 	servcheck_log_request_validation();
 
-	if (isset_request_var('id')) {
-		$id = get_filter_request_var('id');
-	} else {
-		header('Location: servcheck_test.php?header=false');
-		exit;
-	}
-
 	$refresh['seconds'] = 9999999;
-	$refresh['page']    = 'servcheck_test.php?action=history&id=' . get_filter_request_var('id') . '&header=false';
+	$refresh['page']    = htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=history&id=' . get_filter_request_var('id') . '&header=false';
 	$refresh['logout']  = 'false';
 
 	set_page_refresh($refresh);
-
-	top_header();
 
 	if (get_request_var('rows') == '-1') {
 		$rows = read_config_option('num_rows_table');
@@ -846,9 +824,9 @@ function servcheck_show_history() {
 	}
 
 	$sql_order = get_order_string();
-	$sql_limit = ' LIMIT ' . ($rows*(get_request_var('page')-1)) . ',' . $rows;
+	$sql_limit = ' LIMIT ' . ($rows*(get_filter_request_var('page')-1)) . ',' . $rows;
 
-	$result = db_fetch_assoc_prepared("SELECT sl.*, st.display_name
+	$result = db_fetch_assoc_prepared("SELECT sl.*, st.name
 		FROM plugin_servcheck_log AS sl
 		INNER JOIN plugin_servcheck_test st
 		ON sl.test_id = st.id
@@ -868,8 +846,11 @@ function servcheck_show_history() {
 		'lastcheck' => array(
 			'display' => __('Date', 'servcheck')
 		),
-		'display_name' => array(
+		'name' => array(
 			'display' => __('Name', 'servcheck'),
+		),
+		'attempt' => array(
+			'display' => __('Attempt', 'servcheck'),
 		),
 		'result' => array(
 			'display' => __('Result', 'servcheck'),
@@ -877,34 +858,24 @@ function servcheck_show_history() {
 		'result_search' => array(
 			'display' => __('Search result', 'servcheck'),
 		),
-		'curl_return_code' => array(
-			'display' => __('Curl return code', 'servcheck'),
+		'duration' => array(
+			'display' => __('Duration', 'servcheck'),
 			'align'   => 'right',
 			'sort'    => 'DESC'
 		),
-		'namelookup_time' => array(
-			'display' => __('DNS', 'servcheck'),
-			'align'   => 'right',
-			'sort'    => 'DESC'
+		'certificate' => array(
+			'display' => __('Certificate', 'servcheck'),
 		),
-		'connect_time' => array(
-			'display' => __('Connect', 'servcheck'),
-			'align'   => 'right',
-			'sort'    => 'DESC'
-		),
-		'redirect_time' => array(
-			'display' => __('Redirect', 'servcheck'),
-			'align'   => 'right',
-			'sort'    => 'DESC'
-		),
-		'total_time' => array(
-			'display' => __('Total', 'servcheck'),
-			'align'   => 'right',
-			'sort'    => 'DESC'
+		'curl' => array(
+			'display' => __('Curl', 'servcheck'),
 		),
 	);
 
-	$nav = html_nav_bar('servcheck_test.php?action=history', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, cacti_sizeof($display_text), __('Records', 'servcheck'), 'page', 'main');
+	$columns = cacti_sizeof($display_text);
+
+	$nav = html_nav_bar(htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=history&filter=' . get_request_var('filter'), MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, $columns, __('Logs', 'servcheck'), 'page', 'main');
+
+	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])), 'chk');
 
 	servcheck_show_tab('servcheck_test.php');
 
@@ -912,14 +883,32 @@ function servcheck_show_history() {
 
 	print $nav;
 
-	html_start_box('', '100%', '', '4', 'center', '');
+	html_start_box('', '100%', '', '3', 'center', '');
 
-	html_header_sort($display_text, get_request_var('sort_column'), get_request_var('sort_direction'), 1, 'servcheck_test.php?action=history&id=' . get_request_var('id'), 'main');
+	html_header_sort_checkbox($display_text, get_request_var('sort_column'), get_request_var('sort_direction'), false);
 
 	if (count($result)) {
 		foreach ($result as $row) {
-			if ($row['result_search'] != 'ok') {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 100, 0.6)";
+
+			if ($row['result'] == 'not yet') {
+				$res = __('Not tested yet', 'servcheck');
+			} elseif ($row['result'] == 'ok') {
+				$res = 'OK';
+			} else {
+				$res  = $row['result'] . ' (' . $row['error'] . ')';
+			}
+
+			if ($row['cert_expire'] == '0000-00-00 00:00:00' || is_null($row['cert_expire'])) {
+				$days = 'N/A';
+			} else {
+				$days = floor((strtotime($row['cert_expire']) - strtotime($row['lastcheck']))/86400) . ' ' . __('days', 'servcheck') ;
+				if ($days <= 0) {
+					$days = __('Expired %s days ago', abs($days), 'servcheck');
+				}
+			}
+
+			if  ($row['result'] == 'ok' && $row['result_search'] == 'not ok') {
+				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 0, 0.6)";
 			} elseif ($row['result'] == 'ok') {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(204, 255, 204, 0.6)";
 			} else {
@@ -929,17 +918,14 @@ function servcheck_show_history() {
 			print "<tr class='tableRow selectable' style='$style' id='line" . $row['id'] . "'>";
 
 			form_selectable_cell($row['lastcheck'], $row['id']);
-			form_selectable_cell($row['display_name'], $row['id']);
-			form_selectable_cell(($row['result'] == 'ok' ? __('Service UP', 'servcheck') : __('Service Down', 'servcheck')), $row['id']);
+			form_selectable_cell($row['name'], $row['id']);
+			form_selectable_cell($row['attempt'], $row['id']);
+			form_selectable_cell($res, $row['id']);
 			form_selectable_cell($search_result[$row['result_search']], $row['id']);
 
-			form_selectable_cell('<a href="' . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_curl_code.php?findcode=' . $row['curl_return_code']) . '">' . $row['curl_return_code'] . '<a/>', $row['id'], '', 'right');
-
-			form_selectable_cell(round($row['namelookup_time'], 4), $row['id'], '', ($row['namelookup_time'] > 4 ? 'background-color: red;text-align:right' : ($row['namelookup_time'] > 1 ? 'background-color: yellow;text-align:right':'text-align:right')));
-			form_selectable_cell(round($row['connect_time'], 4), $row['id'], '', ($row['connect_time'] > 4 ? 'background-color: red;text-align:right' : ($row['connect_time'] > 1 ? 'background-color: yellow;text-align:right':'text-align:right')));
-			form_selectable_cell(round($row['redirect_time'], 4), $row['id'], '', ($row['redirect_time'] > 4 ? 'background-color: red;text-align:right' : ($row['redirect_time'] > 1 ? 'background-color: yellow;text-align:right':'text-align:right')));
-			form_selectable_cell(round($row['total_time'], 4), $row['id'], '', ($row['total_time'] > 4 ? 'background-color: red;text-align:right' : ($row['total_time'] > 1 ? 'background-color: yellow;text-align:right':'text-align:right')));
-
+			form_selectable_cell($row['duration'], $row['id'], '', 'right');
+			form_selectable_cell($days, $row['id']);
+			form_selectable_cell($row['curl_response'], $row['id']);
 			form_end_row();
 		}
 	}
@@ -949,28 +935,23 @@ function servcheck_show_history() {
 	if (cacti_sizeof($result)) {
 		print $nav;
 	}
+
+	form_end();
 }
+
 
 function servcheck_show_graph() {
 	global $graph_interval;
 
-	if (isset_request_var('id')) {
-		$id = get_filter_request_var('id');
-	} else {
-		header('Location: servcheck_test.php?header=false');
-		exit;
-	}
-
-	top_header();
-
 	servcheck_show_tab('servcheck_test.php');
+	$id = get_filter_request_var('id');
 
-	$result = db_fetch_row_prepared('SELECT display_name
+	$result = db_fetch_row_prepared('SELECT name
 		FROM plugin_servcheck_test
 		WHERE id = ?',
 		array($id));
 
-	print '<b>' . html_escape($result['display_name']) . ':</b><br/>';
+	print '<b>' . html_escape($result['name']) . ':</b><br/>';
 
 	foreach ($graph_interval as $key => $value) {
 		print '<b>' . ($value) . ':</b>';
@@ -979,31 +960,11 @@ function servcheck_show_graph() {
 	}
 }
 
-function servcheck_show_last_data() {
-	if (isset_request_var('id')) {
-		$id = get_filter_request_var('id');
-	} else {
-		header('Location: servcheck_test.php?header=false');
-		exit;
-	}
 
-	top_header();
+function data_list() {
+	global $config, $servcheck_actions_menu, $refresh;
 
-	servcheck_show_tab('servcheck_test.php');
-
-	$result = db_fetch_row_prepared('SELECT display_name, last_returned_data
-		FROM plugin_servcheck_test
-		WHERE id = ?',
-		array($id));
-
-	print '<b>' . __('Last returned data of test', 'servcheck') . ' ' . html_escape($result['display_name']) . ':</b><br/>';
-	print '<style> pre {white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word; max-width: 25%; width: 25%}</style><pre>' . html_escape($result['last_returned_data']) . '</pre>';
-}
-
-function list_tests() {
-	global $servcheck_actions_test, $httperrors, $config, $hostid, $refresh;
-
-	servcheck_request_validation();
+	request_validation();
 
 	$statefilter = '';
 	if (isset_request_var('state')) {
@@ -1018,17 +979,15 @@ function list_tests() {
 		}
 	}
 
-	top_header();
-
-	servcheck_show_tab('servcheck_test.php');
-
-	servcheck_filter();
-
 	if (get_request_var('rows') == '-1') {
 		$rows = read_config_option('num_rows_table');
 	} else {
 		$rows = get_request_var('rows');
 	}
+
+	servcheck_show_tab(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
+
+	servcheck_filter();
 
 	$sql_where = '';
 
@@ -1048,7 +1007,7 @@ function list_tests() {
 
 	if (get_request_var('rfilter') != '') {
 		$sql_where .= ($sql_where == '' ? 'WHERE ' : ' AND ') .
-			'display_name RLIKE \'' . get_request_var('rfilter') . '\' OR ' .
+			'name RLIKE \'' . get_request_var('rfilter') . '\' OR ' .
 			'path RLIKE \'' . get_request_var('rfilter') . '\' OR ' .
 			'search RLIKE \'' . get_request_var('rfilter') . '\' OR ' .
 			'search_maint RLIKE \'' . get_request_var('rfilter') . '\' OR ' .
@@ -1071,23 +1030,23 @@ function list_tests() {
 			'sort'    => '',
 			'align'   => 'left'
 		),
-		'display_name' => array(
+		'name' => array(
 			'display' => __('Name', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'left'
 		),
-		'enabled' => array(
-			'display' => __('Enabled', 'servcheck'),
-			'sort'    => 'ASC',
-			'align'   => 'right'
-		),
 		'lastcheck' => array(
-			'display' => __('Last Check', 'servcheck'),
+			'display' => __('Last Check (attempt)', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
 		),
 		'statistics' => array(
 			'display' => __('Stats (OK/problem)', 'servcheck'),
+			'sort'    => 'ASC',
+			'align'   => 'right'
+		),
+		'duration' => array(
+			'display' => __('Duration', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
 		),
@@ -1106,22 +1065,17 @@ function list_tests() {
 			'sort'    => 'ASC',
 			'align'   => 'right'
 		),
-		'curl_result' => array(
-			'display' => __('Curl return code', 'servcheck'),
-			'sort'    => 'ASC',
-			'align'   => 'right'
-		),
 	);
 
 	$columns = cacti_sizeof($display_text);
 
-	$nav = html_nav_bar('servcheck_test.php', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, $columns, __('Checks', 'servcheck'), 'page', 'main');
+	$nav = html_nav_bar(htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?filter=' . get_request_var('filter'), MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, $columns, __('Tests', 'servcheck'), 'page', 'main');
 
-	form_start('servcheck_test.php', 'chk');
+	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])), 'chk');
 
 	print $nav;
 
-	html_start_box('', '100%', '', '4', 'center', '');
+	html_start_box('', '100%', '', '3', 'center', '');
 
 	html_header_sort_checkbox($display_text, get_request_var('sort_column'), get_request_var('sort_direction'), false);
 
@@ -1137,17 +1091,29 @@ function list_tests() {
 				$last_log['result'] = 'not yet';
 				$last_log['result_search'] = 'not yet';
 				$last_log['curl_return_code'] = '0';
+				$last_log['duration'] = '0';
 				$last_log['count'] = 0;
+				$last_log['attempt'] = 0;
+			}
+
+			if ($last_log['result'] == 'not yet') {
+				$res = __('Not tested yet', 'servcheck');
+			} elseif ($last_log['result'] == 'ok') {
+				$res = 'OK';
+			} else {
+				$res  = $last_log['result'] . ' (' . $last_log['error'] . ')';
 			}
 
 			if ($row['enabled'] == '') {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(205, 207, 196, 0.6)";
 			} elseif ($row['failures'] > 0 && $row['failures'] < $row['downtrigger']) {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 36, 0.6);";
-			} elseif ($last_log['result'] != 'ok' && strtotime($row['lastcheck']) > 0) {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 25, 36, 0.6);";
+			} elseif ($last_log['result'] == 'ok' && $last_log['result_search'] == 'not ok') {
+				$style = "color:rgba(10,10,10,0.8);background-color:rgba(240, 240, 0, 0.6);";
+			} elseif ($last_log['result'] == 'ok' && strtotime($row['lastcheck']) > 0) {
+				$style = "color:rgba(10,10,10,0.8);background-color:rgba(50, 255, 50, 0.6)";
 			} else {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(204, 255, 204, 0.6)";
+				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 25, 36, 0.6);";
 			}
 
 			print "<tr class='tableRow selectable' style='$style' id='line" . $row['id'] . "'>";
@@ -1185,29 +1151,26 @@ function list_tests() {
 				</td>";
 			}
 
-			form_selectable_cell($row['display_name'], $row['id']);
-			form_selectable_cell(($row['enabled'] == 'on' ? __('Enabled', 'servcheck') : __('Disabled', 'servcheck')), $row['id'], '', 'right');
+			form_selectable_cell($row['name'], $row['id']);
 
 			if ($row['lastcheck'] == '0000-00-00 00:00:00') {
-				form_selectable_cell(__('N/A', 'servcheck'), $row['id'], '', 'right');
+				form_selectable_cell(__('N/A (N/A)', 'servcheck'), $row['id'], '', 'right');
 			} else {
-				form_selectable_cell($row['lastcheck'], $row['id'], '', 'right');
+				form_selectable_cell($row['lastcheck'] . ' (' . $last_log['attempt'] . ')', $row['id'], '', 'right');
 			}
 
-			form_selectable_cell($row['stats_ok'] . '/' . $row['stats_bad'], $row['id'], '', 'right');
+			form_selectable_cell($row['stats_ok'] . ' / ' . $row['stats_bad'], $row['id'], '', 'right');
 			$tmp = ' (' . $row['failures'] . ' of ' . $row['downtrigger'] . ')';
+			form_selectable_cell($last_log['duration'], $row['id'], '', 'right');
 			form_selectable_cell($row['triggered'] == '0' ? __('No', 'servcheck') . $tmp : __('Yes', 'servcheck') . $tmp, $row['id'], '', 'right');
-			form_selectable_cell($last_log['result'] == 'not yet' ? __('Not tested yet', 'servcheck'): $last_log['result'], $row['id'], '', 'right');
+			form_selectable_cell(substr($res, 0, 30), $row['id'], '', 'right', $res);
 			form_selectable_cell($last_log['result_search'] == 'not yet' ? __('Not tested yet', 'servcheck'): $last_log['result_search'], $row['id'], '', 'right');
-			form_selectable_cell('<a href="' . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_curl_code.php?findcode=' . $last_log['curl_return_code']) . '">' . $last_log['curl_return_code'] . '<a/>', $row['id'], '', 'right');
-
 			form_checkbox_cell($row['id'], $row['id']);
 
 			form_end_row();
 		}
 	} else {
-		form_alternate_row();
-		print '<td colspan="' . (cacti_sizeof($display_text) + 1) . '"><center>' . __('No Records Found', 'servcheck') . '</center></td></tr>';
+		print "<tr class='tableRow'><td colspan='" . $columns . "'><em>" . __('Empty', 'servcheck') . "</em></td></tr>\n";
 	}
 
 	html_end_box(false);
@@ -1216,39 +1179,29 @@ function list_tests() {
 		print $nav;
 	}
 
-	draw_actions_dropdown($servcheck_actions_test);
+	draw_actions_dropdown($servcheck_actions_menu, 1);
 
 	form_end();
-
-	?>
-	<script type='text/javascript'>
-	$(function() {
-		$('#servcheck2_child').find('.cactiTooltipHint').each(function() {
-			var title = $(this).attr('title');
-
-			if (title != undefined && title.indexOf('/') >= 0) {
-				$(this).click(function() {
-					window.open(title, 'servcheck');
-				});
-			}
-		});
-	});
-
-	</script>
-	<?php
-
-	bottom_footer();
 }
 
-function servcheck_checknull($value) {
-	if ($value == NULL) {
-		return '0';
-	} else {
-		return $value;
-	}
+
+function servcheck_show_last_data() {
+
+	servcheck_show_tab(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
+
+	$result = db_fetch_row_prepared('SELECT name, last_returned_data
+		FROM plugin_servcheck_test
+		WHERE id = ?',
+		array(get_filter_request_var('id')));
+
+	print '<b>' . __('Last returned data of test', 'servcheck') . ' ' . html_escape($result['name']) . ':</b><br/>';
+	print '<style> pre {white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word; max-width: 25%; width: 25%}</style><pre>' . html_escape($result['last_returned_data']) . '</pre>';
 }
+
+
 
 function servcheck_filter() {
+
 	global $item_rows, $page_refresh_interval;
 
 	$refresh['page']    = 'servcheck_test.php?header=false';
@@ -1257,50 +1210,14 @@ function servcheck_filter() {
 
 	set_page_refresh($refresh);
 
+	html_start_box(__('Servcheck Test Management', 'servcheck') , '100%', '', '3', 'center', htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=edit');
 	?>
-	<script type='text/javascript'>
-	function applyFilter() {
-		strURL  = 'servcheck_test.php?header=false&state=' + $('#state').val();
-		strURL += '&refresh=' + $('#refresh').val();
-		strURL += '&rfilter=' + base64_encode($('#rfilter').val());
-		strURL += '&rows=' + $('#rows').val();
-		loadPageNoHeader(strURL);
-	}
 
-	function clearFilter() {
-		strURL = 'servcheck_test.php?clear=1&header=false';
-		loadPageNoHeader(strURL);
-	}
-
-	$(function() {
-		$('#refresh, #state, #rows, #rfilter').change(function() {
-			applyFilter();
-		});
-
-		$('#go').click(function() {
-			applyFilter();
-		});
-
-		$('#clear').click(function() {
-			clearFilter();
-		});
-
-		$('#form_servcheck').submit(function(event) {
-			event.preventDefault();
-			applyFilter();
-		});
-	});
-	</script>
-	<?php
-
-	html_start_box(__('Service Checks', 'servcheck') , '100%', '', '3', 'center', 'servcheck_test.php?action=edit');
-	?>
-	<tr class='even noprint'>
-		<td class='noprint'>
-			<form id='form_servcheck' action='servcheck_test.php'>
-			<input type='hidden' name='search' value='search'>
+	<tr class='even'>
+		<td>
+		<form id='form_servcheck_item' action='<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>'>
 			<table class='filterTable'>
-				<tr class='noprint'>
+				<tr>
 					<td>
 						<?php print __('Search', 'servcheck');?>
 					</td>
@@ -1353,67 +1270,56 @@ function servcheck_filter() {
 					</td>
 					<td>
 						<span class='nowrap'>
-							<input type='button' id='go' value='<?php print __esc('Go', 'servcheck');?>'>
-							<input type='button' id='clear' value='<?php print __esc('Clear', 'servcheck');?>'>
+							<input type='button' class='ui-button ui-corner-all ui-widget' id='refresh' value='<?php print __esc('Go');?>' title='<?php print __esc('Set/Refresh Filters', 'servcheck');?>'>
+							<input type='button' class='ui-button ui-corner-all ui-widget' id='clear' value='<?php print __esc('Clear');?>' title='<?php print __esc('Clear Filters', 'servcheck');?>'>
 						</span>
 					</td>
 				</tr>
 			</table>
 		</form>
+
+		<script type='text/javascript'>
+		function applyFilter() {
+			strURL  = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?header=false&state=' + $('#state').val();
+			strURL += '&refresh=' + $('#refresh').val();
+			strURL += '&rfilter=' + base64_encode($('#rfilter').val());
+			strURL += '&rows=' + $('#rows').val();
+			loadPageNoHeader(strURL);
+		}
+
+		function clearFilter() {
+			strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?clear=1&header=false';
+			loadPageNoHeader(strURL);
+		}
+		$(function() {
+			$('#refresh, #state, #rows, #rfilter').change(function() {
+				applyFilter();
+			});
+
+			$('#go').click(function() {
+				applyFilter();
+			});
+
+			$('#clear').click(function() {
+				clearFilter();
+			});
+
+			$('#form_servcheck_item').submit(function(event) {
+				event.preventDefault();
+				applyFilter();
+			});
+		});
+		</script>
+
 		</td>
 	</tr>
 	<?php
-
 	html_end_box();
 }
 
+
 function servcheck_log_filter() {
 	global $item_rows;
-
-	?>
-	<script type='text/javascript'>
-
-	refreshMSeconds=99999999;
-
-	function applyFilter() {
-		strURL  = 'servcheck_test.php?action=history&header=false&id=<?php print get_request_var('id');?>';
-		strURL += '&filter=' + $('#filter').val();
-		strURL += '&rows=' + $('#rows').val();
-		refreshMSeconds=99999999;
-		loadPageNoHeader(strURL);
-	}
-
-	function clearFilter() {
-		strURL = 'servcheck_test.php?action=history&clear=1&header=false';
-		loadPageNoHeader(strURL);
-	}
-
-	function purgeEvents() {
-		strURL = 'servcheck_test.php?action=purge&id=<?php print get_request_var('id');?>';
-		loadPageNoHeader(strURL);
-	}
-
-	$(function() {
-		$('#rows').change(function() {
-			applyFilter();
-		});
-
-		$('#clear').click(function() {
-			clearFilter();
-		});
-
-		$('#purge').click(function() {
-			purgeEvents();
-		});
-
-		$('#servcheck').submit(function(event) {
-			event.preventDefault();
-			applyFilter();
-		});
-	});
-
-	</script>
-	<?php
 
 	html_start_box(__('Service Check History', 'servcheck') , '100%', '', '3', 'center', '');
 
@@ -1456,6 +1362,49 @@ function servcheck_log_filter() {
 			</form>
 		</td>
 	</tr>
+	<script type='text/javascript'>
+
+	refreshMSeconds=99999999;
+
+	function applyFilter() {
+		strURL  = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?action=history&header=false&id=<?php print get_filter_request_var('id');?>';
+		strURL += '&filter=' + $('#filter').val();
+		strURL += '&rows=' + $('#rows').val();
+		refreshMSeconds=99999999;
+		loadPageNoHeader(strURL);
+	}
+
+	function clearFilter() {
+		strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?action=history&clear=1&header=false';
+		loadPageNoHeader(strURL);
+	}
+
+	function purgeEvents() {
+		strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?action=purge&id=<?php print get_request_var('id');?>';
+		loadPageNoHeader(strURL);
+	}
+
+	$(function() {
+		$('#rows').change(function() {
+			applyFilter();
+		});
+
+		$('#clear').click(function() {
+			clearFilter();
+		});
+
+		$('#purge').click(function() {
+			purgeEvents();
+		});
+
+		$('#servcheck').submit(function(event) {
+			event.preventDefault();
+			applyFilter();
+		});
+	});
+
+	</script>
+
 	<?php
 
 	html_end_box();

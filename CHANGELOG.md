@@ -1,12 +1,22 @@
 # ChangeLog
 
 --- develop ---
+  !!! IMPORTANT - A lot of changes in 0.3. I tried to convert old data.
+  !!! The update will create a copy of the MySQL tables in case of errors or data loss.
 
-* feature: add dedicated folder for certificates and enhance the usage of custom certificate.
-* feature: add basic of rest api testing
-* feature#9: Add Rest API test
+
+* feature: Enhance the usage of custom certificate
+* feature: Add certificate expiration notification, add this check to all tests with certificates
+* feature: Add SFTP, SCP, SSH command test
+* feature: Add SSH keys credential method
+* feature: Add option to turn off email notifications for individual tests
+* feature: Add attempts - try again if test failed
+* feature: Better logging and graphs
+* feature#9: Add Rest API
 * feature#23: Add MQTT and DNS over HTTPS test
 * feature: Add ability to bypass resolver for HTTP/HTTPS tests
+* feature: Add long duration test notification
+* issue: Better result logic and notification
 * issue#35: Fix certificate check does not function as expected
 * issue#2: Fix graph legend overlap
 * issue#31: Fix poller_servcheck.php does not run any test when it runs automatically from cacti poller
@@ -15,10 +25,12 @@
 * issue#30: Fix DNS tests
 * issue: Better input validation
 * issue#42: Fix tests duplicating
+* issue#48: Down trigger more than 1 email is not sent
+
 
 --- 0.2 ---
 
-* issue#17: Remove dependency on thold plugin, notify lists remain if thold is installed 
+* issue#17: Remove dependency on thold plugin, notify lists remain if thold is installed
 * issue#15: Fix DNS test issue
 * issue#19: Rename old thold names, fix incorrect variable
 * issue: Fix incorrect result logic

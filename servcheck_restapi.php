@@ -25,7 +25,13 @@
 chdir('../../');
 include_once('./include/auth.php');
 include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
-include_once($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+
+$servcheck_actions_restapi = array(
+	'delete'    => __('Delete', 'servcheck'),
+	'duplicate' => __('Duplicate', 'servcheck'),
+);
+
 
 global $refresh;
 
@@ -71,12 +77,12 @@ function form_actions() {
 			}
 
 			if (cacti_sizeof($restapis)) {
-				if ($action == SERVCHECK_ACTION_RESTAPI_DELETE) {
+				if ($action == 'delete') {
 					foreach ($restapis as $id) {
 						db_execute_prepared('DELETE FROM plugin_servcheck_restapi_method WHERE id = ?', array($id));
 						db_execute_prepared('UPDATE plugin_servcheck_test SET restapi_id = 0  WHERE restapi_id = ?', array($id));
 					}
-				} elseif ($action == SERVCHECK_ACTION_RESTAPI_DUPLICATE) {
+				} elseif ($action == 'duplicate') {
 					$newid = 1;
 
 					foreach ($restapis as $id) {
@@ -129,7 +135,7 @@ function form_actions() {
 	$action = get_nfilter_request_var('drp_action');
 
 	if (cacti_sizeof($restapi_array)) {
-		if ($action == SERVCHECK_ACTION_RESTAPI_DELETE) {
+		if ($action == 'delete') {
 			print"	<tr>
 				<td class='topBoxAlt'>
 					<p>" . __n('Click \'Continue\' to Delete the following Rest API.', 'Click \'Continue\' to Delete following Rest API.', cacti_sizeof($restapi_array)) . "</p>
@@ -138,7 +144,7 @@ function form_actions() {
 			</tr>";
 
 			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete Rest API', 'Delete Rest API', cacti_sizeof($restapi_array)) . "'>";
-		} elseif ($action == SERVCHECK_ACTION_RESTAPI_DUPLICATE) {
+		} elseif ($action == 'duplicate') {
 			print "<tr>
 				<td class='topBoxAlt'>
 					<p>" . __n('Click \'Continue\' to Duplicate the following Rest API.', 'Click \'Continue\' to Duplicate following Rest APIs.', cacti_sizeof($restapi_array)) . "</p>
@@ -194,6 +200,13 @@ function form_save() {
 		$save['format'] = get_nfilter_request_var('format');
 	} else {
 		$_SESSION['sess_error_fields']['format'] = 'format';
+		raise_message(3);
+	}
+
+	if (isset_request_var('option') && array_key_exists(get_nfilter_request_var('option'), $rest_api_apikey_option)) {
+		$save['option'] = get_nfilter_request_var('option');
+	} else {
+		$_SESSION['sess_error_fields']['option'] = 'option';
 		raise_message(3);
 	}
 
@@ -280,7 +293,9 @@ function servcheck_edit_rest() {
 
 	html_end_box();
 
-	form_save_button('servcheck_restapi.php', 'return');
+	echo '<b><font color="red">Rest API was moved to tests. Authhorization data was moved to Credential tab. This is read-only and will be removed in version 0.5</font></b>';
+
+//	form_save_button('servcheck_restapi.php', 'return');
 
 	form_end();
 	?>
@@ -315,6 +330,7 @@ function servcheck_edit_rest() {
 			case 'apikey':
 				$('#row_cred_name').show();
 				$('#row_cred_value').show();
+				$('#row_option').show();
 				$('#row_username').hide();
 				$('#row_password').hide();
 				$('#row_login_url').hide();
@@ -423,15 +439,14 @@ function list_restapis() {
 			'cred_name RLIKE \'' . get_request_var('rfilter') . '\'';
 	}
 
-	$result = db_fetch_assoc("SELECT *, 
-		(SELECT COUNT(*) FROM plugin_servcheck_test AS st WHERE st.restapi_id = plugin_servcheck_restapi_method.id) AS used
+	$result = db_fetch_assoc("SELECT *
 		FROM plugin_servcheck_restapi_method
 		$sql_where
 		$sql_order
 		$sql_limit");
 
 	$total_rows = db_fetch_cell("SELECT COUNT(id)
-		FROM plugin_servcheck_restapi_method AS rm
+		FROM plugin_servcheck_restapi_method
 		$sql_where");
 
 	$display_text = array(
@@ -445,14 +460,11 @@ function list_restapis() {
 			'sort'    => 'ASC',
 			'align'   => 'left'
 		),
-		'used' => array(
-			'display' => __('Rest API using', 'servcheck'),
-			'sort'    => 'ASC',
-			'align'   => 'right'
-		),
 	);
 
 	$columns = cacti_sizeof($display_text);
+
+	echo '<b><font color="red">Rest API was moved to tests. Authhorization data was moved to Credential tab. This is read-only and will be removed in version 0.5</font></b>';
 
 	$nav = html_nav_bar('servcheck_restapi.php', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, $columns, __('Records', 'servcheck'), 'page', 'main');
 
@@ -470,7 +482,6 @@ function list_restapis() {
 			form_alternate_row('line' . $row['id'], true);
 			form_selectable_cell(filter_value($row['name'], get_request_var('filter'),'servcheck_restapi.php?header=false&action=edit&id=' . $row['id']), $row['id']);
 			form_selectable_cell($rest_api_auth_method[$row['type']], $row['id']);
-			form_selectable_cell($row['used'], $row['id']);
 			form_checkbox_cell($row['id'], $row['id']);
 			form_end_row();
 		}
@@ -482,9 +493,11 @@ function list_restapis() {
 		print $nav;
 	}
 
-	draw_actions_dropdown($servcheck_actions_restapi);
+//	draw_actions_dropdown($servcheck_actions_restapi);
 
 	form_end();
+
+	echo '<b><font color="red">Rest API was moved to tests. Authhorization data was moved to Credential tab. This is read-only and will be removed in version 0.5</font></b>';
 
 	?>
 	<script type='text/javascript'>

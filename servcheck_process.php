@@ -324,13 +324,7 @@ if ($last_log['result'] != $results['result'] || $results['result'] != 'ok') {
 
 // checks only if test passed or some search string exists
 if ($results['result_search'] != 'not tested' && $results['result'] == 'ok') {
-	if ($results['result'] == 'ok' && $last_log['result_search'] != $results['result_search']) {
-		plugin_servcheck_debug('Search result changed, notification will be send', $test);
-		$test['notify_search'] = true;
-	}
-
-	// exception - not ok after not tested
-	if ($results['result_search'] == 'not ok') {
+	if ($last_log['result_search'] != $results['result_search']) {
 		plugin_servcheck_debug('Search result changed, notification will be send', $test);
 		$test['notify_search'] = true;
 	}

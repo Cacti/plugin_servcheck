@@ -5,11 +5,11 @@
 This is Cacti's Services monitoring plugin. Based on Webseer plugin.
 This plugin allows you to add service monitoring to Cacti.
 You simply add service check, allow service specific test 
-(like certificate test, long duration, ...)
+(like certificate check, long duration check, ...)
 and you can add the expected response. Servcheck periodically run test 
 and notify if a service check fails. The plugin records statistics
-about the connection, it's response, and can alert when the
-status changes.
+about the connection and service response. Servcheck can send email notification 
+or run script when the status changes.
 
 This plugin, like many others, integrates with Cacti's Maintenance or 'maint'
 plugin so you can setup maintenance schedules so that known times when a service
@@ -18,7 +18,8 @@ take place during maintenance periods.
 
 
 ## Tests and results
-The test will run a maximum of 3 times. If successful on the first attempt, no further
+Setvcheck try to run test once or more than once (you can configure it). 
+If successful on the first attempt, no further
 tests will be performed. Main result is ok/error. A lot of information
 are returned with main result. After the test is completed, statistics are generated. 
 Based on the statistics, email notifications can be sent:
@@ -32,8 +33,8 @@ Retuned data are stored too.
 Each tests return specific data:
 HTTP and HTTPS - returns webpage
 SMTP, SMTPS - connect to SMTP server and displays banner and EHLO/HELO or authentication result
-POP3, POP3S - try to login and display first unread message
-IMAP, IMAPS - try to login and display unread messages in inbox
+POP3, POP3S - try to server connection and eventually login and display first unread message
+IMAP, IMAPS - try to server connection and eventually  login and display unread messages in inbox
 DNS, DOH - try to resolve A record and return answer
 LDAP and LDAPS - do searching in LDAP
 FTP, FTPS, SFTP - try to login and return directory listing
@@ -46,6 +47,11 @@ SSH_COMMAND - ssh connect, run command and return output
 
 
 ## Important
+Servcheck has great debug output. If you have any problem, try to run your test:
+/path/to/php servcheck_process.php --id=<ID> --force --debug
+
+Example_script.sh shows you how to use returned variables in own script.
+
 Recommendation for tests with download -  please download only small not binary files.
 
 Default Libcurl build doesn't compile all services. You have to compile again for SMB, LDAP, ...

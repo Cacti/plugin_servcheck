@@ -692,6 +692,8 @@ function data_edit() {
 
 			case 'rest':
 				$('#row_cred_id').show();
+				$('#row_checkcert').show();
+				$('#row_certexpirenotify').show();
 
 				break;
 

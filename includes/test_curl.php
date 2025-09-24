@@ -22,7 +22,6 @@
  +-------------------------------------------------------------------------+
 */
 
-$ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 
 function curl_try ($test) {
 	global $user_agent, $config, $ca_info, $service_types_ports;
@@ -119,20 +118,20 @@ function curl_try ($test) {
 	}
 
 	if ($test['ca_id'] > 0) {
-		$ca_info = $config['base_path'] . '/plugins/servcheck/tmp_data/ca_cert_' . $test['ca_id'] . '.pem'; // The folder /plugins/servcheck/tmp_data does exist, hence the ca_cert_x.pem can be created here
-		plugin_servcheck_debug('Preparing own CA chain file ' . $ca_info , $test);
+		$ca_file = $config['base_path'] . '/plugins/servcheck/tmp_data/ca_cert_' . $test['ca_id'] . '.pem'; // The folder /plugins/servcheck/tmp_data does exist, hence the ca_cert_x.pem can be created here
+		plugin_servcheck_debug('Preparing own CA chain file ' . $ca_file , $test);
 		// CURLOPT_CAINFO is to updated based on the custom CA certificate
-		$options[CURLOPT_CAINFO] = $ca_info;
+		$options[CURLOPT_CAINFO] = $ca_file;
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
 			array($test['ca_id']));
 
-		$cert_file = fopen($ca_info, 'w+');
+		$cert_file = fopen($ca_file, 'w+');
 		if ($cert_file) {
 			fwrite ($cert_file, $cert);
 			fclose($cert_file);
 		} else {
-			cacti_log('Cannot create ca cert file ' . $ca_info);
+			cacti_log('Cannot create ca cert file ' . $ca_file);
 			$results['result'] = 'error';
 			$results['error'] = 'Cannot create ca cert file';
 			return $results;
@@ -201,7 +200,7 @@ function curl_try ($test) {
 	}
 
 
-	// Disable Cert checking for now
+	// Disable Cert checking
 	if ($test['checkcert'] == '') {
 		$options[CURLOPT_SSL_VERIFYPEER] = false;
 		$options[CURLOPT_SSL_VERIFYHOST] = false;
@@ -240,7 +239,7 @@ function curl_try ($test) {
 	plugin_servcheck_debug('Result: ' . clean_up_lines(var_export($data, true)));
 
 	if ($test['ca_id'] > 0) {
-		unlink ($ca_info);
+		unlink ($ca_file);
 		plugin_servcheck_debug('Removing own CA file');
 	}
 

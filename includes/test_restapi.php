@@ -80,9 +80,14 @@ function restapi_try ($test) {
 		return $results;
 	}
 
-	// Disable Cert checking for now
-	$options[CURLOPT_SSL_VERIFYPEER] = false;
-	$options[CURLOPT_SSL_VERIFYHOST] = false;
+	// Disable Cert checking
+	if ($test['checkcert'] == '') {
+		$options[CURLOPT_SSL_VERIFYPEER] = false;
+		$options[CURLOPT_SSL_VERIFYHOST] = false;
+	} else { // for sure, it seems that it isn't enabled by default now
+		$options[CURLOPT_SSL_VERIFYPEER] = true;
+		$options[CURLOPT_SSL_VERIFYHOST] = 2;
+	}
 
 	$url = $credential['data_url'];
 

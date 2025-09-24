@@ -905,7 +905,7 @@ function servcheck_show_history() {
 			} else {
 				$days = floor((strtotime($row['cert_expire']) - strtotime($row['lastcheck']))/86400) . ' ' . __('days', 'servcheck') ;
 				if ($days <= 0) {
-					$days = __('Expired %s days ago', abs($days), 'servcheck');
+					$days = __('Expired %s days ago', abs((int)$days), 'servcheck');
 				}
 			}
 

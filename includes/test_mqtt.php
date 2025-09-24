@@ -66,14 +66,38 @@ function mqtt_try ($test) {
 		}
 	}
 
-	$credential = '';
+	$cred = '';
 
-	if ($cred['username'] != '') {
+	if ($test['cred_id'] > 0) {
+		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
+			array($test['cred_id']));
+
+		if (!$cred) {
+			plugin_servcheck_debug('Credential is set but not found!' , $test);
+			cacti_log('Credential not found');
+			$results['result'] = 'error';
+			$results['error'] = 'Credential not found';
+			return $results;
+		} else {
+			plugin_servcheck_debug('Decrypting credential' , $test);
+			$credential = servcheck_decrypt_credential($test['cred_id']);
+
+			if (empty($credential)) {
+				plugin_servcheck_debug('Credential is empty!' , $test);
+				cacti_log('Credential is empty');
+				$results['result'] = 'error';
+				$results['error'] = 'Credential is empty';
+				return $results;
+			}
+		}
+	}
+
+	if ($test['cred_id'] > 0) {
 		// curl needs username with %40 instead of @
-		$credential = str_replace('@', '%40', $cred['username']);
-		$credential .= ':';
-		$credential .= $cred['password'];
-		$credential .= '@';
+		$cred = str_replace('@', '%40', $credential['username']);
+		$cred .= ':';
+		$cred .= $credial['password'];
+		$cred .= '@';
 	}
 
 	if (strpos($test['hostname'], ':') === 0) {
@@ -85,7 +109,7 @@ function mqtt_try ($test) {
 		$test['path'] = '/%23';
 	}
 
-	$url = 'mqtt://' . $credential . $test['hostname'] . $test['path'];
+	$url = 'mqtt://' . $cred . $test['hostname'] . $test['path'];
 
 	plugin_servcheck_debug('Final url is ' . $url , $test);
 
@@ -98,7 +122,7 @@ function mqtt_try ($test) {
 		CURLOPT_HEADER           => true,
 		CURLOPT_RETURNTRANSFER   => true,
 		CURLOPT_FILE             => $file,
-		CURLOPT_TIMEOUT          => 5,
+		CURLOPT_TIMEOUT          => 7,
 		CURLOPT_NOPROGRESS       => false,
 		CURLOPT_XFERINFOFUNCTION => function(  $download_size, $downloaded, $upload_size, $uploaded){
 			if ($downloaded > 0) {
@@ -114,10 +138,12 @@ function mqtt_try ($test) {
 	plugin_servcheck_debug('Executing curl request', $test);
 
 	curl_exec($process);
-	$x = fclose($file);
+	fclose($file);
 
 	$data = str_replace(array("'", "\\"), array(''), file_get_contents($filename));
 	$results['data'] = $data;
+
+	unlink($filename);
 
 	// Get information regarding a specific transfer
 	$results['options'] = curl_getinfo($process);

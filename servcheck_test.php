@@ -637,11 +637,14 @@ function data_edit() {
 			case 'mail':
 				$('#row_hostname').show();
 
+				if (service != 'smtp' && service != 'imap' && service != 'pop3') {
+					$('#row_checkcert').show();
+					$('#row_certexpirenotify').show();
+				}
+
 				if (service != 'smtp') {
 					$('#row_cred_id').show();
 					$('#row_ca_id').show();
-					$('#row_checkcert').show();
-					$('#row_certexpirenotify').show();
 				}
 
 				break
@@ -662,6 +665,12 @@ function data_edit() {
 				$('#row_ldapsearch').show();
 				$('#row_hostname').show();
 				$('#row_cred_id').show();
+
+				if (service == 'ldaps') {
+					$('#row_ca_id').show();
+					$('#row_checkcert').show();
+					$('#row_certexpirenotify').show();
+				}
 
 				break;
 

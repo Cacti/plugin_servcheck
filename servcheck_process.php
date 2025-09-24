@@ -675,8 +675,7 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 			if ($test['days_left'] < 0) {
 				$message[3]['text'] .= '<tr><td>Certificate expired:</td><td>' . abs($test['days_left']) . ' days ago</td></tr>' . PHP_EOL;
 			} else {
-				$message[3]['text'] .= '<tr><td>Certificate expires in:</td><td>' . $test['days_left'] . ' d
-				ays (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
+				$message[3]['text'] .= '<tr><td>Certificate expires in:</td><td>' . $test['days_left'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
 			}
 		}
 

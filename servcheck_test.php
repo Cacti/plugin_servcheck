@@ -299,10 +299,12 @@ function form_save() {
 		$save['poller_id']      = get_filter_request_var('poller_id');
 		$save['cred_id']        = get_filter_request_var('cred_id');
 		$save['ca_id']          = get_filter_request_var('ca_id');
-		$save['external_id']    = get_filter_request_var('external_id');
 		$save['proxy_id']       = get_filter_request_var('proxy_id');
 		$save['downtrigger']    = get_filter_request_var('downtrigger');
 		$save['how_often']      = get_filter_request_var('how_often');
+
+		$save['external_id']    = get_nfilter_request_var('external_id');
+
 
 		if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $service_types)) {
 			$save['type'] = get_nfilter_request_var('type');

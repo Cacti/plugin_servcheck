@@ -371,39 +371,38 @@ if ($test['certexpirenotify'] && $results['result'] == 'ok') {
 // long duration
 if ($test['duration_trigger'] > 0 && $test['duration_count'] > 0 && $results['result'] == 'ok') {
 
-	$trig = 1;
 	$test['durs'] = array();
 
-	$test['durs'][] = $results['duration'] . ' (' . date('Y-m-d H:i:s', $results['time']) . ')';
+	if ($results['duration'] > $test['duration_trigger']) {
+		$test['triggered_duration']++;
+		$test['durs'][] = $results['duration'] . ' (' . date('Y-m-d H:i:s', $results['time']) . ')';
+	}
 
 	if ($test['duration_count'] > 1) {
-
 		$durations = db_fetch_assoc_prepared('SELECT duration, lastcheck, result FROM plugin_servcheck_log
 			WHERE test_id = ? ORDER BY id DESC LIMIT ' . ($test['duration_count']-1),
 			array($test['id']));
 
 		foreach ($durations as $d) {
-			if ($d['result'] != 'ok') {
-				continue;
-			}
-
-			if ($d['duration'] > $test['duration_trigger']) {
-				$trig++;
-			}
 			$test['durs'][] = $d['duration'] . ' (' . $d['lastcheck'] . ')';
 		}
 	}
 
-	if ($trig == ($test['duration_count'])) {
-		if ($results['duration'] > $test['duration_trigger']) {
-			plugin_servcheck_debug('Long duration detected, sending notification', $test);
-			$test['notify_duration'] = true;
-			$test['duration_state'] = 'ko';
-		} elseif ($results['duration'] < $test['duration_trigger']) {
-			plugin_servcheck_debug('Normal duration detected, sending notification', $test);
-			$test['notify_duration'] = true;
-			$test['duration_state'] = 'ok';
-		}
+	if ($test['triggered_duration'] == $test['duration_count']) {
+		plugin_servcheck_debug('Long duration detected, sending notification', $test);
+		$test['notify_duration'] = true;
+		$test['duration_state'] = 'ko';
+		$test['triggered_duration']++;
+	} else if ($test['triggered_duration'] > $test['duration_count']) {
+		plugin_servcheck_debug('Long duration issue continue', $test);
+		$test['triggered_duration']++;
+	}
+
+	if ($results['duration'] < $test['duration_trigger'] && $test['triggered_duration'] >= $test['duration_count']) {
+		plugin_servcheck_debug('Normal duration detected, sending notification', $test);
+		$test['notify_duration'] = true;
+		$test['duration_state'] = 'ok';
+		$test['triggered_duration'] = 0;
 	}
 }
 
@@ -484,29 +483,23 @@ db_execute_prepared('INSERT INTO plugin_servcheck_log
 		$results['result'], $results['error'], $results['result_search'], $curl, $results['x'])
 );
 
+
 if ($new_notify_expire) {
-	db_execute_prepared('UPDATE plugin_servcheck_test
-		SET triggered = ?, failures = ?, lastcheck = ?, last_exp_notify = now(),
-		stats_ok = ?, stats_bad = ?, last_returned_data = ?
-		WHERE id = ?',
-		array($test['triggered'], $test['failures'],
-			date('Y-m-d H:i:s', $results['time']),
-			$test['stats_ok'], $test['stats_bad'],
-			$results['data'], $test['id']
-		)
-	);
+	$exp_notify = date(date_time_format());
 } else {
-	db_execute_prepared('UPDATE plugin_servcheck_test
-		SET triggered = ?, failures = ?, lastcheck = ?,
-		stats_ok = ?, stats_bad = ?, last_returned_data = ?
-		WHERE id = ?',
-		array($test['triggered'], $test['failures'],
-			date('Y-m-d H:i:s', $results['time']),
-			$test['stats_ok'], $test['stats_bad'],
-			$results['data'], $test['id']
-		)
-	);
+	$exp_notify = '0000-00-00 00:00:00';
 }
+
+db_execute_prepared('UPDATE plugin_servcheck_test
+	SET triggered = ?, triggered_duration = ?, failures = ?, lastcheck = ?, last_exp_notify = ?,
+	stats_ok = ?, stats_bad = ?, last_returned_data = ?
+	WHERE id = ?',
+	array($test['triggered'], $test['triggered_duration'], $test['failures'],
+		date('Y-m-d H:i:s', $results['time']), $exp_notify,
+		$test['stats_ok'], $test['stats_bad'],
+		$results['data'], $test['id']
+	)
+);
 
 // register process end
 register_shutdown($test_id);

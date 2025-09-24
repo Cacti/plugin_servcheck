@@ -812,7 +812,7 @@ function servcheck_log_request_validation() {
 }
 
 function servcheck_show_history() {
-	global $config, $httperrors, $search_result;
+	global $config, $httperrors, $text_result, $text_result_search;
 
 	servcheck_log_request_validation();
 
@@ -934,7 +934,7 @@ function servcheck_show_history() {
 			form_selectable_cell($row['name'], $row['id']);
 			form_selectable_cell($row['attempt'], $row['id']);
 			form_selectable_cell($res, $row['id']);
-			form_selectable_cell($search_result[$row['result_search']], $row['id']);
+			form_selectable_cell($text_result_search[$row['result_search']], $row['id']);
 
 			form_selectable_cell($row['duration'], $row['id'], '', 'right');
 			form_selectable_cell($days, $row['id']);
@@ -975,7 +975,7 @@ function servcheck_show_graph() {
 
 
 function data_list() {
-	global $config, $servcheck_actions_menu, $refresh;
+	global $config, $servcheck_actions_menu, $refresh, $text_result_search;
 
 	request_validation();
 
@@ -1094,6 +1094,9 @@ function data_list() {
 
 	if (cacti_sizeof($result)) {
 		foreach ($result as $row) {
+
+			$long_dur = false;
+
 			$last_log = db_fetch_row_prepared("SELECT *,
 				(SELECT count(id) FROM plugin_servcheck_log WHERE test_id = ? ) as `count`
 				FROM plugin_servcheck_log
@@ -1120,7 +1123,8 @@ function data_list() {
 			if ($row['enabled'] == '') {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(205, 207, 196, 0.6)";
 			} elseif ($last_log['result'] == 'ok' && $row['triggered_duration'] >= $row['duration_count']) {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(240, 150, 150, 0.6);";
+				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 36, 0.6);";
+				$long_dur = true;
 			} elseif ($row['failures'] > 0 && $row['failures'] < $row['downtrigger']) {
 				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 36, 0.6);";
 			} elseif ($last_log['result'] == 'ok' && $last_log['result_search'] == 'not ok') {
@@ -1176,10 +1180,14 @@ function data_list() {
 
 			form_selectable_cell($row['stats_ok'] . ' / ' . $row['stats_bad'], $row['id'], '', 'right');
 			$tmp = ' (' . $row['failures'] . ' of ' . $row['downtrigger'] . ')';
-			form_selectable_cell($last_log['duration'], $row['id'], '', 'right');
+			if ($long_dur) {
+				form_selectable_cell('<b>' . $last_log['duration'] . '</b>', $row['id'], '', 'right');
+			} else {
+				form_selectable_cell($last_log['duration'], $row['id'], '', 'right');
+			}
 			form_selectable_cell($row['triggered'] == '0' ? __('No', 'servcheck') . $tmp : __('Yes', 'servcheck') . $tmp, $row['id'], '', 'right');
 			form_selectable_cell(substr($res, 0, 30), $row['id'], '', 'right', $res);
-			form_selectable_cell($last_log['result_search'] == 'not yet' ? __('Not tested yet', 'servcheck'): $last_log['result_search'], $row['id'], '', 'right');
+			form_selectable_cell($text_result_search[$last_log['result_search']], $row['id'], '', 'right');
 			form_checkbox_cell($row['id'], $row['id']);
 
 			form_end_row();

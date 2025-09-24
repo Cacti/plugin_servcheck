@@ -126,7 +126,7 @@ $graph_interval = array (
 
 
 
-$search_result = array(
+$text_result_search = array(
 	'ok'            => __('String found', 'servcheck'),
 	'not ok'        => __('String not found', 'servcheck'),
 	'failed ok'     => __('Failed string found', 'servcheck'),
@@ -134,6 +134,12 @@ $search_result = array(
 	'maint ok'      => __('Maint string found', 'servcheck'),
 	'not yet'       => __('Not tested yet', 'servcheck'),
 	'not tested'    => __('Search not performed', 'servcheck')
+);
+
+$text_result = array(
+	'ok'            => __('OK', 'servcheck'),
+	'not yet'       => __('Not tested yet', 'servcheck'),
+	'error'         => __('Error/failed', 'servcheck'),
 );
 
 

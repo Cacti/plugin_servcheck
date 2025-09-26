@@ -222,6 +222,5 @@ function servcheck_decrypt_credential ($cred_id) {
 
 	$decrypted=openssl_decrypt ($encrypted, SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
 
-
 	return json_decode($decrypted, true);
 }

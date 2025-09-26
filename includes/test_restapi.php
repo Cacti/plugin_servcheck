@@ -131,11 +131,8 @@ function restapi_try ($test) {
 
 			break;
 		case 'oauth2':
-			$valid = db_fetch_cell_prepared('SELECT COUNT(*) FROM plugin_servcheck_test
-				WHERE id = ? AND cred_validity > NOW()',
-				array($test['id']));
 
-			if (!$valid) {
+			if (!isset($cred['cred_validity']) || (isset($cred['cred_validity']) && $cred['cred_validity'] < time())) {
 				plugin_servcheck_debug('No valid token, generating new request' , $test);
 
 				$cred_data = json_encode(array(

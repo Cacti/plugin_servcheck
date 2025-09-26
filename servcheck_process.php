@@ -151,16 +151,16 @@ register_startup($test_id);
 $x = 0;
 $results = array();
 
+list($category, $service) = explode('_', $test['type']);
+
+plugin_servcheck_debug('Category: ' . $category , $test);
+plugin_servcheck_debug('Service: ' . $service , $test);
+
 while ($x < $test['attempt']) {
 
 	$x++;
 
 	plugin_servcheck_debug('Service Check attempt ' . $x, $test);
-
-	list($category, $service) = explode('_', $test['type']);
-
-	plugin_servcheck_debug('Category: ' . $category , $test);
-	plugin_servcheck_debug('Service: ' . $service , $test);
 
 	if (!function_exists('curl_init') && ($category == 'web' || $category == 'smb' || $category == 'ldap' ||
 		$category == 'ftp' || $category == 'mqtt' || $category == 'rest' ||  $service == 'doh')) {
@@ -182,7 +182,6 @@ while ($x < $test['attempt']) {
 		case 'web':
 		case 'ldap':
 		case 'smb':
-
 			include_once($config['base_path'] . '/plugins/servcheck/includes/test_curl.php');
 			$results = curl_try($test);
 			break;
@@ -205,6 +204,7 @@ while ($x < $test['attempt']) {
 				$results = dns_try($test);
 			}
 			break;
+
 		case 'rest':
 			include_once($config['base_path'] . '/plugins/servcheck/includes/test_restapi.php');
 			$results = restapi_try($test);
@@ -223,6 +223,7 @@ while ($x < $test['attempt']) {
 		case 'ftp':
 			include_once($config['base_path'] . '/plugins/servcheck/includes/test_ftp.php');
 			$results = ftp_try($test);
+			break;
 	}
 
 	$results['duration'] = round(microtime(true) - $results['start'], 4);
@@ -245,7 +246,7 @@ if (cacti_sizeof($results) == 0) {
 	exit('Unknown error for test ' . $test['id']);
 }
 
-plugin_servcheck_debug('failures:'. $test['stats_bad'] . ', triggered:' . $test['triggered'], $test);
+plugin_servcheck_debug('Stats:'. $test['stats_ok'] . '/' . $test['stats_bad'] . ', Down triggered:' . ($test['triggered'] == 0 ? 'No' : 'Yes') . ', Duration triggered:' . ($test['triggered_duration'] == 0 ? 'No' : 'Yes'), $test);
 
 $results['time'] = time();
 $test['expiry_date'] = null;
@@ -272,7 +273,6 @@ $last_log = db_fetch_row_prepared('SELECT *
 if (!$last_log) {
 	$last_log['result'] = 'not yet';
 	$last_log['result_search'] = 'not yet';
-//	$last_log['cert_expire'] = '0000-00-00 00:00:00';
 }
 
 if ($results['result'] == 'ok') {
@@ -351,13 +351,13 @@ if ($test['certexpirenotify'] && $results['result'] == 'ok') {
 	if (isset($last_log['cert_expire']) &&
 		$last_log['cert_expire'] != '0000-00-00 00:00:00' && !is_null($last_log['cert_expire'])) {
 		$days_before = floor((strtotime($last_log['cert_expire']) - strtotime($last_log['lastcheck']))/86400);
-	}
+	
+		if ($test['days_left'] > 0 && $test['days_left'] > $days_before) {
+			plugin_servcheck_debug('Renewed or changed certificate, notification will be send', $test);
 
-	if ($test['days_left'] > 0 && $test['days_left'] > $days_before) {
-		plugin_servcheck_debug('Renewed certificate, notification will be send', $test);
-
-		$test['notify_certificate'] = true;
-		$test['certificate_state'] = 'ok';
+			$test['notify_certificate'] = true;
+			$test['certificate_state'] = 'new';
+		}
 	}
 }
 
@@ -441,8 +441,6 @@ if ($test['notify_result'] || $test['notify_search'] || $test['notify_duration']
 } else {
 	plugin_servcheck_debug('Nothing triggered', $test);
 }
-
-
 
 
 plugin_servcheck_debug('Updating Statistics', $test);
@@ -656,11 +654,15 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 			} else if ($test['days_left'] < $cert_expiry_days) {
 				$message[3]['subject'] = '[Cacti servcheck - ' . $test['name'] . '] Certificate will expire in less than ' . $cert_expiry_days . ' days: ' . $test['name'];
 			}
-		} else {
-			$message[3]['subject'] = '[Cacti servcheck - ' . $test['name'] . '] Certificate renewed';
+		}
+
+		if ($test['certificate_state'] == 'new') {
+			$message[3]['subject'] = '[Cacti servcheck - ' . $test['name'] . '] Certificate renewed or changed';
 		}
 
 		$message[3]['text']  = '<h3>' . $message[3]['subject'] . '</h3>' . PHP_EOL;
+
+
 		$message[3]['text'] .= '<table>' . PHP_EOL;
 		$message[3]['text'] .= '<tr><td>Hostname:</td><td>' . $test['hostname'] . '</td></tr>' . PHP_EOL;
 

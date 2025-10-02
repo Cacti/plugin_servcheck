@@ -914,7 +914,7 @@ function servcheck_show_history() {
 			if ($row['cert_expire'] == '0000-00-00 00:00:00' || is_null($row['cert_expire'])) {
 				$days = 'N/A';
 			} else {
-				$days = floor((strtotime($row['cert_expire']) - strtotime($row['lastcheck']))/86400) . ' ' . __('days', 'servcheck') ;
+				$days = round((strtotime($row['cert_expire']) - strtotime($row['lastcheck']))/86400, 1) . ' ' . __('days', 'servcheck') ;
 				if ($days <= 0) {
 					$days = __('Expired %s days ago', abs((int)$days), 'servcheck');
 				}

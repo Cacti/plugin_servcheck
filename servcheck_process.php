@@ -256,11 +256,11 @@ if ($results['result'] == 'ok' && $test['certexpirenotify']) {
 		plugin_servcheck_debug('Returned certificate info: ' .  clean_up_lines(var_export($results['options']['certinfo'], true))  , $test);
 		$parsed = date_parse_from_format('M j H:i:s Y e', $results['options']['certinfo'][0]['Expire date']);
 		$exp = mktime($parsed['hour'], $parsed['minute'], $parsed['second'], $parsed['month'], $parsed['day'], $parsed['year']);
-		$test['days_left'] = round(($exp - time()) / 86400);
+		$test['days_left'] = round(($exp - time()) / 86400,1);
 		$test['expiry_date'] = date(date_time_format(), $exp);
 	} elseif (isset($results['cert_valid_to'])) {
 		// only for log
-		$test['days_left'] = floor(($results['cert_valid_to'] - time())/86400);
+		$test['days_left'] = round(($results['cert_valid_to'] - time())/86400,1);
 		$test['expiry_date'] = date(date_time_format(), $results['cert_valid_to']);
 	}
 }
@@ -348,10 +348,11 @@ if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days_left'] < $
 
 // check renewed cert
 if ($test['certexpirenotify'] && $results['result'] == 'ok') {
+
 	if (isset($last_log['cert_expire']) &&
 		$last_log['cert_expire'] != '0000-00-00 00:00:00' && !is_null($last_log['cert_expire'])) {
-		$days_before = floor((strtotime($last_log['cert_expire']) - strtotime($last_log['lastcheck']))/86400);
-	
+		$days_before = round((strtotime($last_log['cert_expire']) - strtotime($last_log['lastcheck']))/86400,1);
+
 		if ($test['days_left'] > 0 && $test['days_left'] > $days_before) {
 			plugin_servcheck_debug('Renewed or changed certificate, notification will be send', $test);
 
@@ -359,6 +360,7 @@ if ($test['certexpirenotify'] && $results['result'] == 'ok') {
 			$test['certificate_state'] = 'new';
 		}
 	}
+
 }
 
 // long duration

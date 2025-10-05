@@ -812,7 +812,7 @@ function servcheck_log_request_validation() {
 }
 
 function servcheck_show_history() {
-	global $config, $httperrors, $text_result, $text_result_search;
+	global $config, $httperrors, $text_result, $text_result_search, $servcheck_states;
 
 	servcheck_log_request_validation();
 
@@ -921,12 +921,13 @@ function servcheck_show_history() {
 			}
 
 			if  ($row['result'] == 'ok' && $row['result_search'] == 'not ok') {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 0, 0.6)";
+				$style = 'background-color: ' . $servcheck_states['warning']['color'] . ';';
 			} elseif ($row['result'] == 'ok') {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(204, 255, 204, 0.6)";
+				$style = 'background-color: ' . $servcheck_states['ok']['color'] . ';';
 			} else {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 25, 36, 0.6);";
+				$style = 'background-color: ' . $servcheck_states['error']['color'] . ';';
 			}
+
 
 			print "<tr class='tableRow selectable' style='$style' id='line" . $row['id'] . "'>";
 
@@ -975,7 +976,7 @@ function servcheck_show_graph() {
 
 
 function data_list() {
-	global $config, $servcheck_actions_menu, $refresh, $text_result_search;
+	global $config, $servcheck_actions_menu, $refresh, $text_result_search, $servcheck_states;
 
 	request_validation();
 
@@ -1121,18 +1122,18 @@ function data_list() {
 			}
 
 			if ($row['enabled'] == '') {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(205, 207, 196, 0.6)";
+				$style = 'background-color: ' . $servcheck_states['disabled']['color'] . ';';
 			} elseif ($last_log['result'] == 'ok' && $row['triggered_duration'] >= $row['duration_count']) {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 36, 0.6);";
+				$style = 'background-color: ' . $servcheck_states['duration']['color'] . ';';
 				$long_dur = true;
 			} elseif ($row['failures'] > 0 && $row['failures'] < $row['downtrigger']) {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 242, 36, 0.6);";
+				$style = 'background-color: ' . $servcheck_states['failing']['color'] . ';';
 			} elseif ($last_log['result'] == 'ok' && $last_log['result_search'] == 'not ok') {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(240, 240, 0, 0.6);";
+				$style = 'background-color: ' . $servcheck_states['warning']['color'] . ';';
 			} elseif ($last_log['result'] == 'ok' && strtotime($row['lastcheck']) > 0) {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(50, 255, 50, 0.6)";
+				$style = 'background-color: ' . $servcheck_states['ok']['color'] . ';';
 			} else {
-				$style = "color:rgba(10,10,10,0.8);background-color:rgba(242, 25, 36, 0.6);";
+				'background-color: ' . $servcheck_states['error']['color'] . ';';
 			}
 
 			print "<tr class='tableRow selectable' style='$style' id='line" . $row['id'] . "'>";
@@ -1201,6 +1202,8 @@ function data_list() {
 	if (cacti_sizeof($result)) {
 		print $nav;
 	}
+
+	servcheck_legend();
 
 	draw_actions_dropdown($servcheck_actions_menu, 1);
 

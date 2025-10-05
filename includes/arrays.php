@@ -41,6 +41,34 @@ $servcheck_tabs = array(
 	'servcheck_curl_code.php'  => __('Curl return codes', 'servcheck'),
 );
 
+$servcheck_states = array(
+	'error' => array(
+		'color' => '#FB4A14',
+		'display' => __('Error', 'servcheck')
+	),
+	'duration' => array(
+		'color' => '#DDFFDD',
+		'display' => __('Long duration', 'servcheck')
+	),
+	'warning' => array(
+		'color' => '#FCAA94',
+		'display' => __('Warning', 'servcheck')
+	),
+	'failing' => array(
+		'color' => '#FAFD9E',
+		'display' => __('Failing', 'servcheck')
+	),
+	'ok' => array(
+		'color' => '#CCFFCC',
+		'display' => __('Ok', 'servcheck')
+	),
+	'disabled' => array(
+		'color' => '#CDCFC4',
+		'display' => __('Disabled', 'servcheck')
+	)
+);
+
+
 $service_types = array(
 	'web_http'     => __('HTTP plaintext, default port 80', 'servcheck'),
 	'web_https'    => __('HTTP encrypted (HTTPS), default port 443', 'servcheck'),
@@ -124,8 +152,6 @@ $graph_interval = array (
 	168 => __('Last week', 'servcheck'),
 );
 
-
-
 $text_result_search = array(
 	'ok'            => __('String found', 'servcheck'),
 	'not ok'        => __('String not found', 'servcheck'),
@@ -142,13 +168,11 @@ $text_result = array(
 	'error'         => __('Error/failed', 'servcheck'),
 );
 
-
 $snmp_security_levels = array(
 	'noAuthNoPriv' => 'noAuthNoPriv',
 	'authNoPriv' => 'authNoPriv',
 	'authPriv' => 'authPriv'
 );
-
 
 $snmp_auth_protocols = array(
 	'[None]' => __('[None]'),
@@ -633,8 +657,6 @@ $servcheck_test_fields = array(
 		'friendly_name' => __('Help', 'servcheck')
 	),
 );
-
-
 
 $servcheck_credential_fields = array(
 	'general_spacer' => array(

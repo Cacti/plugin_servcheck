@@ -291,7 +291,10 @@ if (!empty($accounts)) {
 	foreach ($accounts as $account) {
 		$servcheck_notify_accounts[$account['id']] = $account['username'] . ' - ' . $account['email_address'];
 	}
+} else {
+	$servcheck_notify_accounts = array();
 }
+
 
 $servcheck_ca_fields = array(
 	'name' => array(

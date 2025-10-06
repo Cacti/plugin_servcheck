@@ -114,7 +114,7 @@ if ($test_id == 0) {
 $tests = db_fetch_assoc_prepared('SELECT *
 	FROM plugin_servcheck_test
 	WHERE enabled = "on"
-	AND poller_id = ? ' . 
+	AND poller_id = ? ' .
 	$sql_condition,
 	array($poller_id));
 
@@ -144,7 +144,7 @@ if (cacti_sizeof($tests)) {
 		}
 	}
 } else {
-	plugin_servcheck_debug('No enabled tests, nothing to do.', $test);
+	plugin_servcheck_debug('No enabled tests, nothing to do.');
 }
 
 while(true) {
@@ -195,7 +195,7 @@ $end   = microtime(true);
 $ttime = round($end - $start, 2);
 
 $stats = 'Time:' . $ttime . ' Checks:' . cacti_sizeof($tests) .
-	' Results(ok/problem):' . $stat_ok . '/' . $stat_ko . 
+	' Results(ok/problem):' . $stat_ok . '/' . $stat_ko .
 	' Search results(ok/problem):' . $stat_search_ok . '/' . $stat_search_ko;
 
 cacti_log("SERVCHECK STATS: $stats", false, 'SYSTEM');

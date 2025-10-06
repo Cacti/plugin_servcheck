@@ -171,7 +171,7 @@ function form_actions() {
 				}
 			} elseif (get_filter_request_var('drp_action') == 5) { // clear statistics
 				foreach ($selected_items as $item) {
-					db_execute_prepared('UPDATE plugin_servcheck_test SET 
+					db_execute_prepared('UPDATE plugin_servcheck_test SET
 						stats_ok = 0, stats_bad = 0, failures = 0, triggered = 0
 						WHERE id = ?', array($item));
 				}
@@ -1097,6 +1097,7 @@ function data_list() {
 		foreach ($result as $row) {
 
 			$long_dur = false;
+			$style = '';
 
 			$last_log = db_fetch_row_prepared("SELECT *,
 				(SELECT count(id) FROM plugin_servcheck_log WHERE test_id = ? ) as `count`
@@ -1133,7 +1134,7 @@ function data_list() {
 			} elseif ($last_log['result'] == 'ok' && strtotime($row['lastcheck']) > 0) {
 				$style = 'background-color: ' . $servcheck_states['ok']['color'] . ';';
 			} else {
-				'background-color: ' . $servcheck_states['error']['color'] . ';';
+				$style = 'background-color: ' . $servcheck_states['error']['color'] . ';';
 			}
 
 			print "<tr class='tableRow selectable' style='$style' id='line" . $row['id'] . "'>";

@@ -176,6 +176,9 @@ function form_save() {
 
 		if (isset_request_var('name') && get_nfilter_request_var('name') != '' && get_filter_request_var('name', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
 			$save['name'] = get_nfilter_request_var('name');
+		} else {
+			$_SESSION['sess_error_fields']['name'] = 'name';
+			raise_message(3);
 		}
 
 		if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $credential_types)) {
@@ -355,7 +358,6 @@ function form_save() {
 				break;
 
 			case 'snmp3':
-
 				if (isset_request_var('snmp_security_level') && array_key_exists(get_nfilter_request_var('snmp_security_level'), $snmp_security_levels)) {
 					$cred['snmp_security_level'] = get_nfilter_request_var('snmp_security_level');
 				} else {

@@ -224,3 +224,17 @@ function servcheck_decrypt_credential ($cred_id) {
 
 	return json_decode($decrypted, true);
 }
+
+function servcheck_legend() {
+	global $servcheck_states;
+
+	html_start_box('', '100%', false, '3', 'center', '');
+
+	print '<tr class="tableRow">';
+	foreach ($servcheck_states as $index => $state) {
+		print '<td style="background-color: ' . $state['color'] . '">' . $state['display'] . '</td>';
+	}
+	print '</tr>';
+
+	html_end_box(false);
+}

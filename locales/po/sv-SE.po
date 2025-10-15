@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2025-09-18 16:07+0000\n"
+"PO-Revision-Date: 2025-10-16 07:23+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://translate.cacti.net/projects/cacti/servcheck/"
 "sv/>\n"
@@ -1270,7 +1270,7 @@ msgstr "Start"
 #: servcheck_ca.php:351 servcheck_proxies.php:366 servcheck_test.php:1303
 #: servcheck_test.php:1396
 msgid "Clear"
-msgstr "Rensa"
+msgstr "Töm"
 
 #: servcheck_curl_code.php:55
 msgid "No error codes"
@@ -1489,7 +1489,7 @@ msgstr "Inaktiverad"
 
 #: servcheck_test.php:1138
 msgid "N/A"
-msgstr "N/A"
+msgstr "Inte tillgänglig"
 
 #: servcheck_test.php:1145
 msgid "No"

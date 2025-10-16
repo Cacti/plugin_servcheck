@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2025-10-16 07:23+0000\n"
+"PO-Revision-Date: 2025-10-17 17:18+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://translate.cacti.net/projects/cacti/servcheck/"
 "sv/>\n"
@@ -334,7 +334,7 @@ msgstr "%d sekunder"
 
 #: includes/arrays.php:213 includes/arrays.php:217 includes/arrays.php:221
 msgid "Delete"
-msgstr "Radera"
+msgstr "Ta bort"
 
 #: includes/arrays.php:222
 msgid "Disable"
@@ -1485,7 +1485,7 @@ msgstr "Se diagram"
 
 #: servcheck_test.php:1135
 msgid "Disabled"
-msgstr "Inaktiverad"
+msgstr "Inaktiverat"
 
 #: servcheck_test.php:1138
 msgid "N/A"
@@ -1513,7 +1513,7 @@ msgstr "Län"
 
 #: servcheck_test.php:1261
 msgid "Any"
-msgstr "Vilken som helst"
+msgstr "Alla"
 
 #: servcheck_test.php:1270
 msgid "Refresh"

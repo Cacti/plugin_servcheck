@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2025-10-17 17:18+0000\n"
+"PO-Revision-Date: 2025-10-20 06:22+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://translate.cacti.net/projects/cacti/servcheck/"
 "sv/>\n"
@@ -391,7 +391,7 @@ msgstr "HTTP-port"
 
 #: includes/arrays.php:269
 msgid "The HTTP Proxy Port."
-msgstr "HTTP Proxy-port."
+msgstr "Port för HTTP-proxy."
 
 #: includes/arrays.php:277
 msgid "HTTPS Port"
@@ -399,7 +399,7 @@ msgstr "HTTPS-port"
 
 #: includes/arrays.php:278
 msgid "The HTTPS Proxy Port."
-msgstr "HTTPS-proxyporten."
+msgstr "Port för HTTPS-proxy."
 
 #: includes/arrays.php:286
 msgid "User Name"
@@ -427,17 +427,17 @@ msgstr "Allmänna inställningar"
 
 #: includes/arrays.php:319
 msgid "Service Check Name"
-msgstr "Service Check Namn"
+msgstr "Namn för tjänstekontroll"
 
 #: includes/arrays.php:320
 msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
 msgstr ""
-"Det namn som visas för denna servicekontroll och som ingår i eventuella "
+"Det namn som visas för denna tjänstekontroll och som ingår i eventuella "
 "varningsmeddelanden."
 
 #: includes/arrays.php:326 servcheck_test.php:1107
 msgid "Enable Service Check"
-msgstr "Aktivera servicekontroll"
+msgstr "Aktivera tjänstekontroll"
 
 #: includes/arrays.php:327
 msgid "Uncheck this box to disabled this test from being checked."
@@ -529,12 +529,12 @@ msgstr "Kräver autentisering"
 #: includes/arrays.php:412
 msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
 msgstr ""
-"Markera den här rutan om webbplatsen normalt ska returnera ett 401-fel "
-"eftersom den kräver användarnamn och lösenord."
+"Markera den här rutan om platsen normalt ska returnera ett 401-fel eftersom "
+"den kräver användarnamn och lösenord."
 
 #: includes/arrays.php:418
 msgid "Proxy Server"
-msgstr "Proxy Server"
+msgstr "Proxyserver"
 
 #: includes/arrays.php:419
 msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
@@ -566,7 +566,7 @@ msgstr ""
 
 #: includes/arrays.php:441
 msgid "Notification Timing"
-msgstr "Tidpunkt för anmälan"
+msgstr "Tidpunkt för notifiering"
 
 #: includes/arrays.php:444
 msgid "How Often to Test"
@@ -590,16 +590,17 @@ msgstr ""
 
 #: includes/arrays.php:460
 msgid "Time Out"
-msgstr "Time Out"
+msgstr "Tidsgräns"
 
 #: includes/arrays.php:464
 msgid "How many seconds to allow the page to timeout before reporting it as down."
 msgstr ""
-"Hur många sekunder ska sidan få ta timeout innan den rapporteras som nere."
+"Hur många sekunder ska sidan få överstiga tidsgränsen innan den rapporteras "
+"som nere."
 
 #: includes/arrays.php:469
 msgid "Verification Strings"
-msgstr "Verifiering Strängar"
+msgstr "Verifieringssträngar"
 
 #: includes/arrays.php:473
 msgid "Response Search String"
@@ -639,7 +640,7 @@ msgstr "Inställningar för aviseringar"
 
 #: includes/arrays.php:500
 msgid "Notify Format"
-msgstr "Meddela format"
+msgstr "Meddelandeformat"
 
 #: includes/arrays.php:502
 msgid "This is the format to use when sending the notification email"
@@ -657,7 +658,7 @@ msgstr ""
 
 #: includes/arrays.php:515
 msgid "Notify Accounts"
-msgstr "Meddela konton"
+msgstr "Avisera konton"
 
 #: includes/arrays.php:517
 msgid "This is a listing of accounts that will be notified when this service goes down."
@@ -667,7 +668,7 @@ msgstr ""
 
 #: includes/arrays.php:522
 msgid "Extra Alert Emails"
-msgstr "Extra varningsmejl"
+msgstr "Extra varningsmeddelanden"
 
 #: includes/arrays.php:526
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
@@ -1180,7 +1181,7 @@ msgstr "CA-certifikat"
 #: includes/functions.php:34 servcheck_proxies.php:292
 #: servcheck_proxies.php:349
 msgid "Proxies"
-msgstr "Proxies"
+msgstr "Proxyservrar"
 
 #: includes/functions.php:35
 msgid "Curl return codes"
@@ -1279,13 +1280,13 @@ msgstr "Inga felkoder"
 #: servcheck_proxies.php:103
 msgid "Click 'Continue' to delete the following Proxy."
 msgid_plural "Click 'Continue' to delete following Proxies."
-msgstr[0] "Klicka på \"Fortsätt\" för att ta bort följande proxy."
-msgstr[1] "Klicka på \"Fortsätt\" för att ta bort följande Proxies."
+msgstr[0] "Klicka på \"Fortsätt\" för att ta bort följande proxyserver."
+msgstr[1] "Klicka på \"Fortsätt\" för att ta bort följande proxyservrar."
 
 #: servcheck_proxies.php:108
 msgid "Delete Proxy"
 msgid_plural "Delete Proxies"
-msgstr[0] "Ta bort proxy"
+msgstr[0] "Ta bort proxyserver"
 msgstr[1] "Ta bort proxyservrar"
 
 #: servcheck_proxies.php:169
@@ -1303,7 +1304,7 @@ msgstr "Portar (http/https)"
 
 #: servcheck_proxies.php:309
 msgid "Not Set"
-msgstr "Ej inställt"
+msgstr "Inte inställd"
 
 #: servcheck_proxies.php:315
 msgid "No Servers Found"
@@ -1364,7 +1365,7 @@ msgstr[1] "Dubbla tester"
 #: servcheck_test.php:405
 #, php-format
 msgid "The Service Check history was purged for %s"
-msgstr "Servicekontrollhistoriken rensades för %s"
+msgstr "Tjänstekontrollens historik rensades för %s"
 
 #: servcheck_test.php:419
 #, php-format
@@ -1425,7 +1426,7 @@ msgstr "Totalt"
 
 #: servcheck_test.php:854
 msgid "Service Down"
-msgstr "Service nere"
+msgstr "Tjänsten nere"
 
 #: servcheck_test.php:854
 msgid "Service UP"
@@ -1433,7 +1434,7 @@ msgstr "Service UPP"
 
 #: servcheck_test.php:868
 msgid "No Service Check Events in History"
-msgstr "Ingen servicekontroll Händelser i historien"
+msgstr "Inga tjänstekontrollhändelser i historiken"
 
 #: servcheck_test.php:922
 msgid "Last returned data of test"
@@ -1449,7 +1450,7 @@ msgstr "Aktiverad"
 
 #: servcheck_test.php:1033
 msgid "Last Check"
-msgstr "Sista kontrollen"
+msgstr "Senaste kontroll"
 
 #: servcheck_test.php:1038
 msgid "Stats (OK/problem)"
@@ -1465,15 +1466,15 @@ msgstr "Kontroller"
 
 #: servcheck_test.php:1102
 msgid "Edit Service Check"
-msgstr "Redigera Service Check"
+msgstr "Redigera tjänstekontroll"
 
 #: servcheck_test.php:1111
 msgid "Disable Service Check"
-msgstr "Avaktivera servicekontroll"
+msgstr "Inaktivera tjänstekontroll"
 
 #: servcheck_test.php:1116
 msgid "View Service Check History"
-msgstr "Visa historik för servicekontroll"
+msgstr "Visa historik för tjänstekontroll"
 
 #: servcheck_test.php:1120
 msgid "View Last returned data"
@@ -1485,7 +1486,7 @@ msgstr "Se diagram"
 
 #: servcheck_test.php:1135
 msgid "Disabled"
-msgstr "Inaktiverat"
+msgstr "Inaktiverad"
 
 #: servcheck_test.php:1138
 msgid "N/A"
@@ -1509,7 +1510,7 @@ msgstr "Servicekontroller"
 
 #: servcheck_test.php:1257
 msgid "State"
-msgstr "Län"
+msgstr "Tillstånd"
 
 #: servcheck_test.php:1261
 msgid "Any"
@@ -1525,7 +1526,7 @@ msgstr "Service Check Historik"
 
 #: servcheck_test.php:1373
 msgid "Date Search"
-msgstr "Datum sökning"
+msgstr "Datumsökning"
 
 #: servcheck_test.php:1379
 msgid "Entries"
@@ -1533,7 +1534,7 @@ msgstr "Poster"
 
 #: servcheck_test.php:1397
 msgid "Purge Events"
-msgstr "Rensa händelser"
+msgstr "Töm händelser"
 
 #: setup.php:34
 msgid "Service Check Admin"
@@ -1549,11 +1550,11 @@ msgstr "Service Checker"
 
 #: setup.php:231
 msgid "Service Check Edit"
-msgstr "Service Check Edit"
+msgstr "Redigera tjänstekontroll"
 
 #: setup.php:238
 msgid "Service Check Save"
-msgstr "Service Kontrollera Spara"
+msgstr "Spara tjänstekontroll"
 
 #: setup.php:245
 msgid "Web Proxies"

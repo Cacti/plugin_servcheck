@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2025-10-20 06:22+0000\n"
+"PO-Revision-Date: 2025-10-20 20:28+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://translate.cacti.net/projects/cacti/servcheck/"
 "sv/>\n"
@@ -454,7 +454,7 @@ msgstr "Poller som testet ska köras på"
 
 #: includes/arrays.php:340
 msgid "Type of service"
-msgstr "Typ av tjänst"
+msgstr "Tjänstetyp"
 
 #: includes/arrays.php:345
 msgid "What type of service?"
@@ -648,7 +648,7 @@ msgstr "Detta är det format som ska användas när du skickar e-postmeddelandet
 
 #: includes/arrays.php:507
 msgid "Notification List"
-msgstr "Aviseringslista"
+msgstr "Notifieringslista"
 
 #: includes/arrays.php:509
 msgid "Use this Notification List for those to be notified when this service goes down."
@@ -1193,7 +1193,7 @@ msgstr "Logghistorik"
 
 #: includes/functions.php:48
 msgid "Graphs"
-msgstr "Grafer"
+msgstr "Diagram"
 
 #: includes/functions.php:130
 msgid "No data"

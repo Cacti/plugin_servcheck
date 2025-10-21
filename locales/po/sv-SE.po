@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2025-10-20 20:28+0000\n"
+"PO-Revision-Date: 2025-10-22 17:18+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://translate.cacti.net/projects/cacti/servcheck/"
 "sv/>\n"
@@ -1458,7 +1458,7 @@ msgstr "Statistik (OK/problem)"
 
 #: servcheck_test.php:1043
 msgid "Trigerred"
-msgstr "Trigerred"
+msgstr "Utlöst"
 
 #: servcheck_test.php:1066 servcheck_test.php:1286
 msgid "Checks"

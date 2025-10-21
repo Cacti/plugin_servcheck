@@ -149,6 +149,13 @@ function form_save() {
 		$save['https_port'] = form_input_validate(get_nfilter_request_var('https_port'), 'https_port', '', false, 3);
 		$save['cred_id']    = get_filter_request_var('cred_id');
 
+		if ($save['id'] > 0 && isset($_SESSION['sess_error_fields']) && cacti_sizeof($_SESSION['sess_error_fields'])) {
+			foreach ($_SESSION['sess_error_fields'] as $item) {
+				unset($save[$item], $_SESSION['sess_error_fields'][$item]);
+			}
+			clear_messages();
+		}
+
 		if (!is_error_message()) {
 			$saved_id = sql_save($save, 'plugin_servcheck_proxy');
 

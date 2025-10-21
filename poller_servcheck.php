@@ -94,7 +94,7 @@ if (cacti_sizeof($parms)) {
 	}
 }
 
-plugin_servcheck_check_debug();
+servcheck_check_debug();
 
 print 'Running Service Checks' . PHP_EOL;
 
@@ -129,7 +129,7 @@ if (cacti_sizeof($tests)) {
 			array($poller_id));
 
 		if ($max_processes - $running_processes > 0) {
-			plugin_servcheck_debug('Launching Service Check ' . $test['name'], $test);
+			servcheck_debug('Launching Service Check ' . $test['name']);
 
 			$command_string = read_config_option('path_php_binary');
 			$extra_args     = '-q "' . $config['base_path'] . '/plugins/servcheck/servcheck_process.php" --id=' . $test['id'] . ($debug ? ' --debug':'');
@@ -144,7 +144,7 @@ if (cacti_sizeof($tests)) {
 		}
 	}
 } else {
-	plugin_servcheck_debug('No enabled tests, nothing to do.');
+	servcheck_debug('No enabled tests, nothing to do.');
 }
 
 while(true) {

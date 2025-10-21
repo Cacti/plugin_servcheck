@@ -55,18 +55,19 @@ function servcheck_show_tab($current_tab) {
 
 
 
-function plugin_servcheck_check_debug() {
+function servcheck_check_debug() {
 	global $debug;
 
 	if (!$debug) {
-			$plugin_debug = read_config_option('selective_plugin_debug');
+		$plugin_debug = read_config_option('selective_plugin_debug');
+
 		if (preg_match('/(^|[, ]+)(servcheck)($|[, ]+)/', $plugin_debug, $matches)) {
 			$debug = (cacti_sizeof($matches) == 4 && $matches[2] == 'servcheck');
 		}
 	}
 }
 
-function plugin_servcheck_debug($message='') {
+function servcheck_debug($message='') {
 	global $debug;
 
 	if ($debug) {
@@ -74,7 +75,7 @@ function plugin_servcheck_debug($message='') {
 	}
 }
 
-function plugin_servcheck_graph ($id, $interval) {
+function servcheck_graph ($id, $interval) {
 	global $config, $graph_interval;
 
 	$result = db_fetch_assoc_prepared("SELECT
@@ -238,3 +239,5 @@ function servcheck_legend() {
 
 	html_end_box(false);
 }
+
+

@@ -95,7 +95,7 @@ if (empty($test_id) || !is_int($test_id)) {
 	exit(1);
 }
 
-plugin_servcheck_check_debug();
+servcheck_check_debug();
 
 $enabled = '';
 
@@ -128,7 +128,7 @@ $logs = db_fetch_cell_prepared('SELECT count(*) FROM plugin_servcheck_log WHERE 
 	array($test['id']));
 
 if ($logs > 0 && $test['next_run'] > time() && !$force) {
-	plugin_servcheck_debug('INFO: Test "' . $test['name'] . '" skipped. Not the right time to run the test.', $test);
+	servcheck_debug('INFO: Test "' . $test['name'] . '" skipped. Not the right time to run the test.');
 	exit(0);
 }
 
@@ -138,7 +138,7 @@ if (api_plugin_is_enabled('maint')) {
 
 if (function_exists('plugin_maint_check_servcheck_test')) {
 	if (plugin_maint_check_servcheck_test($test_id)) {
-		plugin_servcheck_debug('Maintenance schedule active, skipped ' , $test);
+		servcheck_debug('Maintenance schedule active, skipped.');
 		exit(0);
 	}
 }
@@ -153,20 +153,20 @@ $results = array();
 
 list($category, $service) = explode('_', $test['type']);
 
-plugin_servcheck_debug('Category: ' . $category , $test);
-plugin_servcheck_debug('Service: ' . $service , $test);
+servcheck_debug('Category: ' . $category);
+servcheck_debug('Service: ' . $service);
 
 while ($x < $test['attempt']) {
 
 	$x++;
 
-	plugin_servcheck_debug('Service Check attempt ' . $x, $test);
+	servcheck_debug('Service Check attempt ' . $x);
 
 	if (!function_exists('curl_init') && ($category == 'web' || $category == 'smb' || $category == 'ldap' ||
 		$category == 'ftp' || $category == 'mqtt' || $category == 'rest' ||  $service == 'doh')) {
 
 		print "FATAL: You must install php-curl to use this test" . PHP_EOL;
-		plugin_servcheck_debug('Test ' . $test['id'] . ' requires php-curl library', $test);
+		servcheck_debug('Test ' . $test['id'] . ' requires php-curl library');
 		$results['result'] = 'error';
 		$results['curl'] = false;
 		$results['error'] = 'missing php-curl library';
@@ -231,29 +231,29 @@ while ($x < $test['attempt']) {
 	if ($results['result'] == 'ok') {
 		break;
 	} else {
-		plugin_servcheck_debug('Attempt ' . $x . ' was unsuccessful', $test);
-		plugin_servcheck_debug('Result: ' . clean_up_lines(var_export($results, true)), $test);
+		servcheck_debug('Attempt ' . $x . ' was unsuccessful');
+		servcheck_debug('Result: ' . clean_up_lines(var_export($results, true)));
 	}
 
-	plugin_servcheck_debug('Sleeping 1 second', $test);
+	servcheck_debug('Sleeping 1 second');
 	sleep(1);
 }
 
 $results['x'] = $x;
 
 if (cacti_sizeof($results) == 0) {
-	plugin_servcheck_debug('Unknown error for test ' . $test['id'], $test);
+	servcheck_debug('Unknown error for test ' . $test['id']);
 	exit('Unknown error for test ' . $test['id']);
 }
 
-plugin_servcheck_debug('Stats:'. $test['stats_ok'] . '/' . $test['stats_bad'] . ', Down triggered:' . ($test['triggered'] == 0 ? 'No' : 'Yes') . ', Duration triggered:' . ($test['triggered_duration'] == 0 ? 'No' : 'Yes'), $test);
+servcheck_debug('Stats:'. $test['stats_ok'] . '/' . $test['stats_bad'] . ', Down triggered:' . ($test['triggered'] == 0 ? 'No' : 'Yes') . ', Duration triggered:' . ($test['triggered_duration'] == 0 ? 'No' : 'Yes'));
 
 $results['time'] = time();
 $test['expiry_date'] = null;
 
 if ($results['result'] == 'ok' && $test['certexpirenotify']) {
 	if (isset($results['options']['certinfo'][0])) { // curl
-		plugin_servcheck_debug('Returned certificate info: ' .  clean_up_lines(var_export($results['options']['certinfo'], true))  , $test);
+		servcheck_debug('Returned certificate info: ' .  clean_up_lines(var_export($results['options']['certinfo'], true)));
 		$parsed = date_parse_from_format('M j H:i:s Y e', $results['options']['certinfo'][0]['Expire date']);
 		$exp = mktime($parsed['hour'], $parsed['minute'], $parsed['second'], $parsed['month'], $parsed['day'], $parsed['year']);
 		$test['days_left'] = round(($exp - time()) / 86400,1);
@@ -286,11 +286,11 @@ $test['notify_search'] = false;
 $test['notify_duration'] = false;
 $test['notify_certificate'] = false;
 
-plugin_servcheck_debug('Checking for triggerers', $test);
+servcheck_debug('Checking for triggerers');
 
 if ($last_log['result'] != $results['result'] || $results['result'] != 'ok') {
 
-	plugin_servcheck_debug('Result changed, notification will be send', $test);
+	servcheck_debug('Result changed, notification will be send');
 
 	if ($results['result'] != 'ok') {
 		$test['failures']++;
@@ -325,7 +325,7 @@ if ($last_log['result'] != $results['result'] || $results['result'] != 'ok') {
 // checks only if test passed or some search string exists
 if ($results['result_search'] != 'not tested' && $results['result'] == 'ok') {
 	if ($last_log['result_search'] != $results['result_search']) {
-		plugin_servcheck_debug('Search result changed, notification will be send', $test);
+		servcheck_debug('Search result changed, notification will be send');
 		$test['notify_search'] = true;
 	}
 }
@@ -339,7 +339,7 @@ if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days_left'] < $
 		array($test['id']));
 
 	if ($new_notify < time()) {
-		plugin_servcheck_debug('Certificate will expire soon (or is expired), will notify about expiration', $test);
+		servcheck_debug('Certificate will expire soon (or is expired), will notify about expiration');
 		$test['notify_certificate'] = true;
 		$test['certificate_state'] = 'ko';
 		$new_notify_expire = true;
@@ -354,7 +354,7 @@ if ($test['certexpirenotify'] && $results['result'] == 'ok') {
 		$days_before = round((strtotime($last_log['cert_expire']) - strtotime($last_log['lastcheck']))/86400,1);
 
 		if ($test['days_left'] > 0 && $test['days_left'] > $days_before) {
-			plugin_servcheck_debug('Renewed or changed certificate, notification will be send', $test);
+			servcheck_debug('Renewed or changed certificate, notification will be send');
 
 			$test['notify_certificate'] = true;
 			$test['certificate_state'] = 'new';
@@ -385,17 +385,17 @@ if ($test['duration_trigger'] > 0 && $test['duration_count'] > 0 && $results['re
 	}
 
 	if ($test['triggered_duration'] == $test['duration_count']) {
-		plugin_servcheck_debug('Long duration detected, sending notification', $test);
+		servcheck_debug('Long duration detected, sending notification');
 		$test['notify_duration'] = true;
 		$test['duration_state'] = 'ko';
 		$test['triggered_duration']++;
 	} else if ($test['triggered_duration'] > $test['duration_count']) {
-		plugin_servcheck_debug('Long duration issue continue', $test);
+		servcheck_debug('Long duration issue continue');
 		$test['triggered_duration']++;
 	}
 
 	if ($results['duration'] < $test['duration_trigger'] && $test['triggered_duration'] >= $test['duration_count']) {
-		plugin_servcheck_debug('Normal duration detected, sending notification', $test);
+		servcheck_debug('Normal duration detected, sending notification');
 		$test['notify_duration'] = true;
 		$test['duration_state'] = 'ok';
 		$test['triggered_duration'] = 0;
@@ -406,20 +406,20 @@ if ($test['notify_result'] || $test['notify_search'] || $test['notify_duration']
 
 	if (read_config_option('servcheck_disable_notification') == 'on') {
 		cacti_log('Notifications are disabled, notification will not send for test ' . $test['name'], false, 'SERVCHECK');
-		plugin_servcheck_debug('Notification disabled globally', $test);
+		servcheck_debug('Notification disabled globally');
 	} else {
 		if ($test['notify'] != '') {
-			plugin_servcheck_debug('Time to send email', $test);
+			servcheck_debug('Time to send email');
 			plugin_servcheck_send_notification($results, $test, $last_log);
 		} else {
-			plugin_servcheck_debug('Time to send email, but email notification for this test is disabled', $test);
+			servcheck_debug('Time to send email, but email notification for this test is disabled');
 		}
 	}
 
 	$command = read_config_option('servcheck_change_command');
 	$command_enable = read_config_option('servcheck_enable_scripts');
 	if ($command_enable && $command != '') {
-		plugin_servcheck_debug('Time to run command', $test);
+		servcheck_debug('Time to run command');
 
 		putenv('SERVCHECK_TEST_NAME='              . $test['name']);
 		putenv('SERVCHECK_EXTERNAL_ID='            . $test['external_id']);
@@ -441,11 +441,11 @@ if ($test['notify_result'] || $test['notify_search'] || $test['notify_duration']
 		}
 	}
 } else {
-	plugin_servcheck_debug('Nothing triggered', $test);
+	servcheck_debug('Nothing triggered');
 }
 
 
-plugin_servcheck_debug('Updating Statistics', $test);
+servcheck_debug('Updating Statistics');
 
 if ($results['curl']) {
 	if (!isset($results['curl_return'])) {
@@ -551,7 +551,7 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 
 	if (cacti_sizeof($notify_account) == 0 && cacti_sizeof($notify_extra) == 0 && cacti_sizeof($notify_list) == 0) {
 		cacti_log('ERROR: No users to send SERVCHECK Notification for ' . $test['name'], false, 'SERVCHECK');
-		plugin_servcheck_debug('No notification email or user', $test);
+		servcheck_debug('No notification email or user');
 
 		return true;
 	}

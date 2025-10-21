@@ -47,17 +47,17 @@ function mqtt_try ($test) {
 			array($test['cred_id']));
 
 		if (!$cred) {
-			plugin_servcheck_debug('Credential is set but not found!' , $test);
+			servcheck_debug('Credential is set but not found!');
 			cacti_log('Credential not found');
 			$results['result'] = 'error';
 			$results['error'] = 'Credential not found';
 			return $results;
 		} else {
-			plugin_servcheck_debug('Decrypting credential' , $test);
+			servcheck_debug('Decrypting credential');
 			$credential = servcheck_decrypt_credential($test['cred_id']);
 
 			if (empty($cred)) {
-				plugin_servcheck_debug('Credential is empty!' , $test);
+				servcheck_debug('Credential is empty!');
 				cacti_log('Credential is empty');
 				$results['result'] = 'error';
 				$results['error'] = 'Credential is empty';
@@ -73,17 +73,17 @@ function mqtt_try ($test) {
 			array($test['cred_id']));
 
 		if (!$cred) {
-			plugin_servcheck_debug('Credential is set but not found!' , $test);
+			servcheck_debug('Credential is set but not found!');
 			cacti_log('Credential not found');
 			$results['result'] = 'error';
 			$results['error'] = 'Credential not found';
 			return $results;
 		} else {
-			plugin_servcheck_debug('Decrypting credential' , $test);
+			servcheck_debug('Decrypting credential');
 			$credential = servcheck_decrypt_credential($test['cred_id']);
 
 			if (empty($credential)) {
-				plugin_servcheck_debug('Credential is empty!' , $test);
+				servcheck_debug('Credential is empty!');
 				cacti_log('Credential is empty');
 				$results['result'] = 'error';
 				$results['error'] = 'Credential is empty';
@@ -111,7 +111,7 @@ function mqtt_try ($test) {
 
 	$url = 'mqtt://' . $cred . $test['hostname'] . $test['path'];
 
-	plugin_servcheck_debug('Final url is ' . $url , $test);
+	servcheck_debug('Final url is ' . $url);
 
 	$process = curl_init($url);
 
@@ -131,11 +131,11 @@ function mqtt_try ($test) {
 		},
 	);
 
-	plugin_servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
+	servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
 
 	curl_setopt_array($process,$options);
 
-	plugin_servcheck_debug('Executing curl request', $test);
+	servcheck_debug('Executing curl request');
 
 	curl_exec($process);
 	fclose($file);
@@ -150,9 +150,9 @@ function mqtt_try ($test) {
 
 	$results['curl_return'] = curl_errno($process);
 
-	plugin_servcheck_debug('cURL error: ' . $results['curl_return']);
+	servcheck_debug('cURL error: ' . $results['curl_return']);
 
-	plugin_servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
+	servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
 
 	// 42 is ok, it is own CURLE_ABORTED_BY_CALLBACK. Normal return is 28 (timeout)
 	if ($results['curl_return'] == 42) {
@@ -176,20 +176,20 @@ function mqtt_try ($test) {
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
 
-		plugin_servcheck_debug('Processing search_failed');
+		servcheck_debug('Processing search_failed');
 
 		if (strpos($data, $test['search_failed']) !== false) {
-			plugin_servcheck_debug('Search failed string success');
+			servcheck_debug('Search failed string success');
 			$results['result_search'] = 'failed ok';
 			return $results;
 		}
 	}
 
-	plugin_servcheck_debug('Processing search');
+	servcheck_debug('Processing search');
 
 	if ($test['search'] != '') {
 		if (strpos($data, $test['search']) !== false) {
-			plugin_servcheck_debug('Search string success');
+			servcheck_debug('Search string success');
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
@@ -200,10 +200,10 @@ function mqtt_try ($test) {
 
 	if ($test['search_maint'] != '') {
 
-		plugin_servcheck_debug('Processing search maint');
+		servcheck_debug('Processing search maint');
 
 		if (strpos($data, $test['search_maint']) !== false) {
-			plugin_servcheck_debug('Search maint string success');
+			servcheck_debug('Search maint string success');
 			$results['result_search'] = 'maint ok';
 			return $results;
 		}

@@ -54,17 +54,17 @@ function restapi_try ($test) {
 			array($test['cred_id']));
 
 		if (!$cred) {
-			plugin_servcheck_debug('Credential is set but not found!' , $test);
+			servcheck_debug('Credential is set but not found!');
 			cacti_log('Credential not found');
 			$results['result'] = 'error';
 			$results['error'] = 'Credential not found';
 			return $results;
 		} else {
-			plugin_servcheck_debug('Decrypting credential' , $test);
+			servcheck_debug('Decrypting credential');
 			$credential = servcheck_decrypt_credential($test['cred_id']);
 
 			if (empty($cred)) {
-				plugin_servcheck_debug('Credential is empty!' , $test);
+				servcheck_debug('Credential is empty!');
 				cacti_log('Credential is empty');
 				$results['result'] = 'error';
 				$results['error'] = 'Credential is empty';
@@ -91,7 +91,7 @@ function restapi_try ($test) {
 
 	$url = $credential['data_url'];
 
-	plugin_servcheck_debug('Using Rest API method ' . $service_types[$test['type']] , $test);
+	servcheck_debug('Using Rest API method ' . $service_types[$test['type']]);
 
 	switch ($cred['type']) {
 		case 'basic':
@@ -133,7 +133,7 @@ function restapi_try ($test) {
 		case 'oauth2':
 
 			if (!isset($cred['cred_validity']) || (isset($cred['cred_validity']) && $cred['cred_validity'] < time())) {
-				plugin_servcheck_debug('No valid token, generating new request' , $test);
+				servcheck_debug('No valid token, generating new request');
 
 				$cred_data = json_encode(array(
 					'grant_type' => 'password',
@@ -149,11 +149,11 @@ function restapi_try ($test) {
 
 				$process = curl_init($credential['login_url']);
 
-				plugin_servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($options, true)));
+				servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($options, true)));
 
 				curl_setopt_array($process,$options);
 
-				plugin_servcheck_debug('Executing curl request for login: ' . $credential['login_url'], $test);
+				servcheck_debug('Executing curl request for login: ' . $credential['login_url']);
 
 				$response = curl_exec($process);
 
@@ -163,7 +163,7 @@ function restapi_try ($test) {
 					$results['curl_return'] = curl_errno($process);
 					$results['data'] = $response;
 
-					plugin_servcheck_debug('Problem with login: ' . $results['curl_return'] , $test);
+					servcheck_debug('Problem with login: ' . $results['curl_return']);
 					$results['result'] = 'error';
 					$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
 					return $results;
@@ -178,12 +178,12 @@ function restapi_try ($test) {
 				$body = json_decode(substr($response, $header_size), true);
 
 				if (isset($body['token'])) {
-					plugin_servcheck_debug('We got token and expiration, saving', $test);
+					servcheck_debug('We got token and expiration, saving');
 
 					if (isset($body['expires_in'])) {
 						$cred['cred_validity'] = time() + $body['expires_in'];
 					} else {
-						plugin_servcheck_debug('We got token and don\'t know expiration. We will use it only one time.', $test);
+						servcheck_debug('We got token and don\'t know expiration. We will use it only one time.');
 					}
 
 					$cred['type'] = 'oauth2';
@@ -200,7 +200,7 @@ function restapi_try ($test) {
 						SET data = ? WHERE id = ?',
 						array($enc, $cred['id']));
 				} else {
-					plugin_servcheck_debug('We didn\'t get token.', $test);
+					servcheck_debug('We didn\'t get token.');
 					$results['options'] = curl_getinfo($process);
 					$results['result'] = 'error';
 					$results['curl_return'] = curl_errno($process);
@@ -209,7 +209,7 @@ function restapi_try ($test) {
 					return $results;
 				}
 			} else {
-				plugin_servcheck_debug('Using existing token' , $test);
+				servcheck_debug('Using existing token');
 			}
 
 			$http_headers = array();
@@ -242,11 +242,11 @@ function restapi_try ($test) {
 			$options[CURLOPT_COOKIEJAR] = $cookie_file;  // store cookie
 			$process = curl_init($credential['login_url']);
 
-			plugin_servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($options, true)));
+			servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($options, true)));
 
 			curl_setopt_array($process,$options);
 
-			plugin_servcheck_debug('Executing curl request for login: ' . $credential['login_url'], $test);
+			servcheck_debug('Executing curl request for login: ' . $credential['login_url']);
 
 			$response = curl_exec($process);
 
@@ -256,7 +256,7 @@ function restapi_try ($test) {
 				$results['curl_return'] = curl_errno($process);
 				$results['data'] =  str_replace(array("'", "\\"), array(''), $response);
 
-				plugin_servcheck_debug('Problem with login: ' . $results['curl_return'] , $test);
+				servcheck_debug('Problem with login: ' . $results['curl_return']);
 				$results['result'] = 'error';
 				$results['error'] =  str_replace(array('"', "'"), '', ($results['curl_return']));
 				return $results;
@@ -267,10 +267,10 @@ function restapi_try ($test) {
 
 			if (preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', $header, $matches)) {
 				foreach ($matches[1] as $cookie) {
-					plugin_servcheck_debug('We got cookie', $test);
+					servcheck_debug('We got cookie');
 				}
 			} else {
-				plugin_servcheck_debug('We didn\'t get cookie', $test);
+				servcheck_debug('We didn\'t get cookie');
 
 				// Get information regarding a specific transfer, cert info too
 				$results['options'] = curl_getinfo($process);
@@ -295,15 +295,15 @@ function restapi_try ($test) {
 			break;
 	}
 
-	plugin_servcheck_debug('Final url is ' . $url , $test);
+	servcheck_debug('Final url is ' . $url);
 
 	$process = curl_init($url);
 
-	plugin_servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
+	servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
 
 	curl_setopt_array($process,$options);
 
-	plugin_servcheck_debug('Executing curl request', $test);
+	servcheck_debug('Executing curl request');
 
 	$data = curl_exec($process);
 	$data = str_replace(array("'", "\\"), array(''), $data);
@@ -314,9 +314,9 @@ function restapi_try ($test) {
 
 	$results['curl_return'] = curl_errno($process);
 
-	plugin_servcheck_debug('cURL error: ' . $results['curl_return']);
+	servcheck_debug('cURL error: ' . $results['curl_return']);
 
-	plugin_servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
+	servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
 
 	if ($results['curl_return'] > 0) {
 		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
@@ -347,25 +347,25 @@ function restapi_try ($test) {
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
 
-		plugin_servcheck_debug('Processing search_failed');
+		servcheck_debug('Processing search_failed');
 
 		if (strpos($data, $test['search_failed']) !== false) {
-			plugin_servcheck_debug('Search failed string success');
+			servcheck_debug('Search failed string success');
 			$results['result_search'] = 'failed ok';
 			return $results;
 		}
 	}
 
-	plugin_servcheck_debug('Processing search');
+	servcheck_debug('Processing search');
 
 	if ($test['search'] != '') {
 
 		if (strpos($data, $test['search']) !== false) {
-			plugin_servcheck_debug('Search string success');
+			servcheck_debug('Search string success');
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
-			plugin_servcheck_debug('String not found');
+			servcheck_debug('String not found');
 			$results['result_search'] = 'not ok';
 			return $results;
 		}
@@ -373,10 +373,10 @@ function restapi_try ($test) {
 
 	if ($test['search_maint'] != '') {
 
-		plugin_servcheck_debug('Processing search maint');
+		servcheck_debug('Processing search maint');
 
 		if (strpos($data, $test['search_maint']) !== false) {
-			plugin_servcheck_debug('Search maint string success');
+			servcheck_debug('Search maint string success');
 			$results['result_search'] = 'maint ok';
 			return $results;
 		}

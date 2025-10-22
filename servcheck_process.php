@@ -30,9 +30,9 @@ if (strpos($dir, 'plugins') !== false) {
 	chdir('../../');
 }
 
-require('./include/cli_check.php');
-include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
-include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+require_once('./include/cli_check.php');
+require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
+require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
 ini_set('max_execution_time', '21');
 
@@ -133,7 +133,7 @@ if ($logs > 0 && $test['next_run'] > time() && !$force) {
 }
 
 if (api_plugin_is_enabled('maint')) {
-	include_once($config['base_path'] . '/plugins/maint/functions.php');
+	require_once($config['base_path'] . '/plugins/maint/functions.php');
 }
 
 if (function_exists('plugin_maint_check_servcheck_test')) {
@@ -182,22 +182,22 @@ while ($x < $test['attempt']) {
 		case 'web':
 		case 'ldap':
 		case 'smb':
-			include_once($config['base_path'] . '/plugins/servcheck/includes/test_curl.php');
+			require_once($config['base_path'] . '/plugins/servcheck/includes/test_curl.php');
 			$results = curl_try($test);
 			break;
 
 		case 'mail':
-			include_once($config['base_path'] . '/plugins/servcheck/includes/test_mail.php');
+			require_once($config['base_path'] . '/plugins/servcheck/includes/test_mail.php');
 			$results = mail_try($test);
 			break;
 
 		case 'mqtt':
-			include_once($config['base_path'] . '/plugins/servcheck/includes/test_mqtt.php');
+			require_once($config['base_path'] . '/plugins/servcheck/includes/test_mqtt.php');
 			$results = mqtt_try($test);
 			break;
 
 		case 'dns':
-			include_once($config['base_path'] . '/plugins/servcheck/includes/test_dns.php');
+			require_once($config['base_path'] . '/plugins/servcheck/includes/test_dns.php');
 			if ($service == 'doh') {
 				$results = doh_try($test);
 			} else {
@@ -206,22 +206,22 @@ while ($x < $test['attempt']) {
 			break;
 
 		case 'rest':
-			include_once($config['base_path'] . '/plugins/servcheck/includes/test_restapi.php');
+			require_once($config['base_path'] . '/plugins/servcheck/includes/test_restapi.php');
 			$results = restapi_try($test);
 			break;
 
 		case 'snmp':
-			include_once($config['base_path'] . '/plugins/servcheck/includes/test_snmp.php');
+			require_once($config['base_path'] . '/plugins/servcheck/includes/test_snmp.php');
 			$results = snmp_try($test);
 			break;
 
 		case 'ssh':
-			include_once($config['base_path'] . '/plugins/servcheck/includes/test_ssh.php');
+			require_once($config['base_path'] . '/plugins/servcheck/includes/test_ssh.php');
 			$results = ssh_try($test);
 			break;
 
 		case 'ftp':
-			include_once($config['base_path'] . '/plugins/servcheck/includes/test_ftp.php');
+			require_once($config['base_path'] . '/plugins/servcheck/includes/test_ftp.php');
 			$results = ftp_try($test);
 			break;
 	}
@@ -750,7 +750,7 @@ function display_version() {
 	global $config;
 
 	if (!function_exists('plugin_servcheck_version')) {
-		include_once($config['base_path'] . '/plugins/servcheck/setup.php');
+		require_once($config['base_path'] . '/plugins/servcheck/setup.php');
 	}
 
 	$info = plugin_servcheck_version();

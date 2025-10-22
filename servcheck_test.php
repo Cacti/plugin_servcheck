@@ -23,9 +23,9 @@
 */
 
 chdir('../../');
-include_once('./include/auth.php');
-include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
-include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+require_once('./include/auth.php');
+require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
+require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
 global $refresh;
 
@@ -895,7 +895,7 @@ function servcheck_show_history() {
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])), 'chk');
 
-	servcheck_show_tab('servcheck_test.php');
+	servcheck_show_tab(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
 	servcheck_log_filter();
 
@@ -962,7 +962,8 @@ function servcheck_show_history() {
 function servcheck_show_graph() {
 	global $graph_interval;
 
-	servcheck_show_tab('servcheck_test.php');
+	servcheck_show_tab(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
+
 	$id = get_filter_request_var('id');
 
 	$result = db_fetch_row_prepared('SELECT name

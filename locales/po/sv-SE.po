@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2025-10-22 17:18+0000\n"
+"PO-Revision-Date: 2025-10-23 19:18+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://translate.cacti.net/projects/cacti/servcheck/"
 "sv/>\n"
@@ -446,7 +446,7 @@ msgstr ""
 
 #: includes/arrays.php:332
 msgid "Poller"
-msgstr "Poller"
+msgstr "Pollare"
 
 #: includes/arrays.php:335
 msgid "Poller on which the test will run"
@@ -1213,8 +1213,8 @@ msgstr "Avbryt"
 #: servcheck_ca.php:109
 msgid "Delete CA"
 msgid_plural "Delete CA"
-msgstr[0] "Radera CA"
-msgstr[1] "Radera CA"
+msgstr[0] "Ta bort CA"
+msgstr[1] "Ta bort CA"
 
 #: servcheck_ca.php:166
 #, php-format
@@ -1317,7 +1317,7 @@ msgstr "Servcheck proxyhantering"
 #: servcheck_test.php:192
 msgid "Click 'Continue' to Delete the following tests."
 msgid_plural "Click 'Continue' to Delete following tests."
-msgstr[0] "Klicka på \"Fortsätt\" för att ta bort följande tester."
+msgstr[0] "Klicka på \"Fortsätt\" för att ta bort följande test."
 msgstr[1] "Klicka på \"Fortsätt\" för att ta bort följande tester."
 
 #: servcheck_test.php:197
@@ -1538,7 +1538,7 @@ msgstr "Töm händelser"
 
 #: setup.php:34
 msgid "Service Check Admin"
-msgstr "Service Check Admin"
+msgstr "Admin för tjänstekontroll"
 
 #: setup.php:214
 msgid "Management"
@@ -1546,7 +1546,7 @@ msgstr "Hantering"
 
 #: setup.php:214
 msgid "Service Checker"
-msgstr "Service Checker"
+msgstr "Tjänstekontrollerare"
 
 #: setup.php:231
 msgid "Service Check Edit"
@@ -1562,7 +1562,7 @@ msgstr "Proxyservrar för webb"
 
 #: setup.php:252
 msgid "Web Proxie Edit"
-msgstr "Web Proxie Edit"
+msgstr "Redigera webbproxy"
 
 #: setup.php:259
 msgid "Save Web Proxy"

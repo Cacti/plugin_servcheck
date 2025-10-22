@@ -721,6 +721,10 @@ function plugin_servcheck_send_email($to, $subject, $message) {
 	$from_name  = read_config_option('settings_from_name');
 	$from_email = read_config_option('settings_from_email');
 
+	if ($from_email == '') {
+		$from_email = 'cacti@cacti.net';
+	}
+
 	if ($from_name != '') {
 		$from[0] = $from_email;
 		$from[1] = $from_name;

@@ -23,9 +23,9 @@
 */
 
 chdir('../../');
-include_once('./include/auth.php');
-include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
-include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+require_once('./include/auth.php');
+require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
+require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
 global $refresh;
 
@@ -440,7 +440,15 @@ function form_save() {
 			$save['notify_list']     = get_filter_request_var('notify_list');
 		}
 
+		if ($save['id'] > 0 && isset($_SESSION['sess_error_fields']) && cacti_sizeof($_SESSION['sess_error_fields'])) {
+			foreach ($_SESSION['sess_error_fields'] as $item) {
+				unset($save[$item], $_SESSION['sess_error_fields'][$item]);
+			}
+			clear_messages();
+		}
+
 		if (!is_error_message()) {
+
 			$saved_id = sql_save($save, 'plugin_servcheck_test');
 
 			if ($saved_id) {
@@ -469,9 +477,6 @@ function purge_log_events($id) {
 
 	raise_message('test_log_purged', __('The Service Check history was purged for %s', $name, 'servcheck'), MESSAGE_LEVEL_INFO);
 }
-
-
-
 
 function data_edit() {
 	global $servcheck_test_fields, $service_types, $servcheck_help_test;
@@ -890,7 +895,7 @@ function servcheck_show_history() {
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])), 'chk');
 
-	servcheck_show_tab('servcheck_test.php');
+	servcheck_show_tab(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
 	servcheck_log_filter();
 
@@ -957,7 +962,8 @@ function servcheck_show_history() {
 function servcheck_show_graph() {
 	global $graph_interval;
 
-	servcheck_show_tab('servcheck_test.php');
+	servcheck_show_tab(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
+
 	$id = get_filter_request_var('id');
 
 	$result = db_fetch_row_prepared('SELECT name
@@ -969,7 +975,7 @@ function servcheck_show_graph() {
 
 	foreach ($graph_interval as $key => $value) {
 		print '<b>' . ($value) . ':</b>';
-		plugin_servcheck_graph ($id, $key);
+		servcheck_graph ($id, $key);
 		print '<br/><hr style="width: 50%; margin-left: 0; margin-right: auto;"><br/>'; //print line below the graph.
 	}
 }

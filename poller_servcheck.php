@@ -32,10 +32,10 @@ if (strpos($dir, 'plugins') !== false) {
 	chdir('../../');
 }
 
-include('./include/cli_check.php');
-include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
-include_once($config['base_path'] . '/lib/poller.php');
-include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+require('./include/cli_check.php');
+require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
+require_once($config['base_path'] . '/lib/poller.php');
+require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
 
 /* process calling arguments */
@@ -94,7 +94,7 @@ if (cacti_sizeof($parms)) {
 	}
 }
 
-plugin_servcheck_check_debug();
+servcheck_check_debug();
 
 print 'Running Service Checks' . PHP_EOL;
 
@@ -129,7 +129,7 @@ if (cacti_sizeof($tests)) {
 			array($poller_id));
 
 		if ($max_processes - $running_processes > 0) {
-			plugin_servcheck_debug('Launching Service Check ' . $test['name'], $test);
+			servcheck_debug('Launching Service Check ' . $test['name']);
 
 			$command_string = read_config_option('path_php_binary');
 			$extra_args     = '-q "' . $config['base_path'] . '/plugins/servcheck/servcheck_process.php" --id=' . $test['id'] . ($debug ? ' --debug':'');
@@ -144,7 +144,7 @@ if (cacti_sizeof($tests)) {
 		}
 	}
 } else {
-	plugin_servcheck_debug('No enabled tests, nothing to do.');
+	servcheck_debug('No enabled tests, nothing to do.');
 }
 
 while(true) {

@@ -23,9 +23,9 @@
 */
 
 chdir('../../');
-include_once('./include/auth.php');
-include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
-include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+require_once('./include/auth.php');
+require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
+require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
 top_header();
 

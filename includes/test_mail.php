@@ -44,17 +44,17 @@ function mail_try ($test) {
 			array($test['cred_id']));
 
 		if (!$cred) {
-			plugin_servcheck_debug('Credential is set but not found!' , $test);
+			servcheck_debug('Credential is set but not found!');
 			cacti_log('Credential not found');
 			$results['result'] = 'error';
 			$results['error'] = 'Credential not found';
 			return $results;
 		} else {
-			plugin_servcheck_debug('Decrypting credential' , $test);
+			servcheck_debug('Decrypting credential');
 			$credential = servcheck_decrypt_credential($test['cred_id']);
 
 			if (empty($credential)) {
-				plugin_servcheck_debug('Credential is empty!' , $test);
+				servcheck_debug('Credential is empty!');
 				cacti_log('Credential is empty');
 				$results['result'] = 'error';
 				$results['error'] = 'Credential is empty';
@@ -69,7 +69,7 @@ function mail_try ($test) {
 
 	if ($test['ca_id'] > 0) {
 		$own_ca_info = $config['base_path'] . '/plugins/servcheck/tmp_data/ca_cert_' . $test['ca_id'] . '.pem'; // The folder /plugins/servcheck/tmp_data does exist, hence the ca_cert_x.pem can be created here
-		plugin_servcheck_debug('Preparing own CA chain file ' . $ca_info , $test);
+		servcheck_debug('Preparing own CA chain file ' . $ca_info);
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
 			array($test['ca_id']));
@@ -115,7 +115,7 @@ function mail_try ($test) {
 
 		case 'smtp':
 
-			plugin_servcheck_debug('Trying to connect ' . 'tcp://' . $test['hostname']);
+			servcheck_debug('Trying to connect ' . 'tcp://' . $test['hostname']);
 
 			$fp = stream_socket_client(
 				'tcp://' . $test['hostname'],
@@ -132,7 +132,7 @@ function mail_try ($test) {
 				return $results;
 			}
 
-			plugin_servcheck_debug('Connected');
+			servcheck_debug('Connected');
 
 			$data .= read_response($fp); // welcome banner
 
@@ -147,7 +147,7 @@ function mail_try ($test) {
 
 		case 'smtps':
 
-			plugin_servcheck_debug('Trying to connect ' . 'ssl://' . $test['hostname']);
+			servcheck_debug('Trying to connect ' . 'ssl://' . $test['hostname']);
 
 			$fp = stream_socket_client(
 				'ssl://' . $test['hostname'],
@@ -164,10 +164,10 @@ function mail_try ($test) {
 				return $results;
 			}
 
-			plugin_servcheck_debug('Connected');
+			servcheck_debug('Connected');
 
 			if ($test['checkcert'] || $test['certexpirenotify']) {
-				plugin_servcheck_debug('Gathering certificate information');
+				servcheck_debug('Gathering certificate information');
 				$con_params = stream_context_get_params($fp);
 				$certinfo = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
 
@@ -175,7 +175,7 @@ function mail_try ($test) {
 			}
 
 			$data .= read_response($fp); // welcome banner
-			plugin_servcheck_debug('Welcome banner: ' . $data);
+			servcheck_debug('Welcome banner: ' . $data);
 
 			if ($test['cred_id'] > 0) {
 
@@ -188,9 +188,9 @@ function mail_try ($test) {
 				send($fp, base64_encode($credential['password']));
 				$data .= read_response($fp); // message after login
 
-				plugin_servcheck_debug('All data returned: ' . $data);
+				servcheck_debug('All data returned: ' . $data);
 			} else {
-				plugin_servcheck_debug('No credential set, finishing' . $data);
+				servcheck_debug('No credential set, finishing' . $data);
 			}
 
 			send($fp, "QUIT");
@@ -201,7 +201,7 @@ function mail_try ($test) {
 
 		case 'smtptls':
 
-			plugin_servcheck_debug('Trying to connect ' . 'tcp://' . $test['hostname']);
+			servcheck_debug('Trying to connect ' . 'tcp://' . $test['hostname']);
 
 			$fp = stream_socket_client(
 				'tcp://' . $test['hostname'],
@@ -218,7 +218,7 @@ function mail_try ($test) {
 				return $results;
 			}
 
-			plugin_servcheck_debug('Connected');
+			servcheck_debug('Connected');
 
 			$data .= read_response($fp); // welcome banner
 
@@ -243,7 +243,7 @@ function mail_try ($test) {
 			}
 
 			if ($test['checkcert'] || $test['certexpirenotify']) {
-				plugin_servcheck_debug('Gathering certificate information');
+				servcheck_debug('Gathering certificate information');
 				$context = stream_context_get_options($fp);
 				$certinfo = openssl_x509_parse($context['ssl']['peer_certificate']);
 				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
@@ -263,10 +263,10 @@ function mail_try ($test) {
 				send($fp, base64_encode($credential['password']));
 				$data .= read_response($fp);
 
-				plugin_servcheck_debug('Data returned after EHLO: ' . $data);
+				servcheck_debug('Data returned after EHLO: ' . $data);
 
 			} else {
-				plugin_servcheck_debug('No credential set, finishing' . $data);
+				servcheck_debug('No credential set, finishing' . $data);
 			}
 
 			send($fp, "QUIT");
@@ -281,7 +281,7 @@ function mail_try ($test) {
 
 			$method = $service == 'imaps' ? 'ssl' : 'tcp';
 
-			plugin_servcheck_debug('Trying to connect ' . $method . '://' . $test['hostname']);
+			servcheck_debug('Trying to connect ' . $method . '://' . $test['hostname']);
 
 			$fp = stream_socket_client(
 				$method . '://' . $test['hostname'],
@@ -298,10 +298,10 @@ function mail_try ($test) {
 				return $results;
 			}
 
-			plugin_servcheck_debug('Connected');
+			servcheck_debug('Connected');
 
 			if ($service == 'imaps' && ($test['checkcert'] || $test['certexpirenotify'])) {
-				plugin_servcheck_debug('Gathering certificate information');
+				servcheck_debug('Gathering certificate information');
 				$con_params = stream_context_get_params($fp);
 				$certinfo = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
 				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
@@ -310,7 +310,7 @@ function mail_try ($test) {
 			$data .= fgets($fp); // welcome banner
 
 			if ($service == 'imaptls') {
-				plugin_servcheck_debug('Trying STARTTLS');
+				servcheck_debug('Trying STARTTLS');
 
 				send($fp, 'A002 STARTTLS');
 				$data .= read_response_imap($fp, 'A002');
@@ -322,7 +322,7 @@ function mail_try ($test) {
 				}
 
 				if ($test['checkcert'] || $test['certexpirenotify']) {
-					plugin_servcheck_debug('Gathering certificate information');
+					servcheck_debug('Gathering certificate information');
 					$context = stream_context_get_options($fp);
 					$certinfo = openssl_x509_parse($context['ssl']['peer_certificate']);
 					$results['cert_valid_to'] = $certinfo['validTo_time_t'];
@@ -332,7 +332,7 @@ function mail_try ($test) {
 			if ($test['cred_id'] > 0) {
 
 				if (stripos($data, 'auth=plain') !== false) {
-					plugin_servcheck_debug('Trying to authenticate - method=plain');
+					servcheck_debug('Trying to authenticate - method=plain');
 					send($fp, 'A010 AUTHENTICATE PLAIN');
 					$data .= read_response_imap($fp, 'A010');
 					send($fp, base64_encode("\0" . $credential['username'] . "\0" . $credential['password']));
@@ -340,7 +340,7 @@ function mail_try ($test) {
 
 
 				} else if (stripos($data, 'auth=login') !== false) {
-					plugin_servcheck_debug('Trying to authenticate - method=login');
+					servcheck_debug('Trying to authenticate - method=login');
 					send($fp, 'A010 AUTHENTICATE LOGIN');
 					$data .= read_response_imap($fp, 'A010');
 					send($fp, base64_encode($credential['username']));
@@ -349,7 +349,7 @@ function mail_try ($test) {
 					$data .= read_response_imap($fp);
 				}
 
-				plugin_servcheck_debug('Reading messages');
+				servcheck_debug('Reading messages');
 				send($fp, 'A020 SELECT INBOX');
 				$data .= read_response_imap($fp, 'A020');
 			}
@@ -365,7 +365,7 @@ function mail_try ($test) {
 
 			$method = $service == 'pop3s' ? 'ssl' : 'tcp';
 
-			plugin_servcheck_debug('Trying to connect ' . $method . '://' . $test['hostname']);
+			servcheck_debug('Trying to connect ' . $method . '://' . $test['hostname']);
 
 			$fp = stream_socket_client(
 				$method . '://' . $test['hostname'],
@@ -382,19 +382,19 @@ function mail_try ($test) {
 				return $results;
 			}
 
-			plugin_servcheck_debug('Connected');
+			servcheck_debug('Connected');
 
 			$data .= fgets($fp); // welcome banner
 
 			if ($service == 'pop3s' && ($test['checkcert'] || $test['certexpirenotify'])) {
-				plugin_servcheck_debug('Gathering certificate information');
+				servcheck_debug('Gathering certificate information');
 				$con_params = stream_context_get_params($fp);
 				$certinfo = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
 				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
 			}
 
 			if ($service == 'pop3tls') {
-				plugin_servcheck_debug('Trying STARTTLS');
+				servcheck_debug('Trying STARTTLS');
 
 				send($fp, 'A002 STARTTLS');
 				$data .= fgets($fp);
@@ -406,7 +406,7 @@ function mail_try ($test) {
 				}
 
 				if ($test['checkcert'] || $test['certexpirenotify']) {
-					plugin_servcheck_debug('Gathering certificate information');
+					servcheck_debug('Gathering certificate information');
 					$context = stream_context_get_options($fp);
 					$certinfo = openssl_x509_parse($context['ssl']['peer_certificate']);
 					$results['cert_valid_to'] = $certinfo['validTo_time_t'];
@@ -414,13 +414,13 @@ function mail_try ($test) {
 			}
 
 			if ($test['cred_id'] > 0) {
-				plugin_servcheck_debug('Trying to authenticate');
+				servcheck_debug('Trying to authenticate');
 				send($fp, 'USER ' . $credential['username']);
 				$data .= fgets($fp);
 				send($fp, 'PASS ' . $credential['password']);
 				$data .= fgets($fp);
 
-				plugin_servcheck_debug('Reading number of messages');
+				servcheck_debug('Reading number of messages');
 				send($fp, 'STAT');
 				$data .= fgets($fp);
 			}
@@ -444,11 +444,11 @@ function mail_try ($test) {
 
 	$results['data'] = $data;
 
-	plugin_servcheck_debug('Result: ' . clean_up_lines(var_export($data, true)));
+	servcheck_debug('Result: ' . clean_up_lines(var_export($data, true)));
 
 	if ($test['ca_id'] > 0) {
 		unlink ($own_ca_info);
-		plugin_servcheck_debug('Removing own CA file');
+		servcheck_debug('Removing own CA file');
 	}
 
 	if (empty($results['data'])) {
@@ -465,20 +465,20 @@ function mail_try ($test) {
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
 
-		plugin_servcheck_debug('Processing search_failed');
+		servcheck_debug('Processing search_failed');
 
 		if (strpos($data, $test['search_failed']) !== false) {
-			plugin_servcheck_debug('Search failed string success');
+			servcheck_debug('Search failed string success');
 			$results['result_search'] = 'failed ok';
 			return $results;
 		}
 	}
 
-	plugin_servcheck_debug('Processing search');
+	servcheck_debug('Processing search');
 
 	if ($test['search'] != '') {
 		if (strpos($data, $test['search']) !== false) {
-			plugin_servcheck_debug('Search string success');
+			servcheck_debug('Search string success');
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
@@ -489,10 +489,10 @@ function mail_try ($test) {
 
 	if ($test['search_maint'] != '') {
 
-		plugin_servcheck_debug('Processing search maint');
+		servcheck_debug('Processing search maint');
 
 		if (strpos($data, $test['search_maint']) !== false) {
-			plugin_servcheck_debug('Search maint string success');
+			servcheck_debug('Search maint string success');
 			$results['result_search'] = 'maint ok';
 			return $results;
 		}
@@ -500,8 +500,6 @@ function mail_try ($test) {
 
 	return $results;
 }
-
-
 
 function send($fp, $cmd) {
 	fwrite($fp, $cmd . "\r\n");

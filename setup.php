@@ -22,8 +22,6 @@
  +-------------------------------------------------------------------------+
 */
 
-include_once(__DIR__ . '/includes/arrays.php');
-
 function plugin_servcheck_install () {
 	api_plugin_register_hook('servcheck', 'draw_navigation_text', 'plugin_servcheck_draw_navigation_text', 'setup.php');
 	api_plugin_register_hook('servcheck', 'config_arrays',        'plugin_servcheck_config_arrays',        'setup.php');
@@ -57,7 +55,7 @@ function plugin_servcheck_check_config () {
 function plugin_servcheck_upgrade() {
 	global $config;
 
-	include_once(__DIR__ . '/includes/functions.php');
+	require_once(__DIR__ . '/includes/functions.php');
 
 	$info = plugin_servcheck_version();
 	$new  = $info['version'];
@@ -421,7 +419,7 @@ function plugin_servcheck_setup_table() {
 function plugin_servcheck_poller_bottom() {
 	global $config;
 
-	include_once($config['library_path'] . '/database.php');
+	require_once($config['library_path'] . '/database.php');
 
 	$command_string = trim(read_config_option('path_php_binary'));
 

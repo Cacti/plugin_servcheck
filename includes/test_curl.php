@@ -60,17 +60,17 @@ function curl_try ($test) {
 			array($test['cred_id']));
 
 		if (!$cred) {
-			plugin_servcheck_debug('Credential is set but not found!' , $test);
+			servcheck_debug('Credential is set but not found!');
 			cacti_log('Credential not found');
 			$results['result'] = 'error';
 			$results['error'] = 'Credential not found';
 			return $results;
 		} else {
-			plugin_servcheck_debug('Decrypting credential' , $test);
+			servcheck_debug('Decrypting credential');
 			$credential = servcheck_decrypt_credential($test['cred_id']);
 
 			if (empty($credential)) {
-				plugin_servcheck_debug('Credential is empty!' , $test);
+				servcheck_debug('Credential is empty!');
 				cacti_log('Credential is empty');
 				$results['result'] = 'error';
 				$results['error'] = 'Credential is empty';
@@ -92,7 +92,7 @@ function curl_try ($test) {
 		}
 		// By first listing the hostname with a dash in front, it will clear the host from the cache
 		$options[CURLOPT_RESOLVE] = array('-' . $test['hostname'], $test['hostname'] . ':' . $test['ipaddress']);
-		plugin_servcheck_debug('Using CURLOPT_RESOLVE: ' . $test['hostname'] . ':' . $test['ipaddress'] , $test);
+		servcheck_debug('Using CURLOPT_RESOLVE: ' . $test['hostname'] . ':' . $test['ipaddress']);
 	}
 
 	// basic auth
@@ -119,7 +119,7 @@ function curl_try ($test) {
 
 	if ($test['ca_id'] > 0) {
 		$ca_file = $config['base_path'] . '/plugins/servcheck/tmp_data/ca_cert_' . $test['ca_id'] . '.pem'; // The folder /plugins/servcheck/tmp_data does exist, hence the ca_cert_x.pem can be created here
-		plugin_servcheck_debug('Preparing own CA chain file ' . $ca_file , $test);
+		servcheck_debug('Preparing own CA chain file ' . $ca_file);
 		// CURLOPT_CAINFO is to updated based on the custom CA certificate
 		$options[CURLOPT_CAINFO] = $ca_file;
 
@@ -165,17 +165,17 @@ function curl_try ($test) {
 						array($proxy['cred_id']));
 
 					if (!$cred) {
-						plugin_servcheck_debug('Proxy credential is set but not found!' , $test);
+						servcheck_debug('Proxy credential is set but not found!');
 						cacti_log('Credential not found');
 						$results['result'] = 'error';
 						$results['error'] = 'Credential not found';
 						return $results;
 					} else {
-						plugin_servcheck_debug('Decrypting proxy credential' , $test);
+						servcheck_debug('Decrypting proxy credential');
 						$proxy_cred = servcheck_decrypt_credential($proxy['cred_id']);
 
 						if (empty($proxy_cred)) {
-							plugin_servcheck_debug('Proxy credential is empty!' , $test);
+							servcheck_debug('Proxy credential is empty!');
 							cacti_log('Credential is empty');
 							$results['result'] = 'error';
 							$results['error'] = 'Credential is empty';
@@ -195,7 +195,7 @@ function curl_try ($test) {
 
 		if (($test['checkcert'] || $test['certexpirenotify']) && $test['type'] == 'web_http') {
 			cacti_log('ERROR: Check certificate is enabled but it is http connection, skipping test');
-			plugin_servcheck_debug('ERROR: Check certificate or certificate expiration is enabled but it is http connection, skipping test');
+			servcheck_debug('ERROR: Check certificate or certificate expiration is enabled but it is http connection, skipping test');
 		}
 	}
 
@@ -215,15 +215,15 @@ function curl_try ($test) {
 
 	$url = $service . '://' . $final_cred . $test['hostname'] . $test['path'];
 
-	plugin_servcheck_debug('Final url is ' . $url , $test);
+	servcheck_debug('Final url is ' . $url);
 
 	$process = curl_init($url);
 
-	plugin_servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
+	servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
 
 	curl_setopt_array($process,$options);
 
-	plugin_servcheck_debug('Executing curl request', $test);
+	servcheck_debug('Executing curl request');
 
 	$data = curl_exec($process);
 	$data = str_replace(array("'", "\\"), array(''), $data);
@@ -234,13 +234,13 @@ function curl_try ($test) {
 
 	$results['curl_return'] = curl_errno($process);
 
-	plugin_servcheck_debug('cURL error: ' . $results['curl_return']);
+	servcheck_debug('cURL error: ' . $results['curl_return']);
 
-	plugin_servcheck_debug('Result: ' . clean_up_lines(var_export($data, true)));
+	servcheck_debug('Result: ' . clean_up_lines(var_export($data, true)));
 
 	if ($test['ca_id'] > 0) {
 		unlink ($ca_file);
-		plugin_servcheck_debug('Removing own CA file');
+		servcheck_debug('Removing own CA file');
 	}
 
 	if (empty($results['data']) && $results['curl_return'] > 0) {
@@ -275,20 +275,20 @@ function curl_try ($test) {
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
 
-		plugin_servcheck_debug('Processing search_failed');
+		servcheck_debug('Processing search_failed');
 
 		if (strpos($data, $test['search_failed']) !== false) {
-			plugin_servcheck_debug('Search failed string success');
+			servcheck_debug('Search failed string success');
 			$results['result_search'] = 'failed ok';
 			return $results;
 		}
 	}
 
-	plugin_servcheck_debug('Processing search');
+	servcheck_debug('Processing search');
 
 	if ($test['search'] != '') {
 		if (strpos($data, $test['search']) !== false) {
-			plugin_servcheck_debug('Search string success');
+			servcheck_debug('Search string success');
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
@@ -299,10 +299,10 @@ function curl_try ($test) {
 
 	if ($test['search_maint'] != '') {
 
-		plugin_servcheck_debug('Processing search maint');
+		servcheck_debug('Processing search maint');
 
 		if (strpos($data, $test['search_maint']) !== false) {
-			plugin_servcheck_debug('Search maint string success');
+			servcheck_debug('Search maint string success');
 			$results['result_search'] = 'maint ok';
 			return $results;
 		}
@@ -310,7 +310,7 @@ function curl_try ($test) {
 
 	if ($test['requiresauth'] != '') {
 
-		plugin_servcheck_debug('Processing requires no authentication required');
+		servcheck_debug('Processing requires no authentication required');
 
 		if ($results['options']['http_code'] != 401) {
 			$results['result'] = 'error';

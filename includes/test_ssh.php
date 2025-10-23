@@ -49,9 +49,9 @@ function ssh_try ($test) {
 		$test['hostname'] .=  ':' . $service_types_ports[$test['type']];
 	}
 
-	plugin_servcheck_debug('Final address is ' . $test['hostname'] , $test);
+	servcheck_debug('Final address is ' . $test['hostname']);
 
-	plugin_servcheck_debug('Creating ssh connection' , $test);
+	servcheck_debug('Creating ssh connection');
 
 	if ($service == 'command') {
 		$ssh = new \phpseclib3\Net\SSH2($test['hostname']);
@@ -66,17 +66,17 @@ function ssh_try ($test) {
 			array($test['cred_id']));
 
 		if (!$cred) {
-			plugin_servcheck_debug('Credential is set but not found!' , $test);
+			servcheck_debug('Credential is set but not found!');
 			cacti_log('Credential not found');
 			$results['result'] = 'error';
 			$results['error'] = 'Credential not found';
 			return $results;
 		} else {
-			plugin_servcheck_debug('Decrypting credential' , $test);
+			servcheck_debug('Decrypting credential');
 			$credential = servcheck_decrypt_credential($test['cred_id']);
 
 			if (empty($cred)) {
-				plugin_servcheck_debug('Credential is empty!' , $test);
+				servcheck_debug('Credential is empty!');
 				cacti_log('Credential is empty');
 				$results['result'] = 'error';
 				$results['error'] = 'Credential is empty';
@@ -84,7 +84,7 @@ function ssh_try ($test) {
 			}
 			
 			if ($cred['type'] != 'userpass' && $cred['type'] != 'sshkey') {
-				plugin_servcheck_debug('Incorrect credential type, use user/pass or sshkey' , $test);
+				servcheck_debug('Incorrect credential type, use user/pass or sshkey');
 				cacti_log('Incorrect credential type, use user/pass or sshkey');
 				$results['result'] = 'error';
 				$results['error'] = 'Incorrect credential type';
@@ -92,7 +92,7 @@ function ssh_try ($test) {
 			}
 		}
 	} else {
-		plugin_servcheck_debug('Credential is not set!' , $test);
+		servcheck_debug('Credential is not set!');
 		cacti_log('Credential is not set');
 		$results['result'] = 'error';
 		$results['error'] = 'Credential is not set';
@@ -100,7 +100,7 @@ function ssh_try ($test) {
 	}
 
 	if ($cred['type'] == 'sshkey') {
-		plugin_servcheck_debug('Preparing ssh private key file' , $test);
+		servcheck_debug('Preparing ssh private key file');
 
 		$keyfilename = $config['base_path'] . '/plugins/servcheck/tmp_data/sshkey_' . $cred['id'];
 		$keyfile = fopen($keyfilename, 'w+');
@@ -115,10 +115,10 @@ function ssh_try ($test) {
 			}
 
 			if (!$ssh->login($credential['ssh_username'], $key)) {
-				plugin_servcheck_debug('Connection failed', $test);
+				servcheck_debug('Connection failed');
 
 				$errors = $ssh->getStdError();
-				plugin_servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+				servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
 
 				$results['result'] = 'error';
 				$results['error'] = 'Connection failed';
@@ -133,10 +133,10 @@ function ssh_try ($test) {
 		}
 	} elseif ($cred['type'] == 'userpass') {
 		if (!$ssh->login($credential['username'], $credential['password'])) {
-			plugin_servcheck_debug('Connection failed', $test);
+			servcheck_debug('Connection failed');
 
 			$errors = $ssh->getStdError();
-			plugin_servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+			servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
 
 			$results['result'] = 'error';
 			$results['error'] = 'Connection failed';
@@ -144,7 +144,7 @@ function ssh_try ($test) {
 		}
 	}
 
-	plugin_servcheck_debug('Connected, running command ' . $test['ssh_command'], $test);
+	servcheck_debug('Connected, running command ' . $test['ssh_command']);
 
 	if ($service == 'command') {
 		$data = $ssh->exec($test['ssh_command']);
@@ -153,9 +153,9 @@ function ssh_try ($test) {
 	}
 
 	$errors = $ssh->getStdError();
-	plugin_servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+	servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
 
-	plugin_servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
+	servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
 
 	$results['result'] = 'ok';
 	$results['error'] = 'Some data returned';
@@ -164,26 +164,26 @@ function ssh_try ($test) {
 
 	if (isset($key_filename)) {
 		unlink ($key_filename);
-		plugin_servcheck_debug('Removing private key file');
+		servcheck_debug('Removing private key file');
 	}
 
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
 
-		plugin_servcheck_debug('Processing search_failed');
+		servcheck_debug('Processing search_failed');
 
 		if (strpos($data, $test['search_failed']) !== false) {
-			plugin_servcheck_debug('Search failed string success');
+			servcheck_debug('Search failed string success');
 			$results['result_search'] = 'failed ok';
 			return $results;
 		}
 	}
 
-	plugin_servcheck_debug('Processing search');
+	servcheck_debug('Processing search');
 
 	if ($test['search'] != '') {
 		if (strpos($data, $test['search']) !== false) {
-			plugin_servcheck_debug('Search string success');
+			servcheck_debug('Search string success');
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
@@ -194,10 +194,10 @@ function ssh_try ($test) {
 
 	if ($test['search_maint'] != '') {
 
-		plugin_servcheck_debug('Processing search maint');
+		servcheck_debug('Processing search maint');
 
 		if (strpos($data, $test['search_maint']) !== false) {
-			plugin_servcheck_debug('Search maint string success');
+			servcheck_debug('Search maint string success');
 			$results['result_search'] = 'maint ok';
 			return $results;
 		}

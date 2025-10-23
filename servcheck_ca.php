@@ -23,9 +23,9 @@
 */
 
 chdir('../../');
-include_once('./include/auth.php');
-include_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
-include($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
+require_once('./include/auth.php');
+require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
+require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
 $servcheck_actions_menu = array(
 	1 => __('Delete', 'servcheck'),
@@ -146,6 +146,13 @@ function form_save() {
 		$save['name'] = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
 		$save['cert'] = form_input_validate(get_nfilter_request_var('cert'), 'cert', '^-----BEGIN CERTIFICATE-----.*', false, 3);
 
+		if ($save['id'] > 0 && isset($_SESSION['sess_error_fields']) && cacti_sizeof($_SESSION['sess_error_fields'])) {
+			foreach ($_SESSION['sess_error_fields'] as $item) {
+				unset($save[$item], $_SESSION['sess_error_fields'][$item]);
+			}
+			clear_messages();
+		}
+
 		if (!is_error_message()) {
 			$saved_id = sql_save($save, 'plugin_servcheck_ca');
 
@@ -173,7 +180,6 @@ function data_edit() {
 	/* ==================================================== */
 
 	$data = array();
-	$cred = array();
 
 	if (!isempty_request_var('id')) {
 		$data = db_fetch_row_prepared('SELECT *

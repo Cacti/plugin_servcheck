@@ -37,7 +37,7 @@ function dns_try ($test) {
 
 	list($category,$service) = explode('_', $test['type']);
 
-	plugin_servcheck_debug('Querying ' . $test['hostname'] . ' for record ' . $test['dns_query']);
+	servcheck_debug('Querying ' . $test['hostname'] . ' for record ' . $test['dns_query']);
 
 	$a = new mxlookup($test['dns_query'], $test['hostname'], $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 3) : 5);
 
@@ -46,7 +46,7 @@ function dns_try ($test) {
 		$results['error'] = 'Server did not respond';
 		$results['result_search'] = 'not tested';
 
-		plugin_servcheck_debug('Test failed: ' . $results['error']);
+		servcheck_debug('Test failed: ' . $results['error']);
 	} else {
 		foreach ($a->arrMX as $m) {
 			$results['data'] .= "$m\n";
@@ -55,25 +55,25 @@ function dns_try ($test) {
 		$results['result'] = 'ok';
 		$results['error'] = 'Some data returned';
 
-		plugin_servcheck_debug('Result is ' . $results['data']);
+		servcheck_debug('Result is ' . $results['data']);
 
 		// If we have set a failed search string, then ignore the normal searches and only alert on it
 		if ($test['search_failed'] != '') {
-			plugin_servcheck_debug('Processing search_failed');
+			servcheck_debug('Processing search_failed');
 
 			if (strpos($results['data'], $test['search_failed']) !== false) {
-				plugin_servcheck_debug('Search failed string success');
+				servcheck_debug('Search failed string success');
 				$results['result'] = 'ok';
 				$results['result_search'] = 'failed ok';
 				return $results;
 			}
 		}
 
-		plugin_servcheck_debug('Processing search');
+		servcheck_debug('Processing search');
 
 		if ($test['search'] != '') {
 			if (strpos($results['data'], $test['search']) !== false) {
-				plugin_servcheck_debug('Search string success');
+				servcheck_debug('Search string success');
 				$results['result_search'] = 'ok';
 				return $results;
 			} else {
@@ -83,9 +83,9 @@ function dns_try ($test) {
 		}
 
 		if ($test['search_maint'] != '') {
-			plugin_servcheck_debug('Processing search maint');
+			servcheck_debug('Processing search maint');
 			if (strpos($results['data'], $test['search_maint']) !== false) {
-				plugin_servcheck_debug('Search maint string success');
+				servcheck_debug('Search maint string success');
 				$results['result_search'] = 'maint ok';
 				return $results;
 			}
@@ -133,13 +133,13 @@ function doh_try ($test) {
 
 	$url = 'https://' . $test['hostname'] . '/' . $test['dns_query'];
 
-	plugin_servcheck_debug('Final url is ' . $url , $test);
+	servcheck_debug('Final url is ' . $url);
 
 	$process = curl_init($url);
 
 	if ($test['ca_id'] > 0) { 
 		$ca_info = $config['base_path'] . '/plugins/servcheck/cert_' . $test['ca_id'] . '.pem'; // The folder /plugins/servcheck does exist, hence the ca_cert_x.pem can be created here
-		plugin_servcheck_debug('Preparing own CA chain file ' . $ca_info , $test);
+		servcheck_debug('Preparing own CA chain file ' . $ca_info);
 		// CURLOPT_CAINFO is to updated based on the custom CA certificate
 		$options[CURLOPT_CAINFO] = $ca_info;
 
@@ -171,11 +171,11 @@ function doh_try ($test) {
 		$options[CURLOPT_CERTINFO] = true;
 	}
 
-	plugin_servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
+	servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
 
 	curl_setopt_array($process,$options);
 
-	plugin_servcheck_debug('Executing curl request', $test);
+	servcheck_debug('Executing curl request');
 
 	$data = curl_exec($process);
 	$data = str_replace(array("'", "\\"), array(''), $data);
@@ -186,13 +186,13 @@ function doh_try ($test) {
 
 	$results['curl_return'] = curl_errno($process);
 
-	plugin_servcheck_debug('cURL error: ' . $results['curl_return']);
+	servcheck_debug('cURL error: ' . $results['curl_return']);
 
-	plugin_servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
+	servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
 
 	if ($test['ca_id'] > 0) {
 		unlink ($ca_info);
-		plugin_servcheck_debug('Removing own CA file');
+		servcheck_debug('Removing own CA file');
 	}
 
 	if ($results['curl_return'] > 0) {
@@ -226,20 +226,20 @@ function doh_try ($test) {
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
 
-		plugin_servcheck_debug('Processing search_failed');
+		servcheck_debug('Processing search_failed');
 
 		if (strpos($data, $test['search_failed']) !== false) {
-			plugin_servcheck_debug('Search failed string success');
+			servcheck_debug('Search failed string success');
 			$results['result_search'] = 'failed ok';
 			return $results;
 		}
 	}
 
-	plugin_servcheck_debug('Processing search');
+	servcheck_debug('Processing search');
 
 	if ($test['search'] != '') {
 		if (strpos($data, $test['search']) !== false) {
-			plugin_servcheck_debug('Search string success');
+			servcheck_debug('Search string success');
 			$results['result_search'] = 'ok';
 			return $results;
 		} else {
@@ -250,10 +250,10 @@ function doh_try ($test) {
 
 	if ($test['search_maint'] != '') {
 
-		plugin_servcheck_debug('Processing search maint');
+		servcheck_debug('Processing search maint');
 
 		if (strpos($data, $test['search_maint']) !== false) {
-			plugin_servcheck_debug('Search maint string success');
+			servcheck_debug('Search maint string success');
 			$results['result_search'] = 'maint ok';
 			return $results;
 		}

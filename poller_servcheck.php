@@ -195,8 +195,8 @@ $end   = microtime(true);
 $ttime = round($end - $start, 2);
 
 $stats = 'Time:' . $ttime . ' Checks:' . cacti_sizeof($tests) .
-	' Results(ok/problem):' . $stat_ok . '/' . $stat_ko .
-	' Search results(ok/problem):' . $stat_search_ok . '/' . $stat_search_ko;
+	' Results (ok/problem):' . $stat_ok . '/' . $stat_ko .
+	' Search results (ok/problem):' . $stat_search_ok . '/' . $stat_search_ko;
 
 cacti_log("SERVCHECK STATS: $stats", false, 'SYSTEM');
 

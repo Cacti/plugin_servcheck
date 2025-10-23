@@ -1,9 +1,11 @@
 # ChangeLog
 
 --- develop ---
-  !!! IMPORTANT - A lot of changes in 0.3. I tried to convert old data.
-  !!! The update will create a copy of the MySQL tables in case of errors or data loss.
 
+--- 0.3 ---
+
+! IMPORTANT - A lot of changes in 0.3. I tried to convert old data.
+! The update will create a copy of the MySQL tables in case of errors or data loss.
 
 * feature: Enhance the usage of custom certificate
 * feature: Add certificate expiration notification, add this check to all tests with certificates

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2025-10-23 19:18+0000\n"
+"PO-Revision-Date: 2025-10-27 10:09+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://translate.cacti.net/projects/cacti/servcheck/"
 "sv/>\n"
@@ -25,7 +25,7 @@ msgstr "Sträng hittades"
 
 #: includes/arrays.php:34
 msgid "String not found"
-msgstr "Det gick inte att hitta strängen"
+msgstr "Strängen hittades inte"
 
 #: includes/arrays.php:35
 msgid "Failed string found"
@@ -61,7 +61,7 @@ msgstr "SMTP-klartext, standardport 25 (eller 587 för överföring)"
 
 #: includes/arrays.php:47
 msgid "SMTP with STARTTLS, default port 25(or 587 for submission)"
-msgstr "SMTP med STARTTLS, standardport 25 (eller 587 för inlämning)"
+msgstr "SMTP med STARTTLS, standardport 25 (eller 587 för överföring)"
 
 #: includes/arrays.php:48
 msgid "SMTP encrypted (SMTPS), default port 465"
@@ -81,7 +81,7 @@ msgstr "IMAP-krypterad (IMAPS), standardport 993"
 
 #: includes/arrays.php:54
 msgid "POP3 plaintext, default port 110"
-msgstr "POP3 klartext, standardport 110"
+msgstr "POP3-klartext, standardport 110"
 
 #: includes/arrays.php:55
 msgid "POP3 with STARTTLS, default port 110"
@@ -155,7 +155,7 @@ msgstr "Fortsätt"
 
 #: includes/arrays.php:123
 msgid "Switching Protocols"
-msgstr "Byta protokoll"
+msgstr "Byter protokoll"
 
 #: includes/arrays.php:124
 msgid "OK"
@@ -191,7 +191,7 @@ msgstr "Flera val"
 
 #: includes/arrays.php:132
 msgid "Moved Permanently"
-msgstr "Flyttas permanent"
+msgstr "Flyttad permanent"
 
 #: includes/arrays.php:133
 msgid "Found"
@@ -203,7 +203,7 @@ msgstr "Se andra"
 
 #: includes/arrays.php:135
 msgid "Not Modified"
-msgstr "Ej modifierad"
+msgstr "Inte modifierad"
 
 #: includes/arrays.php:136
 msgid "Use Proxy"
@@ -239,7 +239,7 @@ msgstr "Hittades inte"
 
 #: includes/arrays.php:144
 msgid "Method Not Allowed"
-msgstr "Metod som inte är tillåten"
+msgstr "Metoden är inte tillåten"
 
 #: includes/arrays.php:145
 msgid "Not Acceptable"
@@ -251,7 +251,7 @@ msgstr "Proxy-autentisering krävs"
 
 #: includes/arrays.php:147
 msgid "Request Timeout"
-msgstr "Timeout för begäran"
+msgstr "Tidsgräns för begäran"
 
 #: includes/arrays.php:148
 msgid "Conflict"
@@ -263,7 +263,7 @@ msgstr "Borta"
 
 #: includes/arrays.php:150
 msgid "Length Required"
-msgstr "Längd som krävs"
+msgstr "Längd krävs"
 
 #: includes/arrays.php:151
 msgid "Precondition Failed"
@@ -275,15 +275,15 @@ msgstr "Begärandeentiteten är för stor"
 
 #: includes/arrays.php:153
 msgid "Request-URI Too Long"
-msgstr "Request-URI är för lång"
+msgstr "Begärans-URI är för lång"
 
 #: includes/arrays.php:154
 msgid "Unsupported Media Type"
-msgstr "Medietyp som inte stöds"
+msgstr "Medietyp stöds inte"
 
 #: includes/arrays.php:155
 msgid "Requested Range Not Satisfiable"
-msgstr "Begärt intervall kan inte uppfyllas"
+msgstr "Begärt intervall inte uppfylld"
 
 #: includes/arrays.php:156
 msgid "Expectation Failed"
@@ -307,7 +307,7 @@ msgstr "Tjänsten går inte att nå"
 
 #: includes/arrays.php:161
 msgid "Gateway Timeout"
-msgstr "Gateway tidsgräns"
+msgstr "Tidsgräns för gateway överstegs"
 
 #: includes/arrays.php:162
 msgid "HTTP Version Not Supported"
@@ -316,14 +316,14 @@ msgstr "HTTP-versionen stöds inte"
 #: includes/arrays.php:166
 #, php-format
 msgid "%d Poller run"
-msgstr "%d Poller-körning"
+msgstr "%d pollare kör"
 
 #: includes/arrays.php:167 includes/arrays.php:168 includes/arrays.php:169
 #: includes/arrays.php:170 includes/arrays.php:171 includes/arrays.php:172
 #: includes/arrays.php:173 includes/arrays.php:174 includes/arrays.php:175
 #, php-format
 msgid "%d Poller runs"
-msgstr "%d Poller körs"
+msgstr "%d pollare körs"
 
 #: includes/arrays.php:179 includes/arrays.php:180 includes/arrays.php:181
 #: includes/arrays.php:182 includes/arrays.php:183 includes/arrays.php:184
@@ -359,7 +359,7 @@ msgstr "Ett användbart namn för denna CA-kedja."
 
 #: includes/arrays.php:235
 msgid "New CA"
-msgstr "Ny certifikatutfärdare"
+msgstr "Ny CA"
 
 #: includes/arrays.php:238 includes/arrays.php:361
 msgid "CA Chain"
@@ -450,7 +450,7 @@ msgstr "Pollare"
 
 #: includes/arrays.php:335
 msgid "Poller on which the test will run"
-msgstr "Poller som testet ska köras på"
+msgstr "Pollare som testet ska köras med"
 
 #: includes/arrays.php:340
 msgid "Type of service"
@@ -466,11 +466,11 @@ msgstr "IP-adress eller DNS-namn för server"
 
 #: includes/arrays.php:351
 msgid "You can specify another port (example.com:5000) otherwise default will be used"
-msgstr "Du kan ange en annan port (example.com:5000), annars används standard"
+msgstr "Du kan ange en annan port (exempel.se:5000), annars används standard"
 
 #: includes/arrays.php:358
 msgid "Service settings"
-msgstr "Inställningar för tjänster"
+msgstr "Tjänsteinställningar"
 
 #: includes/arrays.php:363 includes/arrays.php:421 includes/arrays.php:512
 #: servcheck_test.php:477
@@ -479,7 +479,7 @@ msgstr "Ingen"
 
 #: includes/arrays.php:365
 msgid "Your own CA and intermediate certs"
-msgstr "Din egen certifikatutfärdare och mellanliggande certifikat"
+msgstr "Din egen CA (certifikatutfärdare) och mellanliggande certifikat"
 
 #: includes/arrays.php:370 servcheck_proxies.php:285
 msgid "Username"
@@ -489,7 +489,8 @@ msgstr "Användarnamn"
 msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
 msgstr ""
 "Med autentisering får testet mer information. För LDAP något i stil med "
-"cn=John Doe,OU=anygroup,DC=example,DC=com. För smb använder du DOMAIN/user"
+"cn=Johan Johansson,OU=någongrupp,DC=exempel,DC=se. För smb använder du DOMÄN/"
+"användare"
 
 #: includes/arrays.php:380
 msgid "For anonymous ftp insert email address here."
@@ -501,7 +502,7 @@ msgstr "LDAP-sökning"
 
 #: includes/arrays.php:388
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
-msgstr "LDAP-sökfilter, det kan vara ,OU = anygroup, DC = example, DC = com"
+msgstr "LDAP-sökfilter, det kan vara ,OU=någongrupp,DC=exempel,DC=se"
 
 #: includes/arrays.php:395
 msgid "DNS Name for Query"
@@ -513,14 +514,14 @@ msgstr "DNS-namn för frågor"
 
 #: includes/arrays.php:403
 msgid "Path Part of URL"
-msgstr "Sökväg Del av URL"
+msgstr "Sökvägsdel av URL"
 
 #: includes/arrays.php:404
 msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
 msgstr ""
-"För webbtjänsten anger du minst \"/\" eller något i stil med \"/any/path/\". "
-"För FTP-listning måste sluta med tecken \"/\". För TFTP/SCP/SMB ladda ner "
-"testinsats /sökväg/fil"
+"För webbtjänsten anger du minst \"/\" eller något i stil med "
+"\"/någon/sökväg/\". För FTP-listning måste sluta med tecken \"/\". För TFTP/"
+"SCP/SMB-nedladdningtest, infoga /sökväg/fil"
 
 #: includes/arrays.php:411
 msgid "Requires Authentication"
@@ -574,7 +575,7 @@ msgstr "Hur ofta ska testet utföras"
 
 #: includes/arrays.php:448
 msgid "Test each poller cycle or less"
-msgstr "Testa varje pollercykel eller mindre"
+msgstr "Testa varje pollarecykel eller mindre"
 
 #: includes/arrays.php:452
 msgid "Trigger"
@@ -583,9 +584,9 @@ msgstr "Utlösare"
 #: includes/arrays.php:456
 msgid "How many poller cycles must be down before it will send an alert. After an alert is sent, in order for a 'Site Recovering' Email to be send, it must also be up this number of poller cycles."
 msgstr ""
-"Hur många pollercykler som måste vara nere innan en varning skickas. Efter "
+"Hur många pollarecykler som måste vara nere innan en varning skickas. Efter "
 "att en varning har skickats måste den också vara uppe det här antalet "
-"pollercykler för att ett e-postmeddelande om att \"platsen återhämtar sig\" "
+"pollarecykler för att ett e-postmeddelande om att \"platsen återhämtar sig\" "
 "ska kunna skickas."
 
 #: includes/arrays.php:460
@@ -619,7 +620,7 @@ msgstr "Söksträng för svar - Underhåll"
 #: includes/arrays.php:482
 msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
 msgstr ""
-"Detta är den sträng som ska sökas efter i underhållet.  Servicekontrollen "
+"Detta är den sträng som ska sökas efter i underhållet.  Tjänstekontrollen "
 "söker efter denna sträng om ovanstående sträng inte hittas.  Om den hittas "
 "betyder det att tjänsten är under underhåll."
 
@@ -631,12 +632,12 @@ msgstr "Söksträng för svar - Misslyckades"
 msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
 msgstr ""
 "Detta är den sträng som ska användas för att söka efter ett känt fel i "
-"servicesvaret.  Servicekontrollen varnar endast om den här strängen hittas, "
-"och ignorerar eventuella timeoutproblem och söksträngarna ovan."
+"tjänstesvaret.  Tjänstekontrollen varnar endast om den här strängen hittas, "
+"och ignorerar eventuella tidsgränsproblem och söksträngarna ovan."
 
 #: includes/arrays.php:497
 msgid "Notification Settings"
-msgstr "Inställningar för aviseringar"
+msgstr "Aviseringsinställningar"
 
 #: includes/arrays.php:500
 msgid "Notify Format"
@@ -648,7 +649,7 @@ msgstr "Detta är det format som ska användas när du skickar e-postmeddelandet
 
 #: includes/arrays.php:507
 msgid "Notification List"
-msgstr "Notifieringslista"
+msgstr "Aviseringslista"
 
 #: includes/arrays.php:509
 msgid "Use this Notification List for those to be notified when this service goes down."
@@ -658,7 +659,7 @@ msgstr ""
 
 #: includes/arrays.php:515
 msgid "Notify Accounts"
-msgstr "Avisera konton"
+msgstr "Aviseringskonton"
 
 #: includes/arrays.php:517
 msgid "This is a listing of accounts that will be notified when this service goes down."
@@ -668,7 +669,7 @@ msgstr ""
 
 #: includes/arrays.php:522
 msgid "Extra Alert Emails"
-msgstr "Extra varningsmeddelanden"
+msgstr "Extra larmmeddelanden"
 
 #: includes/arrays.php:526
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
@@ -686,11 +687,11 @@ msgstr "Anteckningar som skickas via e-post"
 
 #: includes/arrays.php:538
 msgid "External ID"
-msgstr "Extern ID"
+msgstr "Externt id"
 
 #: includes/arrays.php:540
 msgid "Enter an Eternal ID for this Thold Template."
-msgstr "Ange ett evigt ID för den här hållmallen."
+msgstr "Ange ett Eternal ID för den här tröskelmallen."
 
 #: includes/arrays.php:555
 msgid "All fine. Proceed as usual."
@@ -727,16 +728,16 @@ msgstr ""
 #: includes/arrays.php:575
 msgid "Could not resolve proxy. The given proxy host could not be resolved."
 msgstr ""
-"Det gick inte att lösa proxyn. Det gick inte att lösa den angivna "
-"proxyvärden."
+"Kunde inte slå upp proxyn. Det gick inte att slå upp den angivna proxyvärden."
 
 #: includes/arrays.php:579
 msgid "Could not resolve host. The given remote host was not resolved."
-msgstr "Det gick inte att lösa värden. Den angivna fjärrvärden löstes inte."
+msgstr ""
+"Kunde inte slå upp värden. Den angivna fjärrvärden gick inte att slå upp."
 
 #: includes/arrays.php:583
 msgid "Failed to connect() to host or proxy."
-msgstr "Det gick inte att ansluta() till värden eller proxyn."
+msgstr "Det gick inte att köra connect() till värden eller proxyn."
 
 #: includes/arrays.php:587
 msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
@@ -790,13 +791,13 @@ msgstr ""
 #: includes/arrays.php:619
 msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
 msgstr ""
-"Ett problem upptäcktes i HTTP2-inramningslagret. Detta är något generiskt "
-"och kan vara ett av flera problem, se felbufferten för mer information."
+"Ett problem upptäcktes i HTTP2 framing layer. Detta är något generiskt och "
+"kan vara ett av flera problem, se felbufferten för mer information."
 
 #: includes/arrays.php:623
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
 msgstr ""
-"Fick ett felmeddelande när jag försökte ställa in överföringsläget på binärt "
+"Fick ett felmeddelande vid försök att ställa in överföringsläget på binärt "
 "eller ASCII."
 
 #: includes/arrays.php:627
@@ -863,13 +864,13 @@ msgstr ""
 #: includes/arrays.php:663
 msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
 msgstr ""
-"En begäran om minnesallokering misslyckades. Detta är en allvarlig ondska "
-"och saker och ting är allvarligt skruvade om detta någonsin inträffar."
+"En begäran om minnesallokering misslyckades. Detta är seriöst allvarligt och "
+"saker och ting är allvarligt trasiga om detta någonsin inträffar."
 
 #: includes/arrays.php:667
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
 msgstr ""
-"Tidsgräns för åtgärd. Den angivna time-out-perioden uppnåddes enligt "
+"Tidsgräns för åtgärd. Den angivna tidsgränsperioden uppnåddes enligt "
 "villkoren."
 
 #: includes/arrays.php:675
@@ -882,8 +883,8 @@ msgstr ""
 #: includes/arrays.php:679
 msgid "The FTP REST command returned error. This should never happen if the server is sane."
 msgstr ""
-"FTP REST-kommandot returnerade fel. Detta bör aldrig hända om servern är "
-"frisk."
+"FTP REST-kommandot returnerade fel. Detta bör aldrig hända om servern mår "
+"bra."
 
 #: includes/arrays.php:687
 msgid "The server does not support or accept range requests."
@@ -925,14 +926,13 @@ msgstr "LDAP-sökningen misslyckades."
 #: includes/arrays.php:719
 msgid "Function not found. A required zlib function was not found."
 msgstr ""
-"Det gick inte att hitta funktionen. Det gick inte att hitta den nödvändiga "
-"zlib-funktionen."
+"Funktionen hittades inte. Det gick inte att hitta den nödvändiga zlib-"
+"funktionen."
 
 #: includes/arrays.php:723
 msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
 msgstr ""
-"Avbruten av återuppringning. Ett återanrop returnerade \"abort\" till "
-"libcurl."
+"Avbruten av återanrop. Ett återanrop returnerade \"abort\" till libcurl."
 
 #: includes/arrays.php:727
 msgid "A function was called with a bad parameter."
@@ -949,7 +949,7 @@ msgstr ""
 msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
 msgstr ""
 "För många omdirigeringar. När du följer omdirigeringar når libcurl det "
-"maximala beloppet. Sätt din gräns med CURLOPT_MAXREDIRS."
+"maximala beloppet. Ställ in din gräns med CURLOPT_MAXREDIRS."
 
 #: includes/arrays.php:747
 msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
@@ -1012,7 +1012,7 @@ msgstr "Maximal filstorlek har överskridits."
 
 #: includes/arrays.php:811
 msgid "Requested FTP SSL level failed."
-msgstr "Det gick inte att begära FTP SSL-nivå."
+msgstr "Begärd FTP SSL-nivå misslyckades."
 
 #: includes/arrays.php:815
 msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
@@ -1030,7 +1030,7 @@ msgstr "Fjärrservern nekade curl att logga in (Tillagt i 7.13.1)"
 
 #: includes/arrays.php:827
 msgid "File not found on TFTP server."
-msgstr "Det gick inte att hitta filen på TFTP-servern."
+msgstr "Filen hittades inte på TFTP-servern."
 
 #: includes/arrays.php:831
 msgid "Permission problem on TFTP server."
@@ -1107,7 +1107,7 @@ msgstr "Matchningsfel för RTSP-sessionsidentifierare."
 #: includes/arrays.php:903
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
 msgstr ""
-"Det går inte att parsa FTP-fillistan (under nedladdning av FTP-jokertecken)."
+"Det går inte att tolka FTP-fillistan (under nedladdning med FTP-jokertecken)."
 
 #: includes/arrays.php:907
 msgid "Chunk callback reported error."
@@ -1132,7 +1132,7 @@ msgstr ""
 
 #: includes/arrays.php:923
 msgid "Stream error in the HTTP/2 framing layer."
-msgstr "Strömfel i HTTP/2-inramningsskiktet."
+msgstr "Strömningsfel i HTTP/2 framing layer."
 
 #: includes/arrays.php:927
 msgid "An API function was called from inside a callback."
@@ -1202,8 +1202,8 @@ msgstr "Ingen data"
 #: servcheck_ca.php:104
 msgid "Click 'Continue' to delete the following CA."
 msgid_plural "Click 'Continue' to delete following CA."
-msgstr[0] "Klicka på \"Fortsätt\" för att ta bort följande certifikatutfärdare."
-msgstr[1] "Klicka på \"Fortsätt\" för att radera följande CA."
+msgstr[0] "Klicka på \"Fortsätt\" för att ta bort följande CA."
+msgstr[1] "Klicka på \"Fortsätt\" för att ta bort följande CA."
 
 #: servcheck_ca.php:109 servcheck_proxies.php:108 servcheck_test.php:197
 #: servcheck_test.php:206 servcheck_test.php:215 servcheck_test.php:224
@@ -1223,7 +1223,7 @@ msgstr "CA [redigera: %s]"
 
 #: servcheck_ca.php:168
 msgid "CA [new]"
-msgstr "CA [ny]"
+msgstr "CA [nytt]"
 
 #: servcheck_ca.php:268
 msgid "Used"
@@ -1231,7 +1231,7 @@ msgstr "Använda"
 
 #: servcheck_ca.php:275 servcheck_ca.php:334
 msgid "CAs"
-msgstr "Cas"
+msgstr "CA"
 
 #: servcheck_ca.php:296
 msgid "No CAs Found"
@@ -1239,7 +1239,7 @@ msgstr "Inga CA hittades"
 
 #: servcheck_ca.php:315
 msgid "Servcheck CA Management"
-msgstr "Servcheck CA-hantering"
+msgstr "CA-hantering för Servcheck"
 
 #: servcheck_ca.php:322
 msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
@@ -1312,7 +1312,7 @@ msgstr "Inga servrar hittades"
 
 #: servcheck_proxies.php:334
 msgid "Servcheck Proxy Management"
-msgstr "Servcheck proxyhantering"
+msgstr "Proxyhantering för Servcheck"
 
 #: servcheck_test.php:192
 msgid "Click 'Continue' to Delete the following tests."
@@ -1323,19 +1323,19 @@ msgstr[1] "Klicka på \"Fortsätt\" för att ta bort följande tester."
 #: servcheck_test.php:197
 msgid "Delete rest"
 msgid_plural "Delete tests"
-msgstr[0] "Ta bort vila"
+msgstr[0] "Ta bort test"
 msgstr[1] "Ta bort tester"
 
 #: servcheck_test.php:201
 msgid "Click 'Continue' to Disable the following test."
 msgid_plural "Click 'Continue' to Disable following Tests."
-msgstr[0] "Klicka på \"Fortsätt\" för att avaktivera följande test."
+msgstr[0] "Klicka på \"Fortsätt\" för att inaktivera följande test."
 msgstr[1] "Klicka på \"Fortsätt\" för att inaktivera följande tester."
 
 #: servcheck_test.php:206
 msgid "Disable test"
 msgid_plural "Disable Tests"
-msgstr[0] "Avaktivera test"
+msgstr[0] "Inaktivera test"
 msgstr[1] "Inaktivera tester"
 
 #: servcheck_test.php:210
@@ -1359,8 +1359,8 @@ msgstr[1] "Klicka på \"Fortsätt\" för att duplicera följande tester."
 #: servcheck_test.php:224
 msgid "Duplicate test"
 msgid_plural "Duplicate tests"
-msgstr[0] "Duplikat test"
-msgstr[1] "Dubbla tester"
+msgstr[0] "Duplicera test"
+msgstr[1] "Duplicera tester"
 
 #: servcheck_test.php:405
 #, php-format
@@ -1430,7 +1430,7 @@ msgstr "Tjänsten nere"
 
 #: servcheck_test.php:854
 msgid "Service UP"
-msgstr "Service UPP"
+msgstr "Tjänsten UPPE"
 
 #: servcheck_test.php:868
 msgid "No Service Check Events in History"
@@ -1482,7 +1482,7 @@ msgstr "Visa senast returnerade data"
 
 #: servcheck_test.php:1125
 msgid "View Graph"
-msgstr "Se diagram"
+msgstr "Visa diagram"
 
 #: servcheck_test.php:1135
 msgid "Disabled"
@@ -1506,7 +1506,7 @@ msgstr "Inga tester hittades"
 
 #: servcheck_test.php:1242 setup.php:224
 msgid "Service Checks"
-msgstr "Servicekontroller"
+msgstr "Tjänstekontroller"
 
 #: servcheck_test.php:1257
 msgid "State"
@@ -1522,7 +1522,7 @@ msgstr "Uppdatera"
 
 #: servcheck_test.php:1364
 msgid "Service Check History"
-msgstr "Service Check Historik"
+msgstr "Historik för tjänstekontroll"
 
 #: servcheck_test.php:1373
 msgid "Date Search"
@@ -1558,7 +1558,7 @@ msgstr "Spara tjänstekontroll"
 
 #: setup.php:245
 msgid "Web Proxies"
-msgstr "Proxyservrar för webb"
+msgstr "Webbproxyservrar"
 
 #: setup.php:252
 msgid "Web Proxie Edit"

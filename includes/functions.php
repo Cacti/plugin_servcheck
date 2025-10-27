@@ -241,3 +241,26 @@ function servcheck_legend() {
 }
 
 
+// check if summer/winter time changed in last few hours. We need to know it because of expired/renew certificates
+
+function servcheck_summer_time_changed() {
+	$hours = 8;
+
+	if (date_default_timezone_get() === '') {
+		return false;
+	}
+
+	$now = new DateTime('now');
+	$past = (clone $now)->modify("-{$hours} hours");
+
+	$offsetNow = $now->getOffset();
+	$offsetPast = $past->getOffset();
+
+	$diff = $offsetNow - $offsetPast;
+
+	if ($diff !== 0) {
+		return true;
+	} else {
+		return false;
+	}
+}

@@ -351,13 +351,19 @@ if ($test['certexpirenotify'] && $results['result'] == 'ok') {
 
 	if (isset($last_log['cert_expire']) &&
 		$last_log['cert_expire'] != '0000-00-00 00:00:00' && !is_null($last_log['cert_expire'])) {
+
 		$days_before = round((strtotime($last_log['cert_expire']) - strtotime($last_log['lastcheck']))/86400,1);
 
 		if ($test['days_left'] > 0 && $test['days_left'] > $days_before) {
-			servcheck_debug('Renewed or changed certificate, notification will be send');
+			if (!servcheck_summer_time_changed()) {
 
-			$test['notify_certificate'] = true;
-			$test['certificate_state'] = 'new';
+				servcheck_debug('Renewed or changed certificate, notification will be send');
+
+				$test['notify_certificate'] = true;
+				$test['certificate_state'] = 'new';
+			} else {
+				servcheck_debug('Renewed or changed certificate, but summer/winter time change detected. Skipping notification.');
+			}
 		}
 	}
 

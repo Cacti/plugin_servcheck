@@ -114,7 +114,7 @@ function curl_try ($test) {
 	}
 
 	if ($service == 'smb' || $service == 'smbs') {
-		$options[CURLOPT_USERPWD] = str_replace('@', '%40', $credetial['username']) . ':' . $credential['password'];
+		$options[CURLOPT_USERPWD] = str_replace('@', '%40', $credential['username']) . ':' . $credential['password'];
 	}
 
 	if ($test['ca_id'] > 0) {

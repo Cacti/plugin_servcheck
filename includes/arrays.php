@@ -385,9 +385,9 @@ $servcheck_test_fields = array(
 		'max_length' => '256',
 	),
 	'attempt' => array(
-		'friendly_name' => __('How many attemps', 'servcheck'),
+		'friendly_name' => __('How many attempts', 'servcheck'),
 		'method' => 'textbox',
-		'description' => __('Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High numer causes log test duration.', 'servcheck'),
+		'description' => __('Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration.', 'servcheck'),
 		'default' => '3',
 		'size' => '20',
 		'max_length' => '1',
@@ -428,7 +428,7 @@ $servcheck_test_fields = array(
 	'ipaddress' => array(
 		'method' => 'textbox',
 		'friendly_name' => __('Resolve DNS to Address'),
-		'description' => __('Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resoution instead.'),
+		'description' => __('Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead.'),
 		'value' => '|arg1:ipaddress|',
 		'max_length' => '46',
 		'size' => '40',
@@ -913,23 +913,23 @@ $servcheck_help_test = array(
 	'web_http'     => __('It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth.', 'servcheck'),
 	'web_https'    => __('The same as HTTP plaintext but adds the ability to test certificates.', 'servcheck'),
 	'mail_smtp'    => __('It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response.', 'servcheck'),
-	'mail_smtptls' => __('Unecrypted + STARTTL. It is also possible to test the validity of the certificate. Without username and password, \
+	'mail_smtptls' => __('Unencrypted + STARTTL. It is also possible to test the validity of the certificate. Without username and password, \
 		you will see server login banner and ehlo response. With credential, login will be performed', 'servcheck'),
 	'mail_smtps'   => __('Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password\
 		AUTH LOGIN will be tested.', 'servcheck') ,
-	'mail_imap'    => __('Unecrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. \
+	'mail_imap'    => __('Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. \
 		With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method.', 'servcheck'),
-	'mail_imaptls' => __('The same as unecrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS.', 'servcheck'),
+	'mail_imaptls' => __('The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS.', 'servcheck'),
 	'mail_imaps'   => __('Encrypted IMAP, you can try login and test certificate and user login', 'servcheck'),
-	'mail_pop3'    => __('Unecrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. \
+	'mail_pop3'    => __('Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. \
 		With credential login will be tested and try to read list of messages', 'servcheck'),
-	'mail_pop3tls' => __('The same as unecrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS.', 'servcheck'),
+	'mail_pop3tls' => __('The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS.', 'servcheck'),
 	'mail_pop3s'   => __('Encrypted POP3, you can try login and test certificate and user login.', 'servcheck'),
 	'dns_dns'      => __('Try to resolve DNS record on specified DNS server', 'servcheck'),
 	'dns_doh'      => __('Try DNS over HTTPS.', 'servcheck'),
-	'ldap_ldap'    => __('All parameters are required. Perform unecrypted LDAP login and search', 'servcheck'),
+	'ldap_ldap'    => __('All parameters are required. Perform unencrypted LDAP login and search', 'servcheck'),
 	'ldap_ldaps'   => __('All parameters are required. Perform encrypted LDAP login and search', 'servcheck'),
-	'ftp_ftp'      => __('Unecrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content \
+	'ftp_ftp'      => __('Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content \
 		of the file is returned.', 'servcheck'),
 	'ftp_tftp'     => __('Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned.', 'servcheck'),
 	'ftp_scp'      => __('Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt).', 'servcheck'),

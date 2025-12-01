@@ -22,6 +22,8 @@
  +-------------------------------------------------------------------------+
 */
 
+$user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
+$ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 
 function curl_try ($test) {
 	global $user_agent, $config, $ca_info, $service_types_ports;
@@ -118,7 +120,7 @@ function curl_try ($test) {
 	}
 
 	if ($test['ca_id'] > 0) {
-		$ca_file = $config['base_path'] . '/plugins/servcheck/tmp_data/ca_cert_' . $test['ca_id'] . '.pem'; // The folder /plugins/servcheck/tmp_data does exist, hence the ca_cert_x.pem can be created here
+		$ca_file = $config['base_path'] . '/plugins/servcheck/tmp_data/ca_cert_' . $test['id'] . '_' . $test['ca_id'] . '.pem';
 		servcheck_debug('Preparing own CA chain file ' . $ca_file);
 		// CURLOPT_CAINFO is to updated based on the custom CA certificate
 		$options[CURLOPT_CAINFO] = $ca_file;

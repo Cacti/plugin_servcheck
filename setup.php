@@ -82,10 +82,16 @@ function plugin_servcheck_upgrade() {
 		db_execute('CREATE TABLE plugin_servcheck_test_backup AS SELECT * FROM plugin_servcheck_test');
 		db_execute('CREATE TABLE plugin_servcheck_log_backup AS SELECT * FROM plugin_servcheck_log');
 		db_execute('CREATE TABLE plugin_servcheck_proxies_backup AS SELECT * FROM plugin_servcheck_proxies');
-		db_execute('CREATE TABLE plugin_servcheck_restapi_method_backup AS SELECT * FROM plugin_servcheck_restapi_method');
+		if (db_table_exists('plugin_servcheck_restapi_method')) {
+			db_execute('CREATE TABLE plugin_servcheck_restapi_method_backup AS SELECT * FROM plugin_servcheck_restapi_method');
+		}
 
 		if (db_column_exists('plugin_servcheck_test', 'display_name')) {
 			db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN display_name TO name');
+		}
+
+		if (db_column_exists('plugin_servcheck_test', 'ca')) {
+			db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN ca TO ca_id');
 		}
 
 		if (db_column_exists('plugin_servcheck_test', 'proxy_server')) {
@@ -204,58 +210,60 @@ function plugin_servcheck_upgrade() {
 			}
 		}
 
-		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_restapi_method");
-		if (cacti_sizeof($records)) {
-			foreach ($records as $record) {
-				if ($record['type'] == 'no') {
-					continue;
+		if (db_table_exists('plugin_servcheck_restapi_method')) {
+			$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_restapi_method");
+			if (cacti_sizeof($records)) {
+				foreach ($records as $record) {
+					if ($record['type'] == 'no') {
+						continue;
+					}
+	
+					$cred = array();
+	
+					if ($record['type'] == 'basic') {
+						$cred['type'] = 'basic';
+						$cred['username'] = servcheck_show_text($record['username']);
+						$cred['password'] = servcheck_show_text($record['password']);
+						$cred['data_url'] = $record['data_url'];
+					} elseif ($record['type'] == 'apikey') {
+						$cred['type'] = 'apikey';
+						$cred['option_apikey'] = 'post';
+						$cred['token_name'] = $record['username'];
+						$cred['data_url'] = $record['data_url'];
+						$cred['token_value'] = servcheck_show_text($record['cred_value']);
+					} elseif ($record['type'] == 'oauth2') {
+						$cred['type'] = 'oauth2';
+						$cred['oauth_client_id'] = servcheck_show_text($record['username']);
+						$cred['oauth_client_secret'] = servcheck_show_text($record['password']);
+						$cred['token_value'] = servcheck_show_text($record['cred_value']);
+						$cred['token_name'] = $record['cred_name'];
+						$cred['cred_valiedity'] = $record['cred_validity'];
+						$cred['data_url'] = $record['data_url'];
+						$cred['login_url'] = $record['login_url'];
+					} elseif ($record['type'] == 'cookie') {
+						$cred['type'] = 'cookie';
+						$cred['option_cookie'] = 'json';
+						$cred['username'] = servcheck_show_text($record['username']);
+						$cred['password'] = servcheck_show_text($record['password']);
+						$cred['data_url'] = $record['data_url'];
+						$cred['login_url'] = $record['login_url'];
+					}
+
+					$enc = servcheck_encrypt_credential($cred);
+
+					$test_id = db_fetch_cell_prepared ('SELECT id FROM plugin_servcheck_test
+						WHERE restapi_id = ? LIMIT 1',
+						array($record['id']));
+
+					db_execute_prepared('INSERT INTO plugin_servcheck_credential
+						(name, type, data) VALUES (?, ?, ?)',
+						array('upgrade/convert_restapi_' . $record['id'], $cred['type'], $enc));
+
+					db_execute_prepared('UPDATE plugin_servcheck_test
+						set type = ?, cred_id = ?
+						WHERE id = ?',
+						array('rest_' . $cred['type'], db_fetch_insert_id(), $test_id));
 				}
-
-				$cred = array();
-
-				if ($record['type'] == 'basic') {
-					$cred['type'] = 'basic';
-					$cred['username'] = servcheck_show_text($record['username']);
-					$cred['password'] = servcheck_show_text($record['password']);
-					$cred['data_url'] = $record['data_url'];
-				} elseif ($record['type'] == 'apikey') {
-					$cred['type'] = 'apikey';
-					$cred['option_apikey'] = 'post';
-					$cred['token_name'] = $record['username'];
-					$cred['data_url'] = $record['data_url'];
-					$cred['token_value'] = servcheck_show_text($record['cred_value']);
-				} elseif ($record['type'] == 'oauth2') {
-					$cred['type'] = 'oauth2';
-					$cred['oauth_client_id'] = servcheck_show_text($record['username']);
-					$cred['oauth_client_secret'] = servcheck_show_text($record['password']);
-					$cred['token_value'] = servcheck_show_text($record['cred_value']);
-					$cred['token_name'] = $record['cred_name'];
-					$cred['cred_valiedity'] = $record['cred_validity'];
-					$cred['data_url'] = $record['data_url'];
-					$cred['login_url'] = $record['login_url'];
-				} elseif ($record['type'] == 'cookie') {
-					$cred['type'] = 'cookie';
-					$cred['option_cookie'] = 'json';
-					$cred['username'] = servcheck_show_text($record['username']);
-					$cred['password'] = servcheck_show_text($record['password']);
-					$cred['data_url'] = $record['data_url'];
-					$cred['login_url'] = $record['login_url'];
-				}
-
-				$enc = servcheck_encrypt_credential($cred);
-
-				$test_id = db_fetch_cell_prepared ('SELECT id FROM plugin_servcheck_test
-					WHERE restapi_id = ? LIMIT 1',
-					array($record['id']));
-
-				db_execute_prepared('INSERT INTO plugin_servcheck_credential
-					(name, type, data) VALUES (?, ?, ?)',
-					array('upgrade/convert_restapi_' . $record['id'], $cred['type'], $enc));
-
-				db_execute_prepared('UPDATE plugin_servcheck_test
-					set type = ?, cred_id = ?
-					WHERE id = ?',
-					array('rest_' . $cred['type'], db_fetch_insert_id(), $test_id));
 			}
 		}
 

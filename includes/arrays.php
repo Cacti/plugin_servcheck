@@ -47,7 +47,7 @@ $servcheck_states = array(
 		'display' => __('Error', 'servcheck')
 	),
 	'duration' => array(
-		'color' => '#DDFFDD',
+		'color' => '#CDFDFF',
 		'display' => __('Long duration', 'servcheck')
 	),
 	'warning' => array(

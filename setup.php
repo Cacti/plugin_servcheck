@@ -622,15 +622,17 @@ function servcheck_config_settings() {
 			'default' => ''
 		),
 		'servcheck_certificate_expiry_days' => array(
-			'friendly_name' => __('How long before expiration send notification', 'servcheck'),
-			'description' => __('If SSL/TLS service certificate expiration is enabled, notify about soon certificate expiration', 'sercheck'),
+			'friendly_name' => __('Certificate expiry date advanced notification email', 'servcheck'),
+			'description' => __('If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification', 'sercheck'),
 			'method' => 'drop_array',
 			'array' => array(
 				'-1' => __('Disabled', 'servcheck'),
-				'3'  => __('3 days before', 'servcheck'),
-				'7'  => __('1 week before', 'servcheck'),
-				'21' => __('3 weeks before', 'servcheck'),
-				'30' => __('30 days before', 'servcheck'),
+				'3'  => __('3 days in advance', 'servcheck'),
+				'7'  => __('1 week in advance', 'servcheck'),
+				'21' => __('3 weeks in advance', 'servcheck'),
+				'30' => __('30 days in advance', 'servcheck'),
+				'60' => __('60 days in advance', 'servcheck'),
+				'90' => __('90 days in advance', 'servcheck'),
 			),
 			'default' => 7
 		),

@@ -59,7 +59,7 @@ $servcheck_states = array(
 		'display' => __('Failing', 'servcheck')
 	),
 	'ok' => array(
-		'color' => '#CCFFCC',
+		'color' => '#E0FFE0',
 		'display' => __('Ok', 'servcheck')
 	),
 	'disabled' => array(

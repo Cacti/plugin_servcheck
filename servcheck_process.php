@@ -701,25 +701,27 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 
 	$to = array_merge($notify_list, $notify_account, $notify_extra);
 
-	if ($servcheck_send_email_separately != 'on') {
-		$addresses = implode(',', $to);
-
-		foreach ($message as $m) {
-			if ($test['notify_format'] == 'plain') {
-				$m['text'] = strip_tags($m['text']);
+	if (isset($message) && is_array($message)) {
+		if ($servcheck_send_email_separately != 'on') {
+			$addresses = implode(',', $to);
+	
+			foreach ($message as $m) {
+				if ($test['notify_format'] == 'plain') {
+					$m['text'] = strip_tags($m['text']);
+				}
+	
+				plugin_servcheck_send_email($addresses, $m['subject'], $m['text']);
 			}
-
-			plugin_servcheck_send_email($addresses, $m['subject'], $m['text']);
-		}
-	} else {
-
-		foreach ($message as $m) {
-			if ($test['notify_format'] == 'plain') {
-				$m['text'] = strip_tags($m['text']);
-			}
-
-			foreach ($to as $u) {
-				plugin_servcheck_send_email($u, $m['subject'], $m['text']);
+		} else {
+	
+			foreach ($message as $m) {
+				if ($test['notify_format'] == 'plain') {
+					$m['text'] = strip_tags($m['text']);
+				}
+	
+				foreach ($to as $u) {
+					plugin_servcheck_send_email($u, $m['subject'], $m['text']);
+				}
 			}
 		}
 	}

@@ -1243,7 +1243,7 @@ function servcheck_filter() {
 
 	set_page_refresh($refresh);
 
-	// When a row is selected, set the backgound-color as black and font color as white and when hovering over a row, the background is light grey
+	// When a row is selected, set the background-color as black and font color as white and when hovering over a row, the background is light grey
 	print "<style>
 				tr.tableRow.selectable:hover, tr.tableRow.selectable:hover td {
 					background-color: #B2B2B2 !important;
@@ -1366,7 +1366,7 @@ function servcheck_filter() {
 function servcheck_log_filter() {
 	global $item_rows;
 
-	// When a row is selected, set the backgound-color as black and font color as white and when hovering over a row, the background is light grey
+	// When a row is selected, set the background-color as black and font color as white and when hovering over a row, the background is light grey
 	print "<style>
 				tr.tableRow.selectable:hover, tr.tableRow.selectable:hover td {
 					background-color: #B2B2B2 !important;

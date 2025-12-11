@@ -260,7 +260,11 @@ if ($results['result'] == 'ok' && $test['certexpirenotify']) {
 			"{$parsed['year']}-{$parsed['month']}-{$parsed['day']} {$parsed['hour']}:{$parsed['minute']}:{$parsed['second']}",
 			new DateTimeZone('UTC')
 		);
-		$dt->setTimezone(new DateTimeZone(date_default_timezone_get()));
+		$local_tz = date_default_timezone_get();
+		if (empty($local_tz)) {
+			$local_tz = 'UTC';
+		}
+		$dt->setTimezone(new DateTimeZone($local_tz));
 		$exp = $dt->getTimestamp();
 	
 		$test['days_left'] = round(($exp - time()) / 86400,1);

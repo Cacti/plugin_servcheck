@@ -1247,7 +1247,7 @@ function servcheck_filter() {
 	print "<style>
 				tr.tableRow.selectable:hover, tr.tableRow.selectable:hover td {
 					background-color: #B2B2B2 !important;
-					color: inhirit !important;
+					color: inherit !important;
 				}
 				tr.tableRow.selectable.selected, tr.tableRow.selectable.selected td {
 					background-color: #000 !important;

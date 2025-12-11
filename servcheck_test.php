@@ -1244,16 +1244,7 @@ function servcheck_filter() {
 	set_page_refresh($refresh);
 
 	// When a row is selected, set the background-color as black and font color as white and when hovering over a row, the background is light grey
-	print "<style>
-				tr.tableRow.selectable:hover, tr.tableRow.selectable:hover td {
-					background-color: #B2B2B2 !important;
-					color: inherit !important;
-				}
-				tr.tableRow.selectable.selected, tr.tableRow.selectable.selected td {
-					background-color: #000 !important;
-					color: #fff !important;
-				}
-			</style>";
+	servcheck_print_selectable_row_css();
 
 	html_start_box(__('Servcheck Test Management', 'servcheck') , '100%', '', '3', 'center', htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=edit');
 	?>

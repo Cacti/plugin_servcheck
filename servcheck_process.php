@@ -266,7 +266,6 @@ if ($results['result'] == 'ok' && $test['certexpirenotify']) {
 		}
 		$dt->setTimezone(new DateTimeZone($local_tz));
 		$exp = $dt->getTimestamp();
-	
 		$test['days_left'] = round(($exp - time()) / 86400,1);
 		$test['expiry_date'] = date(date_time_format(), $exp);
 	} elseif (isset($results['cert_valid_to'])) {
@@ -640,9 +639,7 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 		$message[1]['text'] .= '</table>' . PHP_EOL;
 	}
 
-	// The below generates unnecessary overwhelming email notifications, for every change in the search string. It is recommended to be disabled.
 	// search string notification
-	/*
 	if ($test['notify_search']) {
 		$message[2]['subject'] = '[Cacti servcheck - ' . $test['name'] . '] Search result is different than last check';
 
@@ -665,9 +662,8 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 
 		$message[2]['text'] .= '</table>' . PHP_EOL;
 	}
-	*/
 
-	// The below generates unnecessary overwhelming email notifications, for every change in the certificate. It is recommended to be disabled so that to focus on the expiring and expired certificates.
+	// The below generates unnecessary overwhelming email notifications, for every change in the certificate. It is recommended to focus on the expiring and expired certificates only.
 	if ($test['notify_certificate'] && $test['certificate_state'] != 'new') {
 		if ($test['days_left'] < 0) {
 			$message[3]['subject'] = '[Cacti servcheck - ' . $test['name'] . '] Certificate expired ' . abs($test['days_left']) . ((abs($test['days_left']) <= 1) ? ' day ago' : ' days ago');

@@ -667,7 +667,7 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 	}
 	*/
 
-	// The below generates unnecessary overwhelming email notifications, for every change in the certificate. It is recommended to be disabled so that to focust on the expiring and expired certificates.
+	// The below generates unnecessary overwhelming email notifications, for every change in the certificate. It is recommended to be disabled so that to focus on the expiring and expired certificates.
 	if ($test['notify_certificate'] && $test['certificate_state'] != 'new') {
 		if ($test['days_left'] < 0) {
 			$message[3]['subject'] = '[Cacti servcheck - ' . $test['name'] . '] Certificate expired ' . abs($test['days_left']) . ((abs($test['days_left']) <= 1) ? ' day ago' : ' days ago');

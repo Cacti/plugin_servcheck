@@ -426,7 +426,7 @@ if ($test['notify_result'] || $test['notify_search'] || $test['notify_duration']
 	} else {
 		if ($test['notify'] != '') {
 			servcheck_debug('Time to send email');
-			plugin_servcheck_send_notification($results, $test, $last_log);
+			plugin_servcheck_send_notification($results, $test, $last_log, $local_tz);
 		} else {
 			servcheck_debug('Time to send email, but email notification for this test is disabled');
 		}
@@ -596,9 +596,9 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 
 		if ($test['certexpirenotify'] && $results['result'] == 'ok') {
 			if ($test['days_left'] < 0) {
-				$message[0]['text'] .= '<tr><td>Certificate expired:</td><td>' . abs($test['days_left']) . ' days ago</td></tr>' . PHP_EOL;
+				$message[0]['text'] .= '<tr><td>Certificate expired:</td><td>' . abs($test['days_left']) . ' days ago (' . (isset($test['expiry_date']) ? $test['expiry_date'] . ' ' . $local_tz : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
 			} else {
-				$message[0]['text'] .= '<tr><td>Certificate expires in:</td><td>' . $test['days_left'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
+				$message[0]['text'] .= '<tr><td>Certificate expires in:</td><td>' . $test['days_left'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] . ' ' . $local_tz : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
 			}
 		}
 
@@ -687,9 +687,9 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 
 		if ($test['certexpirenotify']) {
 			if ($test['days_left'] < 0) {
-				$message[3]['text'] .= '<tr><td>Certificate expired:</td><td>' . abs($test['days_left']) . ' days ago</td></tr>' . PHP_EOL;
+				$message[3]['text'] .= '<tr><td>Certificate expired:</td><td>' . abs($test['days_left']) . ' days ago (' . (isset($test['expiry_date']) ? $test['expiry_date'] . ' ' . $local_tz : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
 			} else {
-				$message[3]['text'] .= '<tr><td>Certificate expires in:</td><td>' . $test['days_left'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
+				$message[3]['text'] .= '<tr><td>Certificate expires in:</td><td>' . $test['days_left'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] . ' ' . $local_tz : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
 			}
 		}
 

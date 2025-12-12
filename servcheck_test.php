@@ -934,7 +934,7 @@ function servcheck_show_history() {
 			}
 
 
-			print "<tr class='tableRow selectable' style='$style' id='line" . $row['id'] . "'>";
+			print "<tr class='tableRow selectable' style=\"$style\" id='line{$row['id']}'>";
 
 			form_selectable_cell($row['lastcheck'], $row['id']);
 			form_selectable_cell($row['name'], $row['id']);
@@ -1143,7 +1143,7 @@ function data_list() {
 				$style = 'background-color: ' . $servcheck_states['error']['color'] . ';';
 			}
 
-			print "<tr class='tableRow selectable' style='$style' id='line" . $row['id'] . "'>";
+			print "<tr class='tableRow selectable' style=\"$style\" id='line{$row['id']}'>";
 
 			print "<td width='1%' style='padding:0px;white-space:nowrap'>
 				<a class='pic' href='" . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_test.php?action=edit&id=' . $row['id']) . "' title='" . __esc('Edit Service Check', 'servcheck') . "'>
@@ -1242,6 +1242,9 @@ function servcheck_filter() {
 	$refresh['logout']  = 'false';
 
 	set_page_refresh($refresh);
+
+	// When a row is selected, set the background-color as black and font color as white and when hovering over a row, the background is light grey
+	servcheck_print_selectable_row_css();
 
 	html_start_box(__('Servcheck Test Management', 'servcheck') , '100%', '', '3', 'center', htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=edit');
 	?>
@@ -1351,8 +1354,25 @@ function servcheck_filter() {
 }
 
 
+// Shared CSS for selectable table rows
+function servcheck_print_selectable_row_css() {
+	print "<style>
+		tr.tableRow.selectable:hover, tr.tableRow.selectable:hover td {
+			background-color: #B2B2B2 !important;
+			color: inherit !important;
+		}
+		tr.tableRow.selectable.selected, tr.tableRow.selectable.selected td {
+			background-color: #000 !important;
+			color: #fff !important;
+		}
+	</style>";
+}
+
 function servcheck_log_filter() {
 	global $item_rows;
+
+	// When a row is selected, set the background-color as black and font color as white and when hovering over a row, the background is light grey
+	servcheck_print_selectable_row_css();
 
 	html_start_box(__('Service Check History', 'servcheck') , '100%', '', '3', 'center', '');
 

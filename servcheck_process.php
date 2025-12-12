@@ -255,7 +255,17 @@ if ($results['result'] == 'ok' && $test['certexpirenotify']) {
 	if (isset($results['options']['certinfo'][0])) { // curl
 		servcheck_debug('Returned certificate info: ' .  clean_up_lines(var_export($results['options']['certinfo'], true)));
 		$parsed = date_parse_from_format('M j H:i:s Y e', $results['options']['certinfo'][0]['Expire date']);
-		$exp = mktime($parsed['hour'], $parsed['minute'], $parsed['second'], $parsed['month'], $parsed['day'], $parsed['year']);
+		// Prepare to retrieve the local expiry date of certificate instead of UTC date
+		$dt = new DateTime(
+			"{$parsed['year']}-{$parsed['month']}-{$parsed['day']} {$parsed['hour']}:{$parsed['minute']}:{$parsed['second']}",
+			new DateTimeZone('UTC')
+		);
+		$local_tz = date_default_timezone_get();
+		if (empty($local_tz)) {
+			$local_tz = 'UTC';
+		}
+		$dt->setTimezone(new DateTimeZone($local_tz));
+		$exp = $dt->getTimestamp();
 		$test['days_left'] = round(($exp - time()) / 86400,1);
 		$test['expiry_date'] = date(date_time_format(), $exp);
 	} elseif (isset($results['cert_valid_to'])) {
@@ -416,7 +426,7 @@ if ($test['notify_result'] || $test['notify_search'] || $test['notify_duration']
 	} else {
 		if ($test['notify'] != '') {
 			servcheck_debug('Time to send email');
-			plugin_servcheck_send_notification($results, $test, $last_log);
+			plugin_servcheck_send_notification($results, $test, $last_log, $local_tz);
 		} else {
 			servcheck_debug('Time to send email, but email notification for this test is disabled');
 		}
@@ -586,9 +596,9 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 
 		if ($test['certexpirenotify'] && $results['result'] == 'ok') {
 			if ($test['days_left'] < 0) {
-				$message[0]['text'] .= '<tr><td>Certificate expired:</td><td>' . abs($test['days_left']) . ' days ago</td></tr>' . PHP_EOL;
+				$message[0]['text'] .= '<tr><td>Certificate expired:</td><td>' . abs($test['days_left']) . ' days ago (' . (isset($test['expiry_date']) ? $test['expiry_date'] . ' ' . $local_tz : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
 			} else {
-				$message[0]['text'] .= '<tr><td>Certificate expires in:</td><td>' . $test['days_left'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
+				$message[0]['text'] .= '<tr><td>Certificate expires in:</td><td>' . $test['days_left'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] . ' ' . $local_tz : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
 			}
 		}
 
@@ -653,19 +663,13 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 		$message[2]['text'] .= '</table>' . PHP_EOL;
 	}
 
-
-	if ($test['notify_certificate']) {
-
-		if ($test['certificate_state'] == 'ko') {
-			if ($test['days_left'] < 0) {
-				$message[3]['subject'] = '[Cacti servcheck - ' . $test['name'] . '] Certificate expired ' . ($test['days_left'] * -1) . ' ago';
-			} else if ($test['days_left'] < $cert_expiry_days) {
-				$message[3]['subject'] = '[Cacti servcheck - ' . $test['name'] . '] Certificate will expire in less than ' . $cert_expiry_days . ' days: ' . $test['name'];
-			}
-		}
-
-		if ($test['certificate_state'] == 'new') {
-			$message[3]['subject'] = '[Cacti servcheck - ' . $test['name'] . '] Certificate renewed or changed';
+	// Skip notifications for 'new' certificate states (e.g., renewals/changes) to avoid unnecessary emails.
+	// Only send notifications for expiring and expired certificates.
+	if ($test['notify_certificate'] && $test['certificate_state'] != 'new') {
+		if ($test['days_left'] < 0) {
+			$message[3]['subject'] = '[Cacti servcheck - ' . $test['name'] . '] Certificate expired ' . abs($test['days_left']) . ((abs($test['days_left']) <= 1) ? ' day ago' : ' days ago');
+		} else if ($test['days_left'] <= $cert_expiry_days) { 
+			$message[3]['subject'] = '[Cacti servcheck - ' . $test['name'] . '] Certificate will expire in less than ' . $cert_expiry_days . ' days, (days left: ' . $test['days_left'] . ')';
 		}
 
 		$message[3]['text']  = '<h3>' . $message[3]['subject'] . '</h3>' . PHP_EOL;
@@ -683,9 +687,9 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 
 		if ($test['certexpirenotify']) {
 			if ($test['days_left'] < 0) {
-				$message[3]['text'] .= '<tr><td>Certificate expired:</td><td>' . abs($test['days_left']) . ' days ago</td></tr>' . PHP_EOL;
+				$message[3]['text'] .= '<tr><td>Certificate expired:</td><td>' . abs($test['days_left']) . ' days ago (' . (isset($test['expiry_date']) ? $test['expiry_date'] . ' ' . $local_tz : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
 			} else {
-				$message[3]['text'] .= '<tr><td>Certificate expires in:</td><td>' . $test['days_left'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
+				$message[3]['text'] .= '<tr><td>Certificate expires in:</td><td>' . $test['days_left'] . ' days (' . (isset($test['expiry_date']) ? $test['expiry_date'] . ' ' . $local_tz : 'Invalid Expiry Date') . ')</td></tr>' . PHP_EOL;
 			}
 		}
 
@@ -698,25 +702,27 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 
 	$to = array_merge($notify_list, $notify_account, $notify_extra);
 
-	if ($servcheck_send_email_separately != 'on') {
-		$addresses = implode(',', $to);
-
-		foreach ($message as $m) {
-			if ($test['notify_format'] == 'plain') {
-				$m['text'] = strip_tags($m['text']);
+	if (isset($message) && is_array($message)) {
+		if ($servcheck_send_email_separately != 'on') {
+			$addresses = implode(',', $to);
+	
+			foreach ($message as $m) {
+				if ($test['notify_format'] == 'plain') {
+					$m['text'] = strip_tags($m['text']);
+				}
+	
+				plugin_servcheck_send_email($addresses, $m['subject'], $m['text']);
 			}
-
-			plugin_servcheck_send_email($addresses, $m['subject'], $m['text']);
-		}
-	} else {
-
-		foreach ($message as $m) {
-			if ($test['notify_format'] == 'plain') {
-				$m['text'] = strip_tags($m['text']);
-			}
-
-			foreach ($to as $u) {
-				plugin_servcheck_send_email($u, $m['subject'], $m['text']);
+		} else {
+	
+			foreach ($message as $m) {
+				if ($test['notify_format'] == 'plain') {
+					$m['text'] = strip_tags($m['text']);
+				}
+	
+				foreach ($to as $u) {
+					plugin_servcheck_send_email($u, $m['subject'], $m['text']);
+				}
 			}
 		}
 	}

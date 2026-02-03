@@ -22,8 +22,6 @@
  +-------------------------------------------------------------------------+
 */
 
-//include_once(__DIR__ . '/arrays.php');
-
 function servcheck_show_tab($current_tab) {
 	global $config, $servcheck_tabs;
 
@@ -221,7 +219,7 @@ function servcheck_decrypt_credential ($cred_id) {
 	$servcheck_iv  = substr($encrypted, 0, $iv_length);
 	$encrypted     = substr($encrypted, $iv_length);
 
-	$decrypted=openssl_decrypt ($encrypted, SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
+	$decrypted = openssl_decrypt ($encrypted, SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
 
 	return json_decode($decrypted, true);
 }

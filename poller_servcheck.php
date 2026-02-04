@@ -262,7 +262,7 @@ if (cacti_sizeof($tests)) {
 			$stat_ko++;
 		}
 
-		if (isset($test_last['result_search']) && ($test_last['result_search'] == 'ok' || $test_last['result_search'] == 'not yet ' || $test_last['result_search'] == 'not tested')) {
+		if (isset($test_last['result_search']) && ($test_last['result_search'] == 'ok' || $test_last['result_search'] == 'not yet' || $test_last['result_search'] == 'not tested')) {
 			$stat_search_ok++;
 		} else {
 			$stat_search_ko++;

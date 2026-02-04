@@ -27,14 +27,14 @@ function servcheck_show_tab($current_tab) {
 
 	if (get_request_var('action') == 'history') {
 		if ($current_tab == 'servcheck_test.php') {
-			$current_tab = 'servcheck_test.php?action=history&id=' . get_filter_request_var('id');
+			$current_tab                  = 'servcheck_test.php?action=history&id=' . get_filter_request_var('id');
 			$servcheck_tabs[$current_tab] = __('Log History', 'servcheck');
 		}
 	}
 
 	if (get_request_var('action') == 'graph') {
 		if ($current_tab == 'servcheck_test.php') {
-			$current_tab = 'servcheck_web.php?action=graph&id=' . get_filter_request_var('id');
+			$current_tab                  = 'servcheck_web.php?action=graph&id=' . get_filter_request_var('id');
 			$servcheck_tabs[$current_tab] = __('Graphs', 'servcheck');
 		}
 	}
@@ -43,15 +43,13 @@ function servcheck_show_tab($current_tab) {
 
 	if (cacti_sizeof($servcheck_tabs)) {
 		foreach ($servcheck_tabs as $url => $name) {
-			print "<li><a class='" . (($url == $current_tab) ? 'pic selected' : 'pic') .  "' href='" . $config['url_path'] .
+			print "<li><a class='" . (($url == $current_tab) ? 'pic selected' : 'pic') . "' href='" . $config['url_path'] .
 				"plugins/servcheck/$url'>$name</a></li>";
 		}
 	}
 
 	print '</ul></nav></div>';
 }
-
-
 
 function servcheck_check_debug() {
 	global $debug;
@@ -65,7 +63,7 @@ function servcheck_check_debug() {
 	}
 }
 
-function servcheck_debug($message='') {
+function servcheck_debug($message = '') {
 	global $debug;
 
 	if ($debug) {
@@ -73,80 +71,80 @@ function servcheck_debug($message='') {
 	}
 }
 
-function servcheck_graph ($id, $interval) {
+function servcheck_graph($id, $interval) {
 	global $config, $graph_interval;
 
-	$result = db_fetch_assoc_prepared("SELECT
+	$result = db_fetch_assoc_prepared('SELECT
 		lastcheck, duration FROM plugin_servcheck_log
 		WHERE test_id = ? AND
 		lastcheck > DATE_SUB(NOW(), INTERVAL ? HOUR)
-		ORDER BY id", array($id, $interval));
+		ORDER BY id', [$id, $interval]);
 
 	if (cacti_sizeof($result) < 5) {
 		print __('No data', 'servcheck');
+
 		return;
 	}
 
 	$xid = 'xx' . substr(md5($graph_interval[$interval]), 0, 7);
 
-
 	foreach ($result as $row) {
 		$lastcheck[]       = $row['lastcheck'];
-		$duration[]      = round($row['duration'], 5);
+		$duration[]        = round($row['duration'], 5);
 	}
 
 	// Start chart attributes
-	$chart = array(
+	$chart = [
 		'bindto' => "#line_$xid",
-		'size' => array(
+		'size'   => [
 			'height' => 300,
-			'width'=> 600
-		),
-		'point' => array (
+			'width'  => 600
+		],
+		'point' => [
 			'r' => 1.5
-		),
-		'data' => array(
-			'type' => 'area',
-			'x' => 'x',
+		],
+		'data' => [
+			'type'    => 'area',
+			'x'       => 'x',
 			'xFormat' => '%Y-%m-%d %H:%M:%S' // rikam mu, jaky je format te timeserie
-		)
-	);
+		]
+	];
 
-	$columns = array();
-	$axis = array();
-	$axes = array();
+	$columns = [];
+	$axis    = [];
+	$axes    = [];
 
 	// Add the X Axis first
-	$columns[] = array_merge(array('x'), $lastcheck);
-	$columns[] = array_merge(array('Duration'), $duration);
+	$columns[] = array_merge(['x'], $lastcheck);
+	$columns[] = array_merge(['Duration'], $duration);
 //	$columns[] = array_merge(array('Connect'), $connect_time);
 //	$columns[] = array_merge(array('DNS '), $namelookup_time);
 
 	// Setup the Axis
-	$axis['x'] = array(
+	$axis['x'] = [
 		'type' => 'timeseries',
-		'tick' => array(
-			'format'=> '%m-%d %H:%M',
-			'culling' => array('max' => 6),
-		)
-	);
+		'tick' => [
+			'format'  => '%m-%d %H:%M',
+			'culling' => ['max' => 6],
+		]
+	];
 
-	$axis['y'] = array(
-		'tick' => array(
-			'label' => array(
+	$axis['y'] = [
+		'tick' => [
+			'label' => [
 				'text' => 'Response in ms',
-			),
+			],
 			'show' => true
-		)
-	);
+		]
+	];
 
-	$chart['data']['axes']= $axes;
-	$chart['axis']= $axis;
+	$chart['data']['axes']    = $axes;
+	$chart['axis']            = $axis;
 	$chart['data']['columns'] = $columns;
 
 	$chart_data = json_encode($chart);
 
-	$content  = '<div id="line_' . $xid. '"></div>';
+	$content  = '<div id="line_' . $xid . '"></div>';
 	$content .= '<script type="text/javascript">';
 	$content .= 'line_' . $xid . ' = bb.generate(' . $chart_data . ');';
 	$content .= '</script>';
@@ -154,11 +152,10 @@ function servcheck_graph ($id, $interval) {
 	print $content;
 }
 
-
 // It is not secure, it is better than plaintext
 // will be removed in 0.5
 
-function servcheck_hide_text ($string) {
+function servcheck_hide_text($string) {
 	$output = '';
 
 	for ($f = 0; $f < strlen($string); $f++) {
@@ -168,22 +165,20 @@ function servcheck_hide_text ($string) {
 	return $output;
 }
 
-function servcheck_show_text ($string) {
+function servcheck_show_text($string) {
 	$output = '';
 
 	for ($f = 0; $f < strlen($string); $f = $f + 2) {
-		$output .= chr(hexdec($string[$f] . $string[($f+1)]));
+		$output .= chr(hexdec($string[$f] . $string[($f + 1)]));
 	}
 
 	return $output;
 }
 
-
-function servcheck_encrypt_credential ($cred) {
-
+function servcheck_encrypt_credential($cred) {
 	$servcheck_key = read_user_setting('servcheck_key', null, true, 1);
-	$iv_length    = intval(openssl_cipher_iv_length(SERVCHECK_CIPHER));
-	$servcheck_iv = openssl_random_pseudo_bytes($iv_length);
+	$iv_length     = intval(openssl_cipher_iv_length(SERVCHECK_CIPHER));
+	$servcheck_iv  = openssl_random_pseudo_bytes($iv_length);
 
 	if (is_null($servcheck_key)) {
 		cacti_log('Creating new cipher key', 'servcheck');
@@ -191,35 +186,36 @@ function servcheck_encrypt_credential ($cred) {
 
 		set_user_setting('servcheck_key', base64_encode($servcheck_key));
 	} else {
-		$servcheck_key = base64_decode($servcheck_key);
+		$servcheck_key = base64_decode($servcheck_key, true);
 	}
 
 	$encrypted = openssl_encrypt(json_encode($cred), SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
+
 	return base64_encode($servcheck_iv . $encrypted);
 }
 
-function servcheck_decrypt_credential ($cred_id) {
-
+function servcheck_decrypt_credential($cred_id) {
 	$servcheck_key = read_user_setting('servcheck_key', null, true, 1);
 
 	if (is_null($servcheck_key)) {
 		cacti_log('Cannot decrypt credential, key is missing', 'servcheck');
+
 		return false;
 	} else {
-		$servcheck_key = base64_decode($servcheck_key);
+		$servcheck_key = base64_decode($servcheck_key, true);
 	}
 
 	$encrypted = db_fetch_cell_prepared('SELECT data FROM plugin_servcheck_credential
 		WHERE id = ?',
-		array($cred_id));
+		[$cred_id]);
 
-	$encrypted = base64_decode($encrypted);
+	$encrypted = base64_decode($encrypted, true);
 
 	$iv_length     = intval(openssl_cipher_iv_length(SERVCHECK_CIPHER));
 	$servcheck_iv  = substr($encrypted, 0, $iv_length);
 	$encrypted     = substr($encrypted, $iv_length);
 
-	$decrypted = openssl_decrypt ($encrypted, SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
+	$decrypted = openssl_decrypt($encrypted, SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
 
 	return json_decode($decrypted, true);
 }
@@ -230,6 +226,7 @@ function servcheck_legend() {
 	html_start_box('', '100%', false, '3', 'center', '');
 
 	print '<tr class="tableRow">';
+
 	foreach ($servcheck_states as $index => $state) {
 		print '<td style="background-color: ' . $state['color'] . '">' . $state['display'] . '</td>';
 	}
@@ -237,7 +234,6 @@ function servcheck_legend() {
 
 	html_end_box(false);
 }
-
 
 // check if summer/winter time changed in last few hours. We need to know it because of expired/renew certificates
 
@@ -248,10 +244,10 @@ function servcheck_summer_time_changed() {
 		return false;
 	}
 
-	$now = new DateTime('now');
+	$now  = new DateTime('now');
 	$past = (clone $now)->modify("-{$hours} hours");
 
-	$offsetNow = $now->getOffset();
+	$offsetNow  = $now->getOffset();
 	$offsetPast = $past->getOffset();
 
 	$diff = $offsetNow - $offsetPast;

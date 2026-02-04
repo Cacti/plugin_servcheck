@@ -305,7 +305,6 @@ function form_save() {
 
 		$save['external_id']    = get_nfilter_request_var('external_id');
 
-
 		if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $service_types)) {
 			$save['type'] = get_nfilter_request_var('type');
 			list ($category, $service) = explode('_', get_nfilter_request_var('type'));
@@ -429,7 +428,7 @@ function form_save() {
 
 		$save['duration_trigger'] = is_numeric(get_nfilter_request_var('duration_trigger')) ? get_nfilter_request_var('duration_trigger') : 0;
 
-		$save['name']    = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
+		$save['name'] = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
 
 		$save['search']          = get_nfilter_request_var('search');
 		$save['search_maint']    = get_nfilter_request_var('search_maint');

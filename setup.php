@@ -75,6 +75,10 @@ function plugin_servcheck_upgrade() {
 			db_add_column('plugin_servcheck_test', array('name' => 'ipaddress', 'type' => 'varchar(46)', 'NULL' => false, 'default' => '', 'after' => 'hostname'));
 		}
 
+		if (!db_column_exists('plugin_servcheck_test', 'external_id')) {
+			db_add_column('plugin_servcheck_test', array('name' => 'external_id', 'type' => 'varchar(20)', 'NULL' => false, 'default' => '', 'after' => 'notes'));
+		}
+
 		// 0.3 contains a lot of changes. I tried to convert old data but for sure make a backup
 
 		db_execute('DROP TABLE IF EXISTS plugin_servcheck_contacts');

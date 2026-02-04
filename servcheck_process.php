@@ -331,7 +331,6 @@ if ($last_log['result'] != $results['result'] || $results['result'] != 'ok') {
 	}
 }
 
-
 // checks only if test passed or some search string exists
 if ($results['result_search'] != 'not tested' && $results['result'] == 'ok') {
 	if ($last_log['result_search'] != $results['result_search']) {

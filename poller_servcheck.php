@@ -164,7 +164,7 @@ if (!$force) {
 
 $params    = [];
 $params[]  = $poller_id;
-$sql_where = 'AND poller_id = ?';
+$sql_where = ' AND poller_id = ?';
 
 if ($test_id > 0) {
 	$sql_where = ' AND id = ?';
@@ -173,8 +173,8 @@ if ($test_id > 0) {
 
 $tests = db_fetch_assoc_prepared("SELECT *
 	FROM plugin_servcheck_test
-	WHERE enabled = 'on',
-	$sql_where", 
+	WHERE enabled = 'on'
+	$sql_where",
 	$params);
 
 $max_processes = read_config_option('servcheck_processes');
@@ -248,23 +248,25 @@ $stat_ko        = 0;
 $stat_search_ok = 0;
 $stat_search_ko = 0;
 
-foreach ($tests as $test) {
-	$test_last = db_fetch_row_prepared('SELECT result, result_search
-		FROM plugin_servcheck_log
-		WHERE test_id = ?
-		ORDER BY id DESC LIMIT 1',
-		[$test['id']]);
+if (cacti_sizeof($tests)) {
+	foreach ($tests as $test) {
+		$test_last = db_fetch_row_prepared('SELECT result, result_search
+			FROM plugin_servcheck_log
+			WHERE test_id = ?
+			ORDER BY id DESC LIMIT 1',
+			[$test['id']]);
 
-	if (isset($test_last['result']) && ($test_last['result'] == 'ok' || $test_last['result'] == 'not yet')) {
-		$stat_ok++;
-	} else {
-		$stat_ko++;
-	}
+		if (isset($test_last['result']) && ($test_last['result'] == 'ok' || $test_last['result'] == 'not yet')) {
+			$stat_ok++;
+		} else {
+			$stat_ko++;
+		}
 
-	if (isset($test_last['result_search']) && ($test_last['result_search'] == 'ok' || $test_last['result_search'] == 'not yet ' || $test_last['result_search'] == 'not tested')) {
-		$stat_search_ok++;
-	} else {
-		$stat_search_ko++;
+		if (isset($test_last['result_search']) && ($test_last['result_search'] == 'ok' || $test_last['result_search'] == 'not yet' || $test_last['result_search'] == 'not tested')) {
+			$stat_search_ok++;
+		} else {
+			$stat_search_ko++;
+		}
 	}
 }
 

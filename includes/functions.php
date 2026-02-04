@@ -22,8 +22,6 @@
  +-------------------------------------------------------------------------+
 */
 
-// include_once(__DIR__ . '/arrays.php');
-
 function servcheck_show_tab($current_tab) {
 	global $config, $servcheck_tabs;
 

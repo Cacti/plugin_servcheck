@@ -421,7 +421,7 @@ function form_save() {
 
 		$save['duration_trigger'] = is_numeric(get_nfilter_request_var('duration_trigger')) ? get_nfilter_request_var('duration_trigger') : 0;
 
-		$save['name']    = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
+		$save['name'] = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
 
 		$save['search']          = get_nfilter_request_var('search');
 		$save['search_maint']    = get_nfilter_request_var('search_maint');

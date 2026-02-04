@@ -164,7 +164,7 @@ if (!$force) {
 
 $params    = [];
 $params[]  = $poller_id;
-$sql_where = 'AND poller_id = ?';
+$sql_where = ' AND poller_id = ?';
 
 if ($test_id > 0) {
 	$sql_where = ' AND id = ?';
@@ -173,7 +173,7 @@ if ($test_id > 0) {
 
 $tests = db_fetch_assoc_prepared("SELECT *
 	FROM plugin_servcheck_test
-	WHERE enabled = 'on',
+	WHERE enabled = 'on'
 	$sql_where",
 	$params);
 

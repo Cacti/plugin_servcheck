@@ -807,14 +807,14 @@ function plugin_servcheck_send_email($to, $subject, $message) {
  * @return void
  */
 function sig_handler($signo) {
-	global $force, $poller_id, $task_id, $taskname;
+	global $force, $poller_id, $test_id, $taskname;
 
 	switch ($signo) {
 		case SIGTERM:
 		case SIGINT:
-			cacti_log("WARNING: MacTrack Poller 'master' is shutting down by signal!", false, 'MACTRACK');
+			cacti_log("WARNING: Service Check Poller 'master' is shutting down by signal!", false, 'SERVCHECK');
 
-			unregister_process('servcheck', "child_:$poller_id", $test_id, getmypid());
+			unregister_process('servcheck', "child:$poller_id", $test_id, getmypid());
 
 			exit(1);
 		default:

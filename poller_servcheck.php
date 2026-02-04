@@ -41,9 +41,6 @@ if (function_exists('pcntl_signal')) {
 	pcntl_signal(SIGUSR1, 'sig_handler');
 }
 
-// let PHP run just as long as it has to
-ini_set('max_execution_time', '270');
-
 $dir = __DIR__;
 chdir($dir);
 
@@ -140,7 +137,7 @@ if ($force) {
 		AND taskname = ?', [$taskname]);
 
 	if (cacti_sizeof($processes)) {
-		foreach ($process as $p) {
+		foreach ($processes as $p) {
 			posix_kill($p['pid'], SIGINT);
 
 			db_execute_prepared('DELETE FROM processes
@@ -174,10 +171,11 @@ if ($test_id > 0) {
 	$params[]  = $test_id;
 }
 
-$tests = db_fetch_assoc_prepared('SELECT *
+$tests = db_fetch_assoc_prepared("SELECT *
 	FROM plugin_servcheck_test
-	WHERE enabled = "on"',
-	$sql_where, $params);
+	WHERE enabled = 'on',
+	$sql_where", 
+	$params);
 
 $max_processes = read_config_option('servcheck_processes');
 
@@ -235,7 +233,7 @@ while (true) {
 		FROM processes
 		WHERE tasktype = ?
 		AND taskname = ?',
-		['servcheck', 'child']);
+		['servcheck', $taskname]);
 
 	if ($running == 0) {
 		break;
@@ -320,7 +318,7 @@ function sig_handler($signo) {
 				AND taskname = ?',
 				[$taskname]);
 
-			cacti_log('Signaling ' . cacti_sizeof($processes), false, 'SERVHECK');
+			cacti_log('Signaling ' . cacti_sizeof($processes), false, 'SERVCHECK');
 
 			if (cacti_sizeof($processes)) {
 				foreach ($processes as $p) {

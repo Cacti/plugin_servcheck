@@ -165,7 +165,8 @@ if (!$force) {
 	}
 }
 
-$params    = $poller_id;
+$params    = [];
+$params[]  = $poller_id;
 $sql_where = 'AND poller_id = ?';
 
 if ($test_id > 0) {

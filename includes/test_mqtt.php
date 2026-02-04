@@ -30,27 +30,28 @@ there are 2 problems:
 - the data is not returned the same way as with other services, I have to capture it in a file
 */
 
-function mqtt_try ($test) {
+function mqtt_try($test) {
 	global $config;
 
 	// default result
-	$results['result'] = 'error';
-	$results['curl'] = true;
-	$results['error'] = '';
+	$results['result']        = 'error';
+	$results['curl']          = true;
+	$results['error']         = '';
 	$results['result_search'] = 'not tested';
-	$results['start'] = microtime(true);
+	$results['start']         = microtime(true);
 
-	list($category,$service) = explode('_', $test['type']);
+	[$category,$service] = explode('_', $test['type']);
 
 	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', 
-			array($test['cred_id']));
+		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
+			[$test['cred_id']]);
 
 		if (!$cred) {
 			servcheck_debug('Credential is set but not found!');
 			cacti_log('Credential not found');
 			$results['result'] = 'error';
-			$results['error'] = 'Credential not found';
+			$results['error']  = 'Credential not found';
+
 			return $results;
 		} else {
 			servcheck_debug('Decrypting credential');
@@ -60,7 +61,8 @@ function mqtt_try ($test) {
 				servcheck_debug('Credential is empty!');
 				cacti_log('Credential is empty');
 				$results['result'] = 'error';
-				$results['error'] = 'Credential is empty';
+				$results['error']  = 'Credential is empty';
+
 				return $results;
 			}
 		}
@@ -70,13 +72,14 @@ function mqtt_try ($test) {
 
 	if ($test['cred_id'] > 0) {
 		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
-			array($test['cred_id']));
+			[$test['cred_id']]);
 
 		if (!$cred) {
 			servcheck_debug('Credential is set but not found!');
 			cacti_log('Credential not found');
 			$results['result'] = 'error';
-			$results['error'] = 'Credential not found';
+			$results['error']  = 'Credential not found';
+
 			return $results;
 		} else {
 			servcheck_debug('Decrypting credential');
@@ -86,7 +89,8 @@ function mqtt_try ($test) {
 				servcheck_debug('Credential is empty!');
 				cacti_log('Credential is empty');
 				$results['result'] = 'error';
-				$results['error'] = 'Credential is empty';
+				$results['error']  = 'Credential is empty';
+
 				return $results;
 			}
 		}
@@ -101,7 +105,7 @@ function mqtt_try ($test) {
 	}
 
 	if (strpos($test['hostname'], ':') === 0) {
-		$test['hostname'] .=  ':' . $service_types_ports[$test['type']];
+		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
 	}
 
 	if ($test['path'] == '') {
@@ -116,20 +120,20 @@ function mqtt_try ($test) {
 	$process = curl_init($url);
 
 	$filename = '/tmp/mqtt_' . time() . '.txt';
-	$file = fopen($filename, 'w');
+	$file     = fopen($filename, 'w');
 
-	$options = array(
+	$options = [
 		CURLOPT_HEADER           => true,
 		CURLOPT_RETURNTRANSFER   => true,
 		CURLOPT_FILE             => $file,
 		CURLOPT_TIMEOUT          => 7,
 		CURLOPT_NOPROGRESS       => false,
-		CURLOPT_XFERINFOFUNCTION => function(  $download_size, $downloaded, $upload_size, $uploaded){
+		CURLOPT_XFERINFOFUNCTION => function ($download_size, $downloaded, $upload_size, $uploaded) {
 			if ($downloaded > 0) {
 				return 1;
 			}
 		},
-	);
+	];
 
 	servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
 
@@ -140,7 +144,7 @@ function mqtt_try ($test) {
 	curl_exec($process);
 	fclose($file);
 
-	$data = str_replace(array("'", "\\"), array(''), file_get_contents($filename));
+	$data            = str_replace(["'", '\\'], [''], file_get_contents($filename));
 	$results['data'] = $data;
 
 	unlink($filename);
@@ -158,29 +162,29 @@ function mqtt_try ($test) {
 	if ($results['curl_return'] == 42) {
 		$results['curl_return'] = 0;
 	} elseif ($results['curl_return'] > 0) {
-		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
+		$results['error'] =  str_replace(['"', "'"], '', (curl_error($process)));
 	}
 
 	curl_close($process);
 
 	if (empty($results['data']) && $results['curl_return'] > 0) {
 		$results['result'] = 'error';
-		$results['error'] = 'No data returned';
+		$results['error']  = 'No data returned';
 
 		return $results;
 	}
 
 	$results['result'] = 'ok';
-	$results['error'] = 'Some data returned';
+	$results['error']  = 'Some data returned';
 
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
-
 		servcheck_debug('Processing search_failed');
 
 		if (strpos($data, $test['search_failed']) !== false) {
 			servcheck_debug('Search failed string success');
 			$results['result_search'] = 'failed ok';
+
 			return $results;
 		}
 	}
@@ -191,24 +195,25 @@ function mqtt_try ($test) {
 		if (strpos($data, $test['search']) !== false) {
 			servcheck_debug('Search string success');
 			$results['result_search'] = 'ok';
+
 			return $results;
 		} else {
 			$results['result_search'] = 'not ok';
+
 			return $results;
 		}
 	}
 
 	if ($test['search_maint'] != '') {
-
 		servcheck_debug('Processing search maint');
 
 		if (strpos($data, $test['search_maint']) !== false) {
 			servcheck_debug('Search maint string success');
 			$results['result_search'] = 'maint ok';
+
 			return $results;
 		}
 	}
 
 	return $results;
 }
-

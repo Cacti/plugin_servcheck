@@ -27,11 +27,10 @@ require_once('./include/auth.php');
 require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
-$servcheck_actions_restapi = array(
+$servcheck_actions_restapi = [
 	'delete'    => __('Delete', 'servcheck'),
 	'duplicate' => __('Duplicate', 'servcheck'),
-);
-
+];
 
 global $refresh;
 
@@ -60,18 +59,17 @@ switch (get_request_var('action')) {
 
 exit;
 
-
 function form_actions() {
 	global $servcheck_actions_restapi;
 
-	/* if we are to save this form, instead of display it */
+	// if we are to save this form, instead of display it
 	if (isset_request_var('selected_items')) {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
 		$action         = get_nfilter_request_var('drp_action');
 
 		if ($selected_items != false) {
 			if (cacti_sizeof($selected_items)) {
-				foreach($selected_items as $row) {
+				foreach ($selected_items as $row) {
 					$restapis[] = $row;
 				}
 			}
@@ -79,19 +77,19 @@ function form_actions() {
 			if (cacti_sizeof($restapis)) {
 				if ($action == 'delete') {
 					foreach ($restapis as $id) {
-						db_execute_prepared('DELETE FROM plugin_servcheck_restapi_method WHERE id = ?', array($id));
-						db_execute_prepared('UPDATE plugin_servcheck_test SET restapi_id = 0  WHERE restapi_id = ?', array($id));
+						db_execute_prepared('DELETE FROM plugin_servcheck_restapi_method WHERE id = ?', [$id]);
+						db_execute_prepared('UPDATE plugin_servcheck_test SET restapi_id = 0  WHERE restapi_id = ?', [$id]);
 					}
 				} elseif ($action == 'duplicate') {
 					$newid = 1;
 
 					foreach ($restapis as $id) {
-						$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_restapi_method WHERE id = ?', array($id));
+						$save                 = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_restapi_method WHERE id = ?', [$id]);
 						$save['id']           = 0;
 						$save['name']         = 'New Rest API (' . $newid . ')';
 						$save['type']         = 'basic';
 						$save['format']       = 'raw';
-						$save['cred_name']  = '';
+						$save['cred_name']    = '';
 						$save['username']     = '';
 						$save['password']     = '';
 						$save['login_url']    = '';
@@ -110,18 +108,18 @@ function form_actions() {
 		exit;
 	}
 
-	/* setup some variables */
+	// setup some variables
 	$restapi_list  = '';
-	$restapi_array = array();
+	$restapi_array = [];
 
-	/* loop through each of the restapis selected on the previous page and get more info about them */
+	// loop through each of the restapis selected on the previous page and get more info about them
 	foreach ($_POST as $var => $val) {
 		if (preg_match('/^chk_([0-9]+)$/', $var, $matches)) {
-			/* ================= input validation ================= */
+			// ================= input validation =================
 			input_validate_input_number($matches[1]);
-			/* ==================================================== */
+			// ====================================================
 
-			$restapi_list .= '<li>' . __esc(db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_restapi_method WHERE id = ?', array($matches[1]))) . '</li>';
+			$restapi_list .= '<li>' . __esc(db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_restapi_method WHERE id = ?', [$matches[1]])) . '</li>';
 			$restapi_array[] = $matches[1];
 		}
 	}
@@ -136,7 +134,7 @@ function form_actions() {
 
 	if (cacti_sizeof($restapi_array)) {
 		if ($action == 'delete') {
-			print"	<tr>
+			print "	<tr>
 				<td class='topBoxAlt'>
 					<p>" . __n('Click \'Continue\' to Delete the following Rest API.', 'Click \'Continue\' to Delete following Rest API.', cacti_sizeof($restapi_array)) . "</p>
 					<div class='itemlist'><ul>$restapi_list</ul></div>
@@ -179,9 +177,9 @@ function form_actions() {
 function form_save() {
 	global $rest_api_auth_method, $rest_api_format;
 
-	/* ================= input validation ================= */
+	// ================= input validation =================
 	get_filter_request_var('id');
-	/* ==================================================== */
+	// ====================================================
 
 	if (isset_request_var('id')) {
 		$save['id'] = get_request_var('id');
@@ -210,23 +208,23 @@ function form_save() {
 		raise_message(3);
 	}
 
-	if (isset_request_var('name') && get_nfilter_request_var('name') != '' && get_filter_request_var('name', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+	if (isset_request_var('name') && get_nfilter_request_var('name') != '' && get_filter_request_var('name', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
 		$save['name'] = get_nfilter_request_var('name');
 	}
 
-	if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+	if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
 		$save['username'] = servcheck_hide_text(get_nfilter_request_var('username'));
 	}
 
-	if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+	if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
 		$save['password'] = servcheck_hide_text(get_nfilter_request_var('password'));
 	}
 
-	if (isset_request_var('cred_name') && get_nfilter_request_var('cred_name') != '' && get_filter_request_var('cred_name', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\-]{1,100}$/')))) {
+	if (isset_request_var('cred_name') && get_nfilter_request_var('cred_name') != '' && get_filter_request_var('cred_name', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\-]{1,100}$/']])) {
 		$save['cred_name'] = get_nfilter_request_var('cred_name');
 	}
 
-	if (isset_request_var('cred_value') && get_nfilter_request_var('cred_value') != '' && get_filter_request_var('cred_value', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/')))) {
+	if (isset_request_var('cred_value') && get_nfilter_request_var('cred_value') != '' && get_filter_request_var('cred_value', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
 		$save['cred_value'] = servcheck_hide_text(get_nfilter_request_var('cred_value'));
 	}
 
@@ -251,21 +249,21 @@ function form_save() {
 		}
 	}
 
-	header('Location: servcheck_restapi.php?action=edit&id=' . (isset($id)? $id : get_request_var('id')) . '&header=false');
+	header('Location: servcheck_restapi.php?action=edit&id=' . (isset($id) ? $id : get_request_var('id')) . '&header=false');
 	exit;
 }
 
 function servcheck_edit_rest() {
 	global $servcheck_restapi_fields;
 
-	/* ================= input validation ================= */
+	// ================= input validation =================
 	get_filter_request_var('id');
-	/* ==================================================== */
+	// ====================================================
 
-	$restapi = array();
+	$restapi = [];
 
 	if (!isempty_request_var('id')) {
-		$restapi = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_restapi_method WHERE id = ?', array(get_request_var('id')), false);
+		$restapi      = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_restapi_method WHERE id = ?', [get_request_var('id')], false);
 		$header_label = __('Query [edit: %s]', $restapi['name'], 'servcheck');
 	} else {
 		$header_label = __('Query [new]', 'servcheck');
@@ -274,9 +272,11 @@ function servcheck_edit_rest() {
 	if (isset($restapi['username'])) {
 		$restapi['username'] = servcheck_show_text($restapi['username']);
 	}
+
 	if (isset($restapi['password'])) {
 		$restapi['password'] = servcheck_show_text($restapi['password']);
 	}
+
 	if (isset($restapi['cred_value'])) {
 		$restapi['cred_value'] = servcheck_show_text($restapi['cred_value']);
 	}
@@ -285,15 +285,15 @@ function servcheck_edit_rest() {
 	html_start_box($header_label, '100%', '', '3', 'center', '');
 
 	draw_edit_form(
-		array(
-			'config' => array('form_name' => 'chk'),
+		[
+			'config' => ['form_name' => 'chk'],
 			'fields' => inject_form_variables($servcheck_restapi_fields, $restapi)
-		)
+		]
 	);
 
 	html_end_box();
 
-	echo '<b><font color="red">Rest API was moved to tests. Authhorization data was moved to Credential tab. This is read-only and will be removed in version 0.5</font></b>';
+	print '<b><font color="red">Rest API was moved to tests. Authhorization data was moved to Credential tab. This is read-only and will be removed in version 0.5</font></b>';
 
 //	form_save_button('servcheck_restapi.php', 'return');
 
@@ -364,41 +364,40 @@ function servcheck_edit_rest() {
  *  This is a generic function for this page that makes sure that
  *  we have a good request.  We want to protect against people who
  *  like to create issues with Cacti.
-*/
+ */
 function servcheck_request_validation() {
-	/* ================= input validation and session storage ================= */
-	$filters = array(
-		'rows' => array(
-			'filter' => FILTER_VALIDATE_INT,
+	// ================= input validation and session storage =================
+	$filters = [
+		'rows' => [
+			'filter'  => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => '-1'
-		),
-		'page' => array(
-			'filter' => FILTER_VALIDATE_INT,
+		],
+		'page' => [
+			'filter'  => FILTER_VALIDATE_INT,
 			'default' => '1'
-		),
-		'rfilter' => array(
-			'filter' => FILTER_VALIDATE_IS_REGEX,
+		],
+		'rfilter' => [
+			'filter'  => FILTER_VALIDATE_IS_REGEX,
 			'default' => '',
 			'pageset' => true,
-			'options' => array('options' => 'sanitize_search_string')
-		),
-		'sort_column' => array(
-			'filter' => FILTER_CALLBACK,
+			'options' => ['options' => 'sanitize_search_string']
+		],
+		'sort_column' => [
+			'filter'  => FILTER_CALLBACK,
 			'default' => 'name',
-			'options' => array('options' => 'sanitize_search_string')
-		),
-		'sort_direction' => array(
-			'filter' => FILTER_CALLBACK,
+			'options' => ['options' => 'sanitize_search_string']
+		],
+		'sort_direction' => [
+			'filter'  => FILTER_CALLBACK,
 			'default' => 'ASC',
-			'options' => array('options' => 'sanitize_search_string')
-		),
-	);
+			'options' => ['options' => 'sanitize_search_string']
+		],
+	];
 
 	validate_store_request_vars($filters, 'sess_servcheck_restapi');
-	/* ================= input validation ================= */
+	// ================= input validation =================
 }
-
 
 function list_restapis() {
 	global $servcheck_actions_restapi, $config, $rest_api_auth_method;
@@ -421,8 +420,7 @@ function list_restapis() {
 
 	$sql_order = get_order_string();
 
-
-	$sql_limit = ' LIMIT ' . ($rows*(get_request_var('page')-1)) . ',' . $rows;
+	$sql_limit = ' LIMIT ' . ($rows * (get_request_var('page') - 1)) . ',' . $rows;
 
 	if (get_request_var('rest_method') && array_key_exists(get_request_var('rest_method'), $rest_api_auth_method)) {
 		$sql_where .= ($sql_where == '' ? 'WHERE ' : ' AND ') .
@@ -449,22 +447,22 @@ function list_restapis() {
 		FROM plugin_servcheck_restapi_method
 		$sql_where");
 
-	$display_text = array(
-		'name' => array(
+	$display_text = [
+		'name' => [
 			'display' => __('Name', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'left'
-		),
-		'type' => array(
+		],
+		'type' => [
 			'display' => __('Rest API Method', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'left'
-		),
-	);
+		],
+	];
 
 	$columns = cacti_sizeof($display_text);
 
-	echo '<b><font color="red">Rest API was moved to tests. Authhorization data was moved to Credential tab. This is read-only and will be removed in version 0.5</font></b>';
+	print '<b><font color="red">Rest API was moved to tests. Authhorization data was moved to Credential tab. This is read-only and will be removed in version 0.5</font></b>';
 
 	$nav = html_nav_bar('servcheck_restapi.php', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, $columns, __('Records', 'servcheck'), 'page', 'main');
 
@@ -478,7 +476,6 @@ function list_restapis() {
 
 	if (cacti_sizeof($result)) {
 		foreach ($result as $row) {
-
 			form_alternate_row('line' . $row['id'], true);
 			form_selectable_cell(filter_value($row['name'], get_request_var('filter'),'servcheck_restapi.php?header=false&action=edit&id=' . $row['id']), $row['id']);
 			form_selectable_cell($rest_api_auth_method[$row['type']], $row['id']);
@@ -497,7 +494,7 @@ function list_restapis() {
 
 	form_end();
 
-	echo '<b><font color="red">Rest API was moved to tests. Authhorization data was moved to Credential tab. This is read-only and will be removed in version 0.5</font></b>';
+	print '<b><font color="red">Rest API was moved to tests. Authhorization data was moved to Credential tab. This is read-only and will be removed in version 0.5</font></b>';
 
 	?>
 	<script type='text/javascript'>
@@ -568,35 +565,36 @@ function servcheck_restapi_filter() {
 			<table class='filterTable'>
 				<tr class='noprint'>
 					<td>
-						<?php print __('Search', 'servcheck');?>
+						<?php print __('Search', 'servcheck'); ?>
 					</td>
 					<td>
-						<input type='text' class='ui-state-default ui-corner-all' id='rfilter' size='30' value='<?php print html_escape_request_var('rfilter');?>'>
+						<input type='text' class='ui-state-default ui-corner-all' id='rfilter' size='30' value='<?php print html_escape_request_var('rfilter'); ?>'>
 					</td>
 					<td>
-						<?php print __('Type', 'servcheck');?>
+						<?php print __('Type', 'servcheck'); ?>
 					</td>
 					<td>
 
 						<select id='rest_method'>
 							<?php
 
-							print "<option value='-1'" . (get_request_var('rest_method') == -1 ? ' selected':'') . ">" . __('Any', 'servcheck') . "</option>";
-							foreach ($rest_api_auth_method as $key => $value) {
-								print "<option value='" . $key . "'";
-								print get_request_var('rest_method') == $key ? ' selected="selected">' : '>';
-								print html_escape($value) . "</option>";
-							}
+							print "<option value='-1'" . (get_request_var('rest_method') == -1 ? ' selected' : '') . '>' . __('Any', 'servcheck') . '</option>';
 
-							?>
+	foreach ($rest_api_auth_method as $key => $value) {
+		print "<option value='" . $key . "'";
+		print get_request_var('rest_method') == $key ? ' selected="selected">' : '>';
+		print html_escape($value) . '</option>';
+	}
+
+	?>
 						</select>
 
 					</td>
 
 					<td>
 						<span class='nowrap'>
-							<input type='button' id='go' value='<?php print __esc('Go', 'servcheck');?>'>
-							<input type='button' id='clear' value='<?php print __esc('Clear', 'servcheck');?>'>
+							<input type='button' id='go' value='<?php print __esc('Go', 'servcheck'); ?>'>
+							<input type='button' id='clear' value='<?php print __esc('Clear', 'servcheck'); ?>'>
 						</span>
 					</td>
 				</tr>

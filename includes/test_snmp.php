@@ -22,35 +22,35 @@
  +-------------------------------------------------------------------------+
 */
 
-
-function snmp_try ($test) {
+function snmp_try($test) {
 	global $config, $service_types;
 
 	include_once($config['base_path'] . '/lib/snmp.php');
 
 	$version = 2;
-	$port = 161;
+	$port    = 161;
 
 	// default result
 	$results['result'] = 'error';
-	$results['curl'] = false;
-	$results['time'] = time();
-	$results['error'] = '';
-	$results['start'] = microtime(true);
+	$results['curl']   = false;
+	$results['time']   = time();
+	$results['error']  = '';
+	$results['start']  = microtime(true);
 
-	list($category,$service) = explode('_', $test['type']);
+	[$category,$service] = explode('_', $test['type']);
 
 	$results['result_search'] = 'not tested';
 
 	if ($test['cred_id'] > 0) {
 		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
-			array($test['cred_id']));
+			[$test['cred_id']]);
 
 		if (!$cred) {
 			servcheck_debug('Credential is set but not found!');
 			cacti_log('Credential not found');
 			$results['result'] = 'error';
-			$results['error'] = 'Credential not found';
+			$results['error']  = 'Credential not found';
+
 			return $results;
 		} else {
 			servcheck_debug('Decrypting credential');
@@ -60,7 +60,8 @@ function snmp_try ($test) {
 				servcheck_debug('Credential is empty!');
 				cacti_log('Credential is empty');
 				$results['result'] = 'error';
-				$results['error'] = 'Credential is empty';
+				$results['error']  = 'Credential is empty';
+
 				return $results;
 			}
 		}
@@ -68,7 +69,8 @@ function snmp_try ($test) {
 		servcheck_debug('No credential set!');
 		cacti_log('No credential set');
 		$results['result'] = 'error';
-		$results['error'] = 'No credential set';
+		$results['error']  = 'No credential set';
+
 		return $results;
 	}
 
@@ -77,15 +79,15 @@ function snmp_try ($test) {
 	}
 
 	if ($cred['type'] == 'snmp3') {
-		$version = 3;
+		$version                 = 3;
 		$credential['community'] = '';
 	} else {
-		$credential['snmp_username'] = '';
-		$credential['snmp_password'] = '';
-		$credential['snmp_auth_protocol'] = '';
+		$credential['snmp_username']        = '';
+		$credential['snmp_password']        = '';
+		$credential['snmp_auth_protocol']   = '';
 		$credential['snmp_priv_passphrase'] = '';
-		$credential['snmp_priv_protocol'] = '';
-		$credential['snmp_context'] = '';
+		$credential['snmp_priv_protocol']   = '';
+		$credential['snmp_context']         = '';
 	}
 
 	servcheck_debug('SNMP request: ' . $test['snmp_oid']);
@@ -94,31 +96,31 @@ function snmp_try ($test) {
 	if ($test['type'] == 'snmp_get') {
 		servcheck_debug('SNMP GET request, hostname ' . $test['hostname'] . ':' . $port);
 		$data = cacti_snmp_get($test['hostname'], $credential['community'], $test['snmp_oid'], $version,
-		$credential['snmp_username'], $credential['snmp_password'], $credential['snmp_auth_protocol'],
-		$credential['snmp_priv_passphrase'], $credential['snmp_priv_protocol'], $credential['snmp_context'], $port);
+			$credential['snmp_username'], $credential['snmp_password'], $credential['snmp_auth_protocol'],
+			$credential['snmp_priv_passphrase'], $credential['snmp_priv_protocol'], $credential['snmp_context'], $port);
 	} else {
 		servcheck_debug('SNMP WALK request, hostname ' . $test['hostname'] . ':' . $port);
 		$data = cacti_snmp_walk($test['hostname'], $credential['community'], $test['snmp_oid'], $version,
-		$credential['snmp_username'], $credential['snmp_password'], $credential['snmp_auth_protocol'],
-		$credential['snmp_priv_passphrase'], $credential['snmp_priv_protocol'], $credential['snmp_context'], $port);
+			$credential['snmp_username'], $credential['snmp_password'], $credential['snmp_auth_protocol'],
+			$credential['snmp_priv_passphrase'], $credential['snmp_priv_protocol'], $credential['snmp_context'], $port);
 
 		$data = var_export($data, true);
 	}
 
 	servcheck_debug('Result: ' . clean_up_lines(var_export($data, true)));
 
-	$results['data'] = $data;
+	$results['data']   = $data;
 	$results['result'] = 'ok';
-	$results['error'] = 'Some data returned';
+	$results['error']  = 'Some data returned';
 
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
-
 		servcheck_debug('Processing search_failed');
 
 		if (strpos($data, $test['search_failed']) !== false) {
 			servcheck_debug('Search failed string success');
 			$results['result_search'] = 'failed ok';
+
 			return $results;
 		}
 	}
@@ -129,25 +131,26 @@ function snmp_try ($test) {
 		if (strpos($data, $test['search']) !== false) {
 			servcheck_debug('Search string success');
 			$results['result_search'] = 'ok';
+
 			return $results;
 		} else {
 			servcheck_debug('String not found');
 			$results['result_search'] = 'not ok';
+
 			return $results;
 		}
 	}
 
 	if ($test['search_maint'] != '') {
-
 		servcheck_debug('Processing search maint');
 
 		if (strpos($data, $test['search_maint']) !== false) {
 			servcheck_debug('Search maint string success');
 			$results['result_search'] = 'maint ok';
+
 			return $results;
 		}
 	}
 
 	return $results;
 }
-

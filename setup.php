@@ -606,7 +606,7 @@ function servcheck_config_settings() {
 		],
 		'servcheck_processes' => [
 			'friendly_name' => __('Concurrent Check Processes', 'servcheck'),
-			'description'   => __('The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised.', 'sercheck'),
+			'description'   => __('The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised.', 'servcheck'),
 			'method'        => 'drop_array',
 			'default'       => 8,
 			'array'         => [
@@ -628,7 +628,7 @@ function servcheck_config_settings() {
 		],
 		'servcheck_certificate_expiry_days' => [
 			'friendly_name' => __('Certificate expiry date advanced notification email', 'servcheck'),
-			'description'   => __('If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification', 'sercheck'),
+			'description'   => __('If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification', 'servcheck'),
 			'method'        => 'drop_array',
 			'default'       => 7,
 			'array'         => [

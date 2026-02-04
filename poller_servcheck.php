@@ -143,7 +143,10 @@ if ($force) {
 		foreach ($process as $p) {
 			posix_kill($p['pid'], SIGINT);
 
-			db_execute_prepared('DELETE FROM processes WHERE pid = ? AND tasktype = "servcheck" AND taskname LIKE ?',
+			db_execute_prepared('DELETE FROM processes
+				WHERE pid = ?
+				AND tasktype = "servcheck"
+				AND taskname = ?',
 				[$p['pid'], "child:$poller_id"]);
 		}
 	}
@@ -321,6 +324,12 @@ function sig_handler($signo) {
 			if (cacti_sizeof($processes)) {
 				foreach ($processes as $p) {
 					posix_kill($p['pid'], SIGINT);
+
+					db_execute_prepared('DELETE FROM processes
+						WHERE pid = ?
+						AND tasktype = "servcheck"
+						AND taskname = ?',
+						[$p['pid'], "child:$poller_id"]);
 				}
 			}
 

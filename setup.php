@@ -554,8 +554,7 @@ function servcheck_replicate_out($data) {
 		'plugin_servcheck_proxy',
 		'plugin_servcheck_test',
 		'plugin_servcheck_credential',
-		'plugin_servcheck_ca',
-		'plugin_servcheck_restapi_method'
+		'plugin_servcheck_ca'
 	];
 
 	if ($class == 'all') {

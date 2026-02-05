@@ -128,7 +128,7 @@ jobs:
       run: |
         cd ${{ github.workspace }}/cacti
         if [ -f composer.json ]; then
-          sudo composer install --prefer-dist --no-progress
+          sudo composer install --dev --no-progress
         fi
     
     - name: Create Cacti config.php

@@ -177,6 +177,22 @@ jobs:
           echo "Syntax errors found!"
           exit 1
         fi
+
+    - name: Remove the plugins directory exclusion from the .phpstan.neon
+      run: sed '/plugins/d' -i .phpstan.neon
+      working-directory: ${{ github.workspace }}/cacti
+
+    - name: Run Linter on base code
+      run: composer run-script lint ${{ github.workspace }}/cacti/plugins/servcheck
+      working-directory: ${{ github.workspace }}/cacti
+
+    - name: Checking coding standards on base code
+      run: composer run-script phpcsfixer ${{ github.workspace }}/cacti/plugins/servcheck
+      working-directory: ${{ github.workspace }}/cacti
+
+#    - name: Run PHPStan at Level 6 on base code outside of Composer due to technical issues
+#      run: ./include/vendor/bin/phpstan analyze --level 6 ${{ github.workspace }}/cacti/plugins/servcheck
+#      working-directory: ${{ github.workspace }}/cacti
     
     - name: Run Cacti Poller
       run: |

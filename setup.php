@@ -75,7 +75,7 @@ function plugin_servcheck_upgrade() {
 		}
 
 		if (!db_column_exists('plugin_servcheck_test', 'external_id')) {
-			db_add_column('plugin_servcheck_test', array('name' => 'external_id', 'type' => 'varchar(20)', 'NULL' => false, 'default' => '', 'after' => 'notes'));
+			db_add_column('plugin_servcheck_test', ['name' => 'external_id', 'type' => 'varchar(20)', 'NULL' => false, 'default' => '', 'after' => 'notes']);
 		}
 
 		// 0.3 contains a lot of changes. I tried to convert old data but for sure make a backup

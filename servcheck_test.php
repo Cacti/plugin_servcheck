@@ -1137,24 +1137,6 @@ function data_list() {
 			$long_dur = false;
 			$style    = '';
 
-/*
-uz se muze odmazat
-			$last_log = db_fetch_row_prepared('SELECT *,
-				(SELECT count(id) FROM plugin_servcheck_log WHERE test_id = ? ) as `count`
-				FROM plugin_servcheck_log
-				WHERE test_id = ? ORDER BY id DESC LIMIT 1',
-				[$row['id'], $row['id']]);
-
-			if (!$last_log) {
-				$last_log['result']           = 'not yet';
-				$last_log['result_search']    = 'not yet';
-				$last_log['curl_return_code'] = '0';  // nemusim
-				$last_log['duration']         = '0';
-				$last_log['count']            = 0;   // nemusim, vyresim jinak
-				$last_log['attempt']          = 0;
-			}
-*/
-
 			if ($row['last_result'] == 'not yet') {
 				$res = __('Not tested yet', 'servcheck');
 			} elseif ($row['last_result'] == 'ok') {

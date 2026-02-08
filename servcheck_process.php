@@ -595,6 +595,7 @@ function update_statistics(&$test, &$results, $new_notify_expire, $rusage) {
 	);
 
 	$retention = read_config_option('servcheck_data_retention');
+
 	if ($retention > 0) {
 		servcheck_debug('Deletion of logs from this test older than ' . $retention . ' days');
 

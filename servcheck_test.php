@@ -983,6 +983,7 @@ function servcheck_show_graph() {
 
 	if ($count < 5) {
 		print __('Insufficient data, wait a few poller cycles');
+
 		return true;
 	}
 
@@ -1144,7 +1145,6 @@ function data_list() {
 			} else {
 				$res  = $row['last_result'] . ' (' . $row['last_error'] . ')';
 			}
-
 
 			if ($row['enabled'] == '') {
 				$style = 'background-color: ' . $servcheck_states['disabled']['color'] . ';';

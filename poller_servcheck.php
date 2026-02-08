@@ -286,7 +286,7 @@ if ($poller_id == 1) {
 	$t = time() - (86400 * 30);
 
 	db_execute_prepared('DELETE FROM plugin_servcheck_log
-		WHERE lastcheck < FROM_UNIXTIME(?)',
+		WHERE last_check < FROM_UNIXTIME(?)',
 		[$t]);
 }
 

@@ -72,7 +72,7 @@ $service_types = [
 	'web_http'     => __('HTTP plaintext, default port 80', 'servcheck'),
 	'web_https'    => __('HTTP encrypted (HTTPS), default port 443', 'servcheck'),
 	'mail_smtp'    => __('SMTP plaintext, default port 25 (or 587 for submission)', 'servcheck'),
-	'mail_smtptls' => __('SMTP with STARTTLS, default port 25(or 587 for submission)', 'servcheck'),
+	'mail_smtptls' => __('SMTP with STARTTLS, default port 25 (or 587 for submission)', 'servcheck'),
 	'mail_smtps'   => __('SMTP encrypted (SMTPS), default port 465', 'servcheck'),
 	'mail_imap'    => __('IMAP plaintext, default port 143', 'servcheck'),
 	'mail_imaptls' => __('IMAP with STARTTLS, default port 143', 'servcheck'),
@@ -390,9 +390,16 @@ $servcheck_test_fields = [
 	],
 	'enabled' => [
 		'method'        => 'checkbox',
-		'friendly_name' => __('Enable Service Check', 'servcheck'),
+		'friendly_name' => __('Enable test', 'servcheck'),
 		'description'   => __('Uncheck this box to disable this test from being checked.', 'servcheck'),
 		'value'         => '|arg1:enabled|',
+		'default'       => 'on',
+	],
+	'run_script' => [
+		'method'        => 'checkbox',
+		'friendly_name' => __('Enable run script for this test', 'servcheck'),
+		'description'   => __('If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not.', 'servcheck'),
+		'value'         => '|arg1:run_script|',
 		'default'       => 'on',
 	],
 	'poller_id' => [

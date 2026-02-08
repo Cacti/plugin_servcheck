@@ -75,9 +75,9 @@ function servcheck_graph($id, $interval) {
 	global $config, $graph_interval;
 
 	$result = db_fetch_assoc_prepared('SELECT
-		lastcheck, duration FROM plugin_servcheck_log
+		last_check, duration FROM plugin_servcheck_log
 		WHERE test_id = ? AND
-		lastcheck > DATE_SUB(NOW(), INTERVAL ? HOUR)
+		last_check > DATE_SUB(NOW(), INTERVAL ? HOUR)
 		ORDER BY id', [$id, $interval]);
 
 	if (cacti_sizeof($result) < 5) {
@@ -89,7 +89,7 @@ function servcheck_graph($id, $interval) {
 	$xid = 'xx' . substr(md5($graph_interval[$interval]), 0, 7);
 
 	foreach ($result as $row) {
-		$lastcheck[]       = $row['lastcheck'];
+		$last_check[]      = $row['last_check'];
 		$duration[]        = round($row['duration'], 5);
 	}
 
@@ -115,10 +115,8 @@ function servcheck_graph($id, $interval) {
 	$axes    = [];
 
 	// Add the X Axis first
-	$columns[] = array_merge(['x'], $lastcheck);
+	$columns[] = array_merge(['x'], $last_check);
 	$columns[] = array_merge(['Duration'], $duration);
-//	$columns[] = array_merge(array('Connect'), $connect_time);
-//	$columns[] = array_merge(array('DNS '), $namelookup_time);
 
 	// Setup the Axis
 	$axis['x'] = [

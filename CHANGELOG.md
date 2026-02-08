@@ -2,6 +2,14 @@
 
 --- develop ---
 
+--- 0.4 ---
+
+* feature: Add cpu/memory statistics
+* feature: Better process control
+* feature: Add return data size stats
+* feature: Add log renention
+* feature: Command run only for selected tests
+
 --- 0.3 ---
 
 ! IMPORTANT - A lot of changes in 0.3. I tried to convert old data.

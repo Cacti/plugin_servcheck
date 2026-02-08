@@ -154,7 +154,7 @@ function form_actions() {
 
 					$save['id']           = 0;
 					$save['name']         = 'New Service Check (' . $newid . ')';
-					$save['lastcheck']    = '0000-00-00 00:00:00';
+					$save['last_check']   = '0000-00-00 00:00:00';
 					$save['triggered']    = 0;
 					$save['enabled']      = '';
 					$save['failures']     = 0;
@@ -310,6 +310,12 @@ function form_save() {
 			$save['enabled'] = 'on';
 		} else {
 			$save['enabled'] = '';
+		}
+
+		if (isset_request_var('run_script')) {
+			$save['run_script'] = 'on';
+		} else {
+			$save['run_script'] = '';
 		}
 
 		if (isset_request_var('notify')) {
@@ -793,7 +799,7 @@ function servcheck_log_request_validation() {
 		],
 		'sort_column' => [
 			'filter'  => FILTER_CALLBACK,
-			'default' => 'lastcheck',
+			'default' => 'last_check',
 			'options' => ['options' => 'sanitize_search_string']
 		],
 		'sort_direction' => [
@@ -827,11 +833,18 @@ function servcheck_show_history() {
 	$sql_params[] = get_filter_request_var('id');
 
 	if (get_request_var('filter') != '') {
-		$sql_where .= 'AND sl.lastcheck LIKE ?';
+		$sql_where .= 'AND sl.last_check LIKE ?';
 		$sql_params[] = '%' . get_request_var('filter') . '%';
 	}
 
 	$sql_order = get_order_string();
+
+	if ($sql_order == 'ORDER BY `resources` ASC') {
+		$sql_order = 'ORDER BY `cpu_user` ASC, `cpu_system` ASC, `memory` ASC';
+	} elseif ($sql_order == 'ORDER BY `resources` DESC') {
+		$sql_order = 'ORDER BY `cpu_user` DESC, `cpu_system` DESC, `memory` DESC';
+	}
+
 	$sql_limit = ' LIMIT ' . ($rows * (get_filter_request_var('page') - 1)) . ',' . $rows;
 
 	$result = db_fetch_assoc_prepared("SELECT sl.*, st.name
@@ -851,7 +864,7 @@ function servcheck_show_history() {
 		$sql_params);
 
 	$display_text = [
-		'lastcheck' => [
+		'last_check' => [
 			'display' => __('Date', 'servcheck')
 		],
 		'name' => [
@@ -877,6 +890,14 @@ function servcheck_show_history() {
 		'curl' => [
 			'display' => __('Curl', 'servcheck'),
 		],
+		'returned_data_size' => [
+			'display' => __('Ret. data size', 'servcheck'),
+		],
+		'resources' => [
+			'display' => __('CPU u/CPU s/Memory', 'servcheck'),
+			'sort'    => 'ASC',
+			'align'   => 'right'
+		],
 	];
 
 	$columns = cacti_sizeof($display_text);
@@ -893,7 +914,7 @@ function servcheck_show_history() {
 
 	html_start_box('', '100%', '', '3', 'center', '');
 
-	html_header_sort_checkbox($display_text, get_request_var('sort_column'), get_request_var('sort_direction'), false);
+	html_header_sort($display_text, get_request_var('sort_column'), get_request_var('sort_direction'));
 
 	if (count($result)) {
 		foreach ($result as $row) {
@@ -908,7 +929,7 @@ function servcheck_show_history() {
 			if ($row['cert_expire'] == '0000-00-00 00:00:00' || is_null($row['cert_expire'])) {
 				$days = 'N/A';
 			} else {
-				$days = round((strtotime($row['cert_expire']) - strtotime($row['lastcheck'])) / 86400, 1) . ' ' . __('days', 'servcheck');
+				$days = round((strtotime($row['cert_expire']) - strtotime($row['last_check'])) / 86400, 1) . ' ' . __('days', 'servcheck');
 
 				if ($days <= 0) {
 					$days = __('Expired %s days ago', abs((int)$days), 'servcheck');
@@ -925,7 +946,7 @@ function servcheck_show_history() {
 
 			print "<tr class='tableRow selectable' style=\"$style\" id='line{$row['id']}'>";
 
-			form_selectable_cell($row['lastcheck'], $row['id']);
+			form_selectable_cell($row['last_check'], $row['id']);
 			form_selectable_cell($row['name'], $row['id']);
 			form_selectable_cell($row['attempt'], $row['id']);
 			form_selectable_cell($res, $row['id']);
@@ -934,6 +955,8 @@ function servcheck_show_history() {
 			form_selectable_cell($row['duration'], $row['id'], '', 'right');
 			form_selectable_cell($days, $row['id']);
 			form_selectable_cell($row['curl_response'], $row['id']);
+			form_selectable_cell($row['returned_data_size'] . ' b', $row['id']);
+			form_selectable_cell($row['cpu_user'] . ' / ' . $row['cpu_system'] . ' / ' . $row['memory'] . 'MB', $row['id'], '', 'right');
 			form_end_row();
 		}
 	}
@@ -954,6 +977,16 @@ function servcheck_show_graph() {
 
 	$id = get_filter_request_var('id');
 
+	$count = db_fetch_cell_prepared('SELECT count(id) FROM plugin_servcheck_log
+		WHERE test_id = ?',
+		[$id]);
+
+	if ($count < 5) {
+		print __('Insufficient data, wait a few poller cycles');
+
+		return true;
+	}
+
 	$result = db_fetch_row_prepared('SELECT name
 		FROM plugin_servcheck_test
 		WHERE id = ?',
@@ -964,7 +997,7 @@ function servcheck_show_graph() {
 	foreach ($graph_interval as $key => $value) {
 		print '<b>' . ($value) . ':</b>';
 		servcheck_graph($id, $key);
-		print '<br/><hr style="width: 50%; margin-left: 0; margin-right: auto;"><br/>'; // print line below the graph.
+		print '<br/><hr style="width: 50%; margin-left: 0; margin-right: auto;"><br/>';
 	}
 }
 
@@ -1005,13 +1038,20 @@ function data_list() {
 
 	$sql_order = get_order_string();
 
-	// `statistics` is not a table column, the columns are:
+	// `statistics` and `resources` are not a table column, the columns are:
 	// `stats_ok` and `stats_bad`, hence, the ORDER BY should be based on these 2 columns
 	if ($sql_order == 'ORDER BY `statistics` ASC') {
 		$sql_order = 'ORDER BY `stats_ok` ASC, `stats_bad` ASC';
 	} elseif ($sql_order == 'ORDER BY `statistics` DESC') {
 		$sql_order = 'ORDER BY `stats_ok` DESC, `stats_bad` DESC';
 	}
+
+	if ($sql_order == 'ORDER BY `resources` ASC') {
+		$sql_order = 'ORDER BY `cpu_user` ASC, `cpu_system` ASC, `memory` ASC';
+	} elseif ($sql_order == 'ORDER BY `resources` DESC') {
+		$sql_order = 'ORDER BY `cpu_user` DESC, `cpu_system` DESC, `memory` DESC';
+	}
+
 	$sql_limit = ' LIMIT ' . ($rows * (get_request_var('page') - 1)) . ',' . $rows;
 
 	if (get_request_var('rfilter') != '') {
@@ -1044,7 +1084,7 @@ function data_list() {
 			'sort'    => 'ASC',
 			'align'   => 'left'
 		],
-		'lastcheck' => [
+		'last_check' => [
 			'display' => __('Last Check (attempt)', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
@@ -1054,7 +1094,7 @@ function data_list() {
 			'sort'    => 'ASC',
 			'align'   => 'right'
 		],
-		'duration' => [
+		'last_duration' => [
 			'display' => __('Duration', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
@@ -1064,13 +1104,18 @@ function data_list() {
 			'sort'    => 'ASC',
 			'align'   => 'right'
 		],
-		'result' => [
+		'last_result' => [
 			'display' => __('Result', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
 		],
-		'result_search' => [
+		'last_result_search' => [
 			'display' => __('Search result', 'servcheck'),
+			'sort'    => 'ASC',
+			'align'   => 'right'
+		],
+		'resources' => [
+			'display' => __('CPU u/CPU s/Memory', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
 		],
@@ -1093,39 +1138,24 @@ function data_list() {
 			$long_dur = false;
 			$style    = '';
 
-			$last_log = db_fetch_row_prepared('SELECT *,
-				(SELECT count(id) FROM plugin_servcheck_log WHERE test_id = ? ) as `count`
-				FROM plugin_servcheck_log
-				WHERE test_id = ? ORDER BY id DESC LIMIT 1',
-				[$row['id'], $row['id']]);
-
-			if (!$last_log) {
-				$last_log['result']           = 'not yet';
-				$last_log['result_search']    = 'not yet';
-				$last_log['curl_return_code'] = '0';
-				$last_log['duration']         = '0';
-				$last_log['count']            = 0;
-				$last_log['attempt']          = 0;
-			}
-
-			if ($last_log['result'] == 'not yet') {
+			if ($row['last_result'] == 'not yet') {
 				$res = __('Not tested yet', 'servcheck');
-			} elseif ($last_log['result'] == 'ok') {
+			} elseif ($row['last_result'] == 'ok') {
 				$res = 'OK';
 			} else {
-				$res  = $last_log['result'] . ' (' . $last_log['error'] . ')';
+				$res  = $row['last_result'] . ' (' . $row['last_error'] . ')';
 			}
 
 			if ($row['enabled'] == '') {
 				$style = 'background-color: ' . $servcheck_states['disabled']['color'] . ';';
-			} elseif ($last_log['result'] == 'ok' && $row['triggered_duration'] >= $row['duration_count']) {
+			} elseif ($row['last_result'] == 'ok' && $row['triggered_duration'] >= $row['duration_count']) {
 				$style    = 'background-color: ' . $servcheck_states['duration']['color'] . ';';
 				$long_dur = true;
 			} elseif ($row['failures'] > 0 && $row['failures'] < $row['downtrigger']) {
 				$style = 'background-color: ' . $servcheck_states['failing']['color'] . ';';
-			} elseif ($last_log['result'] == 'ok' && $last_log['result_search'] == 'not ok') {
+			} elseif ($row['last_result'] == 'ok' && $row['last_result_search'] == 'not ok') {
 				$style = 'background-color: ' . $servcheck_states['warning']['color'] . ';';
-			} elseif ($last_log['result'] == 'ok' && strtotime($row['lastcheck']) > 0) {
+			} elseif ($row['last_result'] == 'ok' && strtotime($row['last_check']) > 0) {
 				$style = 'background-color: ' . $servcheck_states['ok']['color'] . ';';
 			} else {
 				$style = 'background-color: ' . $servcheck_states['error']['color'] . ';';
@@ -1156,35 +1186,31 @@ function data_list() {
 					<i class='tholdGlyphLog fas fa-search'></i>
 				</a>";
 
-			if ($last_log['count'] > 4) {
-				print "<a class='pic' href='" . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_test.php?action=graph&id=' . $row['id']) . "' title='" . __esc('View Graph', 'servcheck') . "'>
-						<i class='tholdGlyphLog fas fa-chart-area'></i>
-					</a>
-				</td>";
-			} else {
-				print "<i class='tholdGlyphLog fas fa-chart-area'></i>
-				</td>";
-			}
+			print "<a class='pic' href='" . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_test.php?action=graph&id=' . $row['id']) . "' title='" . __esc('View Graph', 'servcheck') . "'>
+					<i class='tholdGlyphLog fas fa-chart-area'></i>
+				</a>
+			</td>";
 
 			form_selectable_cell($row['name'], $row['id']);
 
-			if ($row['lastcheck'] == '0000-00-00 00:00:00') {
+			if ($row['last_check'] == '0000-00-00 00:00:00') {
 				form_selectable_cell(__('N/A (N/A)', 'servcheck'), $row['id'], '', 'right');
 			} else {
-				form_selectable_cell($row['lastcheck'] . ' (' . $last_log['attempt'] . ')', $row['id'], '', 'right');
+				form_selectable_cell($row['last_check'] . ' (' . $row['last_attempt'] . ')', $row['id'], '', 'right');
 			}
 
 			form_selectable_cell($row['stats_ok'] . ' / ' . $row['stats_bad'], $row['id'], '', 'right');
 			$tmp = ' (' . $row['failures'] . ' of ' . $row['downtrigger'] . ')';
 
 			if ($long_dur) {
-				form_selectable_cell('<b>' . $last_log['duration'] . '</b>', $row['id'], '', 'right');
+				form_selectable_cell('<b>' . $row['last_duration'] . '</b>', $row['id'], '', 'right');
 			} else {
-				form_selectable_cell($last_log['duration'], $row['id'], '', 'right');
+				form_selectable_cell($row['last_duration'], $row['id'], '', 'right');
 			}
 			form_selectable_cell($row['triggered'] == '0' ? __('No', 'servcheck') . $tmp : __('Yes', 'servcheck') . $tmp, $row['id'], '', 'right');
 			form_selectable_cell(substr($res, 0, 30), $row['id'], '', 'right', $res);
-			form_selectable_cell($text_result_search[$last_log['result_search']], $row['id'], '', 'right');
+			form_selectable_cell($text_result_search[$row['last_result_search']], $row['id'], '', 'right');
+			form_selectable_cell(round($row['cpu_user'], 2) . ' / ' . round($row['cpu_system'], 2) . ' / ' . $row['memory'] . 'MB', $row['id'], '', 'right');
 			form_checkbox_cell($row['id'], $row['id']);
 
 			form_end_row();

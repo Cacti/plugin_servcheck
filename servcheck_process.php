@@ -137,7 +137,7 @@ if (!$force) {
 	$enabled = 'AND enabled = "on"';
 }
 
-$test = db_fetch_row_prepared('SELECT *, UNIX_TIMESTAMP(DATE_ADD(lastcheck,
+$test = db_fetch_row_prepared('SELECT *, UNIX_TIMESTAMP(DATE_ADD(last_check,
 	INTERVAL (? * how_often) SECOND)) AS next_run
 	FROM plugin_servcheck_test
 	WHERE id = ? ' . $enabled,
@@ -310,11 +310,13 @@ if ($results['result'] == 'ok' && $test['certexpirenotify']) {
 			"{$parsed['year']}-{$parsed['month']}-{$parsed['day']} {$parsed['hour']}:{$parsed['minute']}:{$parsed['second']}",
 			new DateTimeZone('UTC')
 		);
+
 		$local_tz = date_default_timezone_get();
 
 		if (empty($local_tz)) {
 			$local_tz = 'UTC';
 		}
+
 		$dt->setTimezone(new DateTimeZone($local_tz));
 		$exp                 = $dt->getTimestamp();
 		$test['days_left']   = round(($exp - time()) / 86400,1);
@@ -410,7 +412,7 @@ if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days_left'] < $
 if ($test['certexpirenotify'] && $results['result'] == 'ok') {
 	if (isset($last_log['cert_expire']) &&
 		$last_log['cert_expire'] != '0000-00-00 00:00:00' && !is_null($last_log['cert_expire'])) {
-		$days_before = round((strtotime($last_log['cert_expire']) - strtotime($last_log['lastcheck'])) / 86400,1);
+		$days_before = round((strtotime($last_log['cert_expire']) - strtotime($last_log['last_check'])) / 86400,1);
 
 		if ($test['days_left'] > 0 && $test['days_left'] > $days_before) {
 			if (!servcheck_summer_time_changed()) {
@@ -436,14 +438,14 @@ if ($test['duration_trigger'] > 0 && $test['duration_count'] > 0 && $results['re
 	$test['durs'][] = $results['duration'] . ' (' . date('Y-m-d H:i:s', $results['time']) . ')';
 
 	if ($test['duration_count'] > 1) {
-		$durations = db_fetch_assoc_prepared('SELECT duration, lastcheck, result
+		$durations = db_fetch_assoc_prepared('SELECT duration, last_check, result
 			FROM plugin_servcheck_log
 			WHERE test_id = ?
 			ORDER BY id DESC LIMIT ' . ($test['duration_count'] - 1),
 			[$test['id']]);
 
 		foreach ($durations as $d) {
-			$test['durs'][] = $d['duration'] . ' (' . $d['lastcheck'] . ')';
+			$test['durs'][] = $d['duration'] . ' (' . $d['last_check'] . ')';
 		}
 	}
 
@@ -475,7 +477,7 @@ if ($test['notify_result'] || $test['notify_search'] || $test['notify_duration']
 	} else {
 		if ($test['notify'] != '') {
 			servcheck_debug('Time to send email');
-			plugin_servcheck_send_notification($results, $test, $last_log, $local_tz);
+			plugin_servcheck_send_notification($results, $test, $last_log);
 		} else {
 			servcheck_debug('Time to send email, but email notification for this test is disabled');
 		}
@@ -484,7 +486,7 @@ if ($test['notify_result'] || $test['notify_search'] || $test['notify_duration']
 	$command        = read_config_option('servcheck_change_command');
 	$command_enable = read_config_option('servcheck_enable_scripts');
 
-	if ($command_enable && $command != '') {
+	if ($command_enable && $command != '' && $test['run_script'] == 'on') {
 		servcheck_debug('Time to run command');
 
 		putenv('SERVCHECK_TEST_NAME=' . $test['name']);
@@ -510,12 +512,12 @@ if ($test['notify_result'] || $test['notify_search'] || $test['notify_duration']
 	servcheck_debug('Nothing triggered');
 }
 
-update_statistics($test, $results, $new_notify_expire);
+$rusage = getrusage();
+update_statistics($test, $results, $new_notify_expire, $rusage);
 
 unregister_process('servcheck', "child:$poller_id", $test_id);
 
 $end    = microtime(true);
-$rusage = getrusage();
 $stats  = sprintf('Time:%.2f, Stats:%s/%s, Down triggered:%s, Duration triggered:%s, Memory:%s MB, CPUuser:%.2f CPUsystem:%.2f',
 	$end - $start,
 	$test['stats_ok'],
@@ -528,7 +530,7 @@ $stats  = sprintf('Time:%.2f, Stats:%s/%s, Down triggered:%s, Duration triggered
 
 servcheck_debug($stats);
 
-function update_statistics(&$test, &$results, $new_notify_expire) {
+function update_statistics(&$test, &$results, $new_notify_expire, $rusage) {
 	servcheck_debug('Updating Statistics');
 
 	if ($results['curl']) {
@@ -538,7 +540,7 @@ function update_statistics(&$test, &$results, $new_notify_expire) {
 
 		$curl  = 'HTTP code: ' . $results['options']['http_code'] . ', DNS time: ' . round($results['options']['namelookup_time'], 3) . ', ';
 		$curl .= 'Conn. time: ' . round($results['options']['connect_time'],3) . ', Redir. time: ' . round($results['options']['redirect_time'], 3) . ', ';
-		$curl .= 'Redir. count: ' . $results['options']['redirect_time'] . ', Download: ' . round($results['options']['size_download'], 3) . ', ';
+		$curl .= 'Redir. count: ' . $results['options']['redirect_time'] . ', ';
 		$curl .= 'Speed: ' . $results['options']['speed_download'] . ', CURL code: ' . $results['curl_return'];
 	} else {
 		$curl = 'N/A';
@@ -555,10 +557,16 @@ function update_statistics(&$test, &$results, $new_notify_expire) {
 	}
 
 	db_execute_prepared('INSERT INTO plugin_servcheck_log
-		(test_id, duration, lastcheck, cert_expire, result, error, result_search, curl_response, attempt)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+		(test_id, duration, last_check, cert_expire, result, error, result_search,
+		curl_response, attempt, cpu_user, cpu_system, memory, returned_data_size)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
 		[$test['id'], $results['duration'], date('Y-m-d H:i:s', $results['time']), $save_exp,
-			$results['result'], $results['error'], $results['result_search'], $curl, $results['x']]
+			$results['result'], $results['error'], $results['result_search'], $curl, $results['x'],
+			$rusage['ru_utime.tv_sec'] + $rusage['ru_utime.tv_usec'] / 1E6,
+			$rusage['ru_stime.tv_sec'] + $rusage['ru_stime.tv_usec'] / 1E6,
+			memory_get_peak_usage(true) / 1024 / 1024,
+			strlen($results['data'])
+		]
 	);
 
 	if ($new_notify_expire) {
@@ -571,15 +579,30 @@ function update_statistics(&$test, &$results, $new_notify_expire) {
 	}
 
 	db_execute_prepared('UPDATE plugin_servcheck_test
-		SET triggered = ?, triggered_duration = ?, failures = ?, lastcheck = ?, last_exp_notify = ?,
-		stats_ok = ?, stats_bad = ?, last_returned_data = ?
+		SET triggered = ?, triggered_duration = ?, failures = ?, last_check = ?, last_exp_notify = ?,
+		stats_ok = ?, stats_bad = ?, last_returned_data = ?, last_duration = ?,
+		last_result = ?, last_result_search = ?, last_attempt = ?, last_error = ?,
+		cpu_user = ?, cpu_system = ?,
+		memory = ?
 		WHERE id = ?',
-		[$test['triggered'], $test['triggered_duration'], $test['failures'],
-			date('Y-m-d H:i:s', $results['time']), $exp_notify,
-			$test['stats_ok'], $test['stats_bad'],
-			$results['data'], $test['id']
+		[$test['triggered'], $test['triggered_duration'], $test['failures'], date('Y-m-d H:i:s', $results['time']), $exp_notify,
+			$test['stats_ok'], $test['stats_bad'], $results['data'], $results['duration'],
+			$results['result'], $results['result_search'], $results['x'], $results['error'],
+			$rusage['ru_utime.tv_sec'] + $rusage['ru_utime.tv_usec'] / 1E6, $rusage['ru_stime.tv_sec'] + $rusage['ru_stime.tv_usec'] / 1E6,
+			memory_get_peak_usage(true) / 1024 / 1024,
+			$test['id']
 		]
 	);
+
+	$retention = read_config_option('servcheck_data_retention');
+
+	if ($retention > 0) {
+		servcheck_debug('Deletion of logs from this test older than ' . $retention . ' days');
+
+		db_execute_prepared('DELETE FROM plugin_servcheck_log
+			WHERE test_id = ? AND last_check < now() - INTERVAL ? day',
+			[$test['id'], $retention]);
+	}
 }
 
 function plugin_servcheck_send_notification($results, $test, $last_log) {
@@ -587,6 +610,12 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 	$notify_list    = [];
 	$notify_extra   = [];
 	$notify_account = [];
+
+	$local_tz = date_default_timezone_get();
+
+	if (empty($local_tz)) {
+		$local_tz = 'UTC';
+	}
 
 	$servcheck_send_email_separately = read_config_option('servcheck_send_email_separately');
 

@@ -21,7 +21,7 @@
 
 [info]
 name = servcheck
-version = 0.3
+version = 0.4
 longname = Service Monitor
 author = The Cacti Group, Petr Macek
 email = developers@cacti.net, petr.macek@kostax.cz

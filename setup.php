@@ -78,9 +78,9 @@ function plugin_servcheck_upgrade() {
 			db_add_column('plugin_servcheck_test', ['name' => 'external_id', 'type' => 'varchar(20)', 'NULL' => false, 'default' => '', 'after' => 'notes']);
 		}
 
-		// 0.3 contains a lot of changes. I tried to convert old data but for sure make a backup
-
 		db_execute('DROP TABLE IF EXISTS plugin_servcheck_contacts');
+
+		// 0.3 contains a lot of changes. I tried to convert old data but for sure make a backup
 
 		db_execute('CREATE TABLE plugin_servcheck_test_backup AS SELECT * FROM plugin_servcheck_test');
 		db_execute('CREATE TABLE plugin_servcheck_log_backup AS SELECT * FROM plugin_servcheck_log');
@@ -117,7 +117,7 @@ function plugin_servcheck_upgrade() {
 
 		db_execute('ALTER TABLE plugin_servcheck_log MODIFY curl_return_code int(3) default NULL');
 		db_execute('ALTER TABLE plugin_servcheck_log MODIFY cert_expire timestamp default "0000-00-00 00:00:00"');
-		db_add_column('plugin_servcheck_log', ['name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '0', 'after' => 'lastcheck']);
+		db_add_column('plugin_servcheck_log', ['name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '0', 'after' => 'enabled']);
 
 		$exist = db_fetch_cell("SELECT COUNT(*)
 			FROM information_schema.tables
@@ -279,15 +279,47 @@ function plugin_servcheck_upgrade() {
 		db_remove_column('plugin_servcheck_proxy', 'username');
 		db_remove_column('plugin_servcheck_proxy', 'password');
 
-		// Set the new version
-		db_execute_prepared("UPDATE plugin_config
-			SET version = ?, author = ?, webpage = ?
-			WHERE directory = 'servcheck'",
-			[$info['version'], $info['author'], $info['homepage']]
-		);
-
 		db_execute('DROP TABLE IF EXISTS plugin_servcheck_processes');
 	}
+
+	if (cacti_version_compare($old, '0.4', '<')) {
+		if (db_column_exists('plugin_servcheck_test', 'lastcheck')) {
+			db_execute('ALTER TABLE plugin_servcheck_test RENAME COLUMN lastcheck TO last_check');
+		}
+
+		if (db_column_exists('plugin_servcheck_log', 'lastcheck')) {
+			db_execute('ALTER TABLE plugin_servcheck_log RENAME COLUMN lastcheck TO last_check');
+		}
+
+		if (!db_column_exists('plugin_servcheck_test', 'cpu_user')) {
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', ['name' => 'cpu_user', 'type' => 'double', 'NULL' => false, 'default' => '0', 'after' => 'triggered_duration']);
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', ['name' => 'cpu_system', 'type' => 'double', 'NULL' => false, 'default' => '0', 'after' => 'cpu_user']);
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', ['name' => 'memory', 'type' => 'int(11)', 'NULL' => false, 'default' => '0', 'after' => 'cpu_system']);
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', ['name' => 'last_result', 'type' => 'varchar(20)', 'NULL' => false, 'default' => 'not yet', 'after' => 'last_exp_notify']);
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', ['name' => 'last_result_search', 'type' => 'varchar(20)', 'NULL' => false, 'default' => 'not yet', 'after' => 'last_result']);
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', ['name' => 'last_attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '0', 'after' => 'last_result_search']);
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', ['name' => 'last_error', 'type' => 'varchar(256)', 'NULL' => true, 'default' => 'NULL', 'after' => 'last_attempt']);
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', ['name' => 'run_script', 'type' => 'varchar(2)', 'NULL' => false, 'default' => 'on', 'after' => 'attempt']);
+		}
+
+		if (!db_column_exists('plugin_servcheck_test', 'last_duration')) {
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_test', ['name' => 'last_duration', 'type' => 'float', 'NULL' => false, 'default' => '0', 'after' => 'memory']);
+		}
+
+		if (!db_column_exists('plugin_servcheck_log', 'cpu_user')) {
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_log', ['name' => 'cpu_user', 'type' => 'double', 'NULL' => false, 'default' => '0', 'after' => 'duration']);
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_log', ['name' => 'cpu_system', 'type' => 'double', 'NULL' => false, 'default' => '0', 'after' => 'cpu_user']);
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_log', ['name' => 'memory', 'type' => 'int(11)', 'NULL' => false, 'default' => '0', 'after' => 'cpu_system']);
+			api_plugin_db_add_column('servcheck', 'plugin_servcheck_log', ['name' => 'returned_data_size', 'type' => 'int(11)', 'NULL' => false, 'default' => '0', 'after' => 'memory']);
+		}
+	}
+
+	// Set the new version
+	db_execute_prepared("UPDATE plugin_config
+		SET version = ?, author = ?, webpage = ?
+		WHERE directory = 'servcheck'",
+		[$info['version'], $info['author'], $info['homepage']]
+	);
 
 	return true;
 }
@@ -304,10 +336,11 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = ['name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true];
 	$data['columns'][] = ['name' => 'type', 'type' => 'varchar(30)', 'NULL' => false, 'default' => 'web_http'];
 	$data['columns'][] = ['name' => 'notify', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on'];
-	$data['columns'][] = ['name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '3'];
 	$data['columns'][] = ['name' => 'name', 'type' => 'varchar(64)', 'NULL' => false, 'default' => ''];
 	$data['columns'][] = ['name' => 'poller_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '1'];
 	$data['columns'][] = ['name' => 'enabled', 'type' => 'varchar(2)', 'NULL' => false, 'default' => 'on'];
+	$data['columns'][] = ['name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '3'];
+	$data['columns'][] = ['name' => 'run_script', 'type' => 'varchar(2)', 'NULL' => false, 'default' => 'on'];
 	$data['columns'][] = ['name' => 'hostname', 'type' => 'varchar(120)', 'NULL' => false, 'default' => ''];
 	$data['columns'][] = ['name' => 'ipaddress', 'type' => 'varchar(46)', 'NULL' => false, 'default' => ''];
 	$data['columns'][] = ['name' => 'path', 'type' => 'varchar(256)', 'NULL' => false];
@@ -321,6 +354,7 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = ['name' => 'requiresauth', 'type' => 'varchar(2)', 'NULL' => false, 'default' => ''];
 	$data['columns'][] = ['name' => 'proxy_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'];
 	$data['columns'][] = ['name' => 'ca_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'];
+	$data['columns'][] = ['name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'];
 	$data['columns'][] = ['name' => 'checkcert', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on'];
 	$data['columns'][] = ['name' => 'certexpirenotify', 'type' => 'char(2)', 'NULL' => false, 'default' => 'on'];
 	$data['columns'][] = ['name' => 'notify_list', 'type' => 'int(10)', 'NULL' => false, 'unsigned' => true, 'default' => '0'];
@@ -338,13 +372,19 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = ['name' => 'failures', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'];
 	$data['columns'][] = ['name' => 'triggered', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'];
 	$data['columns'][] = ['name' => 'triggered_duration', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'];
-	$data['columns'][] = ['name' => 'lastcheck', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00'];
+	$data['columns'][] = ['name' => 'cpu_user', 'type' => 'double', 'NULL' => false, 'default' => '0'];
+	$data['columns'][] = ['name' => 'cpu_system', 'type' => 'double', 'NULL' => false, 'default' => '0'];
+	$data['columns'][] = ['name' => 'memory', 'type' => 'int(11)', 'NULL' => false, 'default' => '0'];
+	$data['columns'][] = ['name' => 'last_check', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00'];
 	$data['columns'][] = ['name' => 'last_exp_notify', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00'];
+	$data['columns'][] = ['name' => 'last_result', 'type' => 'varchar(20)', 'NULL' => false, 'default' => 'not yet'];
+	$data['columns'][] = ['name' => 'last_result_search', 'type' => 'varchar(20)', 'NULL' => false, 'default' => 'not yet'];
+	$data['columns'][] = ['name' => 'last_attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '0'];
+	$data['columns'][] = ['name' => 'last_error', 'type' => 'varchar(256)', 'NULL' => true, 'default' => 'NULL'];
 	$data['columns'][] = ['name' => 'last_returned_data', 'type' => 'blob', 'NULL' => true, 'default' => ''];
-	$data['columns'][] = ['name' => 'cred_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'];
-
+	$data['columns'][] = ['name' => 'last_duration', 'type' => 'float', 'NULL' => false, 'default' => '0'];
 	$data['primary']   = 'id';
-	$data['keys'][]    = ['name' => 'lastcheck', 'columns' => 'lastcheck'];
+	$data['keys'][]    = ['name' => 'last_check', 'columns' => 'last_check'];
 	$data['keys'][]    = ['name' => 'triggered', 'columns' => 'triggered'];
 	$data['keys'][]    = ['name' => 'enabled', 'columns' => 'enabled'];
 	$data['type']      = 'InnoDB';
@@ -355,7 +395,6 @@ function plugin_servcheck_setup_table() {
 	$data              = [];
 	$data['columns'][] = ['name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true];
 	$data['columns'][] = ['name' => 'test_id', 'type' => 'int(11)', 'NULL' => false, 'unsigned' => true, 'default' => '0'];
-	$data['columns'][] = ['name' => 'lastcheck', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00'];
 	$data['columns'][] = ['name' => 'attempt', 'type' => 'int(2)', 'NULL' => false, 'default' => '0'];
 	$data['columns'][] = ['name' => 'result', 'type' => "enum('ok','not yet','error')", 'NULL' => false, 'default' => 'not yet'];
 	$data['columns'][] = ['name' => 'result_search', 'type' => "enum('ok','not ok','failed ok','failed not ok', 'maint ok','not yet', 'not tested')", 'NULL' => false, 'default' => 'not yet'];
@@ -363,10 +402,14 @@ function plugin_servcheck_setup_table() {
 	$data['columns'][] = ['name' => 'cert_expire', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00'];
 	$data['columns'][] = ['name' => 'error', 'type' => 'varchar(256)', 'NULL' => true, 'default' => 'NULL'];
 	$data['columns'][] = ['name' => 'duration', 'type' => 'float', 'NULL' => false, 'default' => 0];
-
+	$data['columns'][] = ['name' => 'cpu_user', 'type' => 'double', 'NULL' => false, 'default' => '0'];
+	$data['columns'][] = ['name' => 'cpu_system', 'type' => 'double', 'NULL' => false, 'default' => '0'];
+	$data['columns'][] = ['name' => 'memory', 'type' => 'int(11)', 'NULL' => false, 'default' => '0'];
+	$data['columns'][] = ['name' => 'returned_data_size', 'type' => 'int(11)', 'NULL' => false, 'default' => '0'];
+	$data['columns'][] = ['name' => 'last_check', 'type' => 'timestamp', 'NULL' => false, 'default' => '0000-00-00 00:00:00'];
 	$data['primary']   = 'id';
 	$data['keys'][]    = ['name' => 'test_id', 'columns' => 'test_id'];
-	$data['keys'][]    = ['name' => 'lastcheck', 'columns' => 'lastcheck'];
+	$data['keys'][]    = ['name' => 'last_check', 'columns' => 'last_check'];
 	$data['keys'][]    = ['name' => 'result', 'columns' => 'result'];
 	$data['type']      = 'InnoDB';
 	$data['comment']   = 'Holds servcheck Service Check Logs';
@@ -595,7 +638,7 @@ function servcheck_config_settings() {
 		],
 		'servcheck_enable_scripts' => [
 			'friendly_name' => __('Enable Command Execution', 'servcheck'),
-			'description'   => __('Checking this box will enable the ability to run commands on Servcheck events.', 'servcheck'),
+			'description'   => __('Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test.', 'servcheck'),
 			'method'        => 'checkbox',
 			'default'       => ''
 		],
@@ -644,6 +687,20 @@ function servcheck_config_settings() {
 				'60' => __('60 days in advance', 'servcheck'),
 				'90' => __('90 days in advance', 'servcheck'),
 			]
-		]
+		],
+		'servcheck_data_retention' => [
+			'friendly_name' => __('How long to keep logs', 'servcheck'),
+			'description'   => __('Enter the period after which older logs will be automatically deleted.', 'servcheck'),
+			'method'        => 'drop_array',
+			'default'       => 8,
+			'array'         => [
+				'0'   => __('Never', 'servcheck'),
+				'1'   => __('%d hours', 24, 'servcheck'),
+				'7'   => __('%d days', 7, 'servcheck'),
+				'90'  => __('%d days', 90, 'servcheck'),
+				'180' => __('%d days', 180, 'servcheck'),
+				'365' => __('%d year', 1, 'servcheck'),
+			]
+		],
 	];
 }

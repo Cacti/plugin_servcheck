@@ -555,7 +555,7 @@ $servcheck_test_fields = [
 		'default'       => 0,
 		'max_length'    => '5',
 		'size'          => '30',
-		'description'   => __('If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count.', 'servcheck'),
+		'description'   => __('If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds.', 'servcheck'),
 		'value'         => '|arg1:duration_trigger|',
 	],
 	'duration_count' => [
@@ -936,7 +936,7 @@ $servcheck_help_test = [
 	'ftp_scp'      => __('Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt).', 'servcheck'),
 	'smb_smb'      => __('Try SMB protocol, username and password are required. Try to login and download file.', 'servcheck'),
 	'smb_smbs'     => __('Try SMB protocol, username and password are required. Try to login and download file.', 'servcheck'),
-	'mqtt_mqtt'    => __('Connetct to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic', 'servcheck'),
+	'mqtt_mqtt'    => __('Connetct to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\"', 'servcheck'),
 	'rest_basic'   => __('REST API test with basic HTTP auth. Prepare credential first.', 'servcheck'),
 	'rest_apikey'  => __('REST API test with API key auth. Prepare credential first.', 'servcheck'),
 	'rest_oauth2'  => __('REST API test with Oauth2. Prepare credential first.', 'servcheck'),

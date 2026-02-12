@@ -51,7 +51,7 @@ switch (get_request_var('action')) {
 		break;
 	case 'edit':
 		top_header();
-		data_edit();
+		servcheck_data_edit();
 		bottom_footer();
 
 		break;
@@ -475,7 +475,7 @@ function purge_log_events($id) {
 	raise_message('test_log_purged', __('The Service Check history was purged for %s', $name, 'servcheck'), MESSAGE_LEVEL_INFO);
 }
 
-function data_edit() {
+function servcheck_data_edit() {
 	global $servcheck_test_fields, $service_types, $servcheck_help_test;
 
 	// ================= input validation =================

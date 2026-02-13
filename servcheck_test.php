@@ -29,14 +29,14 @@ require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
 global $refresh;
 
-$servcheck_actions_menu = array(
+$servcheck_actions_menu = [
 	1 => __('Delete', 'servcheck'),
 	2 => __('Disable', 'servcheck'),
 	3 => __('Enable', 'servcheck'),
 	4 => __('Duplicate', 'servcheck'),
 	5 => __('Clear statistics', 'servcheck'),
 	6 => __('Clear log', 'servcheck'),
-);
+];
 
 set_default_action();
 
@@ -55,17 +55,16 @@ switch (get_request_var('action')) {
 		bottom_footer();
 
 		break;
-
 	case 'enable':
 		$id = get_filter_request_var('id');
 
 		if ($id > 0) {
 			db_execute_prepared('UPDATE plugin_servcheck_test
 			SET enabled = "on"
-			WHERE id = ?', array($id));
+			WHERE id = ?', [$id]);
 		}
 
-		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) .'?header=false');
+		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
 
 		break;
@@ -75,10 +74,10 @@ switch (get_request_var('action')) {
 		if ($id > 0) {
 			db_execute_prepared('UPDATE plugin_servcheck_test
 			SET enabled = ""
-			WHERE id = ?', array($id));
+			WHERE id = ?', [$id]);
 		}
 
-		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) .'?header=false');
+		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
 
 		break;
@@ -89,11 +88,10 @@ switch (get_request_var('action')) {
 			purge_log_events($id);
 		}
 
-		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) .'?header=false');
+		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
 
 		break;
-
 	case 'history':
 		top_header();
 		servcheck_show_history();
@@ -106,14 +104,12 @@ switch (get_request_var('action')) {
 		bottom_footer();
 
 		break;
-
 	case 'last_data':
 		top_header();
 		servcheck_show_last_data();
 		bottom_footer();
 
 		break;
-
 	default:
 		top_header();
 		data_list();
@@ -125,40 +121,40 @@ switch (get_request_var('action')) {
 function form_actions() {
 	global $servcheck_actions_menu;
 
-	/* ================= input validation ================= */
-	get_filter_request_var('drp_action', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^([a-zA-Z0-9_]+)$/')));
-	/* ==================================================== */
+	// ================= input validation =================
+	get_filter_request_var('drp_action', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^([a-zA-Z0-9_]+)$/']]);
+	// ====================================================
 
-	/* if we are to save this form, instead of display it */
+	// if we are to save this form, instead of display it
 	if (isset_request_var('selected_items')) {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
 
 		if ($selected_items != false) {
 			if (get_filter_request_var('drp_action') == 1) { // delete
 				if (cacti_sizeof($selected_items)) {
-					foreach($selected_items as $item) {
-						db_execute_prepared('DELETE FROM plugin_servcheck_test WHERE id = ?', array($item));
-						db_execute_prepared('DELETE FROM plugin_servcheck_log WHERE test_id = ?', array($item));
+					foreach ($selected_items as $item) {
+						db_execute_prepared('DELETE FROM plugin_servcheck_test WHERE id = ?', [$item]);
+						db_execute_prepared('DELETE FROM plugin_servcheck_log WHERE test_id = ?', [$item]);
 					}
 				}
 			} elseif (get_filter_request_var('drp_action') == 2) { // disable
 				foreach ($selected_items as $item) {
-					db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "" WHERE id = ?', array($item));
+					db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "" WHERE id = ?', [$item]);
 				}
 			} elseif (get_filter_request_var('drp_action') == 3) { // enable
 				foreach ($selected_items as $item) {
-					db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "on" WHERE id = ?', array($item));
+					db_execute_prepared('UPDATE plugin_servcheck_test SET enabled = "on" WHERE id = ?', [$item]);
 				}
 			} elseif (get_filter_request_var('drp_action') == 4) { // duplicate
 				$newid = 1;
 
 				foreach ($selected_items as $item) {
 					$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_test
-						WHERE id = ?', array($item));
+						WHERE id = ?', [$item]);
 
 					$save['id']           = 0;
-					$save['name'] = 'New Service Check (' . $newid . ')';
-					$save['lastcheck']    = '0000-00-00 00:00:00';
+					$save['name']         = 'New Service Check (' . $newid . ')';
+					$save['last_check']   = '0000-00-00 00:00:00';
 					$save['triggered']    = 0;
 					$save['enabled']      = '';
 					$save['failures']     = 0;
@@ -173,11 +169,11 @@ function form_actions() {
 				foreach ($selected_items as $item) {
 					db_execute_prepared('UPDATE plugin_servcheck_test SET
 						stats_ok = 0, stats_bad = 0, failures = 0, triggered = 0
-						WHERE id = ?', array($item));
+						WHERE id = ?', [$item]);
 				}
 			} elseif (get_filter_request_var('drp_action') == 6) { // clear log
 				foreach ($selected_items as $item) {
-					db_execute_prepared('DELETE FROM plugin_servcheck_log WHERE test_id = ?', array($item));
+					db_execute_prepared('DELETE FROM plugin_servcheck_log WHERE test_id = ?', [$item]);
 				}
 			}
 		}
@@ -186,18 +182,18 @@ function form_actions() {
 		exit;
 	}
 
-	/* setup some variables */
-	$item_list  = '';
-	$items_array = array();
+	// setup some variables
+	$item_list   = '';
+	$items_array = [];
 
-	/* loop through each of the graphs selected on the previous page and get more info about them */
+	// loop through each of the graphs selected on the previous page and get more info about them
 	foreach ($_POST as $var => $val) {
 		if (preg_match('/^chk_([0-9]+)$/', $var, $matches)) {
-			/* ================= input validation ================= */
+			// ================= input validation =================
 			input_validate_input_number($matches[1]);
-			/* ==================================================== */
+			// ====================================================
 
-			$item_list .= '<li>' . db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_test WHERE id = ?', array($matches[1])) . '</li>';
+			$item_list .= '<li>' . db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_test WHERE id = ?', [$matches[1]]) . '</li>';
 			$items_array[] = $matches[1];
 		}
 	}
@@ -286,13 +282,10 @@ function form_actions() {
 	bottom_footer();
 }
 
-
-
 function form_save() {
 	global $service_types;
 
 	if (isset_request_var('save_component')) {
-
 		$save['id']             = get_filter_request_var('id');
 		$save['attempt']        = get_filter_request_var('attempt');
 		$save['duration_count'] = get_filter_request_var('duration_count');
@@ -305,10 +298,9 @@ function form_save() {
 
 		$save['external_id']    = get_nfilter_request_var('external_id');
 
-
 		if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $service_types)) {
-			$save['type'] = get_nfilter_request_var('type');
-			list ($category, $service) = explode('_', get_nfilter_request_var('type'));
+			$save['type']         = get_nfilter_request_var('type');
+			[$category, $service] = explode('_', get_nfilter_request_var('type'));
 		} else {
 			$_SESSION['sess_error_fields']['type'] = 'type';
 			raise_message(3);
@@ -318,6 +310,12 @@ function form_save() {
 			$save['enabled'] = 'on';
 		} else {
 			$save['enabled'] = '';
+		}
+
+		if (isset_request_var('run_script')) {
+			$save['run_script'] = 'on';
+		} else {
+			$save['run_script'] = '';
 		}
 
 		if (isset_request_var('notify')) {
@@ -364,7 +362,7 @@ function form_save() {
 					raise_message(3);
 				}
 			} else { // dns over https
-				if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '#^/(resolve|query-dns)\?[a-zA-Z0-9\=\.&\-]+$#')))) {
+				if (filter_var(get_nfilter_request_var('dns_query'), FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '#^/(resolve|query-dns)\?[a-zA-Z0-9\=\.&\-]+$#']])) {
 					$save['dns_query'] = get_nfilter_request_var('dns_query');
 				} else {
 					$_SESSION['sess_error_fields']['dns_query'] = 'dns_query';
@@ -381,7 +379,7 @@ function form_save() {
 		}
 
 		if ($category == 'snmp') {
-			if (filter_var(get_nfilter_request_var('snmp_oid'), FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '#^[0-9\.]+$#')))) {
+			if (filter_var(get_nfilter_request_var('snmp_oid'), FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '#^[0-9\.]+$#']])) {
 				$save['snmp_oid'] = get_nfilter_request_var('snmp_oid');
 			} else {
 				$_SESSION['sess_error_fields']['snmp_oid'] = 'snmp_oid';
@@ -390,7 +388,7 @@ function form_save() {
 		}
 
 		if ($service == 'command') {
-			if (filter_var(get_nfilter_request_var('ssh_command'), FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '#^[a-zA-Z0-9\./\- ]+$#')))) {
+			if (filter_var(get_nfilter_request_var('ssh_command'), FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '#^[a-zA-Z0-9\./\- ]+$#']])) {
 				$save['ssh_command'] = get_nfilter_request_var('ssh_command');
 			} else {
 				$_SESSION['sess_error_fields']['ssh_command'] = 'ssh_command';
@@ -420,7 +418,7 @@ function form_save() {
 			$save['certexpirenotify'] = '';
 		}
 
-		if ($category == 'web' || $category == 'ftp' || $category == 'smb'  || $service == 'sftp') {
+		if ($category == 'web' || $category == 'ftp' || $category == 'smb' || $service == 'sftp') {
 			if (isset_request_var('path')) {
 				form_input_validate(get_nfilter_request_var('path'), 'path', '^[a-zA-Z0-9_;\-\/\.\?=]+$', false, 3);
 				$save['path'] = get_nfilter_request_var('path');
@@ -429,7 +427,7 @@ function form_save() {
 
 		$save['duration_trigger'] = is_numeric(get_nfilter_request_var('duration_trigger')) ? get_nfilter_request_var('duration_trigger') : 0;
 
-		$save['name']    = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
+		$save['name'] = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
 
 		$save['search']          = get_nfilter_request_var('search');
 		$save['search_maint']    = get_nfilter_request_var('search_maint');
@@ -448,7 +446,6 @@ function form_save() {
 		}
 
 		if (!is_error_message()) {
-
 			$saved_id = sql_save($save, 'plugin_servcheck_test');
 
 			if ($saved_id) {
@@ -471,9 +468,9 @@ function purge_log_events($id) {
 	$name = db_fetch_cell_prepared('SELECT name
 		FROM plugin_servcheck_test
 		WHERE id = ?',
-		array($id));
+		[$id]);
 
-	db_execute_prepared('DELETE FROM plugin_servcheck_log WHERE test_id = ?', array($id));
+	db_execute_prepared('DELETE FROM plugin_servcheck_log WHERE test_id = ?', [$id]);
 
 	raise_message('test_log_purged', __('The Service Check history was purged for %s', $name, 'servcheck'), MESSAGE_LEVEL_INFO);
 }
@@ -481,17 +478,17 @@ function purge_log_events($id) {
 function data_edit() {
 	global $servcheck_test_fields, $service_types, $servcheck_help_test;
 
-	/* ================= input validation ================= */
+	// ================= input validation =================
 	get_filter_request_var('id');
-	/* ==================================================== */
+	// ====================================================
 
-	$data = array();
+	$data = [];
 
 	if (!isempty_request_var('id')) {
 		$data = db_fetch_row_prepared('SELECT *
 			FROM plugin_servcheck_test
 			WHERE id = ?',
-			array(get_request_var('id')));
+			[get_request_var('id')]);
 
 		$header_label = __('Test [edit: %s]', $data['name']);
 	} else {
@@ -507,10 +504,10 @@ function data_edit() {
 	html_start_box($header_label, '100%', true, '3', 'center', '');
 
 	draw_edit_form(
-		array(
-			'config' => array('no_form_tag' => true),
+		[
+			'config' => ['no_form_tag' => true],
 			'fields' => inject_form_variables($servcheck_test_fields, $data)
-		)
+		]
 	);
 
 	print '<div name="specific_help" id="specific_help" class="left"></div>';
@@ -527,6 +524,7 @@ function data_edit() {
 	<?php
 	print 'if (typeof servcheck_help === "undefined") {' . PHP_EOL;
 	print 'var servcheck_help = {};' . PHP_EOL;
+
 	foreach ($servcheck_help_test as $key => $value) {
 		print 'servcheck_help["' . $key . '"] = "' . $value . '";' . PHP_EOL;
 	}
@@ -545,19 +543,19 @@ function data_edit() {
 		});
 
 		$('#notify_accounts').hide().multiselect({
-			noneSelectedText: '<?php print __('No Users Selected', 'servcheck');?>',
+			noneSelectedText: '<?php print __('No Users Selected', 'servcheck'); ?>',
 			selectedText: function(numChecked, numTotal, checkedItems) {
-				myReturn = numChecked + ' <?php print __('Users Selected', 'servcheck');?>';
+				myReturn = numChecked + ' <?php print __('Users Selected', 'servcheck'); ?>';
 				$.each(checkedItems, function(index, value) {
 					if (value.value == '0') {
-						myReturn='<?php print __('All Users Selected', 'servcheck');?>';
+						myReturn='<?php print __('All Users Selected', 'servcheck'); ?>';
 						return false;
 					}
 				});
 				return myReturn;
 			},
-			checkAllText: '<?php print __('All', 'servcheck');?>',
-			uncheckAllText: '<?php print __('None', 'servcheck');?>',
+			checkAllText: '<?php print __('All', 'servcheck'); ?>',
+			uncheckAllText: '<?php print __('None', 'servcheck'); ?>',
 			uncheckall: function() {
 				$(this).multiselect('widget').find(':checkbox:first').each(function() {
 					$(this).prop('checked', true);
@@ -590,7 +588,7 @@ function data_edit() {
 				}
 			}
 		}).multiselectfilter({
-			label: '<?php print __('Search', 'servcheck');?>',
+			label: '<?php print __('Search', 'servcheck'); ?>',
 			width: msWidth
 		});
 
@@ -738,80 +736,78 @@ function data_edit() {
 }
 
 function request_validation() {
-
-	$filters = array(
-		'rows' => array(
-			'filter' => FILTER_VALIDATE_INT,
+	$filters = [
+		'rows' => [
+			'filter'  => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => '-1'
-			),
-		'page' => array(
-			'filter' => FILTER_VALIDATE_INT,
+			],
+		'page' => [
+			'filter'  => FILTER_VALIDATE_INT,
 			'default' => '1'
-			),
-		'refresh' => array(
-			'filter' => FILTER_VALIDATE_INT,
+			],
+		'refresh' => [
+			'filter'  => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => read_config_option('log_refresh_interval')
-		),
-		'rfilter' => array(
-			'filter' => FILTER_VALIDATE_IS_REGEX,
+		],
+		'rfilter' => [
+			'filter'  => FILTER_VALIDATE_IS_REGEX,
 			'default' => '',
 			'pageset' => true,
-			'options' => array('options' => 'sanitize_search_string')
-		),
-		'sort_column' => array(
-			'filter' => FILTER_CALLBACK,
+			'options' => ['options' => 'sanitize_search_string']
+		],
+		'sort_column' => [
+			'filter'  => FILTER_CALLBACK,
 			'default' => 'name',
-			'options' => array('options' => 'sanitize_search_string')
-			),
-		'sort_direction' => array(
-			'filter' => FILTER_CALLBACK,
+			'options' => ['options' => 'sanitize_search_string']
+			],
+		'sort_direction' => [
+			'filter'  => FILTER_CALLBACK,
 			'default' => 'ASC',
-			'options' => array('options' => 'sanitize_search_string')
-			),
-		'state' => array(
-			'filter' => FILTER_VALIDATE_INT,
+			'options' => ['options' => 'sanitize_search_string']
+			],
+		'state' => [
+			'filter'  => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => '-1'
-		)
-	);
+		]
+	];
 
 	validate_store_request_vars($filters, 'sess_servcheck_test');
 }
 
 function servcheck_log_request_validation() {
-
-	$filters = array(
-		'id' => array(
-			'filter' => FILTER_VALIDATE_INT,
+	$filters = [
+		'id' => [
+			'filter'  => FILTER_VALIDATE_INT,
 			'default' => '-1'
-		),
-		'rows' => array(
-			'filter' => FILTER_VALIDATE_INT,
+		],
+		'rows' => [
+			'filter'  => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => '-1'
-		),
-		'page' => array(
-			'filter' => FILTER_VALIDATE_INT,
+		],
+		'page' => [
+			'filter'  => FILTER_VALIDATE_INT,
 			'default' => '1'
-		),
-		'filter' => array(
-			'filter' => FILTER_CALLBACK,
+		],
+		'filter' => [
+			'filter'  => FILTER_CALLBACK,
 			'default' => '',
-			'options' => array('options' => 'sanitize_search_string')
-		),
-		'sort_column' => array(
-			'filter' => FILTER_CALLBACK,
-			'default' => 'lastcheck',
-			'options' => array('options' => 'sanitize_search_string')
-		),
-		'sort_direction' => array(
-			'filter' => FILTER_CALLBACK,
+			'options' => ['options' => 'sanitize_search_string']
+		],
+		'sort_column' => [
+			'filter'  => FILTER_CALLBACK,
+			'default' => 'last_check',
+			'options' => ['options' => 'sanitize_search_string']
+		],
+		'sort_direction' => [
+			'filter'  => FILTER_CALLBACK,
 			'default' => 'DESC',
-			'options' => array('options' => 'sanitize_search_string')
-		),
-	);
+			'options' => ['options' => 'sanitize_search_string']
+		],
+	];
 
 	validate_store_request_vars($filters, 'sess_servcheck_log');
 }
@@ -837,12 +833,19 @@ function servcheck_show_history() {
 	$sql_params[] = get_filter_request_var('id');
 
 	if (get_request_var('filter') != '') {
-		$sql_where .= 'AND sl.lastcheck LIKE ?';
+		$sql_where .= 'AND sl.last_check LIKE ?';
 		$sql_params[] = '%' . get_request_var('filter') . '%';
 	}
 
 	$sql_order = get_order_string();
-	$sql_limit = ' LIMIT ' . ($rows*(get_filter_request_var('page')-1)) . ',' . $rows;
+
+	if ($sql_order == 'ORDER BY `resources` ASC') {
+		$sql_order = 'ORDER BY `cpu_user` ASC, `cpu_system` ASC, `memory` ASC';
+	} elseif ($sql_order == 'ORDER BY `resources` DESC') {
+		$sql_order = 'ORDER BY `cpu_user` DESC, `cpu_system` DESC, `memory` DESC';
+	}
+
+	$sql_limit = ' LIMIT ' . ($rows * (get_filter_request_var('page') - 1)) . ',' . $rows;
 
 	$result = db_fetch_assoc_prepared("SELECT sl.*, st.name
 		FROM plugin_servcheck_log AS sl
@@ -860,34 +863,42 @@ function servcheck_show_history() {
 		$sql_where",
 		$sql_params);
 
-	$display_text = array(
-		'lastcheck' => array(
+	$display_text = [
+		'last_check' => [
 			'display' => __('Date', 'servcheck')
-		),
-		'name' => array(
+		],
+		'name' => [
 			'display' => __('Name', 'servcheck'),
-		),
-		'attempt' => array(
+		],
+		'attempt' => [
 			'display' => __('Attempt', 'servcheck'),
-		),
-		'result' => array(
+		],
+		'result' => [
 			'display' => __('Result', 'servcheck'),
-		),
-		'result_search' => array(
+		],
+		'result_search' => [
 			'display' => __('Search result', 'servcheck'),
-		),
-		'duration' => array(
+		],
+		'duration' => [
 			'display' => __('Duration', 'servcheck'),
 			'align'   => 'right',
 			'sort'    => 'DESC'
-		),
-		'certificate' => array(
+		],
+		'certificate' => [
 			'display' => __('Certificate', 'servcheck'),
-		),
-		'curl' => array(
+		],
+		'curl' => [
 			'display' => __('Curl', 'servcheck'),
-		),
-	);
+		],
+		'returned_data_size' => [
+			'display' => __('Ret. data size', 'servcheck'),
+		],
+		'resources' => [
+			'display' => __('CPU u/CPU s/Memory', 'servcheck'),
+			'sort'    => 'ASC',
+			'align'   => 'right'
+		],
+	];
 
 	$columns = cacti_sizeof($display_text);
 
@@ -903,11 +914,10 @@ function servcheck_show_history() {
 
 	html_start_box('', '100%', '', '3', 'center', '');
 
-	html_header_sort_checkbox($display_text, get_request_var('sort_column'), get_request_var('sort_direction'), false);
+	html_header_sort($display_text, get_request_var('sort_column'), get_request_var('sort_direction'));
 
 	if (count($result)) {
 		foreach ($result as $row) {
-
 			if ($row['result'] == 'not yet') {
 				$res = __('Not tested yet', 'servcheck');
 			} elseif ($row['result'] == 'ok') {
@@ -919,13 +929,14 @@ function servcheck_show_history() {
 			if ($row['cert_expire'] == '0000-00-00 00:00:00' || is_null($row['cert_expire'])) {
 				$days = 'N/A';
 			} else {
-				$days = round((strtotime($row['cert_expire']) - strtotime($row['lastcheck']))/86400, 1) . ' ' . __('days', 'servcheck') ;
+				$days = round((strtotime($row['cert_expire']) - strtotime($row['last_check'])) / 86400, 1) . ' ' . __('days', 'servcheck');
+
 				if ($days <= 0) {
 					$days = __('Expired %s days ago', abs((int)$days), 'servcheck');
 				}
 			}
 
-			if  ($row['result'] == 'ok' && $row['result_search'] == 'not ok') {
+			if ($row['result'] == 'ok' && $row['result_search'] == 'not ok') {
 				$style = 'background-color: ' . $servcheck_states['warning']['color'] . ';';
 			} elseif ($row['result'] == 'ok') {
 				$style = 'background-color: ' . $servcheck_states['ok']['color'] . ';';
@@ -933,10 +944,9 @@ function servcheck_show_history() {
 				$style = 'background-color: ' . $servcheck_states['error']['color'] . ';';
 			}
 
-
 			print "<tr class='tableRow selectable' style=\"$style\" id='line{$row['id']}'>";
 
-			form_selectable_cell($row['lastcheck'], $row['id']);
+			form_selectable_cell($row['last_check'], $row['id']);
 			form_selectable_cell($row['name'], $row['id']);
 			form_selectable_cell($row['attempt'], $row['id']);
 			form_selectable_cell($res, $row['id']);
@@ -945,6 +955,8 @@ function servcheck_show_history() {
 			form_selectable_cell($row['duration'], $row['id'], '', 'right');
 			form_selectable_cell($days, $row['id']);
 			form_selectable_cell($row['curl_response'], $row['id']);
+			form_selectable_cell($row['returned_data_size'] . ' b', $row['id']);
+			form_selectable_cell($row['cpu_user'] . ' / ' . $row['cpu_system'] . ' / ' . $row['memory'] . 'MB', $row['id'], '', 'right');
 			form_end_row();
 		}
 	}
@@ -958,7 +970,6 @@ function servcheck_show_history() {
 	form_end();
 }
 
-
 function servcheck_show_graph() {
 	global $graph_interval;
 
@@ -966,20 +977,29 @@ function servcheck_show_graph() {
 
 	$id = get_filter_request_var('id');
 
+	$count = db_fetch_cell_prepared('SELECT count(id) FROM plugin_servcheck_log
+		WHERE test_id = ?',
+		[$id]);
+
+	if ($count < 5) {
+		print __('Insufficient data, wait a few poller cycles');
+
+		return true;
+	}
+
 	$result = db_fetch_row_prepared('SELECT name
 		FROM plugin_servcheck_test
 		WHERE id = ?',
-		array($id));
+		[$id]);
 
 	print '<b>' . html_escape($result['name']) . ':</b><br/>';
 
 	foreach ($graph_interval as $key => $value) {
 		print '<b>' . ($value) . ':</b>';
-		servcheck_graph ($id, $key);
-		print '<br/><hr style="width: 50%; margin-left: 0; margin-right: auto;"><br/>'; //print line below the graph.
+		servcheck_graph($id, $key);
+		print '<br/><hr style="width: 50%; margin-left: 0; margin-right: auto;"><br/>';
 	}
 }
-
 
 function data_list() {
 	global $config, $servcheck_actions_menu, $refresh, $text_result_search, $servcheck_states;
@@ -987,15 +1007,16 @@ function data_list() {
 	request_validation();
 
 	$statefilter = '';
+
 	if (isset_request_var('state')) {
 		if (get_request_var('state') == '-1') {
-			$statefilter = '';                                     //state = Any
+			$statefilter = '';                                     // state = Any
 		} elseif (get_request_var('state') == '2') {
-			$statefilter = "plugin_servcheck_test.enabled = ''";   //state = Disabled
+			$statefilter = "plugin_servcheck_test.enabled = ''";   // state = Disabled
 		} elseif (get_request_var('state') == '1') {
-			$statefilter = "plugin_servcheck_test.enabled = 'on'"; //state = Enabled
+			$statefilter = "plugin_servcheck_test.enabled = 'on'"; // state = Enabled
 		} elseif (get_request_var('state') == '3') {
-			$statefilter = 'plugin_servcheck_test.triggered = 1';  //state = Triggered
+			$statefilter = 'plugin_servcheck_test.triggered = 1';  // state = Triggered
 		}
 	}
 
@@ -1016,14 +1037,22 @@ function data_list() {
 	}
 
 	$sql_order = get_order_string();
-	// `statistics` is not a table column, the columns are:
+
+	// `statistics` and `resources` are not a table column, the columns are:
 	// `stats_ok` and `stats_bad`, hence, the ORDER BY should be based on these 2 columns
 	if ($sql_order == 'ORDER BY `statistics` ASC') {
 		$sql_order = 'ORDER BY `stats_ok` ASC, `stats_bad` ASC';
 	} elseif ($sql_order == 'ORDER BY `statistics` DESC') {
 		$sql_order = 'ORDER BY `stats_ok` DESC, `stats_bad` DESC';
 	}
-	$sql_limit = ' LIMIT ' . ($rows*(get_request_var('page')-1)) . ',' . $rows;
+
+	if ($sql_order == 'ORDER BY `resources` ASC') {
+		$sql_order = 'ORDER BY `cpu_user` ASC, `cpu_system` ASC, `memory` ASC';
+	} elseif ($sql_order == 'ORDER BY `resources` DESC') {
+		$sql_order = 'ORDER BY `cpu_user` DESC, `cpu_system` DESC, `memory` DESC';
+	}
+
+	$sql_limit = ' LIMIT ' . ($rows * (get_request_var('page') - 1)) . ',' . $rows;
 
 	if (get_request_var('rfilter') != '') {
 		$sql_where .= ($sql_where == '' ? 'WHERE ' : ' AND ') .
@@ -1044,48 +1073,53 @@ function data_list() {
 		FROM plugin_servcheck_test
 		$sql_where");
 
-	$display_text = array(
-		'nosort' => array(
+	$display_text = [
+		'nosort' => [
 			'display' => __('Actions', 'servcheck'),
 			'sort'    => '',
 			'align'   => 'left'
-		),
-		'name' => array(
+		],
+		'name' => [
 			'display' => __('Name', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'left'
-		),
-		'lastcheck' => array(
+		],
+		'last_check' => [
 			'display' => __('Last Check (attempt)', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
-		),
-		'statistics' => array(
+		],
+		'statistics' => [
 			'display' => __('Stats (OK/problem)', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
-		),
-		'duration' => array(
+		],
+		'last_duration' => [
 			'display' => __('Duration', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
-		),
-		'triggered' => array(
+		],
+		'triggered' => [
 			'display' => __('Triggered', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
-		),
-		'result' => array(
+		],
+		'last_result' => [
 			'display' => __('Result', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
-		),
-		'result_search' => array(
+		],
+		'last_result_search' => [
 			'display' => __('Search result', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
-		),
-	);
+		],
+		'resources' => [
+			'display' => __('CPU u/CPU s/Memory', 'servcheck'),
+			'sort'    => 'ASC',
+			'align'   => 'right'
+		],
+	];
 
 	$columns = cacti_sizeof($display_text);
 
@@ -1101,43 +1135,27 @@ function data_list() {
 
 	if (cacti_sizeof($result)) {
 		foreach ($result as $row) {
-
 			$long_dur = false;
-			$style = '';
+			$style    = '';
 
-			$last_log = db_fetch_row_prepared("SELECT *,
-				(SELECT count(id) FROM plugin_servcheck_log WHERE test_id = ? ) as `count`
-				FROM plugin_servcheck_log
-				WHERE test_id = ? ORDER BY id DESC LIMIT 1",
-				array ($row['id'], $row['id']));
-
-			if (!$last_log) {
-				$last_log['result'] = 'not yet';
-				$last_log['result_search'] = 'not yet';
-				$last_log['curl_return_code'] = '0';
-				$last_log['duration'] = '0';
-				$last_log['count'] = 0;
-				$last_log['attempt'] = 0;
-			}
-
-			if ($last_log['result'] == 'not yet') {
+			if ($row['last_result'] == 'not yet') {
 				$res = __('Not tested yet', 'servcheck');
-			} elseif ($last_log['result'] == 'ok') {
+			} elseif ($row['last_result'] == 'ok') {
 				$res = 'OK';
 			} else {
-				$res  = $last_log['result'] . ' (' . $last_log['error'] . ')';
+				$res  = $row['last_result'] . ' (' . $row['last_error'] . ')';
 			}
 
 			if ($row['enabled'] == '') {
 				$style = 'background-color: ' . $servcheck_states['disabled']['color'] . ';';
-			} elseif ($last_log['result'] == 'ok' && $row['triggered_duration'] >= $row['duration_count']) {
-				$style = 'background-color: ' . $servcheck_states['duration']['color'] . ';';
+			} elseif ($row['last_result'] == 'ok' && $row['triggered_duration'] >= $row['duration_count']) {
+				$style    = 'background-color: ' . $servcheck_states['duration']['color'] . ';';
 				$long_dur = true;
 			} elseif ($row['failures'] > 0 && $row['failures'] < $row['downtrigger']) {
 				$style = 'background-color: ' . $servcheck_states['failing']['color'] . ';';
-			} elseif ($last_log['result'] == 'ok' && $last_log['result_search'] == 'not ok') {
+			} elseif ($row['last_result'] == 'ok' && $row['last_result_search'] == 'not ok') {
 				$style = 'background-color: ' . $servcheck_states['warning']['color'] . ';';
-			} elseif ($last_log['result'] == 'ok' && strtotime($row['lastcheck']) > 0) {
+			} elseif ($row['last_result'] == 'ok' && strtotime($row['last_check']) > 0) {
 				$style = 'background-color: ' . $servcheck_states['ok']['color'] . ';';
 			} else {
 				$style = 'background-color: ' . $servcheck_states['error']['color'] . ';';
@@ -1168,34 +1186,31 @@ function data_list() {
 					<i class='tholdGlyphLog fas fa-search'></i>
 				</a>";
 
-			if ($last_log['count'] > 4) {
-				print "<a class='pic' href='" . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_test.php?action=graph&id=' . $row['id']) . "' title='" . __esc('View Graph', 'servcheck') . "'>
-						<i class='tholdGlyphLog fas fa-chart-area'></i>
-					</a>
-				</td>";
-			} else {
-				print "<i class='tholdGlyphLog fas fa-chart-area'></i>
-				</td>";
-			}
+			print "<a class='pic' href='" . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_test.php?action=graph&id=' . $row['id']) . "' title='" . __esc('View Graph', 'servcheck') . "'>
+					<i class='tholdGlyphLog fas fa-chart-area'></i>
+				</a>
+			</td>";
 
 			form_selectable_cell($row['name'], $row['id']);
 
-			if ($row['lastcheck'] == '0000-00-00 00:00:00') {
+			if ($row['last_check'] == '0000-00-00 00:00:00') {
 				form_selectable_cell(__('N/A (N/A)', 'servcheck'), $row['id'], '', 'right');
 			} else {
-				form_selectable_cell($row['lastcheck'] . ' (' . $last_log['attempt'] . ')', $row['id'], '', 'right');
+				form_selectable_cell($row['last_check'] . ' (' . $row['last_attempt'] . ')', $row['id'], '', 'right');
 			}
 
 			form_selectable_cell($row['stats_ok'] . ' / ' . $row['stats_bad'], $row['id'], '', 'right');
 			$tmp = ' (' . $row['failures'] . ' of ' . $row['downtrigger'] . ')';
+
 			if ($long_dur) {
-				form_selectable_cell('<b>' . $last_log['duration'] . '</b>', $row['id'], '', 'right');
+				form_selectable_cell('<b>' . $row['last_duration'] . '</b>', $row['id'], '', 'right');
 			} else {
-				form_selectable_cell($last_log['duration'], $row['id'], '', 'right');
+				form_selectable_cell($row['last_duration'], $row['id'], '', 'right');
 			}
 			form_selectable_cell($row['triggered'] == '0' ? __('No', 'servcheck') . $tmp : __('Yes', 'servcheck') . $tmp, $row['id'], '', 'right');
 			form_selectable_cell(substr($res, 0, 30), $row['id'], '', 'right', $res);
-			form_selectable_cell($text_result_search[$last_log['result_search']], $row['id'], '', 'right');
+			form_selectable_cell($text_result_search[$row['last_result_search']], $row['id'], '', 'right');
+			form_selectable_cell(round($row['cpu_user'], 2) . ' / ' . round($row['cpu_system'], 2) . ' / ' . $row['memory'] . 'MB', $row['id'], '', 'right');
 			form_checkbox_cell($row['id'], $row['id']);
 
 			form_end_row();
@@ -1217,24 +1232,19 @@ function data_list() {
 	form_end();
 }
 
-
 function servcheck_show_last_data() {
-
 	servcheck_show_tab(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
 	$result = db_fetch_row_prepared('SELECT name, last_returned_data
 		FROM plugin_servcheck_test
 		WHERE id = ?',
-		array(get_filter_request_var('id')));
+		[get_filter_request_var('id')]);
 
 	print '<b>' . __('Last returned data of test', 'servcheck') . ' ' . html_escape($result['name']) . ':</b><br/>';
 	print '<style> pre {white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word; max-width: 25%; width: 25%}</style><pre>' . html_escape($result['last_returned_data']) . '</pre>';
 }
 
-
-
 function servcheck_filter() {
-
 	global $item_rows, $page_refresh_interval;
 
 	$refresh['page']    = 'servcheck_test.php?header=false';
@@ -1251,63 +1261,69 @@ function servcheck_filter() {
 
 	<tr class='even'>
 		<td>
-		<form id='form_servcheck_item' action='<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>'>
+		<form id='form_servcheck_item' action='<?php print htmlspecialchars(basename($_SERVER['PHP_SELF'])); ?>'>
 			<table class='filterTable'>
 				<tr>
 					<td>
-						<?php print __('Search', 'servcheck');?>
+						<?php print __('Search', 'servcheck'); ?>
 					</td>
 					<td>
-						<input type='text' class='ui-state-default ui-corner-all' id='rfilter' size='30' value='<?php print html_escape_request_var('rfilter');?>'>
+						<input type='text' class='ui-state-default ui-corner-all' id='rfilter' size='30' value='<?php print html_escape_request_var('rfilter'); ?>'>
 					</td>
 					<td>
-						<?php print __('State', 'servcheck');?>
+						<?php print __('State', 'servcheck'); ?>
 					</td>
 					<td>
 						<select id='state'>
-							<option value='-1'><?php print __('Any', 'servcheck');?></option>
+							<option value='-1'><?php print __('Any', 'servcheck'); ?></option>
 							<?php
-							foreach (array('2' => 'Disabled', '1' => 'Enabled', '3' => 'Triggered') as $key => $row) {
+							foreach (['2' => 'Disabled', '1' => 'Enabled', '3' => 'Triggered'] as $key => $row) {
 								print "<option value='" . $key . "'" . (isset_request_var('state') && $key == get_request_var('state') ? ' selected' : '') . '>' . $row . '</option>';
 							}
-							?>
+	?>
 						</select>
 					</td>
 					<td>
-						<?php print __('Refresh', 'servcheck');?>
+						<?php print __('Refresh', 'servcheck'); ?>
 					</td>
 					<td>
 						<select id='refresh'>
 							<?php
-							foreach($page_refresh_interval AS $seconds => $display_text) {
-								print "<option value='" . $seconds . "'";
-								if (get_request_var('refresh') == $seconds) {
-									print ' selected';
-								}
-								print '>' . $display_text . "</option>";
-							}
-							?>
+	foreach ($page_refresh_interval as $seconds => $display_text) {
+		print "<option value='" . $seconds . "'";
+
+		if (get_request_var('refresh') == $seconds) {
+			print ' selected';
+		}
+		print '>' . $display_text . '</option>';
+	}
+	?>
 						</select>
 					</td>
 					<td>
-						<?php print __('Checks', 'servcheck');?>
+						<?php print __('Checks', 'servcheck'); ?>
 					</td>
 					<td>
 						<select id='rows'>
 							<?php
-							print "<option value='-1'" . (get_request_var('rows') == $key ? ' selected':'') . ">" . __('Default', 'servcheck') . "</option>";
-							if (cacti_sizeof($item_rows)) {
-								foreach ($item_rows as $key => $value) {
-									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . html_escape($value) . "</option>";
-								}
-							}
-							?>
+	print "<option value='-1'" . (get_request_var('rows') == $key ? ' selected' : '') . '>' . __('Default', 'servcheck') . '</option>';
+
+	if (cacti_sizeof($item_rows)) {
+		foreach ($item_rows as $key => $value) {
+			print "<option value='" . $key . "'";
+
+			if (get_request_var('rows') == $key) {
+				print ' selected';
+			} print '>' . html_escape($value) . '</option>';
+		}
+	}
+	?>
 						</select>
 					</td>
 					<td>
 						<span class='nowrap'>
-							<input type='button' class='ui-button ui-corner-all ui-widget' id='refresh' value='<?php print __esc('Go');?>' title='<?php print __esc('Set/Refresh Filters', 'servcheck');?>'>
-							<input type='button' class='ui-button ui-corner-all ui-widget' id='clear' value='<?php print __esc('Clear');?>' title='<?php print __esc('Clear Filters', 'servcheck');?>'>
+							<input type='button' class='ui-button ui-corner-all ui-widget' id='refresh' value='<?php print __esc('Go'); ?>' title='<?php print __esc('Set/Refresh Filters', 'servcheck'); ?>'>
+							<input type='button' class='ui-button ui-corner-all ui-widget' id='clear' value='<?php print __esc('Clear'); ?>' title='<?php print __esc('Clear Filters', 'servcheck'); ?>'>
 						</span>
 					</td>
 				</tr>
@@ -1316,7 +1332,7 @@ function servcheck_filter() {
 
 		<script type='text/javascript'>
 		function applyFilter() {
-			strURL  = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?header=false&state=' + $('#state').val();
+			strURL  = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF'])); ?>?header=false&state=' + $('#state').val();
 			strURL += '&refresh=' + $('#refresh').val();
 			strURL += '&rfilter=' + base64_encode($('#rfilter').val());
 			strURL += '&rows=' + $('#rows').val();
@@ -1324,7 +1340,7 @@ function servcheck_filter() {
 		}
 
 		function clearFilter() {
-			strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?clear=1&header=false';
+			strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF'])); ?>?clear=1&header=false';
 			loadPageNoHeader(strURL);
 		}
 		$(function() {
@@ -1353,10 +1369,9 @@ function servcheck_filter() {
 	html_end_box();
 }
 
-
 // Shared CSS for selectable table rows
 function servcheck_print_selectable_row_css() {
-	print "<style>
+	print '<style>
 		tr.tableRow.selectable:hover, tr.tableRow.selectable:hover td {
 			background-color: #B2B2B2 !important;
 			color: inherit !important;
@@ -1365,7 +1380,7 @@ function servcheck_print_selectable_row_css() {
 			background-color: #000 !important;
 			color: #fff !important;
 		}
-	</style>";
+	</style>';
 }
 
 function servcheck_log_filter() {
@@ -1383,31 +1398,36 @@ function servcheck_log_filter() {
 			<table class='filterTable'>
 				<tr class='noprint'>
 					<td>
-						<?php print __('Date Search', 'servcheck');?>
+						<?php print __('Date Search', 'servcheck'); ?>
 					</td>
 					<td>
-						<input type='text' class='ui-state-default ui-corner-all' id='filter' size='30' value='<?php print html_escape_request_var('filter');?>'>
+						<input type='text' class='ui-state-default ui-corner-all' id='filter' size='30' value='<?php print html_escape_request_var('filter'); ?>'>
 					</td>
 					<td>
-						<?php print __('Entries', 'servcheck');?>
+						<?php print __('Entries', 'servcheck'); ?>
 					</td>
 					<td>
 						<select id='rows'>
 							<?php
-							print "<option value='-1'" . (get_request_var('rows') == '-1' ? ' selected':'') . ">" . __('Default', 'servcheck') . "</option>";
-							if (cacti_sizeof($item_rows)) {
-								foreach ($item_rows as $key => $value) {
-									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . html_escape($value) . "</option>";
-								}
-							}
-							?>
+							print "<option value='-1'" . (get_request_var('rows') == '-1' ? ' selected' : '') . '>' . __('Default', 'servcheck') . '</option>';
+
+	if (cacti_sizeof($item_rows)) {
+		foreach ($item_rows as $key => $value) {
+			print "<option value='" . $key . "'";
+
+			if (get_request_var('rows') == $key) {
+				print ' selected';
+			} print '>' . html_escape($value) . '</option>';
+		}
+	}
+	?>
 						</select>
 					</td>
 					<td>
 						<span class='nowrap'>
-							<input type='submit' id='go' alt='' value='<?php print __esc('Go', 'servcheck');?>'>
-							<input type='button' id='clear' alt='' value='<?php print __esc('Clear', 'servcheck');?>'>
-							<input type='button' id='purge' alt='' value='<?php print __esc('Purge Events', 'servcheck');?>'>
+							<input type='submit' id='go' alt='' value='<?php print __esc('Go', 'servcheck'); ?>'>
+							<input type='button' id='clear' alt='' value='<?php print __esc('Clear', 'servcheck'); ?>'>
+							<input type='button' id='purge' alt='' value='<?php print __esc('Purge Events', 'servcheck'); ?>'>
 						</span>
 					</td>
 				</tr>
@@ -1420,7 +1440,7 @@ function servcheck_log_filter() {
 	refreshMSeconds=99999999;
 
 	function applyFilter() {
-		strURL  = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?action=history&header=false&id=<?php print get_filter_request_var('id');?>';
+		strURL  = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF'])); ?>?action=history&header=false&id=<?php print get_filter_request_var('id'); ?>';
 		strURL += '&filter=' + $('#filter').val();
 		strURL += '&rows=' + $('#rows').val();
 		refreshMSeconds=99999999;
@@ -1428,12 +1448,12 @@ function servcheck_log_filter() {
 	}
 
 	function clearFilter() {
-		strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?action=history&clear=1&header=false';
+		strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF'])); ?>?action=history&clear=1&header=false';
 		loadPageNoHeader(strURL);
 	}
 
 	function purgeEvents() {
-		strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?action=purge&id=<?php print get_request_var('id');?>';
+		strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF'])); ?>?action=purge&id=<?php print get_request_var('id'); ?>';
 		loadPageNoHeader(strURL);
 	}
 

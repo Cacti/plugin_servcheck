@@ -24,20 +24,20 @@
 
 $ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 
-function ftp_try ($test) {
+function ftp_try($test) {
 	global $user_agent, $config, $ca_info, $service_types_ports;
 
 	// default result
-	$results['result'] = 'error';
-	$results['curl'] = true;
-	$results['time'] = time();
-	$results['error'] = '';
+	$results['result']        = 'error';
+	$results['curl']          = true;
+	$results['time']          = time();
+	$results['error']         = '';
 	$results['result_search'] = 'not tested';
-	$results['start'] = microtime(true);
+	$results['start']         = microtime(true);
 
 	$final_cred = '';
 
-	$options = array(
+	$options = [
 		CURLOPT_HEADER         => true,
 		CURLOPT_USERAGENT      => $user_agent,
 		CURLOPT_RETURNTRANSFER => true,
@@ -45,19 +45,20 @@ function ftp_try ($test) {
 		CURLOPT_MAXREDIRS      => 4,
 		CURLOPT_TIMEOUT        => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 1) : 5,
 		CURLOPT_CAINFO         => $ca_info,
-	);
+	];
 
-	list($category,$service) = explode('_', $test['type']);
+	[$category,$service] = explode('_', $test['type']);
 
 	if ($test['cred_id'] > 0) {
 		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
-			array($test['cred_id']));
+			[$test['cred_id']]);
 
 		if (!$cred) {
 			servcheck_debug('Credential is set but not found!');
 			cacti_log('Credential not found');
 			$results['result'] = 'error';
-			$results['error'] = 'Credential not found';
+			$results['error']  = 'Credential not found';
+
 			return $results;
 		} else {
 			servcheck_debug('Decrypting credential');
@@ -67,18 +68,18 @@ function ftp_try ($test) {
 				servcheck_debug('Credential is empty!');
 				cacti_log('Credential is empty');
 				$results['result'] = 'error';
-				$results['error'] = 'Credential is empty';
+				$results['error']  = 'Credential is empty';
+
 				return $results;
 			}
 		}
 	}
 
 	if (!str_contains($test['hostname'], ':')) {
-		$test['hostname'] .=  ':' . $service_types_ports[$test['type']];
+		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
 	}
 
-	if ($service == 'ftp' || $service == 'scp')  {
-
+	if ($service == 'ftp' || $service == 'scp') {
 		if ($cred['type'] == 'userpass') {
 			// curl needs username with %40 instead of @
 			$final_cred  = str_replace('@', '%40', $credential['username']);
@@ -89,7 +90,8 @@ function ftp_try ($test) {
 			servcheck_debug('Incorrect credential type, use user/pass');
 			cacti_log('Incorrect credential type, use user/pass');
 			$results['result'] = 'error';
-			$results['error'] = 'Incorrect credential type';
+			$results['error']  = 'Incorrect credential type';
+
 			return $results;
 		}
 	}
@@ -107,16 +109,18 @@ function ftp_try ($test) {
 		$options[CURLOPT_CAINFO] = $ca_info;
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
-			array($test['ca_id']));
+			[$test['ca_id']]);
 
 		$cert_file = fopen($ca_info, 'w+');
+
 		if ($cert_file) {
-			fwrite ($cert_file, $cert);
+			fwrite($cert_file, $cert);
 			fclose($cert_file);
 		} else {
 			cacti_log('Cannot create ca cert file ' . $ca_info);
 			$results['result'] = 'error';
-			$results['error'] = 'Cannot create ca cert file';
+			$results['error']  = 'Cannot create ca cert file';
+
 			return $results;
 		}
 	}
@@ -140,8 +144,8 @@ function ftp_try ($test) {
 
 	servcheck_debug('Executing curl request');
 
-	$data = curl_exec($process);
-	$data = str_replace(array("'", "\\"), array(''), $data);
+	$data            = curl_exec($process);
+	$data            = str_replace(["'", '\\'], [''], $data);
 	$results['data'] = $data;
 
 	// Get information regarding a specific transfer, cert info too
@@ -154,13 +158,14 @@ function ftp_try ($test) {
 	servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
 
 	if ($results['curl_return'] > 0) {
-		$results['error'] =  str_replace(array('"', "'"), '', (curl_error($process)));
+		$results['error']  =  str_replace(['"', "'"], '', (curl_error($process)));
 		$results['result'] = 'error';
+
 		return $results;
 	}
 
 	if ($test['ca_id'] > 0) {
-		unlink ($ca_info);
+		unlink($ca_info);
 		servcheck_debug('Removing own CA file');
 	}
 
@@ -168,21 +173,22 @@ function ftp_try ($test) {
 
 	if (empty($results['data']) && $results['curl_return'] > 0) {
 		$results['result'] = 'error';
-		$results['error'] = 'No data returned';
+		$results['error']  = 'No data returned';
+
 		return $results;
 	}
 
 	$results['result'] = 'ok';
-	$results['error'] = 'Some data returned';
+	$results['error']  = 'Some data returned';
 
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {
-
 		servcheck_debug('Processing search_failed');
 
 		if (strpos($data, $test['search_failed']) !== false) {
 			servcheck_debug('Search failed string success');
 			$results['result_search'] = 'failed ok';
+
 			return $results;
 		}
 	}
@@ -193,24 +199,25 @@ function ftp_try ($test) {
 		if (strpos($data, $test['search']) !== false) {
 			servcheck_debug('Search string success');
 			$results['result_search'] = 'ok';
+
 			return $results;
 		} else {
 			$results['result_search'] = 'not ok';
+
 			return $results;
 		}
 	}
 
 	if ($test['search_maint'] != '') {
-
 		servcheck_debug('Processing search maint');
 
 		if (strpos($data, $test['search_maint']) !== false) {
 			servcheck_debug('Search maint string success');
 			$results['result_search'] = 'maint ok';
+
 			return $results;
 		}
 	}
 
 	return $results;
 }
-

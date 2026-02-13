@@ -58,4 +58,3 @@ if (cacti_sizeof($curl_error)) {
 html_end_box(false);
 
 bottom_footer();
-

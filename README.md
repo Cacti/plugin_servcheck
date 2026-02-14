@@ -4,11 +4,11 @@
 
 This is Cacti's Services monitoring plugin. Based on Webseer plugin.
 This plugin allows you to add service monitoring to Cacti.
-You simply add service check, allow service specific test 
+You simply add service check, allow service specific test
 (like certificate check, long duration check, ...)
-and you can add the expected response. Servcheck periodically run test 
+and you can add the expected response. Servcheck periodically run test
 and notify if a service check fails. The plugin records statistics
-about the connection and service response. Servcheck can send email notification 
+about the connection and service response. Servcheck can send email notification
 or run script when the status changes.
 
 This plugin, like many others, integrates with Cacti's Maintenance or 'maint'
@@ -18,10 +18,10 @@ take place during maintenance periods.
 
 
 ## Tests and results
-Setvcheck try to run test once or more than once (you can configure it). 
-If successful on the first attempt, no further
-tests will be performed. Main result is ok/error. A lot of information
-are returned with main result. After the test is completed, statistics are generated. 
+Setvcheck try to run test once or more than once (you can configure it).
+If successful on the first attempt, no further tests will be performed.
+Main result is ok/error. A lot of information are returned with main result.
+After the test is completed, statistics are generated.
 Based on the statistics, email notifications can be sent:
 - service state change
 - search text in result change
@@ -52,11 +52,15 @@ Servcheck has great debug output. If you have any problem, try to run your test:
 
 Example_script.sh shows you how to use returned variables in own script.
 
+Test duration - default test duration is 5 seconds, you can change it in settings. If you need different for 
+specific test, change "Long duration alert" parametr in test. After that the max. duration will be
+Long duration alert + 2 seconds.
+
 Recommendation for tests with download -  please download only small not binary files.
 
 Default Libcurl build doesn't compile all services. You have to compile again for SMB, LDAP, ...
 
-For POP3 and IMAP tests is better insert correct username and password. Without credentials, 
+For POP3 and IMAP tests is better insert correct username and password. Without credentials,
 curl can will return incorrect result.
 
 SCP is in insecure mode - doesn't check SSH server key!

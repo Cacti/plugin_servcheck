@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2025 The Cacti Group                                 |
+ | Copyright (C) 2004-2026 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -28,6 +28,7 @@ function plugin_servcheck_install() {
 	api_plugin_register_hook('servcheck', 'poller_bottom',        'plugin_servcheck_poller_bottom',        'setup.php');
 	api_plugin_register_hook('servcheck', 'replicate_out',        'servcheck_replicate_out',               'setup.php');
 	api_plugin_register_hook('servcheck', 'config_settings',      'servcheck_config_settings',             'setup.php');
+	api_plugin_register_hook('servcheck', 'page_head',            'servcheck_page_head',                   'setup.php');
 
 	api_plugin_register_realm('servcheck', 'servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxy.php,servcheck_ca.php', __('Service Check Admin', 'servcheck'), 1);
 
@@ -711,3 +712,16 @@ function servcheck_config_settings() {
 		]
 	];
 }
+
+function servcheck_page_head() {
+	global $config;
+
+	$selectedTheme = get_selected_theme();
+
+	print "<link type='text/css' href='" . $config['url_path'] . "plugins/servcheck/themes/common.css' rel='stylesheet'>";
+
+	if (file_exists($config['base_path'] . '/plugins/servcheck/themes/' . $selectedTheme . '.css')) {
+		print "<link type='text/css' href='" . $config['url_path'] . 'plugins/servcheck/themes/' . $selectedTheme . ".css' rel='stylesheet'>";
+	}
+}
+

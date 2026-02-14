@@ -7,8 +7,10 @@
 * feature: Add cpu/memory statistics
 * feature: Better process control
 * feature: Add return data size stats
-* feature: Add log renention
+* feature: Add log retention
 * feature: Command run only for selected tests
+* feature: Add configurable test timeout
+* issue: Better themes support
 
 --- 0.3 ---
 

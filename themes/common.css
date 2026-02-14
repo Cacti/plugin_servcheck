@@ -1,4 +1,3 @@
-<?php
 /*
  +-------------------------------------------------------------------------+
  | Copyright (C) 2004-2026 The Cacti Group                                 |
@@ -22,4 +21,45 @@
  +-------------------------------------------------------------------------+
 */
 
-header('Location:../index.php');
+// for selectable table rows
+tr.tableRow.selectable:hover, tr.tableRow.selectable:hover td {
+	background-color: #B2B2B2 !important;
+	color: inherit !important;
+}
+
+tr.tableRow.selectable.selected, tr.tableRow.selectable.selected td {
+	background-color: #000 !important;
+	color: #FFF !important;
+}
+
+.servcheck_pre {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	max-width: 25%;
+	width: 25%
+}
+
+.servcheck_error {
+	background-color: #FB4A14 ;
+}
+
+.servcheck_duration {
+	background-color: #CDFDFF ;
+}
+
+.servcheck_warning {
+	background-color: #FCAA94 ;
+}
+
+.servcheck_failing {
+	background-color: #FAFD9E ;
+}
+
+.servcheck_ok {
+	background-color: #E0FFE0 ;
+}
+
+.servcheck_disabled {
+	background-color: #CDCFC4 ;
+}

@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2025 The Cacti Group                                 |
+ | Copyright (C) 2004-2026 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -42,30 +42,12 @@ $servcheck_tabs = [
 ];
 
 $servcheck_states = [
-	'error' => [
-		'color'   => '#FB4A14',
-		'display' => __('Error', 'servcheck')
-	],
-	'duration' => [
-		'color'   => '#CDFDFF',
-		'display' => __('Long duration', 'servcheck')
-	],
-	'warning' => [
-		'color'   => '#FCAA94',
-		'display' => __('Warning', 'servcheck')
-	],
-	'failing' => [
-		'color'   => '#FAFD9E',
-		'display' => __('Failing', 'servcheck')
-	],
-	'ok' => [
-		'color'   => '#E0FFE0',
-		'display' => __('Ok', 'servcheck')
-	],
-	'disabled' => [
-		'color'   => '#CDCFC4',
-		'display' => __('Disabled', 'servcheck')
-	]
+	'error'    => __('Error', 'servcheck'),
+	'duration' => __('Long duration', 'servcheck'),
+	'warning'  => __('Warning', 'servcheck'),
+	'failing'  => __('Failing', 'servcheck'),
+	'ok'       => __('Ok', 'servcheck'),
+	'disabled' => __('Disabled', 'servcheck')
 ];
 
 $service_types = [

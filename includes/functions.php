@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2025 The Cacti Group                                 |
+ | Copyright (C) 2004-2026 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -226,7 +226,7 @@ function servcheck_legend() {
 	print '<tr class="tableRow">';
 
 	foreach ($servcheck_states as $index => $state) {
-		print '<td style="background-color: ' . $state['color'] . '">' . $state['display'] . '</td>';
+		print '<td class="servcheck_' . $index . '">' . $state . '</td>';
 	}
 	print '</tr>';
 

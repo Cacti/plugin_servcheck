@@ -5,7 +5,7 @@
 When generating code for this repository:
 
 1. **Version Compatibility**: This is a Cacti plugin (version 0.3) requiring Cacti 1.2.24+ compatibility
-2. **Context Files**: Prioritize patterns and standards defined in `.github/copilot` directory
+2. **Context Files**: Prioritize patterns and standards defined in this file (`.github/copilot-instructions.md`)
 3. **Codebase Patterns**: When context files don't provide specific guidance, scan the codebase for established patterns
 4. **Architectural Consistency**: Maintain plugin-based architecture extending Cacti core
 5. **Code Quality**: Prioritize security, maintainability, and compatibility in all generated code

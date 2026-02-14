@@ -44,7 +44,7 @@ switch (get_request_var('action')) {
 		break;
 	case 'edit':
 		top_header();
-		data_edit();
+		data_proxy_edit();
 		bottom_footer();
 
 		break;
@@ -172,7 +172,7 @@ function form_save() {
 	exit;
 }
 
-function data_edit() {
+function data_proxy_edit() {
 	global $servcheck_proxy_fields;
 
 	// ================= input validation =================

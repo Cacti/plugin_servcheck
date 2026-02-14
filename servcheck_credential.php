@@ -45,7 +45,7 @@ switch (get_request_var('action')) {
 		break;
 	case 'edit':
 		top_header();
-		data_edit();
+		data_credential_edit();
 		bottom_footer();
 
 		break;
@@ -424,7 +424,7 @@ function form_save() {
 	exit;
 }
 
-function data_edit() {
+function data_credential_edit() {
 	global $servcheck_credential_fields, $servcheck_help_credential;
 
 	// ================= input validation =================

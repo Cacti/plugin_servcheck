@@ -27,9 +27,9 @@ require_once('./include/auth.php');
 require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
-$servcheck_actions_menu = array(
+$servcheck_actions_menu = [
 	1 => __('Delete', 'servcheck'),
-);
+];
 
 set_default_action();
 
@@ -59,20 +59,20 @@ switch (get_request_var('action')) {
 function form_actions() {
 	global $servcheck_actions_menu;
 
-	/* ================= input validation ================= */
-	get_filter_request_var('drp_action', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^([a-zA-Z0-9_]+)$/')));
-	/* ==================================================== */
+	// ================= input validation =================
+	get_filter_request_var('drp_action', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^([a-zA-Z0-9_]+)$/']]);
+	// ====================================================
 
-	/* if we are to save this form, instead of display it */
+	// if we are to save this form, instead of display it
 	if (isset_request_var('selected_items')) {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
 
 		if ($selected_items != false) {
 			if (get_filter_request_var('drp_action') == 1) {
 				if (cacti_sizeof($selected_items)) {
-					foreach($selected_items as $item) {
-						db_execute_prepared('DELETE FROM plugin_servcheck_proxy WHERE id = ?', array($item));
-						db_execute_prepared('UPDATE plugin_servcheck_test SET proxy_id = 0 WHERE proxy_id = ?', array($item));
+					foreach ($selected_items as $item) {
+						db_execute_prepared('DELETE FROM plugin_servcheck_proxy WHERE id = ?', [$item]);
+						db_execute_prepared('UPDATE plugin_servcheck_test SET proxy_id = 0 WHERE proxy_id = ?', [$item]);
 					}
 				}
 			}
@@ -82,18 +82,18 @@ function form_actions() {
 		exit;
 	}
 
-	/* setup some variables */
-	$item_list  = '';
-	$items_array = array();
+	// setup some variables
+	$item_list   = '';
+	$items_array = [];
 
-	/* loop through each of the graphs selected on the previous page and get more info about them */
+	// loop through each of the graphs selected on the previous page and get more info about them
 	foreach ($_POST as $var => $val) {
 		if (preg_match('/^chk_([0-9]+)$/', $var, $matches)) {
-			/* ================= input validation ================= */
+			// ================= input validation =================
 			input_validate_input_number($matches[1]);
-			/* ==================================================== */
+			// ====================================================
 
-			$item_list .= '<li>' . db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_proxy WHERE id = ?', array($matches[1])) . '</li>';
+			$item_list .= '<li>' . db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_proxy WHERE id = ?', [$matches[1]]) . '</li>';
 			$items_array[] = $matches[1];
 		}
 	}
@@ -137,11 +137,8 @@ function form_actions() {
 	bottom_footer();
 }
 
-
 function form_save() {
-
 	if (isset_request_var('save_component')) {
-
 		$save['id']         = get_filter_request_var('id');
 		$save['name']       = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
 		$save['hostname']   = form_input_validate(get_nfilter_request_var('hostname'), 'hostname', '', false, 3);
@@ -178,17 +175,17 @@ function form_save() {
 function data_edit() {
 	global $servcheck_proxy_fields;
 
-	/* ================= input validation ================= */
+	// ================= input validation =================
 	get_filter_request_var('id');
-	/* ==================================================== */
+	// ====================================================
 
-	$data = array();
+	$data = [];
 
 	if (!isempty_request_var('id')) {
 		$data = db_fetch_row_prepared('SELECT *
 			FROM plugin_servcheck_proxy
 			WHERE id = ?',
-			array(get_request_var('id')));
+			[get_request_var('id')]);
 
 		$header_label = __('Proxy [edit: %s]', $data['name']);
 	} else {
@@ -200,10 +197,10 @@ function data_edit() {
 	html_start_box($header_label, '100%', true, '3', 'center', '');
 
 	draw_edit_form(
-		array(
-			'config' => array('no_form_tag' => true),
+		[
+			'config' => ['no_form_tag' => true],
 			'fields' => inject_form_variables($servcheck_proxy_fields, $data)
-		)
+		]
 	);
 
 	form_hidden_box('save_component', '1', '');
@@ -213,39 +210,36 @@ function data_edit() {
 	form_save_button(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 }
 
-
 function request_validation() {
-
-	$filters = array(
-		'rows' => array(
-			'filter' => FILTER_VALIDATE_INT,
+	$filters = [
+		'rows' => [
+			'filter'  => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => '-1'
-			),
-		'page' => array(
-			'filter' => FILTER_VALIDATE_INT,
+			],
+		'page' => [
+			'filter'  => FILTER_VALIDATE_INT,
 			'default' => '1'
-			),
-		'filter' => array(
-			'filter' => FILTER_DEFAULT,
+			],
+		'filter' => [
+			'filter'  => FILTER_DEFAULT,
 			'pageset' => true,
 			'default' => ''
-			),
-		'sort_column' => array(
-			'filter' => FILTER_CALLBACK,
+			],
+		'sort_column' => [
+			'filter'  => FILTER_CALLBACK,
 			'default' => 'name',
-			'options' => array('options' => 'sanitize_search_string')
-			),
-		'sort_direction' => array(
-			'filter' => FILTER_CALLBACK,
+			'options' => ['options' => 'sanitize_search_string']
+			],
+		'sort_direction' => [
+			'filter'  => FILTER_CALLBACK,
 			'default' => 'ASC',
-			'options' => array('options' => 'sanitize_search_string')
-			)
-	);
+			'options' => ['options' => 'sanitize_search_string']
+			]
+	];
 
 	validate_store_request_vars($filters, 'sess_servcheck_proxy');
 }
-
 
 function data_list() {
 	global $servcheck_actions_menu;
@@ -269,7 +263,7 @@ function data_list() {
 	}
 
 	$sql_order = get_order_string();
-	$sql_limit = ' LIMIT ' . ($rows*(get_request_var('page')-1)) . ',' . $rows;
+	$sql_limit = ' LIMIT ' . ($rows * (get_request_var('page') - 1)) . ',' . $rows;
 
 	$total_rows = db_fetch_cell("SELECT COUNT(id)
 		FROM plugin_servcheck_proxy
@@ -282,24 +276,24 @@ function data_list() {
 		$sql_order
 		$sql_limit");
 
-	$display_text = array(
-		'name' => array(
+	$display_text = [
+		'name' => [
 			'display' => __('Name', 'servcheck'),
 			'sort'    => 'ASC'
-		),
-		'hostname' => array(
+		],
+		'hostname' => [
 			'display' => __('Hostname', 'servcheck'),
 			'sort'    => 'ASC'
-		),
-		'nosort1' => array(
+		],
+		'nosort1' => [
 			'display' => __('Ports (http/https)', 'servcheck'),
 			'sort'    => 'ASC'
-		),
-		'used' => array(
+		],
+		'used' => [
 			'display' => __('Used', 'servcheck'),
 			'sort'    => 'ASC'
-		),
-	);
+		],
+	];
 
 	$columns = cacti_sizeof($display_text);
 
@@ -355,34 +349,39 @@ function servcheck_filter() {
 	?>
 	<tr class='even'>
 		<td>
-		<form id='form_servcheck_item' action='<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>'>
+		<form id='form_servcheck_item' action='<?php print htmlspecialchars(basename($_SERVER['PHP_SELF'])); ?>'>
 			<table class='filterTable'>
 				<tr>
 					<td>
-						<?php print __('Search', 'servcheck');?>
+						<?php print __('Search', 'servcheck'); ?>
 					</td>
 					<td>
-						<input type='text' class='ui-state-default ui-corner-all' id='filter' name='filter' size='25' value='<?php print html_escape_request_var('filter');?>'>
+						<input type='text' class='ui-state-default ui-corner-all' id='filter' name='filter' size='25' value='<?php print html_escape_request_var('filter'); ?>'>
 					</td>
 					<td>
-						<?php print __('Proxies', 'servcheck');?>
+						<?php print __('Proxies', 'servcheck'); ?>
 					</td>
 					<td>
 						<select id='rows' onChange='applyFilter()'>
 							<?php
-							print "<option value='-1'" . (get_request_var('rows') == -1 ? ' selected':'') . ">" . __('Default', 'servcheck') . "</option>";
-							if (cacti_sizeof($item_rows)) {
-								foreach ($item_rows as $key => $value) {
-									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . htmlspecialchars($value) . "</option>";
-								}
-							}
-							?>
+							print "<option value='-1'" . (get_request_var('rows') == -1 ? ' selected' : '') . '>' . __('Default', 'servcheck') . '</option>';
+
+	if (cacti_sizeof($item_rows)) {
+		foreach ($item_rows as $key => $value) {
+			print "<option value='" . $key . "'";
+
+			if (get_request_var('rows') == $key) {
+				print ' selected';
+			} print '>' . htmlspecialchars($value) . '</option>';
+		}
+	}
+	?>
 						</select>
 					</td>
 					<td>
 						<span class='nowrap'>
-							<input type='button' class='ui-button ui-corner-all ui-widget' id='refresh' value='<?php print __esc('Go');?>' title='<?php print __esc('Set/Refresh Filters', 'servcheck');?>'>
-							<input type='button' class='ui-button ui-corner-all ui-widget' id='clear' value='<?php print __esc('Clear');?>' title='<?php print __esc('Clear Filters', 'servcheck');?>'>
+							<input type='button' class='ui-button ui-corner-all ui-widget' id='refresh' value='<?php print __esc('Go'); ?>' title='<?php print __esc('Set/Refresh Filters', 'servcheck'); ?>'>
+							<input type='button' class='ui-button ui-corner-all ui-widget' id='clear' value='<?php print __esc('Clear'); ?>' title='<?php print __esc('Clear Filters', 'servcheck'); ?>'>
 						</span>
 					</td>
 				</tr>
@@ -391,14 +390,14 @@ function servcheck_filter() {
 		<script type='text/javascript'>
 
 		function applyFilter() {
-			strURL  = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?header=false';
+			strURL  = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF'])); ?>?header=false';
 			strURL += '&filter=' + $('#filter').val();
 			strURL += '&rows=' + $('#rows').val();
 			loadPageNoHeader(strURL);
 		}
 
 		function clearFilter() {
-			strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF']));?>?clear=1&header=false';
+			strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF'])); ?>?clear=1&header=false';
 			loadPageNoHeader(strURL);
 		}
 
@@ -423,5 +422,3 @@ function servcheck_filter() {
 	<?php
 	html_end_box();
 }
-
-

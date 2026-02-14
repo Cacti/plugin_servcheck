@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2024-04-20 09:41-0400\n"
-"PO-Revision-Date: 2024-04-20 17:21+0000\n"
-"Last-Translator: Anonymous <anonymous@cacti.net>\n"
-"Language-Team: Chinese (Traditional) <http://translate.cacti.net/projects/"
-"cacti/servcheck/zh_Hant/>\n"
+"PO-Revision-Date: 2026-01-16 03:18+0000\n"
+"Last-Translator: sucharlie <su.charlie@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://translate.cacti.net/"
+"projects/cacti/servcheck/zh_Hant/>\n"
 "Language: zh-TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.8.1\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: includes/arrays.php:33
 msgid "String found"
@@ -137,12 +137,14 @@ msgid "Last 6 hours"
 msgstr "過去 6 小時"
 
 #: includes/arrays.php:115
+#, fuzzy
 msgid "Last day"
 msgstr "最後一天"
 
 #: includes/arrays.php:116
+#, fuzzy
 msgid "Last week"
-msgstr "上個星期"
+msgstr "上週"
 
 #: includes/arrays.php:121
 #, fuzzy
@@ -152,6 +154,7 @@ msgstr "無法連接到服務器"
 #: includes/arrays.php:122 servcheck_ca.php:109 servcheck_proxies.php:108
 #: servcheck_test.php:197 servcheck_test.php:206 servcheck_test.php:215
 #: servcheck_test.php:224
+#, fuzzy
 msgid "Continue"
 msgstr "繼續"
 
@@ -160,6 +163,7 @@ msgid "Switching Protocols"
 msgstr "交換協定"
 
 #: includes/arrays.php:124
+#, fuzzy
 msgid "OK"
 msgstr "確定"
 
@@ -196,6 +200,7 @@ msgid "Moved Permanently"
 msgstr "永久移動"
 
 #: includes/arrays.php:133
+#, fuzzy
 msgid "Found"
 msgstr "發現"
 
@@ -238,6 +243,7 @@ msgid "Forbidden"
 msgstr "禁止"
 
 #: includes/arrays.php:143
+#, fuzzy
 msgid "Not Found"
 msgstr "未找到"
 
@@ -336,28 +342,33 @@ msgstr "%d Poller 運行"
 #: includes/arrays.php:179 includes/arrays.php:180 includes/arrays.php:181
 #: includes/arrays.php:182 includes/arrays.php:183 includes/arrays.php:184
 #: includes/arrays.php:185 includes/arrays.php:186
-#, php-format
+#, fuzzy, php-format
 msgid "%d Seconds"
 msgstr "%d 秒"
 
 #: includes/arrays.php:213 includes/arrays.php:217 includes/arrays.php:221
+#, fuzzy
 msgid "Delete"
 msgstr "刪除"
 
 #: includes/arrays.php:222
+#, fuzzy
 msgid "Disable"
 msgstr "停用"
 
 #: includes/arrays.php:223
+#, fuzzy
 msgid "Enable"
 msgstr "啟用"
 
 #: includes/arrays.php:224
+#, fuzzy
 msgid "Duplicate"
 msgstr "複製"
 
 #: includes/arrays.php:230 includes/arrays.php:250 servcheck_ca.php:264
 #: servcheck_proxies.php:273 servcheck_test.php:793 servcheck_test.php:1023
+#, fuzzy
 msgid "Name"
 msgstr "名稱"
 
@@ -388,6 +399,7 @@ msgid "New Proxy"
 msgstr "新增代理伺服器"
 
 #: includes/arrays.php:259 servcheck_proxies.php:277
+#, fuzzy
 msgid "Hostname"
 msgstr "主機名稱"
 
@@ -416,6 +428,7 @@ msgid "The HTTPS Proxy Port."
 msgstr "HTTPS代理端口。"
 
 #: includes/arrays.php:286
+#, fuzzy
 msgid "User Name"
 msgstr "使用者名稱"
 
@@ -425,6 +438,7 @@ msgid "The user to use to authenticate with the Proxy if any."
 msgstr "用於通過代理進行身份驗證的用戶（如果有）。"
 
 #: includes/arrays.php:295 includes/arrays.php:378
+#, fuzzy
 msgid "Password"
 msgstr "密碼"
 
@@ -434,6 +448,7 @@ msgid "The user password to use to authenticate with the Proxy if any."
 msgstr "用於通過代理進行身份驗證的用戶密碼（如果有）。"
 
 #: includes/arrays.php:315
+#, fuzzy
 msgid "General Settings"
 msgstr "一般設定"
 
@@ -458,6 +473,7 @@ msgid "Uncheck this box to disabled this test from being checked."
 msgstr "取消選中此框可禁用此網址。"
 
 #: includes/arrays.php:332
+#, fuzzy
 msgid "Poller"
 msgstr "輪詢"
 
@@ -489,6 +505,7 @@ msgstr "一般設定"
 
 #: includes/arrays.php:363 includes/arrays.php:421 includes/arrays.php:512
 #: servcheck_test.php:477
+#, fuzzy
 msgid "None"
 msgstr "無"
 
@@ -497,6 +514,7 @@ msgid "Your own CA and intermediate certs"
 msgstr "您自己的 CA 和中間證書"
 
 #: includes/arrays.php:370 servcheck_proxies.php:285
+#, fuzzy
 msgid "Username"
 msgstr "用戶名"
 
@@ -548,6 +566,7 @@ msgid "Check this box if the site will normally return a 401 Error as it require
 msgstr "如果站點通常會返回401錯誤，請選中此框，因為它需要用戶名和密碼。"
 
 #: includes/arrays.php:418
+#, fuzzy
 msgid "Proxy Server"
 msgstr "代理服務器"
 
@@ -644,6 +663,7 @@ msgid "This is the string to search for a known failure in the service response.
 msgstr "這是在Web Service響應中搜索已知故障的字符串。服務檢查僅在發現此字符串時發出警報，忽略任何超時問題和上面的搜索字符串。"
 
 #: includes/arrays.php:497
+#, fuzzy
 msgid "Notification Settings"
 msgstr "通知設定"
 
@@ -688,6 +708,7 @@ msgid "You may specify here extra Emails to receive alerts for this test (comma 
 msgstr "您可以在此處指定額外的電子郵件以接收此URL的警報（以逗號分隔）"
 
 #: includes/arrays.php:530
+#, fuzzy
 msgid "Notes"
 msgstr "備註"
 
@@ -696,6 +717,7 @@ msgid "Notes sent in email"
 msgstr "通過電子郵件發送的筆記"
 
 #: includes/arrays.php:538
+#, fuzzy
 msgid "External ID"
 msgstr "外部ID"
 
@@ -1105,6 +1127,7 @@ msgid "Log History"
 msgstr "瀏覽歷程"
 
 #: includes/functions.php:48
+#, fuzzy
 msgid "Graphs"
 msgstr "圖表"
 
@@ -1120,6 +1143,7 @@ msgstr[0] "單擊“繼續”以刪除以下代理。"
 
 #: servcheck_ca.php:109 servcheck_proxies.php:108 servcheck_test.php:197
 #: servcheck_test.php:206 servcheck_test.php:215 servcheck_test.php:224
+#, fuzzy
 msgid "Cancel"
 msgstr "取消"
 
@@ -1166,21 +1190,25 @@ msgstr ""
 
 #: servcheck_ca.php:328 servcheck_proxies.php:343 servcheck_test.php:510
 #: servcheck_test.php:1251
+#, fuzzy
 msgid "Search"
 msgstr "搜尋"
 
 #: servcheck_ca.php:339 servcheck_proxies.php:354 servcheck_test.php:1291
 #: servcheck_test.php:1384
+#, fuzzy
 msgid "Default"
-msgstr "預設"
+msgstr "默认"
 
 #: servcheck_ca.php:350 servcheck_proxies.php:365 servcheck_test.php:1302
 #: servcheck_test.php:1395
+#, fuzzy
 msgid "Go"
 msgstr "送出"
 
 #: servcheck_ca.php:351 servcheck_proxies.php:366 servcheck_test.php:1303
 #: servcheck_test.php:1396
+#, fuzzy
 msgid "Clear"
 msgstr "清除"
 
@@ -1308,14 +1336,17 @@ msgid "All Users Selected"
 msgstr "選擇所有用戶"
 
 #: servcheck_test.php:476
+#, fuzzy
 msgid "All"
 msgstr "全部"
 
 #: servcheck_test.php:790
+#, fuzzy
 msgid "Date"
 msgstr "日期"
 
 #: servcheck_test.php:796 servcheck_test.php:1048
+#, fuzzy
 msgid "Result"
 msgstr "結果"
 
@@ -1340,6 +1371,7 @@ msgid "Redirect"
 msgstr "重新導向"
 
 #: servcheck_test.php:822
+#, fuzzy
 msgid "Total"
 msgstr "總計"
 
@@ -1361,14 +1393,17 @@ msgid "Last returned data of test"
 msgstr "上次返回的測試數據"
 
 #: servcheck_test.php:1018
+#, fuzzy
 msgid "Actions"
 msgstr "動作"
 
 #: servcheck_test.php:1028 servcheck_test.php:1135
+#, fuzzy
 msgid "Enabled"
 msgstr "啟用"
 
 #: servcheck_test.php:1033
+#, fuzzy
 msgid "Last Check"
 msgstr "最後檢查"
 
@@ -1409,18 +1444,22 @@ msgid "View Graph"
 msgstr "查看圖表"
 
 #: servcheck_test.php:1135
+#, fuzzy
 msgid "Disabled"
 msgstr "停用"
 
 #: servcheck_test.php:1138
+#, fuzzy
 msgid "N/A"
 msgstr "不适用"
 
 #: servcheck_test.php:1145
+#, fuzzy
 msgid "No"
 msgstr "否"
 
 #: servcheck_test.php:1145
+#, fuzzy
 msgid "Yes"
 msgstr "是"
 
@@ -1435,14 +1474,17 @@ msgid "Service Checks"
 msgstr "Web服務檢查"
 
 #: servcheck_test.php:1257
+#, fuzzy
 msgid "State"
 msgstr "州"
 
 #: servcheck_test.php:1261
+#, fuzzy
 msgid "Any"
 msgstr "任何"
 
 #: servcheck_test.php:1270
+#, fuzzy
 msgid "Refresh"
 msgstr "重新整理"
 
@@ -1457,6 +1499,7 @@ msgid "Date Search"
 msgstr "搜尋"
 
 #: servcheck_test.php:1379
+#, fuzzy
 msgid "Entries"
 msgstr "留言"
 
@@ -1470,6 +1513,7 @@ msgid "Service Check Admin"
 msgstr "Web服務檢查管理員"
 
 #: setup.php:214
+#, fuzzy
 msgid "Management"
 msgstr "管理"
 

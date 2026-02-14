@@ -26,7 +26,7 @@ When generating code for this repository:
 ## Project Structure
 
 ```
-plugin_servcheck/
+servcheck/             # Repository root (install to plugins/servcheck/ in Cacti)
 ├── includes/          # Test implementation modules
 │   ├── functions.php  # Core utility functions
 │   ├── arrays.php     # Configuration arrays and constants

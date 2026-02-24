@@ -29,7 +29,7 @@ function snmp_try($test) {
 
 	$version = 2;
 	$port    = 161;
-	$timeout = ($test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'))*1000;
+	$timeout = ($test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration')) * 1000;
 
 	// default result
 	$results['result'] = 'error';

@@ -1149,7 +1149,7 @@ function data_list() {
 			if ($row['enabled'] == '') {
 				$style = 'servcheck_disabled';
 			} elseif ($row['last_result'] == 'ok' && $row['triggered_duration'] >= $row['duration_count']) {
-				$style = 'servcheck_duration';
+				$style    = 'servcheck_duration';
 				$long_dur = true;
 			} elseif ($row['failures'] > 0 && $row['failures'] < $row['downtrigger']) {
 				$style = 'servcheck_failing';

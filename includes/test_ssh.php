@@ -63,7 +63,6 @@ function ssh_try($test) {
 
 	$ssh->setTimeout($test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'));
 
-
 	if ($test['cred_id'] > 0) {
 		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
 			[$test['cred_id']]);

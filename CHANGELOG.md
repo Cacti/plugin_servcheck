@@ -10,6 +10,7 @@
 * feature: Add log retention
 * feature: Command run only for selected tests
 * feature: Add configurable test timeout
+* feature: Add Servcheck graph template
 * issue: Better themes support
 
 --- 0.3 ---

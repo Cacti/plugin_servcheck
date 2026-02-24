@@ -724,4 +724,3 @@ function servcheck_page_head() {
 		print "<link type='text/css' href='" . $config['url_path'] . 'plugins/servcheck/themes/' . $selectedTheme . ".css' rel='stylesheet'>";
 	}
 }
-

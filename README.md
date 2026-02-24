@@ -45,6 +45,8 @@ MQTT - try to subscribe topic or wait for any message and print result
 SNMP - get or walk specified OID and return answer
 SSH_COMMAND - ssh connect, run command and return output
 
+## Graph template
+You can create graph for each test. How to and template is in templates directory. 
 
 ## Important
 Servcheck has great debug output. If you have any problem, try to run your test:

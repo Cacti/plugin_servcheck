@@ -42,7 +42,7 @@ function restapi_try($test) {
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_MAXREDIRS      => 4,
-		CURLOPT_TIMEOUT        => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 3) : 5,
+		CURLOPT_TIMEOUT        => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 3) : read_config_option('servcheck_test_max_duration'),
 		CURLOPT_CAINFO         => $ca_info,
 	];
 

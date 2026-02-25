@@ -44,7 +44,7 @@ switch (get_request_var('action')) {
 		break;
 	case 'edit':
 		top_header();
-		data_ca_edit();
+		servcheck_data_edit();
 		bottom_footer();
 
 		break;
@@ -169,7 +169,7 @@ function form_save() {
 	exit;
 }
 
-function data_ca_edit() {
+function servcheck_data_edit() {
 	global $servcheck_ca_fields;
 
 	// ================= input validation =================

@@ -51,7 +51,7 @@ switch (get_request_var('action')) {
 		break;
 	case 'edit':
 		top_header();
-		data_test_edit();
+		servcheck_data_edit();
 		bottom_footer();
 
 		break;
@@ -475,7 +475,7 @@ function purge_log_events($id) {
 	raise_message('test_log_purged', __('The Service Check history was purged for %s', $name, 'servcheck'), MESSAGE_LEVEL_INFO);
 }
 
-function data_test_edit() {
+function servcheck_data_edit() {
 	global $servcheck_test_fields, $service_types, $servcheck_help_test;
 
 	// ================= input validation =================
@@ -937,14 +937,14 @@ function servcheck_show_history() {
 			}
 
 			if ($row['result'] == 'ok' && $row['result_search'] == 'not ok') {
-				$style = 'background-color: ' . $servcheck_states['warning']['color'] . ';';
+				$style = 'servcheck_warning';
 			} elseif ($row['result'] == 'ok') {
-				$style = 'background-color: ' . $servcheck_states['ok']['color'] . ';';
+				$style = 'servcheck_ok';
 			} else {
-				$style = 'background-color: ' . $servcheck_states['error']['color'] . ';';
+				$style = 'servcheck_error';
 			}
 
-			print "<tr class='tableRow selectable' style=\"$style\" id='line{$row['id']}'>";
+			print "<tr class='tableRow selectable $style' id='line{$row['id']}'>";
 
 			form_selectable_cell($row['last_check'], $row['id']);
 			form_selectable_cell($row['name'], $row['id']);
@@ -1147,21 +1147,21 @@ function data_list() {
 			}
 
 			if ($row['enabled'] == '') {
-				$style = 'background-color: ' . $servcheck_states['disabled']['color'] . ';';
+				$style = 'servcheck_disabled';
 			} elseif ($row['last_result'] == 'ok' && $row['triggered_duration'] >= $row['duration_count']) {
-				$style    = 'background-color: ' . $servcheck_states['duration']['color'] . ';';
+				$style    = 'servcheck_duration';
 				$long_dur = true;
 			} elseif ($row['failures'] > 0 && $row['failures'] < $row['downtrigger']) {
-				$style = 'background-color: ' . $servcheck_states['failing']['color'] . ';';
+				$style = 'servcheck_failing';
 			} elseif ($row['last_result'] == 'ok' && $row['last_result_search'] == 'not ok') {
-				$style = 'background-color: ' . $servcheck_states['warning']['color'] . ';';
+				$style = 'servcheck_warning';
 			} elseif ($row['last_result'] == 'ok' && strtotime($row['last_check']) > 0) {
-				$style = 'background-color: ' . $servcheck_states['ok']['color'] . ';';
+				$style = 'servcheck_ok';
 			} else {
-				$style = 'background-color: ' . $servcheck_states['error']['color'] . ';';
+				$style = 'servcheck_error';
 			}
 
-			print "<tr class='tableRow selectable' style=\"$style\" id='line{$row['id']}'>";
+			print "<tr class='tableRow selectable $style id='line{$row['id']}'>";
 
 			print "<td width='1%' style='padding:0px;white-space:nowrap'>
 				<a class='pic' href='" . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_test.php?action=edit&id=' . $row['id']) . "' title='" . __esc('Edit Service Check', 'servcheck') . "'>
@@ -1241,7 +1241,7 @@ function servcheck_show_last_data() {
 		[get_filter_request_var('id')]);
 
 	print '<b>' . __('Last returned data of test', 'servcheck') . ' ' . html_escape($result['name']) . ':</b><br/>';
-	print '<style> pre {white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word; max-width: 25%; width: 25%}</style><pre>' . html_escape($result['last_returned_data']) . '</pre>';
+	print '<pre class="servcheck_pre">' . html_escape($result['last_returned_data']) . '</pre>';
 }
 
 function servcheck_filter() {
@@ -1254,7 +1254,7 @@ function servcheck_filter() {
 	set_page_refresh($refresh);
 
 	// When a row is selected, set the background-color as black and font color as white and when hovering over a row, the background is light grey
-	servcheck_print_selectable_row_css();
+	// servcheck_print_selectable_row_css();
 
 	html_start_box(__('Servcheck Test Management', 'servcheck') , '100%', '', '3', 'center', htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=edit');
 	?>
@@ -1369,25 +1369,8 @@ function servcheck_filter() {
 	html_end_box();
 }
 
-// Shared CSS for selectable table rows
-function servcheck_print_selectable_row_css() {
-	print '<style>
-		tr.tableRow.selectable:hover, tr.tableRow.selectable:hover td {
-			background-color: #B2B2B2 !important;
-			color: inherit !important;
-		}
-		tr.tableRow.selectable.selected, tr.tableRow.selectable.selected td {
-			background-color: #000 !important;
-			color: #fff !important;
-		}
-	</style>';
-}
-
 function servcheck_log_filter() {
 	global $item_rows;
-
-	// When a row is selected, set the background-color as black and font color as white and when hovering over a row, the background is light grey
-	servcheck_print_selectable_row_css();
 
 	html_start_box(__('Service Check History', 'servcheck') , '100%', '', '3', 'center', '');
 

@@ -60,7 +60,6 @@ array_shift($parms);
 $debug      = false;
 $force      = false;
 $start      = microtime(true);
-$test_id    = 0;
 $test_cond  = '';
 $poller_id  = $config['poller_id'];
 $poller_int = read_config_option('poller_interval');
@@ -75,15 +74,6 @@ if (cacti_sizeof($parms)) {
 		}
 
 		switch ($arg) {
-			case '--id':
-				if (is_numeric($value) && $value > 0) {
-					$test_id = $value;
-				} else {
-					print "FATAL: Option 'id' is not numeric" . PHP_EOL;
-					exit(1);
-				}
-
-				break;
 			case '-f':
 			case '--force':
 				$force = true;
@@ -162,63 +152,51 @@ if (!$force) {
 	}
 }
 
-$params    = [];
-$params[]  = $poller_id;
-$sql_where = ' AND poller_id = ?';
-
-if ($test_id > 0) {
-	$sql_where = ' AND id = ?';
-	$params[]  = $test_id;
-}
-
-$tests = db_fetch_assoc_prepared("SELECT *
-	FROM plugin_servcheck_test
-	WHERE enabled = 'on'
-	$sql_where",
-	$params);
-
 $max_processes = read_config_option('servcheck_processes');
 
 if (empty($max_processes)) {
 	$max_processes = 8;
 }
 
-if (cacti_sizeof($tests)) {
-	$loop_count = 0;
+$params    = [];
+$params[]  = $poller_id;
+$sql_where = 'poller_id = ? ';
 
-	foreach ($tests as $test) {
-		while (true) {
-			$running = db_fetch_cell_prepared('SELECT COUNT(id)
-				FROM processes
-				WHERE tasktype = ?
-				AND taskname = ?',
-				['servcheck', "child:$poller_id"]);
+if (!$force) {
+	$sql_where .= 'AND enabled = "on" ';
+}
 
-			if ($loop_count % 40 == 0) {
-				servcheck_debug("There are $running processes");
-			}
+$tests = db_fetch_cell_prepared("SELECT COUNT(id)
+	FROM plugin_servcheck_test
+	WHERE
+	$sql_where",
+	$params);
 
-			if ($max_processes - $running > 0) {
-				// The timeout is the number of attempts * the duration trigger or 5 seconds plus 5 seconds overhead
-				$timeout = $test['attempt'] * ($test['duration_trigger'] == 0 ? 5 : $test['duration_trigger']) + 5;
+$timeout = db_fetch_cell_prepared("SELECT MAX(duration_trigger*attempt)
+	FROM plugin_servcheck_test
+	WHERE
+	$sql_where",
+	$params);
 
-				if (!register_process_start('servcheck', $taskname, $test['id'], $timeout)) {
-					cacti_log(sprintf('WARNING: Not Running Service Check %s it is still running', $test['name']), false, 'SERVCHECK');
-				} else {
-					servcheck_debug('Launching Service Check ' . $test['name']);
+if ($timeout > 0) {
+	$timeout += 2;
+} else {
+	read_config_option('servcheck_test_max_duration');
+}
 
-					$command = read_config_option('path_php_binary');
-					$args    = '-q "' . $config['base_path'] . '/plugins/servcheck/servcheck_process.php" --id=' . $test['id'] . ($debug ? ' --debug' : '');
+$use_processes = min($tests, $max_processes);
 
-					exec_background($command, $args);
-				}
+if ($tests > 0) {
+	for ($f = 1; $f <= $use_processes; $f++) {
+		if (!register_process_start('servcheck', $taskname, $f, $timeout)) {
+			cacti_log(sprintf('WARNING: Not Running Service Check %s it is still running', $test['name']), false, 'SERVCHECK');
+		} else {
+			servcheck_debug('Launching Servceck process ' . $f);
 
-				break;
-			} else {
-				usleep(2000);
-			}
+			$command = read_config_option('path_php_binary');
+			$args    = '-q "' . $config['base_path'] . '/plugins/servcheck/servcheck_process.php" --process=' . $f . ($debug ? ' --debug' : '') . ($force ? ' --force' : '');
 
-			$loop_count++;
+			exec_background($command, $args);
 		}
 	}
 } else {
@@ -248,7 +226,13 @@ $stat_ko        = 0;
 $stat_search_ok = 0;
 $stat_search_ko = 0;
 
-if (cacti_sizeof($tests)) {
+if ($tests > 0) {
+	$tests = db_fetch_assoc_prepared("SELECT *
+		FROM plugin_servcheck_test
+		WHERE
+		$sql_where",
+		$params);
+
 	foreach ($tests as $test) {
 		$test_last = db_fetch_row_prepared('SELECT result, result_search
 			FROM plugin_servcheck_log
@@ -362,7 +346,6 @@ function display_help() {
 
 	print PHP_EOL . 'usage: poller_servcheck.php [--debug] [--force]' . PHP_EOL . PHP_EOL;
 	print 'This binary will exec all the Service check child processes.' . PHP_EOL . PHP_EOL;
-	print '--id       - Run for a specific test' . PHP_EOL . PHP_EOL;
-	print '--force    - Force all the service checks to run now' . PHP_EOL . PHP_EOL;
+	print '--force    - Force all the service checks to run now. Run even if the job is disabled or set to run less frequently than every poller cycle' . PHP_EOL . PHP_EOL;
 	print '--debug    - Display verbose output during execution' . PHP_EOL . PHP_EOL;
 }

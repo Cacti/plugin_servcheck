@@ -126,7 +126,7 @@ function mqtt_try($test) {
 		CURLOPT_HEADER           => true,
 		CURLOPT_RETURNTRANSFER   => true,
 		CURLOPT_FILE             => $file,
-		CURLOPT_TIMEOUT          => 7,
+		CURLOPT_TIMEOUT          => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
 		CURLOPT_NOPROGRESS       => false,
 		CURLOPT_XFERINFOFUNCTION => function ($download_size, $downloaded, $upload_size, $uploaded) {
 			if ($downloaded > 0) {

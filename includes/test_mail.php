@@ -123,7 +123,7 @@ function mail_try($test) {
 				'tcp://' . $test['hostname'],
 				$errno,
 				$errstr,
-				3,
+				$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
 				STREAM_CLIENT_CONNECT,
 				$context
 			);
@@ -153,7 +153,7 @@ function mail_try($test) {
 				'ssl://' . $test['hostname'],
 				$errno,
 				$errstr,
-				3,
+				$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
 				STREAM_CLIENT_CONNECT,
 				$context
 			);
@@ -204,7 +204,7 @@ function mail_try($test) {
 				'tcp://' . $test['hostname'],
 				$errno,
 				$errstr,
-				3,
+				$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
 				STREAM_CLIENT_CONNECT,
 				$context
 			);
@@ -283,7 +283,7 @@ function mail_try($test) {
 				$method . '://' . $test['hostname'],
 				$errno,
 				$errstr,
-				3,
+				$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
 				STREAM_CLIENT_CONNECT,
 				$context
 			);
@@ -364,7 +364,7 @@ function mail_try($test) {
 				$method . '://' . $test['hostname'],
 				$errno,
 				$errstr,
-				3,
+				$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
 				STREAM_CLIENT_CONNECT,
 				$context
 			);

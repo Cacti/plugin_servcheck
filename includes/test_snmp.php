@@ -29,6 +29,7 @@ function snmp_try($test) {
 
 	$version = 2;
 	$port    = 161;
+	$timeout = ($test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration')) * 1000;
 
 	// default result
 	$results['result'] = 'error';
@@ -97,12 +98,14 @@ function snmp_try($test) {
 		servcheck_debug('SNMP GET request, hostname ' . $test['hostname'] . ':' . $port);
 		$data = cacti_snmp_get($test['hostname'], $credential['community'], $test['snmp_oid'], $version,
 			$credential['snmp_username'], $credential['snmp_password'], $credential['snmp_auth_protocol'],
-			$credential['snmp_priv_passphrase'], $credential['snmp_priv_protocol'], $credential['snmp_context'], $port);
+			$credential['snmp_priv_passphrase'], $credential['snmp_priv_protocol'], $credential['snmp_context'],
+			$port, $timeout);
 	} else {
 		servcheck_debug('SNMP WALK request, hostname ' . $test['hostname'] . ':' . $port);
 		$data = cacti_snmp_walk($test['hostname'], $credential['community'], $test['snmp_oid'], $version,
 			$credential['snmp_username'], $credential['snmp_password'], $credential['snmp_auth_protocol'],
-			$credential['snmp_priv_passphrase'], $credential['snmp_priv_protocol'], $credential['snmp_context'], $port);
+			$credential['snmp_priv_passphrase'], $credential['snmp_priv_protocol'], $credential['snmp_context'],
+			$port, $timeout);
 
 		$data = var_export($data, true);
 	}

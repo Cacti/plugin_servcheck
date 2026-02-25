@@ -63,6 +63,13 @@ function servcheck_check_debug() {
 	}
 }
 
+/**
+ * Log debug message
+ *
+ * @param string $message Text of the message that will be logged
+ *
+ * @return void
+ */
 function servcheck_debug($message = '') {
 	global $debug;
 
@@ -226,7 +233,7 @@ function servcheck_legend() {
 	print '<tr class="tableRow">';
 
 	foreach ($servcheck_states as $index => $state) {
-		print '<td style="background-color: ' . $state['color'] . '">' . $state['display'] . '</td>';
+		print '<td class="servcheck_' . $index . '">' . $state . '</td>';
 	}
 	print '</tr>';
 

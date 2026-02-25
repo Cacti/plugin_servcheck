@@ -1,0 +1,65 @@
+/*
+ +-------------------------------------------------------------------------+
+ | Copyright (C) 2004-2026 The Cacti Group                                 |
+ |                                                                         |
+ | This program is free software; you can redistribute it and/or           |
+ | modify it under the terms of the GNU General Public License             |
+ | as published by the Free Software Foundation; either version 2          |
+ | of the License, or (at your option) any later version.                  |
+ |                                                                         |
+ | This program is distributed in the hope that it will be useful,         |
+ | but WITHOUT ANY WARRANTY; without even the implied warranty of          |
+ | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           |
+ | GNU General Public License for more details.                            |
+ +-------------------------------------------------------------------------+
+ | Cacti: The Complete RRDtool-based Graphing Solution                     |
+ +-------------------------------------------------------------------------+
+ | This code is designed, written, and maintained by the Cacti Group. See  |
+ | about.php and/or the AUTHORS file for specific developer information.   |
+ +-------------------------------------------------------------------------+
+ | http://www.cacti.net/                                                   |
+ +-------------------------------------------------------------------------+
+*/
+
+// for selectable table rows
+tr.tableRow.selectable:hover, tr.tableRow.selectable:hover td {
+	background-color: #B2B2B2 !important;
+	color: inherit !important;
+}
+
+tr.tableRow.selectable.selected, tr.tableRow.selectable.selected td {
+	background-color: #000 !important;
+	color: #FFF !important;
+}
+
+.servcheck_pre {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	max-width: 25%;
+	width: 25%
+}
+
+.servcheck_error {
+	background-color: #FB4A14 ;
+}
+
+.servcheck_duration {
+	background-color: #CDFDFF ;
+}
+
+.servcheck_warning {
+	background-color: #FCAA94 ;
+}
+
+.servcheck_failing {
+	background-color: #FAFD9E ;
+}
+
+.servcheck_ok {
+	background-color: #E0FFE0 ;
+}
+
+.servcheck_disabled {
+	background-color: #CDCFC4 ;
+}

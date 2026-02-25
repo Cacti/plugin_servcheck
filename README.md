@@ -105,5 +105,5 @@ in GitHub - https://github.com/Cacti/plugin_servcheck
 You can find more information on our forum - http://forums.cacti.net/viewtopic.php?t=62934
 
 -----------------------------------------------
-Copyright (c) 2004-2025 - The Cacti Group, Inc.
+Copyright (c) 2004-2026 - The Cacti Group, Inc.
 

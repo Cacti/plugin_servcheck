@@ -45,7 +45,7 @@ switch (get_request_var('action')) {
 	case 'edit':
 		top_header();
 		servcheck_data_edit();
-		bottom_footer();
+    bottom_footer();
 
 		break;
 	default:
@@ -168,6 +168,7 @@ function form_save() {
 	}
 	exit;
 }
+
 
 function servcheck_data_edit() {
 	global $servcheck_ca_fields;

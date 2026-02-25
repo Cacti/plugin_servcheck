@@ -63,6 +63,14 @@ function servcheck_check_debug() {
 	}
 }
 
+
+/**
+ * Log debug message
+ *
+ * @param string $message    Text of the message that will be logged
+ *
+ * @return void
+ */
 function servcheck_debug($message = '') {
 	global $debug;
 

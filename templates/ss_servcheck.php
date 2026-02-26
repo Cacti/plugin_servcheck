@@ -93,7 +93,7 @@ function ss_servcheck(string $cmd = 'index', string $arg1 = '', string $arg2 = '
 						WHERE id = ?',
 						[$index]);
 
-					$value = 'ok' ? 1 : 0;
+					$value = (int) ($value === 'ok');
 
 					break;
 			}

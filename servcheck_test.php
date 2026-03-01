@@ -679,7 +679,7 @@ function servcheck_edit_test() {
 }
 
 /**
- *  This is a generic funtion for this page that makes sure that
+ *  This is a generic function for this page that makes sure that
  *  we have a good request.  We want to protect against people who
  *  like to create issues with Cacti.
 */
@@ -1075,7 +1075,7 @@ function list_tests() {
 			'align'   => 'right'
 		),
 		'triggered' => array(
-			'display' => __('Trigerred', 'servcheck'),
+			'display' => __('Triggered', 'servcheck'),
 			'sort'    => 'ASC',
 			'align'   => 'right'
 		),

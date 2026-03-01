@@ -48,7 +48,7 @@ SMB, SMBS - try to login and download specific file
 MQTT - try to subscribe topic or wait for any message and print result
 
 ## Important
-Recomendation for tests with download -  please download only small not binary files.
+Recommendation for tests with download -  please download only small not binary files.
 
 Default Libcurl build doesn't compile all services. You have to compile again for SMB, LDAP, ...
 

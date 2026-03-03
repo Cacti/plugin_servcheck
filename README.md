@@ -55,7 +55,7 @@ Servcheck has great debug output. If you have any problem, try to run your test:
 Example_script.sh shows you how to use returned variables in own script.
 
 Test duration - default test duration is 5 seconds, you can change it in settings. If you need different for 
-specific test, change "Long duration alert" parametr in test. After that the max. duration will be
+specific test, change "Long duration alert" parameter in test. After that the max. duration will be
 Long duration alert + 2 seconds.
 
 Recommendation for tests with download -  please download only small not binary files.

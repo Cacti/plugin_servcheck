@@ -24,7 +24,7 @@
 			<query_name>servcheck_name</query_name>
 		</servcheck_name>
 		<attempt>
-			<name>Attemp</name>
+			<name>Attempt</name>
 			<direction>output</direction>
 			<query_name>attempt</query_name>
 		</attempt>

@@ -704,8 +704,8 @@ function servcheck_config_settings() {
 			]
 		],
 		'servcheck_test_max_duration' => [
-			'friendly_name' => __('Maximum test duration in seconds', 'intropage'),
-			'description'   => __('The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds.'),
+			'friendly_name' => __('Maximum test duration in seconds', 'servcheck'),
+			'description'   => __('The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds.', 'servcheck'),
 			'method'        => 'textbox',
 			'max_length'    => 2,
 			'default'       => '3',

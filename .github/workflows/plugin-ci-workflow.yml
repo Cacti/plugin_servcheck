@@ -30,6 +30,8 @@ on:
     branches:
       - main
       - develop
+env: 
+  CACTI: 1.2.x
 
 env:
   CACTI: 1.2.x

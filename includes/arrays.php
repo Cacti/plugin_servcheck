@@ -277,11 +277,11 @@ $servcheck_ca_fields = [
 	'name' => [
 		'method'        => 'textbox',
 		'friendly_name' => __('Name'),
-		'description'   => __('A Useful Name for this CA chain.'),
+		'description'   => __('A Useful Name for this CA chain.', 'servcheck'),
 		'value'         => '|arg1:name|',
 		'max_length'    => '100',
 		'size'          => '100',
-		'default'       => __('New CA')
+		'default'       => __('New CA', 'servcheck')
 	],
 	'cert'  => [
 		'friendly_name' => __('CA Chain', 'servcheck'),
@@ -301,16 +301,16 @@ $servcheck_proxy_fields = [
 	'name' => [
 		'method'        => 'textbox',
 		'friendly_name' => __('Name'),
-		'description'   => __('A Useful Name for this Proxy.'),
+		'description'   => __('A Useful Name for this Proxy.', 'servcheck'),
 		'value'         => '|arg1:name|',
 		'max_length'    => '40',
 		'size'          => '40',
-		'default'       => __('New Proxy')
+		'default'       => __('New Proxy', 'servcheck')
 	],
 	'hostname' => [
 		'method'        => 'textbox',
 		'friendly_name' => __('Hostname'),
-		'description'   => __('The Proxy Hostname.'),
+		'description'   => __('The Proxy Hostname.', 'servcheck'),
 		'value'         => '|arg1:hostname|',
 		'max_length'    => '64',
 		'size'          => '40',
@@ -318,8 +318,8 @@ $servcheck_proxy_fields = [
 	],
 	'http_port' => [
 		'method'        => 'textbox',
-		'friendly_name' => __('HTTP Port'),
-		'description'   => __('The HTTP Proxy Port.'),
+		'friendly_name' => __('HTTP Port', 'servcheck'),
+		'description'   => __('The HTTP Proxy Port.', 'servcheck'),
 		'value'         => '|arg1:http_port|',
 		'max_length'    => '5',
 		'size'          => '5',
@@ -327,8 +327,8 @@ $servcheck_proxy_fields = [
 	],
 	'https_port' => [
 		'method'        => 'textbox',
-		'friendly_name' => __('HTTPS Port'),
-		'description'   => __('The HTTPS Proxy Port.'),
+		'friendly_name' => __('HTTPS Port', 'servcheck'),
+		'description'   => __('The HTTPS Proxy Port.', 'servcheck'),
 		'value'         => '|arg1:https_port|',
 		'max_length'    => '5',
 		'size'          => '5',
@@ -411,8 +411,8 @@ $servcheck_test_fields = [
 	],
 	'ipaddress' => [
 		'method'        => 'textbox',
-		'friendly_name' => __('Resolve DNS to Address'),
-		'description'   => __('Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead.'),
+		'friendly_name' => __('Resolve DNS to Address', 'servcheck'),
+		'description'   => __('Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead.', 'servcheck'),
 		'value'         => '|arg1:ipaddress|',
 		'max_length'    => '46',
 		'size'          => '40',
@@ -925,7 +925,7 @@ $servcheck_help_test = [
 	'rest_cookie'  => __('REST API test with cookie auth. Prepare credential first.', 'servcheck'),
 	'snmp_get'     => __('Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first.', 'servcheck'),
 	'snmp_walk'    => __('Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first.', 'servcheck'),
-	'ssh_command'  => __('Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible.', 'srvcheck'),
+	'ssh_command'  => __('Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible.', 'servcheck'),
 	'ssh_sftp'     => __('SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path.', 'servcheck'),
 ];
 

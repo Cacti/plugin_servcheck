@@ -187,6 +187,7 @@ jobs:
       working-directory: ${{ github.workspace }}/cacti
 
     - name: Mark composer scripts executable
+      if: ${{ env.CACTI != '1.2.x' }}
       run: sudo chmod +x ${{ github.workspace }}/cacti/include/vendor/bin/*
 
     - name: Run Linter on base code

@@ -31,6 +31,9 @@ on:
       - main
       - develop
 
+env:
+  CACTI: 1.2.x
+
 jobs:
   integration-test:
     runs-on: ${{ matrix.os }}
@@ -64,6 +67,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: Cacti/cacti
+        ref: ${{ env.CACTI }}
         path: cacti
     
     - name: Checkout servcheck Plugin
@@ -75,7 +79,7 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php }}
-        extensions: intl, mysql, gd, ldap, gmp, xml, curl, json, mbstring
+        extensions: intl, mysql, gd, ldap, gmp, xml, curl, json, mbstring, snmp
         ini-values: "post_max_size=256M, max_execution_time=60, date.timezone=America/New_York"
     
     - name: Check PHP version
@@ -130,6 +134,9 @@ jobs:
       run: |
         cd ${{ github.workspace }}/cacti
         if [ -f composer.json ]; then
+          sudo composer config --no-plugins allow-plugins.pestphp/pest-plugin true
+          sudo composer require --dev --no-progress --no-interaction "pestphp/pest: ^3" "pestphp/pest-plugin-drift: ^3.0"
+          sudo rm -f composer.lock
           sudo composer install --dev --no-progress
         fi
     
@@ -180,24 +187,51 @@ jobs:
           exit 1
         fi
 
+    - name: Set expected Cacti version for unit tests
+      run: echo -n "${{ env.CACTI }}" | sudo tee ${{ github.workspace }}/cacti/plugins/servcheck/tests/.cacti-version > /dev/null
+
+    - name: Run Pest Unit Tests
+      run: |
+        cd ${{ github.workspace }}/cacti
+        if [ -f plugins/servcheck/phpunit.xml ] && [ -d plugins/servcheck/tests/Security ]; then
+          include/vendor/bin/pest --configuration=plugins/servcheck/phpunit.xml \
+            --coverage-clover=plugins/servcheck/coverage/clover.xml \
+            plugins/servcheck/tests/Security
+        else
+          echo "Skipping Pest tests: plugins/servcheck/phpunit.xml or tests/Security not present yet."
+        fi
+
+    - name: Upload coverage report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-php${{ matrix.php }}
+        path: ${{ github.workspace }}/cacti/plugins/servcheck/coverage/
+        if-no-files-found: warn
+
     - name: Remove the plugins directory exclusion from the .phpstan.neon
+      if: ${{ env.CACTI != '1.2.x' }}
       run: sed '/plugins/d' -i .phpstan.neon
       working-directory: ${{ github.workspace }}/cacti
 
     - name: Mark composer scripts executable
+      if: ${{ env.CACTI != '1.2.x' }}
       run: sudo chmod +x ${{ github.workspace }}/cacti/include/vendor/bin/*
 
     - name: Run Linter on base code
+      if: ${{ env.CACTI != '1.2.x' }}
       run: composer run-script lint ${{ github.workspace }}/cacti/plugins/servcheck
       working-directory: ${{ github.workspace }}/cacti
 
     - name: Checking coding standards on base code
+      if: ${{ env.CACTI != '1.2.x' }}
       run: composer run-script phpcsfixer ${{ github.workspace }}/cacti/plugins/servcheck
       working-directory: ${{ github.workspace }}/cacti
 
-#    - name: Run PHPStan at Level 6 on base code outside of Composer due to technical issues
-#      run: ./include/vendor/bin/phpstan analyze --level 6 ${{ github.workspace }}/cacti/plugins/servcheck
-#      working-directory: ${{ github.workspace }}/cacti
+    - name: Run PHPStan at Level 6 on base code outside of Composer due to technical issues
+      if: ${{ env.CACTI != '1.2.x' }}
+      run: ./include/vendor/bin/phpstan analyze --level 6 ${{ github.workspace }}/cacti/plugins/servcheck
+      working-directory: ${{ github.workspace }}/cacti
     
     - name: Run Cacti Poller
       run: |

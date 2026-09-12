@@ -110,18 +110,22 @@ describe('notify_accounts when db_fetch_assoc returns empty', function (): void 
 });
 
 describe('notify_accounts edge cases', function (): void {
+    afterEach(function (): void {
+        unset($GLOBALS['__test_db_table_exists'], $GLOBALS['__test_db_fetch_assoc_result']);
+    });
+
     it('builds notify_accounts correctly from valid contact data', function (): void {
-        $contact_users = [
+        $GLOBALS['__test_db_table_exists']       = true;
+        $GLOBALS['__test_db_fetch_assoc_result'] = [
             ['id' => 1, 'data' => 'user1@example.com', 'type' => 'email', 'full_name' => 'Alice'],
             ['id' => 5, 'data' => 'user5@example.com', 'type' => 'slack', 'full_name' => 'Bob'],
         ];
 
-        $notify_accounts = [];
-        foreach ($contact_users as $contact_user) {
-            $notify_accounts[$contact_user['id']] = $contact_user['full_name'] . ' - ' . ucfirst($contact_user['type']);
-        }
+        include __DIR__ . '/../../includes/arrays.php';
 
-        expect($notify_accounts)->toBe([
+        global $servcheck_notify_accounts;
+
+        expect($servcheck_notify_accounts)->toBe([
             1 => 'Alice - Email',
             5 => 'Bob - Slack',
         ]);
@@ -130,32 +134,32 @@ describe('notify_accounts edge cases', function (): void {
     it('handles contact entries with empty data field gracefully', function (): void {
         // The WHERE clause filters these out in production, but the
         // building logic itself should not break on empty data values.
-        $contact_users = [
+        $GLOBALS['__test_db_table_exists']       = true;
+        $GLOBALS['__test_db_fetch_assoc_result'] = [
             ['id' => 2, 'data' => '', 'type' => 'email', 'full_name' => 'Carol'],
             ['id' => 3, 'data' => 'user3@test.com', 'type' => 'sms', 'full_name' => 'Dave'],
         ];
 
-        $notify_accounts = [];
-        foreach ($contact_users as $contact_user) {
-            $notify_accounts[$contact_user['id']] = $contact_user['full_name'] . ' - ' . ucfirst($contact_user['type']);
-        }
+        include __DIR__ . '/../../includes/arrays.php';
+
+        global $servcheck_notify_accounts;
 
         // Both entries produce a label; the data field is not used in the label
-        expect($notify_accounts)->toHaveCount(2);
-        expect($notify_accounts[2])->toBe('Carol - Email');
-        expect($notify_accounts[3])->toBe('Dave - Sms');
+        expect($servcheck_notify_accounts)->toHaveCount(2);
+        expect($servcheck_notify_accounts[2])->toBe('Carol - Email');
+        expect($servcheck_notify_accounts[3])->toBe('Dave - Sms');
     });
 
     it('handles a single contact entry', function (): void {
-        $contact_users = [
+        $GLOBALS['__test_db_table_exists']       = true;
+        $GLOBALS['__test_db_fetch_assoc_result'] = [
             ['id' => 10, 'data' => 'solo@example.com', 'type' => 'email', 'full_name' => 'Solo User'],
         ];
 
-        $notify_accounts = [];
-        foreach ($contact_users as $contact_user) {
-            $notify_accounts[$contact_user['id']] = $contact_user['full_name'] . ' - ' . ucfirst($contact_user['type']);
-        }
+        include __DIR__ . '/../../includes/arrays.php';
 
-        expect($notify_accounts)->toBe([10 => 'Solo User - Email']);
+        global $servcheck_notify_accounts;
+
+        expect($servcheck_notify_accounts)->toBe([10 => 'Solo User - Email']);
     });
 });

@@ -10,7 +10,15 @@
 $payload = "%' OR 1=1 --";
 $quoted  = "'" . str_replace("'", "\\'", '%' . $payload . '%') . "'";
 
-if (strpos($quoted, "OR 1=1") !== false && strpos($quoted, "'") !== false) {
+// Strip the outer delimiters and any escaped quotes; a safe implementation
+// must leave no bare apostrophe that could break out of the SQL string.
+$inner                        = substr($quoted, 1, -1);
+$inner_without_escaped_quotes = str_replace("\\'", '', $inner);
+
+if (strpos($quoted, "\\'") !== false
+	&& strpos($inner_without_escaped_quotes, "'") === false
+	&& strpos($quoted, 'OR 1=1') !== false
+) {
 	print "OK\n";
 	exit(0);
 }

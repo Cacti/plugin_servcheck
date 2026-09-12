@@ -81,6 +81,7 @@ jobs:
         php-version: ${{ matrix.php }}
         extensions: intl, mysql, gd, ldap, gmp, xml, curl, json, mbstring, snmp
         ini-values: "post_max_size=256M, max_execution_time=60, date.timezone=America/New_York"
+        coverage: pcov
     
     - name: Check PHP version
       run: php -v
@@ -132,10 +133,10 @@ jobs:
       run: |
         cd ${{ github.workspace }}/cacti
         if [ -f composer.json ]; then
-          sudo composer config --no-plugins allow-plugins.pestphp/pest-plugin true
-          sudo composer require --dev --no-progress --no-interaction "pestphp/pest: ^3" "pestphp/pest-plugin-drift: ^3.0"
-          sudo rm -f composer.lock
-          sudo composer install --dev --no-progress
+          composer config --no-plugins allow-plugins.pestphp/pest-plugin true
+          composer require --dev --no-progress --no-interaction "pestphp/pest: ^3" "pestphp/pest-plugin-drift: ^3.0"
+          rm -f composer.lock
+          composer install --dev --no-progress
         fi
     
     - name: Create Cacti config.php

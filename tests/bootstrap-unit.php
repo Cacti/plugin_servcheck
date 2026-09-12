@@ -103,6 +103,10 @@ if (!function_exists('db_execute_prepared')) {
 
 if (!function_exists('db_fetch_assoc')) {
 	function db_fetch_assoc($sql) {
+		if (isset($GLOBALS['__test_db_fetch_assoc_result'])) {
+			return $GLOBALS['__test_db_fetch_assoc_result'];
+		}
+
 		return array();
 	}
 }
@@ -145,6 +149,10 @@ if (!function_exists('db_index_exists')) {
 
 if (!function_exists('db_table_exists')) {
 	function db_table_exists($table) {
+		if (isset($GLOBALS['__test_db_table_exists'])) {
+			return (bool) $GLOBALS['__test_db_table_exists'];
+		}
+
 		return false;
 	}
 }

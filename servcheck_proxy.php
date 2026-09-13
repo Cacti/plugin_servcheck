@@ -222,8 +222,9 @@ function request_validation() {
 			'default' => '1'
 			],
 		'filter' => [
-			'filter'  => FILTER_DEFAULT,
+			'filter'  => FILTER_CALLBACK,
 			'pageset' => true,
+			'options' => ['options' => 'sanitize_search_string'],
 			'default' => ''
 			],
 		'sort_column' => [
@@ -259,7 +260,7 @@ function data_list() {
 	$sql_where = '';
 
 	if (get_request_var('filter') != '') {
-		$sql_where .= ($sql_where == '' ? 'WHERE ' : ' AND ') . ' name LIKE "%' . get_request_var('filter') . '%" OR hostname LIKE "%' . get_request_var('filter') . '%"';
+		$sql_where .= ($sql_where == '' ? 'WHERE ' : ' AND ') . ' name LIKE ' . db_qstr('%' . get_request_var('filter') . '%') . ' OR hostname LIKE ' . db_qstr('%' . get_request_var('filter') . '%');
 	}
 
 	$sql_order = get_order_string();

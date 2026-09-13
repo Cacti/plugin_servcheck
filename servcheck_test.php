@@ -58,7 +58,7 @@ switch (get_request_var('action')) {
 	case 'enable':
 		$id = get_filter_request_var('id');
 
-		if ($id > 0) {
+		if ($id > 0 && csrf_guard()->validate(get_nfilter_request_var('__csrf_magic'))) {
 			db_execute_prepared('UPDATE plugin_servcheck_test
 			SET enabled = "on"
 			WHERE id = ?', [$id]);
@@ -71,7 +71,7 @@ switch (get_request_var('action')) {
 	case 'disable':
 		$id = get_filter_request_var('id');
 
-		if ($id > 0) {
+		if ($id > 0 && csrf_guard()->validate(get_nfilter_request_var('__csrf_magic'))) {
 			db_execute_prepared('UPDATE plugin_servcheck_test
 			SET enabled = ""
 			WHERE id = ?', [$id]);
@@ -84,7 +84,7 @@ switch (get_request_var('action')) {
 	case 'purge':
 		$id = get_filter_request_var('id');
 
-		if ($id > 0) {
+		if ($id > 0 && csrf_guard()->validate(get_nfilter_request_var('__csrf_magic'))) {
 			purge_log_events($id);
 		}
 
@@ -1169,11 +1169,11 @@ function data_list() {
 				</a>";
 
 			if ($row['enabled'] == '') {
-				print "<a class='pic' href='" . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_test.php?action=enable&id=' . $row['id']) . "' title='" . __esc('Enable Service Check', 'servcheck') . "'>
+				print "<a class='pic' href='" . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_test.php?action=enable&id=' . $row['id'] . '&__csrf_magic=' . urlencode(csrf_get_tokens())) . "' title='" . __esc('Enable Service Check', 'servcheck') . "'>
 					<i class='tholdGlyphEnable fas fa-play-circle'></i>
 				</a>";
 			} else {
-				print "<a class='pic' href='" . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_test.php?action=disable&id=' . $row['id']) . "' title='" . __esc('Disable Service Check', 'servcheck') . "'>
+				print "<a class='pic' href='" . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_test.php?action=disable&id=' . $row['id'] . '&__csrf_magic=' . urlencode(csrf_get_tokens())) . "' title='" . __esc('Disable Service Check', 'servcheck') . "'>
 					<i class='tholdGlyphDisable fas fa-stop-circle'></i>
 				</a>";
 			}
@@ -1436,7 +1436,7 @@ function servcheck_log_filter() {
 	}
 
 	function purgeEvents() {
-		strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF'])); ?>?action=purge&id=<?php print get_request_var('id'); ?>';
+		strURL = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF'])); ?>?action=purge&id=<?php print get_request_var('id'); ?>&__csrf_magic=<?php print urlencode(csrf_get_tokens()); ?>';
 		loadPageNoHeader(strURL);
 	}
 

@@ -219,8 +219,9 @@ function request_validation() {
 			'default' => '1'
 			],
 		'filter' => [
-			'filter'  => FILTER_DEFAULT,
+			'filter'  => FILTER_CALLBACK,
 			'pageset' => true,
+			'options' => ['options' => 'sanitize_search_string'],
 			'default' => ''
 			],
 		'sort_column' => [
@@ -235,7 +236,7 @@ function request_validation() {
 			]
 	];
 
-	validate_store_request_vars($filters, 'sess_servcheck_proxy');
+	validate_store_request_vars($filters, 'sess_servcheck_ca');
 }
 
 function data_list() {
@@ -256,7 +257,7 @@ function data_list() {
 	$sql_where = '';
 
 	if (get_request_var('filter') != '') {
-		$sql_where .= ($sql_where == '' ? 'WHERE ' : ' AND ') . ' name LIKE "%' . get_request_var('filter');
+		$sql_where .= ($sql_where == '' ? 'WHERE ' : ' AND ') . ' name LIKE ' . db_qstr('%' . get_request_var('filter') . '%');
 	}
 
 	$sql_order = get_order_string();

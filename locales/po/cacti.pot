@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2024-04-20 09:41-0400\n"
+"POT-Creation-Date: 2026-09-21 12:55-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Cacti Developers <developers@cacti.net>>\n"
 "Language-Team: Cacti Developers <developers@cacti.net>\n"
@@ -18,1399 +18,2258 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: includes/arrays.php:33
-msgid "String found"
-msgstr ""
-
-#: includes/arrays.php:34
-msgid "String not found"
-msgstr ""
-
-#: includes/arrays.php:35
-msgid "Failed string found"
-msgstr ""
-
-#: includes/arrays.php:36
-msgid "Failed strint not found"
+#: includes/arrays.php:36 servcheck_test.php:1126
+msgid "Tests"
 msgstr ""
 
 #: includes/arrays.php:37
-msgid "Maint string found"
+msgid "CA certificates"
 msgstr ""
 
-#: includes/arrays.php:38 servcheck_test.php:1146 servcheck_test.php:1147
-msgid "Not tested yet"
+#: includes/arrays.php:38 servcheck_proxy.php:301 servcheck_proxy.php:363
+msgid "Proxies"
 msgstr ""
 
 #: includes/arrays.php:39
-msgid "Search not performed"
+msgid "Rest API methods"
 msgstr ""
 
-#: includes/arrays.php:43
-msgid "HTTP plaintext, default port 80"
+#: includes/arrays.php:40 includes/arrays.php:338 includes/arrays.php:426
+#: includes/arrays.php:1373 setup.php:529
+msgid "Credential"
 msgstr ""
 
-#: includes/arrays.php:44
-msgid "HTTP encrypted (HTTPS), default port 443"
+#: includes/arrays.php:41
+msgid "Curl return codes"
+msgstr ""
+
+#: includes/arrays.php:45
+msgid "Error"
 msgstr ""
 
 #: includes/arrays.php:46
-msgid "SMTP plaintext, default port 25 (or 587 for submission)"
+msgid "Long duration"
 msgstr ""
 
 #: includes/arrays.php:47
-msgid "SMTP with STARTTLS, default port 25(or 587 for submission)"
+msgid "Warning"
 msgstr ""
 
 #: includes/arrays.php:48
-msgid "SMTP encrypted (SMTPS), default port 465"
+msgid "Failing"
 msgstr ""
 
-#: includes/arrays.php:50
-msgid "IMAP plaintext, default port 143"
+#: includes/arrays.php:49
+msgid "Ok"
 msgstr ""
 
-#: includes/arrays.php:51
-msgid "IMAP with STARTTLS, default port 143"
-msgstr ""
-
-#: includes/arrays.php:52
-msgid "IMAP encrypted (IMAPS), default port 993"
+#: includes/arrays.php:50 setup.php:683
+msgid "Disabled"
 msgstr ""
 
 #: includes/arrays.php:54
-msgid "POP3 plaintext, default port 110"
+msgid "HTTP plaintext, default port 80"
 msgstr ""
 
 #: includes/arrays.php:55
-msgid "POP3 with STARTTLS, default port 110"
+msgid "HTTP encrypted (HTTPS), default port 443"
 msgstr ""
 
 #: includes/arrays.php:56
-msgid "POP3 encrypted (POP3S), default port 995"
+msgid "SMTP plaintext, default port 25 (or 587 for submission)"
+msgstr ""
+
+#: includes/arrays.php:57
+msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
 msgstr ""
 
 #: includes/arrays.php:58
-msgid "DNS plaintext, default port 53"
+msgid "SMTP encrypted (SMTPS), default port 465"
+msgstr ""
+
+#: includes/arrays.php:59
+msgid "IMAP plaintext, default port 143"
+msgstr ""
+
+#: includes/arrays.php:60
+msgid "IMAP with STARTTLS, default port 143"
 msgstr ""
 
 #: includes/arrays.php:61
-msgid "LDAP plaintext, default port 389"
+msgid "IMAP encrypted (IMAPS), default port 993"
 msgstr ""
 
 #: includes/arrays.php:62
-msgid "LDAP encrypted (LDAPS), default port 636"
+msgid "POP3 plaintext, default port 110"
+msgstr ""
+
+#: includes/arrays.php:63
+msgid "POP3 with STARTTLS, default port 110"
 msgstr ""
 
 #: includes/arrays.php:64
-msgid "FTP plaintext, default port 21"
+msgid "POP3 encrypted (POP3S), default port 995"
 msgstr ""
 
 #: includes/arrays.php:65
-msgid "FTP encrypted (FTPS), default port 990"
+msgid "DNS plaintext, default port 53"
 msgstr ""
 
 #: includes/arrays.php:66
-msgid "SCP download file, default port 22"
+msgid "DNS over HTTPS, default port 443"
 msgstr ""
 
 #: includes/arrays.php:67
-msgid "TFTP protocol - download file, default port 69"
+msgid "LDAP plaintext, default port 389"
+msgstr ""
+
+#: includes/arrays.php:68
+msgid "LDAP encrypted (LDAPS), default port 636"
 msgstr ""
 
 #: includes/arrays.php:69
-msgid "SMB plaintext download file, default port 445"
+msgid "FTP plaintext, default port 21"
 msgstr ""
 
 #: includes/arrays.php:70
+msgid "TFTP protocol - download file, default port 69"
+msgstr ""
+
+#: includes/arrays.php:71
+msgid "SCP download file, default port 22"
+msgstr ""
+
+#: includes/arrays.php:72
+msgid "SMB plaintext download file, default port 445"
+msgstr ""
+
+#: includes/arrays.php:73
 msgid "SMB encrypted (SMBS) download file, default port 445"
 msgstr ""
 
-#: includes/arrays.php:113
-msgid "Last hour"
+#: includes/arrays.php:74
+msgid "MQTT plaintext, default port 1883"
 msgstr ""
 
-#: includes/arrays.php:114
-msgid "Last 6 hours"
+#: includes/arrays.php:75
+msgid "Rest API with Basic HTTP auth"
 msgstr ""
 
-#: includes/arrays.php:115
-msgid "Last day"
+#: includes/arrays.php:76
+msgid "Rest API with API key auth"
 msgstr ""
 
-#: includes/arrays.php:116
-msgid "Last week"
+#: includes/arrays.php:77
+msgid "Rest API with OAuth2/Bearer token auth"
+msgstr ""
+
+#: includes/arrays.php:78
+msgid "Rest API with Cookie based auth"
+msgstr ""
+
+#: includes/arrays.php:79
+msgid "SNMP get"
+msgstr ""
+
+#: includes/arrays.php:80
+msgid "SNMP walk"
+msgstr ""
+
+#: includes/arrays.php:81
+msgid "SSH command on remote system"
+msgstr ""
+
+#: includes/arrays.php:82
+msgid "SFTP protocol - directory listing, default port 22"
+msgstr ""
+
+#: includes/arrays.php:118
+msgid "Username and password"
+msgstr ""
+
+#: includes/arrays.php:119
+msgid "Rest API - Basic HTTP auth"
+msgstr ""
+
+#: includes/arrays.php:120
+msgid "Rest API - API key auth"
 msgstr ""
 
 #: includes/arrays.php:121
-msgid "Unable to Connect"
+msgid "Rest API - OAuth2/Bearer token auth"
 msgstr ""
 
-#: includes/arrays.php:122 servcheck_ca.php:109 servcheck_proxies.php:108
-#: servcheck_test.php:197 servcheck_test.php:206 servcheck_test.php:215
-#: servcheck_test.php:224
-msgid "Continue"
+#: includes/arrays.php:122
+msgid "Rest API - Cookie based auth"
 msgstr ""
 
 #: includes/arrays.php:123
-msgid "Switching Protocols"
+msgid "SNMP v1 or v2"
 msgstr ""
 
 #: includes/arrays.php:124
-msgid "OK"
+msgid "SNMP v3"
 msgstr ""
 
 #: includes/arrays.php:125
-msgid "Created"
-msgstr ""
-
-#: includes/arrays.php:126
-msgid "Accepted"
-msgstr ""
-
-#: includes/arrays.php:127
-msgid "Non-Authoritative Information"
-msgstr ""
-
-#: includes/arrays.php:128
-msgid "No Content"
+msgid "SSH private key - Cacti 1.2.31+"
 msgstr ""
 
 #: includes/arrays.php:129
-msgid "Reset Content"
+msgid "Last hour"
 msgstr ""
 
 #: includes/arrays.php:130
-msgid "Partial Content"
+msgid "Last 6 hours"
 msgstr ""
 
 #: includes/arrays.php:131
-msgid "Multiple Choices"
+msgid "Last day"
 msgstr ""
 
 #: includes/arrays.php:132
-msgid "Moved Permanently"
-msgstr ""
-
-#: includes/arrays.php:133
-msgid "Found"
-msgstr ""
-
-#: includes/arrays.php:134
-msgid "See Other"
-msgstr ""
-
-#: includes/arrays.php:135
-msgid "Not Modified"
+msgid "Last week"
 msgstr ""
 
 #: includes/arrays.php:136
-msgid "Use Proxy"
+msgid "String found"
 msgstr ""
 
 #: includes/arrays.php:137
-msgid "(Unused)"
+msgid "String not found"
 msgstr ""
 
 #: includes/arrays.php:138
-msgid "Temporary Redirect"
+msgid "Failed string found"
 msgstr ""
 
 #: includes/arrays.php:139
-msgid "Bad Request"
+msgid "Failed string not found"
 msgstr ""
 
 #: includes/arrays.php:140
-msgid "Unauthorized"
+msgid "Maint string found"
 msgstr ""
 
-#: includes/arrays.php:141
-msgid "Payment Required"
+#: includes/arrays.php:141 includes/arrays.php:147 servcheck_test.php:922
+#: servcheck_test.php:1142
+msgid "Not tested yet"
 msgstr ""
 
 #: includes/arrays.php:142
-msgid "Forbidden"
+msgid "Search not performed"
 msgstr ""
 
-#: includes/arrays.php:143
-msgid "Not Found"
-msgstr ""
-
-#: includes/arrays.php:144
-msgid "Method Not Allowed"
-msgstr ""
-
-#: includes/arrays.php:145
-msgid "Not Acceptable"
-msgstr ""
-
-#: includes/arrays.php:146
-msgid "Proxy Authentication Required"
-msgstr ""
-
-#: includes/arrays.php:147
-msgid "Request Timeout"
+#: includes/arrays.php:146 includes/arrays.php:182
+msgid "OK"
 msgstr ""
 
 #: includes/arrays.php:148
-msgid "Conflict"
+msgid "Error/failed"
 msgstr ""
 
-#: includes/arrays.php:149
-msgid "Gone"
-msgstr ""
-
-#: includes/arrays.php:150
-msgid "Length Required"
-msgstr ""
-
-#: includes/arrays.php:151
-msgid "Precondition Failed"
-msgstr ""
-
-#: includes/arrays.php:152
-msgid "Request Entity Too Large"
-msgstr ""
-
-#: includes/arrays.php:153
-msgid "Request-URI Too Long"
-msgstr ""
-
-#: includes/arrays.php:154
-msgid "Unsupported Media Type"
-msgstr ""
-
-#: includes/arrays.php:155
-msgid "Requested Range Not Satisfiable"
-msgstr ""
-
-#: includes/arrays.php:156
-msgid "Expectation Failed"
-msgstr ""
-
-#: includes/arrays.php:157
-msgid "Internal Server Error"
-msgstr ""
-
-#: includes/arrays.php:158
-msgid "Not Implemented"
+#: includes/arrays.php:158 includes/arrays.php:168
+msgid "[None]"
 msgstr ""
 
 #: includes/arrays.php:159
-msgid "Bad Gateway"
+msgid "MD5"
 msgstr ""
 
 #: includes/arrays.php:160
-msgid "Service Unavailable"
+msgid "SHA"
 msgstr ""
 
 #: includes/arrays.php:161
-msgid "Gateway Timeout"
+msgid "SHA-224"
 msgstr ""
 
 #: includes/arrays.php:162
+msgid "SHA-256"
+msgstr ""
+
+#: includes/arrays.php:163
+msgid "SHA-392"
+msgstr ""
+
+#: includes/arrays.php:164
+msgid "SHA-512"
+msgstr ""
+
+#: includes/arrays.php:169
+msgid "DES"
+msgstr ""
+
+#: includes/arrays.php:170
+msgid "AES"
+msgstr ""
+
+#: includes/arrays.php:171
+msgid "AES-128"
+msgstr ""
+
+#: includes/arrays.php:172
+msgid "AES-192"
+msgstr ""
+
+#: includes/arrays.php:173
+msgid "AES-192-C"
+msgstr ""
+
+#: includes/arrays.php:174
+msgid "AES-256"
+msgstr ""
+
+#: includes/arrays.php:175
+msgid "AES-256-C"
+msgstr ""
+
+#: includes/arrays.php:179
+msgid "Unable to Connect"
+msgstr ""
+
+#: includes/arrays.php:180 servcheck_ca.php:116 servcheck_credential.php:133
+#: servcheck_credential.php:141 servcheck_proxy.php:116
+#: servcheck_restapi.php:144 servcheck_restapi.php:153 servcheck_test.php:216
+#: servcheck_test.php:225 servcheck_test.php:234 servcheck_test.php:243
+#: servcheck_test.php:252 servcheck_test.php:261
+msgid "Continue"
+msgstr ""
+
+#: includes/arrays.php:181
+msgid "Switching Protocols"
+msgstr ""
+
+#: includes/arrays.php:183
+msgid "Created"
+msgstr ""
+
+#: includes/arrays.php:184
+msgid "Accepted"
+msgstr ""
+
+#: includes/arrays.php:185
+msgid "Non-Authoritative Information"
+msgstr ""
+
+#: includes/arrays.php:186
+msgid "No Content"
+msgstr ""
+
+#: includes/arrays.php:187
+msgid "Reset Content"
+msgstr ""
+
+#: includes/arrays.php:188
+msgid "Partial Content"
+msgstr ""
+
+#: includes/arrays.php:189
+msgid "Multiple Choices"
+msgstr ""
+
+#: includes/arrays.php:190
+msgid "Moved Permanently"
+msgstr ""
+
+#: includes/arrays.php:191
+msgid "Found"
+msgstr ""
+
+#: includes/arrays.php:192
+msgid "See Other"
+msgstr ""
+
+#: includes/arrays.php:193
+msgid "Not Modified"
+msgstr ""
+
+#: includes/arrays.php:194
+msgid "Use Proxy"
+msgstr ""
+
+#: includes/arrays.php:195
+msgid "(Unused)"
+msgstr ""
+
+#: includes/arrays.php:196
+msgid "Temporary Redirect"
+msgstr ""
+
+#: includes/arrays.php:197
+msgid "Bad Request"
+msgstr ""
+
+#: includes/arrays.php:198
+msgid "Unauthorized"
+msgstr ""
+
+#: includes/arrays.php:199
+msgid "Payment Required"
+msgstr ""
+
+#: includes/arrays.php:200
+msgid "Forbidden"
+msgstr ""
+
+#: includes/arrays.php:201
+msgid "Not Found"
+msgstr ""
+
+#: includes/arrays.php:202
+msgid "Method Not Allowed"
+msgstr ""
+
+#: includes/arrays.php:203
+msgid "Not Acceptable"
+msgstr ""
+
+#: includes/arrays.php:204
+msgid "Proxy Authentication Required"
+msgstr ""
+
+#: includes/arrays.php:205
+msgid "Request Timeout"
+msgstr ""
+
+#: includes/arrays.php:206
+msgid "Conflict"
+msgstr ""
+
+#: includes/arrays.php:207
+msgid "Gone"
+msgstr ""
+
+#: includes/arrays.php:208
+msgid "Length Required"
+msgstr ""
+
+#: includes/arrays.php:209
+msgid "Precondition Failed"
+msgstr ""
+
+#: includes/arrays.php:210
+msgid "Request Entity Too Large"
+msgstr ""
+
+#: includes/arrays.php:211
+msgid "Request-URI Too Long"
+msgstr ""
+
+#: includes/arrays.php:212
+msgid "Unsupported Media Type"
+msgstr ""
+
+#: includes/arrays.php:213
+msgid "Requested Range Not Satisfiable"
+msgstr ""
+
+#: includes/arrays.php:214
+msgid "Expectation Failed"
+msgstr ""
+
+#: includes/arrays.php:215
+msgid "Internal Server Error"
+msgstr ""
+
+#: includes/arrays.php:216
+msgid "Not Implemented"
+msgstr ""
+
+#: includes/arrays.php:217
+msgid "Bad Gateway"
+msgstr ""
+
+#: includes/arrays.php:218
+msgid "Service Unavailable"
+msgstr ""
+
+#: includes/arrays.php:219
+msgid "Gateway Timeout"
+msgstr ""
+
+#: includes/arrays.php:220
 msgid "HTTP Version Not Supported"
 msgstr ""
 
-#: includes/arrays.php:166
+#: includes/arrays.php:224
 #, php-format
 msgid "%d Poller run"
 msgstr ""
 
-#: includes/arrays.php:167 includes/arrays.php:168 includes/arrays.php:169
-#: includes/arrays.php:170 includes/arrays.php:171 includes/arrays.php:172
-#: includes/arrays.php:173 includes/arrays.php:174 includes/arrays.php:175
+#: includes/arrays.php:225 includes/arrays.php:226 includes/arrays.php:227
+#: includes/arrays.php:228 includes/arrays.php:229 includes/arrays.php:230
+#: includes/arrays.php:231 includes/arrays.php:232 includes/arrays.php:233
 #, php-format
 msgid "%d Poller runs"
 msgstr ""
 
-#: includes/arrays.php:179 includes/arrays.php:180 includes/arrays.php:181
-#: includes/arrays.php:182 includes/arrays.php:183 includes/arrays.php:184
-#: includes/arrays.php:185 includes/arrays.php:186
+#: includes/arrays.php:237 includes/arrays.php:238 includes/arrays.php:239
+#: includes/arrays.php:240 includes/arrays.php:241 includes/arrays.php:242
+#: includes/arrays.php:243 includes/arrays.php:244
 #, php-format
 msgid "%d Seconds"
 msgstr ""
 
-#: includes/arrays.php:213 includes/arrays.php:217 includes/arrays.php:221
-msgid "Delete"
+#: includes/arrays.php:248
+msgid "Auth in HTTP headers"
 msgstr ""
 
-#: includes/arrays.php:222
-msgid "Disable"
+#: includes/arrays.php:249
+msgid "Custom HTTP header"
 msgstr ""
 
-#: includes/arrays.php:223
-msgid "Enable"
-msgstr ""
-
-#: includes/arrays.php:224
-msgid "Duplicate"
-msgstr ""
-
-#: includes/arrays.php:230 includes/arrays.php:250 servcheck_ca.php:264
-#: servcheck_proxies.php:273 servcheck_test.php:793 servcheck_test.php:1023
-msgid "Name"
-msgstr ""
-
-#: includes/arrays.php:231
-msgid "A Useful Name for this CA chain."
-msgstr ""
-
-#: includes/arrays.php:235
-msgid "New CA"
-msgstr ""
-
-#: includes/arrays.php:238 includes/arrays.php:361
-msgid "CA Chain"
-msgstr ""
-
-#: includes/arrays.php:242
-msgid "CA and intermediate certs, PEM encoded"
+#: includes/arrays.php:250
+msgid "POST method, form-urlencoded"
 msgstr ""
 
 #: includes/arrays.php:251
-msgid "A Useful Name for this Proxy."
+msgid "POST method, JSON encoded"
 msgstr ""
 
 #: includes/arrays.php:255
+msgid "JSON encoded"
+msgstr ""
+
+#: includes/arrays.php:256
+msgid "Form urlencoded"
+msgstr ""
+
+#: includes/arrays.php:279 includes/arrays.php:303 servcheck_ca.php:279
+#: servcheck_credential.php:745 servcheck_proxy.php:282
+#: servcheck_restapi.php:452 servcheck_test.php:871 servcheck_test.php:1083
+msgid "Name"
+msgstr ""
+
+#: includes/arrays.php:280
+msgid "A Useful Name for this CA chain."
+msgstr ""
+
+#: includes/arrays.php:284
+msgid "New CA"
+msgstr ""
+
+#: includes/arrays.php:287 includes/arrays.php:451
+msgid "CA Chain"
+msgstr ""
+
+#: includes/arrays.php:291
+msgid "CA and intermediate certs, PEM encoded"
+msgstr ""
+
+#: includes/arrays.php:304
+msgid "A Useful Name for this Proxy."
+msgstr ""
+
+#: includes/arrays.php:308
 msgid "New Proxy"
 msgstr ""
 
-#: includes/arrays.php:259 servcheck_proxies.php:277
+#: includes/arrays.php:312 servcheck_proxy.php:286
 msgid "Hostname"
 msgstr ""
 
-#: includes/arrays.php:260
+#: includes/arrays.php:313
 msgid "The Proxy Hostname."
 msgstr ""
 
-#: includes/arrays.php:268
+#: includes/arrays.php:321
 msgid "HTTP Port"
 msgstr ""
 
-#: includes/arrays.php:269
+#: includes/arrays.php:322
 msgid "The HTTP Proxy Port."
 msgstr ""
 
-#: includes/arrays.php:277
+#: includes/arrays.php:330
 msgid "HTTPS Port"
 msgstr ""
 
-#: includes/arrays.php:278
+#: includes/arrays.php:331
 msgid "The HTTPS Proxy Port."
 msgstr ""
 
-#: includes/arrays.php:286
-msgid "User Name"
+#: includes/arrays.php:341
+msgid "Select correct credential or left empty."
 msgstr ""
 
-#: includes/arrays.php:287
-msgid "The user to use to authenticate with the Proxy if any."
-msgstr ""
-
-#: includes/arrays.php:295 includes/arrays.php:378
-msgid "Password"
-msgstr ""
-
-#: includes/arrays.php:296
-msgid "The user password to use to authenticate with the Proxy if any."
-msgstr ""
-
-#: includes/arrays.php:315
-msgid "General Settings"
-msgstr ""
-
-#: includes/arrays.php:319
-msgid "Service Check Name"
-msgstr ""
-
-#: includes/arrays.php:320
-msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
-msgstr ""
-
-#: includes/arrays.php:326 servcheck_test.php:1107
-msgid "Enable Service Check"
-msgstr ""
-
-#: includes/arrays.php:327
-msgid "Uncheck this box to disabled this test from being checked."
-msgstr ""
-
-#: includes/arrays.php:332
-msgid "Poller"
-msgstr ""
-
-#: includes/arrays.php:335
-msgid "Poller on which the test will run"
-msgstr ""
-
-#: includes/arrays.php:340
-msgid "Type of service"
-msgstr ""
-
-#: includes/arrays.php:345
-msgid "What type of service?"
-msgstr ""
-
-#: includes/arrays.php:350
-msgid "IP Address or DNS name of server"
-msgstr ""
-
-#: includes/arrays.php:351
-msgid "You can specify another port (example.com:5000) otherwise default will be used"
-msgstr ""
-
-#: includes/arrays.php:358
-msgid "Service settings"
-msgstr ""
-
-#: includes/arrays.php:363 includes/arrays.php:421 includes/arrays.php:512
-#: servcheck_test.php:477
+#: includes/arrays.php:344 includes/arrays.php:432 includes/arrays.php:453
+#: includes/arrays.php:495 includes/arrays.php:604 servcheck_test.php:558
 msgid "None"
 msgstr ""
 
+#: includes/arrays.php:355 includes/arrays.php:651 includes/arrays.php:1348
+msgid "General Settings"
+msgstr ""
+
+#: includes/arrays.php:359
+msgid "Service Check Name"
+msgstr ""
+
+#: includes/arrays.php:360
+msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
+msgstr ""
+
 #: includes/arrays.php:365
-msgid "Your own CA and intermediate certs"
+msgid "How many attempts"
 msgstr ""
 
-#: includes/arrays.php:370 servcheck_proxies.php:285
-msgid "Username"
+#: includes/arrays.php:367
+msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
 msgstr ""
 
-#: includes/arrays.php:372
-msgid "With authentication the test gains more information. For LDAP something like cn=John Doe,OU=anygroup,DC=example,DC=com. For smb use DOMAIN/user"
+#: includes/arrays.php:375
+msgid "Enable test"
 msgstr ""
 
-#: includes/arrays.php:380
-msgid "For anonymous ftp insert email address here."
+#: includes/arrays.php:376
+msgid "Uncheck this box to disable this test from being checked."
 msgstr ""
 
-#: includes/arrays.php:386
-msgid "LDAP Search"
+#: includes/arrays.php:382
+msgid "Enable run script for this test"
+msgstr ""
+
+#: includes/arrays.php:383
+msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
 msgstr ""
 
 #: includes/arrays.php:388
-msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
+msgid "Poller"
 msgstr ""
 
-#: includes/arrays.php:395
-msgid "DNS Name for Query"
+#: includes/arrays.php:391
+msgid "Poller on which the test will run"
 msgstr ""
 
 #: includes/arrays.php:396
-msgid "DNS name for querying"
+msgid "Type of service"
 msgstr ""
 
-#: includes/arrays.php:403
-msgid "Path Part of URL"
+#: includes/arrays.php:401
+msgid "What type of service?"
 msgstr ""
 
-#: includes/arrays.php:404
-msgid "For web service insert at least \"/\" or something like \"/any/path/\". For FTP listing must end with char \"/\". For TFTP/SCP/SMB download test insert /path/file"
+#: includes/arrays.php:406
+msgid "IP Address or DNS name of server"
 msgstr ""
 
-#: includes/arrays.php:411
-msgid "Requires Authentication"
+#: includes/arrays.php:407
+msgid "You can specify another port (example.com:5000) otherwise default will be used. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
 msgstr ""
 
-#: includes/arrays.php:412
-msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
+#: includes/arrays.php:414
+msgid "Resolve DNS to Address"
 msgstr ""
 
-#: includes/arrays.php:418
-msgid "Proxy Server"
+#: includes/arrays.php:415
+msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
 msgstr ""
 
-#: includes/arrays.php:419
-msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
+#: includes/arrays.php:423
+msgid "Service settings"
 msgstr ""
 
-#: includes/arrays.php:427
-msgid "Check Certificate"
-msgstr ""
-
-#: includes/arrays.php:428
-msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
-msgstr ""
-
-#: includes/arrays.php:434
-msgid "Check and notify Certificate expiration"
+#: includes/arrays.php:429 includes/arrays.php:1376
+msgid "Select correct credential"
 msgstr ""
 
 #: includes/arrays.php:435
-msgid "If using SSL, check this box if you want to check the certificate expiration. You will be warn when last 10 days left."
+msgid "SNMP OID"
 msgstr ""
 
-#: includes/arrays.php:441
-msgid "Notification Timing"
+#: includes/arrays.php:437
+msgid "Insert SNMP OID"
 msgstr ""
 
-#: includes/arrays.php:444
-msgid "How Often to Test"
+#: includes/arrays.php:443
+msgid "SSH command"
 msgstr ""
 
-#: includes/arrays.php:448
-msgid "Test each poller cycle or less"
+#: includes/arrays.php:445
+msgid "Insert SSH command with full path, result of command will be returned"
 msgstr ""
 
-#: includes/arrays.php:452
-msgid "Trigger"
-msgstr ""
-
-#: includes/arrays.php:456
-msgid "How many poller cycles must be down before it will send an alert. After an alert is sent, in order for a 'Site Recovering' Email to be send, it must also be up this number of poller cycles."
+#: includes/arrays.php:455
+msgid "Your own CA and intermediate certs"
 msgstr ""
 
 #: includes/arrays.php:460
-msgid "Time Out"
+msgid "LDAP Search"
 msgstr ""
 
-#: includes/arrays.php:464
-msgid "How many seconds to allow the page to timeout before reporting it as down."
+#: includes/arrays.php:462
+msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
 msgstr ""
 
 #: includes/arrays.php:469
-msgid "Verification Strings"
+msgid "DNS Name for Query"
 msgstr ""
 
-#: includes/arrays.php:473
-msgid "Response Search String"
+#: includes/arrays.php:470
+msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
 msgstr ""
 
-#: includes/arrays.php:474
-msgid "This is the string to search for in the response for a live and working service."
+#: includes/arrays.php:477
+msgid "Path Part of URL"
 msgstr ""
 
-#: includes/arrays.php:481
-msgid "Response Search String - Maintenance"
+#: includes/arrays.php:478
+msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
 msgstr ""
 
-#: includes/arrays.php:482
-msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
+#: includes/arrays.php:485
+msgid "Requires Authentication"
 msgstr ""
 
-#: includes/arrays.php:489
-msgid "Response Search String - Failed"
+#: includes/arrays.php:486
+msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
 msgstr ""
 
-#: includes/arrays.php:490
-msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
+#: includes/arrays.php:492
+msgid "Proxy Server"
 msgstr ""
 
-#: includes/arrays.php:497
-msgid "Notification Settings"
+#: includes/arrays.php:493
+msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
 msgstr ""
 
-#: includes/arrays.php:500
-msgid "Notify Format"
+#: includes/arrays.php:501
+msgid "Check Certificate"
 msgstr ""
 
 #: includes/arrays.php:502
-msgid "This is the format to use when sending the notification email"
+msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
 msgstr ""
 
-#: includes/arrays.php:507
-msgid "Notification List"
+#: includes/arrays.php:508
+msgid "Check and notify Certificate expiration"
 msgstr ""
 
 #: includes/arrays.php:509
-msgid "Use this Notification List for those to be notified when this service goes down."
+msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
 msgstr ""
 
 #: includes/arrays.php:515
-msgid "Notify Accounts"
+msgid "Parameters"
 msgstr ""
 
-#: includes/arrays.php:517
-msgid "This is a listing of accounts that will be notified when this service goes down."
+#: includes/arrays.php:518
+msgid "How Often to Test"
 msgstr ""
 
 #: includes/arrays.php:522
-msgid "Extra Alert Emails"
+msgid "Test every xth poller run"
 msgstr ""
 
 #: includes/arrays.php:526
-msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
+msgid "Trigger"
 msgstr ""
 
-#: includes/arrays.php:530
-msgid "Notes"
+#: includes/arrays.php:531
+msgid "How many times the service must be DOWN before an alert email is triggered."
 msgstr ""
 
-#: includes/arrays.php:534
-msgid "Notes sent in email"
-msgstr ""
-
-#: includes/arrays.php:538
-msgid "External ID"
+#: includes/arrays.php:535
+msgid "Long duration alert"
 msgstr ""
 
 #: includes/arrays.php:540
-msgid "Enter an Eternal ID for this Thold Template."
+msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
 msgstr ""
 
-#: includes/arrays.php:555
-msgid "All fine. Proceed as usual."
+#: includes/arrays.php:544
+msgid "Number of duration violations in a row"
+msgstr ""
+
+#: includes/arrays.php:549
+msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
+msgstr ""
+
+#: includes/arrays.php:554
+msgid "Verification Strings"
+msgstr ""
+
+#: includes/arrays.php:558
+msgid "Response Search String"
 msgstr ""
 
 #: includes/arrays.php:559
-msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
+msgid "This is the string to search for in the response for a live and working service."
 msgstr ""
 
-#: includes/arrays.php:563
-msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
+#: includes/arrays.php:566
+msgid "Response Search String - Maintenance"
 msgstr ""
 
 #: includes/arrays.php:567
-msgid "The URL was not properly formatted."
+msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
 msgstr ""
 
-#: includes/arrays.php:571
-msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
+#: includes/arrays.php:574
+msgid "Response Search String - Failed"
 msgstr ""
 
 #: includes/arrays.php:575
-msgid "Could not resolve proxy. The given proxy host could not be resolved."
+msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
 msgstr ""
 
-#: includes/arrays.php:579
-msgid "Could not resolve host. The given remote host was not resolved."
+#: includes/arrays.php:582
+msgid "Notification Settings"
 msgstr ""
 
-#: includes/arrays.php:583
-msgid "Failed to connect() to host or proxy."
+#: includes/arrays.php:586
+msgid "Email notification"
 msgstr ""
 
 #: includes/arrays.php:587
-msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
+msgid "If enabled email notification about state, duration and search result will be send"
 msgstr ""
 
-#: includes/arrays.php:591
-msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
+#: includes/arrays.php:592
+msgid "Notify Format"
 msgstr ""
 
-#: includes/arrays.php:595
-msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
+#: includes/arrays.php:594
+msgid "This is the format to use when sending the notification email"
 msgstr ""
 
 #: includes/arrays.php:599
-msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
+msgid "Notification List"
 msgstr ""
 
-#: includes/arrays.php:603
-msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
+#: includes/arrays.php:601
+msgid "Use this Notification List for those to be notified when this service goes down."
 msgstr ""
 
 #: includes/arrays.php:607
-msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
+msgid "Notify Accounts"
 msgstr ""
 
-#: includes/arrays.php:611
-msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
+#: includes/arrays.php:609
+msgid "This is a listing of accounts that will be notified when this service goes down."
 msgstr ""
 
-#: includes/arrays.php:615
-msgid "An internal failure to lookup the host used for the new connection."
+#: includes/arrays.php:614
+msgid "Extra Alert Emails"
 msgstr ""
 
-#: includes/arrays.php:619
-msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+#: includes/arrays.php:618
+msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
 msgstr ""
 
-#: includes/arrays.php:623
-msgid "Received an error when trying to set the transfer mode to binary or ASCII."
+#: includes/arrays.php:622
+msgid "Notes"
 msgstr ""
 
-#: includes/arrays.php:627
-msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
+#: includes/arrays.php:626
+msgid "Notes sent in email"
 msgstr ""
 
-#: includes/arrays.php:631
-msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
+#: includes/arrays.php:630
+msgid "External ID"
 msgstr ""
 
-#: includes/arrays.php:634 includes/arrays.php:650 includes/arrays.php:670
-#: includes/arrays.php:682 includes/arrays.php:714 includes/arrays.php:730
-#: includes/arrays.php:738 includes/arrays.php:754 includes/arrays.php:758
-#: includes/arrays.php:782 includes/arrays.php:802 includes/arrays.php:854
-#: includes/arrays.php:858
-msgid "Obsolete Error"
+#: includes/arrays.php:632
+msgid "Enter an External ID for this test."
 msgstr ""
 
-#: includes/arrays.php:635 includes/arrays.php:651 includes/arrays.php:671
-#: includes/arrays.php:683 includes/arrays.php:715 includes/arrays.php:731
-#: includes/arrays.php:739 includes/arrays.php:755 includes/arrays.php:759
-#: includes/arrays.php:783 includes/arrays.php:803 includes/arrays.php:855
-#: includes/arrays.php:859
-msgid "Not used in modern versions."
-msgstr ""
-
-#: includes/arrays.php:639
-msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
-msgstr ""
-
-#: includes/arrays.php:643
-msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
-msgstr ""
-
-#: includes/arrays.php:647
-msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
+#: includes/arrays.php:644 includes/arrays.php:871
+msgid "Help"
 msgstr ""
 
 #: includes/arrays.php:655
-msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
+msgid "Credential Name"
 msgstr ""
 
-#: includes/arrays.php:659
-msgid "There was a problem reading a local file or an error returned by the read callback."
+#: includes/arrays.php:656
+msgid "The name that is displayed for this Credential."
 msgstr ""
 
-#: includes/arrays.php:663
-msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
+#: includes/arrays.php:661
+msgid "Credential type"
 msgstr ""
 
-#: includes/arrays.php:667
-msgid "Operation timeout. The specified time-out period was reached according to the conditions."
+#: includes/arrays.php:666
+msgid "Select correct Credential type."
 msgstr ""
 
-#: includes/arrays.php:675
-msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
+#: includes/arrays.php:670 includes/arrays.php:678
+msgid "Options"
 msgstr ""
 
-#: includes/arrays.php:679
-msgid "The FTP REST command returned error. This should never happen if the server is sane."
+#: includes/arrays.php:674 includes/arrays.php:682
+msgid "Set according to your REST API server"
 msgstr ""
 
-#: includes/arrays.php:687
-msgid "The server does not support or accept range requests."
+#: includes/arrays.php:686 includes/arrays.php:688
+msgid "Username"
 msgstr ""
 
-#: includes/arrays.php:691
-msgid "This is an odd error that mainly occurs due to internal confusion."
+#: includes/arrays.php:694
+msgid "Password"
 msgstr ""
 
-#: includes/arrays.php:695
-msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
+#: includes/arrays.php:696
+msgid "For anonymous FTP insert email address"
 msgstr ""
 
-#: includes/arrays.php:699
-msgid "The download could not be resumed because the specified offset was out of the file boundary."
+#: includes/arrays.php:703 includes/arrays.php:1382
+msgid "Token/API Key name"
 msgstr ""
 
-#: includes/arrays.php:703
-msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
+#: includes/arrays.php:704
+msgid ""
+"Auth can use different token or API Key name. You can specify it here. You need know correct name, check your Rest API server documentation.<br/>\n"
+"\t\t\t<i>OAuth2 -</i> Commonly used name is 'Bearer'<br/>\n"
+"\t\t\t<i>API Key -</i> commonly used name is 'apikey'<br/> "
 msgstr ""
 
-#: includes/arrays.php:707
-msgid "LDAP cannot bind. LDAP bind operation failed."
+#: includes/arrays.php:712
+msgid "Token/API key value"
 msgstr ""
 
-#: includes/arrays.php:711
-msgid "LDAP search failed."
+#: includes/arrays.php:713
+msgid "API key and OAuth2 have two flows - You can have key/token from server and insert it here or use auth flow with credentials."
 msgstr ""
 
-#: includes/arrays.php:719
-msgid "Function not found. A required zlib function was not found."
+#: includes/arrays.php:719 includes/arrays.php:1390
+msgid "Login URL"
 msgstr ""
 
-#: includes/arrays.php:723
-msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
+#: includes/arrays.php:720 includes/arrays.php:1391
+msgid "URL which is used to log in or get the token."
 msgstr ""
 
-#: includes/arrays.php:727
-msgid "A function was called with a bad parameter."
+#: includes/arrays.php:726 includes/arrays.php:1397
+msgid "Data URL"
 msgstr ""
 
-#: includes/arrays.php:735
-msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
+#: includes/arrays.php:727 includes/arrays.php:1398
+msgid "URL to retrieve data. Insert with http:// or https://"
 msgstr ""
 
-#: includes/arrays.php:743
-msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
+#: includes/arrays.php:732
+msgid "SNMP v1 or v2 community"
 msgstr ""
 
-#: includes/arrays.php:747
-msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
+#: includes/arrays.php:734
+msgid "SNMP community string for SNMP v1 or v2(c)"
+msgstr ""
+
+#: includes/arrays.php:741
+msgid "SNMP Security Level"
+msgstr ""
+
+#: includes/arrays.php:742
+msgid "SNMP v3 Security Level to use when querying the device."
+msgstr ""
+
+#: includes/arrays.php:750
+msgid "SNMP Auth Protocol (v3)"
 msgstr ""
 
 #: includes/arrays.php:751
-msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
+msgid "Choose the SNMPv3 Authorization Protocol."
 msgstr ""
 
-#: includes/arrays.php:763
-msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
+#: includes/arrays.php:758
+msgid "SNMP Username (v3)"
+msgstr ""
+
+#: includes/arrays.php:759
+msgid "SNMP v3 username for this device."
 msgstr ""
 
 #: includes/arrays.php:767
-msgid "The specified crypto engine was not found."
+msgid "SNMP Password (v3)"
 msgstr ""
 
-#: includes/arrays.php:771
-msgid "Failed setting the selected SSL crypto engine as default."
+#: includes/arrays.php:768
+msgid "SNMP v3 password for this device."
 msgstr ""
 
-#: includes/arrays.php:775
-msgid "Failed sending network data."
+#: includes/arrays.php:776
+msgid "SNMP Privacy Protocol (v3)"
 msgstr ""
 
-#: includes/arrays.php:779
-msgid "Failure with receiving network data."
+#: includes/arrays.php:777
+msgid "Choose the SNMPv3 Privacy Protocol."
 msgstr ""
 
-#: includes/arrays.php:787
-msgid "problem with the local client certificate."
+#: includes/arrays.php:784
+msgid "SNMP Privacy Passphrase (v3)"
 msgstr ""
 
-#: includes/arrays.php:791
-msgid "Could not use specified cipher."
+#: includes/arrays.php:785
+msgid "Choose the SNMPv3 Privacy Passphrase."
 msgstr ""
 
-#: includes/arrays.php:795
-msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
+#: includes/arrays.php:793
+msgid "SNMP Context (v3)"
 msgstr ""
 
-#: includes/arrays.php:799
-msgid "Unrecognized transfer encoding."
+#: includes/arrays.php:794
+msgid "Enter the SNMP Context to use for this device."
 msgstr ""
 
-#: includes/arrays.php:807
-msgid "Maximum file size exceeded."
+#: includes/arrays.php:802
+msgid "SNMP Engine ID (v3)"
 msgstr ""
 
-#: includes/arrays.php:811
-msgid "Requested FTP SSL level failed."
+#: includes/arrays.php:803
+msgid "Enter the SNMP v3 Engine Id or empty."
 msgstr ""
 
-#: includes/arrays.php:815
-msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
+#: includes/arrays.php:810
+msgid "SSH user"
 msgstr ""
 
-#: includes/arrays.php:819
-msgid "Initiating the SSL Engine failed."
+#: includes/arrays.php:812
+msgid "Insert username here"
 msgstr ""
 
-#: includes/arrays.php:823
-msgid "The remote server denied curl to login (Added in 7.13.1)"
+#: includes/arrays.php:818
+msgid "SSH private key"
 msgstr ""
 
-#: includes/arrays.php:827
-msgid "File not found on TFTP server."
+#: includes/arrays.php:822
+msgid "SSH private key "
 msgstr ""
 
-#: includes/arrays.php:831
-msgid "Permission problem on TFTP server."
+#: includes/arrays.php:826
+msgid "SSH private key passphrase"
 msgstr ""
 
-#: includes/arrays.php:835
-msgid "Out of disk space on the server."
+#: includes/arrays.php:828
+msgid "If your key is password protected, insert password here"
 msgstr ""
 
-#: includes/arrays.php:839
-msgid "Illegal TFTP operation."
+#: includes/arrays.php:834
+msgid "Client ID"
 msgstr ""
 
-#: includes/arrays.php:843
-msgid "Unknown TFTP transfer ID."
+#: includes/arrays.php:836
+msgid "Oauth Client ID"
 msgstr ""
 
-#: includes/arrays.php:847
-msgid "File already exists and is not overwritten."
+#: includes/arrays.php:842
+msgid "Client secret"
 msgstr ""
 
-#: includes/arrays.php:851
-msgid "This error should never be returned by a properly functioning TFTP server."
+#: includes/arrays.php:844
+msgid "OAuth Client secret"
 msgstr ""
 
-#: includes/arrays.php:863
-msgid "Problem with reading the SSL CA cert (path? access rights?)"
+#: includes/arrays.php:850 includes/arrays.php:852
+msgid "Token name"
 msgstr ""
 
-#: includes/arrays.php:867
-msgid "The resource referenced in the URL does not exist."
+#: includes/arrays.php:858 includes/arrays.php:860
+msgid "Token value"
 msgstr ""
 
-#: includes/arrays.php:871
-msgid "An unspecified error occurred during the SSH session."
-msgstr ""
-
-#: includes/arrays.php:875
-msgid "Failed to shut down the SSL connection."
-msgstr ""
-
-#: includes/arrays.php:879
-msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
+#: includes/arrays.php:876
+msgid ""
+"<b>Can be used for a lot of service checks:</b><br/>\\\n"
+"\t\t<i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/>\\\n"
+"\t\t<i>SMTP on port 587 - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/>\\\n"
+"\t\t<i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \\\"anonymous\\\" and email address as password<br/>\\\n"
+"\t\t<i>LDAP, smb, smbs</i> - required<br/>\\\n"
+"\t\t<i>MQTT</i> - optional<br/>\\\n"
+"\t\t<i>SCP, SSH command</i> - you can use this method or private key method"
 msgstr ""
 
 #: includes/arrays.php:883
-msgid "Failed to load CRL file (Added in 7.19.0)"
+msgid "Rest API - Basic HTTP auth. Username and password are required"
 msgstr ""
 
-#: includes/arrays.php:887
-msgid "Issuer check failed (Added in 7.19.0)"
+#: includes/arrays.php:884
+msgid ""
+"Rest API - API key auth<br/>Auth is send in HTTP header, custom header or POST method. Credentials in URL is not supported.<br/>Insert API key name and value. Both values are required.\\\n"
+"\t\tFor HTTP header the name <i>Bearer or apikey or \\\"\\\"</i> is usually used (Authorization: Bearer apivalue).\\\n"
+"\t\tFor custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue).\\\n"
+"\t\tFor POST <i>api_key</i> is usually used."
+msgstr ""
+
+#: includes/arrays.php:888
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are send Json encoded."
+msgstr ""
+
+#: includes/arrays.php:889
+msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
+msgstr ""
+
+#: includes/arrays.php:890
+msgid "SNMP v1 or v2 - required, insert community name here"
 msgstr ""
 
 #: includes/arrays.php:891
-msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
+msgid "SNMP v3 - The security level determines which parameters are required"
 msgstr ""
 
-#: includes/arrays.php:895
-msgid "Mismatch of RTSP CSeq numbers."
+#: includes/arrays.php:892
+msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
+msgstr ""
+
+#: includes/arrays.php:896
+msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
+msgstr ""
+
+#: includes/arrays.php:897
+msgid "The same as HTTP plaintext but adds the ability to test certificates."
+msgstr ""
+
+#: includes/arrays.php:898
+msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
 msgstr ""
 
 #: includes/arrays.php:899
-msgid "Mismatch of RTSP Session Identifiers."
+msgid ""
+"Unencrypted + STARTTL. It is also possible to test the validity of the certificate. Without username and password, \\\n"
+"\t\tyou will see server login banner and ehlo response. With credential, login will be performed"
+msgstr ""
+
+#: includes/arrays.php:901
+msgid ""
+"Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password\\\n"
+"\t\tAUTH LOGIN will be tested."
 msgstr ""
 
 #: includes/arrays.php:903
-msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
+msgid ""
+"Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. \\\n"
+"\t\tWith credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgstr ""
+
+#: includes/arrays.php:905
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS."
+msgstr ""
+
+#: includes/arrays.php:906
+msgid "Encrypted IMAP, you can try login and test certificate and user login"
 msgstr ""
 
 #: includes/arrays.php:907
-msgid "Chunk callback reported error."
+msgid ""
+"Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. \\\n"
+"\t\tWith credential login will be tested and try to read list of messages"
+msgstr ""
+
+#: includes/arrays.php:909
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS."
+msgstr ""
+
+#: includes/arrays.php:910
+msgid "Encrypted POP3, you can try login and test certificate and user login."
 msgstr ""
 
 #: includes/arrays.php:911
-msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
+msgid "Try to resolve DNS record on specified DNS server"
+msgstr ""
+
+#: includes/arrays.php:912
+msgid "Try DNS over HTTPS."
+msgstr ""
+
+#: includes/arrays.php:913
+msgid "All parameters are required. Perform unencrypted LDAP login and search"
+msgstr ""
+
+#: includes/arrays.php:914
+msgid "All parameters are required. Perform encrypted LDAP login and search"
 msgstr ""
 
 #: includes/arrays.php:915
-msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
+msgid ""
+"Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content \\\n"
+"\t\tof the file is returned."
 msgstr ""
 
-#: includes/arrays.php:919
-msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
+#: includes/arrays.php:917
+msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
+msgstr ""
+
+#: includes/arrays.php:918
+msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
+msgstr ""
+
+#: includes/arrays.php:919 includes/arrays.php:920
+msgid "Try SMB protocol, username and password are required. Try to login and download file."
+msgstr ""
+
+#: includes/arrays.php:921
+msgid "Connetct to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \\\"Long duration alert\\\""
+msgstr ""
+
+#: includes/arrays.php:922
+msgid "REST API test with basic HTTP auth. Prepare credential first."
 msgstr ""
 
 #: includes/arrays.php:923
-msgid "Stream error in the HTTP/2 framing layer."
+msgid "REST API test with API key auth. Prepare credential first."
+msgstr ""
+
+#: includes/arrays.php:924
+msgid "REST API test with Oauth2. Prepare credential first."
+msgstr ""
+
+#: includes/arrays.php:925
+msgid "REST API test with cookie auth. Prepare credential first."
+msgstr ""
+
+#: includes/arrays.php:926
+msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
 msgstr ""
 
 #: includes/arrays.php:927
-msgid "An API function was called from inside a callback."
+msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
 msgstr ""
 
-#: includes/arrays.php:931
-msgid "An authentication function returned an error."
+#: includes/arrays.php:928
+msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
+msgstr ""
+
+#: includes/arrays.php:929
+msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
 msgstr ""
 
 #: includes/arrays.php:935
-msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgid "All fine. Proceed as usual."
 msgstr ""
 
 #: includes/arrays.php:939
-msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
+msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
 msgstr ""
 
 #: includes/arrays.php:943
-msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
+msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
 msgstr ""
 
 #: includes/arrays.php:947
-msgid "SSL Client Certificate required."
+msgid "The URL was not properly formatted."
 msgstr ""
 
 #: includes/arrays.php:951
+msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
+msgstr ""
+
+#: includes/arrays.php:955
+msgid "Could not resolve proxy. The given proxy host could not be resolved."
+msgstr ""
+
+#: includes/arrays.php:959
+msgid "Could not resolve host. The given remote host was not resolved."
+msgstr ""
+
+#: includes/arrays.php:963
+msgid "Failed to connect() to host or proxy."
+msgstr ""
+
+#: includes/arrays.php:967
+msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
+msgstr ""
+
+#: includes/arrays.php:971
+msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
+msgstr ""
+
+#: includes/arrays.php:975
+msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
+msgstr ""
+
+#: includes/arrays.php:979
+msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
+msgstr ""
+
+#: includes/arrays.php:983
+msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
+msgstr ""
+
+#: includes/arrays.php:987
+msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
+msgstr ""
+
+#: includes/arrays.php:991
+msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
+msgstr ""
+
+#: includes/arrays.php:995
+msgid "An internal failure to lookup the host used for the new connection."
+msgstr ""
+
+#: includes/arrays.php:999
+msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr ""
+
+#: includes/arrays.php:1003
+msgid "Received an error when trying to set the transfer mode to binary or ASCII."
+msgstr ""
+
+#: includes/arrays.php:1007
+msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
+msgstr ""
+
+#: includes/arrays.php:1011
+msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
+msgstr ""
+
+#: includes/arrays.php:1014 includes/arrays.php:1030 includes/arrays.php:1050
+#: includes/arrays.php:1062 includes/arrays.php:1094 includes/arrays.php:1110
+#: includes/arrays.php:1118 includes/arrays.php:1134 includes/arrays.php:1138
+#: includes/arrays.php:1162 includes/arrays.php:1182 includes/arrays.php:1234
+#: includes/arrays.php:1238
+msgid "Obsolete Error"
+msgstr ""
+
+#: includes/arrays.php:1015 includes/arrays.php:1031 includes/arrays.php:1051
+#: includes/arrays.php:1063 includes/arrays.php:1095 includes/arrays.php:1111
+#: includes/arrays.php:1119 includes/arrays.php:1135 includes/arrays.php:1139
+#: includes/arrays.php:1163 includes/arrays.php:1183 includes/arrays.php:1235
+#: includes/arrays.php:1239
+msgid "Not used in modern versions."
+msgstr ""
+
+#: includes/arrays.php:1019
+msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
+msgstr ""
+
+#: includes/arrays.php:1023
+msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
+msgstr ""
+
+#: includes/arrays.php:1027
+msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
+msgstr ""
+
+#: includes/arrays.php:1035
+msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
+msgstr ""
+
+#: includes/arrays.php:1039
+msgid "There was a problem reading a local file or an error returned by the read callback."
+msgstr ""
+
+#: includes/arrays.php:1043
+msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
+msgstr ""
+
+#: includes/arrays.php:1047
+msgid "Operation timeout. The specified time-out period was reached according to the conditions."
+msgstr ""
+
+#: includes/arrays.php:1055
+msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
+msgstr ""
+
+#: includes/arrays.php:1059
+msgid "The FTP REST command returned error. This should never happen if the server is sane."
+msgstr ""
+
+#: includes/arrays.php:1067
+msgid "The server does not support or accept range requests."
+msgstr ""
+
+#: includes/arrays.php:1071
+msgid "This is an odd error that mainly occurs due to internal confusion."
+msgstr ""
+
+#: includes/arrays.php:1075
+msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
+msgstr ""
+
+#: includes/arrays.php:1079
+msgid "The download could not be resumed because the specified offset was out of the file boundary."
+msgstr ""
+
+#: includes/arrays.php:1083
+msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
+msgstr ""
+
+#: includes/arrays.php:1087
+msgid "LDAP cannot bind. LDAP bind operation failed."
+msgstr ""
+
+#: includes/arrays.php:1091
+msgid "LDAP search failed."
+msgstr ""
+
+#: includes/arrays.php:1099
+msgid "Function not found. A required zlib function was not found."
+msgstr ""
+
+#: includes/arrays.php:1103
+msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
+msgstr ""
+
+#: includes/arrays.php:1107
+msgid "A function was called with a bad parameter."
+msgstr ""
+
+#: includes/arrays.php:1115
+msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
+msgstr ""
+
+#: includes/arrays.php:1123
+msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
+msgstr ""
+
+#: includes/arrays.php:1127
+msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
+msgstr ""
+
+#: includes/arrays.php:1131
+msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
+msgstr ""
+
+#: includes/arrays.php:1143
+msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
+msgstr ""
+
+#: includes/arrays.php:1147
+msgid "The specified crypto engine was not found."
+msgstr ""
+
+#: includes/arrays.php:1151
+msgid "Failed setting the selected SSL crypto engine as default."
+msgstr ""
+
+#: includes/arrays.php:1155
+msgid "Failed sending network data."
+msgstr ""
+
+#: includes/arrays.php:1159
+msgid "Failure with receiving network data."
+msgstr ""
+
+#: includes/arrays.php:1167
+msgid "problem with the local client certificate."
+msgstr ""
+
+#: includes/arrays.php:1171
+msgid "Could not use specified cipher."
+msgstr ""
+
+#: includes/arrays.php:1175
+msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
+msgstr ""
+
+#: includes/arrays.php:1179
+msgid "Unrecognized transfer encoding."
+msgstr ""
+
+#: includes/arrays.php:1187
+msgid "Maximum file size exceeded."
+msgstr ""
+
+#: includes/arrays.php:1191
+msgid "Requested FTP SSL level failed."
+msgstr ""
+
+#: includes/arrays.php:1195
+msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
+msgstr ""
+
+#: includes/arrays.php:1199
+msgid "Initiating the SSL Engine failed."
+msgstr ""
+
+#: includes/arrays.php:1203
+msgid "The remote server denied curl to login (Added in 7.13.1)"
+msgstr ""
+
+#: includes/arrays.php:1207
+msgid "File not found on TFTP server."
+msgstr ""
+
+#: includes/arrays.php:1211
+msgid "Permission problem on TFTP server."
+msgstr ""
+
+#: includes/arrays.php:1215
+msgid "Out of disk space on the server."
+msgstr ""
+
+#: includes/arrays.php:1219
+msgid "Illegal TFTP operation."
+msgstr ""
+
+#: includes/arrays.php:1223
+msgid "Unknown TFTP transfer ID."
+msgstr ""
+
+#: includes/arrays.php:1227
+msgid "File already exists and is not overwritten."
+msgstr ""
+
+#: includes/arrays.php:1231
+msgid "This error should never be returned by a properly functioning TFTP server."
+msgstr ""
+
+#: includes/arrays.php:1243
+msgid "Problem with reading the SSL CA cert (path? access rights?)"
+msgstr ""
+
+#: includes/arrays.php:1247
+msgid "The resource referenced in the URL does not exist."
+msgstr ""
+
+#: includes/arrays.php:1251
+msgid "An unspecified error occurred during the SSH session."
+msgstr ""
+
+#: includes/arrays.php:1255
+msgid "Failed to shut down the SSL connection."
+msgstr ""
+
+#: includes/arrays.php:1259
+msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
+msgstr ""
+
+#: includes/arrays.php:1263
+msgid "Failed to load CRL file (Added in 7.19.0)"
+msgstr ""
+
+#: includes/arrays.php:1267
+msgid "Issuer check failed (Added in 7.19.0)"
+msgstr ""
+
+#: includes/arrays.php:1271
+msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
+msgstr ""
+
+#: includes/arrays.php:1275
+msgid "Mismatch of RTSP CSeq numbers."
+msgstr ""
+
+#: includes/arrays.php:1279
+msgid "Mismatch of RTSP Session Identifiers."
+msgstr ""
+
+#: includes/arrays.php:1283
+msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
+msgstr ""
+
+#: includes/arrays.php:1287
+msgid "Chunk callback reported error."
+msgstr ""
+
+#: includes/arrays.php:1291
+msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
+msgstr ""
+
+#: includes/arrays.php:1295
+msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
+msgstr ""
+
+#: includes/arrays.php:1299
+msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
+msgstr ""
+
+#: includes/arrays.php:1303
+msgid "Stream error in the HTTP/2 framing layer."
+msgstr ""
+
+#: includes/arrays.php:1307
+msgid "An API function was called from inside a callback."
+msgstr ""
+
+#: includes/arrays.php:1311
+msgid "An authentication function returned an error."
+msgstr ""
+
+#: includes/arrays.php:1315
+msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr ""
+
+#: includes/arrays.php:1319
+msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
+msgstr ""
+
+#: includes/arrays.php:1323
+msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
+msgstr ""
+
+#: includes/arrays.php:1327
+msgid "SSL Client Certificate required."
+msgstr ""
+
+#: includes/arrays.php:1331
 msgid "An internal call to poll() or select() returned error that is not recoverable."
 msgstr ""
 
-#: includes/functions.php:32 servcheck_test.php:828
-msgid "Tests"
+#: includes/arrays.php:1338
+msgid "Without auth"
 msgstr ""
 
-#: includes/functions.php:33
-msgid "CA certificates"
+#: includes/arrays.php:1339
+msgid "Basic HTTP auth"
 msgstr ""
 
-#: includes/functions.php:34 servcheck_proxies.php:292
-#: servcheck_proxies.php:349
-msgid "Proxies"
+#: includes/arrays.php:1340
+msgid "API key auth"
 msgstr ""
 
-#: includes/functions.php:35
-msgid "Curl return codes"
+#: includes/arrays.php:1341
+msgid "OAuth2/Bearer token auth"
 msgstr ""
 
-#: includes/functions.php:41
+#: includes/arrays.php:1342
+msgid "Cookie based auth"
+msgstr ""
+
+#: includes/arrays.php:1352
+msgid "Rest API Name"
+msgstr ""
+
+#: includes/arrays.php:1353
+msgid "The name that is displayed for this Rest API."
+msgstr ""
+
+#: includes/arrays.php:1358
+msgid "Auth type"
+msgstr ""
+
+#: includes/arrays.php:1363
+msgid ""
+"Details of auth methods:<br/>\n"
+"\t\tNo authorization - <i>just send only request and read the response.</i><br/>\n"
+"\t\tBasic - <i>uses HTTP auth. Username and password is Base64 encoded. Credentials are not encrypted.</i><br/>\n"
+"\t\tAPI key - <i>you need API key from your Rest API server. It will be send with all request. Key is send ind http headers. You can also add it to the data URL.</i><br/>\n"
+"\t\tOAuth2 - <i>Oauth2/bearer token auth. Insert your token or use your credentials for getting a token.</i><br/>\n"
+"\t\tCookie - <i>Use your credentials for getting cookie. Cookie will be send with each request.</i><br/>\n"
+"\t\tNote: HTTP method POST is used for login. For data query is used GET."
+msgstr ""
+
+#: includes/arrays.php:1383
+msgid ""
+"Auth can use different token or API Key name. You can specify it here.\n"
+"\t\tCommonly used names are  'Bearer' for OAuth2,  'apikey' for API Key method. You need know correct name, check your Rest API server documentation. "
+msgstr ""
+
+#: includes/functions.php:31
 msgid "Log History"
 msgstr ""
 
-#: includes/functions.php:48
+#: includes/functions.php:38
 msgid "Graphs"
 msgstr ""
 
-#: includes/functions.php:130
+#: includes/functions.php:91
 msgid "No data"
 msgstr ""
 
-#: servcheck_ca.php:104
-msgid "Click 'Continue' to delete the following CA."
-msgid_plural "Click 'Continue' to delete following CA."
+#: servcheck_ca.php:31 servcheck_credential.php:31 servcheck_proxy.php:31
+#: servcheck_restapi.php:31 servcheck_test.php:33
+msgid "Delete"
+msgstr ""
+
+#: servcheck_ca.php:111 servcheck_credential.php:128 servcheck_proxy.php:111
+#: servcheck_test.php:211
+msgid "Click 'Continue' to delete the following items."
+msgid_plural "Click 'Continue' to delete following items."
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_ca.php:109 servcheck_proxies.php:108 servcheck_test.php:197
-#: servcheck_test.php:206 servcheck_test.php:215 servcheck_test.php:224
+#: servcheck_ca.php:116 servcheck_credential.php:133
+#: servcheck_credential.php:141 servcheck_proxy.php:116
+#: servcheck_restapi.php:144 servcheck_restapi.php:153 servcheck_test.php:216
+#: servcheck_test.php:225 servcheck_test.php:234 servcheck_test.php:243
+#: servcheck_test.php:252 servcheck_test.php:261
 msgid "Cancel"
 msgstr ""
 
-#: servcheck_ca.php:109
-msgid "Delete CA"
-msgid_plural "Delete CA"
+#: servcheck_ca.php:116 servcheck_credential.php:133 servcheck_proxy.php:116
+#: servcheck_test.php:216
+msgid "Delete item"
+msgid_plural "Delete items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_ca.php:166
+#: servcheck_ca.php:187
 #, php-format
 msgid "CA [edit: %s]"
 msgstr ""
 
-#: servcheck_ca.php:168
+#: servcheck_ca.php:189
 msgid "CA [new]"
 msgstr ""
 
-#: servcheck_ca.php:268
+#: servcheck_ca.php:283 servcheck_credential.php:753 servcheck_proxy.php:294
 msgid "Used"
 msgstr ""
 
-#: servcheck_ca.php:275 servcheck_ca.php:334
+#: servcheck_ca.php:290 servcheck_ca.php:348
 msgid "CAs"
 msgstr ""
 
-#: servcheck_ca.php:296
-msgid "No CAs Found"
+#: servcheck_ca.php:316 servcheck_credential.php:794 servcheck_proxy.php:331
+#: servcheck_test.php:1219
+msgid "Empty"
 msgstr ""
 
-#: servcheck_ca.php:315
+#: servcheck_ca.php:333
 msgid "Servcheck CA Management"
 msgstr ""
 
-#: servcheck_ca.php:322
-msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
-msgstr ""
-
-#: servcheck_ca.php:328 servcheck_proxies.php:343 servcheck_test.php:510
-#: servcheck_test.php:1251
+#: servcheck_ca.php:342 servcheck_credential.php:820 servcheck_proxy.php:357
+#: servcheck_restapi.php:568 servcheck_test.php:591 servcheck_test.php:1268
 msgid "Search"
 msgstr ""
 
-#: servcheck_ca.php:339 servcheck_proxies.php:354 servcheck_test.php:1291
-#: servcheck_test.php:1384
+#: servcheck_ca.php:353 servcheck_credential.php:831 servcheck_proxy.php:368
+#: servcheck_test.php:1309 servcheck_test.php:1395
 msgid "Default"
 msgstr ""
 
-#: servcheck_ca.php:350 servcheck_proxies.php:365 servcheck_test.php:1302
-#: servcheck_test.php:1395
+#: servcheck_ca.php:369 servcheck_credential.php:847 servcheck_proxy.php:384
+#: servcheck_restapi.php:596 servcheck_test.php:1325 servcheck_test.php:1411
 msgid "Go"
 msgstr ""
 
-#: servcheck_ca.php:351 servcheck_proxies.php:366 servcheck_test.php:1303
-#: servcheck_test.php:1396
+#: servcheck_ca.php:369 servcheck_credential.php:847 servcheck_proxy.php:384
+#: servcheck_test.php:1325
+msgid "Set/Refresh Filters"
+msgstr ""
+
+#: servcheck_ca.php:370 servcheck_credential.php:848 servcheck_proxy.php:385
+#: servcheck_restapi.php:597 servcheck_test.php:1326 servcheck_test.php:1412
 msgid "Clear"
+msgstr ""
+
+#: servcheck_ca.php:370 servcheck_credential.php:848 servcheck_proxy.php:385
+#: servcheck_test.php:1326
+msgid "Clear Filters"
+msgstr ""
+
+#: servcheck_credential.php:32 servcheck_restapi.php:32 servcheck_test.php:36
+msgid "Duplicate"
+msgstr ""
+
+#: servcheck_credential.php:137
+msgid "Click 'Continue' to Duplicate the following Credential."
+msgid_plural "Click 'Continue' to Duplicate following Credential."
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_credential.php:141
+msgid "Duplicate Credential"
+msgid_plural "Duplicate Credential"
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_credential.php:442
+#, php-format
+msgid "Credential [edit: %s]"
+msgstr ""
+
+#: servcheck_credential.php:446
+msgid "Credential [new]"
+msgstr ""
+
+#: servcheck_credential.php:749 servcheck_restapi.php:574
+msgid "Type"
+msgstr ""
+
+#: servcheck_credential.php:760 servcheck_credential.php:826
+msgid "Credentials"
+msgstr ""
+
+#: servcheck_credential.php:811
+msgid "Servcheck Credential Management"
 msgstr ""
 
 #: servcheck_curl_code.php:55
 msgid "No error codes"
 msgstr ""
 
-#: servcheck_proxies.php:103
-msgid "Click 'Continue' to delete the following Proxy."
-msgid_plural "Click 'Continue' to delete following Proxies."
-msgstr[0] ""
-msgstr[1] ""
-
-#: servcheck_proxies.php:108
-msgid "Delete Proxy"
-msgid_plural "Delete Proxies"
-msgstr[0] ""
-msgstr[1] ""
-
-#: servcheck_proxies.php:169
+#: servcheck_proxy.php:190
 #, php-format
 msgid "Proxy [edit: %s]"
 msgstr ""
 
-#: servcheck_proxies.php:171
+#: servcheck_proxy.php:192
 msgid "Proxy [new]"
 msgstr ""
 
-#: servcheck_proxies.php:281
+#: servcheck_proxy.php:290
 msgid "Ports (http/https)"
 msgstr ""
 
-#: servcheck_proxies.php:309
-msgid "Not Set"
-msgstr ""
-
-#: servcheck_proxies.php:315
-msgid "No Servers Found"
-msgstr ""
-
-#: servcheck_proxies.php:334
+#: servcheck_proxy.php:348
 msgid "Servcheck Proxy Management"
 msgstr ""
 
-#: servcheck_test.php:192
-msgid "Click 'Continue' to Delete the following tests."
-msgid_plural "Click 'Continue' to Delete following tests."
+#: servcheck_restapi.php:139
+msgid "Click 'Continue' to Delete the following Rest API."
+msgid_plural "Click 'Continue' to Delete following Rest API."
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_test.php:197
-msgid "Delete rest"
-msgid_plural "Delete tests"
+#: servcheck_restapi.php:144
+msgid "Delete Rest API"
+msgid_plural "Delete Rest API"
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_test.php:201
-msgid "Click 'Continue' to Disable the following test."
-msgid_plural "Click 'Continue' to Disable following Tests."
+#: servcheck_restapi.php:148
+msgid "Click 'Continue' to Duplicate the following Rest API."
+msgid_plural "Click 'Continue' to Duplicate following Rest APIs."
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_test.php:206
-msgid "Disable test"
-msgid_plural "Disable Tests"
+#: servcheck_restapi.php:153
+msgid "Duplicate Rest API"
+msgid_plural "Duplicate Rest API"
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_test.php:210
-msgid "Click 'Continue' to Enable the following test."
-msgid_plural "Click 'Continue' to Enable following tests."
-msgstr[0] ""
-msgstr[1] ""
-
-#: servcheck_test.php:215
-msgid "Enable test"
-msgid_plural "Enable tests"
-msgstr[0] ""
-msgstr[1] ""
-
-#: servcheck_test.php:219
-msgid "Click 'Continue' to Duplicate the following test."
-msgid_plural "Click 'Continue' to Duplicate following tests."
-msgstr[0] ""
-msgstr[1] ""
-
-#: servcheck_test.php:224
-msgid "Duplicate test"
-msgid_plural "Duplicate tests"
-msgstr[0] ""
-msgstr[1] ""
-
-#: servcheck_test.php:405
-#, php-format
-msgid "The Service Check history was purged for %s"
-msgstr ""
-
-#: servcheck_test.php:419
+#: servcheck_restapi.php:267
 #, php-format
 msgid "Query [edit: %s]"
 msgstr ""
 
-#: servcheck_test.php:421
+#: servcheck_restapi.php:269
 msgid "Query [new]"
 msgstr ""
 
-#: servcheck_test.php:465
-msgid "No Users Selected"
+#: servcheck_restapi.php:457
+msgid "Rest API Method"
 msgstr ""
 
-#: servcheck_test.php:467
-msgid "Users Selected"
+#: servcheck_restapi.php:467
+msgid "Records"
 msgstr ""
 
-#: servcheck_test.php:470
-msgid "All Users Selected"
+#: servcheck_restapi.php:558 setup.php:508
+msgid "Rest API"
 msgstr ""
 
-#: servcheck_test.php:476
-msgid "All"
-msgstr ""
-
-#: servcheck_test.php:790
-msgid "Date"
-msgstr ""
-
-#: servcheck_test.php:796 servcheck_test.php:1048
-msgid "Result"
-msgstr ""
-
-#: servcheck_test.php:799 servcheck_test.php:1053
-msgid "Search result"
-msgstr ""
-
-#: servcheck_test.php:802 servcheck_test.php:1058
-msgid "Curl return code"
-msgstr ""
-
-#: servcheck_test.php:807
-msgid "DNS"
-msgstr ""
-
-#: servcheck_test.php:812
-msgid "Connect"
-msgstr ""
-
-#: servcheck_test.php:817
-msgid "Redirect"
-msgstr ""
-
-#: servcheck_test.php:822
-msgid "Total"
-msgstr ""
-
-#: servcheck_test.php:854
-msgid "Service Down"
-msgstr ""
-
-#: servcheck_test.php:854
-msgid "Service UP"
-msgstr ""
-
-#: servcheck_test.php:868
-msgid "No Service Check Events in History"
-msgstr ""
-
-#: servcheck_test.php:922
-msgid "Last returned data of test"
-msgstr ""
-
-#: servcheck_test.php:1018
-msgid "Actions"
-msgstr ""
-
-#: servcheck_test.php:1028 servcheck_test.php:1135
-msgid "Enabled"
-msgstr ""
-
-#: servcheck_test.php:1033
-msgid "Last Check"
-msgstr ""
-
-#: servcheck_test.php:1038
-msgid "Stats (OK/problem)"
-msgstr ""
-
-#: servcheck_test.php:1043
-msgid "Triggered"
-msgstr ""
-
-#: servcheck_test.php:1066 servcheck_test.php:1286
-msgid "Checks"
-msgstr ""
-
-#: servcheck_test.php:1102
-msgid "Edit Service Check"
-msgstr ""
-
-#: servcheck_test.php:1111
-msgid "Disable Service Check"
-msgstr ""
-
-#: servcheck_test.php:1116
-msgid "View Service Check History"
-msgstr ""
-
-#: servcheck_test.php:1120
-msgid "View Last returned data"
-msgstr ""
-
-#: servcheck_test.php:1125
-msgid "View Graph"
-msgstr ""
-
-#: servcheck_test.php:1135
-msgid "Disabled"
-msgstr ""
-
-#: servcheck_test.php:1138
-msgid "N/A"
-msgstr ""
-
-#: servcheck_test.php:1145
-msgid "No"
-msgstr ""
-
-#: servcheck_test.php:1145
-msgid "Yes"
-msgstr ""
-
-#: servcheck_test.php:1156
-msgid "No Tests Found"
-msgstr ""
-
-#: servcheck_test.php:1242 setup.php:224
-msgid "Service Checks"
-msgstr ""
-
-#: servcheck_test.php:1257
-msgid "State"
-msgstr ""
-
-#: servcheck_test.php:1261
+#: servcheck_restapi.php:581 servcheck_test.php:1278
 msgid "Any"
 msgstr ""
 
-#: servcheck_test.php:1270
+#: servcheck_test.php:34
+msgid "Disable"
+msgstr ""
+
+#: servcheck_test.php:35
+msgid "Enable"
+msgstr ""
+
+#: servcheck_test.php:37
+msgid "Clear statistics"
+msgstr ""
+
+#: servcheck_test.php:38
+msgid "Clear log"
+msgstr ""
+
+#: servcheck_test.php:220
+msgid "Click 'Continue' to disable the following items."
+msgid_plural "Click 'Continue' to disable following items."
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:225
+msgid "Disable item"
+msgid_plural "Disable items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:229
+msgid "Click 'Continue' to enable the following items."
+msgid_plural "Click 'Continue' to enable following items."
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:234
+msgid "Enable item"
+msgid_plural "Enable items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:238
+msgid "Click 'Continue' to duplicate the following items."
+msgid_plural "Click 'Continue' to duplicate following items."
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:243 servcheck_test.php:252 servcheck_test.php:261
+msgid "Duplicate item"
+msgid_plural "Duplicate items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:247
+msgid "Click 'Continue' to clear statistics of following items."
+msgid_plural "Click 'Continue' to clear statistics of following items."
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:256
+msgid "Click 'Continue' to clear log of following items."
+msgid_plural "Click 'Continue' to clear log of following items."
+msgstr[0] ""
+msgstr[1] ""
+
+#: servcheck_test.php:475
+#, php-format
+msgid "The Service Check history was purged for %s"
+msgstr ""
+
+#: servcheck_test.php:493
+#, php-format
+msgid "Test [edit: %s]"
+msgstr ""
+
+#: servcheck_test.php:495
+msgid "Test [new]"
+msgstr ""
+
+#: servcheck_test.php:546
+msgid "No Users Selected"
+msgstr ""
+
+#: servcheck_test.php:548
+msgid "Users Selected"
+msgstr ""
+
+#: servcheck_test.php:551
+msgid "All Users Selected"
+msgstr ""
+
+#: servcheck_test.php:557
+msgid "All"
+msgstr ""
+
+#: servcheck_test.php:868
+msgid "Date"
+msgstr ""
+
+#: servcheck_test.php:874
+msgid "Attempt"
+msgstr ""
+
+#: servcheck_test.php:877 servcheck_test.php:1108
+msgid "Result"
+msgstr ""
+
+#: servcheck_test.php:880 servcheck_test.php:1113
+msgid "Search result"
+msgstr ""
+
+#: servcheck_test.php:883 servcheck_test.php:1098
+msgid "Duration"
+msgstr ""
+
+#: servcheck_test.php:888
+msgid "Certificate"
+msgstr ""
+
+#: servcheck_test.php:891
+msgid "Curl"
+msgstr ""
+
+#: servcheck_test.php:894
+msgid "Ret. data size"
+msgstr ""
+
+#: servcheck_test.php:897 servcheck_test.php:1118
+msgid "CPU u/CPU s/Memory"
+msgstr ""
+
+#: servcheck_test.php:905
+msgid "Logs"
+msgstr ""
+
+#: servcheck_test.php:932
+msgid "days"
+msgstr ""
+
+#: servcheck_test.php:935
+#, php-format
+msgid "Expired %s days ago"
+msgstr ""
+
+#: servcheck_test.php:985
+msgid "Insufficient data, wait a few poller cycles"
+msgstr ""
+
+#: servcheck_test.php:1078
+msgid "Actions"
+msgstr ""
+
+#: servcheck_test.php:1088
+msgid "Last Check (attempt)"
+msgstr ""
+
+#: servcheck_test.php:1093
+msgid "Stats (OK/problem)"
+msgstr ""
+
+#: servcheck_test.php:1103
+msgid "Triggered"
+msgstr ""
+
+#: servcheck_test.php:1167
+msgid "Edit Service Check"
+msgstr ""
+
+#: servcheck_test.php:1172
+msgid "Enable Service Check"
+msgstr ""
+
+#: servcheck_test.php:1176
+msgid "Disable Service Check"
+msgstr ""
+
+#: servcheck_test.php:1181
+msgid "View Service Check History"
+msgstr ""
+
+#: servcheck_test.php:1185
+msgid "View Last returned data"
+msgstr ""
+
+#: servcheck_test.php:1189
+msgid "View Graph"
+msgstr ""
+
+#: servcheck_test.php:1197
+msgid "N/A (N/A)"
+msgstr ""
+
+#: servcheck_test.php:1210
+msgid "No"
+msgstr ""
+
+#: servcheck_test.php:1210
+msgid "Yes"
+msgstr ""
+
+#: servcheck_test.php:1243
+msgid "Last returned data of test"
+msgstr ""
+
+#: servcheck_test.php:1259
+msgid "Servcheck Test Management"
+msgstr ""
+
+#: servcheck_test.php:1274
+msgid "State"
+msgstr ""
+
+#: servcheck_test.php:1287
 msgid "Refresh"
 msgstr ""
 
-#: servcheck_test.php:1364
+#: servcheck_test.php:1304
+msgid "Checks"
+msgstr ""
+
+#: servcheck_test.php:1375
 msgid "Service Check History"
 msgstr ""
 
-#: servcheck_test.php:1373
+#: servcheck_test.php:1384
 msgid "Date Search"
 msgstr ""
 
-#: servcheck_test.php:1379
+#: servcheck_test.php:1390
 msgid "Entries"
 msgstr ""
 
-#: servcheck_test.php:1397
+#: servcheck_test.php:1413
 msgid "Purge Events"
 msgstr ""
 
-#: setup.php:34
+#: setup.php:33
 msgid "Service Check Admin"
 msgstr ""
 
-#: setup.php:214
+#: setup.php:476
 msgid "Management"
 msgstr ""
 
-#: setup.php:214
+#: setup.php:476
 msgid "Service Checker"
 msgstr ""
 
-#: setup.php:231
+#: setup.php:487
+msgid "Service Checks"
+msgstr ""
+
+#: setup.php:494
 msgid "Service Check Edit"
 msgstr ""
 
-#: setup.php:238
+#: setup.php:501
 msgid "Service Check Save"
 msgstr ""
 
-#: setup.php:245
-msgid "Web Proxies"
+#: setup.php:515
+msgid "Rest API Edit"
 msgstr ""
 
-#: setup.php:252
-msgid "Web Proxie Edit"
+#: setup.php:522
+msgid "Rest API Save"
 msgstr ""
 
-#: setup.php:259
+#: setup.php:536
+msgid "Credential Edit"
+msgstr ""
+
+#: setup.php:543
+msgid "Credential Save"
+msgstr ""
+
+#: setup.php:550
+msgid "Web Proxy"
+msgstr ""
+
+#: setup.php:557
+msgid "Web Proxy Edit"
+msgstr ""
+
+#: setup.php:564
 msgid "Save Web Proxy"
 msgstr ""
 
-#: setup.php:266
+#: setup.php:571
 msgid "CA"
 msgstr ""
 
-#: setup.php:273
+#: setup.php:578
 msgid "CA Edit"
 msgstr ""
 
-#: setup.php:280
+#: setup.php:585
 msgid "Save CA"
+msgstr ""
+
+#: setup.php:621
+msgid "Servcheck"
+msgstr ""
+
+#: setup.php:625
+msgid "Notification Preferences"
+msgstr ""
+
+#: setup.php:629
+msgid "Send Email separately for each address"
+msgstr ""
+
+#: setup.php:630
+msgid "If checked, this will cause all Emails to be sent separately for each address."
+msgstr ""
+
+#: setup.php:635
+msgid "Stop sending all notification"
+msgstr ""
+
+#: setup.php:636
+msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
+msgstr ""
+
+#: setup.php:641
+msgid "Enable Command Execution"
+msgstr ""
+
+#: setup.php:642
+msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
+msgstr ""
+
+#: setup.php:647
+msgid "Status Change Command"
+msgstr ""
+
+#: setup.php:648
+msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+msgstr ""
+
+#: setup.php:656
+msgid "Concurrent Check Processes"
+msgstr ""
+
+#: setup.php:657
+msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
+msgstr ""
+
+#: setup.php:661
+msgid "1 Process"
+msgstr ""
+
+#: setup.php:662 setup.php:663 setup.php:664 setup.php:665 setup.php:666
+#: setup.php:667 setup.php:668 setup.php:669 setup.php:670 setup.php:671
+#: setup.php:672 setup.php:673 setup.php:674
+#, php-format
+msgid "%d Processes"
+msgstr ""
+
+#: setup.php:678
+msgid "Certificate expiry date advanced notification email"
+msgstr ""
+
+#: setup.php:679
+msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
+msgstr ""
+
+#: setup.php:684
+msgid "3 days in advance"
+msgstr ""
+
+#: setup.php:685
+msgid "1 week in advance"
+msgstr ""
+
+#: setup.php:686
+msgid "3 weeks in advance"
+msgstr ""
+
+#: setup.php:687
+msgid "30 days in advance"
+msgstr ""
+
+#: setup.php:688
+msgid "60 days in advance"
+msgstr ""
+
+#: setup.php:689
+msgid "90 days in advance"
+msgstr ""
+
+#: setup.php:693
+msgid "How long to keep logs"
+msgstr ""
+
+#: setup.php:694
+msgid "Enter the period after which older logs will be automatically deleted."
+msgstr ""
+
+#: setup.php:698
+msgid "Never"
+msgstr ""
+
+#: setup.php:699
+#, php-format
+msgid "%d hours"
+msgstr ""
+
+#: setup.php:700 setup.php:701 setup.php:702
+#, php-format
+msgid "%d days"
+msgstr ""
+
+#: setup.php:703
+#, php-format
+msgid "%d year"
+msgstr ""
+
+#: setup.php:707
+msgid "Maximum test duration in seconds"
+msgstr ""
+
+#: setup.php:708
+msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
 msgstr ""

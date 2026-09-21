@@ -102,7 +102,7 @@ class dnslookup {
 		}
 		$this->cIx += 4;
 
-		$ancount = ord($this->dns_reply[7]) * 256 + ord($this->dns_reply[8]);
+		$ancount = ord($this->dns_reply[6]) * 256 + ord($this->dns_reply[7]);
 
 		for ($i = 0; $i < min($ancount, 10); $i++) {
 			if ($this->cIx + 12 > $reply_len) {

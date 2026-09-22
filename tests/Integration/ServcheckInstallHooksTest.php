@@ -30,16 +30,19 @@ it('registers every hook servcheck depends on, its realm, and provisions its tab
 		$hooks[$registered['hook']] = $registered;
 	}
 
-	foreach (array(
-		'draw_navigation_text',
-		'config_arrays',
-		'poller_bottom',
-		'replicate_out',
-		'config_settings',
-		'page_head',
-	) as $expected) {
+	$expectedHooks = array(
+		'draw_navigation_text' => 'plugin_servcheck_draw_navigation_text',
+		'config_arrays'        => 'plugin_servcheck_config_arrays',
+		'poller_bottom'        => 'plugin_servcheck_poller_bottom',
+		'replicate_out'        => 'servcheck_replicate_out',
+		'config_settings'      => 'servcheck_config_settings',
+		'page_head'            => 'servcheck_page_head',
+	);
+
+	foreach ($expectedHooks as $expected => $expectedFunction) {
 		expect($hooks)->toHaveKey($expected);
 		expect($hooks[$expected]['plugin'])->toBe('servcheck');
+		expect($hooks[$expected]['function'])->toBe($expectedFunction);
 		expect($hooks[$expected]['file'])->toBe('setup.php');
 	}
 
@@ -52,6 +55,11 @@ it('registers every hook servcheck depends on, its realm, and provisions its tab
 		return $call['fn'] === 'api_plugin_db_table_create';
 	}))));
 
-	expect($createdTables)->toContain('plugin_servcheck_test');
-	expect($createdTables)->toContain('plugin_servcheck_credential');
+	expect($createdTables)->toEqualCanonicalizing(array(
+		'plugin_servcheck_credential',
+		'plugin_servcheck_test',
+		'plugin_servcheck_log',
+		'plugin_servcheck_proxy',
+		'plugin_servcheck_ca',
+	));
 });

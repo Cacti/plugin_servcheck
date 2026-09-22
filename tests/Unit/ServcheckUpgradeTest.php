@@ -58,9 +58,15 @@ it('reports success, updates the realm file list, re-registers hooks, and update
 it('does not run either version-gated migration cascade once already past both checkpoints', function () {
 	plugin_servcheck_upgrade();
 
-	$renames = array_filter($GLOBALS['__test_db_calls'], function ($call) {
-		return $call['fn'] === 'db_execute' && stripos($call['sql'], 'RENAME COLUMN') !== false;
-	});
+        $migrationSideEffects = array_filter($GLOBALS['__test_db_calls'], function ($call) {
+                if ($call['fn'] !== 'db_execute') {
+                        return false;
+                }
 
-	expect($renames)->toBeEmpty();
+                return stripos($call['sql'], 'RENAME COLUMN') !== false
+                        || stripos($call['sql'], 'CREATE TABLE') !== false
+                        || stripos($call['sql'], 'DROP TABLE') !== false;
+        });
+
+        expect($migrationSideEffects)->toBeEmpty();
 });

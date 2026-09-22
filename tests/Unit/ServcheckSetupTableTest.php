@@ -26,8 +26,13 @@ it('creates every servcheck table via the plugin table-creation API', function (
 		return $call['fn'] === 'api_plugin_db_table_create';
 	})));
 
-	expect($createdTables)->toContain('plugin_servcheck_ca');
-	expect($createdTables)->toContain('plugin_servcheck_credential');
+	expect($createdTables)->toEqualCanonicalizing(array(
+		'plugin_servcheck_credential',
+		'plugin_servcheck_test',
+		'plugin_servcheck_log',
+		'plugin_servcheck_proxy',
+		'plugin_servcheck_ca',
+	));
 
 	foreach ($GLOBALS['__test_db_calls'] as $call) {
 		if ($call['fn'] === 'api_plugin_db_table_create') {

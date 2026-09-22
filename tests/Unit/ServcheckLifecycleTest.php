@@ -30,9 +30,22 @@ it('parses the plugin INFO file into an info array', function () {
 it('drops every servcheck table on uninstall', function () {
 	plugin_servcheck_uninstall();
 
-	$drops = array_filter($GLOBALS['__test_db_calls'], function ($call) {
+	$droppedTables = array_values(array_map(function ($call) {
+		preg_match('/DROP TABLE IF EXISTS (\S+)/i', $call['sql'], $matches);
+		return $matches[1] ?? null;
+	}, array_filter($GLOBALS['__test_db_calls'], function ($call) {
 		return $call['fn'] === 'db_execute' && stripos($call['sql'], 'DROP TABLE') !== false;
-	});
+	})));
 
-	expect($drops)->toHaveCount(9);
+	expect($droppedTables)->toEqualCanonicalizing(array(
+		'plugin_servcheck_test',
+		'plugin_servcheck_log',
+		'plugin_servcheck_proxies',
+		'plugin_servcheck_proxy',
+		'plugin_servcheck_processes',
+		'plugin_servcheck_contacts',
+		'plugin_servcheck_ca',
+		'plugin_servcheck_restapi_method',
+		'plugin_servcheck_credential',
+	));
 });

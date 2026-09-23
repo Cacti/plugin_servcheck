@@ -194,8 +194,7 @@ jobs:
         cd ${{ github.workspace }}/cacti
         if [ -f plugins/servcheck/phpunit.xml ] && [ -d plugins/servcheck/tests/Security ]; then
           include/vendor/bin/pest --configuration=plugins/servcheck/phpunit.xml \
-            --coverage-clover=plugins/servcheck/coverage/clover.xml \
-            plugins/servcheck/tests/Security
+            --coverage-clover=plugins/servcheck/coverage/clover.xml
         else
           echo "Skipping Pest tests: plugins/servcheck/phpunit.xml or tests/Security not present yet."
         fi

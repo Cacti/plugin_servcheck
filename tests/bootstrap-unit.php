@@ -124,9 +124,11 @@ if (!function_exists('db_fetch_row_prepared')) {
 	}
 }
 
+$GLOBALS['__test_db_fetch_cell_return'] = '';
+
 if (!function_exists('db_fetch_cell')) {
 	function db_fetch_cell($sql) {
-		return '';
+		return $GLOBALS['__test_db_fetch_cell_return'];
 	}
 }
 
@@ -156,6 +158,100 @@ if (!function_exists('api_plugin_db_add_column')) {
 
 if (!function_exists('api_plugin_db_table_create')) {
 	function api_plugin_db_table_create($plugin, $table, $data) {
+		$GLOBALS['__test_db_calls'][] = array('fn' => 'api_plugin_db_table_create', 'plugin' => $plugin, 'table' => $table, 'data' => $data);
+		return true;
+	}
+}
+
+$GLOBALS['__test_registered_hooks']  = array();
+$GLOBALS['__test_registered_realms'] = array();
+
+if (!function_exists('api_plugin_register_hook')) {
+	function api_plugin_register_hook($plugin, $hook, $function, $file, $enabled = 1) {
+		$GLOBALS['__test_registered_hooks'][] = array(
+			'plugin'   => $plugin,
+			'hook'     => $hook,
+			'function' => $function,
+			'file'     => $file,
+			'enabled'  => $enabled,
+		);
+		return true;
+	}
+}
+
+if (!function_exists('api_plugin_register_realm')) {
+	function api_plugin_register_realm($plugin, $file, $description, $enabled = 1) {
+		$GLOBALS['__test_registered_realms'][] = array(
+			'plugin'      => $plugin,
+			'file'        => $file,
+			'description' => $description,
+			'enabled'     => $enabled,
+		);
+		return true;
+	}
+}
+
+$GLOBALS['__test_current_page'] = '';
+
+if (!function_exists('get_current_page')) {
+	function get_current_page() {
+		return $GLOBALS['__test_current_page'];
+	}
+}
+
+if (!function_exists('test_set_current_page')) {
+	function test_set_current_page($page) {
+		$GLOBALS['__test_current_page'] = $page;
+	}
+}
+
+if (!function_exists('cacti_version_compare')) {
+	function cacti_version_compare($a, $b, $operator) {
+		return version_compare((string) $a, (string) $b, $operator);
+	}
+}
+
+if (!function_exists('db_table_exists')) {
+	function db_table_exists($table) {
+		return false;
+	}
+}
+
+if (!function_exists('db_add_column')) {
+	function db_add_column($table, $column) {
+		$GLOBALS['__test_db_calls'][] = array('fn' => 'db_add_column', 'table' => $table, 'column' => $column);
+		return true;
+	}
+}
+
+if (!function_exists('db_remove_column')) {
+	function db_remove_column($table, $column) {
+		$GLOBALS['__test_db_calls'][] = array('fn' => 'db_remove_column', 'table' => $table, 'column' => $column);
+		return true;
+	}
+}
+
+if (!function_exists('db_fetch_insert_id')) {
+	function db_fetch_insert_id() {
+		return 1;
+	}
+}
+
+if (!function_exists('get_selected_theme')) {
+	function get_selected_theme() {
+		return 'classic';
+	}
+}
+
+if (!function_exists('exec_background')) {
+	function exec_background($command, $args = '') {
+		$GLOBALS['__test_db_calls'][] = array('fn' => 'exec_background', 'command' => $command, 'args' => $args);
+		return true;
+	}
+}
+
+if (!function_exists('replicate_out_table')) {
+	function replicate_out_table($rcnn_id, $data, $table, $remote_poller_id) {
 		return true;
 	}
 }

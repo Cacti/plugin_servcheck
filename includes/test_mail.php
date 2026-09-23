@@ -24,6 +24,30 @@
 
 $ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 
+/**
+ * Runs a mail-protocol (SMTP/IMAP/POP3) service check test: connects to
+ * the target mail server via a raw socket, authenticates using the
+ * test's associated credential when configured, exchanges the
+ * protocol's greeting/command sequence, and evaluates the server's
+ * response against the expected/maintenance/failure search patterns.
+ * Called from servcheck_run_test() for tests of a mail-protocol type.
+ *
+ * @param array $test The plugin_servcheck_test row describing the check
+ *                    to run.
+ *
+ * @return array The check result: 'result' ('ok'/'error'), 'curl'
+ *               (false), 'error', 'result_search', and 'start'.
+ *
+ * @global array  $config              Cacti global configuration array
+ *                                     (declared but not directly used
+ *                                     here).
+ * @global string $ca_info              Path to the bundled CA
+ *                                     certificate file (declared but not
+ *                                     directly used here).
+ * @global array  $service_types_ports Default port numbers per service
+ *                                     type, used when the test's
+ *                                     hostname doesn't specify one.
+ */
 function mail_try($test) {
 	global $config, $ca_info, $service_types_ports;
 
@@ -495,11 +519,32 @@ function mail_try($test) {
 	return $results;
 }
 
+/**
+ * Writes a single command line (with a trailing CRLF) to the mail
+ * server's socket stream. Called from mail_try() to send each protocol
+ * command.
+ *
+ * @param resource $fp  The open socket stream to the mail server.
+ * @param string   $cmd The command line to send (without the trailing
+ *                      CRLF).
+ *
+ * @return void
+ */
 function send($fp, $cmd) {
 	fwrite($fp, $cmd . "\r\n");
 }
 
 // response like 250 OK
+
+/**
+ * Reads lines from the mail server's socket stream until a final
+ * SMTP/POP3-style numeric status line (response like 250 OK) is seen.
+ * Called from mail_try() to read the server's reply to each command.
+ *
+ * @param resource $fp The open socket stream to the mail server.
+ *
+ * @return string The accumulated response text.
+ */
 function read_response($fp) {
 	$response = '';
 
@@ -515,6 +560,20 @@ function read_response($fp) {
 }
 
 // for IMAP we need more complicated function. Each command and response begins with XXX tag
+
+/**
+ * Reads lines from the mail server's socket stream until a line tagged
+ * with the given IMAP command tag is seen, since for IMAP we need more
+ * complicated function - each command and response begins with XXX tag
+ * rather than a fixed numeric status code. Called from mail_try() to
+ * read an IMAP server's tagged response.
+ *
+ * @param resource $fp  The open socket stream to the mail server.
+ * @param string   $tag The IMAP command tag to look for at the start of
+ *                      a line; defaults to 'A001'.
+ *
+ * @return string The accumulated response text.
+ */
 function read_response_imap($fp, $tag = 'A001') {
 	$response = '';
 	stream_set_timeout($fp, 2);

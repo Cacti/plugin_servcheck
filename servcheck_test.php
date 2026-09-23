@@ -118,6 +118,21 @@ switch (get_request_var('action')) {
 		break;
 }
 
+/**
+ * Handles the bulk-actions form for the Tests list (delete/disable/
+ * enable/duplicate/clear statistics/clear log). On first display,
+ * renders the confirmation dialog listing the selected tests; once
+ * confirmed, applies the chosen action to each selected row. Invoked
+ * from this file's dispatcher when the request's 'action' is 'actions'.
+ *
+ * @return void Either redirects back to this page after applying the
+ *              action, or prints the confirmation dialog and returns
+ *              nothing.
+ *
+ * @global array $servcheck_actions_menu Map of bulk-action ids to their
+ *                                       display labels, used for the
+ *                                       confirmation dialog title.
+ */
 function form_actions() {
 	global $servcheck_actions_menu;
 
@@ -282,6 +297,18 @@ function form_actions() {
 	bottom_footer();
 }
 
+/**
+ * Validates and saves a single service check test's configuration
+ * (protocol/service type, target, credentials/CA/proxy references,
+ * timing/trigger thresholds, notification settings). Invoked from this
+ * file's dispatcher when the request's 'action' is 'save'.
+ *
+ * @return void Redirects back to the edit form for this test (or the
+ *              list, on success); does not return a value.
+ *
+ * @global array $service_types Valid service/test type keys, used to
+ *                              validate the submitted test type.
+ */
 function form_save() {
 	global $service_types;
 
@@ -464,6 +491,16 @@ function form_save() {
 	exit;
 }
 
+/**
+ * Deletes all recorded check-history log entries for a single service
+ * check test. Invoked from this file's dispatcher when the request's
+ * 'action' is 'purge'.
+ *
+ * @param int $id The plugin_servcheck_test.id whose log history to
+ *                purge.
+ *
+ * @return void
+ */
 function purge_log_events($id) {
 	$name = db_fetch_cell_prepared('SELECT name
 		FROM plugin_servcheck_test
@@ -475,6 +512,24 @@ function purge_log_events($id) {
 	raise_message('test_log_purged', __('The Service Check history was purged for %s', $name, 'servcheck'), MESSAGE_LEVEL_INFO);
 }
 
+/**
+ * Renders the add/edit form for a single service check test,
+ * pre-populating its fields when editing an existing test, and hiding
+ * the notification-list field when the Thold plugin isn't installed.
+ * Invoked from this file's dispatcher when the request's 'action' is
+ * 'edit'.
+ *
+ * @return void Outputs the edit form HTML directly.
+ *
+ * @global array $servcheck_test_fields The edit form's field
+ *                                     definitions, filled in here with
+ *                                     the test's current values.
+ * @global array $service_types         Valid service/test type keys,
+ *                                     used to populate the type
+ *                                     selector.
+ * @global array $servcheck_help_test   Per-field help text shown on the
+ *                                     edit form.
+ */
 function servcheck_data_edit() {
 	global $servcheck_test_fields, $service_types, $servcheck_help_test;
 
@@ -735,6 +790,14 @@ function servcheck_data_edit() {
 	<?php
 }
 
+/**
+ * Validates and stores the Tests list's filter/sort/pagination variables
+ * (state, refresh interval, regex free-text search, sort column/
+ * direction) in the session. Called from data_list() before rendering
+ * the list.
+ *
+ * @return void
+ */
 function request_validation() {
 	$filters = [
 		'rows' => [
@@ -777,6 +840,14 @@ function request_validation() {
 	validate_store_request_vars($filters, 'sess_servcheck_test');
 }
 
+/**
+ * Validates and stores the check-history log view's filter/sort/
+ * pagination variables (test id, free-text search, sort column/
+ * direction) in the session. Called from servcheck_show_history()
+ * before rendering the history list.
+ *
+ * @return void
+ */
 function servcheck_log_request_validation() {
 	$filters = [
 		'id' => [
@@ -812,6 +883,26 @@ function servcheck_log_request_validation() {
 	validate_store_request_vars($filters, 'sess_servcheck_log');
 }
 
+/**
+ * Renders the check-history log for a single service check test: a
+ * filterable, sortable, paginated table of past check results (status,
+ * error, matched search result, cURL response summary). Invoked from
+ * this file's dispatcher when the request's 'action' is 'history'.
+ *
+ * @return void Outputs the history table HTML directly.
+ *
+ * @global array $config              Cacti global configuration array;
+ *                                    used to build result links.
+ * @global array $httperrors          Map of HTTP status codes to their
+ *                                    descriptions, used to display each
+ *                                    check's result code.
+ * @global array $text_result         Map of result codes to their
+ *                                    display labels.
+ * @global array $text_result_search  Map of search-result codes to
+ *                                    their display labels.
+ * @global array $servcheck_states    Map of test state codes to their
+ *                                    display labels/styling.
+ */
 function servcheck_show_history() {
 	global $config, $httperrors, $text_result, $text_result_search, $servcheck_states;
 
@@ -970,6 +1061,20 @@ function servcheck_show_history() {
 	form_end();
 }
 
+/**
+ * Renders a set of timing/status trend graphs for a single service check
+ * test, one per configured graph interval, when enough history exists
+ * to plot. Invoked from this file's dispatcher when the request's
+ * 'action' is 'graph'.
+ *
+ * @return bool|void True (with a message printed) if there isn't enough
+ *                   log data yet to graph; otherwise outputs the graphs
+ *                   directly and returns nothing.
+ *
+ * @global array $graph_interval The configured graph time intervals to
+ *                               render (e.g. daily/weekly/monthly),
+ *                               keyed by interval identifier.
+ */
 function servcheck_show_graph() {
 	global $graph_interval;
 
@@ -1001,6 +1106,26 @@ function servcheck_show_graph() {
 	}
 }
 
+/**
+ * Renders the main Tests list page: validates the request, draws the
+ * filter toolbar, and prints the paginated, sortable table of configured
+ * service check tests with their current status. Invoked from this
+ * file's dispatcher for the default (no 'action') request.
+ *
+ * @return void Outputs the list page HTML directly.
+ *
+ * @global array $config              Cacti global configuration array.
+ * @global array $servcheck_actions_menu Map of bulk-action ids to their
+ *                                      display labels, used to populate
+ *                                      the actions dropdown.
+ * @global array $refresh              Set with the page auto-refresh
+ *                                     configuration for
+ *                                     set_page_refresh().
+ * @global array $text_result_search   Map of search-result codes to
+ *                                     their display labels.
+ * @global array $servcheck_states     Map of test state codes to their
+ *                                     display labels/styling.
+ */
 function data_list() {
 	global $config, $servcheck_actions_menu, $refresh, $text_result_search, $servcheck_states;
 
@@ -1232,6 +1357,13 @@ function data_list() {
 	form_end();
 }
 
+/**
+ * Displays the raw data most recently returned by a single service check
+ * test's last run. Invoked from this file's dispatcher when the
+ * request's 'action' is 'last_data'.
+ *
+ * @return void Outputs the last-returned-data HTML directly.
+ */
 function servcheck_show_last_data() {
 	servcheck_show_tab(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
@@ -1244,6 +1376,21 @@ function servcheck_show_last_data() {
 	print '<pre class="servcheck_pre">' . html_escape($result['last_returned_data']) . '</pre>';
 }
 
+/**
+ * Renders the Tests list's filter toolbar (state, refresh interval,
+ * regex free-text search, rows-per-page) and its client-side
+ * JavaScript, and configures the page's auto-refresh. Called from
+ * data_list() before the tests table itself is rendered.
+ *
+ * @return void Outputs HTML and JavaScript directly.
+ *
+ * @global array $item_rows             Rows-per-page options offered by
+ *                                     Cacti core, used to populate the
+ *                                     'rows' select list.
+ * @global int   $page_refresh_interval Reserved/declared for parity
+ *                                     with other functions in this
+ *                                     file; not used directly here.
+ */
 function servcheck_filter() {
 	global $item_rows, $page_refresh_interval;
 
@@ -1369,6 +1516,17 @@ function servcheck_filter() {
 	html_end_box();
 }
 
+/**
+ * Renders the check-history log's filter toolbar (rows-per-page,
+ * free-text filter, purge-history button) and its client-side
+ * JavaScript. Called from servcheck_show_history() before the history
+ * table itself is rendered.
+ *
+ * @return void Outputs HTML and JavaScript directly.
+ *
+ * @global array $item_rows Rows-per-page options offered by Cacti core,
+ *                          used to populate the 'rows' select list.
+ */
 function servcheck_log_filter() {
 	global $item_rows;
 

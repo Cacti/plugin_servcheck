@@ -33,6 +33,28 @@ if (!isset($called_by_script_server)) {
 	print call_user_func_array('ss_servcheck', $_SERVER['argv']);
 }
 
+/**
+ * Cacti script-server entry point for this plugin's data query,
+ * implementing the standard 'index'/'query'/'get' command protocol used
+ * by Cacti's data input methods: 'index' lists every service check
+ * test id, 'query' resolves a field name (e.g. 'servcheck_id',
+ * 'servcheck_name') to id!value pairs for the data query editor, and
+ * 'get' retrieves a specific field's value for a single test. Invoked
+ * either directly from the CLI (via call_user_func_array() against
+ * $_SERVER['argv']) or by Cacti's script server process
+ * ($called_by_script_server) for each configured data query.
+ *
+ * @param string $cmd  The script-server command to run: 'index',
+ *                     'query', or 'get'; defaults to 'index'.
+ * @param string $arg1 For 'query'/'get', the field name being resolved;
+ *                     defaults to ''.
+ * @param string $arg2 For 'get', the test id to retrieve the field value
+ *                     for; defaults to ''.
+ *
+ * @return mixed Prints the command's result directly (one line per
+ *               record for 'index'/'query', a single value for 'get')
+ *               and returns null.
+ */
 function ss_servcheck(string $cmd = 'index', string $arg1 = '', string $arg2 = '') : mixed {
 	if ($cmd == 'index') {
 		if (db_table_exists('plugin_servcheck_test')) {

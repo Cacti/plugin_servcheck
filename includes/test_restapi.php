@@ -22,6 +22,31 @@
  +-------------------------------------------------------------------------+
 */
 
+/**
+ * Runs a REST API service check test via cURL, handling the test's
+ * configured authentication (basic/API key/OAuth2/cookie login flow, via
+ * a decrypted credential), applying its proxy/CA certificate/timeout,
+ * and evaluating the response against the expected/maintenance/failure
+ * search patterns. Called from servcheck_run_test() for tests of a REST
+ * API-based type.
+ *
+ * @param array $test The plugin_servcheck_test row describing the check
+ *                    to run.
+ *
+ * @return array The check result: 'result' ('ok'/'error'), 'curl'
+ *               (true), 'time', 'error', 'result_search', 'start', and
+ *               (once the request completes) cURL timing/status
+ *               'options' and response 'data'.
+ *
+ * @global string $user_agent    The User-Agent string sent with the
+ *                               request.
+ * @global array  $config        Cacti global configuration array
+ *                               (declared but not directly used here).
+ * @global string $ca_info        Path to the bundled CA certificate file
+ *                               used for TLS verification.
+ * @global array  $service_types Valid service/test type keys (declared
+ *                               but not directly used here).
+ */
 function restapi_try($test) {
 	global $user_agent, $config, $ca_info, $service_types;
 

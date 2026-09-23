@@ -56,6 +56,21 @@ switch (get_request_var('action')) {
 		break;
 }
 
+/**
+ * Handles the bulk-actions form for the Proxies list (currently only
+ * delete). On first display, renders the confirmation dialog listing
+ * the selected proxies; once confirmed, deletes each selected proxy and
+ * unlinks it from any service check tests that referenced it. Invoked
+ * from this file's dispatcher when the request's 'action' is 'actions'.
+ *
+ * @return void Either redirects back to this page after applying the
+ *              action, or prints the confirmation dialog and returns
+ *              nothing.
+ *
+ * @global array $servcheck_actions_menu Map of bulk-action ids to their
+ *                                       display labels, used for the
+ *                                       confirmation dialog title.
+ */
 function form_actions() {
 	global $servcheck_actions_menu;
 
@@ -137,6 +152,16 @@ function form_actions() {
 	bottom_footer();
 }
 
+/**
+ * Validates and saves a single HTTP proxy configuration (name, hostname,
+ * HTTP/HTTPS ports, and an optional associated credential for proxy
+ * authentication). Invoked from this file's dispatcher when the
+ * request's 'action' is 'save'.
+ *
+ * @return void This function always terminates script execution via
+ *              exit (after redirecting), and therefore never returns
+ *              normally.
+ */
 function form_save() {
 	if (isset_request_var('save_component')) {
 		$save['id']         = get_filter_request_var('id');
@@ -172,6 +197,17 @@ function form_save() {
 	exit;
 }
 
+/**
+ * Renders the add/edit form for a single HTTP proxy configuration,
+ * pre-populating its fields when editing an existing proxy. Invoked
+ * from this file's dispatcher when the request's 'action' is 'edit'.
+ *
+ * @return void Outputs the edit form HTML directly.
+ *
+ * @global array $servcheck_proxy_fields The edit form's field
+ *                                       definitions, filled in here with
+ *                                       the proxy's current values.
+ */
 function servcheck_data_edit() {
 	global $servcheck_proxy_fields;
 
@@ -210,6 +246,13 @@ function servcheck_data_edit() {
 	form_save_button(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 }
 
+/**
+ * Validates and stores the Proxies list's filter/sort/pagination
+ * variables (free-text search, sort column/direction) in the session.
+ * Called from data_list() before rendering the list.
+ *
+ * @return void
+ */
 function request_validation() {
 	$filters = [
 		'rows' => [
@@ -242,6 +285,18 @@ function request_validation() {
 	validate_store_request_vars($filters, 'sess_servcheck_proxy');
 }
 
+/**
+ * Renders the main Proxies list page: validates the request, draws the
+ * filter toolbar, and prints the paginated, sortable table of configured
+ * HTTP proxies. Invoked from this file's dispatcher for the default (no
+ * 'action') request.
+ *
+ * @return void Outputs the list page HTML directly.
+ *
+ * @global array $servcheck_actions_menu Map of bulk-action ids to their
+ *                                       display labels, used to populate
+ *                                       the actions dropdown.
+ */
 function data_list() {
 	global $servcheck_actions_menu;
 
@@ -342,6 +397,16 @@ function data_list() {
 	form_end();
 }
 
+/**
+ * Renders the Proxies list's filter toolbar (free-text search,
+ * rows-per-page) and its client-side JavaScript. Called from data_list()
+ * before the proxies table itself is rendered.
+ *
+ * @return void Outputs HTML and JavaScript directly.
+ *
+ * @global array $item_rows Rows-per-page options offered by Cacti core,
+ *                          used to populate the 'rows' select list.
+ */
 function servcheck_filter() {
 	global $item_rows;
 

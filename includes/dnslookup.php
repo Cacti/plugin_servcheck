@@ -27,11 +27,36 @@ class dnslookup {
 	private $cIx       = 0;
 	private $results   = [];
 
+	/**
+	 * Performs raw UDP DNS A and AAAA record lookups for a domain against a
+	 * DNS server, populating $this->results with the resolved IPv4/IPv6
+	 * addresses. Called when a new dnslookup object is constructed, e.g.
+	 * from this plugin's 'dns' type service checks.
+	 *
+	 * @param string $domain  The domain name to look up.
+	 * @param string $dns     The DNS server IP address to query; defaults
+	 *                       to '8.8.8.8'.
+	 * @param int    $timeout The socket timeout in seconds; defaults to 5.
+	 *
+	 * @return void
+	 */
 	function __construct($domain, $dns = '8.8.8.8', $timeout = 5) {
 		$this->dns_query($domain, 1, $dns, $timeout, 'A');
 		$this->dns_query($domain, 28, $dns, $timeout, 'AAAA');
 	}
 
+	/**
+	 * Formats the resolved A/AAAA record results as a plain-text listing.
+	 * Called from this plugin's DNS test function to build the check's
+	 * displayed/searched result data.
+	 *
+	 * @param string $format Reserved for future output format support;
+	 *                       currently only plain text is produced.
+	 *                       Defaults to 'text'.
+	 *
+	 * @return string|false The formatted list of resolved IP addresses, or
+	 *                      false if no records were resolved.
+	 */
 	public function get_results($format = 'text') {
 		$output = '';
 
@@ -49,6 +74,23 @@ class dnslookup {
 		return $output;
 	}
 
+	/**
+	 * Builds and sends a raw DNS query packet over UDP for a single record
+	 * type, then parses the reply into $this->results. Called from the
+	 * constructor once for the A record type and once for AAAA.
+	 *
+	 * @param string $domain  The domain name to query.
+	 * @param int    $qtype   The DNS query type code (1 for A, 28 for
+	 *                       AAAA).
+	 * @param string $dns     The DNS server IP address to query.
+	 * @param int    $timeout The socket timeout in seconds.
+	 * @param string $type    A label for this query type ('A' or 'AAAA'),
+	 *                       used to key the results array.
+	 *
+	 * @return void|false False if the UDP socket could not be opened;
+	 *                    otherwise no return value (results are stored on
+	 *                    the instance).
+	 */
 	private function dns_query($domain, $qtype, $dns, $timeout, $type) {
 		$header = chr(0x12) . chr(0x34) . chr(0x01) . chr(0x00) . chr(0x00) . chr(0x01) .
 			chr(0x00) . chr(0x00) . chr(0x00) . chr(0x00) . chr(0x00) . chr(0x00);
@@ -75,6 +117,15 @@ class dnslookup {
 		}
 	}
 
+	/**
+	 * Encodes a domain name into DNS query label format (length-prefixed
+	 * labels terminated by a zero byte). Called from dns_query() to build
+	 * the outgoing query packet's question section.
+	 *
+	 * @param string $domain The domain name to encode.
+	 *
+	 * @return string The encoded domain name.
+	 */
 	private function dns_name($domain) {
 		$parts = explode('.', $domain);
 		$name  = '';
@@ -88,6 +139,18 @@ class dnslookup {
 		return $name . chr(0);
 	}
 
+	/**
+	 * Parses the answer section of a raw DNS reply, extracting resolved
+	 * IPv4/IPv6 addresses into $this->results, keyed by record type.
+	 * Called from dns_query() after receiving a reply.
+	 *
+	 * @param string $type_name The record type label ('A' or 'AAAA') this
+	 *                         reply corresponds to, used as the results
+	 *                         key.
+	 * @param int    $reply_len The length of the raw DNS reply buffer.
+	 *
+	 * @return void
+	 */
 	private function parse_response($type_name, $reply_len) {
 		// Skip question
 		$max_skip = min(255, $reply_len - $this->cIx);

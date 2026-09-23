@@ -57,6 +57,22 @@ switch (get_request_var('action')) {
 		break;
 }
 
+/**
+ * Handles the bulk-actions form for the Credentials list (delete/
+ * duplicate). On first display, renders the confirmation dialog listing
+ * the selected credentials; once confirmed, applies the chosen action
+ * to each selected row (delete unlinks referencing tests/proxies;
+ * duplicate creates copies with blanked username/password). Invoked from
+ * this file's dispatcher when the request's 'action' is 'actions'.
+ *
+ * @return void Either redirects back to this page after applying the
+ *              action, or prints the confirmation dialog and returns
+ *              nothing.
+ *
+ * @global array $servcheck_actions_menu Map of bulk-action ids to their
+ *                                       display labels, used for the
+ *                                       confirmation dialog title.
+ */
 function form_actions() {
 	global $servcheck_actions_menu;
 
@@ -162,6 +178,42 @@ function form_actions() {
 	bottom_footer();
 }
 
+/**
+ * Validates and saves a single credential record, whose required fields
+ * vary by credential type (username/password, HTTP Basic, API key,
+ * OAuth2 client credentials, cookie-based login, SNMPv1/v2 community,
+ * SNMPv3 security parameters, or SSH key), encrypting the type-specific
+ * fields before storage. Invoked from this file's dispatcher when the
+ * request's 'action' is 'save'.
+ *
+ * @return void This function always terminates script execution via
+ *              exit (after redirecting), and therefore never returns
+ *              normally.
+ *
+ * @global array $credential_types        Valid credential type keys,
+ *                                        used to validate the submitted
+ *                                        'type'.
+ * @global array $snmp_security_levels    Valid SNMPv3 security level
+ *                                        keys, used to validate
+ *                                        'snmp_security_level' for the
+ *                                        'snmp3' type.
+ * @global array $snmp_auth_protocols     Valid SNMPv3 auth protocol
+ *                                        keys, used to validate
+ *                                        'snmp_auth_protocol' for the
+ *                                        'snmp3' type.
+ * @global array $snmp_priv_protocols     Valid SNMPv3 privacy protocol
+ *                                        keys, used to validate
+ *                                        'snmp_priv_protocol' for the
+ *                                        'snmp3' type.
+ * @global array $rest_api_apikey_option  Valid API-key placement option
+ *                                        keys, used to validate
+ *                                        'option_apikey' for the
+ *                                        'apikey' type.
+ * @global array $rest_api_cookie_option  Valid cookie placement option
+ *                                        keys, used to validate
+ *                                        'option_cookie' for the
+ *                                        'cookie' type.
+ */
 function form_save() {
 	global $credential_types, $snmp_security_levels, $snmp_auth_protocols, $snmp_priv_protocols, $rest_api_apikey_option, $rest_api_cookie_option;
 
@@ -424,6 +476,21 @@ function form_save() {
 	exit;
 }
 
+/**
+ * Renders the add/edit form for a single credential, pre-populating and
+ * decrypting its type-specific fields when editing an existing
+ * credential. Invoked from this file's dispatcher when the request's
+ * 'action' is 'edit'.
+ *
+ * @return void Outputs the edit form HTML directly.
+ *
+ * @global array $servcheck_credential_fields The edit form's field
+ *                                            definitions, filled in
+ *                                            here with the credential's
+ *                                            current (decrypted) values.
+ * @global array $servcheck_help_credential   Per-field help text shown
+ *                                            on the edit form.
+ */
 function servcheck_data_edit() {
 	global $servcheck_credential_fields, $servcheck_help_credential;
 
@@ -675,6 +742,13 @@ function servcheck_data_edit() {
 	<?php
 }
 
+/**
+ * Validates and stores the Credentials list's filter/sort/pagination
+ * variables (free-text search, sort column/direction) in the session.
+ * Called from data_list() before rendering the list.
+ *
+ * @return void
+ */
 function request_validation() {
 	$filters = [
 		'rows' => [
@@ -707,6 +781,21 @@ function request_validation() {
 	validate_store_request_vars($filters, 'sess_servcheck_credential');
 }
 
+/**
+ * Renders the main Credentials list page: validates the request, draws
+ * the filter toolbar, and prints the paginated, sortable table of
+ * configured credentials. Invoked from this file's dispatcher for the
+ * default (no 'action') request.
+ *
+ * @return void Outputs the list page HTML directly.
+ *
+ * @global array $servcheck_actions_menu Map of bulk-action ids to their
+ *                                       display labels, used to populate
+ *                                       the actions dropdown.
+ * @global array $credential_types       Map of credential type keys to
+ *                                       their display labels, used to
+ *                                       show each credential's type.
+ */
 function data_list() {
 	global $servcheck_actions_menu, $credential_types;
 
@@ -805,6 +894,16 @@ function data_list() {
 	form_end();
 }
 
+/**
+ * Renders the Credentials list's filter toolbar (free-text search,
+ * rows-per-page) and its client-side JavaScript. Called from data_list()
+ * before the credentials table itself is rendered.
+ *
+ * @return void Outputs HTML and JavaScript directly.
+ *
+ * @global array $item_rows Rows-per-page options offered by Cacti core,
+ *                          used to populate the 'rows' select list.
+ */
 function servcheck_filter() {
 	global $item_rows;
 

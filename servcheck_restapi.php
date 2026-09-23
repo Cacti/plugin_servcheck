@@ -59,6 +59,23 @@ switch (get_request_var('action')) {
 
 exit;
 
+/**
+ * Handles the bulk-actions form for the REST API methods list (delete/
+ * duplicate). On first display, renders the confirmation dialog listing
+ * the selected methods; once confirmed, applies the chosen action to
+ * each selected row (delete unlinks referencing tests; duplicate
+ * creates copies with blanked credentials/URLs). Invoked from this
+ * file's dispatcher when the request's 'action' is 'actions'.
+ *
+ * @return void Either redirects back to this page after applying the
+ *              action, or prints the confirmation dialog and returns
+ *              nothing.
+ *
+ * @global array $servcheck_actions_restapi Map of bulk-action ids to
+ *                                          their display labels, used
+ *                                          for the confirmation dialog
+ *                                          title.
+ */
 function form_actions() {
 	global $servcheck_actions_restapi;
 
@@ -174,6 +191,24 @@ function form_actions() {
 	bottom_footer();
 }
 
+/**
+ * Validates and saves a single REST API authentication method
+ * (auth type, response format, API-key placement option, optional
+ * username/password/credential name-value pair, login/data URLs),
+ * obscuring sensitive fields before storage. Invoked from this file's
+ * dispatcher when the request's 'action' is 'save'.
+ *
+ * @return void This function always terminates script execution via
+ *              exit (after redirecting), and therefore never returns
+ *              normally.
+ *
+ * @global array $rest_api_auth_method Valid authentication type keys,
+ *                                     used to validate the submitted
+ *                                     'type'.
+ * @global array $rest_api_format      Valid response format keys, used
+ *                                     to validate the submitted
+ *                                     'format'.
+ */
 function form_save() {
 	global $rest_api_auth_method, $rest_api_format;
 
@@ -253,6 +288,21 @@ function form_save() {
 	exit;
 }
 
+/**
+ * Renders a read-only view of a single legacy REST API authentication
+ * method's configuration (unmasking its credential fields for display).
+ * REST API authorization configuration was moved to the Credential tab;
+ * this view is retained temporarily for reference and is slated for
+ * removal. Invoked from this file's dispatcher when the request's
+ * 'action' is 'edit'.
+ *
+ * @return void Outputs the read-only form HTML directly.
+ *
+ * @global array $servcheck_restapi_fields The form's field definitions,
+ *                                        filled in here with the
+ *                                        method's current (unmasked)
+ *                                        values.
+ */
 function servcheck_edit_rest() {
 	global $servcheck_restapi_fields;
 
@@ -365,6 +415,14 @@ function servcheck_edit_rest() {
  *  we have a good request.  We want to protect against people who
  *  like to create issues with Cacti.
  */
+/**
+ * Validates and stores the REST API methods list's filter/sort/
+ * pagination variables (regex free-text search, sort column/direction)
+ * in the session. Called from list_restapis() before rendering the
+ * list.
+ *
+ * @return void
+ */
 function servcheck_request_validation() {
 	// ================= input validation and session storage =================
 	$filters = [
@@ -399,6 +457,26 @@ function servcheck_request_validation() {
 	// ================= input validation =================
 }
 
+/**
+ * Renders the main (legacy) REST API methods list page: validates the
+ * request, draws the filter toolbar, and prints the paginated, sortable
+ * table of configured REST API authentication methods. Invoked from
+ * this file's dispatcher for the default (no 'action') request.
+ *
+ * @return void Outputs the list page HTML directly.
+ *
+ * @global array $servcheck_actions_restapi Map of bulk-action ids to
+ *                                          their display labels, used to
+ *                                          populate the actions
+ *                                          dropdown.
+ * @global array $config                    Cacti global configuration
+ *                                          array (declared but not
+ *                                          directly used here).
+ * @global array $rest_api_auth_method       Map of authentication type
+ *                                          keys to their display
+ *                                          labels, used for the method-
+ *                                          type filter/display.
+ */
 function list_restapis() {
 	global $servcheck_actions_restapi, $config, $rest_api_auth_method;
 
@@ -516,6 +594,21 @@ function list_restapis() {
 	bottom_footer();
 }
 
+/**
+ * Renders the REST API methods list's filter toolbar (regex free-text
+ * search, method-type filter, rows-per-page) and its client-side
+ * JavaScript. Called from list_restapis() before the methods table
+ * itself is rendered.
+ *
+ * @return void Outputs HTML and JavaScript directly.
+ *
+ * @global array $item_rows            Rows-per-page options offered by
+ *                                     Cacti core, used to populate the
+ *                                     'rows' select list.
+ * @global array $rest_api_auth_method  Map of authentication type keys
+ *                                     to their display labels, used to
+ *                                     populate the method-type filter.
+ */
 function servcheck_restapi_filter() {
 	global $item_rows, $rest_api_auth_method;
 

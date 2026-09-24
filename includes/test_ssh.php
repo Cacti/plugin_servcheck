@@ -35,9 +35,9 @@
  * @return array The check result: 'result' ('ok'/'error'), 'curl'
  *               (false), 'time', 'error', 'result_search', and 'start'.
  *
- * @global array $config              Cacti global configuration array
- *                                    (declared but not directly used
- *                                    here).
+ * @global array $config              Cacti global configuration array;
+ *                                    used to build the temporary SSH
+ *                                    key path.
  * @global array $service_types_ports Default port numbers per service
  *                                    type, used when the test's
  *                                    hostname doesn't specify one.

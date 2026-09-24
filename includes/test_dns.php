@@ -127,9 +127,9 @@ function dns_try($test) {
  *
  * @global string $user_agent          The User-Agent string sent with
  *                                     the request.
- * @global array  $config              Cacti global configuration array
- *                                     (declared but not directly used
- *                                     here).
+ * @global array  $config              Cacti global configuration array;
+ *                                     used to build a per-test CA file
+ *                                     path.
  * @global string $ca_info              Path to the bundled CA
  *                                     certificate file used for TLS
  *                                     verification.

@@ -1067,9 +1067,9 @@ function servcheck_show_history() {
  * to plot. Invoked from this file's dispatcher when the request's
  * 'action' is 'graph'.
  *
- * @return bool|void True (with a message printed) if there isn't enough
- *                   log data yet to graph; otherwise outputs the graphs
- *                   directly and returns nothing.
+ * @return bool|null True (with a message printed) if there isn't
+ *                   enough log data yet to graph; otherwise outputs
+ *                   the graphs directly and returns nothing.
  *
  * @global array $graph_interval The configured graph time intervals to
  *                               render (e.g. daily/weekly/monthly),
@@ -1387,9 +1387,9 @@ function servcheck_show_last_data() {
  * @global array $item_rows             Rows-per-page options offered by
  *                                     Cacti core, used to populate the
  *                                     'rows' select list.
- * @global int   $page_refresh_interval Reserved/declared for parity
- *                                     with other functions in this
- *                                     file; not used directly here.
+ * @global array $page_refresh_interval Map of refresh interval seconds
+ *                                     => display label, used to
+ *                                     populate the refresh selector.
  */
 function servcheck_filter() {
 	global $item_rows, $page_refresh_interval;

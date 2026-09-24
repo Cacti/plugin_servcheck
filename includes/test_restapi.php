@@ -40,8 +40,8 @@
  *
  * @global string $user_agent    The User-Agent string sent with the
  *                               request.
- * @global array  $config        Cacti global configuration array
- *                               (declared but not directly used here).
+ * @global array  $config        Cacti global configuration array;
+ *                               used to build the cookie file path.
  * @global string $ca_info        Path to the bundled CA certificate file
  *                               used for TLS verification.
  * @global array  $service_types Valid service/test type keys (declared

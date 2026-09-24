@@ -87,7 +87,7 @@ class dnslookup {
 	 * @param string $type    A label for this query type ('A' or 'AAAA'),
 	 *                       used to key the results array.
 	 *
-	 * @return void|false False if the UDP socket could not be opened;
+	 * @return false|null False if the UDP socket could not be opened;
 	 *                    otherwise no return value (results are stored on
 	 *                    the instance).
 	 */

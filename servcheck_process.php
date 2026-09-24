@@ -260,7 +260,10 @@ servcheck_debug($stats);
  * @param bool  $force Whether to run the test even if it is currently
  *                     disabled or not yet due.
  *
- * @return void
+ * @return bool|null False when the test is skipped (disabled, not yet
+ *                   due, or an unrecognized test type produced no
+ *                   result); otherwise no explicit return value after
+ *                   completing the run.
  *
  * @global array $config Cacti global configuration array; used to
  *                       resolve poller/library paths for the
@@ -721,7 +724,10 @@ function servcheck_run_test($test, $force) {
  *                        detect a state transition (e.g. down ->
  *                        recovered).
  *
- * @return void
+ * @return bool|null True when there are no configured notification
+ *                   recipients (an early return); otherwise no
+ *                   explicit return value after sending the
+ *                   notification(s).
  *
  * @global array $httperrors Map of HTTP status codes to their
  *                           descriptions, used in the notification

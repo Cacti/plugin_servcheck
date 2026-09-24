@@ -38,12 +38,13 @@ $ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
  * @return array The check result: 'result' ('ok'/'error'), 'curl'
  *               (false), 'error', 'result_search', and 'start'.
  *
- * @global array  $config              Cacti global configuration array
- *                                     (declared but not directly used
- *                                     here).
+ * @global array  $config              Cacti global configuration array;
+ *                                     used to build a per-test CA file
+ *                                     path.
  * @global string $ca_info              Path to the bundled CA
- *                                     certificate file (declared but not
- *                                     directly used here).
+ *                                     certificate file; used to open
+ *                                     and write the per-test CA chain
+ *                                     file.
  * @global array  $service_types_ports Default port numbers per service
  *                                     type, used when the test's
  *                                     hostname doesn't specify one.

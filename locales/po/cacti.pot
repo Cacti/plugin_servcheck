@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-21 13:14-0400\n"
+"POT-Creation-Date: 2026-09-24 10:59-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Cacti Developers <developers@cacti.net>>\n"
 "Language-Team: Cacti Developers <developers@cacti.net>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: includes/arrays.php:36 servcheck_test.php:1126
+#: includes/arrays.php:36 servcheck_test.php:1251
 msgid "Tests"
 msgstr ""
 
@@ -26,7 +26,7 @@ msgstr ""
 msgid "CA certificates"
 msgstr ""
 
-#: includes/arrays.php:38 servcheck_proxy.php:301 servcheck_proxy.php:363
+#: includes/arrays.php:38 servcheck_proxy.php:356 servcheck_proxy.php:428
 msgid "Proxies"
 msgstr ""
 
@@ -35,7 +35,7 @@ msgid "Rest API methods"
 msgstr ""
 
 #: includes/arrays.php:40 includes/arrays.php:338 includes/arrays.php:426
-#: includes/arrays.php:1373 setup.php:529
+#: includes/arrays.php:1373 setup.php:625
 msgid "Credential"
 msgstr ""
 
@@ -63,7 +63,7 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
-#: includes/arrays.php:50 setup.php:683
+#: includes/arrays.php:50 setup.php:806
 msgid "Disabled"
 msgstr ""
 
@@ -251,8 +251,8 @@ msgstr ""
 msgid "Maint string found"
 msgstr ""
 
-#: includes/arrays.php:141 includes/arrays.php:147 servcheck_test.php:922
-#: servcheck_test.php:1142
+#: includes/arrays.php:141 includes/arrays.php:147 servcheck_test.php:1013
+#: servcheck_test.php:1267
 msgid "Not tested yet"
 msgstr ""
 
@@ -328,11 +328,11 @@ msgstr ""
 msgid "Unable to Connect"
 msgstr ""
 
-#: includes/arrays.php:180 servcheck_ca.php:116 servcheck_credential.php:133
-#: servcheck_credential.php:141 servcheck_proxy.php:116
-#: servcheck_restapi.php:144 servcheck_restapi.php:153 servcheck_test.php:216
-#: servcheck_test.php:225 servcheck_test.php:234 servcheck_test.php:243
-#: servcheck_test.php:252 servcheck_test.php:261
+#: includes/arrays.php:180 servcheck_ca.php:132 servcheck_credential.php:149
+#: servcheck_credential.php:157 servcheck_proxy.php:131
+#: servcheck_restapi.php:161 servcheck_restapi.php:170 servcheck_test.php:231
+#: servcheck_test.php:240 servcheck_test.php:249 servcheck_test.php:258
+#: servcheck_test.php:267 servcheck_test.php:276
 msgid "Continue"
 msgstr ""
 
@@ -535,9 +535,9 @@ msgstr ""
 msgid "Form urlencoded"
 msgstr ""
 
-#: includes/arrays.php:279 includes/arrays.php:303 servcheck_ca.php:279
-#: servcheck_credential.php:745 servcheck_proxy.php:282
-#: servcheck_restapi.php:452 servcheck_test.php:871 servcheck_test.php:1083
+#: includes/arrays.php:279 includes/arrays.php:303 servcheck_ca.php:336
+#: servcheck_credential.php:834 servcheck_proxy.php:337
+#: servcheck_restapi.php:530 servcheck_test.php:962 servcheck_test.php:1208
 msgid "Name"
 msgstr ""
 
@@ -565,7 +565,7 @@ msgstr ""
 msgid "New Proxy"
 msgstr ""
 
-#: includes/arrays.php:312 servcheck_proxy.php:286
+#: includes/arrays.php:312 servcheck_proxy.php:341
 msgid "Hostname"
 msgstr ""
 
@@ -594,7 +594,7 @@ msgid "Select correct credential or left empty."
 msgstr ""
 
 #: includes/arrays.php:344 includes/arrays.php:432 includes/arrays.php:453
-#: includes/arrays.php:495 includes/arrays.php:604 servcheck_test.php:558
+#: includes/arrays.php:495 includes/arrays.php:604 servcheck_test.php:613
 msgid "None"
 msgstr ""
 
@@ -1647,15 +1647,15 @@ msgid ""
 "\t\tCommonly used names are  'Bearer' for OAuth2,  'apikey' for API Key method. You need know correct name, check your Rest API server documentation. "
 msgstr ""
 
-#: includes/functions.php:31
+#: includes/functions.php:50
 msgid "Log History"
 msgstr ""
 
-#: includes/functions.php:38
+#: includes/functions.php:57
 msgid "Graphs"
 msgstr ""
 
-#: includes/functions.php:91
+#: includes/functions.php:147
 msgid "No data"
 msgstr ""
 
@@ -1664,81 +1664,81 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: servcheck_ca.php:111 servcheck_credential.php:128 servcheck_proxy.php:111
-#: servcheck_test.php:211
+#: servcheck_ca.php:127 servcheck_credential.php:144 servcheck_proxy.php:126
+#: servcheck_test.php:226
 msgid "Click 'Continue' to delete the following items."
 msgid_plural "Click 'Continue' to delete following items."
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_ca.php:116 servcheck_credential.php:133
-#: servcheck_credential.php:141 servcheck_proxy.php:116
-#: servcheck_restapi.php:144 servcheck_restapi.php:153 servcheck_test.php:216
-#: servcheck_test.php:225 servcheck_test.php:234 servcheck_test.php:243
-#: servcheck_test.php:252 servcheck_test.php:261
+#: servcheck_ca.php:132 servcheck_credential.php:149
+#: servcheck_credential.php:157 servcheck_proxy.php:131
+#: servcheck_restapi.php:161 servcheck_restapi.php:170 servcheck_test.php:231
+#: servcheck_test.php:240 servcheck_test.php:249 servcheck_test.php:258
+#: servcheck_test.php:267 servcheck_test.php:276
 msgid "Cancel"
 msgstr ""
 
-#: servcheck_ca.php:116 servcheck_credential.php:133 servcheck_proxy.php:116
-#: servcheck_test.php:216
+#: servcheck_ca.php:132 servcheck_credential.php:149 servcheck_proxy.php:131
+#: servcheck_test.php:231
 msgid "Delete item"
 msgid_plural "Delete items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_ca.php:187
+#: servcheck_ca.php:223
 #, php-format
 msgid "CA [edit: %s]"
 msgstr ""
 
-#: servcheck_ca.php:189
+#: servcheck_ca.php:225
 msgid "CA [new]"
 msgstr ""
 
-#: servcheck_ca.php:283 servcheck_credential.php:753 servcheck_proxy.php:294
+#: servcheck_ca.php:340 servcheck_credential.php:842 servcheck_proxy.php:349
 msgid "Used"
 msgstr ""
 
-#: servcheck_ca.php:290 servcheck_ca.php:348
+#: servcheck_ca.php:347 servcheck_ca.php:415
 msgid "CAs"
 msgstr ""
 
-#: servcheck_ca.php:316 servcheck_credential.php:794 servcheck_proxy.php:331
-#: servcheck_test.php:1219
+#: servcheck_ca.php:373 servcheck_credential.php:883 servcheck_proxy.php:386
+#: servcheck_test.php:1344
 msgid "Empty"
 msgstr ""
 
-#: servcheck_ca.php:333
+#: servcheck_ca.php:400
 msgid "Servcheck CA Management"
 msgstr ""
 
-#: servcheck_ca.php:342 servcheck_credential.php:820 servcheck_proxy.php:357
-#: servcheck_restapi.php:568 servcheck_test.php:591 servcheck_test.php:1268
+#: servcheck_ca.php:409 servcheck_credential.php:919 servcheck_proxy.php:422
+#: servcheck_restapi.php:661 servcheck_test.php:646 servcheck_test.php:1415
 msgid "Search"
 msgstr ""
 
-#: servcheck_ca.php:353 servcheck_credential.php:831 servcheck_proxy.php:368
-#: servcheck_test.php:1309 servcheck_test.php:1395
+#: servcheck_ca.php:420 servcheck_credential.php:930 servcheck_proxy.php:433
+#: servcheck_test.php:1456 servcheck_test.php:1553
 msgid "Default"
 msgstr ""
 
-#: servcheck_ca.php:369 servcheck_credential.php:847 servcheck_proxy.php:384
-#: servcheck_restapi.php:596 servcheck_test.php:1325 servcheck_test.php:1411
+#: servcheck_ca.php:436 servcheck_credential.php:946 servcheck_proxy.php:449
+#: servcheck_restapi.php:689 servcheck_test.php:1472 servcheck_test.php:1569
 msgid "Go"
 msgstr ""
 
-#: servcheck_ca.php:369 servcheck_credential.php:847 servcheck_proxy.php:384
-#: servcheck_test.php:1325
+#: servcheck_ca.php:436 servcheck_credential.php:946 servcheck_proxy.php:449
+#: servcheck_test.php:1472
 msgid "Set/Refresh Filters"
 msgstr ""
 
-#: servcheck_ca.php:370 servcheck_credential.php:848 servcheck_proxy.php:385
-#: servcheck_restapi.php:597 servcheck_test.php:1326 servcheck_test.php:1412
+#: servcheck_ca.php:437 servcheck_credential.php:947 servcheck_proxy.php:450
+#: servcheck_restapi.php:690 servcheck_test.php:1473 servcheck_test.php:1570
 msgid "Clear"
 msgstr ""
 
-#: servcheck_ca.php:370 servcheck_credential.php:848 servcheck_proxy.php:385
-#: servcheck_test.php:1326
+#: servcheck_ca.php:437 servcheck_credential.php:947 servcheck_proxy.php:450
+#: servcheck_test.php:1473
 msgid "Clear Filters"
 msgstr ""
 
@@ -1746,36 +1746,36 @@ msgstr ""
 msgid "Duplicate"
 msgstr ""
 
-#: servcheck_credential.php:137
+#: servcheck_credential.php:153
 msgid "Click 'Continue' to Duplicate the following Credential."
 msgid_plural "Click 'Continue' to Duplicate following Credential."
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_credential.php:141
+#: servcheck_credential.php:157
 msgid "Duplicate Credential"
 msgid_plural "Duplicate Credential"
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_credential.php:442
+#: servcheck_credential.php:509
 #, php-format
 msgid "Credential [edit: %s]"
 msgstr ""
 
-#: servcheck_credential.php:446
+#: servcheck_credential.php:513
 msgid "Credential [new]"
 msgstr ""
 
-#: servcheck_credential.php:749 servcheck_restapi.php:574
+#: servcheck_credential.php:838 servcheck_restapi.php:667
 msgid "Type"
 msgstr ""
 
-#: servcheck_credential.php:760 servcheck_credential.php:826
+#: servcheck_credential.php:849 servcheck_credential.php:925
 msgid "Credentials"
 msgstr ""
 
-#: servcheck_credential.php:811
+#: servcheck_credential.php:910
 msgid "Servcheck Credential Management"
 msgstr ""
 
@@ -1783,69 +1783,69 @@ msgstr ""
 msgid "No error codes"
 msgstr ""
 
-#: servcheck_proxy.php:190
+#: servcheck_proxy.php:226
 #, php-format
 msgid "Proxy [edit: %s]"
 msgstr ""
 
-#: servcheck_proxy.php:192
+#: servcheck_proxy.php:228
 msgid "Proxy [new]"
 msgstr ""
 
-#: servcheck_proxy.php:290
+#: servcheck_proxy.php:345
 msgid "Ports (http/https)"
 msgstr ""
 
-#: servcheck_proxy.php:348
+#: servcheck_proxy.php:413
 msgid "Servcheck Proxy Management"
 msgstr ""
 
-#: servcheck_restapi.php:139
+#: servcheck_restapi.php:156
 msgid "Click 'Continue' to Delete the following Rest API."
 msgid_plural "Click 'Continue' to Delete following Rest API."
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_restapi.php:144
+#: servcheck_restapi.php:161
 msgid "Delete Rest API"
 msgid_plural "Delete Rest API"
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_restapi.php:148
+#: servcheck_restapi.php:165
 msgid "Click 'Continue' to Duplicate the following Rest API."
 msgid_plural "Click 'Continue' to Duplicate following Rest APIs."
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_restapi.php:153
+#: servcheck_restapi.php:170
 msgid "Duplicate Rest API"
 msgid_plural "Duplicate Rest API"
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_restapi.php:267
+#: servcheck_restapi.php:317
 #, php-format
 msgid "Query [edit: %s]"
 msgstr ""
 
-#: servcheck_restapi.php:269
+#: servcheck_restapi.php:319
 msgid "Query [new]"
 msgstr ""
 
-#: servcheck_restapi.php:457
+#: servcheck_restapi.php:535
 msgid "Rest API Method"
 msgstr ""
 
-#: servcheck_restapi.php:467
+#: servcheck_restapi.php:545
 msgid "Records"
 msgstr ""
 
-#: servcheck_restapi.php:558 setup.php:508
+#: servcheck_restapi.php:651 setup.php:604
 msgid "Rest API"
 msgstr ""
 
-#: servcheck_restapi.php:581 servcheck_test.php:1278
+#: servcheck_restapi.php:674 servcheck_test.php:1425
 msgid "Any"
 msgstr ""
 
@@ -1865,411 +1865,411 @@ msgstr ""
 msgid "Clear log"
 msgstr ""
 
-#: servcheck_test.php:220
+#: servcheck_test.php:235
 msgid "Click 'Continue' to disable the following items."
 msgid_plural "Click 'Continue' to disable following items."
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_test.php:225
+#: servcheck_test.php:240
 msgid "Disable item"
 msgid_plural "Disable items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_test.php:229
+#: servcheck_test.php:244
 msgid "Click 'Continue' to enable the following items."
 msgid_plural "Click 'Continue' to enable following items."
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_test.php:234
+#: servcheck_test.php:249
 msgid "Enable item"
 msgid_plural "Enable items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_test.php:238
+#: servcheck_test.php:253
 msgid "Click 'Continue' to duplicate the following items."
 msgid_plural "Click 'Continue' to duplicate following items."
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_test.php:243 servcheck_test.php:252 servcheck_test.php:261
+#: servcheck_test.php:258 servcheck_test.php:267 servcheck_test.php:276
 msgid "Duplicate item"
 msgid_plural "Duplicate items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_test.php:247
+#: servcheck_test.php:262
 msgid "Click 'Continue' to clear statistics of following items."
 msgid_plural "Click 'Continue' to clear statistics of following items."
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_test.php:256
+#: servcheck_test.php:271
 msgid "Click 'Continue' to clear log of following items."
 msgid_plural "Click 'Continue' to clear log of following items."
 msgstr[0] ""
 msgstr[1] ""
 
-#: servcheck_test.php:475
+#: servcheck_test.php:512
 #, php-format
 msgid "The Service Check history was purged for %s"
 msgstr ""
 
-#: servcheck_test.php:493
+#: servcheck_test.php:548
 #, php-format
 msgid "Test [edit: %s]"
 msgstr ""
 
-#: servcheck_test.php:495
+#: servcheck_test.php:550
 msgid "Test [new]"
 msgstr ""
 
-#: servcheck_test.php:546
+#: servcheck_test.php:601
 msgid "No Users Selected"
 msgstr ""
 
-#: servcheck_test.php:548
+#: servcheck_test.php:603
 msgid "Users Selected"
 msgstr ""
 
-#: servcheck_test.php:551
+#: servcheck_test.php:606
 msgid "All Users Selected"
 msgstr ""
 
-#: servcheck_test.php:557
+#: servcheck_test.php:612
 msgid "All"
 msgstr ""
 
-#: servcheck_test.php:868
+#: servcheck_test.php:959
 msgid "Date"
 msgstr ""
 
-#: servcheck_test.php:874
+#: servcheck_test.php:965
 msgid "Attempt"
 msgstr ""
 
-#: servcheck_test.php:877 servcheck_test.php:1108
+#: servcheck_test.php:968 servcheck_test.php:1233
 msgid "Result"
 msgstr ""
 
-#: servcheck_test.php:880 servcheck_test.php:1113
+#: servcheck_test.php:971 servcheck_test.php:1238
 msgid "Search result"
 msgstr ""
 
-#: servcheck_test.php:883 servcheck_test.php:1098
+#: servcheck_test.php:974 servcheck_test.php:1223
 msgid "Duration"
 msgstr ""
 
-#: servcheck_test.php:888
+#: servcheck_test.php:979
 msgid "Certificate"
 msgstr ""
 
-#: servcheck_test.php:891
+#: servcheck_test.php:982
 msgid "Curl"
 msgstr ""
 
-#: servcheck_test.php:894
+#: servcheck_test.php:985
 msgid "Ret. data size"
 msgstr ""
 
-#: servcheck_test.php:897 servcheck_test.php:1118
+#: servcheck_test.php:988 servcheck_test.php:1243
 msgid "CPU u/CPU s/Memory"
 msgstr ""
 
-#: servcheck_test.php:905
+#: servcheck_test.php:996
 msgid "Logs"
 msgstr ""
 
-#: servcheck_test.php:932
+#: servcheck_test.php:1023
 msgid "days"
 msgstr ""
 
-#: servcheck_test.php:935
+#: servcheck_test.php:1026
 #, php-format
 msgid "Expired %s days ago"
 msgstr ""
 
-#: servcheck_test.php:985
+#: servcheck_test.php:1090
 msgid "Insufficient data, wait a few poller cycles"
 msgstr ""
 
-#: servcheck_test.php:1078
+#: servcheck_test.php:1203
 msgid "Actions"
 msgstr ""
 
-#: servcheck_test.php:1088
+#: servcheck_test.php:1213
 msgid "Last Check (attempt)"
 msgstr ""
 
-#: servcheck_test.php:1093
+#: servcheck_test.php:1218
 msgid "Stats (OK/problem)"
 msgstr ""
 
-#: servcheck_test.php:1103
+#: servcheck_test.php:1228
 msgid "Triggered"
 msgstr ""
 
-#: servcheck_test.php:1167
+#: servcheck_test.php:1292
 msgid "Edit Service Check"
 msgstr ""
 
-#: servcheck_test.php:1172
+#: servcheck_test.php:1297
 msgid "Enable Service Check"
 msgstr ""
 
-#: servcheck_test.php:1176
+#: servcheck_test.php:1301
 msgid "Disable Service Check"
 msgstr ""
 
-#: servcheck_test.php:1181
+#: servcheck_test.php:1306
 msgid "View Service Check History"
 msgstr ""
 
-#: servcheck_test.php:1185
+#: servcheck_test.php:1310
 msgid "View Last returned data"
 msgstr ""
 
-#: servcheck_test.php:1189
+#: servcheck_test.php:1314
 msgid "View Graph"
 msgstr ""
 
-#: servcheck_test.php:1197
+#: servcheck_test.php:1322
 msgid "N/A (N/A)"
 msgstr ""
 
-#: servcheck_test.php:1210
+#: servcheck_test.php:1335
 msgid "No"
 msgstr ""
 
-#: servcheck_test.php:1210
+#: servcheck_test.php:1335
 msgid "Yes"
 msgstr ""
 
-#: servcheck_test.php:1243
+#: servcheck_test.php:1375
 msgid "Last returned data of test"
 msgstr ""
 
-#: servcheck_test.php:1259
+#: servcheck_test.php:1406
 msgid "Servcheck Test Management"
 msgstr ""
 
-#: servcheck_test.php:1274
+#: servcheck_test.php:1421
 msgid "State"
 msgstr ""
 
-#: servcheck_test.php:1287
+#: servcheck_test.php:1434
 msgid "Refresh"
 msgstr ""
 
-#: servcheck_test.php:1304
+#: servcheck_test.php:1451
 msgid "Checks"
 msgstr ""
 
-#: servcheck_test.php:1375
+#: servcheck_test.php:1533
 msgid "Service Check History"
 msgstr ""
 
-#: servcheck_test.php:1384
+#: servcheck_test.php:1542
 msgid "Date Search"
 msgstr ""
 
-#: servcheck_test.php:1390
+#: servcheck_test.php:1548
 msgid "Entries"
 msgstr ""
 
-#: servcheck_test.php:1413
+#: servcheck_test.php:1571
 msgid "Purge Events"
 msgstr ""
 
-#: setup.php:33
+#: setup.php:42
 msgid "Service Check Admin"
 msgstr ""
 
-#: setup.php:476
+#: setup.php:562
 msgid "Management"
 msgstr ""
 
-#: setup.php:476
+#: setup.php:562
 msgid "Service Checker"
 msgstr ""
 
-#: setup.php:487
+#: setup.php:583
 msgid "Service Checks"
 msgstr ""
 
-#: setup.php:494
+#: setup.php:590
 msgid "Service Check Edit"
 msgstr ""
 
-#: setup.php:501
+#: setup.php:597
 msgid "Service Check Save"
 msgstr ""
 
-#: setup.php:515
+#: setup.php:611
 msgid "Rest API Edit"
 msgstr ""
 
-#: setup.php:522
+#: setup.php:618
 msgid "Rest API Save"
 msgstr ""
 
-#: setup.php:536
+#: setup.php:632
 msgid "Credential Edit"
 msgstr ""
 
-#: setup.php:543
+#: setup.php:639
 msgid "Credential Save"
 msgstr ""
 
-#: setup.php:550
+#: setup.php:646
 msgid "Web Proxy"
 msgstr ""
 
-#: setup.php:557
+#: setup.php:653
 msgid "Web Proxy Edit"
 msgstr ""
 
-#: setup.php:564
+#: setup.php:660
 msgid "Save Web Proxy"
 msgstr ""
 
-#: setup.php:571
+#: setup.php:667
 msgid "CA"
 msgstr ""
 
-#: setup.php:578
+#: setup.php:674
 msgid "CA Edit"
 msgstr ""
 
-#: setup.php:585
+#: setup.php:681
 msgid "Save CA"
 msgstr ""
 
-#: setup.php:621
+#: setup.php:744
 msgid "Servcheck"
 msgstr ""
 
-#: setup.php:625
+#: setup.php:748
 msgid "Notification Preferences"
 msgstr ""
 
-#: setup.php:629
+#: setup.php:752
 msgid "Send Email separately for each address"
 msgstr ""
 
-#: setup.php:630
+#: setup.php:753
 msgid "If checked, this will cause all Emails to be sent separately for each address."
 msgstr ""
 
-#: setup.php:635
+#: setup.php:758
 msgid "Stop sending all notification"
 msgstr ""
 
-#: setup.php:636
+#: setup.php:759
 msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
 msgstr ""
 
-#: setup.php:641
+#: setup.php:764
 msgid "Enable Command Execution"
 msgstr ""
 
-#: setup.php:642
+#: setup.php:765
 msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
 msgstr ""
 
-#: setup.php:647
+#: setup.php:770
 msgid "Status Change Command"
 msgstr ""
 
-#: setup.php:648
+#: setup.php:771
 msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
 msgstr ""
 
-#: setup.php:656
+#: setup.php:779
 msgid "Concurrent Check Processes"
 msgstr ""
 
-#: setup.php:657
+#: setup.php:780
 msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
 msgstr ""
 
-#: setup.php:661
+#: setup.php:784
 msgid "1 Process"
 msgstr ""
 
-#: setup.php:662 setup.php:663 setup.php:664 setup.php:665 setup.php:666
-#: setup.php:667 setup.php:668 setup.php:669 setup.php:670 setup.php:671
-#: setup.php:672 setup.php:673 setup.php:674
+#: setup.php:785 setup.php:786 setup.php:787 setup.php:788 setup.php:789
+#: setup.php:790 setup.php:791 setup.php:792 setup.php:793 setup.php:794
+#: setup.php:795 setup.php:796 setup.php:797
 #, php-format
 msgid "%d Processes"
 msgstr ""
 
-#: setup.php:678
+#: setup.php:801
 msgid "Certificate expiry date advanced notification email"
 msgstr ""
 
-#: setup.php:679
+#: setup.php:802
 msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
 msgstr ""
 
-#: setup.php:684
+#: setup.php:807
 msgid "3 days in advance"
 msgstr ""
 
-#: setup.php:685
+#: setup.php:808
 msgid "1 week in advance"
 msgstr ""
 
-#: setup.php:686
+#: setup.php:809
 msgid "3 weeks in advance"
 msgstr ""
 
-#: setup.php:687
+#: setup.php:810
 msgid "30 days in advance"
 msgstr ""
 
-#: setup.php:688
+#: setup.php:811
 msgid "60 days in advance"
 msgstr ""
 
-#: setup.php:689
+#: setup.php:812
 msgid "90 days in advance"
 msgstr ""
 
-#: setup.php:693
+#: setup.php:816
 msgid "How long to keep logs"
 msgstr ""
 
-#: setup.php:694
+#: setup.php:817
 msgid "Enter the period after which older logs will be automatically deleted."
 msgstr ""
 
-#: setup.php:698
+#: setup.php:821
 msgid "Never"
 msgstr ""
 
-#: setup.php:699
+#: setup.php:822
 #, php-format
 msgid "%d hours"
 msgstr ""
 
-#: setup.php:700 setup.php:701 setup.php:702
+#: setup.php:823 setup.php:824 setup.php:825
 #, php-format
 msgid "%d days"
 msgstr ""
 
-#: setup.php:703
+#: setup.php:826
 #, php-format
 msgid "%d year"
 msgstr ""
 
-#: setup.php:707
+#: setup.php:830
 msgid "Maximum test duration in seconds"
 msgstr ""
 
-#: setup.php:708
+#: setup.php:831
 msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
 msgstr ""

@@ -63,11 +63,10 @@ function plugin_servcheck_uninstall() {
 }
 
 /**
- * Here we will check to ensure everything is configured
- *
  * Runs any pending database schema upgrade for this plugin. Invoked by
- * the Cacti plugin framework on every page load to keep the plugin's
- * schema current.
+ * plugin_servcheck_config_arrays() (the 'config_arrays' hook) only when
+ * the current page is index.php, plugins.php, or servcheck_test.php -
+ * not on every page load.
  *
  * @return bool Always true.
  */
@@ -81,10 +80,11 @@ function plugin_servcheck_check_config() {
 /**
  * Applies version-gated schema migrations for this plugin based on
  * comparing the installed version recorded in plugin_config against the
- * current INFO file version. Called from plugin_servcheck_check_config()
- * on every page load and plugin_servcheck_install().
+ * current INFO file version. Called from
+ * plugin_servcheck_check_config(), which is itself only invoked when
+ * the current page is index.php, plugins.php, or servcheck_test.php.
  *
- * @return void
+ * @return bool Always true after completing the migration.
  *
  * @global array $config Cacti global configuration array (declared but
  *                       not directly used here).

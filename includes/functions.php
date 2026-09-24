@@ -293,8 +293,10 @@ function servcheck_encrypt_credential($cred) {
  *
  * @param int $cred_id The plugin_servcheck_credential.id to decrypt.
  *
- * @return array|false The decrypted credential fields, or false if the
- *                     encryption key is missing.
+ * @return array|false|null The decrypted credential fields, false if
+ *                          the encryption key is missing, or null if
+ *                          the stored data is missing/malformed and
+ *                          cannot be json_decode()'d.
  */
 function servcheck_decrypt_credential($cred_id) {
 	$servcheck_key = read_user_setting('servcheck_key', null, true, 1);

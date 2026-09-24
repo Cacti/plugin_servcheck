@@ -281,9 +281,22 @@ unregister_process('servcheck', 'master', $poller_id);
 /**
  * sig_handler - provides a generic means to catch exceptions to the Cacti log.
  *
+ * Registered as this master process's signal handler. On
+ * SIGTERM/SIGINT/SIGUSR1, unregisters this process (unless running with
+ * --force) and signals every registered child service-check process to
+ * terminate before exiting.
+ *
  * @param int $signo The signal that was thrown by the interface.
  *
  * @return void
+ *
+ * @global bool   $force     Whether this run was started with --force,
+ *                           in which case this process is not
+ *                           unregistered from the processes table.
+ * @global int    $poller_id This poller's id, used to identify and clean
+ *                           up child processes.
+ * @global string $taskname  This master process's registered task name,
+ *                           used to look up its child processes.
  */
 function sig_handler($signo) {
 	global $force, $poller_id, $taskname;
@@ -326,6 +339,16 @@ function sig_handler($signo) {
 
 /**
  * display_version - displays version information
+ *
+ * Prints this poller script's name/plugin version/copyright. Called
+ * from the CLI argument parser for the '--version' flag, and from
+ * display_help() to prefix the usage text.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; used to
+ *                       locate and load setup.php for the version
+ *                       lookup.
  */
 function display_version() {
 	global $config;
@@ -340,6 +363,12 @@ function display_version() {
 
 /**
  * display_help - displays the usage of the function
+ *
+ * Prints this script's version banner followed by its command-line
+ * usage/argument summary. Called from the CLI argument parser for the
+ * '--help' flag, and whenever an invalid argument is supplied.
+ *
+ * @return void
  */
 function display_help() {
 	display_version();

@@ -25,6 +25,34 @@
 $user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
 $ca_info    = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 
+/**
+ * Runs a cURL-based service check test (HTTP/HTTPS, or any other
+ * type_curl-family test sharing this transport), applying the test's
+ * configured credential, proxy, CA certificate, IP resolution override,
+ * timeout, and search patterns, and evaluating the response against the
+ * expected/maintenance/failure search patterns. Called from
+ * servcheck_run_test() for tests of a cURL-based type.
+ *
+ * @param array $test The plugin_servcheck_test row describing the check
+ *                    to run.
+ *
+ * @return array The check result: 'result' ('ok'/'error'), 'curl' (true),
+ *               'error', 'result_search', 'start', and (once the
+ *               request completes) cURL timing/status 'options' and
+ *               response 'data'.
+ *
+ * @global string $user_agent          The User-Agent string sent with
+ *                                     the request.
+ * @global array  $config              Cacti global configuration array;
+ *                                     used to build a per-test CA file
+ *                                     path.
+ * @global string $ca_info              Path to the bundled CA
+ *                                     certificate file used for TLS
+ *                                     verification.
+ * @global array  $service_types_ports Default port numbers per service
+ *                                     type, used when the test's
+ *                                     hostname doesn't specify one.
+ */
 function curl_try($test) {
 	global $user_agent, $config, $ca_info, $service_types_ports;
 

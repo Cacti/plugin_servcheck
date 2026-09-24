@@ -22,6 +22,26 @@
  +-------------------------------------------------------------------------+
 */
 
+/**
+ * Runs an SSH service check test: connects and authenticates using the
+ * test's associated credential (username/password or SSH key), runs the
+ * configured remote command, and evaluates its output against the
+ * expected/maintenance/failure search patterns. Called from
+ * servcheck_run_test() for tests of type 'ssh'.
+ *
+ * @param array $test The plugin_servcheck_test row describing the check
+ *                    to run.
+ *
+ * @return array The check result: 'result' ('ok'/'error'), 'curl'
+ *               (false), 'time', 'error', 'result_search', and 'start'.
+ *
+ * @global array $config              Cacti global configuration array;
+ *                                    used to build the temporary SSH
+ *                                    key path.
+ * @global array $service_types_ports Default port numbers per service
+ *                                    type, used when the test's
+ *                                    hostname doesn't specify one.
+ */
 function ssh_try($test) {
 	global $config, $service_types_ports;
 

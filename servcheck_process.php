@@ -243,6 +243,32 @@ $stats  = sprintf('Time:%.2f, Stats:%s/%s, Down triggered:%s, Duration triggered
 
 servcheck_debug($stats);
 
+/**
+ * Runs a single service check test: dispatches to the appropriate
+ * protocol-specific test function (HTTP/cURL, DNS, FTP, mail, MQTT,
+ * REST API, SNMP, SSH, based on the test's configured type), evaluates
+ * the result against its down/duration/certificate-expiry triggers
+ * (sending notifications and/or running a triggered command as
+ * configured), logs the run's timing/resource usage to
+ * plugin_servcheck_log, updates the test's running statistics, and
+ * purges old log entries per the configured retention period. Called
+ * from this script's main flow for each test assigned to this poller/
+ * process slot.
+ *
+ * @param array $test  The plugin_servcheck_test row describing the
+ *                     check to run.
+ * @param bool  $force Whether to run the test even if it is currently
+ *                     disabled or not yet due.
+ *
+ * @return bool|null False when the test is skipped (disabled, not yet
+ *                   due, or an unrecognized test type produced no
+ *                   result); otherwise no explicit return value after
+ *                   completing the run.
+ *
+ * @global array $config Cacti global configuration array; used to
+ *                       resolve poller/library paths for the
+ *                       protocol-specific test functions.
+ */
 function servcheck_run_test($test, $force) {
 	global $config;
 
@@ -683,6 +709,30 @@ function servcheck_run_test($test, $force) {
 	}
 }
 
+/**
+ * Builds and sends (or aggregates into a single digest, depending on the
+ * 'servcheck_send_email_separately' setting) down/recovery/certificate-
+ * expiry notification emails to a test's configured notification lists,
+ * extra addresses, and/or account recipients. Called from
+ * servcheck_run_test() when a test's result triggers a notification.
+ *
+ * @param array $results  The test run's result data (status, error,
+ *                        HTTP/timing details).
+ * @param array $test     The plugin_servcheck_test row being evaluated,
+ *                        providing its notification configuration.
+ * @param array $last_log The previous log entry for this test, used to
+ *                        detect a state transition (e.g. down ->
+ *                        recovered).
+ *
+ * @return bool|null True when there are no configured notification
+ *                   recipients (an early return); otherwise no
+ *                   explicit return value after sending the
+ *                   notification(s).
+ *
+ * @global array $httperrors Map of HTTP status codes to their
+ *                           descriptions, used in the notification
+ *                           message body.
+ */
 function plugin_servcheck_send_notification($results, $test, $last_log) {
 	global $httperrors;
 	$notify_list    = [];
@@ -879,6 +929,20 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 	}
 }
 
+/**
+ * Sends a single notification email to a recipient via Cacti's mailer(),
+ * tagging the User-Agent with the Cacti version. Called from
+ * plugin_servcheck_send_notification() for each resolved recipient
+ * address.
+ *
+ * @param string $to      The recipient email address.
+ * @param string $subject The email subject line.
+ * @param string $message The HTML email body; a stripped-tags plain-
+ *                        text alternative is derived from it
+ *                        automatically.
+ *
+ * @return void
+ */
 function plugin_servcheck_send_email($to, $subject, $message) {
 	$from_name  = read_config_option('settings_from_name');
 	$from_email = read_config_option('settings_from_email');
@@ -910,9 +974,23 @@ function plugin_servcheck_send_email($to, $subject, $message) {
 /**
  * sig_handler - provides a generic means to catch exceptions to the Cacti log.
  *
+ * Registered as this child worker process's signal handler. On
+ * SIGTERM/SIGINT, unregisters this process and exits.
+ *
  * @param int $signo The signal that was thrown by the interface.
  *
  * @return void
+ *
+ * @global bool   $force     Reserved/declared for parity with
+ *                           poller_servcheck.php's handler; not used
+ *                           directly here.
+ * @global int    $poller_id This poller's id, used to unregister the
+ *                           process.
+ * @global int    $process   This worker's assigned process slot number,
+ *                           used to unregister the process.
+ * @global string $taskname  Reserved/declared for parity with
+ *                           poller_servcheck.php's handler; not used
+ *                           directly here.
  */
 function sig_handler($signo) {
 	global $force, $poller_id, $process, $taskname;
@@ -932,6 +1010,16 @@ function sig_handler($signo) {
 
 /**
  * display_version - displays version information
+ *
+ * Prints this worker script's name/plugin version/copyright. Called
+ * from the CLI argument parser for the '--version' flag, and from
+ * display_help() to prefix the usage text.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; used to
+ *                       locate and load setup.php for the version
+ *                       lookup.
  */
 function display_version() {
 	global $config;
@@ -947,6 +1035,12 @@ function display_version() {
 
 /**
  * display_help - displays the usage of the function
+ *
+ * Prints this script's version banner followed by its command-line
+ * usage/argument summary. Called from the CLI argument parser for the
+ * '--help' flag, and whenever an invalid argument is supplied.
+ *
+ * @return void
  */
 function display_help() {
 	display_version();

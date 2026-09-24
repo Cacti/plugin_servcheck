@@ -22,6 +22,15 @@
  +-------------------------------------------------------------------------+
 */
 
+/**
+ * Registers this plugin's Cacti hooks (navigation breadcrumbs, config
+ * arrays, poller_bottom, data source replication, settings, page_head)
+ * and its servcheck_*.php realm, then creates the plugin's database
+ * tables. Invoked by the Cacti plugin framework when the plugin is
+ * installed/enabled.
+ *
+ * @return void
+ */
 function plugin_servcheck_install() {
 	api_plugin_register_hook('servcheck', 'draw_navigation_text', 'plugin_servcheck_draw_navigation_text', 'setup.php');
 	api_plugin_register_hook('servcheck', 'config_arrays',        'plugin_servcheck_config_arrays',        'setup.php');
@@ -35,6 +44,12 @@ function plugin_servcheck_install() {
 	plugin_servcheck_setup_table();
 }
 
+/**
+ * Drops all of this plugin's database tables. Invoked by the Cacti
+ * plugin framework when the plugin is uninstalled.
+ *
+ * @return void
+ */
 function plugin_servcheck_uninstall() {
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_test');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_log');
@@ -47,6 +62,14 @@ function plugin_servcheck_uninstall() {
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_credential');
 }
 
+/**
+ * Runs any pending database schema upgrade for this plugin. Invoked by
+ * plugin_servcheck_config_arrays() (the 'config_arrays' hook) only when
+ * the current page is index.php, plugins.php, or servcheck_test.php -
+ * not on every page load.
+ *
+ * @return bool Always true.
+ */
 function plugin_servcheck_check_config() {
 	// Here we will check to ensure everything is configured
 	plugin_servcheck_upgrade();
@@ -54,6 +77,18 @@ function plugin_servcheck_check_config() {
 	return true;
 }
 
+/**
+ * Applies version-gated schema migrations for this plugin based on
+ * comparing the installed version recorded in plugin_config against the
+ * current INFO file version. Called from
+ * plugin_servcheck_check_config(), which is itself only invoked when
+ * the current page is index.php, plugins.php, or servcheck_test.php.
+ *
+ * @return bool Always true after completing the migration.
+ *
+ * @global array $config Cacti global configuration array (declared but
+ *                       not directly used here).
+ */
 function plugin_servcheck_upgrade() {
 	global $config;
 
@@ -325,6 +360,18 @@ function plugin_servcheck_upgrade() {
 	return true;
 }
 
+/**
+ * Reads this plugin's version/author metadata from its INFO file.
+ * Invoked by the Cacti plugin framework to display plugin information,
+ * and called from plugin_servcheck_upgrade() and
+ * poller_servcheck.php's/servcheck_process.php's display_version().
+ *
+ * @return array The plugin's INFO file 'info' section (name, version,
+ *               author, etc.).
+ *
+ * @global array $config Cacti global configuration array; used to
+ *                       locate the plugin's INFO file.
+ */
 function plugin_servcheck_version() {
 	global $config;
 	$info = parse_ini_file($config['base_path'] . '/plugins/servcheck/INFO', true);
@@ -332,6 +379,13 @@ function plugin_servcheck_version() {
 	return $info['info'];
 }
 
+/**
+ * Creates all of this plugin's database tables (service check tests and
+ * their check log, HTTP proxies, CA certificates, credentials). Called
+ * from plugin_servcheck_install() during plugin installation.
+ *
+ * @return void
+ */
 function plugin_servcheck_setup_table() {
 	$data              = [];
 	$data['columns'][] = ['name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true];
@@ -454,6 +508,17 @@ function plugin_servcheck_setup_table() {
 	api_plugin_db_table_create('servcheck', 'plugin_servcheck_credential', $data);
 }
 
+/**
+ * Launches a background poller_servcheck.php process to run the
+ * configured service checks. Invoked by the Cacti plugin framework via
+ * the 'poller_bottom' hook at the end of each poller cycle.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; used to
+ *                       resolve the PHP binary and this plugin's poller
+ *                       script path.
+ */
 function plugin_servcheck_poller_bottom() {
 	global $config;
 
@@ -470,6 +535,27 @@ function plugin_servcheck_poller_bottom() {
 	exec_background($command_string, $extra_args);
 }
 
+/**
+ * Adds this plugin's 'Service Checker' entry to the Management menu, and
+ * triggers a schema-upgrade check when the currently displayed page is
+ * one of this plugin's own pages (or the main index/plugins pages).
+ * Invoked by the Cacti plugin framework via the 'config_arrays' hook.
+ *
+ * @return void
+ *
+ * @global array $menu                       Cacti's registered admin
+ *                                           menu; a 'Service Checker'
+ *                                           entry is added under
+ *                                           'Management'.
+ * @global array $user_auth_realms           Reserved/declared for parity
+ *                                           with other hook
+ *                                           implementations; not used
+ *                                           directly here.
+ * @global array $user_auth_realm_filenames  Reserved/declared for parity
+ *                                           with other hook
+ *                                           implementations; not used
+ *                                           directly here.
+ */
 function plugin_servcheck_config_arrays() {
 	global $menu, $user_auth_realms, $user_auth_realm_filenames;
 
@@ -482,6 +568,16 @@ function plugin_servcheck_config_arrays() {
 	}
 }
 
+/**
+ * Adds this plugin's page breadcrumb/navigation entries (service check,
+ * REST API, credential, web proxy, and CA list/edit/save views).
+ * Invoked by the Cacti plugin framework via the 'draw_navigation_text'
+ * hook.
+ *
+ * @param array $nav Cacti's registered navigation text entries.
+ *
+ * @return array The $nav array with this plugin's entries added.
+ */
 function plugin_servcheck_draw_navigation_text($nav) {
 	$nav['servcheck_test.php:'] = [
 		'title'   => __('Service Checks', 'servcheck'),
@@ -591,6 +687,18 @@ function plugin_servcheck_draw_navigation_text($nav) {
 	return $nav;
 }
 
+/**
+ * Replicates this plugin's configuration tables (proxies, tests,
+ * credentials, CAs) out to a remote data collector poller. Invoked by
+ * the Cacti plugin framework via the 'replicate_out' hook during data
+ * collector replication.
+ *
+ * @param array $data Replication context, including 'remote_poller_id',
+ *                    'rcnn_id' (remote connection id), and 'class'
+ *                    (replication scope, e.g. 'all').
+ *
+ * @return array The $data array, unmodified, returned for hook chaining.
+ */
 function servcheck_replicate_out($data) {
 	$remote_poller_id = $data['remote_poller_id'];
 	$rcnn_id          = $data['rcnn_id'];
@@ -615,6 +723,21 @@ function servcheck_replicate_out($data) {
 	return $data;
 }
 
+/**
+ * Registers this plugin's 'Servcheck' Settings tab and its
+ * configuration fields (notification preferences, command-execution
+ * enablement, certificate expiry thresholds, data retention, process
+ * limits). Invoked by the Cacti plugin framework via the
+ * 'config_settings' hook when rendering the Settings page.
+ *
+ * @return void
+ *
+ * @global array $tabs     Cacti's registered settings tabs; a
+ *                         'servcheck' entry is added.
+ * @global array $settings Cacti's registered settings fields; a
+ *                         'servcheck' entry is added with this plugin's
+ *                         field definitions.
+ */
 function servcheck_config_settings() {
 	global $tabs, $settings;
 
@@ -713,6 +836,16 @@ function servcheck_config_settings() {
 	];
 }
 
+/**
+ * Injects this plugin's common and theme-specific stylesheets into the
+ * page head. Invoked by the Cacti plugin framework via the 'page_head'
+ * hook.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; used to
+ *                       locate the theme CSS files.
+ */
 function servcheck_page_head() {
 	global $config;
 

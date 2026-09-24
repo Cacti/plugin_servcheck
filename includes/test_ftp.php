@@ -24,6 +24,33 @@
 
 $ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 
+/**
+ * Runs an FTP/FTPS service check test via cURL, applying the test's
+ * configured credential, proxy, CA certificate, and timeout, and
+ * evaluating the response against the expected/maintenance/failure
+ * search patterns. Called from servcheck_run_test() for tests of an
+ * FTP-based type.
+ *
+ * @param array $test The plugin_servcheck_test row describing the check
+ *                    to run.
+ *
+ * @return array The check result: 'result' ('ok'/'error'), 'curl'
+ *               (true), 'time', 'error', 'result_search', 'start', and
+ *               (once the request completes) cURL timing/status
+ *               'options' and response 'data'.
+ *
+ * @global string $user_agent          The User-Agent string sent with
+ *                                     the request.
+ * @global array  $config              Cacti global configuration array;
+ *                                     used to build a per-test CA file
+ *                                     path.
+ * @global string $ca_info              Path to the bundled CA
+ *                                     certificate file used for TLS
+ *                                     verification.
+ * @global array  $service_types_ports Default port numbers per service
+ *                                     type, used when the test's
+ *                                     hostname doesn't specify one.
+ */
 function ftp_try($test) {
 	global $user_agent, $config, $ca_info, $service_types_ports;
 

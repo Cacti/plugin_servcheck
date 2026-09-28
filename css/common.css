@@ -74,3 +74,24 @@ tr.tableRow.selectable.selected, tr.tableRow.selectable.selected td {
 	background-color: #dcdcd4;
 	color: #33332c;
 }
+
+/*
+ * Status legend footer. The items are laid out as an evenly distributed,
+ * wrapping flex row so each severity chip carries its own colour block across
+ * the full width, regardless of theme.
+ */
+.servcheck_legend {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 4px;
+	width: 100%;
+}
+
+.servcheck_legend_item {
+	flex: 1 1 0;
+	text-align: center;
+	white-space: nowrap;
+	padding: 4px 6px;
+	border-radius: 3px;
+}

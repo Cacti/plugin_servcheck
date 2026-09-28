@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-28 09:31-0400\n"
+"POT-Creation-Date: 2026-09-28 09:43-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Cacti Developers <developers@cacti.net>>\n"
 "Language-Team: Cacti Developers <developers@cacti.net>\n"
@@ -536,7 +536,7 @@ msgid "Form urlencoded"
 msgstr ""
 
 #: includes/arrays.php:281 includes/arrays.php:305 servcheck_ca.php:344
-#: servcheck_credential.php:848 servcheck_proxy.php:345
+#: servcheck_credential.php:852 servcheck_proxy.php:345
 #: servcheck_restapi.php:545 servcheck_test.php:971 servcheck_test.php:1221
 msgid "Name"
 msgstr ""
@@ -1680,7 +1680,7 @@ msgstr ""
 msgid "CA [new]"
 msgstr ""
 
-#: servcheck_ca.php:348 servcheck_credential.php:856 servcheck_proxy.php:357
+#: servcheck_ca.php:348 servcheck_credential.php:860 servcheck_proxy.php:357
 msgid "Used"
 msgstr ""
 
@@ -1688,7 +1688,7 @@ msgstr ""
 msgid "CAs"
 msgstr ""
 
-#: servcheck_ca.php:381 servcheck_credential.php:897 servcheck_proxy.php:394
+#: servcheck_ca.php:381 servcheck_credential.php:901 servcheck_proxy.php:394
 #: servcheck_test.php:1357
 msgid "Empty"
 msgstr ""
@@ -1697,32 +1697,32 @@ msgstr ""
 msgid "Servcheck CA Management"
 msgstr ""
 
-#: servcheck_ca.php:417 servcheck_credential.php:933 servcheck_proxy.php:430
+#: servcheck_ca.php:417 servcheck_credential.php:937 servcheck_proxy.php:430
 #: servcheck_restapi.php:676 servcheck_test.php:655 servcheck_test.php:1432
 msgid "Search"
 msgstr ""
 
-#: servcheck_ca.php:428 servcheck_credential.php:944 servcheck_proxy.php:441
+#: servcheck_ca.php:428 servcheck_credential.php:948 servcheck_proxy.php:441
 #: servcheck_test.php:1473 servcheck_test.php:1570
 msgid "Default"
 msgstr ""
 
-#: servcheck_ca.php:444 servcheck_credential.php:960 servcheck_proxy.php:457
+#: servcheck_ca.php:444 servcheck_credential.php:964 servcheck_proxy.php:457
 #: servcheck_restapi.php:704 servcheck_test.php:1489 servcheck_test.php:1586
 msgid "Go"
 msgstr ""
 
-#: servcheck_ca.php:444 servcheck_credential.php:960 servcheck_proxy.php:457
+#: servcheck_ca.php:444 servcheck_credential.php:964 servcheck_proxy.php:457
 #: servcheck_test.php:1489
 msgid "Set/Refresh Filters"
 msgstr ""
 
-#: servcheck_ca.php:445 servcheck_credential.php:961 servcheck_proxy.php:458
+#: servcheck_ca.php:445 servcheck_credential.php:965 servcheck_proxy.php:458
 #: servcheck_restapi.php:705 servcheck_test.php:1490 servcheck_test.php:1587
 msgid "Clear"
 msgstr ""
 
-#: servcheck_ca.php:445 servcheck_credential.php:961 servcheck_proxy.php:458
+#: servcheck_ca.php:445 servcheck_credential.php:965 servcheck_proxy.php:458
 #: servcheck_test.php:1490
 msgid "Clear Filters"
 msgstr ""
@@ -1748,19 +1748,19 @@ msgstr[1] ""
 msgid "Credential [edit: %s]"
 msgstr ""
 
-#: servcheck_credential.php:527
+#: servcheck_credential.php:531
 msgid "Credential [new]"
 msgstr ""
 
-#: servcheck_credential.php:852 servcheck_restapi.php:682
+#: servcheck_credential.php:856 servcheck_restapi.php:682
 msgid "Type"
 msgstr ""
 
-#: servcheck_credential.php:863 servcheck_credential.php:939
+#: servcheck_credential.php:867 servcheck_credential.php:943
 msgid "Credentials"
 msgstr ""
 
-#: servcheck_credential.php:924
+#: servcheck_credential.php:928
 msgid "Servcheck Credential Management"
 msgstr ""
 

@@ -90,9 +90,9 @@ class dnslookup {
 	 * @param string $type    A label for this query type ('A' or 'AAAA'),
 	 *                        used to key the results array.
 	 *
-	 * @return void False if the UDP socket could not be opened (an early
-	 *              return); otherwise no return value (results are stored
-	 *              on the instance).
+	 * @return void The query result is stored on the instance; the method
+	 *              returns early (without storing anything) if the UDP
+	 *              socket could not be opened.
 	 */
 	private function dns_query($domain, $qtype, $dns, $timeout, $type) {
 		$header = chr(0x12) . chr(0x34) . chr(0x01) . chr(0x00) . chr(0x00) . chr(0x01) .

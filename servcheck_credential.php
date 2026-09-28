@@ -522,7 +522,11 @@ function servcheck_data_edit(): void {
 
 		$header_label = __('Credential [edit: %s]', $data['name'] ?? '');
 
-		$data += servcheck_decrypt_credential($data['id'] ?? 0);
+		$decrypted = servcheck_decrypt_credential($data['id'] ?? 0);
+
+		if (is_array($decrypted)) {
+			$data += $decrypted;
+		}
 	} else {
 		$header_label = __('Credential [new]');
 	}

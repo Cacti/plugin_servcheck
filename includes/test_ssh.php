@@ -135,22 +135,28 @@ function ssh_try(array $test): array {
 			fwrite($keyfile, $credential['sshkey'] ?? '');
 			fclose($keyfile);
 
-			if (isset($credential['sshkey_passphrase'])) {
-				$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename),$credential['sshkey_passphrase']);
-			} else {
-				$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename));
-			}
+			try {
+				if (isset($credential['sshkey_passphrase'])) {
+					$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename),$credential['sshkey_passphrase']);
+				} else {
+					$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename));
+				}
 
-			if (!$ssh->login($credential['ssh_username'] ?? '', $key)) {
-				servcheck_debug('Connection failed');
+				if (!$ssh->login($credential['ssh_username'] ?? '', $key)) {
+					servcheck_debug('Connection failed');
 
-				$errors = $ssh->getStdError();
-				servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+					$errors = $ssh->getStdError();
+					servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
 
-				$results['result'] = 'error';
-				$results['error']  = 'Connection failed';
+					$results['result'] = 'error';
+					$results['error']  = 'Connection failed';
 
-				return $results;
+					return $results;
+				}
+			} finally {
+				// Always remove the temporary private-key file, even on auth failure or a key-load exception.
+				unlink($keyfilename);
+				servcheck_debug('Removing private key file');
 			}
 		} else {
 			cacti_log('Cannot create private key file ' . $keyfilename);
@@ -190,11 +196,6 @@ function ssh_try(array $test): array {
 	$results['error']  = 'Some data returned';
 
 	$results['data'] = $data;
-
-	if (isset($keyfilename)) {
-		unlink($keyfilename);
-		servcheck_debug('Removing private key file');
-	}
 
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {

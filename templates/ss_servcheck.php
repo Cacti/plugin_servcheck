@@ -57,7 +57,7 @@ if (!isset($called_by_script_server)) {
  *                     (whose output is printed directly rather than
  *                     returned).
  */
-function ss_servcheck(string $cmd = 'index', string $arg1 = '', string $arg2 = '') : mixed {
+function ss_servcheck(string $cmd = 'index', string $arg1 = '', string $arg2 = '') {
 	if ($cmd == 'index') {
 		if (db_table_exists('plugin_servcheck_test')) {
 			$exports = db_fetch_assoc('SELECT id FROM plugin_servcheck_test ORDER BY id');

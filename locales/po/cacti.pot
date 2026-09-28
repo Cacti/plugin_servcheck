@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-28 09:43-0400\n"
+"POT-Creation-Date: 2026-09-28 10:11-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Cacti Developers <developers@cacti.net>>\n"
 "Language-Team: Cacti Developers <developers@cacti.net>\n"
@@ -35,7 +35,7 @@ msgid "Rest API methods"
 msgstr ""
 
 #: includes/arrays.php:42 includes/arrays.php:340 includes/arrays.php:428
-#: includes/arrays.php:1359 setup.php:637
+#: includes/arrays.php:1359 setup.php:653
 msgid "Credential"
 msgstr ""
 
@@ -63,7 +63,7 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
-#: includes/arrays.php:52 setup.php:824
+#: includes/arrays.php:52 setup.php:840
 msgid "Disabled"
 msgstr ""
 
@@ -1826,7 +1826,7 @@ msgstr ""
 msgid "Records"
 msgstr ""
 
-#: servcheck_restapi.php:666 setup.php:616
+#: servcheck_restapi.php:666 setup.php:632
 msgid "Rest API"
 msgstr ""
 
@@ -2073,188 +2073,188 @@ msgstr ""
 msgid "Service Check Admin"
 msgstr ""
 
-#: setup.php:574
+#: setup.php:590
 msgid "Management"
 msgstr ""
 
-#: setup.php:574
+#: setup.php:590
 msgid "Service Checker"
 msgstr ""
 
-#: setup.php:595
+#: setup.php:611
 msgid "Service Checks"
 msgstr ""
 
-#: setup.php:602
+#: setup.php:618
 msgid "Service Check Edit"
 msgstr ""
 
-#: setup.php:609
+#: setup.php:625
 msgid "Service Check Save"
 msgstr ""
 
-#: setup.php:623
+#: setup.php:639
 msgid "Rest API Edit"
 msgstr ""
 
-#: setup.php:630
+#: setup.php:646
 msgid "Rest API Save"
 msgstr ""
 
-#: setup.php:644
+#: setup.php:660
 msgid "Credential Edit"
 msgstr ""
 
-#: setup.php:651
+#: setup.php:667
 msgid "Credential Save"
 msgstr ""
 
-#: setup.php:658
+#: setup.php:674
 msgid "Web Proxy"
 msgstr ""
 
-#: setup.php:665
+#: setup.php:681
 msgid "Web Proxy Edit"
 msgstr ""
 
-#: setup.php:672
+#: setup.php:688
 msgid "Save Web Proxy"
 msgstr ""
 
-#: setup.php:679
+#: setup.php:695
 msgid "CA"
 msgstr ""
 
-#: setup.php:686
+#: setup.php:702
 msgid "CA Edit"
 msgstr ""
 
-#: setup.php:693
+#: setup.php:709
 msgid "Save CA"
 msgstr ""
 
-#: setup.php:762
+#: setup.php:778
 msgid "Servcheck"
 msgstr ""
 
-#: setup.php:766
+#: setup.php:782
 msgid "Notification Preferences"
 msgstr ""
 
-#: setup.php:770
+#: setup.php:786
 msgid "Send Email separately for each address"
 msgstr ""
 
-#: setup.php:771
+#: setup.php:787
 msgid "If checked, this will cause all Emails to be sent separately for each address."
 msgstr ""
 
-#: setup.php:776
+#: setup.php:792
 msgid "Stop sending all notification"
 msgstr ""
 
-#: setup.php:777
+#: setup.php:793
 msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
 msgstr ""
 
-#: setup.php:782
+#: setup.php:798
 msgid "Enable Command Execution"
 msgstr ""
 
-#: setup.php:783
+#: setup.php:799
 msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
 msgstr ""
 
-#: setup.php:788
+#: setup.php:804
 msgid "Status Change Command"
 msgstr ""
 
-#: setup.php:789
+#: setup.php:805
 msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
 msgstr ""
 
-#: setup.php:797
+#: setup.php:813
 msgid "Concurrent Check Processes"
 msgstr ""
 
-#: setup.php:798
+#: setup.php:814
 msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
 msgstr ""
 
-#: setup.php:802
+#: setup.php:818
 msgid "1 Process"
 msgstr ""
 
-#: setup.php:803 setup.php:804 setup.php:805 setup.php:806 setup.php:807
-#: setup.php:808 setup.php:809 setup.php:810 setup.php:811 setup.php:812
-#: setup.php:813 setup.php:814 setup.php:815
+#: setup.php:819 setup.php:820 setup.php:821 setup.php:822 setup.php:823
+#: setup.php:824 setup.php:825 setup.php:826 setup.php:827 setup.php:828
+#: setup.php:829 setup.php:830 setup.php:831
 #, php-format
 msgid "%d Processes"
 msgstr ""
 
-#: setup.php:819
+#: setup.php:835
 msgid "Certificate expiry date advanced notification email"
 msgstr ""
 
-#: setup.php:820
+#: setup.php:836
 msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
 msgstr ""
 
-#: setup.php:825
+#: setup.php:841
 msgid "3 days in advance"
 msgstr ""
 
-#: setup.php:826
+#: setup.php:842
 msgid "1 week in advance"
 msgstr ""
 
-#: setup.php:827
+#: setup.php:843
 msgid "3 weeks in advance"
 msgstr ""
 
-#: setup.php:828
+#: setup.php:844
 msgid "30 days in advance"
 msgstr ""
 
-#: setup.php:829
+#: setup.php:845
 msgid "60 days in advance"
 msgstr ""
 
-#: setup.php:830
+#: setup.php:846
 msgid "90 days in advance"
 msgstr ""
 
-#: setup.php:834
+#: setup.php:850
 msgid "How long to keep logs"
 msgstr ""
 
-#: setup.php:835
+#: setup.php:851
 msgid "Enter the period after which older logs will be automatically deleted."
 msgstr ""
 
-#: setup.php:839
+#: setup.php:855
 msgid "Never"
 msgstr ""
 
-#: setup.php:840
+#: setup.php:856
 #, php-format
 msgid "%d hours"
 msgstr ""
 
-#: setup.php:841 setup.php:842 setup.php:843
+#: setup.php:857 setup.php:858 setup.php:859
 #, php-format
 msgid "%d days"
 msgstr ""
 
-#: setup.php:844
+#: setup.php:860
 #, php-format
 msgid "%d year"
 msgstr ""
 
-#: setup.php:848
+#: setup.php:864
 msgid "Maximum test duration in seconds"
 msgstr ""
 
-#: setup.php:849
+#: setup.php:865
 msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
 msgstr ""

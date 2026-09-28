@@ -23,6 +23,18 @@
 
 beforeAll(function () {
 	require_once __DIR__ . '/../../setup.php';
+
+	// The always-run upgrade path include_once()s $config['library_path'] . '/poller.php';
+	// point library_path at a throwaway stub so this unit test stays hermetic.
+	$stubLibraryPath = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'servcheck-test-upgrade-lib-stub';
+
+	if (!is_dir($stubLibraryPath)) {
+		mkdir($stubLibraryPath, 0777, true);
+	}
+
+	file_put_contents($stubLibraryPath . '/poller.php', "<?php\n");
+
+	$GLOBALS['config']['library_path'] = $stubLibraryPath;
 });
 
 beforeEach(function () {

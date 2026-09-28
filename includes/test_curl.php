@@ -23,6 +23,9 @@
 */
 
 $user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
+
+global $config;
+
 $ca_info    = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 
 /**
@@ -53,7 +56,7 @@ $ca_info    = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
  *                                     type, used when the test's
  *                                     hostname doesn't specify one.
  */
-function curl_try($test) {
+function curl_try(array $test): array {
 	global $user_agent, $config, $ca_info, $service_types_ports;
 
 	$cert_info  = [];
@@ -144,11 +147,11 @@ function curl_try($test) {
 	if ($service == 'ldap' || $service == 'ldaps') {	// do search
 		// ldap needs credentials in options
 		$test['path']             = '/' . $test['ldapsearch'];
-		$options[CURLOPT_USERPWD] = $credential['username'] . ':' . $credential['password'];
+		$options[CURLOPT_USERPWD] = ($credential['username'] ?? '') . ':' . ($credential['password'] ?? '');
 	}
 
 	if ($service == 'smb' || $service == 'smbs') {
-		$options[CURLOPT_USERPWD] = str_replace('@', '%40', $credential['username']) . ':' . $credential['password'];
+		$options[CURLOPT_USERPWD] = str_replace('@', '%40', $credential['username'] ?? '') . ':' . ($credential['password'] ?? '');
 	}
 
 	if ($test['ca_id'] > 0) {
@@ -184,7 +187,7 @@ function curl_try($test) {
 				WHERE id = ?',
 				[$test['proxy_id']]);
 
-			if (cacti_sizeof($proxy)) {
+			if (is_array($proxy) && cacti_sizeof($proxy)) {
 				$options[CURLOPT_PROXY]             = $proxy['hostname'];
 				$options[CURLOPT_UNRESTRICTED_AUTH] = true;
 
@@ -194,11 +197,13 @@ function curl_try($test) {
 					$options[CURLOPT_PROXYPORT] = $proxy['http_port'];
 				}
 
+				$proxy_cred = [];
+
 				if ($proxy['cred_id'] > 0) {
 					$proxy_cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
 						[$proxy['cred_id']]);
 
-					if (!$cred) {
+					if (!$proxy_cred) {
 						servcheck_debug('Proxy credential is set but not found!');
 						cacti_log('Credential not found');
 						$results['result'] = 'error';
@@ -220,7 +225,7 @@ function curl_try($test) {
 					}
 				}
 
-				if ($proxy_cred['username'] != '') {
+				if (($proxy_cred['username'] ?? '') != '') {
 					$options[CURLOPT_PROXYUSERPWD] = $proxy_cred['username'] . ':' . $proxy_cred['password'];
 				}
 			} else {
@@ -237,7 +242,7 @@ function curl_try($test) {
 	// Disable Cert checking
 	if ($test['checkcert'] == '') {
 		$options[CURLOPT_SSL_VERIFYPEER] = false;
-		$options[CURLOPT_SSL_VERIFYHOST] = false;
+		$options[CURLOPT_SSL_VERIFYHOST] = 0;
 	} else { // for sure, it seems that it isn't enabled by default now
 		$options[CURLOPT_SSL_VERIFYPEER] = true;
 		$options[CURLOPT_SSL_VERIFYHOST] = 2;
@@ -260,7 +265,7 @@ function curl_try($test) {
 	servcheck_debug('Executing curl request');
 
 	$data            = curl_exec($process);
-	$data            = str_replace(["'", '\\'], [''], $data);
+	$data            = str_replace(["'", '\\'], [''], (string) $data);
 	$results['data'] = $data;
 
 	// Get information regarding a specific transfer, cert info too

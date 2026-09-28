@@ -51,13 +51,11 @@ if (!isset($called_by_script_server)) {
  * @param string $arg2 For 'get', the test id to retrieve the field value
  *                     for; defaults to ''.
  *
- * @return string|false|null For 'get', the requested field's value
- *                           (as a string, or '0' if empty); false for
- *                           an unrecognized command; null for
- *                           'index'/'query' (their output is printed
- *                           directly, not returned - the outer CLI
- *                           entry point above prints whatever this
- *                           returns).
+ * @return string|false For 'get', the requested field's value (as a
+ *                     string, or '0' if empty); false for an
+ *                     unrecognized command, and for 'index'/'query'
+ *                     (whose output is printed directly rather than
+ *                     returned).
  */
 function ss_servcheck(string $cmd = 'index', string $arg1 = '', string $arg2 = '') : mixed {
 	if ($cmd == 'index') {

@@ -30,8 +30,8 @@
  * before rendering their content.
  *
  * @param string $current_tab The currently active page's filename (e.g.
- *                           'servcheck_test.php'), used to determine
- *                           which tab to highlight.
+ *                            'servcheck_test.php'), used to determine
+ *                            which tab to highlight.
  *
  * @return void Outputs the tab bar HTML directly.
  *
@@ -41,7 +41,7 @@
  *                                page URL; a 'Log History'/'Graphs'
  *                                entry may be added.
  */
-function servcheck_show_tab($current_tab) {
+function servcheck_show_tab(string $current_tab): void {
 	global $config, $servcheck_tabs;
 
 	if (get_request_var('action') == 'history') {
@@ -82,7 +82,7 @@ function servcheck_show_tab($current_tab) {
  * @global bool $debug Set to true when servcheck-specific debug output
  *                     is enabled.
  */
-function servcheck_check_debug() {
+function servcheck_check_debug(): void {
 	global $debug;
 
 	if (!$debug) {
@@ -108,7 +108,7 @@ function servcheck_check_debug() {
  * @global bool $debug Whether debug output is enabled; when false, this
  *                     function is a no-op.
  */
-function servcheck_debug($message = '') {
+function servcheck_debug(string $message = ''): void {
 	global $debug;
 
 	if ($debug) {
@@ -134,7 +134,7 @@ function servcheck_debug($message = '') {
  *                               used to derive a unique chart element
  *                               id.
  */
-function servcheck_graph($id, $interval) {
+function servcheck_graph(int $id, int $interval): void {
 	global $config, $graph_interval;
 
 	$result = db_fetch_assoc_prepared('SELECT
@@ -150,6 +150,9 @@ function servcheck_graph($id, $interval) {
 	}
 
 	$xid = 'xx' . substr(md5($graph_interval[$interval]), 0, 7);
+
+	$last_check = [];
+	$duration   = [];
 
 	foreach ($result as $row) {
 		$last_check[]      = $row['last_check'];
@@ -226,7 +229,7 @@ function servcheck_graph($id, $interval) {
  *
  * @return string The hex-encoded string.
  */
-function servcheck_hide_text($string) {
+function servcheck_hide_text(string $string): string {
 	$output = '';
 
 	for ($f = 0; $f < strlen($string); $f++) {
@@ -245,11 +248,11 @@ function servcheck_hide_text($string) {
  *
  * @return string The original plain-text string.
  */
-function servcheck_show_text($string) {
+function servcheck_show_text(string $string): string {
 	$output = '';
 
 	for ($f = 0; $f < strlen($string); $f = $f + 2) {
-		$output .= chr(hexdec($string[$f] . $string[($f + 1)]));
+		$output .= chr((int) hexdec($string[$f] . $string[($f + 1)]));
 	}
 
 	return $output;
@@ -266,21 +269,21 @@ function servcheck_show_text($string) {
  *
  * @return string The base64-encoded IV + ciphertext.
  */
-function servcheck_encrypt_credential($cred) {
+function servcheck_encrypt_credential(array $cred): string {
 	$servcheck_key = read_user_setting('servcheck_key', null, true, 1);
 	$iv_length     = intval(openssl_cipher_iv_length(SERVCHECK_CIPHER));
 	$servcheck_iv  = openssl_random_pseudo_bytes($iv_length);
 
 	if (is_null($servcheck_key)) {
-		cacti_log('Creating new cipher key', 'servcheck');
+		cacti_log('Creating new cipher key', false, 'SERVCHECK');
 		$servcheck_key = hash('sha256', 'ksIBWE' . date('hisv'));
 
 		set_user_setting('servcheck_key', base64_encode($servcheck_key));
 	} else {
-		$servcheck_key = base64_decode($servcheck_key, true);
+		$servcheck_key = (string) base64_decode($servcheck_key, true);
 	}
 
-	$encrypted = openssl_encrypt(json_encode($cred), SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
+	$encrypted = openssl_encrypt((string) json_encode($cred), SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
 
 	return base64_encode($servcheck_iv . $encrypted);
 }
@@ -298,22 +301,22 @@ function servcheck_encrypt_credential($cred) {
  *                          the stored data is missing/malformed and
  *                          cannot be json_decode()'d.
  */
-function servcheck_decrypt_credential($cred_id) {
+function servcheck_decrypt_credential(int $cred_id) {
 	$servcheck_key = read_user_setting('servcheck_key', null, true, 1);
 
 	if (is_null($servcheck_key)) {
-		cacti_log('Cannot decrypt credential, key is missing', 'servcheck');
+		cacti_log('Cannot decrypt credential, key is missing', false, 'SERVCHECK');
 
 		return false;
 	} else {
-		$servcheck_key = base64_decode($servcheck_key, true);
+		$servcheck_key = (string) base64_decode($servcheck_key, true);
 	}
 
 	$encrypted = db_fetch_cell_prepared('SELECT data FROM plugin_servcheck_credential
 		WHERE id = ?',
 		[$cred_id]);
 
-	$encrypted = base64_decode($encrypted, true);
+	$encrypted = (string) base64_decode($encrypted, true);
 
 	$iv_length     = intval(openssl_cipher_iv_length(SERVCHECK_CIPHER));
 	$servcheck_iv  = substr($encrypted, 0, $iv_length);
@@ -321,7 +324,7 @@ function servcheck_decrypt_credential($cred_id) {
 
 	$decrypted = openssl_decrypt($encrypted, SERVCHECK_CIPHER, $servcheck_key, OPENSSL_RAW_DATA, $servcheck_iv);
 
-	return json_decode($decrypted, true);
+	return json_decode((string) $decrypted, true);
 }
 
 /**
@@ -334,10 +337,10 @@ function servcheck_decrypt_credential($cred_id) {
  * @global array $servcheck_states Map of test state codes to their
  *                                display labels/styling.
  */
-function servcheck_legend() {
+function servcheck_legend(): void {
 	global $servcheck_states;
 
-	html_start_box('', '100%', false, '3', 'center', '');
+	html_start_box('', '100%', false, 3, 'center', '');
 
 	print '<tr class="tableRow">';
 
@@ -363,7 +366,7 @@ function servcheck_legend() {
  *              window, false otherwise (including when no timezone is
  *              configured).
  */
-function servcheck_summer_time_changed() {
+function servcheck_summer_time_changed(): bool {
 	$hours = 8;
 
 	if (date_default_timezone_get() === '') {

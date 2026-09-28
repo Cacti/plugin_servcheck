@@ -24,6 +24,9 @@
 
 chdir('../../');
 require_once('./include/auth.php');
+
+global $config;
+
 require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
@@ -71,7 +74,7 @@ switch (get_request_var('action')) {
  *                                       display labels, used for the
  *                                       confirmation dialog title.
  */
-function form_actions() {
+function form_actions(): void {
 	global $servcheck_actions_menu;
 
 	// ================= input validation =================
@@ -100,6 +103,7 @@ function form_actions() {
 	// setup some variables
 	$item_list   = '';
 	$items_array = [];
+	$save_html   = '';
 
 	// loop through each of the graphs selected on the previous page and get more info about them
 	foreach ($_POST as $var => $val) {
@@ -117,7 +121,7 @@ function form_actions() {
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
-	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', '', '3', 'center', '');
+	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', false, 3, 'center', '');
 
 	if (cacti_sizeof($items_array) > 0) {
 		if (get_request_var('drp_action') == 1) {
@@ -139,7 +143,7 @@ function form_actions() {
 	print "<tr>
 		<td class='saveRow'>
 			<input type='hidden' name='action' value='actions'>
-			<input type='hidden' name='selected_items' value='" . (isset($items_array) ? serialize($items_array) : '') . "'>
+			<input type='hidden' name='selected_items' value='" . serialize($items_array) . "'>
 			<input type='hidden' name='drp_action' value='" . get_request_var('drp_action') . "'>
 			$save_html
 		</td>
@@ -162,7 +166,7 @@ function form_actions() {
  *              exit (after redirecting), and therefore never returns
  *              normally.
  */
-function form_save() {
+function form_save(): void {
 	if (isset_request_var('save_component')) {
 		$save['id']         = get_filter_request_var('id');
 		$save['name']       = form_input_validate(get_nfilter_request_var('name'), 'name', '', false, 3);
@@ -189,7 +193,7 @@ function form_save() {
 		}
 
 		if (is_error_message()) {
-			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false&action=edit&id=' . (empty($saved_id) ? get_nfilter_request_var('id') : $saved_id));
+			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false&action=edit&id=' . get_nfilter_request_var('id'));
 		} else {
 			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		}
@@ -208,7 +212,7 @@ function form_save() {
  *                                       definitions, filled in here with
  *                                       the proxy's current values.
  */
-function servcheck_data_edit() {
+function servcheck_data_edit(): void {
 	global $servcheck_proxy_fields;
 
 	// ================= input validation =================
@@ -223,14 +227,18 @@ function servcheck_data_edit() {
 			WHERE id = ?',
 			[get_request_var('id')]);
 
-		$header_label = __('Proxy [edit: %s]', $data['name']);
+		if (!is_array($data)) {
+			$data = [];
+		}
+
+		$header_label = __('Proxy [edit: %s]', $data['name'] ?? '');
 	} else {
 		$header_label = __('Proxy [new]');
 	}
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
-	html_start_box($header_label, '100%', true, '3', 'center', '');
+	html_start_box($header_label, '100%', true, 3, 'center', '');
 
 	draw_edit_form(
 		[
@@ -253,7 +261,7 @@ function servcheck_data_edit() {
  *
  * @return void
  */
-function request_validation() {
+function request_validation(): void {
 	$filters = [
 		'rows' => [
 			'filter'  => FILTER_VALIDATE_INT,
@@ -297,7 +305,7 @@ function request_validation() {
  *                                       display labels, used to populate
  *                                       the actions dropdown.
  */
-function data_list() {
+function data_list(): void {
 	global $servcheck_actions_menu;
 
 	request_validation();
@@ -359,7 +367,7 @@ function data_list() {
 
 	print $nav;
 
-	html_start_box('', '100%', '', '3', 'center', '');
+	html_start_box('', '100%', false, 3, 'center', '');
 
 	html_header_sort_checkbox($display_text, get_request_var('sort_column'), get_request_var('sort_direction'), false);
 
@@ -407,10 +415,10 @@ function data_list() {
  * @global array $item_rows Rows-per-page options offered by Cacti core,
  *                          used to populate the 'rows' select list.
  */
-function servcheck_filter() {
+function servcheck_filter(): void {
 	global $item_rows;
 
-	html_start_box(__('Servcheck Proxy Management', 'servcheck') , '100%', '', '3', 'center', htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=edit');
+	html_start_box(__('Servcheck Proxy Management', 'servcheck') , '100%', false, 3, 'center', htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=edit');
 
 	?>
 	<tr class='even'>

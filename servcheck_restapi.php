@@ -24,6 +24,9 @@
 
 chdir('../../');
 require_once('./include/auth.php');
+
+global $config;
+
 require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
@@ -76,13 +79,14 @@ exit;
  *                                          for the confirmation dialog
  *                                          title.
  */
-function form_actions() {
+function form_actions(): void {
 	global $servcheck_actions_restapi;
 
 	// if we are to save this form, instead of display it
 	if (isset_request_var('selected_items')) {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
 		$action         = get_nfilter_request_var('drp_action');
+		$restapis       = [];
 
 		if ($selected_items != false) {
 			if (cacti_sizeof($selected_items)) {
@@ -102,6 +106,11 @@ function form_actions() {
 
 					foreach ($restapis as $id) {
 						$save                 = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_restapi_method WHERE id = ?', [$id]);
+
+						if (!is_array($save)) {
+							continue;
+						}
+
 						$save['id']           = 0;
 						$save['name']         = 'New Rest API (' . $newid . ')';
 						$save['type']         = 'basic';
@@ -128,6 +137,7 @@ function form_actions() {
 	// setup some variables
 	$restapi_list  = '';
 	$restapi_array = [];
+	$save_html     = '';
 
 	// loop through each of the restapis selected on the previous page and get more info about them
 	foreach ($_POST as $var => $val) {
@@ -145,7 +155,7 @@ function form_actions() {
 
 	form_start('servcheck_restapi.php');
 
-	html_start_box($servcheck_actions_restapi[get_nfilter_request_var('drp_action')], '60%', '', '3', 'center', '');
+	html_start_box($servcheck_actions_restapi[get_nfilter_request_var('drp_action')], '60%', false, 3, 'center', '');
 
 	$action = get_nfilter_request_var('drp_action');
 
@@ -178,7 +188,7 @@ function form_actions() {
 	print "<tr>
 		<td class='saveRow'>
 			<input type='hidden' name='action' value='actions'>
-			<input type='hidden' name='selected_items' value='" . (isset($restapi_array) ? serialize($restapi_array) : '') . "'>
+			<input type='hidden' name='selected_items' value='" . serialize($restapi_array) . "'>
 			<input type='hidden' name='drp_action' value='" . get_nfilter_request_var('drp_action') . "'>
 			$save_html
 		</td>
@@ -209,8 +219,8 @@ function form_actions() {
  *                                     to validate the submitted
  *                                     'format'.
  */
-function form_save() {
-	global $rest_api_auth_method, $rest_api_format;
+function form_save(): void {
+	global $rest_api_auth_method, $rest_api_format, $rest_api_apikey_option;
 
 	// ================= input validation =================
 	get_filter_request_var('id');
@@ -303,7 +313,7 @@ function form_save() {
  *                                        method's current (unmasked)
  *                                        values.
  */
-function servcheck_edit_rest() {
+function servcheck_edit_rest(): void {
 	global $servcheck_restapi_fields;
 
 	// ================= input validation =================
@@ -314,7 +324,12 @@ function servcheck_edit_rest() {
 
 	if (!isempty_request_var('id')) {
 		$restapi      = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_restapi_method WHERE id = ?', [get_request_var('id')], false);
-		$header_label = __('Query [edit: %s]', $restapi['name'], 'servcheck');
+
+		if (!is_array($restapi)) {
+			$restapi = [];
+		}
+
+		$header_label = __('Query [edit: %s]', $restapi['name'] ?? '', 'servcheck');
 	} else {
 		$header_label = __('Query [new]', 'servcheck');
 	}
@@ -332,7 +347,7 @@ function servcheck_edit_rest() {
 	}
 
 	form_start('servcheck_restapi.php');
-	html_start_box($header_label, '100%', '', '3', 'center', '');
+	html_start_box($header_label, '100%', false, 3, 'center', '');
 
 	draw_edit_form(
 		[
@@ -423,7 +438,7 @@ function servcheck_edit_rest() {
  *
  * @return void
  */
-function servcheck_request_validation() {
+function servcheck_request_validation(): void {
 	// ================= input validation and session storage =================
 	$filters = [
 		'rows' => [
@@ -477,7 +492,7 @@ function servcheck_request_validation() {
  *                                          labels, used for the method-
  *                                          type filter/display.
  */
-function list_restapis() {
+function list_restapis(): void {
 	global $servcheck_actions_restapi, $config, $rest_api_auth_method;
 
 	servcheck_request_validation();
@@ -548,7 +563,7 @@ function list_restapis() {
 
 	print $nav;
 
-	html_start_box('', '100%', '', '4', 'center', '');
+	html_start_box('', '100%', false, 4, 'center', '');
 
 	html_header_sort_checkbox($display_text, get_request_var('sort_column'), get_request_var('sort_direction'), false);
 
@@ -609,7 +624,7 @@ function list_restapis() {
  *                                     to their display labels, used to
  *                                     populate the method-type filter.
  */
-function servcheck_restapi_filter() {
+function servcheck_restapi_filter(): void {
 	global $item_rows, $rest_api_auth_method;
 
 	?>
@@ -648,7 +663,7 @@ function servcheck_restapi_filter() {
 	</script>
 	<?php
 
-	html_start_box(__('Rest API', 'servcheck') , '100%', '', '3', 'center', 'servcheck_restapi.php?action=edit');
+	html_start_box(__('Rest API', 'servcheck') , '100%', false, 3, 'center', 'servcheck_restapi.php?action=edit');
 
 	?>
 	<tr class='even noprint'>

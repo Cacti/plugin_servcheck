@@ -22,6 +22,8 @@
  +-------------------------------------------------------------------------+
 */
 
+global $config;
+
 $ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 
 /**
@@ -51,7 +53,7 @@ $ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
  *                                     type, used when the test's
  *                                     hostname doesn't specify one.
  */
-function ftp_try($test) {
+function ftp_try(array $test): array {
 	global $user_agent, $config, $ca_info, $service_types_ports;
 
 	// default result
@@ -107,11 +109,11 @@ function ftp_try($test) {
 	}
 
 	if ($service == 'ftp' || $service == 'scp') {
-		if ($cred['type'] == 'userpass') {
+		if (($cred['type'] ?? '') == 'userpass') {
 			// curl needs username with %40 instead of @
-			$final_cred  = str_replace('@', '%40', $credential['username']);
+			$final_cred  = str_replace('@', '%40', $credential['username'] ?? '');
 			$final_cred .= ':';
-			$final_cred .= str_replace('@', '%40', $credential['password']);
+			$final_cred .= str_replace('@', '%40', $credential['password'] ?? '');
 			$final_cred .= '@';
 		} else {
 			servcheck_debug('Incorrect credential type, use user/pass');
@@ -155,7 +157,7 @@ function ftp_try($test) {
 	// Disable Cert checking for now
 	if ($test['checkcert'] == '') {
 		$options[CURLOPT_SSL_VERIFYPEER] = false;
-		$options[CURLOPT_SSL_VERIFYHOST] = false;
+		$options[CURLOPT_SSL_VERIFYHOST] = 0;
 	} else { // for sure, it seems that it isn't enabled by default now
 		$options[CURLOPT_SSL_VERIFYPEER] = true;
 		$options[CURLOPT_SSL_VERIFYHOST] = 2;
@@ -172,7 +174,7 @@ function ftp_try($test) {
 	servcheck_debug('Executing curl request');
 
 	$data            = curl_exec($process);
-	$data            = str_replace(["'", '\\'], [''], $data);
+	$data            = str_replace(["'", '\\'], [''], (string) $data);
 	$results['data'] = $data;
 
 	// Get information regarding a specific transfer, cert info too
@@ -198,7 +200,7 @@ function ftp_try($test) {
 
 	curl_close($process);
 
-	if (empty($results['data']) && $results['curl_return'] > 0) {
+	if (empty($results['data'])) {
 		$results['result'] = 'error';
 		$results['error']  = 'No data returned';
 

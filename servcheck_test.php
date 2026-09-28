@@ -24,6 +24,9 @@
 
 chdir('../../');
 require_once('./include/auth.php');
+
+global $config;
+
 require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
@@ -66,8 +69,6 @@ switch (get_request_var('action')) {
 
 		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
-
-		break;
 	case 'disable':
 		$id = get_filter_request_var('id');
 
@@ -79,8 +80,6 @@ switch (get_request_var('action')) {
 
 		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
-
-		break;
 	case 'purge':
 		$id = get_filter_request_var('id');
 
@@ -90,8 +89,6 @@ switch (get_request_var('action')) {
 
 		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
-
-		break;
 	case 'history':
 		top_header();
 		servcheck_show_history();
@@ -133,7 +130,7 @@ switch (get_request_var('action')) {
  *                                       display labels, used for the
  *                                       confirmation dialog title.
  */
-function form_actions() {
+function form_actions(): void {
 	global $servcheck_actions_menu;
 
 	// ================= input validation =================
@@ -166,6 +163,10 @@ function form_actions() {
 				foreach ($selected_items as $item) {
 					$save = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_test
 						WHERE id = ?', [$item]);
+
+					if (!is_array($save)) {
+						continue;
+					}
 
 					$save['id']           = 0;
 					$save['name']         = 'New Service Check (' . $newid . ')';
@@ -200,6 +201,7 @@ function form_actions() {
 	// setup some variables
 	$item_list   = '';
 	$items_array = [];
+	$save_html   = '';
 
 	// loop through each of the graphs selected on the previous page and get more info about them
 	foreach ($_POST as $var => $val) {
@@ -217,7 +219,7 @@ function form_actions() {
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
-	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', '', '3', 'center', '');
+	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', false, 3, 'center', '');
 
 	if (cacti_sizeof($items_array) > 0) {
 		if (get_filter_request_var('drp_action') == 1) { // delete
@@ -284,7 +286,7 @@ function form_actions() {
 	print "<tr>
 		<td class='saveRow'>
 			<input type='hidden' name='action' value='actions'>
-			<input type='hidden' name='selected_items' value='" . (isset($items_array) ? serialize($items_array) : '') . "'>
+			<input type='hidden' name='selected_items' value='" . serialize($items_array) . "'>
 			<input type='hidden' name='drp_action' value='" . get_request_var('drp_action') . "'>
 			$save_html
 		</td>
@@ -309,7 +311,7 @@ function form_actions() {
  * @global array $service_types Valid service/test type keys, used to
  *                              validate the submitted test type.
  */
-function form_save() {
+function form_save(): void {
 	global $service_types;
 
 	if (isset_request_var('save_component')) {
@@ -324,6 +326,9 @@ function form_save() {
 		$save['how_often']      = get_filter_request_var('how_often');
 
 		$save['external_id']    = get_nfilter_request_var('external_id');
+
+		$category = '';
+		$service  = '';
 
 		if (isset_request_var('type') && array_key_exists(get_nfilter_request_var('type'), $service_types)) {
 			$save['type']         = get_nfilter_request_var('type');
@@ -483,7 +488,7 @@ function form_save() {
 		}
 
 		if (is_error_message()) {
-			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false&action=edit&id=' . (empty($saved_id) ? get_nfilter_request_var('id') : $saved_id));
+			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false&action=edit&id=' . get_nfilter_request_var('id'));
 		} else {
 			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		}
@@ -501,7 +506,7 @@ function form_save() {
  *
  * @return void
  */
-function purge_log_events($id) {
+function purge_log_events(int $id): void {
 	$name = db_fetch_cell_prepared('SELECT name
 		FROM plugin_servcheck_test
 		WHERE id = ?',
@@ -530,7 +535,7 @@ function purge_log_events($id) {
  * @global array $servcheck_help_test   Per-field help text shown on the
  *                                     edit form.
  */
-function servcheck_data_edit() {
+function servcheck_data_edit(): void {
 	global $servcheck_test_fields, $service_types, $servcheck_help_test;
 
 	// ================= input validation =================
@@ -545,7 +550,11 @@ function servcheck_data_edit() {
 			WHERE id = ?',
 			[get_request_var('id')]);
 
-		$header_label = __('Test [edit: %s]', $data['name']);
+		if (!is_array($data)) {
+			$data = [];
+		}
+
+		$header_label = __('Test [edit: %s]', $data['name'] ?? '');
 	} else {
 		$header_label = __('Test [new]');
 	}
@@ -556,7 +565,7 @@ function servcheck_data_edit() {
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
-	html_start_box($header_label, '100%', true, '3', 'center', '');
+	html_start_box($header_label, '100%', true, 3, 'center', '');
 
 	draw_edit_form(
 		[
@@ -798,7 +807,7 @@ function servcheck_data_edit() {
  *
  * @return void
  */
-function request_validation() {
+function request_validation(): void {
 	$filters = [
 		'rows' => [
 			'filter'  => FILTER_VALIDATE_INT,
@@ -848,7 +857,7 @@ function request_validation() {
  *
  * @return void
  */
-function servcheck_log_request_validation() {
+function servcheck_log_request_validation(): void {
 	$filters = [
 		'id' => [
 			'filter'  => FILTER_VALIDATE_INT,
@@ -903,7 +912,7 @@ function servcheck_log_request_validation() {
  * @global array $servcheck_states    Map of test state codes to their
  *                                    display labels/styling.
  */
-function servcheck_show_history() {
+function servcheck_show_history(): void {
 	global $config, $httperrors, $text_result, $text_result_search, $servcheck_states;
 
 	servcheck_log_request_validation();
@@ -1003,7 +1012,7 @@ function servcheck_show_history() {
 
 	print $nav;
 
-	html_start_box('', '100%', '', '3', 'center', '');
+	html_start_box('', '100%', false, 3, 'center', '');
 
 	html_header_sort($display_text, get_request_var('sort_column'), get_request_var('sort_direction'));
 
@@ -1067,15 +1076,15 @@ function servcheck_show_history() {
  * to plot. Invoked from this file's dispatcher when the request's
  * 'action' is 'graph'.
  *
- * @return bool|null True (with a message printed) if there isn't
- *                   enough log data yet to graph; otherwise outputs
- *                   the graphs directly and returns nothing.
+ * @return void Prints an informational message when there isn't enough
+ *              log data yet to graph; otherwise outputs the graphs
+ *              directly.
  *
  * @global array $graph_interval The configured graph time intervals to
  *                               render (e.g. daily/weekly/monthly),
  *                               keyed by interval identifier.
  */
-function servcheck_show_graph() {
+function servcheck_show_graph(): void {
 	global $graph_interval;
 
 	servcheck_show_tab(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
@@ -1089,7 +1098,7 @@ function servcheck_show_graph() {
 	if ($count < 5) {
 		print __('Insufficient data, wait a few poller cycles');
 
-		return true;
+		return;
 	}
 
 	$result = db_fetch_row_prepared('SELECT name
@@ -1097,7 +1106,11 @@ function servcheck_show_graph() {
 		WHERE id = ?',
 		[$id]);
 
-	print '<b>' . html_escape($result['name']) . ':</b><br/>';
+	if (!is_array($result)) {
+		$result = [];
+	}
+
+	print '<b>' . html_escape($result['name'] ?? '') . ':</b><br/>';
 
 	foreach ($graph_interval as $key => $value) {
 		print '<b>' . ($value) . ':</b>';
@@ -1126,7 +1139,7 @@ function servcheck_show_graph() {
  * @global array $servcheck_states     Map of test state codes to their
  *                                     display labels/styling.
  */
-function data_list() {
+function data_list(): void {
 	global $config, $servcheck_actions_menu, $refresh, $text_result_search, $servcheck_states;
 
 	request_validation();
@@ -1254,7 +1267,7 @@ function data_list() {
 
 	print $nav;
 
-	html_start_box('', '100%', '', '3', 'center', '');
+	html_start_box('', '100%', false, 3, 'center', '');
 
 	html_header_sort_checkbox($display_text, get_request_var('sort_column'), get_request_var('sort_direction'), false);
 
@@ -1364,7 +1377,7 @@ function data_list() {
  *
  * @return void Outputs the last-returned-data HTML directly.
  */
-function servcheck_show_last_data() {
+function servcheck_show_last_data(): void {
 	servcheck_show_tab(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
 	$result = db_fetch_row_prepared('SELECT name, last_returned_data
@@ -1372,8 +1385,12 @@ function servcheck_show_last_data() {
 		WHERE id = ?',
 		[get_filter_request_var('id')]);
 
-	print '<b>' . __('Last returned data of test', 'servcheck') . ' ' . html_escape($result['name']) . ':</b><br/>';
-	print '<pre class="servcheck_pre">' . html_escape($result['last_returned_data']) . '</pre>';
+	if (!is_array($result)) {
+		$result = [];
+	}
+
+	print '<b>' . __('Last returned data of test', 'servcheck') . ' ' . html_escape($result['name'] ?? '') . ':</b><br/>';
+	print '<pre class="servcheck_pre">' . html_escape($result['last_returned_data'] ?? '') . '</pre>';
 }
 
 /**
@@ -1391,7 +1408,7 @@ function servcheck_show_last_data() {
  *                                     => display label, used to
  *                                     populate the refresh selector.
  */
-function servcheck_filter() {
+function servcheck_filter(): void {
 	global $item_rows, $page_refresh_interval;
 
 	$refresh['page']    = 'servcheck_test.php?header=false';
@@ -1403,7 +1420,7 @@ function servcheck_filter() {
 	// When a row is selected, set the background-color as black and font color as white and when hovering over a row, the background is light grey
 	// servcheck_print_selectable_row_css();
 
-	html_start_box(__('Servcheck Test Management', 'servcheck') , '100%', '', '3', 'center', htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=edit');
+	html_start_box(__('Servcheck Test Management', 'servcheck') , '100%', false, 3, 'center', htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=edit');
 	?>
 
 	<tr class='even'>
@@ -1527,10 +1544,10 @@ function servcheck_filter() {
  * @global array $item_rows Rows-per-page options offered by Cacti core,
  *                          used to populate the 'rows' select list.
  */
-function servcheck_log_filter() {
+function servcheck_log_filter(): void {
 	global $item_rows;
 
-	html_start_box(__('Service Check History', 'servcheck') , '100%', '', '3', 'center', '');
+	html_start_box(__('Service Check History', 'servcheck') , '100%', false, 3, 'center', '');
 
 	?>
 	<tr class='even noprint'>

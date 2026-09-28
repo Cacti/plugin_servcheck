@@ -4,6 +4,7 @@
 
 * security: Sanitize and bind the filter search on the CA, proxy and credential pages
 * security: Require a CSRF token on the enable, disable and purge GET actions
+* dev: Bring the plugin to PHPStan level 8 with native return/parameter type declarations and fix the bugs it uncovered (duplicate credential-load block and undefined variables in the MQTT test, a credential lookup checking the wrong variable in the cURL/SSH/REST tests, an SSH private-key cleanup that never ran, a wrong variable in the poller warning, missing globals, dead bulk-action confirmation variables on the credential page, a mistyped credential key and duplicate form-field keys, and several unguarded database-row and certificate accesses)
 
 --- 0.4 ---
 

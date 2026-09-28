@@ -22,6 +22,8 @@
  +-------------------------------------------------------------------------+
 */
 
+global $config;
+
 $ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 
 /**
@@ -49,7 +51,7 @@ $ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
  *                                     type, used when the test's
  *                                     hostname doesn't specify one.
  */
-function mail_try($test) {
+function mail_try(array $test): array {
 	global $config, $ca_info, $service_types_ports;
 
 	$final_cred = '';
@@ -197,7 +199,7 @@ function mail_try($test) {
 				$con_params = stream_context_get_params($fp);
 				$certinfo   = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
 
-				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
+				$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
 			}
 
 			$data .= read_response($fp); // welcome banner
@@ -208,9 +210,9 @@ function mail_try($test) {
 				$data .= read_response($fp);
 				send($fp, 'AUTH LOGIN');
 				$data .= read_response($fp);
-				send($fp, base64_encode($credential['username']));
+				send($fp, base64_encode(($credential['username'] ?? '')));
 				$data .= read_response($fp);
-				send($fp, base64_encode($credential['password']));
+				send($fp, base64_encode(($credential['password'] ?? '')));
 				$data .= read_response($fp); // message after login
 
 				servcheck_debug('All data returned: ' . $data);
@@ -271,7 +273,7 @@ function mail_try($test) {
 				servcheck_debug('Gathering certificate information');
 				$context                  = stream_context_get_options($fp);
 				$certinfo                 = openssl_x509_parse($context['ssl']['peer_certificate']);
-				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
+				$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
 			}
 
 			// we need ehlo again
@@ -282,10 +284,10 @@ function mail_try($test) {
 				send($fp, 'AUTH LOGIN');
 				$data .= read_response($fp);
 
-				send($fp, base64_encode($credential['username']));
+				send($fp, base64_encode(($credential['username'] ?? '')));
 				$data .= read_response($fp);
 
-				send($fp, base64_encode($credential['password']));
+				send($fp, base64_encode(($credential['password'] ?? '')));
 				$data .= read_response($fp);
 
 				servcheck_debug('Data returned after EHLO: ' . $data);
@@ -326,7 +328,7 @@ function mail_try($test) {
 				servcheck_debug('Gathering certificate information');
 				$con_params               = stream_context_get_params($fp);
 				$certinfo                 = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
-				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
+				$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
 			}
 
 			$data .= fgets($fp); // welcome banner
@@ -348,7 +350,7 @@ function mail_try($test) {
 					servcheck_debug('Gathering certificate information');
 					$context                  = stream_context_get_options($fp);
 					$certinfo                 = openssl_x509_parse($context['ssl']['peer_certificate']);
-					$results['cert_valid_to'] = $certinfo['validTo_time_t'];
+					$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
 				}
 			}
 
@@ -357,15 +359,15 @@ function mail_try($test) {
 					servcheck_debug('Trying to authenticate - method=plain');
 					send($fp, 'A010 AUTHENTICATE PLAIN');
 					$data .= read_response_imap($fp, 'A010');
-					send($fp, base64_encode("\0" . $credential['username'] . "\0" . $credential['password']));
+					send($fp, base64_encode("\0" . ($credential['username'] ?? '') . "\0" . ($credential['password'] ?? '')));
 					$data .= read_response_imap($fp);
 				} elseif (stripos($data, 'auth=login') !== false) {
 					servcheck_debug('Trying to authenticate - method=login');
 					send($fp, 'A010 AUTHENTICATE LOGIN');
 					$data .= read_response_imap($fp, 'A010');
-					send($fp, base64_encode($credential['username']));
+					send($fp, base64_encode(($credential['username'] ?? '')));
 					$data .= read_response_imap($fp);
-					send($fp, base64_encode($credential['password']));
+					send($fp, base64_encode(($credential['password'] ?? '')));
 					$data .= read_response_imap($fp);
 				}
 
@@ -409,7 +411,7 @@ function mail_try($test) {
 				servcheck_debug('Gathering certificate information');
 				$con_params               = stream_context_get_params($fp);
 				$certinfo                 = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
-				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
+				$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
 			}
 
 			if ($service == 'pop3tls') {
@@ -429,15 +431,15 @@ function mail_try($test) {
 					servcheck_debug('Gathering certificate information');
 					$context                  = stream_context_get_options($fp);
 					$certinfo                 = openssl_x509_parse($context['ssl']['peer_certificate']);
-					$results['cert_valid_to'] = $certinfo['validTo_time_t'];
+					$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
 				}
 			}
 
 			if ($test['cred_id'] > 0) {
 				servcheck_debug('Trying to authenticate');
-				send($fp, 'USER ' . $credential['username']);
+				send($fp, 'USER ' . ($credential['username'] ?? ''));
 				$data .= fgets($fp);
-				send($fp, 'PASS ' . $credential['password']);
+				send($fp, 'PASS ' . ($credential['password'] ?? ''));
 				$data .= fgets($fp);
 
 				servcheck_debug('Reading number of messages');
@@ -454,8 +456,6 @@ function mail_try($test) {
 			$results['error']  = 'Incorrect test type';
 
 			return $results;
-
-			break;
 	}
 
 	$data = str_replace(["'", '\\'], [''], $data);
@@ -464,7 +464,7 @@ function mail_try($test) {
 
 	servcheck_debug('Result: ' . clean_up_lines(var_export($data, true)));
 
-	if ($test['ca_id'] > 0) {
+	if (isset($own_ca_info)) {
 		unlink($own_ca_info);
 		servcheck_debug('Removing own CA file');
 	}
@@ -531,7 +531,7 @@ function mail_try($test) {
  *
  * @return void
  */
-function send($fp, $cmd) {
+function send($fp, string $cmd): void {
 	fwrite($fp, $cmd . "\r\n");
 }
 
@@ -546,7 +546,7 @@ function send($fp, $cmd) {
  *
  * @return string The accumulated response text.
  */
-function read_response($fp) {
+function read_response($fp): string {
 	$response = '';
 
 	while ($line = fgets($fp)) {
@@ -575,7 +575,7 @@ function read_response($fp) {
  *
  * @return string The accumulated response text.
  */
-function read_response_imap($fp, $tag = 'A001') {
+function read_response_imap($fp, string $tag = 'A001'): string {
 	$response = '';
 	stream_set_timeout($fp, 2);
 

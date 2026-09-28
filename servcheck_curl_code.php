@@ -24,6 +24,9 @@
 
 chdir('../../');
 require_once('./include/auth.php');
+
+global $config, $curl_error;
+
 require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
@@ -32,8 +35,9 @@ top_header();
 servcheck_show_tab('servcheck_curl_code.php');
 
 $findcode = get_filter_request_var('findcode');
+$columns  = 3;
 
-html_start_box('', '100%', '', '3', 'center', '');
+html_start_box('', '100%', false, 3, 'center', '');
 
 if (cacti_sizeof($curl_error)) {
 	foreach ($curl_error as $id=>$code) {

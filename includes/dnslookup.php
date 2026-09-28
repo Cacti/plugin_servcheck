@@ -23,8 +23,11 @@
 */
 
 class dnslookup {
+	/** @var string */
 	private $dns_reply = '';
+	/** @var int */
 	private $cIx       = 0;
+	/** @var array<string, array<int, string>> */
 	private $results   = [];
 
 	/**
@@ -35,7 +38,7 @@ class dnslookup {
 	 *
 	 * @param string $domain  The domain name to look up.
 	 * @param string $dns     The DNS server IP address to query; defaults
-	 *                       to '8.8.8.8'.
+	 *                        to '8.8.8.8'.
 	 * @param int    $timeout The socket timeout in seconds; defaults to 5.
 	 *
 	 * @return void
@@ -81,15 +84,15 @@ class dnslookup {
 	 *
 	 * @param string $domain  The domain name to query.
 	 * @param int    $qtype   The DNS query type code (1 for A, 28 for
-	 *                       AAAA).
+	 *                        AAAA).
 	 * @param string $dns     The DNS server IP address to query.
 	 * @param int    $timeout The socket timeout in seconds.
 	 * @param string $type    A label for this query type ('A' or 'AAAA'),
-	 *                       used to key the results array.
+	 *                        used to key the results array.
 	 *
-	 * @return false|null False if the UDP socket could not be opened;
-	 *                    otherwise no return value (results are stored on
-	 *                    the instance).
+	 * @return void False if the UDP socket could not be opened (an early
+	 *              return); otherwise no return value (results are stored
+	 *              on the instance).
 	 */
 	private function dns_query($domain, $qtype, $dns, $timeout, $type) {
 		$header = chr(0x12) . chr(0x34) . chr(0x01) . chr(0x00) . chr(0x00) . chr(0x01) .
@@ -101,12 +104,12 @@ class dnslookup {
 		$socket = @fsockopen("udp://$dns", 53, $errno, $errstr, $timeout);
 
 		if (!$socket) {
-			return false;
+			return;
 		}
 
 		fwrite($socket, $packet);
 		stream_set_timeout($socket, $timeout);
-		$this->dns_reply = fread($socket, 512);
+		$this->dns_reply = (string) fread($socket, 512);
 		fclose($socket);
 
 		$len = strlen($this->dns_reply);
@@ -145,8 +148,8 @@ class dnslookup {
 	 * Called from dns_query() after receiving a reply.
 	 *
 	 * @param string $type_name The record type label ('A' or 'AAAA') this
-	 *                         reply corresponds to, used as the results
-	 *                         key.
+	 *                          reply corresponds to, used as the results
+	 *                          key.
 	 * @param int    $reply_len The length of the raw DNS reply buffer.
 	 *
 	 * @return void

@@ -40,7 +40,7 @@
  * @global array $service_types Valid service/test type keys (declared
  *                              but not directly used here).
  */
-function snmp_try($test) {
+function snmp_try(array $test): array {
 	global $config, $service_types;
 
 	include_once($config['base_path'] . '/lib/snmp.php');
@@ -97,7 +97,7 @@ function snmp_try($test) {
 		$port = substr($test['hostname'], strpos($test['hostname'], ':') + 1);
 	}
 
-	if ($cred['type'] == 'snmp3') {
+	if (($cred['type'] ?? '') == 'snmp3') {
 		$version                 = 3;
 		$credential['community'] = '';
 	} else {

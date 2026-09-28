@@ -53,6 +53,7 @@ require_once('./include/cli_check.php');
 
 global $config;
 
+require_once($config['base_path'] . '/lib/poller.php');
 require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 

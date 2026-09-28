@@ -532,6 +532,10 @@ function plugin_servcheck_poller_bottom(): void {
 
 	require_once($config['library_path'] . '/database.php');
 
+	if (!function_exists('exec_background')) {
+		include_once($config['library_path'] . '/poller.php');
+	}
+
 	$command_string = trim(read_config_option('path_php_binary'));
 
 	// If its not set, just assume its in the path
@@ -708,6 +712,12 @@ function plugin_servcheck_draw_navigation_text($nav): array {
  * @return array The $data array, unmodified, returned for hook chaining.
  */
 function servcheck_replicate_out($data): array {
+	global $config;
+
+	if (!function_exists('replicate_out_table')) {
+		include_once($config['library_path'] . '/poller.php');
+	}
+
 	$remote_poller_id = $data['remote_poller_id'];
 	$rcnn_id          = $data['rcnn_id'];
 	$class            = $data['class'];

@@ -1,0 +1,57 @@
+/*
+ +-------------------------------------------------------------------------+
+ | Copyright (C) 2004-2026 The Cacti Group                                 |
+ |                                                                         |
+ | This program is free software; you can redistribute it and/or           |
+ | modify it under the terms of the GNU General Public License             |
+ | as published by the Free Software Foundation; either version 2          |
+ | of the License, or (at your option) any later version.                  |
+ |                                                                         |
+ | This program is distributed in the hope that it will be useful,         |
+ | but WITHOUT ANY WARRANTY; without even the implied warranty of          |
+ | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           |
+ | GNU General Public License for more details.                            |
+ +-------------------------------------------------------------------------+
+ | Cacti: The Complete RRDtool-based Graphing Solution                     |
+ +-------------------------------------------------------------------------+
+ | This code is designed, written, and maintained by the Cacti Group. See  |
+ | about.php and/or the AUTHORS file for specific developer information.   |
+ +-------------------------------------------------------------------------+
+ | http://www.cacti.net/                                                   |
+ +-------------------------------------------------------------------------+
+*/
+
+/*
+ * Midwinter is a cool, dark theme. Severity is applied as a translucent tint
+ * over the dark background with light text so results stay readable while
+ * signalling severity.
+ */
+.servcheck_error {
+	background-color: rgba(240, 60, 70, 0.42);
+	color: #ffffff;
+}
+
+.servcheck_warning {
+	background-color: rgba(255, 140, 60, 0.38);
+	color: #ffffff;
+}
+
+.servcheck_failing {
+	background-color: rgba(240, 225, 120, 0.30);
+	color: #ffffff;
+}
+
+.servcheck_duration {
+	background-color: rgba(90, 190, 225, 0.34);
+	color: #ffffff;
+}
+
+.servcheck_ok {
+	background-color: rgba(40, 190, 100, 0.36);
+	color: #ffffff;
+}
+
+.servcheck_disabled {
+	background-color: rgba(150, 160, 175, 0.28);
+	color: #e6e6e6;
+}

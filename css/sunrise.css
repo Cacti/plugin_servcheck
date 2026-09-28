@@ -21,32 +21,36 @@
  +-------------------------------------------------------------------------+
 */
 
+/*
+ * Sunrise is a warm light theme, so the severity colours use warm tinted
+ * pastels with dark text for strong contrast and clear severity signalling.
+ */
 .servcheck_error {
-	color: #000000;
-	background-color: #880000;
-}
-
-.servcheck_duration {
-	color: #000000;
-	background-color: #aa0000;
+	background-color: rgba(226, 58, 46, 0.55);
+	color: #3a0806;
 }
 
 .servcheck_warning {
-	color: #000000;
-	background-color: #555555;
+	background-color: rgba(247, 148, 42, 0.60);
+	color: #422600;
 }
 
 .servcheck_failing {
-	color: #FFFFFF;
-	background-color: #000055;
+	background-color: rgba(250, 226, 120, 0.75);
+	color: #40380a;
+}
+
+.servcheck_duration {
+	background-color: rgba(96, 190, 214, 0.55);
+	color: #073540;
 }
 
 .servcheck_ok {
-	color: #FFFFFF;
-	background-color: #000000;
+	background-color: rgba(72, 176, 92, 0.55);
+	color: #123f16;
 }
 
 .servcheck_disabled {
-	color: #000000;
-	background-color: #333333;
+	background-color: rgba(196, 182, 168, 0.55);
+	color: #34291d;
 }

@@ -364,7 +364,7 @@ function servcheck_edit_rest(): void {
 
 	form_end();
 	?>
-	<script type='text/javascript'>
+	<script type='text/javascript' <?php print plugin_servcheck_csp_nonce(); ?>>
 
 	$(function() {
 
@@ -590,7 +590,7 @@ function list_restapis(): void {
 	print '<b><font color="red">Rest API was moved to tests. Authhorization data was moved to Credential tab. This is read-only and will be removed in version 0.5</font></b>';
 
 	?>
-	<script type='text/javascript'>
+	<script type='text/javascript' <?php print plugin_servcheck_csp_nonce(); ?>>
 	$(function() {
 		$('#servcheck2_child').find('.cactiTooltipHint').each(function() {
 			var title = $(this).attr('title');
@@ -628,7 +628,7 @@ function servcheck_restapi_filter(): void {
 	global $item_rows, $rest_api_auth_method;
 
 	?>
-	<script type='text/javascript'>
+	<script type='text/javascript' <?php print plugin_servcheck_csp_nonce(); ?>>
 	function applyFilter() {
 		strURL  = 'servcheck_restapi.php?header=false';
 		strURL += '&rfilter=' + base64_encode($('#rfilter').val());

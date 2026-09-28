@@ -551,7 +551,7 @@ function servcheck_data_edit(): void {
 	form_save_button(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
 	?>
-	<script type='text/javascript'>
+	<script type='text/javascript' <?php print plugin_servcheck_csp_nonce(); ?>>
 
 	<?php
 	print 'if (typeof servcheck_help === "undefined") {' . PHP_EOL;
@@ -968,7 +968,7 @@ function servcheck_filter(): void {
 				</tr>
 			</table>
 		</form>
-		<script type='text/javascript'>
+		<script type='text/javascript' <?php print plugin_servcheck_csp_nonce(); ?>>
 
 		function applyFilter() {
 			strURL  = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF'])); ?>?header=false';

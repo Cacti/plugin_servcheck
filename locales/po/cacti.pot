@@ -2069,7 +2069,7 @@ msgstr ""
 msgid "Purge Events"
 msgstr ""
 
-#: setup.php:42
+#: setup.php:58
 msgid "Service Check Admin"
 msgstr ""
 

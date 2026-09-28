@@ -209,7 +209,7 @@ function servcheck_graph(int $id, int $interval): void {
 	$chart_data = json_encode($chart);
 
 	$content  = '<div id="line_' . $xid . '"></div>';
-	$content .= '<script type="text/javascript">';
+	$content .= '<script type="text/javascript" ' . plugin_servcheck_csp_nonce() . '>';
 	$content .= 'line_' . $xid . ' = bb.generate(' . $chart_data . ');';
 	$content .= '</script>';
 

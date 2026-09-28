@@ -22,10 +22,6 @@
  +-------------------------------------------------------------------------+
 */
 
-global $config;
-
-$ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
-
 /**
  * Runs a mail-protocol (SMTP/IMAP/POP3) service check test: connects to
  * the target mail server via a raw socket, authenticates using the
@@ -43,16 +39,12 @@ $ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
  * @global array  $config              Cacti global configuration array;
  *                                     used to build a per-test CA file
  *                                     path.
- * @global string $ca_info              Path to the bundled CA
- *                                     certificate file; used to open
- *                                     and write the per-test CA chain
- *                                     file.
  * @global array  $service_types_ports Default port numbers per service
  *                                     type, used when the test's
  *                                     hostname doesn't specify one.
  */
 function mail_try(array $test): array {
-	global $config, $ca_info, $service_types_ports;
+	global $config, $service_types_ports;
 
 	$final_cred = '';
 	$data       = '';
@@ -98,18 +90,18 @@ function mail_try(array $test): array {
 
 	if ($test['ca_id'] > 0) {
 		$own_ca_info = $config['base_path'] . '/plugins/servcheck/tmp_data/ca_cert_' . $test['ca_id'] . '.pem'; // The folder /plugins/servcheck/tmp_data does exist, hence the ca_cert_x.pem can be created here
-		servcheck_debug('Preparing own CA chain file ' . $ca_info);
+		servcheck_debug('Preparing own CA chain file ' . $own_ca_info);
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
 			[$test['ca_id']]);
 
-		$cert_file = fopen($ca_info, 'w+');
+		$cert_file = fopen($own_ca_info, 'w+');
 
 		if ($cert_file) {
 			fwrite($cert_file, $cert);
 			fclose($cert_file);
 		} else {
-			cacti_log('Cannot create ca cert file ' . $ca_info);
+			cacti_log('Cannot create ca cert file ' . $own_ca_info);
 			$results['result'] = 'error';
 			$results['error']  = 'Cannot create ca cert file';
 

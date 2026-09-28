@@ -118,6 +118,9 @@ function plugin_servcheck_upgrade(): bool {
 		SET file = ?
 		WHERE file LIKE "%servcheck_test.php%"',
 		['servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxy.php,servcheck_ca.php']);
+
+	// Registering with replicate=true triggers api_plugin_replicate_config(), which calls replicate_out() from core lib/poller.php.
+	include_once($config['library_path'] . '/poller.php');
 	api_plugin_register_hook('servcheck', 'replicate_out', 'servcheck_replicate_out', 'setup.php', true);
 	api_plugin_register_hook('servcheck', 'config_settings', 'servcheck_config_settings', 'setup.php', true);
 

@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* security: Add a version-safe CSP nonce (`plugin_servcheck_csp_nonce()`) to every inline `<script>` tag so pages stay compatible with Cacti's Content-Security-Policy nonce enforcement, while falling back cleanly on older Cacti releases that lack the `CactiSecureHeaders` class
 * security: Sanitize and bind the filter search on the CA, proxy and credential pages
 * security: Require a CSRF token on the enable, disable and purge GET actions
 

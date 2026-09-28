@@ -23,6 +23,22 @@
 */
 
 /**
+ * Return the CSP nonce attribute for inline <script> tags, safely across
+ * Cacti versions. Newer Cacti releases enforce a Content-Security-Policy that
+ * requires a per-request nonce on parser-inserted scripts; older releases lack
+ * the CactiSecureHeaders class, so this returns an empty string there.
+ *
+ * @return string The nonce attribute when supported, otherwise empty string.
+ */
+function plugin_servcheck_csp_nonce(): string {
+	if (class_exists('CactiSecureHeaders')) {
+		return CactiSecureHeaders::getNonceAttribute();
+	}
+
+	return '';
+}
+
+/**
  * Registers this plugin's Cacti hooks (navigation breadcrumbs, config
  * arrays, poller_bottom, data source replication, settings, page_head)
  * and its servcheck_*.php realm, then creates the plugin's database
@@ -851,9 +867,9 @@ function servcheck_page_head() {
 
 	$selectedTheme = get_selected_theme();
 
-	print "<link type='text/css' href='" . $config['url_path'] . "plugins/servcheck/themes/common.css' rel='stylesheet'>";
+	print get_md5_include_css('plugins/servcheck/themes/common.css');
 
 	if (file_exists($config['base_path'] . '/plugins/servcheck/themes/' . $selectedTheme . '.css')) {
-		print "<link type='text/css' href='" . $config['url_path'] . 'plugins/servcheck/themes/' . $selectedTheme . ".css' rel='stylesheet'>";
+		print get_md5_include_css('plugins/servcheck/themes/' . $selectedTheme . '.css');
 	}
 }

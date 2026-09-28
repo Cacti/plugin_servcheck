@@ -36,7 +36,7 @@
  *               (false), 'time', 'error', 'result_search', 'data', and
  *               'start'.
  */
-function dns_try($test) {
+function dns_try(array $test): array {
 	include_once(__DIR__ . '/../includes/dnslookup.php');
 
 	// default result
@@ -137,7 +137,7 @@ function dns_try($test) {
  *                                     type (declared but not directly
  *                                     used here).
  */
-function doh_try($test) {
+function doh_try(array $test): array {
 	global $user_agent, $config, $ca_info, $service_types_ports;
 
 	$cert_info = [];
@@ -205,7 +205,7 @@ function doh_try($test) {
 	// Disable Cert checking for now
 	if ($test['checkcert'] == '') {
 		$options[CURLOPT_SSL_VERIFYPEER] = false;
-		$options[CURLOPT_SSL_VERIFYHOST] = false;
+		$options[CURLOPT_SSL_VERIFYHOST] = 0;
 	} else { // for sure, it seems that it isn't enabled by default now
 		$options[CURLOPT_SSL_VERIFYPEER] = true;
 		$options[CURLOPT_SSL_VERIFYHOST] = 2;
@@ -222,7 +222,7 @@ function doh_try($test) {
 	servcheck_debug('Executing curl request');
 
 	$data            = curl_exec($process);
-	$data            = str_replace(["'", '\\'], [''], $data);
+	$data            = str_replace(["'", '\\'], [''], (string) $data);
 	$results['data'] = $data;
 
 	// Get information regarding a specific transfer, cert info too
@@ -258,7 +258,7 @@ function doh_try($test) {
 		}
 	}
 
-	if (empty($results['data']) && $results['curl_return'] > 0) {
+	if (empty($results['data'])) {
 		$results['result'] = 'error';
 		$results['error']  = 'No data returned';
 

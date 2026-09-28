@@ -30,6 +30,8 @@ if (!defined('SERVCHECK_CIPHER')) {
 // $user_agent can be of user's choice e.g. Linux or Windows based
 $user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
 
+global $config;
+
 $ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 
 $servcheck_tabs = [
@@ -265,12 +267,12 @@ $accounts = db_fetch_assoc("SELECT id, username, email_address
 	FROM user_auth
 	WHERE email_address != ''");
 
+$servcheck_notify_accounts = [];
+
 if (!empty($accounts)) {
 	foreach ($accounts as $account) {
 		$servcheck_notify_accounts[$account['id']] = $account['username'] . ' - ' . $account['email_address'];
 	}
-} else {
-	$servcheck_notify_accounts = [];
 }
 
 $servcheck_ca_fields = [
@@ -697,22 +699,6 @@ $servcheck_credential_fields = [
 		'value'         => '|arg1:password|',
 		'max_length'    => '100',
 		'size'          => '30'
-	],
-	'token_name' => [
-		'method'        => 'textbox',
-		'friendly_name' => __('Token/API Key name', 'servcheck'),
-		'description'   => __('Auth can use different token or API Key name. You can specify it here. You need know correct name, check your Rest API server documentation.<br/>
-			<i>OAuth2 -</i> Commonly used name is \'Bearer\'<br/>
-			<i>API Key -</i> commonly used name is \'apikey\'<br/> ', 'servcheck'),
-		'value'      => '|arg1:token_name|',
-		'max_length' => '100',
-	],
-	'token_value' => [
-		'method'        => 'textbox',
-		'friendly_name' => __('Token/API key value', 'servcheck'),
-		'description'   => __('API key and OAuth2 have two flows - You can have key/token from server and insert it here or use auth flow with credentials.', 'servcheck'),
-		'value'         => '|arg1:token_value|',
-		'max_length'    => '200',
 	],
 	'login_url' => [
 		'method'        => 'textbox',

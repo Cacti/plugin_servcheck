@@ -51,8 +51,8 @@ there are 2 problems:
  * @global array $config Cacti global configuration array (declared but
  *                       not directly used here).
  */
-function mqtt_try($test) {
-	global $config;
+function mqtt_try(array $test): array {
+	global $config, $service_types_ports;
 
 	// default result
 	$results['result']        = 'error';
@@ -63,39 +63,13 @@ function mqtt_try($test) {
 
 	[$category,$service] = explode('_', $test['type']);
 
-	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
-			[$test['cred_id']]);
-
-		if (!$cred) {
-			servcheck_debug('Credential is set but not found!');
-			cacti_log('Credential not found');
-			$results['result'] = 'error';
-			$results['error']  = 'Credential not found';
-
-			return $results;
-		} else {
-			servcheck_debug('Decrypting credential');
-			$credential = servcheck_decrypt_credential($test['cred_id']);
-
-			if (empty($cred)) {
-				servcheck_debug('Credential is empty!');
-				cacti_log('Credential is empty');
-				$results['result'] = 'error';
-				$results['error']  = 'Credential is empty';
-
-				return $results;
-			}
-		}
-	}
-
 	$cred = '';
 
 	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
+		$cred_row = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
 			[$test['cred_id']]);
 
-		if (!$cred) {
+		if (!$cred_row) {
 			servcheck_debug('Credential is set but not found!');
 			cacti_log('Credential not found');
 			$results['result'] = 'error';
@@ -115,13 +89,11 @@ function mqtt_try($test) {
 				return $results;
 			}
 		}
-	}
 
-	if ($test['cred_id'] > 0) {
 		// curl needs username with %40 instead of @
-		$cred = str_replace('@', '%40', $credential['username']);
+		$cred  = str_replace('@', '%40', $credential['username'] ?? '');
 		$cred .= ':';
-		$cred .= $credial['password'];
+		$cred .= $credential['password'] ?? '';
 		$cred .= '@';
 	}
 
@@ -142,6 +114,14 @@ function mqtt_try($test) {
 
 	$filename = '/tmp/mqtt_' . time() . '.txt';
 	$file     = fopen($filename, 'w');
+
+	if ($file === false) {
+		cacti_log('Cannot create temporary file ' . $filename);
+		$results['result'] = 'error';
+		$results['error']  = 'Cannot create temporary file';
+
+		return $results;
+	}
 
 	$options = [
 		CURLOPT_HEADER           => true,
@@ -165,7 +145,7 @@ function mqtt_try($test) {
 	curl_exec($process);
 	fclose($file);
 
-	$data            = str_replace(["'", '\\'], [''], file_get_contents($filename));
+	$data            = str_replace(["'", '\\'], [''], (string) file_get_contents($filename));
 	$results['data'] = $data;
 
 	unlink($filename);

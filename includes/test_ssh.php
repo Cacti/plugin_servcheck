@@ -42,7 +42,7 @@
  *                                    type, used when the test's
  *                                    hostname doesn't specify one.
  */
-function ssh_try($test) {
+function ssh_try(array $test): array {
 	global $config, $service_types_ports;
 
 	// default result
@@ -98,7 +98,7 @@ function ssh_try($test) {
 			servcheck_debug('Decrypting credential');
 			$credential = servcheck_decrypt_credential($test['cred_id']);
 
-			if (empty($cred)) {
+			if (empty($credential)) {
 				servcheck_debug('Credential is empty!');
 				cacti_log('Credential is empty');
 				$results['result'] = 'error';
@@ -107,7 +107,7 @@ function ssh_try($test) {
 				return $results;
 			}
 
-			if ($cred['type'] != 'userpass' && $cred['type'] != 'sshkey') {
+			if (($cred['type'] ?? '') != 'userpass' && ($cred['type'] ?? '') != 'sshkey') {
 				servcheck_debug('Incorrect credential type, use user/pass or sshkey');
 				cacti_log('Incorrect credential type, use user/pass or sshkey');
 				$results['result'] = 'error';
@@ -125,32 +125,38 @@ function ssh_try($test) {
 		return $results;
 	}
 
-	if ($cred['type'] == 'sshkey') {
+	if (($cred['type'] ?? '') == 'sshkey') {
 		servcheck_debug('Preparing ssh private key file');
 
-		$keyfilename = $config['base_path'] . '/plugins/servcheck/tmp_data/sshkey_' . $cred['id'];
+		$keyfilename = $config['base_path'] . '/plugins/servcheck/tmp_data/sshkey_' . ($cred['id'] ?? '');
 		$keyfile     = fopen($keyfilename, 'w+');
 
 		if ($keyfile) {
-			fwrite($keyfile, $credential['sshkey']);
+			fwrite($keyfile, $credential['sshkey'] ?? '');
 			fclose($keyfile);
 
-			if (isset($credential['sshkey_passphrase'])) {
-				$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename),$credential['sshkey_passphrase']);
-			} else {
-				$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename));
-			}
+			try {
+				if (isset($credential['sshkey_passphrase'])) {
+					$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename),$credential['sshkey_passphrase']);
+				} else {
+					$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename));
+				}
 
-			if (!$ssh->login($credential['ssh_username'], $key)) {
-				servcheck_debug('Connection failed');
+				if (!$ssh->login($credential['ssh_username'] ?? '', $key)) {
+					servcheck_debug('Connection failed');
 
-				$errors = $ssh->getStdError();
-				servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+					$errors = $ssh->getStdError();
+					servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
 
-				$results['result'] = 'error';
-				$results['error']  = 'Connection failed';
+					$results['result'] = 'error';
+					$results['error']  = 'Connection failed';
 
-				return $results;
+					return $results;
+				}
+			} finally {
+				// Always remove the temporary private-key file, even on auth failure or a key-load exception.
+				unlink($keyfilename);
+				servcheck_debug('Removing private key file');
 			}
 		} else {
 			cacti_log('Cannot create private key file ' . $keyfilename);
@@ -159,8 +165,8 @@ function ssh_try($test) {
 
 			return $results;
 		}
-	} elseif ($cred['type'] == 'userpass') {
-		if (!$ssh->login($credential['username'], $credential['password'])) {
+	} elseif (($cred['type'] ?? '') == 'userpass') {
+		if (!$ssh->login($credential['username'] ?? '', $credential['password'] ?? '')) {
 			servcheck_debug('Connection failed');
 
 			$errors = $ssh->getStdError();
@@ -190,11 +196,6 @@ function ssh_try($test) {
 	$results['error']  = 'Some data returned';
 
 	$results['data'] = $data;
-
-	if (isset($key_filename)) {
-		unlink($key_filename);
-		servcheck_debug('Removing private key file');
-	}
 
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {

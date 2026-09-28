@@ -49,6 +49,9 @@ if (strpos($dir, 'plugins') !== false) {
 }
 
 require('./include/cli_check.php');
+
+global $config;
+
 require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 require_once($config['base_path'] . '/lib/poller.php');
 require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
@@ -189,7 +192,7 @@ $use_processes = min($tests, $max_processes);
 if ($tests > 0) {
 	for ($f = 1; $f <= $use_processes; $f++) {
 		if (!register_process_start('servcheck', $taskname, $f, $timeout)) {
-			cacti_log(sprintf('WARNING: Not Running Service Check %s it is still running', $test['name']), false, 'SERVCHECK');
+			cacti_log(sprintf('WARNING: Not Running Service Check %s it is still running', $taskname), false, 'SERVCHECK');
 		} else {
 			servcheck_debug('Launching Servceck process ' . $f);
 
@@ -298,7 +301,7 @@ unregister_process('servcheck', 'master', $poller_id);
  * @global string $taskname  This master process's registered task name,
  *                           used to look up its child processes.
  */
-function sig_handler($signo) {
+function sig_handler(int $signo): void {
 	global $force, $poller_id, $taskname;
 
 	switch ($signo) {
@@ -308,7 +311,7 @@ function sig_handler($signo) {
 			cacti_log("WARNING: Service Check Poller 'master' is shutting down by signal!", false, 'SERVCHECK');
 
 			if (!$force) {
-				unregister_process('servcheck', 'master', $poller_id, getmypid());
+				unregister_process('servcheck', 'master', $poller_id, (int) getmypid());
 			}
 
 			$processes = db_fetch_assoc_prepared('SELECT *
@@ -350,7 +353,7 @@ function sig_handler($signo) {
  *                       locate and load setup.php for the version
  *                       lookup.
  */
-function display_version() {
+function display_version(): void {
 	global $config;
 
 	if (!function_exists('plugin_servcheck_version')) {
@@ -370,7 +373,7 @@ function display_version() {
  *
  * @return void
  */
-function display_help() {
+function display_help(): void {
 	display_version();
 
 	print PHP_EOL . 'usage: poller_servcheck.php [--debug] [--force]' . PHP_EOL . PHP_EOL;

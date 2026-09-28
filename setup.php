@@ -47,7 +47,7 @@ function plugin_servcheck_csp_nonce(): string {
  *
  * @return void
  */
-function plugin_servcheck_install() {
+function plugin_servcheck_install(): void {
 	api_plugin_register_hook('servcheck', 'draw_navigation_text', 'plugin_servcheck_draw_navigation_text', 'setup.php');
 	api_plugin_register_hook('servcheck', 'config_arrays',        'plugin_servcheck_config_arrays',        'setup.php');
 	api_plugin_register_hook('servcheck', 'poller_bottom',        'plugin_servcheck_poller_bottom',        'setup.php');
@@ -66,7 +66,7 @@ function plugin_servcheck_install() {
  *
  * @return void
  */
-function plugin_servcheck_uninstall() {
+function plugin_servcheck_uninstall(): void {
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_test');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_log');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_proxies');
@@ -86,7 +86,7 @@ function plugin_servcheck_uninstall() {
  *
  * @return bool Always true.
  */
-function plugin_servcheck_check_config() {
+function plugin_servcheck_check_config(): bool {
 	// Here we will check to ensure everything is configured
 	plugin_servcheck_upgrade();
 
@@ -105,7 +105,7 @@ function plugin_servcheck_check_config() {
  * @global array $config Cacti global configuration array (declared but
  *                       not directly used here).
  */
-function plugin_servcheck_upgrade() {
+function plugin_servcheck_upgrade(): bool {
 	global $config;
 
 	require_once(__DIR__ . '/includes/functions.php');
@@ -118,8 +118,8 @@ function plugin_servcheck_upgrade() {
 		SET file = ?
 		WHERE file LIKE "%servcheck_test.php%"',
 		['servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxy.php,servcheck_ca.php']);
-	api_plugin_register_hook('servcheck', 'replicate_out', 'servcheck_replicate_out', 'setup.php', '1');
-	api_plugin_register_hook('servcheck', 'config_settings', 'servcheck_config_settings', 'setup.php', '1');
+	api_plugin_register_hook('servcheck', 'replicate_out', 'servcheck_replicate_out', 'setup.php', true);
+	api_plugin_register_hook('servcheck', 'config_settings', 'servcheck_config_settings', 'setup.php', true);
 
 	if (cacti_version_compare($old, '0.3', '<')) {
 		if (!db_column_exists('plugin_servcheck_test', 'ipaddress')) {
@@ -295,7 +295,7 @@ function plugin_servcheck_upgrade() {
 						$cred['oauth_client_secret'] = servcheck_show_text($record['password']);
 						$cred['token_value']         = servcheck_show_text($record['cred_value']);
 						$cred['token_name']          = $record['cred_name'];
-						$cred['cred_valiedity']      = $record['cred_validity'];
+						$cred['cred_validity']       = $record['cred_validity'];
 						$cred['data_url']            = $record['data_url'];
 						$cred['login_url']           = $record['login_url'];
 					} elseif ($record['type'] == 'cookie') {
@@ -305,6 +305,10 @@ function plugin_servcheck_upgrade() {
 						$cred['password']      = servcheck_show_text($record['password']);
 						$cred['data_url']      = $record['data_url'];
 						$cred['login_url']     = $record['login_url'];
+					}
+
+					if (!isset($cred['type'])) {
+						continue;
 					}
 
 					$enc = servcheck_encrypt_credential($cred);
@@ -388,9 +392,13 @@ function plugin_servcheck_upgrade() {
  * @global array $config Cacti global configuration array; used to
  *                       locate the plugin's INFO file.
  */
-function plugin_servcheck_version() {
+function plugin_servcheck_version(): array {
 	global $config;
 	$info = parse_ini_file($config['base_path'] . '/plugins/servcheck/INFO', true);
+
+	if (!is_array($info) || !isset($info['info']) || !is_array($info['info'])) {
+		return [];
+	}
 
 	return $info['info'];
 }
@@ -402,7 +410,7 @@ function plugin_servcheck_version() {
  *
  * @return void
  */
-function plugin_servcheck_setup_table() {
+function plugin_servcheck_setup_table(): void {
 	$data              = [];
 	$data['columns'][] = ['name' => 'id', 'type' => 'int(11)', 'NULL' => false, 'auto_increment' => true];
 	$data['columns'][] = ['name' => 'type', 'type' => 'varchar(30)', 'NULL' => false, 'default' => 'web_http'];
@@ -535,10 +543,14 @@ function plugin_servcheck_setup_table() {
  *                       resolve the PHP binary and this plugin's poller
  *                       script path.
  */
-function plugin_servcheck_poller_bottom() {
+function plugin_servcheck_poller_bottom(): void {
 	global $config;
 
 	require_once($config['library_path'] . '/database.php');
+
+	if (!function_exists('exec_background')) {
+		include_once($config['library_path'] . '/poller.php');
+	}
 
 	$command_string = trim(read_config_option('path_php_binary'));
 
@@ -572,7 +584,7 @@ function plugin_servcheck_poller_bottom() {
  *                                           implementations; not used
  *                                           directly here.
  */
-function plugin_servcheck_config_arrays() {
+function plugin_servcheck_config_arrays(): void {
 	global $menu, $user_auth_realms, $user_auth_realm_filenames;
 
 	$menu[__('Management')]['plugins/servcheck/servcheck_test.php'] = __('Service Checker', 'servcheck');
@@ -594,7 +606,7 @@ function plugin_servcheck_config_arrays() {
  *
  * @return array The $nav array with this plugin's entries added.
  */
-function plugin_servcheck_draw_navigation_text($nav) {
+function plugin_servcheck_draw_navigation_text($nav): array {
 	$nav['servcheck_test.php:'] = [
 		'title'   => __('Service Checks', 'servcheck'),
 		'mapping' => 'index.php:',
@@ -715,7 +727,13 @@ function plugin_servcheck_draw_navigation_text($nav) {
  *
  * @return array The $data array, unmodified, returned for hook chaining.
  */
-function servcheck_replicate_out($data) {
+function servcheck_replicate_out($data): array {
+	global $config;
+
+	if (!function_exists('replicate_out_table')) {
+		include_once($config['library_path'] . '/poller.php');
+	}
+
 	$remote_poller_id = $data['remote_poller_id'];
 	$rcnn_id          = $data['rcnn_id'];
 	$class            = $data['class'];
@@ -754,7 +772,7 @@ function servcheck_replicate_out($data) {
  *                         'servcheck' entry is added with this plugin's
  *                         field definitions.
  */
-function servcheck_config_settings() {
+function servcheck_config_settings(): void {
 	global $tabs, $settings;
 
 	$tabs['servcheck'] = __('Servcheck', 'servcheck');
@@ -862,7 +880,7 @@ function servcheck_config_settings() {
  * @global array $config Cacti global configuration array; used to
  *                       locate the theme CSS files.
  */
-function servcheck_page_head() {
+function servcheck_page_head(): void {
 	global $config;
 
 	$selectedTheme = get_selected_theme();

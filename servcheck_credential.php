@@ -24,6 +24,9 @@
 
 chdir('../../');
 require_once('./include/auth.php');
+
+global $config;
+
 require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
@@ -73,7 +76,7 @@ switch (get_request_var('action')) {
  *                                       display labels, used for the
  *                                       confirmation dialog title.
  */
-function form_actions() {
+function form_actions(): void {
 	global $servcheck_actions_menu;
 
 	// ================= input validation =================
@@ -96,8 +99,13 @@ function form_actions() {
 			} elseif (get_filter_request_var('drp_action') == 2) { // duplicate
 				$newid = 1;
 
-				foreach ($credentials as $id) {
+				foreach ($selected_items as $id) {
 					$save             = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', [$id]);
+
+					if (!is_array($save)) {
+						continue;
+					}
+
 					$save['id']       = 0;
 					$save['name']     = 'New Credential (' . $newid . ')';
 					$save['type']     = 'userpass';
@@ -118,6 +126,7 @@ function form_actions() {
 	// setup some variables
 	$item_list   = '';
 	$items_array = [];
+	$save_html   = '';
 
 	// loop through each of the graphs selected on the previous page and get more info about them
 	foreach ($_POST as $var => $val) {
@@ -135,7 +144,7 @@ function form_actions() {
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
-	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', '', '3', 'center', '');
+	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', false, 3, 'center', '');
 
 	if (cacti_sizeof($items_array) > 0) {
 		if (get_filter_request_var('drp_action') == 1) { // delete
@@ -150,11 +159,11 @@ function form_actions() {
 		} elseif (get_filter_request_var('drp_action') == 2) { // duplicate
 			print "<tr>
 				<td class='topBoxAlt'>
-					<p>" . __n('Click \'Continue\' to Duplicate the following Credential.', 'Click \'Continue\' to Duplicate following Credential.', cacti_sizeof($credential_array)) . "</p><div class='itemlist'><ul>$credential_list</ul></div>
+					<p>" . __n('Click \'Continue\' to Duplicate the following Credential.', 'Click \'Continue\' to Duplicate following Credential.', cacti_sizeof($items_array)) . "</p><div class='itemlist'><ul>$item_list</ul></div>
 				</td>
 			</tr>";
 
-			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate Credential', 'Duplicate Credential', cacti_sizeof($credential_array)) . "'>";
+			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate Credential', 'Duplicate Credential', cacti_sizeof($items_array)) . "'>";
 		}
 	} else {
 		raise_message(40);
@@ -165,7 +174,7 @@ function form_actions() {
 	print "<tr>
 		<td class='saveRow'>
 			<input type='hidden' name='action' value='actions'>
-			<input type='hidden' name='selected_items' value='" . (isset($items_array) ? serialize($items_array) : '') . "'>
+			<input type='hidden' name='selected_items' value='" . serialize($items_array) . "'>
 			<input type='hidden' name='drp_action' value='" . get_request_var('drp_action') . "'>
 			$save_html
 		</td>
@@ -214,7 +223,7 @@ function form_actions() {
  *                                        'option_cookie' for the
  *                                        'cookie' type.
  */
-function form_save() {
+function form_save(): void {
 	global $credential_types, $snmp_security_levels, $snmp_auth_protocols, $snmp_priv_protocols, $rest_api_apikey_option, $rest_api_cookie_option;
 
 	if (isset_request_var('save_component')) {
@@ -223,6 +232,7 @@ function form_save() {
 		// ====================================================
 
 		$save['id']         = get_nfilter_request_var('id');
+		$cred               = [];
 
 		if (isset_request_var('name') && get_nfilter_request_var('name') != '' && get_filter_request_var('name', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
 			$save['name'] = get_nfilter_request_var('name');
@@ -468,7 +478,7 @@ function form_save() {
 		}
 
 		if (is_error_message()) {
-			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false&action=edit&id=' . (empty($saved_id) ? get_nfilter_request_var('id') : $saved_id));
+			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false&action=edit&id=' . get_nfilter_request_var('id'));
 		} else {
 			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		}
@@ -491,7 +501,7 @@ function form_save() {
  * @global array $servcheck_help_credential   Per-field help text shown
  *                                            on the edit form.
  */
-function servcheck_data_edit() {
+function servcheck_data_edit(): void {
 	global $servcheck_credential_fields, $servcheck_help_credential;
 
 	// ================= input validation =================
@@ -506,16 +516,24 @@ function servcheck_data_edit() {
 			WHERE id = ?',
 			[get_request_var('id')]);
 
-		$header_label = __('Credential [edit: %s]', $data['name']);
+		if (!is_array($data)) {
+			$data = [];
+		}
 
-		$data += servcheck_decrypt_credential($data['id']);
+		$header_label = __('Credential [edit: %s]', $data['name'] ?? '');
+
+		$decrypted = servcheck_decrypt_credential($data['id'] ?? 0);
+
+		if (is_array($decrypted)) {
+			$data += $decrypted;
+		}
 	} else {
 		$header_label = __('Credential [new]');
 	}
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
-	html_start_box($header_label, '100%', true, '3', 'center', '');
+	html_start_box($header_label, '100%', true, 3, 'center', '');
 
 	draw_edit_form(
 		[
@@ -749,7 +767,7 @@ function servcheck_data_edit() {
  *
  * @return void
  */
-function request_validation() {
+function request_validation(): void {
 	$filters = [
 		'rows' => [
 			'filter'  => FILTER_VALIDATE_INT,
@@ -796,7 +814,7 @@ function request_validation() {
  *                                       their display labels, used to
  *                                       show each credential's type.
  */
-function data_list() {
+function data_list(): void {
 	global $servcheck_actions_menu, $credential_types;
 
 	request_validation();
@@ -852,7 +870,7 @@ function data_list() {
 
 	print $nav;
 
-	html_start_box('', '100%', '', '3', 'center', '');
+	html_start_box('', '100%', false, 3, 'center', '');
 
 	html_header_sort_checkbox($display_text, get_request_var('sort_column'), get_request_var('sort_direction'), false);
 
@@ -904,10 +922,10 @@ function data_list() {
  * @global array $item_rows Rows-per-page options offered by Cacti core,
  *                          used to populate the 'rows' select list.
  */
-function servcheck_filter() {
+function servcheck_filter(): void {
 	global $item_rows;
 
-	html_start_box(__('Servcheck Credential Management', 'servcheck') , '100%', '', '3', 'center', htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=edit');
+	html_start_box(__('Servcheck Credential Management', 'servcheck') , '100%', false, 3, 'center', htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=edit');
 
 	?>
 	<tr class='even'>

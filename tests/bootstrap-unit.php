@@ -84,6 +84,22 @@ $GLOBALS['config'] = array(
 	'cacti_server_os' => 'unix',
 );
 
+/*
+ * plugin_servcheck_upgrade() include_once()s $config['library_path'] . '/poller.php'
+ * before registering the replicate_out hook. Point library_path at a throwaway stub
+ * holding an empty poller.php so every test that reaches that path stays hermetic
+ * instead of loading Cacti's real poller (and its redeclarations).
+ */
+$stub_library_path = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'servcheck-test-lib-stub';
+
+if (!is_dir($stub_library_path)) {
+	mkdir($stub_library_path, 0777, true);
+}
+
+file_put_contents($stub_library_path . '/poller.php', "<?php\n");
+
+$GLOBALS['config']['library_path'] = $stub_library_path;
+
 $GLOBALS['__test_db_calls'] = array();
 
 if (!function_exists('db_execute')) {

@@ -142,6 +142,10 @@ function plugin_servcheck_upgrade(): bool {
 	api_plugin_register_hook('servcheck', 'replicate_out', 'servcheck_replicate_out', 'setup.php', true);
 	api_plugin_register_hook('servcheck', 'config_settings', 'servcheck_config_settings', 'setup.php', true);
 
+	// Register page_head here as well so installs that predate this hook pick it
+	// up on upgrade and load the plugin's stylesheets.
+	api_plugin_register_hook('servcheck', 'page_head', 'servcheck_page_head', 'setup.php');
+
 	if (cacti_version_compare($old, '0.3', '<')) {
 		if (!db_column_exists('plugin_servcheck_test', 'ipaddress')) {
 			db_add_column('plugin_servcheck_test', ['name' => 'ipaddress', 'type' => 'varchar(46)', 'NULL' => false, 'default' => '', 'after' => 'hostname']);

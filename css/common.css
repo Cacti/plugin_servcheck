@@ -76,22 +76,48 @@ tr.tableRow.selectable.selected, tr.tableRow.selectable.selected td {
 }
 
 /*
- * Status legend footer. The items are laid out as an evenly distributed,
- * wrapping flex row so each severity chip carries its own colour block across
- * the full width, regardless of theme.
+ * Status legend footer. The items are laid out as an evenly sized, wrapping
+ * flex row (flex: 1 1 0 gives every chip the same width). A legend is a colour
+ * key, so the chips use their own solid, opaque colours with white text so they
+ * stay legible on every theme rather than inheriting the subtle row tints.
  */
 .servcheck_legend {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
 	gap: 4px;
 	width: 100%;
 }
 
-.servcheck_legend_item {
+.servcheck_legend .servcheck_legend_item {
 	flex: 1 1 0;
+	min-width: 0;
 	text-align: center;
 	white-space: nowrap;
 	padding: 4px 6px;
 	border-radius: 3px;
+	color: #ffffff;
+}
+
+.servcheck_legend .servcheck_error {
+	background-color: #a12820;
+}
+
+.servcheck_legend .servcheck_duration {
+	background-color: #1f6f86;
+}
+
+.servcheck_legend .servcheck_warning {
+	background-color: #a85712;
+}
+
+.servcheck_legend .servcheck_failing {
+	background-color: #7d6f18;
+}
+
+.servcheck_legend .servcheck_ok {
+	background-color: #2f8f3a;
+}
+
+.servcheck_legend .servcheck_disabled {
+	background-color: #5f5f57;
 }

@@ -768,13 +768,13 @@ function plugin_servcheck_send_notification(array $results, array $test, array $
 	$servcheck_send_email_separately = read_config_option('servcheck_send_email_separately');
 
 	if ($test['notify_accounts'] != '') {
-		$tmp = db_fetch_row_prepared('SELECT email_address
+		$tmp = db_fetch_assoc_prepared('SELECT email_address
 			FROM user_auth
 			WHERE id IN (' . $test['notify_accounts'] . ')');
 
 		if (is_array($tmp)) {
 			foreach ($tmp as $acc) {
-				$notify_account[] = $acc;
+				$notify_account[] = $acc['email_address'];
 			}
 		}
 	}

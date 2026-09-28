@@ -282,7 +282,7 @@ function curl_try(array $test): array {
 		servcheck_debug('Removing own CA file');
 	}
 
-	if (empty($results['data']) && $results['curl_return'] > 0) {
+	if (empty($results['data'])) {
 		$results['error']  =  'No data returned';
 		$results['result'] = 'error';
 

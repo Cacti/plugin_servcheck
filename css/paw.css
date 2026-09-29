@@ -1,0 +1,56 @@
+/*
+ +-------------------------------------------------------------------------+
+ | Copyright (C) 2004-2026 The Cacti Group                                 |
+ |                                                                         |
+ | This program is free software; you can redistribute it and/or           |
+ | modify it under the terms of the GNU General Public License             |
+ | as published by the Free Software Foundation; either version 2          |
+ | of the License, or (at your option) any later version.                  |
+ |                                                                         |
+ | This program is distributed in the hope that it will be useful,         |
+ | but WITHOUT ANY WARRANTY; without even the implied warranty of          |
+ | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           |
+ | GNU General Public License for more details.                            |
+ +-------------------------------------------------------------------------+
+ | Cacti: The Complete RRDtool-based Graphing Solution                     |
+ +-------------------------------------------------------------------------+
+ | This code is designed, written, and maintained by the Cacti Group. See  |
+ | about.php and/or the AUTHORS file for specific developer information.   |
+ +-------------------------------------------------------------------------+
+ | http://www.cacti.net/                                                   |
+ +-------------------------------------------------------------------------+
+*/
+
+/*
+ * Paw is a light theme. Severity uses saturated pastel backgrounds with dark
+ * text so every result is readable while its severity remains obvious.
+ */
+.servcheck_error {
+	background-color: rgba(242, 25, 36, 0.52);
+	color: #0a0a0a;
+}
+
+.servcheck_warning {
+	background-color: rgba(255, 122, 48, 0.54);
+	color: #0a0a0a;
+}
+
+.servcheck_failing {
+	background-color: rgba(250, 253, 158, 0.78);
+	color: #0a0a0a;
+}
+
+.servcheck_duration {
+	background-color: rgba(90, 190, 225, 0.52);
+	color: #0a0a0a;
+}
+
+.servcheck_ok {
+	background-color: rgba(25, 160, 70, 0.50);
+	color: #0a0a0a;
+}
+
+.servcheck_disabled {
+	background-color: rgba(161, 161, 161, 0.42);
+	color: #0a0a0a;
+}

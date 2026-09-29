@@ -114,10 +114,31 @@ function plugin_servcheck_upgrade(): bool {
 	$new  = $info['version'];
 	$old  = db_fetch_cell('SELECT version FROM plugin_config WHERE directory="servcheck"');
 
+	// Nothing to do when the recorded version already matches the code. This
+	// guard is important: plugin_servcheck_config_arrays() reaches this function
+	// on every index.php/plugins.php/servcheck_test.php load, and the hook
+	// re-registration below calls api_plugin_replicate_config() -> replicate_out(),
+	// which fatals when core lib/poller.php is not loaded on that request.
+	if ($old == $new) {
+		return true;
+	}
+
 	db_execute_prepared('UPDATE plugin_realms
 		SET file = ?
 		WHERE file LIKE "%servcheck_test.php%"',
 		['servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxy.php,servcheck_ca.php']);
+
+	// Registering the replicate_out hook makes api_plugin_register_hook() call
+	// api_plugin_replicate_config() -> replicate_out(), which lives in core
+	// lib/poller.php and is not otherwise loaded on these pages.
+	if (!function_exists('replicate_out')) {
+		if (defined('CACTI_PATH_LIBRARY') && file_exists(CACTI_PATH_LIBRARY . '/poller.php')) {
+			include_once(CACTI_PATH_LIBRARY . '/poller.php');
+		} elseif (isset($config['library_path']) && file_exists($config['library_path'] . '/poller.php')) {
+			include_once($config['library_path'] . '/poller.php');
+		}
+	}
+
 	api_plugin_register_hook('servcheck', 'replicate_out', 'servcheck_replicate_out', 'setup.php', true);
 	api_plugin_register_hook('servcheck', 'config_settings', 'servcheck_config_settings', 'setup.php', true);
 
@@ -885,9 +906,9 @@ function servcheck_page_head(): void {
 
 	$selectedTheme = get_selected_theme();
 
-	print get_md5_include_css('plugins/servcheck/themes/common.css');
+	print get_md5_include_css('plugins/servcheck/css/common.css');
 
-	if (file_exists($config['base_path'] . '/plugins/servcheck/themes/' . $selectedTheme . '.css')) {
-		print get_md5_include_css('plugins/servcheck/themes/' . $selectedTheme . '.css');
+	if (file_exists($config['base_path'] . '/plugins/servcheck/css/' . $selectedTheme . '.css')) {
+		print get_md5_include_css('plugins/servcheck/css/' . $selectedTheme . '.css');
 	}
 }

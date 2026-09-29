@@ -2,6 +2,8 @@
 
 --- develop ---
 
+* issue: Fix a fatal "Call to undefined function replicate_out()" by only re-registering hooks during an actual version upgrade and loading core lib/poller.php robustly before doing so
+* feature: Add readable, severity-highlighting stylesheets for every Cacti 1.2.x theme (classic, dark, midwinter, modern, paper-plane, paw, sunrise) and move them into a `css/` directory loaded via the `page_head` hook
 * security: Add a version-safe CSP nonce (`plugin_servcheck_csp_nonce()`) to every inline `<script>` tag so pages stay compatible with Cacti's Content-Security-Policy nonce enforcement, while falling back cleanly on older Cacti releases that lack the `CactiSecureHeaders` class
 * security: Sanitize and bind the filter search on the CA, proxy and credential pages
 * security: Require a CSRF token on the enable, disable and purge GET actions

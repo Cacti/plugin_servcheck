@@ -21,32 +21,37 @@
  +-------------------------------------------------------------------------+
 */
 
+/*
+ * Modern is the default light theme. Severity is applied as a translucent tint
+ * over the light background with dark text, keeping every cell readable while
+ * clearly highlighting severity.
+ */
 .servcheck_error {
-	color: #93CEFF;
-	background-color: #880000;
-}
-
-.servcheck_duration {
-	color: #93CEFF;
-	background-color: #aa0000;
+	background-color: rgba(242, 25, 36, 0.55);
+	color: #0a0a0a;
 }
 
 .servcheck_warning {
-	color: #93CEFF;
-	background-color: #555555;
+	background-color: rgba(255, 122, 48, 0.55);
+	color: #0a0a0a;
 }
 
 .servcheck_failing {
-	color: #FFFFFF;
-	background-color: #000055;
+	background-color: rgba(250, 253, 158, 0.75);
+	color: #0a0a0a;
+}
+
+.servcheck_duration {
+	background-color: rgba(90, 190, 225, 0.55);
+	color: #0a0a0a;
 }
 
 .servcheck_ok {
-	color: #93CEFF;
-	background-color: #000000;
+	background-color: rgba(25, 160, 70, 0.50);
+	color: #0a0a0a;
 }
 
 .servcheck_disabled {
-	color: #93CEFF;
-	background-color: #333333;
+	background-color: rgba(161, 161, 161, 0.45);
+	color: #0a0a0a;
 }

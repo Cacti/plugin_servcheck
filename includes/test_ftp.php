@@ -22,8 +22,36 @@
  +-------------------------------------------------------------------------+
 */
 
+global $config;
 
-function ftp_try($test) {
+/**
+ * Runs an FTP/FTPS service check test via cURL, applying the test's
+ * configured credential, proxy, CA certificate, and timeout, and
+ * evaluating the response against the expected/maintenance/failure
+ * search patterns. Called from servcheck_run_test() for tests of an
+ * FTP-based type.
+ *
+ * @param array $test The plugin_servcheck_test row describing the check
+ *                    to run.
+ *
+ * @return array The check result: 'result' ('ok'/'error'), 'curl'
+ *               (true), 'time', 'error', 'result_search', 'start', and
+ *               (once the request completes) cURL timing/status
+ *               'options' and response 'data'.
+ *
+ * @global string $user_agent          The User-Agent string sent with
+ *                                     the request.
+ * @global array  $config              Cacti global configuration array;
+ *                                     used to build a per-test CA file
+ *                                     path.
+ * @global string $ca_info              Path to the bundled CA
+ *                                     certificate file used for TLS
+ *                                     verification.
+ * @global array  $service_types_ports Default port numbers per service
+ *                                     type, used when the test's
+ *                                     hostname doesn't specify one.
+ */
+function ftp_try(array $test): array {
 	global $user_agent, $config, $ca_info, $service_types_ports;
 
 	// default result
@@ -90,11 +118,11 @@ function ftp_try($test) {
 	}
 
 	if ($service == 'ftp' || $service == 'scp') {
-		if ($cred['type'] == 'userpass') {
+		if (($cred['type'] ?? '') == 'userpass') {
 			// curl needs username with %40 instead of @
-			$final_cred  = str_replace('@', '%40', $credential['username']);
+			$final_cred  = str_replace('@', '%40', $credential['username'] ?? '');
 			$final_cred .= ':';
-			$final_cred .= str_replace('@', '%40', $credential['password']);
+			$final_cred .= str_replace('@', '%40', $credential['password'] ?? '');
 			$final_cred .= '@';
 			
 			$debug_final_cred  = str_replace('@', '%40', mask_string($credential['username']));
@@ -145,7 +173,7 @@ function ftp_try($test) {
 	// Disable Cert checking for now
 	if ($test['checkcert'] == '') {
 		$options[CURLOPT_SSL_VERIFYPEER] = false;
-		$options[CURLOPT_SSL_VERIFYHOST] = false;
+		$options[CURLOPT_SSL_VERIFYHOST] = 0;
 	} else { // for sure, it seems that it isn't enabled by default now
 		$options[CURLOPT_SSL_VERIFYPEER] = true;
 		$options[CURLOPT_SSL_VERIFYHOST] = 2;
@@ -162,7 +190,7 @@ function ftp_try($test) {
 	servcheck_debug('Executing curl request');
 
 	$data            = curl_exec($process);
-	$data            = str_replace(["'", '\\'], [''], $data);
+	$data            = str_replace(["'", '\\'], [''], (string) $data);
 	$results['data'] = $data;
 
 	// Get information regarding a specific transfer, cert info too
@@ -188,7 +216,7 @@ function ftp_try($test) {
 
 	curl_close($process);
 
-	if (empty($results['data']) && $results['curl_return'] > 0) {
+	if (empty($results['data'])) {
 		$results['result'] = 'error';
 		$results['error']  = 'No data returned';
 

@@ -24,6 +24,9 @@
 
 chdir('../../');
 require_once('./include/auth.php');
+
+global $config;
+
 require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
@@ -57,7 +60,23 @@ switch (get_request_var('action')) {
 		break;
 }
 
-function form_actions() {
+/**
+ * Handles the bulk-actions form for the Credentials list (delete/
+ * duplicate). On first display, renders the confirmation dialog listing
+ * the selected credentials; once confirmed, applies the chosen action
+ * to each selected row (delete unlinks referencing tests/proxies;
+ * duplicate creates copies with blanked username/password). Invoked from
+ * this file's dispatcher when the request's 'action' is 'actions'.
+ *
+ * @return void Either redirects back to this page after applying the
+ *              action, or prints the confirmation dialog and returns
+ *              nothing.
+ *
+ * @global array $servcheck_actions_menu Map of bulk-action ids to their
+ *                                       display labels, used for the
+ *                                       confirmation dialog title.
+ */
+function form_actions(): void {
 	global $servcheck_actions_menu;
 
 	// ================= input validation =================
@@ -80,8 +99,13 @@ function form_actions() {
 			} elseif (get_filter_request_var('drp_action') == 2) { // duplicate
 				$newid = 1;
 
-				foreach ($credentials as $id) {
+				foreach ($selected_items as $id) {
 					$save             = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?', [$id]);
+
+					if (!is_array($save)) {
+						continue;
+					}
+
 					$save['id']       = 0;
 					$save['name']     = 'New Credential (' . $newid . ')';
 					$save['type']     = 'userpass';
@@ -102,6 +126,7 @@ function form_actions() {
 	// setup some variables
 	$item_list   = '';
 	$items_array = [];
+	$save_html   = '';
 
 	// loop through each of the graphs selected on the previous page and get more info about them
 	foreach ($_POST as $var => $val) {
@@ -119,7 +144,7 @@ function form_actions() {
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
-	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', '', '3', 'center', '');
+	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', false, 3, 'center', '');
 
 	if (cacti_sizeof($items_array) > 0) {
 		if (get_filter_request_var('drp_action') == 1) { // delete
@@ -134,11 +159,11 @@ function form_actions() {
 		} elseif (get_filter_request_var('drp_action') == 2) { // duplicate
 			print "<tr>
 				<td class='topBoxAlt'>
-					<p>" . __n('Click \'Continue\' to Duplicate the following Credential.', 'Click \'Continue\' to Duplicate following Credential.', cacti_sizeof($credential_array)) . "</p><div class='itemlist'><ul>$credential_list</ul></div>
+					<p>" . __n('Click \'Continue\' to Duplicate the following Credential.', 'Click \'Continue\' to Duplicate following Credential.', cacti_sizeof($items_array)) . "</p><div class='itemlist'><ul>$item_list</ul></div>
 				</td>
 			</tr>";
 
-			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate Credential', 'Duplicate Credential', cacti_sizeof($credential_array)) . "'>";
+			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate Credential', 'Duplicate Credential', cacti_sizeof($items_array)) . "'>";
 		}
 	} else {
 		raise_message(40);
@@ -149,7 +174,7 @@ function form_actions() {
 	print "<tr>
 		<td class='saveRow'>
 			<input type='hidden' name='action' value='actions'>
-			<input type='hidden' name='selected_items' value='" . (isset($items_array) ? serialize($items_array) : '') . "'>
+			<input type='hidden' name='selected_items' value='" . serialize($items_array) . "'>
 			<input type='hidden' name='drp_action' value='" . get_request_var('drp_action') . "'>
 			$save_html
 		</td>
@@ -162,7 +187,43 @@ function form_actions() {
 	bottom_footer();
 }
 
-function form_save() {
+/**
+ * Validates and saves a single credential record, whose required fields
+ * vary by credential type (username/password, HTTP Basic, API key,
+ * OAuth2 client credentials, cookie-based login, SNMPv1/v2 community,
+ * SNMPv3 security parameters, or SSH key), encrypting the type-specific
+ * fields before storage. Invoked from this file's dispatcher when the
+ * request's 'action' is 'save'.
+ *
+ * @return void This function always terminates script execution via
+ *              exit (after redirecting), and therefore never returns
+ *              normally.
+ *
+ * @global array $credential_types        Valid credential type keys,
+ *                                        used to validate the submitted
+ *                                        'type'.
+ * @global array $snmp_security_levels    Valid SNMPv3 security level
+ *                                        keys, used to validate
+ *                                        'snmp_security_level' for the
+ *                                        'snmp3' type.
+ * @global array $snmp_auth_protocols     Valid SNMPv3 auth protocol
+ *                                        keys, used to validate
+ *                                        'snmp_auth_protocol' for the
+ *                                        'snmp3' type.
+ * @global array $snmp_priv_protocols     Valid SNMPv3 privacy protocol
+ *                                        keys, used to validate
+ *                                        'snmp_priv_protocol' for the
+ *                                        'snmp3' type.
+ * @global array $rest_api_apikey_option  Valid API-key placement option
+ *                                        keys, used to validate
+ *                                        'option_apikey' for the
+ *                                        'apikey' type.
+ * @global array $rest_api_cookie_option  Valid cookie placement option
+ *                                        keys, used to validate
+ *                                        'option_cookie' for the
+ *                                        'cookie' type.
+ */
+function form_save(): void {
 	global $credential_types, $snmp_security_levels, $snmp_auth_protocols, $snmp_priv_protocols, $rest_api_apikey_option, $rest_api_cookie_option;
 
 	if (isset_request_var('save_component')) {
@@ -171,6 +232,7 @@ function form_save() {
 		// ====================================================
 
 		$save['id']         = get_nfilter_request_var('id');
+		$cred               = [];
 
 		if (isset_request_var('name') && get_nfilter_request_var('name') != '') {
 			$save['name'] = get_filter_request_var('name', FILTER_DEFAULT);
@@ -417,7 +479,7 @@ function form_save() {
 		}
 
 		if (is_error_message()) {
-			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false&action=edit&id=' . (empty($saved_id) ? get_nfilter_request_var('id') : $saved_id));
+			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false&action=edit&id=' . get_nfilter_request_var('id'));
 		} else {
 			header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		}
@@ -425,7 +487,22 @@ function form_save() {
 	exit;
 }
 
-function servcheck_data_edit() {
+/**
+ * Renders the add/edit form for a single credential, pre-populating and
+ * decrypting its type-specific fields when editing an existing
+ * credential. Invoked from this file's dispatcher when the request's
+ * 'action' is 'edit'.
+ *
+ * @return void Outputs the edit form HTML directly.
+ *
+ * @global array $servcheck_credential_fields The edit form's field
+ *                                            definitions, filled in
+ *                                            here with the credential's
+ *                                            current (decrypted) values.
+ * @global array $servcheck_help_credential   Per-field help text shown
+ *                                            on the edit form.
+ */
+function servcheck_data_edit(): void {
 	global $servcheck_credential_fields, $servcheck_help_credential;
 
 	// ================= input validation =================
@@ -440,16 +517,24 @@ function servcheck_data_edit() {
 			WHERE id = ?',
 			[get_request_var('id')]);
 
-		$header_label = __('Credential [edit: %s]', $data['name']);
+		if (!is_array($data)) {
+			$data = [];
+		}
 
-		$data += servcheck_decrypt_credential($data['id']);
+		$header_label = __('Credential [edit: %s]', $data['name'] ?? '');
+
+		$decrypted = servcheck_decrypt_credential($data['id'] ?? 0);
+
+		if (is_array($decrypted)) {
+			$data += $decrypted;
+		}
 	} else {
 		$header_label = __('Credential [new]');
 	}
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
-	html_start_box($header_label, '100%', true, '3', 'center', '');
+	html_start_box($header_label, '100%', true, 3, 'center', '');
 
 	draw_edit_form(
 		[
@@ -467,7 +552,7 @@ function servcheck_data_edit() {
 	form_save_button(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
 
 	?>
-	<script type='text/javascript'>
+	<script type='text/javascript' <?php print plugin_servcheck_csp_nonce(); ?>>
 
 	<?php
 	print 'if (typeof servcheck_help === "undefined") {' . PHP_EOL;
@@ -676,7 +761,14 @@ function servcheck_data_edit() {
 	<?php
 }
 
-function request_validation() {
+/**
+ * Validates and stores the Credentials list's filter/sort/pagination
+ * variables (free-text search, sort column/direction) in the session.
+ * Called from data_list() before rendering the list.
+ *
+ * @return void
+ */
+function request_validation(): void {
 	$filters = [
 		'rows' => [
 			'filter'  => FILTER_VALIDATE_INT,
@@ -708,7 +800,22 @@ function request_validation() {
 	validate_store_request_vars($filters, 'sess_servcheck_credential');
 }
 
-function data_list() {
+/**
+ * Renders the main Credentials list page: validates the request, draws
+ * the filter toolbar, and prints the paginated, sortable table of
+ * configured credentials. Invoked from this file's dispatcher for the
+ * default (no 'action') request.
+ *
+ * @return void Outputs the list page HTML directly.
+ *
+ * @global array $servcheck_actions_menu Map of bulk-action ids to their
+ *                                       display labels, used to populate
+ *                                       the actions dropdown.
+ * @global array $credential_types       Map of credential type keys to
+ *                                       their display labels, used to
+ *                                       show each credential's type.
+ */
+function data_list(): void {
 	global $servcheck_actions_menu, $credential_types;
 
 	request_validation();
@@ -764,7 +871,7 @@ function data_list() {
 
 	print $nav;
 
-	html_start_box('', '100%', '', '3', 'center', '');
+	html_start_box('', '100%', false, 3, 'center', '');
 
 	html_header_sort_checkbox($display_text, get_request_var('sort_column'), get_request_var('sort_direction'), false);
 
@@ -792,7 +899,7 @@ function data_list() {
 			form_end_row();
 		}
 	} else {
-		print "<tr class='tableRow'><td colspan='" . $columns . "'><em>" . __('Empty', 'servcheck') . "</em></td></tr>\n";
+		print "<tr class='tableRow'><td colspan='" . $columns . "'><em>" . __('No Credentials Found', 'servcheck') . "</em></td></tr>\n";
 	}
 
 	html_end_box(false);
@@ -806,10 +913,20 @@ function data_list() {
 	form_end();
 }
 
-function servcheck_filter() {
+/**
+ * Renders the Credentials list's filter toolbar (free-text search,
+ * rows-per-page) and its client-side JavaScript. Called from data_list()
+ * before the credentials table itself is rendered.
+ *
+ * @return void Outputs HTML and JavaScript directly.
+ *
+ * @global array $item_rows Rows-per-page options offered by Cacti core,
+ *                          used to populate the 'rows' select list.
+ */
+function servcheck_filter(): void {
 	global $item_rows;
 
-	html_start_box(__('Servcheck Credential Management', 'servcheck') , '100%', '', '3', 'center', htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=edit');
+	html_start_box(__('Servcheck Credential Management', 'servcheck') , '100%', false, 3, 'center', htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?action=edit');
 
 	?>
 	<tr class='even'>
@@ -852,7 +969,7 @@ function servcheck_filter() {
 				</tr>
 			</table>
 		</form>
-		<script type='text/javascript'>
+		<script type='text/javascript' <?php print plugin_servcheck_csp_nonce(); ?>>
 
 		function applyFilter() {
 			strURL  = '<?php print htmlspecialchars(basename($_SERVER['PHP_SELF'])); ?>?header=false';

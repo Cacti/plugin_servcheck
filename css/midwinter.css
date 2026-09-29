@@ -1,4 +1,3 @@
-<?php
 /*
  +-------------------------------------------------------------------------+
  | Copyright (C) 2004-2026 The Cacti Group                                 |
@@ -22,43 +21,37 @@
  +-------------------------------------------------------------------------+
 */
 
-chdir('../../');
-require_once('./include/auth.php');
-
-global $config, $curl_error;
-
-require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
-require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
-
-top_header();
-
-servcheck_show_tab('servcheck_curl_code.php');
-
-$findcode = get_filter_request_var('findcode');
-$columns  = 3;
-
-html_start_box('', '100%', false, 3, 'center', '');
-
-if (cacti_sizeof($curl_error)) {
-	foreach ($curl_error as $id=>$code) {
-		form_alternate_row('line' . $id, true);
-
-		if ($id == $findcode) {
-			print '<td class="bold">' . $id . '</td>';
-			print '<td class="bold">' . $code['title'] . '</td>';
-			print '<td class="bold">' . $code['description'] . '</td>';
-		} else {
-			print '<td>' . $id . '</td>';
-			print '<td>' . $code['title'] . '</td>';
-			print '<td>' . $code['description'] . '</td>';
-		}
-
-		form_end_row();
-	}
-} else {
-	print '<tr><td colspan="' . $columns . '"><em>' . __('No error codes', 'servcheck') . '</em></td></tr>';
+/*
+ * Midwinter is a cool, dark theme. Severity is applied as a translucent tint
+ * over the dark background with light text so results stay readable while
+ * signalling severity.
+ */
+.servcheck_error {
+	background-color: rgba(240, 60, 70, 0.42);
+	color: #ffffff;
 }
 
-html_end_box(false);
+.servcheck_warning {
+	background-color: rgba(255, 140, 60, 0.38);
+	color: #ffffff;
+}
 
-bottom_footer();
+.servcheck_failing {
+	background-color: rgba(240, 225, 120, 0.30);
+	color: #ffffff;
+}
+
+.servcheck_duration {
+	background-color: rgba(90, 190, 225, 0.34);
+	color: #ffffff;
+}
+
+.servcheck_ok {
+	background-color: rgba(40, 190, 100, 0.36);
+	color: #ffffff;
+}
+
+.servcheck_disabled {
+	background-color: rgba(150, 160, 175, 0.28);
+	color: #e6e6e6;
+}

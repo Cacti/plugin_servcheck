@@ -22,7 +22,25 @@
  +-------------------------------------------------------------------------+
 */
 
-function snmp_try($test) {
+/**
+ * Runs an SNMP service check test: queries the test's configured OID
+ * using its associated credential (SNMPv1/v2 community or SNMPv3
+ * security parameters), and evaluates the returned value against the
+ * expected/maintenance/failure search patterns. Called from
+ * servcheck_run_test() for tests of type 'snmp'.
+ *
+ * @param array $test The plugin_servcheck_test row describing the check
+ *                    to run.
+ *
+ * @return array The check result: 'result' ('ok'/'error'), 'curl'
+ *               (false), 'time', 'error', 'start', and 'result_search'.
+ *
+ * @global array $config        Cacti global configuration array; used to
+ *                              locate lib/snmp.php.
+ * @global array $service_types Valid service/test type keys (declared
+ *                              but not directly used here).
+ */
+function snmp_try(array $test): array {
 	global $config, $service_types;
 
 	include_once($config['base_path'] . '/lib/snmp.php');
@@ -90,7 +108,7 @@ function snmp_try($test) {
 		$port = $service_types_ports[$test['type']];
 	}
 
-	if ($cred['type'] == 'snmp3') {
+	if (($cred['type'] ?? '') == 'snmp3') {
 		$version                 = 3;
 		$credential['community'] = '';
 		$debug_credential['snmp_username'] = mask_string($credential['snmp_username']);

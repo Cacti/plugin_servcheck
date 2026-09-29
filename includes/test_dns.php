@@ -22,7 +22,21 @@
  +-------------------------------------------------------------------------+
 */
 
-function dns_try($test) {
+/**
+ * Runs a plain DNS lookup service check test: resolves the test's
+ * configured query against its target DNS server (via the dnslookup
+ * class) and evaluates the returned records against the expected/
+ * maintenance/failure search patterns. Called from servcheck_run_test()
+ * for tests of type 'dns'.
+ *
+ * @param array $test The plugin_servcheck_test row describing the check
+ *                    to run.
+ *
+ * @return array The check result: 'result' ('ok'/'error'), 'curl'
+ *               (false), 'time', 'error', 'result_search', 'data', and
+ *               'start'.
+ */
+function dns_try(array $test): array {
 	include_once(__DIR__ . '/../includes/dnslookup.php');
 
 	// default result
@@ -112,7 +126,33 @@ function dns_try($test) {
 	return $results;
 }
 
-function doh_try($test) {
+/**
+ * Runs a DNS-over-HTTPS (DoH) service check test via cURL, applying the
+ * test's configured proxy, CA certificate, and timeout, and evaluating
+ * the response against the expected/maintenance/failure search
+ * patterns. Called from servcheck_run_test() for tests of type 'doh'.
+ *
+ * @param array $test The plugin_servcheck_test row describing the check
+ *                    to run.
+ *
+ * @return array The check result: 'result' ('ok'/'error'), 'curl'
+ *               (true), 'error', 'result_search', 'start', and (once
+ *               the request completes) cURL timing/status 'options' and
+ *               response 'data'.
+ *
+ * @global string $user_agent          The User-Agent string sent with
+ *                                     the request.
+ * @global array  $config              Cacti global configuration array;
+ *                                     used to build a per-test CA file
+ *                                     path.
+ * @global string $ca_info              Path to the bundled CA
+ *                                     certificate file used for TLS
+ *                                     verification.
+ * @global array  $service_types_ports Default port numbers per service
+ *                                     type (declared but not directly
+ *                                     used here).
+ */
+function doh_try(array $test): array {
 	global $user_agent, $config, $ca_info, $service_types_ports;
 
 	$cert_info = [];
@@ -185,7 +225,7 @@ function doh_try($test) {
 	// Disable Cert checking for now
 	if ($test['checkcert'] == '') {
 		$options[CURLOPT_SSL_VERIFYPEER] = false;
-		$options[CURLOPT_SSL_VERIFYHOST] = false;
+		$options[CURLOPT_SSL_VERIFYHOST] = 0;
 	} else { // for sure, it seems that it isn't enabled by default now
 		$options[CURLOPT_SSL_VERIFYPEER] = true;
 		$options[CURLOPT_SSL_VERIFYHOST] = 2;
@@ -202,7 +242,7 @@ function doh_try($test) {
 	servcheck_debug('Executing curl request');
 
 	$data            = curl_exec($process);
-	$data            = str_replace(["'", '\\'], [''], $data);
+	$data            = str_replace(["'", '\\'], [''], (string) $data);
 	$results['data'] = $data;
 
 	// Get information regarding a specific transfer, cert info too
@@ -238,7 +278,7 @@ function doh_try($test) {
 		}
 	}
 
-	if (empty($results['data']) && $results['curl_return'] > 0) {
+	if (empty($results['data'])) {
 		$results['result'] = 'error';
 		$results['error']  = 'No data returned';
 

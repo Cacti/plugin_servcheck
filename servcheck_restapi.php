@@ -24,6 +24,9 @@
 
 chdir('../../');
 require_once('./include/auth.php');
+
+global $config;
+
 require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
@@ -59,13 +62,31 @@ switch (get_request_var('action')) {
 
 exit;
 
-function form_actions() {
+/**
+ * Handles the bulk-actions form for the REST API methods list (delete/
+ * duplicate). On first display, renders the confirmation dialog listing
+ * the selected methods; once confirmed, applies the chosen action to
+ * each selected row (delete unlinks referencing tests; duplicate
+ * creates copies with blanked credentials/URLs). Invoked from this
+ * file's dispatcher when the request's 'action' is 'actions'.
+ *
+ * @return void Either redirects back to this page after applying the
+ *              action, or prints the confirmation dialog and returns
+ *              nothing.
+ *
+ * @global array $servcheck_actions_restapi Map of bulk-action ids to
+ *                                          their display labels, used
+ *                                          for the confirmation dialog
+ *                                          title.
+ */
+function form_actions(): void {
 	global $servcheck_actions_restapi;
 
 	// if we are to save this form, instead of display it
 	if (isset_request_var('selected_items')) {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
 		$action         = get_nfilter_request_var('drp_action');
+		$restapis       = [];
 
 		if ($selected_items != false) {
 			if (cacti_sizeof($selected_items)) {
@@ -85,6 +106,11 @@ function form_actions() {
 
 					foreach ($restapis as $id) {
 						$save                 = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_restapi_method WHERE id = ?', [$id]);
+
+						if (!is_array($save)) {
+							continue;
+						}
+
 						$save['id']           = 0;
 						$save['name']         = 'New Rest API (' . $newid . ')';
 						$save['type']         = 'basic';
@@ -111,6 +137,7 @@ function form_actions() {
 	// setup some variables
 	$restapi_list  = '';
 	$restapi_array = [];
+	$save_html     = '';
 
 	// loop through each of the restapis selected on the previous page and get more info about them
 	foreach ($_POST as $var => $val) {
@@ -128,7 +155,7 @@ function form_actions() {
 
 	form_start('servcheck_restapi.php');
 
-	html_start_box($servcheck_actions_restapi[get_nfilter_request_var('drp_action')], '60%', '', '3', 'center', '');
+	html_start_box($servcheck_actions_restapi[get_nfilter_request_var('drp_action')], '60%', false, 3, 'center', '');
 
 	$action = get_nfilter_request_var('drp_action');
 
@@ -161,7 +188,7 @@ function form_actions() {
 	print "<tr>
 		<td class='saveRow'>
 			<input type='hidden' name='action' value='actions'>
-			<input type='hidden' name='selected_items' value='" . (isset($restapi_array) ? serialize($restapi_array) : '') . "'>
+			<input type='hidden' name='selected_items' value='" . serialize($restapi_array) . "'>
 			<input type='hidden' name='drp_action' value='" . get_nfilter_request_var('drp_action') . "'>
 			$save_html
 		</td>
@@ -174,8 +201,26 @@ function form_actions() {
 	bottom_footer();
 }
 
-function form_save() {
-	global $rest_api_auth_method, $rest_api_format;
+/**
+ * Validates and saves a single REST API authentication method
+ * (auth type, response format, API-key placement option, optional
+ * username/password/credential name-value pair, login/data URLs),
+ * obscuring sensitive fields before storage. Invoked from this file's
+ * dispatcher when the request's 'action' is 'save'.
+ *
+ * @return void This function always terminates script execution via
+ *              exit (after redirecting), and therefore never returns
+ *              normally.
+ *
+ * @global array $rest_api_auth_method Valid authentication type keys,
+ *                                     used to validate the submitted
+ *                                     'type'.
+ * @global array $rest_api_format      Valid response format keys, used
+ *                                     to validate the submitted
+ *                                     'format'.
+ */
+function form_save(): void {
+	global $rest_api_auth_method, $rest_api_format, $rest_api_apikey_option;
 
 	// ================= input validation =================
 	get_filter_request_var('id');
@@ -253,7 +298,22 @@ function form_save() {
 	exit;
 }
 
-function servcheck_edit_rest() {
+/**
+ * Renders a read-only view of a single legacy REST API authentication
+ * method's configuration (unmasking its credential fields for display).
+ * REST API authorization configuration was moved to the Credential tab;
+ * this view is retained temporarily for reference and is slated for
+ * removal. Invoked from this file's dispatcher when the request's
+ * 'action' is 'edit'.
+ *
+ * @return void Outputs the read-only form HTML directly.
+ *
+ * @global array $servcheck_restapi_fields The form's field definitions,
+ *                                        filled in here with the
+ *                                        method's current (unmasked)
+ *                                        values.
+ */
+function servcheck_edit_rest(): void {
 	global $servcheck_restapi_fields;
 
 	// ================= input validation =================
@@ -264,7 +324,12 @@ function servcheck_edit_rest() {
 
 	if (!isempty_request_var('id')) {
 		$restapi      = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_restapi_method WHERE id = ?', [get_request_var('id')], false);
-		$header_label = __('Query [edit: %s]', $restapi['name'], 'servcheck');
+
+		if (!is_array($restapi)) {
+			$restapi = [];
+		}
+
+		$header_label = __('Query [edit: %s]', $restapi['name'] ?? '', 'servcheck');
 	} else {
 		$header_label = __('Query [new]', 'servcheck');
 	}
@@ -282,7 +347,7 @@ function servcheck_edit_rest() {
 	}
 
 	form_start('servcheck_restapi.php');
-	html_start_box($header_label, '100%', '', '3', 'center', '');
+	html_start_box($header_label, '100%', false, 3, 'center', '');
 
 	draw_edit_form(
 		[
@@ -299,7 +364,7 @@ function servcheck_edit_rest() {
 
 	form_end();
 	?>
-	<script type='text/javascript'>
+	<script type='text/javascript' <?php print plugin_servcheck_csp_nonce(); ?>>
 
 	$(function() {
 
@@ -365,7 +430,15 @@ function servcheck_edit_rest() {
  *  we have a good request.  We want to protect against people who
  *  like to create issues with Cacti.
  */
-function servcheck_request_validation() {
+/**
+ * Validates and stores the REST API methods list's filter/sort/
+ * pagination variables (regex free-text search, sort column/direction)
+ * in the session. Called from list_restapis() before rendering the
+ * list.
+ *
+ * @return void
+ */
+function servcheck_request_validation(): void {
 	// ================= input validation and session storage =================
 	$filters = [
 		'rows' => [
@@ -399,7 +472,27 @@ function servcheck_request_validation() {
 	// ================= input validation =================
 }
 
-function list_restapis() {
+/**
+ * Renders the main (legacy) REST API methods list page: validates the
+ * request, draws the filter toolbar, and prints the paginated, sortable
+ * table of configured REST API authentication methods. Invoked from
+ * this file's dispatcher for the default (no 'action') request.
+ *
+ * @return void Outputs the list page HTML directly.
+ *
+ * @global array $servcheck_actions_restapi Map of bulk-action ids to
+ *                                          their display labels, used to
+ *                                          populate the actions
+ *                                          dropdown.
+ * @global array $config                    Cacti global configuration
+ *                                          array (declared but not
+ *                                          directly used here).
+ * @global array $rest_api_auth_method       Map of authentication type
+ *                                          keys to their display
+ *                                          labels, used for the method-
+ *                                          type filter/display.
+ */
+function list_restapis(): void {
 	global $servcheck_actions_restapi, $config, $rest_api_auth_method;
 
 	servcheck_request_validation();
@@ -470,7 +563,7 @@ function list_restapis() {
 
 	print $nav;
 
-	html_start_box('', '100%', '', '4', 'center', '');
+	html_start_box('', '100%', false, 4, 'center', '');
 
 	html_header_sort_checkbox($display_text, get_request_var('sort_column'), get_request_var('sort_direction'), false);
 
@@ -497,7 +590,7 @@ function list_restapis() {
 	print '<b><font color="red">Rest API was moved to tests. Authhorization data was moved to Credential tab. This is read-only and will be removed in version 0.5</font></b>';
 
 	?>
-	<script type='text/javascript'>
+	<script type='text/javascript' <?php print plugin_servcheck_csp_nonce(); ?>>
 	$(function() {
 		$('#servcheck2_child').find('.cactiTooltipHint').each(function() {
 			var title = $(this).attr('title');
@@ -516,11 +609,26 @@ function list_restapis() {
 	bottom_footer();
 }
 
-function servcheck_restapi_filter() {
+/**
+ * Renders the REST API methods list's filter toolbar (regex free-text
+ * search, method-type filter, rows-per-page) and its client-side
+ * JavaScript. Called from list_restapis() before the methods table
+ * itself is rendered.
+ *
+ * @return void Outputs HTML and JavaScript directly.
+ *
+ * @global array $item_rows            Rows-per-page options offered by
+ *                                     Cacti core, used to populate the
+ *                                     'rows' select list.
+ * @global array $rest_api_auth_method  Map of authentication type keys
+ *                                     to their display labels, used to
+ *                                     populate the method-type filter.
+ */
+function servcheck_restapi_filter(): void {
 	global $item_rows, $rest_api_auth_method;
 
 	?>
-	<script type='text/javascript'>
+	<script type='text/javascript' <?php print plugin_servcheck_csp_nonce(); ?>>
 	function applyFilter() {
 		strURL  = 'servcheck_restapi.php?header=false';
 		strURL += '&rfilter=' + base64_encode($('#rfilter').val());
@@ -555,7 +663,7 @@ function servcheck_restapi_filter() {
 	</script>
 	<?php
 
-	html_start_box(__('Rest API', 'servcheck') , '100%', '', '3', 'center', 'servcheck_restapi.php?action=edit');
+	html_start_box(__('Rest API', 'servcheck') , '100%', false, 3, 'center', 'servcheck_restapi.php?action=edit');
 
 	?>
 	<tr class='even noprint'>

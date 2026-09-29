@@ -21,45 +21,36 @@
  +-------------------------------------------------------------------------+
 */
 
-// for selectable table rows
-tr.tableRow.selectable:hover, tr.tableRow.selectable:hover td {
-	background-color: #B2B2B2 !important;
-	color: inherit !important;
-}
-
-tr.tableRow.selectable.selected, tr.tableRow.selectable.selected td {
-	background-color: #000 !important;
-	color: #FFF !important;
-}
-
-.servcheck_pre {
-	white-space: pre-wrap;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	max-width: 25%;
-	width: 25%
-}
-
+/*
+ * Paper-plane is a soft, airy light theme, so the severity tints are lighter
+ * than the other light themes while dark text keeps every cell readable.
+ */
 .servcheck_error {
-	background-color: #FB4A14 ;
-}
-
-.servcheck_duration {
-	background-color: #CDFDFF ;
+	background-color: rgba(242, 25, 36, 0.42);
+	color: #0a0a0a;
 }
 
 .servcheck_warning {
-	background-color: #FCAA94 ;
+	background-color: rgba(255, 122, 48, 0.44);
+	color: #0a0a0a;
 }
 
 .servcheck_failing {
-	background-color: #FAFD9E ;
+	background-color: rgba(250, 253, 158, 0.68);
+	color: #0a0a0a;
+}
+
+.servcheck_duration {
+	background-color: rgba(90, 190, 225, 0.42);
+	color: #0a0a0a;
 }
 
 .servcheck_ok {
-	background-color: #E0FFE0 ;
+	background-color: rgba(25, 160, 70, 0.40);
+	color: #0a0a0a;
 }
 
 .servcheck_disabled {
-	background-color: #CDCFC4 ;
+	background-color: rgba(161, 161, 161, 0.35);
+	color: #0a0a0a;
 }

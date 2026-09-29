@@ -30,8 +30,29 @@ there are 2 problems:
 - the data is not returned the same way as with other services, I have to capture it in a file
 */
 
-function mqtt_try($test) {
-	global $config;
+/**
+ * Runs an MQTT service check test via cURL: connects and waits for a
+ * message on the configured topic, using a write-callback that
+ * terminates the connection as soon as any data is received (since cURL
+ * has no direct "disconnect on first message" option), otherwise
+ * letting the test time out. Applies the test's configured credential
+ * and timeout, and evaluates the received data against the expected/
+ * maintenance/failure search patterns. Called from servcheck_run_test()
+ * for tests of type 'mqtt'.
+ *
+ * @param array $test The plugin_servcheck_test row describing the check
+ *                    to run.
+ *
+ * @return array The check result: 'result' ('ok'/'error'), 'curl'
+ *               (true), 'error', 'result_search', 'start', and (once
+ *               the request completes) cURL timing/status 'options' and
+ *               response 'data'.
+ *
+ * @global array $config Cacti global configuration array (declared but
+ *                       not directly used here).
+ */
+function mqtt_try(array $test): array {
+	global $config, $service_types_ports;
 
 	// default result
 	$results['result']        = 'error';
@@ -42,22 +63,14 @@ function mqtt_try($test) {
 
 	[$category,$service] = explode('_', $test['type']);
 
-	if (empty($test['hostname'])) {
-		cacti_log('Empty hostname, nothing to test');
-		$results['result'] = 'error';
-		$results['error']  = 'Empty hostname';
-
-		return $results;
-	}
-
 	$cred = '';
 	$debug_cred = '';
 
 	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
+		$cred_row = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
 			[$test['cred_id']]);
 
-		if (!$cred) {
+		if (!$cred_row) {
 			servcheck_debug('Credential is set but not found!');
 			cacti_log('Credential not found');
 			$results['result'] = 'error';
@@ -77,13 +90,11 @@ function mqtt_try($test) {
 				return $results;
 			}
 		}
-	}
 
-	if ($test['cred_id'] > 0) {
 		// curl needs username with %40 instead of @
-		$cred = str_replace('@', '%40', $credential['username']);
+		$cred  = str_replace('@', '%40', $credential['username'] ?? '');
 		$cred .= ':';
-		$cred .= $credential['password'];
+		$cred .= $credential['password'] ?? '';
 		$cred .= '@';
 
 		$debug_cred = str_replace('@', '%40', mask_string($credential['username']));
@@ -112,6 +123,14 @@ function mqtt_try($test) {
 	$filename = '/tmp/mqtt_' . time() . '.txt';
 	$file     = fopen($filename, 'w');
 
+	if ($file === false) {
+		cacti_log('Cannot create temporary file ' . $filename);
+		$results['result'] = 'error';
+		$results['error']  = 'Cannot create temporary file';
+
+		return $results;
+	}
+
 	$options = [
 		CURLOPT_HEADER           => true,
 		CURLOPT_RETURNTRANSFER   => true,
@@ -134,7 +153,7 @@ function mqtt_try($test) {
 	curl_exec($process);
 	fclose($file);
 
-	$data            = str_replace(["'", '\\'], [''], file_get_contents($filename));
+	$data            = str_replace(["'", '\\'], [''], (string) file_get_contents($filename));
 	$results['data'] = $data;
 
 	unlink($filename);

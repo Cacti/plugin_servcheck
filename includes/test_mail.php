@@ -22,8 +22,29 @@
  +-------------------------------------------------------------------------+
 */
 
-function mail_try($test) {
-	global $config, $ca_info, $service_types_ports;
+/**
+ * Runs a mail-protocol (SMTP/IMAP/POP3) service check test: connects to
+ * the target mail server via a raw socket, authenticates using the
+ * test's associated credential when configured, exchanges the
+ * protocol's greeting/command sequence, and evaluates the server's
+ * response against the expected/maintenance/failure search patterns.
+ * Called from servcheck_run_test() for tests of a mail-protocol type.
+ *
+ * @param array $test The plugin_servcheck_test row describing the check
+ *                    to run.
+ *
+ * @return array The check result: 'result' ('ok'/'error'), 'curl'
+ *               (false), 'error', 'result_search', and 'start'.
+ *
+ * @global array  $config              Cacti global configuration array;
+ *                                     used to build a per-test CA file
+ *                                     path.
+ * @global array  $service_types_ports Default port numbers per service
+ *                                     type, used when the test's
+ *                                     hostname doesn't specify one.
+ */
+function mail_try(array $test): array {
+	global $config, $service_types_ports;
 
 	$final_cred = '';
 	$data       = '';
@@ -78,8 +99,7 @@ function mail_try($test) {
 	}
 
 	if ($test['ca_id'] > 0) {
-
-		servcheck_debug('Preparing own CA chain file ' . $ca_info);
+		servcheck_debug('Preparing own CA chain file ');
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
 			[$test['ca_id']]);
@@ -91,7 +111,9 @@ function mail_try($test) {
 			fwrite($cert_file, $cert);
 			fclose($cert_file);
 		} else {
+
 			cacti_log('Cannot create ca cert file ' . $ca_file);
+
 			$results['result'] = 'error';
 			$results['error']  = 'Cannot create ca cert file';
 
@@ -124,202 +146,126 @@ function mail_try($test) {
 
 	$context = stream_context_create($params);
 
-	switch ($service) {
-		case 'smtp':
-			servcheck_debug('Trying to connect ' . 'tcp://' . $test['hostname']);
+	try {
+		switch ($service) {
+			case 'smtp':
+				servcheck_debug('Trying to connect ' . 'tcp://' . $test['hostname']);
 
-			$fp = stream_socket_client(
-				'tcp://' . $test['hostname'],
-				$errno,
-				$errstr,
-				$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-				STREAM_CLIENT_CONNECT,
-				$context
-			);
+				$fp = stream_socket_client(
+					'tcp://' . $test['hostname'],
+					$errno,
+					$errstr,
+					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
+					STREAM_CLIENT_CONNECT,
+					$context
+				);
 
-			if (!$fp) {
-				$results['result'] = 'error';
-				$results['error']  = 'Cannot connect';
+				if (!$fp) {
+					$results['result'] = 'error';
+					$results['error']  = 'Cannot connect';
 
-				return $results;
-			}
+					return $results;
+				}
 
-			servcheck_debug('Connected');
+				servcheck_debug('Connected');
 
-			$data .= read_response($fp); // welcome banner
+				$data .= read_response($fp); // welcome banner
 
-			send($fp, 'EHLO servcheck.cacti.net');
-			$data .= read_response($fp); // ehlo
+				send($fp, 'EHLO servcheck.cacti.net');
+				$data .= read_response($fp); // ehlo
 
-			send($fp, 'QUIT');
-			fclose($fp);
+				send($fp, 'QUIT');
+				fclose($fp);
 
-			break;
-		case 'smtps':
-			servcheck_debug('Trying to connect ' . 'ssl://' . $test['hostname']);
+				break;
+			case 'smtps':
+				servcheck_debug('Trying to connect ' . 'ssl://' . $test['hostname']);
 
-			$fp = stream_socket_client(
-				'ssl://' . $test['hostname'],
-				$errno,
-				$errstr,
-				$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-				STREAM_CLIENT_CONNECT,
-				$context
-			);
+				$fp = stream_socket_client(
+					'ssl://' . $test['hostname'],
+					$errno,
+					$errstr,
+					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
+					STREAM_CLIENT_CONNECT,
+					$context
+				);
 
-			if (!$fp) {
-				$results['result'] = 'error';
-				$results['error']  = 'Cannot connect';
+				if (!$fp) {
+					$results['result'] = 'error';
+					$results['error']  = 'Cannot connect';
 
-				return $results;
-			}
+					return $results;
+				}
 
-			servcheck_debug('Connected');
+				servcheck_debug('Connected');
 
-			if ($test['checkcert'] || $test['certexpirenotify']) {
-				servcheck_debug('Gathering certificate information');
-				$con_params = stream_context_get_params($fp);
-				$certinfo   = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
+				if ($test['checkcert'] || $test['certexpirenotify']) {
+					servcheck_debug('Gathering certificate information');
+					$con_params = stream_context_get_params($fp);
+					$certinfo   = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
 
-				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
-			}
+					$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
+				}
 
-			$data .= read_response($fp); // welcome banner
-			servcheck_debug('Welcome banner: ' . $data);
+				$data .= read_response($fp); // welcome banner
+				servcheck_debug('Welcome banner: ' . $data);
 
-			if ($test['cred_id'] > 0) {
-				send($fp, 'EHLO localhost');
-				$data .= read_response($fp);
-				send($fp, 'AUTH LOGIN');
-				$data .= read_response($fp);
-				send($fp, base64_encode($credential['username']));
-				$data .= read_response($fp);
-				send($fp, base64_encode($credential['password']));
-				$data .= read_response($fp); // message after login
+				if ($test['cred_id'] > 0) {
+					send($fp, 'EHLO localhost');
+					$data .= read_response($fp);
+					send($fp, 'AUTH LOGIN');
+					$data .= read_response($fp);
+					send($fp, base64_encode(($credential['username'] ?? '')));
+					$data .= read_response($fp);
+					send($fp, base64_encode(($credential['password'] ?? '')));
+					$data .= read_response($fp); // message after login
 
-				servcheck_debug('All data returned: ' . $data);
-			} else {
-				servcheck_debug('No credential set, finishing' . $data);
-			}
+					servcheck_debug('All data returned: ' . $data);
+				} else {
+					servcheck_debug('No credential set, finishing' . $data);
+				}
 
-			send($fp, 'QUIT');
-			fclose($fp);
+				send($fp, 'QUIT');
+				fclose($fp);
 
-			break;
-		case 'smtptls':
-			servcheck_debug('Trying to connect ' . 'tcp://' . $test['hostname']);
+				break;
+			case 'smtptls':
+				servcheck_debug('Trying to connect ' . 'tcp://' . $test['hostname']);
 
-			$fp = stream_socket_client(
-				'tcp://' . $test['hostname'],
-				$errno,
-				$errstr,
-				$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-				STREAM_CLIENT_CONNECT,
-				$context
-			);
+				$fp = stream_socket_client(
+					'tcp://' . $test['hostname'],
+					$errno,
+					$errstr,
+					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
+					STREAM_CLIENT_CONNECT,
+					$context
+				);
 
-			if (!$fp) {
-				$results['result'] = 'error';
-				$results['error']  = 'Cannot connect';
+				if (!$fp) {
+					$results['result'] = 'error';
+					$results['error']  = 'Cannot connect';
 
-				return $results;
-			}
+					return $results;
+				}
 
-			servcheck_debug('Connected');
+				servcheck_debug('Connected');
 
-			$data .= read_response($fp); // welcome banner
+				$data .= read_response($fp); // welcome banner
 
-			send($fp, 'EHLO servcheck.cacti.net');
-			$data .= read_response($fp); // ehlo
+				send($fp, 'EHLO servcheck.cacti.net');
+				$data .= read_response($fp); // ehlo
 
-			send($fp, 'STARTTLS');
-			$xdata = read_response($fp); // starttls respond
+				send($fp, 'STARTTLS');
+				$xdata = read_response($fp); // starttls respond
 
-			if (strpos($xdata, '220') !== 0) {
-				$results['result'] = 'error';
-				$results['error']  = 'Server refused STARTTLS command';
+				if (strpos($xdata, '220') !== 0) {
+					$results['result'] = 'error';
+					$results['error']  = 'Server refused STARTTLS command';
 
-				return $results;
-			}
+					return $results;
+				}
 
-			$data .= $xdata;
-
-			if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
-				$results['result'] = 'error';
-				$results['error']  = 'TLS handshake failed';
-
-				return $results;
-			}
-
-			if ($test['checkcert'] || $test['certexpirenotify']) {
-				servcheck_debug('Gathering certificate information');
-				$context                  = stream_context_get_options($fp);
-				$certinfo                 = openssl_x509_parse($context['ssl']['peer_certificate']);
-				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
-			}
-
-			// we need ehlo again
-			send($fp, 'EHLO servcheck.cacti.net');
-			$data .= read_response($fp);
-
-			if ($test['cred_id'] > 0) {
-				send($fp, 'AUTH LOGIN');
-				$data .= read_response($fp);
-
-				send($fp, base64_encode($credential['username']));
-				$data .= read_response($fp);
-
-				send($fp, base64_encode($credential['password']));
-				$data .= read_response($fp);
-
-				servcheck_debug('Data returned after EHLO: ' . $data);
-			} else {
-				servcheck_debug('No credential set, finishing' . $data);
-			}
-
-			send($fp, 'QUIT');
-			fclose($fp);
-
-			break;
-		case 'imap':
-		case 'imaptls':
-		case 'imaps':
-			$method = $service == 'imaps' ? 'ssl' : 'tcp';
-
-			servcheck_debug('Trying to connect ' . $method . '://' . $test['hostname']);
-
-			$fp = stream_socket_client(
-				$method . '://' . $test['hostname'],
-				$errno,
-				$errstr,
-				$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-				STREAM_CLIENT_CONNECT,
-				$context
-			);
-
-			if (!$fp) {
-				$results['result'] = 'error';
-				$results['error']  = 'Cannot connect';
-
-				return $results;
-			}
-
-			servcheck_debug('Connected');
-
-			if ($service == 'imaps' && ($test['checkcert'] || $test['certexpirenotify'])) {
-				servcheck_debug('Gathering certificate information');
-				$con_params               = stream_context_get_params($fp);
-				$certinfo                 = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
-				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
-			}
-
-			$data .= fgets($fp); // welcome banner
-
-			if ($service == 'imaptls') {
-				servcheck_debug('Trying STARTTLS');
-
-				send($fp, 'A002 STARTTLS');
-				$data .= read_response_imap($fp, 'A002');
+				$data .= $xdata;
 
 				if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
 					$results['result'] = 'error';
@@ -332,126 +278,202 @@ function mail_try($test) {
 					servcheck_debug('Gathering certificate information');
 					$context                  = stream_context_get_options($fp);
 					$certinfo                 = openssl_x509_parse($context['ssl']['peer_certificate']);
-					$results['cert_valid_to'] = $certinfo['validTo_time_t'];
-				}
-			}
-
-			if ($test['cred_id'] > 0) {
-				if (stripos($data, 'auth=plain') !== false) {
-					servcheck_debug('Trying to authenticate - method=plain');
-					send($fp, 'A010 AUTHENTICATE PLAIN');
-					$data .= read_response_imap($fp, 'A010');
-					send($fp, base64_encode("\0" . $credential['username'] . "\0" . $credential['password']));
-					$data .= read_response_imap($fp);
-				} elseif (stripos($data, 'auth=login') !== false) {
-					servcheck_debug('Trying to authenticate - method=login');
-					send($fp, 'A010 AUTHENTICATE LOGIN');
-					$data .= read_response_imap($fp, 'A010');
-					send($fp, base64_encode($credential['username']));
-					$data .= read_response_imap($fp);
-					send($fp, base64_encode($credential['password']));
-					$data .= read_response_imap($fp);
+					$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
 				}
 
-				servcheck_debug('Reading messages');
-				send($fp, 'A020 SELECT INBOX');
-				$data .= read_response_imap($fp, 'A020');
-			}
+				// we need ehlo again
+				send($fp, 'EHLO servcheck.cacti.net');
+				$data .= read_response($fp);
 
-			send($fp, 'A1000 LOGOUT');
-			fclose($fp);
+				if ($test['cred_id'] > 0) {
+					send($fp, 'AUTH LOGIN');
+					$data .= read_response($fp);
 
-			break;
-		case 'pop3':
-		case 'pop3tls':
-		case 'pop3s':
-			$method = $service == 'pop3s' ? 'ssl' : 'tcp';
+					send($fp, base64_encode(($credential['username'] ?? '')));
+					$data .= read_response($fp);
 
-			servcheck_debug('Trying to connect ' . $method . '://' . $test['hostname']);
+					send($fp, base64_encode(($credential['password'] ?? '')));
+					$data .= read_response($fp);
 
-			$fp = stream_socket_client(
-				$method . '://' . $test['hostname'],
-				$errno,
-				$errstr,
-				$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-				STREAM_CLIENT_CONNECT,
-				$context
-			);
+					servcheck_debug('Data returned after EHLO: ' . $data);
+				} else {
+					servcheck_debug('No credential set, finishing' . $data);
+				}
 
-			if (!$fp) {
-				$results['result'] = 'error';
-				$results['error']  = 'Cannot connect';
+				send($fp, 'QUIT');
+				fclose($fp);
 
-				return $results;
-			}
+				break;
+			case 'imap':
+			case 'imaptls':
+			case 'imaps':
+				$method = $service == 'imaps' ? 'ssl' : 'tcp';
 
-			servcheck_debug('Connected');
+				servcheck_debug('Trying to connect ' . $method . '://' . $test['hostname']);
 
-			$data .= fgets($fp); // welcome banner
+				$fp = stream_socket_client(
+					$method . '://' . $test['hostname'],
+					$errno,
+					$errstr,
+					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
+					STREAM_CLIENT_CONNECT,
+					$context
+				);
 
-			if ($service == 'pop3s' && ($test['checkcert'] || $test['certexpirenotify'])) {
-				servcheck_debug('Gathering certificate information');
-				$con_params               = stream_context_get_params($fp);
-				$certinfo                 = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
-				$results['cert_valid_to'] = $certinfo['validTo_time_t'];
-			}
-
-			if ($service == 'pop3tls') {
-				servcheck_debug('Trying STARTTLS');
-
-				send($fp, 'A002 STARTTLS');
-				$data .= fgets($fp);
-
-				if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+				if (!$fp) {
 					$results['result'] = 'error';
-					$results['error']  = 'TLS handshake failed';
+					$results['error']  = 'Cannot connect';
 
 					return $results;
 				}
 
-				if ($test['checkcert'] || $test['certexpirenotify']) {
+				servcheck_debug('Connected');
+
+				if ($service == 'imaps' && ($test['checkcert'] || $test['certexpirenotify'])) {
 					servcheck_debug('Gathering certificate information');
-					$context                  = stream_context_get_options($fp);
-					$certinfo                 = openssl_x509_parse($context['ssl']['peer_certificate']);
-					$results['cert_valid_to'] = $certinfo['validTo_time_t'];
+					$con_params               = stream_context_get_params($fp);
+					$certinfo                 = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
+					$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
 				}
-			}
 
-			if ($test['cred_id'] > 0) {
-				servcheck_debug('Trying to authenticate');
-				send($fp, 'USER ' . $credential['username']);
-				$data .= fgets($fp);
-				send($fp, 'PASS ' . $credential['password']);
-				$data .= fgets($fp);
+				$data .= fgets($fp); // welcome banner
 
-				servcheck_debug('Reading number of messages');
-				send($fp, 'STAT');
-				$data .= fgets($fp);
-			}
+				if ($service == 'imaptls') {
+					servcheck_debug('Trying STARTTLS');
 
-			send($fp, 'QUIT');
-			fclose($fp);
+					send($fp, 'A002 STARTTLS');
+					$data .= read_response_imap($fp, 'A002');
 
-			break;
-		default:
-			$results['result'] = 'error';
-			$results['error']  = 'Incorrect test type';
+					if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+						$results['result'] = 'error';
+						$results['error']  = 'TLS handshake failed';
 
-			return $results;
+						return $results;
+					}
 
-			break;
-	}
+					if ($test['checkcert'] || $test['certexpirenotify']) {
+						servcheck_debug('Gathering certificate information');
+						$context                  = stream_context_get_options($fp);
+						$certinfo                 = openssl_x509_parse($context['ssl']['peer_certificate']);
+						$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
+					}
+				}
+
+				if ($test['cred_id'] > 0) {
+					if (stripos($data, 'auth=plain') !== false) {
+						servcheck_debug('Trying to authenticate - method=plain');
+						send($fp, 'A010 AUTHENTICATE PLAIN');
+						$data .= read_response_imap($fp, 'A010');
+						send($fp, base64_encode("\0" . ($credential['username'] ?? '') . "\0" . ($credential['password'] ?? '')));
+						$data .= read_response_imap($fp);
+					} elseif (stripos($data, 'auth=login') !== false) {
+						servcheck_debug('Trying to authenticate - method=login');
+						send($fp, 'A010 AUTHENTICATE LOGIN');
+						$data .= read_response_imap($fp, 'A010');
+						send($fp, base64_encode(($credential['username'] ?? '')));
+						$data .= read_response_imap($fp);
+						send($fp, base64_encode(($credential['password'] ?? '')));
+						$data .= read_response_imap($fp);
+					}
+
+					servcheck_debug('Reading messages');
+					send($fp, 'A020 SELECT INBOX');
+					$data .= read_response_imap($fp, 'A020');
+				}
+
+				send($fp, 'A1000 LOGOUT');
+				fclose($fp);
+
+				break;
+			case 'pop3':
+			case 'pop3tls':
+			case 'pop3s':
+				$method = $service == 'pop3s' ? 'ssl' : 'tcp';
+
+				servcheck_debug('Trying to connect ' . $method . '://' . $test['hostname']);
+
+				$fp = stream_socket_client(
+					$method . '://' . $test['hostname'],
+					$errno,
+					$errstr,
+					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
+					STREAM_CLIENT_CONNECT,
+					$context
+				);
+
+				if (!$fp) {
+					$results['result'] = 'error';
+					$results['error']  = 'Cannot connect';
+
+					return $results;
+				}
+
+				servcheck_debug('Connected');
+
+				$data .= fgets($fp); // welcome banner
+
+				if ($service == 'pop3s' && ($test['checkcert'] || $test['certexpirenotify'])) {
+					servcheck_debug('Gathering certificate information');
+					$con_params               = stream_context_get_params($fp);
+					$certinfo                 = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
+					$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
+				}
+
+				if ($service == 'pop3tls') {
+					servcheck_debug('Trying STARTTLS');
+
+					send($fp, 'A002 STARTTLS');
+					$data .= fgets($fp);
+
+					if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+						$results['result'] = 'error';
+						$results['error']  = 'TLS handshake failed';
+
+						return $results;
+					}
+
+					if ($test['checkcert'] || $test['certexpirenotify']) {
+						servcheck_debug('Gathering certificate information');
+						$context                  = stream_context_get_options($fp);
+						$certinfo                 = openssl_x509_parse($context['ssl']['peer_certificate']);
+						$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
+					}
+				}
+
+				if ($test['cred_id'] > 0) {
+					servcheck_debug('Trying to authenticate');
+					send($fp, 'USER ' . ($credential['username'] ?? ''));
+					$data .= fgets($fp);
+					send($fp, 'PASS ' . ($credential['password'] ?? ''));
+					$data .= fgets($fp);
+
+					servcheck_debug('Reading number of messages');
+					send($fp, 'STAT');
+					$data .= fgets($fp);
+				}
+
+				send($fp, 'QUIT');
+				fclose($fp);
+
+				break;
+			default:
+				$results['result'] = 'error';
+				$results['error']  = 'Incorrect test type';
+
+				return $results;
+		}
+	} finally {
+	  if ($test['ca_id'] > 0 && file_exists($ca_file)) {
+		  servcheck_debug('Removing own CA file');
+		  unlink($ca_file);
+	  }	
+  }
 
 	$data = str_replace(["'", '\\'], [''], $data);
 
 	$results['data'] = $data;
 
 	servcheck_debug('Result: ' . clean_up_lines(var_export($data, true)));
-
-	if ($test['ca_id'] > 0 && file_exists($ca_file)) {
-		servcheck_debug('Removing own CA file');
-		unlink($ca_file);
-	}
 
 	if (empty($results['data'])) {
 		$results['result'] = 'error';
@@ -504,12 +526,33 @@ function mail_try($test) {
 	return $results;
 }
 
-function send($fp, $cmd) {
+/**
+ * Writes a single command line (with a trailing CRLF) to the mail
+ * server's socket stream. Called from mail_try() to send each protocol
+ * command.
+ *
+ * @param resource $fp  The open socket stream to the mail server.
+ * @param string   $cmd The command line to send (without the trailing
+ *                      CRLF).
+ *
+ * @return void
+ */
+function send($fp, string $cmd): void {
 	fwrite($fp, $cmd . "\r\n");
 }
 
 // response like 250 OK
-function read_response($fp) {
+
+/**
+ * Reads lines from the mail server's socket stream until a final
+ * SMTP/POP3-style numeric status line (response like 250 OK) is seen.
+ * Called from mail_try() to read the server's reply to each command.
+ *
+ * @param resource $fp The open socket stream to the mail server.
+ *
+ * @return string The accumulated response text.
+ */
+function read_response($fp): string {
 	$response = '';
 
 	while ($line = fgets($fp)) {
@@ -524,7 +567,21 @@ function read_response($fp) {
 }
 
 // for IMAP we need more complicated function. Each command and response begins with XXX tag
-function read_response_imap($fp, $tag = 'A001') {
+
+/**
+ * Reads lines from the mail server's socket stream until a line tagged
+ * with the given IMAP command tag is seen, since for IMAP we need more
+ * complicated function - each command and response begins with XXX tag
+ * rather than a fixed numeric status code. Called from mail_try() to
+ * read an IMAP server's tagged response.
+ *
+ * @param resource $fp  The open socket stream to the mail server.
+ * @param string   $tag The IMAP command tag to look for at the start of
+ *                      a line; defaults to 'A001'.
+ *
+ * @return string The accumulated response text.
+ */
+function read_response_imap($fp, string $tag = 'A001'): string {
 	$response = '';
 	stream_set_timeout($fp, 2);
 

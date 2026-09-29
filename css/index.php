@@ -1,3 +1,4 @@
+<?php
 /*
  +-------------------------------------------------------------------------+
  | Copyright (C) 2004-2026 The Cacti Group                                 |
@@ -21,32 +22,4 @@
  +-------------------------------------------------------------------------+
 */
 
-.servcheck_error {
-	color: #93CEFF;
-	background-color: #880000;
-}
-
-.servcheck_duration {
-	color: #93CEFF;
-	background-color: #aa0000;
-}
-
-.servcheck_warning {
-	color: #93CEFF;
-	background-color: #555555;
-}
-
-.servcheck_failing {
-	color: #FFFFFF;
-	background-color: #000055;
-}
-
-.servcheck_ok {
-	color: #93CEFF;
-	background-color: #000000;
-}
-
-.servcheck_disabled {
-	color: #93CEFF;
-	background-color: #333333;
-}
+header('Location: ../../index.php');

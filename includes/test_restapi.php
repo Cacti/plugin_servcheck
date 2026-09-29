@@ -22,7 +22,32 @@
  +-------------------------------------------------------------------------+
 */
 
-function restapi_try($test) {
+/**
+ * Runs a REST API service check test via cURL, handling the test's
+ * configured authentication (basic/API key/OAuth2/cookie login flow, via
+ * a decrypted credential), applying its proxy/CA certificate/timeout,
+ * and evaluating the response against the expected/maintenance/failure
+ * search patterns. Called from servcheck_run_test() for tests of a REST
+ * API-based type.
+ *
+ * @param array $test The plugin_servcheck_test row describing the check
+ *                    to run.
+ *
+ * @return array The check result: 'result' ('ok'/'error'), 'curl'
+ *               (true), 'time', 'error', 'result_search', 'start', and
+ *               (once the request completes) cURL timing/status
+ *               'options' and response 'data'.
+ *
+ * @global string $user_agent    The User-Agent string sent with the
+ *                               request.
+ * @global array  $config        Cacti global configuration array;
+ *                               used to build the cookie file path.
+ * @global string $ca_info        Path to the bundled CA certificate file
+ *                               used for TLS verification.
+ * @global array  $service_types Valid service/test type keys (declared
+ *                               but not directly used here).
+ */
+function restapi_try(array $test): array {
 	global $user_agent, $config, $ca_info, $service_types;
 
 	$cert_info    = [];
@@ -73,9 +98,16 @@ function restapi_try($test) {
 				return $results;
 			}
 		}
+	} else {
+		servcheck_debug('No credential set!');
+		cacti_log('No credential set');
+		$results['result'] = 'error';
+		$results['error']  = 'No credential set';
+
+		return $results;
 	}
 
-	if (is_null($cred['type'])) {
+	if (is_null($cred['type'] ?? null)) {
 		cacti_log('Rest API method not set');
 		$results['result'] = 'error';
 		$results['error']  = 'Rest API method not set';
@@ -86,7 +118,7 @@ function restapi_try($test) {
 	// Disable Cert checking
 	if ($test['checkcert'] == '') {
 		$options[CURLOPT_SSL_VERIFYPEER] = false;
-		$options[CURLOPT_SSL_VERIFYHOST] = false;
+		$options[CURLOPT_SSL_VERIFYHOST] = 0;
 	} else { // for sure, it seems that it isn't enabled by default now
 		$options[CURLOPT_SSL_VERIFYPEER] = true;
 		$options[CURLOPT_SSL_VERIFYHOST] = 2;
@@ -137,7 +169,7 @@ function restapi_try($test) {
 
 					break;
 				case 'post_json':
-					$data = json_encode([
+					$data = (string) json_encode([
 						$credential['token_name'] => $credential['token_value']
 					]);
 
@@ -163,10 +195,10 @@ function restapi_try($test) {
 
 			break;
 		case 'oauth2':
-			if (!isset($credential['cred_validity']) || (isset($credential['cred_validity']) && $credential['cred_validity'] < time())) {
+			if (($cred['cred_validity'] ?? 0) < time()) {
 				servcheck_debug('No valid token, generating new request');
 
-				$cred_data = json_encode([
+				$cred_data = (string) json_encode([
 					'grant_type' => 'password',
 					'username'   => $credential['oauth_client_id'],
 					'password'   => $credential['oauth_client_secret']
@@ -208,7 +240,7 @@ function restapi_try($test) {
 
 					servcheck_debug('Problem with login: ' . $results['curl_return']);
 					$results['result'] = 'error';
-					$results['error']  =  str_replace(['"', "'"], '', ($results['curl_return']));
+					$results['error']  =  str_replace(['"', "'"], '', (string) $results['curl_return']);
 
 					return $results;
 				}
@@ -219,7 +251,7 @@ function restapi_try($test) {
 				$header      = substr($response, 0, $header_size);
 				$header      = str_replace(["'", '\\'], [''], $header);
 
-				$body = json_decode(substr($response, $header_size), true);
+				$body = json_decode(substr((string) $response, $header_size), true);
 
 				if (isset($body['token'])) {
 					servcheck_debug('We got token and expiration, saving');
@@ -248,8 +280,8 @@ function restapi_try($test) {
 					$results['options']     = curl_getinfo($process);
 					$results['result']      = 'error';
 					$results['curl_return'] = curl_errno($process);
-					$results['data']        =  str_replace(["'", '\\'], [''], $response);
-					$results['error']       =  str_replace(['"', "'"], '', ($results['curl_return']));
+					$results['data']        =  str_replace(["'", '\\'], [''], (string) $response);
+					$results['error']       =  str_replace(['"', "'"], '', (string) $results['curl_return']);
 
 					return $results;
 				}
@@ -286,7 +318,7 @@ function restapi_try($test) {
 			];
 
 			if ($credential['option_cookie'] == 'json') {
-				$cred_data      = json_encode($cred_data);
+				$cred_data      = (string) json_encode($cred_data);
 				$http_headers[] = 'Content-Type: application/json';
 				$debug_cred_data      = json_encode($debug_cred_data);
 				$debug_http_headers[] = 'Content-Type: application/json';
@@ -316,17 +348,17 @@ function restapi_try($test) {
 				// Get information regarding a specific transfer, cert info too
 				$results['options']     = curl_getinfo($process);
 				$results['curl_return'] = curl_errno($process);
-				$results['data']        =  str_replace(["'", '\\'], [''], $response);
+				$results['data']        =  str_replace(["'", '\\'], [''], (string) $response);
 
 				servcheck_debug('Problem with login: ' . $results['curl_return']);
 				$results['result'] = 'error';
-				$results['error']  =  str_replace(['"', "'"], '', ($results['curl_return']));
+				$results['error']  =  str_replace(['"', "'"], '', (string) $results['curl_return']);
 
 				return $results;
 			}
 
 			$header_size = curl_getinfo($process, CURLINFO_HEADER_SIZE);
-			$header      = substr($response, 0, $header_size);
+			$header      = substr((string) $response, 0, $header_size);
 
 			if (preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', $header, $matches)) {
 				foreach ($matches[1] as $cookie) {
@@ -338,14 +370,14 @@ function restapi_try($test) {
 				// Get information regarding a specific transfer, cert info too
 				$results['options']     = curl_getinfo($process);
 				$results['curl_return'] = curl_errno($process);
-				$results['data']        =  str_replace(["'", '\\'], [''], $response);
-				$results['error']       =  str_replace(['"', "'"], '', ($results['curl_return']));
+				$results['data']        =  str_replace(["'", '\\'], [''], (string) $response);
+				$results['error']       =  str_replace(['"', "'"], '', (string) $results['curl_return']);
 				$results['result']      = 'error';
 
 				return $results;
 			}
 
-			$response = str_replace(["'", '\\'], [''], $response);
+			$response = str_replace(["'", '\\'], [''], (string) $response);
 
 			curl_close($process);
 
@@ -368,7 +400,7 @@ function restapi_try($test) {
 	servcheck_debug('Executing curl request');
 
 	$data            = curl_exec($process);
-	$data            = str_replace(["'", '\\'], [''], $data);
+	$data            = str_replace(["'", '\\'], [''], (string) $data);
 	$results['data'] = $data;
 
 	// Get information regarding a specific transfer, cert info too
@@ -400,7 +432,7 @@ function restapi_try($test) {
 		return $results;
 	}
 
-	if (empty($results['data']) && $results['curl_return'] > 0) {
+	if (empty($results['data'])) {
 		$results['result'] = 'error';
 		$results['error']  = 'No data returned';
 

@@ -52,6 +52,10 @@ if (strpos($dir, 'plugins') !== false) {
 }
 
 require_once('./include/cli_check.php');
+
+global $config;
+
+require_once($config['base_path'] . '/lib/poller.php');
 require_once($config['base_path'] . '/plugins/servcheck/includes/functions.php');
 require($config['base_path'] . '/plugins/servcheck/includes/arrays.php');
 
@@ -232,23 +236,58 @@ unregister_process('servcheck', "child:$poller_id", $process);
 
 $rusage = getrusage();
 
+if ($rusage === false) {
+	$rusage = array_fill_keys(['ru_utime.tv_sec', 'ru_utime.tv_usec', 'ru_stime.tv_sec', 'ru_stime.tv_usec'], 0);
+}
+
 $end    = microtime(true);
 $stats  = sprintf('Time:%.2f, Stats:%s/%s, Down triggered:%s, Duration triggered:%s, Memory:%s MB, CPUuser:%.2f CPUsystem:%.2f',
 	$end - $start,
-	$test['stats_ok'],
-	$test['stats_bad'],
-	($test['triggered'] == 0 ? 'No' : 'Yes'),
-	($test['triggered_duration'] == 0 ? 'No' : 'Yes'),
+	$test['stats_ok'] ?? 0,
+	$test['stats_bad'] ?? 0,
+	(($test['triggered'] ?? 0) == 0 ? 'No' : 'Yes'),
+	(($test['triggered_duration'] ?? 0) == 0 ? 'No' : 'Yes'),
 	$max_mem / 1024 / 1024,
 	$rusage['ru_utime.tv_sec'] + $rusage['ru_utime.tv_usec'] / 1E6,
 	$rusage['ru_stime.tv_sec'] + $rusage['ru_stime.tv_usec'] / 1E6);
 
 servcheck_debug($stats);
 
-function servcheck_run_test($test, $force) {
+/**
+ * Runs a single service check test: dispatches to the appropriate
+ * protocol-specific test function (HTTP/cURL, DNS, FTP, mail, MQTT,
+ * REST API, SNMP, SSH, based on the test's configured type), evaluates
+ * the result against its down/duration/certificate-expiry triggers
+ * (sending notifications and/or running a triggered command as
+ * configured), logs the run's timing/resource usage to
+ * plugin_servcheck_log, updates the test's running statistics, and
+ * purges old log entries per the configured retention period. Called
+ * from this script's main flow for each test assigned to this poller/
+ * process slot.
+ *
+ * @param array $test  The plugin_servcheck_test row describing the
+ *                     check to run.
+ * @param bool  $force Whether to run the test even if it is currently
+ *                     disabled or not yet due.
+ *
+ * @return void The test result is persisted to plugin_servcheck_log
+ *              and the test's statistics; the function returns early
+ *              (without side effects beyond logging) when the test is
+ *              skipped (disabled, not yet due, in maintenance, or an
+ *              unrecognized test type produced no result).
+ *
+ * @global array $config Cacti global configuration array; used to
+ *                       resolve poller/library paths for the
+ *                       protocol-specific test functions.
+ */
+function servcheck_run_test(array $test, bool $force): void {
 	global $config;
 
 	$usage_start = getrusage();
+
+	if ($usage_start === false) {
+		$usage_start = array_fill_keys(['ru_utime.tv_sec', 'ru_utime.tv_usec', 'ru_stime.tv_sec', 'ru_stime.tv_usec'], 0);
+	}
 
 	$cert_expiry_days          = read_config_option('servcheck_certificate_expiry_days');
 	$test['new_notify_expire'] = false;
@@ -273,7 +312,7 @@ function servcheck_run_test($test, $force) {
 	if ($logs > 0 && $test['next_run'] > time() && !$force) {
 		servcheck_debug('INFO: Test "' . $test['name'] . '" skipped. Not the right time to run the test.');
 
-		return false;
+		return;
 	}
 
 	if (api_plugin_is_enabled('maint')) {
@@ -284,7 +323,7 @@ function servcheck_run_test($test, $force) {
 		if (plugin_maint_check_servcheck_test($test['id'])) {
 			servcheck_debug('Maintenance schedule active, skipped.');
 
-			return false;
+			return;
 		}
 	}
 
@@ -391,7 +430,7 @@ function servcheck_run_test($test, $force) {
 	if (cacti_sizeof($results) == 0) {
 		servcheck_debug('Unknown error for test ' . $test['id']);
 
-		return false;
+		return;
 	}
 
 	$results['time']     = time();
@@ -428,9 +467,11 @@ function servcheck_run_test($test, $force) {
 		WHERE test_id = ? ORDER BY id DESC LIMIT 1',
 		[$test['id']]);
 
-	if (!$last_log) {
-		$last_log['result']        = 'not yet';
-		$last_log['result_search'] = 'not yet';
+	if (!is_array($last_log) || !cacti_sizeof($last_log)) {
+		$last_log = [
+			'result'        => 'not yet',
+			'result_search' => 'not yet',
+		];
 	}
 
 	if ($results['result'] == 'ok') {
@@ -506,7 +547,7 @@ function servcheck_run_test($test, $force) {
 	// check renewed cert
 	if ($test['certexpirenotify'] && $results['result'] == 'ok') {
 		if (isset($last_log['cert_expire']) &&
-			$last_log['cert_expire'] != '0000-00-00 00:00:00' && !is_null($last_log['cert_expire'])) {
+			$last_log['cert_expire'] != '0000-00-00 00:00:00') {
 			$days_before = round((strtotime($last_log['cert_expire']) - strtotime($last_log['last_check'])) / 86400,1);
 
 			if ($test['days_left'] > 0 && $test['days_left'] > $days_before) {
@@ -610,6 +651,11 @@ function servcheck_run_test($test, $force) {
 	servcheck_debug('Updating Statistics');
 
 	$usage_end = getrusage();
+
+	if ($usage_end === false) {
+		$usage_end = array_fill_keys(['ru_utime.tv_sec', 'ru_utime.tv_usec', 'ru_stime.tv_sec', 'ru_stime.tv_usec'], 0);
+	}
+
 	$user_cpu  = ($usage_end['ru_utime.tv_sec'] + $usage_end['ru_utime.tv_usec']) - ($usage_start['ru_utime.tv_sec'] + $usage_start['ru_utime.tv_usec']);
 	$sys_cpu   = ($usage_end['ru_stime.tv_sec'] + $usage_end['ru_stime.tv_usec']) - ($usage_start['ru_stime.tv_sec'] + $usage_start['ru_stime.tv_usec']);
 
@@ -685,7 +731,30 @@ function servcheck_run_test($test, $force) {
 	}
 }
 
-function plugin_servcheck_send_notification($results, $test, $last_log) {
+/**
+ * Builds and sends (or aggregates into a single digest, depending on the
+ * 'servcheck_send_email_separately' setting) down/recovery/certificate-
+ * expiry notification emails to a test's configured notification lists,
+ * extra addresses, and/or account recipients. Called from
+ * servcheck_run_test() when a test's result triggers a notification.
+ *
+ * @param array $results  The test run's result data (status, error,
+ *                        HTTP/timing details).
+ * @param array $test     The plugin_servcheck_test row being evaluated,
+ *                        providing its notification configuration.
+ * @param array $last_log The previous log entry for this test, used to
+ *                        detect a state transition (e.g. down ->
+ *                        recovered).
+ *
+ * @return void Sends (or aggregates) the notification email(s); returns
+ *              early without sending when the test has no configured
+ *              notification recipients.
+ *
+ * @global array $httperrors Map of HTTP status codes to their
+ *                           descriptions, used in the notification
+ *                           message body.
+ */
+function plugin_servcheck_send_notification(array $results, array $test, array $last_log): void {
 	global $httperrors;
 	$notify_list    = [];
 	$notify_extra   = [];
@@ -701,12 +770,14 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 	$servcheck_send_email_separately = read_config_option('servcheck_send_email_separately');
 
 	if ($test['notify_accounts'] != '') {
-		$tmp = db_fetch_row_prepared('SELECT email_address
+		$tmp = db_fetch_assoc_prepared('SELECT email_address
 			FROM user_auth
 			WHERE id IN (' . $test['notify_accounts'] . ')');
 
-		foreach ($tmp as $acc) {
-			$notify_account[] = $acc;
+		if (is_array($tmp)) {
+			foreach ($tmp as $acc) {
+				$notify_account[] = $acc['email_address'];
+			}
 		}
 	}
 
@@ -727,8 +798,10 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 		cacti_log('ERROR: No users to send SERVCHECK Notification for ' . $test['name'], false, 'SERVCHECK');
 		servcheck_debug('No notification email or user');
 
-		return true;
+		return;
 	}
+
+	$message = [];
 
 	if ($test['notify_result']) {
 		if ($results['result'] == 'ok') {
@@ -827,7 +900,7 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 			$message[3]['subject'] = '[Cacti servcheck - ' . $test['name'] . '] Certificate will expire in less than ' . $cert_expiry_days . ' days, (days left: ' . $test['days_left'] . ')';
 		}
 
-		$message[3]['text']  = '<h3>' . $message[3]['subject'] . '</h3>' . PHP_EOL;
+		$message[3]['text']  = '<h3>' . ($message[3]['subject'] ?? '') . '</h3>' . PHP_EOL;
 
 		$message[3]['text'] .= '<table>' . PHP_EOL;
 		$message[3]['text'] .= '<tr><td>Hostname:</td><td>' . $test['hostname'] . '</td></tr>' . PHP_EOL;
@@ -856,7 +929,7 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 
 	$to = array_merge($notify_list, $notify_account, $notify_extra);
 
-	if (isset($message) && is_array($message)) {
+	if (cacti_sizeof($message)) {
 		if ($servcheck_send_email_separately != 'on') {
 			$addresses = implode(',', $to);
 
@@ -865,7 +938,7 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 					$m['text'] = strip_tags($m['text']);
 				}
 
-				plugin_servcheck_send_email($addresses, $m['subject'], $m['text']);
+				plugin_servcheck_send_email($addresses, $m['subject'] ?? '', $m['text']);
 			}
 		} else {
 			foreach ($message as $m) {
@@ -874,14 +947,28 @@ function plugin_servcheck_send_notification($results, $test, $last_log) {
 				}
 
 				foreach ($to as $u) {
-					plugin_servcheck_send_email($u, $m['subject'], $m['text']);
+					plugin_servcheck_send_email($u, $m['subject'] ?? '', $m['text']);
 				}
 			}
 		}
 	}
 }
 
-function plugin_servcheck_send_email($to, $subject, $message) {
+/**
+ * Sends a single notification email to a recipient via Cacti's mailer(),
+ * tagging the User-Agent with the Cacti version. Called from
+ * plugin_servcheck_send_notification() for each resolved recipient
+ * address.
+ *
+ * @param string $to      The recipient email address.
+ * @param string $subject The email subject line.
+ * @param string $message The HTML email body; a stripped-tags plain-
+ *                        text alternative is derived from it
+ *                        automatically.
+ *
+ * @return void
+ */
+function plugin_servcheck_send_email(string $to, string $subject, string $message): void {
 	$from_name  = read_config_option('settings_from_name');
 	$from_email = read_config_option('settings_from_email');
 
@@ -912,11 +999,25 @@ function plugin_servcheck_send_email($to, $subject, $message) {
 /**
  * sig_handler - provides a generic means to catch exceptions to the Cacti log.
  *
+ * Registered as this child worker process's signal handler. On
+ * SIGTERM/SIGINT, unregisters this process and exits.
+ *
  * @param int $signo The signal that was thrown by the interface.
  *
  * @return void
+ *
+ * @global bool   $force     Reserved/declared for parity with
+ *                           poller_servcheck.php's handler; not used
+ *                           directly here.
+ * @global int    $poller_id This poller's id, used to unregister the
+ *                           process.
+ * @global int    $process   This worker's assigned process slot number,
+ *                           used to unregister the process.
+ * @global string $taskname  Reserved/declared for parity with
+ *                           poller_servcheck.php's handler; not used
+ *                           directly here.
  */
-function sig_handler($signo) {
+function sig_handler(int $signo): void {
 	global $force, $poller_id, $process, $taskname;
 
 	switch ($signo) {
@@ -924,7 +1025,7 @@ function sig_handler($signo) {
 		case SIGINT:
 			cacti_log("WARNING: Service Check Poller 'master' is shutting down by signal!", false, 'SERVCHECK');
 
-			unregister_process('servcheck', "child:$poller_id", $process, getmypid());
+			unregister_process('servcheck', "child:$poller_id", $process, (int) getmypid());
 
 			exit(1);
 		default:
@@ -934,8 +1035,18 @@ function sig_handler($signo) {
 
 /**
  * display_version - displays version information
+ *
+ * Prints this worker script's name/plugin version/copyright. Called
+ * from the CLI argument parser for the '--version' flag, and from
+ * display_help() to prefix the usage text.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; used to
+ *                       locate and load setup.php for the version
+ *                       lookup.
  */
-function display_version() {
+function display_version(): void {
 	global $config;
 
 	if (!function_exists('plugin_servcheck_version')) {
@@ -949,8 +1060,14 @@ function display_version() {
 
 /**
  * display_help - displays the usage of the function
+ *
+ * Prints this script's version banner followed by its command-line
+ * usage/argument summary. Called from the CLI argument parser for the
+ * '--help' flag, and whenever an invalid argument is supplied.
+ *
+ * @return void
  */
-function display_help() {
+function display_help(): void {
 	display_version();
 
 	print PHP_EOL;

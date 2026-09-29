@@ -22,9 +22,45 @@
  +-------------------------------------------------------------------------+
 */
 
-$user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
+// The User-Agent is configurable via the 'User Agent' plugin setting; fall
+// back to a sane default when it has not been set.
+$user_agent = read_config_option('servcheck_user_agent');
 
-function curl_try($test) {
+if (empty($user_agent)) {
+	$user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
+}
+
+global $config;
+
+/**
+ * Runs a cURL-based service check test (HTTP/HTTPS, or any other
+ * type_curl-family test sharing this transport), applying the test's
+ * configured credential, proxy, CA certificate, IP resolution override,
+ * timeout, and search patterns, and evaluating the response against the
+ * expected/maintenance/failure search patterns. Called from
+ * servcheck_run_test() for tests of a cURL-based type.
+ *
+ * @param array $test The plugin_servcheck_test row describing the check
+ *                    to run.
+ *
+ * @return array The check result: 'result' ('ok'/'error'), 'curl' (true),
+ *               'error', 'result_search', 'start', and (once the
+ *               request completes) cURL timing/status 'options' and
+ *               response 'data'.
+ *
+ * @global string $user_agent          The User-Agent string sent with
+ *                                     the request.
+ * @global array  $config              Cacti global configuration array;
+ *                                     used to build a per-test CA file
+ *                                     path.
+ * @global string $ca_info              Path to the bundled CA
+ *                                     certificate file used for TLS
+ *                                     verification.
+ * @global array  $service_types_ports Default port numbers per service
+ *                                     type, used when the test's
+ *                                     hostname doesn't specify one.
+ */
+function curl_try(array $test): array {
 	global $user_agent, $config, $ca_info, $service_types_ports;
 
 	$cert_info  = [];
@@ -125,11 +161,11 @@ function curl_try($test) {
 	if ($service == 'ldap' || $service == 'ldaps') {	// do search
 		// ldap needs credentials in options
 		$test['path']             = '/' . $test['ldapsearch'];
-		$options[CURLOPT_USERPWD] = $credential['username'] . ':' . $credential['password'];
+		$options[CURLOPT_USERPWD] = ($credential['username'] ?? '') . ':' . ($credential['password'] ?? '');
 	}
 
 	if ($service == 'smb' || $service == 'smbs') {
-		$options[CURLOPT_USERPWD] = str_replace('@', '%40', $credential['username']) . ':' . $credential['password'];
+		$options[CURLOPT_USERPWD] = str_replace('@', '%40', $credential['username'] ?? '') . ':' . ($credential['password'] ?? '');
 	}
 
 	if ($test['ca_id'] > 0) {
@@ -165,7 +201,7 @@ function curl_try($test) {
 				WHERE id = ?',
 				[$test['proxy_id']]);
 
-			if (cacti_sizeof($proxy)) {
+			if (is_array($proxy) && cacti_sizeof($proxy)) {
 				$options[CURLOPT_PROXY]             = $proxy['hostname'];
 				$options[CURLOPT_UNRESTRICTED_AUTH] = true;
 
@@ -174,6 +210,8 @@ function curl_try($test) {
 				} else {
 					$options[CURLOPT_PROXYPORT] = $proxy['http_port'];
 				}
+
+				$proxy_cred = [];
 
 				if ($proxy['cred_id'] > 0) {
 					$proxy_cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
@@ -201,7 +239,7 @@ function curl_try($test) {
 					}
 				}
 
-				if ($proxy_cred['username'] != '') {
+				if (($proxy_cred['username'] ?? '') != '') {
 					$options[CURLOPT_PROXYUSERPWD] = $proxy_cred['username'] . ':' . $proxy_cred['password'];
 				}
 			} else {
@@ -218,7 +256,7 @@ function curl_try($test) {
 	// Disable Cert checking
 	if ($test['checkcert'] == '') {
 		$options[CURLOPT_SSL_VERIFYPEER] = false;
-		$options[CURLOPT_SSL_VERIFYHOST] = false;
+		$options[CURLOPT_SSL_VERIFYHOST] = 0;
 	} else { // for sure, it seems that it isn't enabled by default now
 		$options[CURLOPT_SSL_VERIFYPEER] = true;
 		$options[CURLOPT_SSL_VERIFYHOST] = 2;
@@ -256,7 +294,7 @@ function curl_try($test) {
 	servcheck_debug('Executing curl request');
 
 	$data            = curl_exec($process);
-	$data            = str_replace(["'", '\\'], [''], $data);
+	$data            = str_replace(["'", '\\'], [''], (string) $data);
 	$results['data'] = $data;
 
 	// Get information regarding a specific transfer, cert info too
@@ -273,7 +311,7 @@ function curl_try($test) {
 		unlink($ca_file);
 	}
 
-	if (empty($results['data']) && $results['curl_return'] > 0) {
+	if (empty($results['data'])) {
 		$results['error']  =  'No data returned';
 		$results['result'] = 'error';
 

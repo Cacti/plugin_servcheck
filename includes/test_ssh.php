@@ -22,7 +22,27 @@
  +-------------------------------------------------------------------------+
 */
 
-function ssh_try($test) {
+/**
+ * Runs an SSH service check test: connects and authenticates using the
+ * test's associated credential (username/password or SSH key), runs the
+ * configured remote command, and evaluates its output against the
+ * expected/maintenance/failure search patterns. Called from
+ * servcheck_run_test() for tests of type 'ssh'.
+ *
+ * @param array $test The plugin_servcheck_test row describing the check
+ *                    to run.
+ *
+ * @return array The check result: 'result' ('ok'/'error'), 'curl'
+ *               (false), 'time', 'error', 'result_search', and 'start'.
+ *
+ * @global array $config              Cacti global configuration array;
+ *                                    used to build the temporary SSH
+ *                                    key path.
+ * @global array $service_types_ports Default port numbers per service
+ *                                    type, used when the test's
+ *                                    hostname doesn't specify one.
+ */
+function ssh_try(array $test): array {
 	global $config, $service_types_ports;
 
 	// default result
@@ -80,7 +100,7 @@ function ssh_try($test) {
 			servcheck_debug('Decrypting credential');
 			$credential = servcheck_decrypt_credential($test['cred_id']);
 
-			if (empty($cred)) {
+			if (empty($credential)) {
 				servcheck_debug('Credential is empty!');
 				cacti_log('Credential is empty');
 				$results['result'] = 'error';
@@ -89,7 +109,7 @@ function ssh_try($test) {
 				return $results;
 			}
 
-			if ($cred['type'] != 'userpass' && $cred['type'] != 'sshkey') {
+			if (($cred['type'] ?? '') != 'userpass' && ($cred['type'] ?? '') != 'sshkey') {
 				servcheck_debug('Incorrect credential type, use user/pass or sshkey');
 				cacti_log('Incorrect credential type, use user/pass or sshkey');
 				$results['result'] = 'error';
@@ -107,14 +127,14 @@ function ssh_try($test) {
 		return $results;
 	}
 
-	if ($cred['type'] == 'sshkey') {
+	if (($cred['type'] ?? '') == 'sshkey') {
 		servcheck_debug('Preparing ssh private key file');
 
 		$keyfilename = tempnam(sys_get_temp_dir(), 'srvck');
 		$keyfile     = fopen($keyfilename, 'w+');
 
 		if ($keyfile) {
-			fwrite($keyfile, $credential['sshkey']);
+			fwrite($keyfile, $credential['sshkey'] ?? '');
 			fclose($keyfile);
 
 			try {
@@ -124,32 +144,37 @@ function ssh_try($test) {
 					$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename));
 				}
 			} catch (\phpseclib3\Exception\NoKeyLoadedException $e) {
-				cacti_log("ERROR: Failed to load SSH key (invalid format or wrong passphrase): " . $e->getMessage(), false, 'INTROPAGE');
-				$key = null;
-			} catch (\Throwable $e) {
-				cacti_log("ERROR: Unexpected error while loading SSH key: " . $e->getMessage(), false, 'INTROPAGE');
-				$key = null;
-			}
+				  cacti_log("ERROR: Failed to load SSH key (invalid format or wrong passphrase): " . $e->getMessage(), false, 'INTROPAGE');
+				  $key = null;
+			  } catch (\Throwable $e) {
+				  cacti_log("ERROR: Unexpected error while loading SSH key: " . $e->getMessage(), false, 'INTROPAGE');
+				  $key = null;
+			  }
 
-			if ($key === null) {
-				servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+			  if ($key === null) {
+				  servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
 
-				$results['result'] = 'error';
-				$results['error']  = 'Failed to load SSH key';
+				  $results['result'] = 'error';
+				  $results['error']  = 'Failed to load SSH key';
 
-				return $results;
-			}
+				  return $results;
+			  }
 
-			if (!$ssh->login($credential['ssh_username'], $key)) {
-				servcheck_debug('Connection failed');
+				if (!$ssh->login($credential['ssh_username'] ?? '', $key)) {
+					servcheck_debug('Connection failed');
 
-				$errors = $ssh->getStdError();
-				servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+					$errors = $ssh->getStdError();
+					servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
 
-				$results['result'] = 'error';
-				$results['error']  = 'Connection failed';
+					$results['result'] = 'error';
+					$results['error']  = 'Connection failed';
 
-				return $results;
+					return $results;
+				}
+			} finally {
+				// Always remove the temporary private-key file, even on auth failure or a key-load exception.
+				unlink($keyfilename);
+				servcheck_debug('Removing private key file');
 			}
 		} else {
 			cacti_log('Cannot create private key file ' . $keyfilename);
@@ -158,8 +183,8 @@ function ssh_try($test) {
 
 			return $results;
 		}
-	} elseif ($cred['type'] == 'userpass') {
-		if (!$ssh->login($credential['username'], $credential['password'])) {
+	} elseif (($cred['type'] ?? '') == 'userpass') {
+		if (!$ssh->login($credential['username'] ?? '', $credential['password'] ?? '')) {
 			servcheck_debug('Connection failed');
 
 			$errors = $ssh->getStdError();
@@ -190,7 +215,7 @@ function ssh_try($test) {
 
 	$results['data'] = $data;
 
-	if (isset($keyfilename)) {
+	if (isset($keyfilename) && file_exists($keyfilename)) {
 		unlink($keyfilename);
 		servcheck_debug('Removing private key file');
 	}

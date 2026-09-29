@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* dev: Enforce patch coverage of changed lines in CI and remove the inert COMPOSER_ROOT_VERSION env from the Pest step
 * feature: Add a configurable User-Agent setting for HTTP/HTTPS and other cURL based service checks, so outdated-browser blocking no longer rejects the plugin's requests
 * issue: Fix a fatal "Call to undefined function replicate_out()" by only re-registering hooks during an actual version upgrade and loading core lib/poller.php robustly before doing so
 * feature: Add readable, severity-highlighting stylesheets for every Cacti 1.2.x theme (classic, dark, midwinter, modern, paper-plane, paw, sunrise) and move them into a `css/` directory loaded via the `page_head` hook

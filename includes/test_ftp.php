@@ -22,7 +22,6 @@
  +-------------------------------------------------------------------------+
 */
 
-$ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 
 function ftp_try($test) {
 	global $user_agent, $config, $ca_info, $service_types_ports;
@@ -36,6 +35,7 @@ function ftp_try($test) {
 	$results['start']         = microtime(true);
 
 	$final_cred = '';
+	$debug_final_cred = '';
 
 	$options = [
 		CURLOPT_HEADER         => true,
@@ -48,6 +48,14 @@ function ftp_try($test) {
 	];
 
 	[$category,$service] = explode('_', $test['type']);
+
+	if (empty($test['hostname'])) {
+		cacti_log('Empty hostname, nothing to test');
+		$results['result'] = 'error';
+		$results['error']  = 'Empty hostname';
+
+		return $results;
+	}
 
 	if ($test['cred_id'] > 0) {
 		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
@@ -75,7 +83,9 @@ function ftp_try($test) {
 		}
 	}
 
-	if (!str_contains($test['hostname'], ':')) {
+	$parsed = parse_url('//' . $test['hostname']);
+
+	if (!isset($parsed['port'])) {
 		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
 	}
 
@@ -86,6 +96,12 @@ function ftp_try($test) {
 			$final_cred .= ':';
 			$final_cred .= str_replace('@', '%40', $credential['password']);
 			$final_cred .= '@';
+			
+			$debug_final_cred  = str_replace('@', '%40', mask_string($credential['username']));
+			$debug_final_cred .= ':';
+			$debug_final_cred .= str_replace('@', '%40', mask_string($credential['password'], true));
+			$debug_final_cred .= '@';
+	
 		} else {
 			servcheck_debug('Incorrect credential type, use user/pass');
 			cacti_log('Incorrect credential type, use user/pass');
@@ -98,26 +114,27 @@ function ftp_try($test) {
 
 	$url = $service . '://' . $final_cred . $test['hostname'] . $test['path'];
 
-	servcheck_debug('Final url is ' . $url);
+	servcheck_debug('Final url is ' . $service . '://' . $debug_final_cred . $test['hostname'] . $test['path']);
 
 	$process = curl_init($url);
 
 	if ($test['ca_id'] > 0) {
-		$ca_info = $config['base_path'] . '/plugins/servcheck/tmp_data/ca_cert_' . $test['ca_id'] . '.pem'; // The folder /plugins/servcheck/tmp_data does exist, hence the ca_cert_x.pem can be created here
+
 		servcheck_debug('Preparing own CA chain file ' . $ca_info);
-		// CURLOPT_CAINFO is to updated based on the custom CA certificate
-		$options[CURLOPT_CAINFO] = $ca_info;
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
 			[$test['ca_id']]);
 
-		$cert_file = fopen($ca_info, 'w+');
+		$ca_file = tempnam(sys_get_temp_dir(), 'srvck');
+		$cert_file = fopen($ca_file, 'w+');
 
 		if ($cert_file) {
 			fwrite($cert_file, $cert);
 			fclose($cert_file);
+			// CURLOPT_CAINFO is to updated based on the custom CA certificate
+			$options[CURLOPT_CAINFO] = $ca_file;
 		} else {
-			cacti_log('Cannot create ca cert file ' . $ca_info);
+			cacti_log('Cannot create ca cert file ' . $ca_file);
 			$results['result'] = 'error';
 			$results['error']  = 'Cannot create ca cert file';
 
@@ -164,9 +181,9 @@ function ftp_try($test) {
 		return $results;
 	}
 
-	if ($test['ca_id'] > 0) {
-		unlink($ca_info);
+	if ($test['ca_id'] > 0 && file_exists($ca_file)) {
 		servcheck_debug('Removing own CA file');
+		unlink($ca_info);
 	}
 
 	curl_close($process);

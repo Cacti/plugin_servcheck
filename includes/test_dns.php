@@ -36,21 +36,36 @@ function dns_try($test) {
 
 	[$category,$service] = explode('_', $test['type']);
 
+	if (empty($test['hostname'])) {
+		cacti_log('Empty hostname, nothing to test');
+		$results['result'] = 'error';
+		$results['error']  = 'Empty hostname';
+
+		return $results;
+	}
+
 	servcheck_debug('Querying ' . $test['hostname'] . ' for record ' . $test['dns_query']);
 
-	$a = new dnslookup($test['dns_query'], $test['hostname'], $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'));
+	$a = new dnslookup($test['dns_query'], $test['hostname'],
+	$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'));
 
-	if ($a === false) {
+	if (!$a->is_success()) {
 		$results['result']        = 'error';
-		$results['error']         = 'Server did not respond';
+		$results['error']         = $a->get_error();
 		$results['result_search'] = 'not tested';
 
 		servcheck_debug('Test failed: ' . $results['error']);
 	} else {
-		$results['data'] .= $a->get_results();
+		$dns_results = $a->get_results();
 
-		$results['result'] = 'ok';
-		$results['error']  = 'Some data returned';
+		if ($dns_results !== false) {
+			$results['data']  .= $dns_results;
+			$results['result'] = 'ok';
+			$results['error']  = 'Some data returned';
+		} else {
+			$results['result'] = 'ok';
+			$results['error']  = 'DNS server responded, but no A/AAAA record was returned';
+		}
 
 		servcheck_debug('Result is ' . $results['data']);
 
@@ -129,7 +144,9 @@ function doh_try($test) {
 		return $results;
 	}
 
-	if (strpos($test['hostname'], ':') === 0) {
+	$parsed = parse_url('//' . $test['hostname']);
+
+	if (!isset($parsed['port'])) {
 		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
 	}
 
@@ -140,21 +157,24 @@ function doh_try($test) {
 	$process = curl_init($url);
 
 	if ($test['ca_id'] > 0) {
-		$ca_info = $config['base_path'] . '/plugins/servcheck/cert_' . $test['ca_id'] . '.pem'; // The folder /plugins/servcheck does exist, hence the ca_cert_x.pem can be created here
+
 		servcheck_debug('Preparing own CA chain file ' . $ca_info);
-		// CURLOPT_CAINFO is to updated based on the custom CA certificate
-		$options[CURLOPT_CAINFO] = $ca_info;
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
 			[$test['ca_id']]);
 
-		$cert_file = fopen($ca_info, 'a');
+		$ca_file = tempnam(sys_get_temp_dir(), 'srvck');
+		$cert_file = fopen($ca_file, 'a');
 
 		if ($cert_file) {
 			fwrite($cert_file, $cert);
 			fclose($cert_file);
+
+			// CURLOPT_CAINFO is to updated based on the custom CA certificate
+			$options[CURLOPT_CAINFO] = $ca_file;
+
 		} else {
-			cacti_log('Cannot create ca cert file ' . $ca_info);
+			cacti_log('Cannot create ca cert file ' . $ca_file);
 			$results['result'] = 'error';
 			$results['error']  = 'Cannot create ca cert file';
 
@@ -194,9 +214,9 @@ function doh_try($test) {
 
 	servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
 
-	if ($test['ca_id'] > 0) {
-		unlink($ca_info);
+	if ($test['ca_id'] > 0 && file_exists($ca_file)) {
 		servcheck_debug('Removing own CA file');
+		unlink($ca_file);
 	}
 
 	if ($results['curl_return'] > 0) {

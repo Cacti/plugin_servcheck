@@ -18,7 +18,7 @@ take place during maintenance periods.
 
 
 ## Tests and results
-Setvcheck try to run test once or more than once (you can configure it).
+Servcheck try to run test once or more than once (you can configure it).
 If successful on the first attempt, no further tests will be performed.
 Main result is ok/error. A lot of information are returned with main result.
 After the test is completed, statistics are generated.
@@ -67,7 +67,7 @@ curl can will return incorrect result.
 
 SCP is in insecure mode - doesn't check SSH server key!
 
-MQTT is only plaintext. You can specify username and password. MQTT test waits for the first messase from a given topic
+MQTT is only plaintext. You can specify username and password. MQTT test waits for the first message from a given topic
 or for any message if the topic has not been specified.
 
 For SFTP, SCP or remote command you can use SSH key.

@@ -172,8 +172,8 @@ function form_save() {
 
 		$save['id']         = get_nfilter_request_var('id');
 
-		if (isset_request_var('name') && get_nfilter_request_var('name') != '' && get_filter_request_var('name', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
-			$save['name'] = get_nfilter_request_var('name');
+		if (isset_request_var('name') && get_nfilter_request_var('name') != '') {
+			$save['name'] = get_filter_request_var('name', FILTER_DEFAULT);
 		} else {
 			$_SESSION['sess_error_fields']['name'] = 'name';
 			raise_message(3);
@@ -188,15 +188,16 @@ function form_save() {
 
 		switch(get_nfilter_request_var('type')) {
 			case 'userpass':
-				if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
-					$cred['username'] = get_nfilter_request_var('username');
+
+				if (isset_request_var('username') && get_nfilter_request_var('username') != '') {
+					$cred['username'] = get_filter_request_var('username', FILTER_DEFAULT);
 				} else {
 					$_SESSION['sess_error_fields']['username'] = 'username';
 					raise_message(3);
 				}
 
-				if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
-					$cred['password'] = get_nfilter_request_var('password');
+				if (isset_request_var('password') && get_nfilter_request_var('password') != '') {
+					$cred['password'] = get_filter_request_var('password', FILTER_DEFAULT);
 				} else {
 					$_SESSION['sess_error_fields']['password'] = 'password';
 					raise_message(3);
@@ -204,15 +205,15 @@ function form_save() {
 
 				break;
 			case 'basic':
-				if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
-					$cred['username'] = get_nfilter_request_var('username');
+				if (isset_request_var('username') && get_nfilter_request_var('username') != '') {
+					$cred['username'] = get_filter_request_var('username', FILTER_DEFAULT);
 				} else {
 					$_SESSION['sess_error_fields']['username'] = 'username';
 					raise_message(3);
 				}
 
-				if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
-					$cred['password'] = get_nfilter_request_var('password');
+				if (isset_request_var('password') && get_nfilter_request_var('password') != '') {
+					$cred['password'] = get_filter_request_var('password', FILTER_DEFAULT);
 				} else {
 					$_SESSION['sess_error_fields']['password'] = 'password';
 					raise_message(3);
@@ -227,15 +228,15 @@ function form_save() {
 
 				break;
 			case 'apikey':
-				if (isset_request_var('token_name') && get_nfilter_request_var('token_name') != '' && get_filter_request_var('token_name', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
-					$cred['token_name'] = get_nfilter_request_var('token_name');
+				if (isset_request_var('token_name') && get_nfilter_request_var('token_name') != '') {
+					$cred['token_name'] = get_filter_request_var('token_name', FILTER_DEFAULT);
 				} else {
 					$_SESSION['sess_error_fields']['token_name'] = 'token_name';
 					raise_message(3);
 				}
 
-				if (isset_request_var('token_value') && get_nfilter_request_var('token_value') != '' && get_filter_request_var('token_value', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
-					$cred['token_value'] = get_nfilter_request_var('token_value');
+				if (isset_request_var('token_value') && get_nfilter_request_var('token_value') != '') {
+					$cred['token_value'] = get_filter_request_var('token_value', FILTER_DEFAULT);
 				} else {
 					$_SESSION['sess_error_fields']['token_value'] = 'token_value';
 					raise_message(3);
@@ -257,15 +258,15 @@ function form_save() {
 
 				break;
 			case 'oauth2':
-				if (isset_request_var('oauth_client_id') && get_nfilter_request_var('oauth_client_id') != '' && get_filter_request_var('oauth_client_id', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
-					$cred['oauth_client_id'] = get_nfilter_request_var('oauth_client_id');
+				if (isset_request_var('oauth_client_id') && get_nfilter_request_var('oauth_client_id') != '') {
+					$cred['oauth_client_id'] = get_filter_request_var('oauth_client_id', FILTER_DEFAULT);
 				} else {
 					$_SESSION['sess_error_fields']['oauth_client_id'] = 'oauth_client_id';
 					raise_message(3);
 				}
 
-				if (isset_request_var('oauth_client_secret') && get_nfilter_request_var('oauth_client_secret') != '' && get_filter_request_var('oauth_client_secret', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
-					$cred['oauth_client_secret'] = get_nfilter_request_var('oauth_client_secret');
+				if (isset_request_var('oauth_client_secret') && get_nfilter_request_var('oauth_client_secret') != '') {
+					$cred['oauth_client_secret'] = get_filter_request_var('oauth_client_secret', FILTER_DEFAULT);
 				} else {
 					$_SESSION['sess_error_fields']['oauth_client_secret'] = 'oauth_client_secret';
 					raise_message(3);
@@ -285,16 +286,16 @@ function form_save() {
 					raise_message(3);
 				}
 
-				if (isset_request_var('token_name') && get_nfilter_request_var('token_name') != '' && get_filter_request_var('token_name', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,30}$/']])) {
-					$cred['token_name'] = get_nfilter_request_var('token_name');
+				if (isset_request_var('token_name') && get_nfilter_request_var('token_name') != '') {
+					$cred['token_name'] = get_filter_request_var('token_name', FILTER_DEFAULT);
 				} else {
 					$_SESSION['sess_error_fields']['token_name'] = 'token_name';
 					raise_message(3);
 				}
 
 				if (get_nfilter_request_var('token_value') != '') {
-					if (isset_request_var('token_value') && (get_nfilter_request_var('token_value') != '' && get_filter_request_var('token_value', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,250}$/']]))) {
-						$cred['token_value'] = get_nfilter_request_var('token_value');
+					if (isset_request_var('token_value') && (get_nfilter_request_var('token_value') != '')) {
+						$cred['token_value'] = get_filter_request_var('token_value', FILTER_DEFAULT);
 					} else {
 						$_SESSION['sess_error_fields']['token_value'] = 'token_value';
 						raise_message(3);
@@ -303,15 +304,15 @@ function form_save() {
 
 				break;
 			case 'cookie':
-				if (isset_request_var('username') && get_nfilter_request_var('username') != '' && get_filter_request_var('username', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
-					$cred['username'] = get_nfilter_request_var('username');
+				if (isset_request_var('username') && get_nfilter_request_var('username') != '') {
+					$cred['username'] = get_filter_request_var('username', FILTER_DEFAULT);
 				} else {
 					$_SESSION['sess_error_fields']['username'] = 'username';
 					raise_message(3);
 				}
 
-				if (isset_request_var('password') && get_nfilter_request_var('password') != '' && get_filter_request_var('password', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
-					$cred['password'] = get_nfilter_request_var('password');
+				if (isset_request_var('password') && get_nfilter_request_var('password') != '') {
+					$cred['password'] = get_filter_request_var('password', FILTER_DEFAULT);
 				} else {
 					$_SESSION['sess_error_fields']['password'] = 'password';
 					raise_message(3);
@@ -340,8 +341,8 @@ function form_save() {
 
 				break;
 			case 'snmp':
-				if (isset_request_var('community') && get_nfilter_request_var('community') != '' && get_filter_request_var('community', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
-					$cred['community'] = get_nfilter_request_var('community');
+				if (isset_request_var('community') && get_nfilter_request_var('community') != '') {
+					$cred['community'] = get_filter_request_var('community', FILTER_DEFAULT);
 				} else {
 					$_SESSION['sess_error_fields']['community'] = 'community';
 					raise_message(3);
@@ -379,8 +380,8 @@ function form_save() {
 
 				break;
 			case 'sshkey':
-				if (isset_request_var('ssh_username') && get_nfilter_request_var('ssh_username') != '' && get_filter_request_var('ssh_username', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\-]{1,100}$/']])) {
-					$cred['ssh_username'] = get_nfilter_request_var('ssh_username');
+				if (isset_request_var('ssh_username') && get_nfilter_request_var('ssh_username') != '') {
+					$cred['ssh_username'] = get_filter_request_var('ssh_username', FILTER_DEFAULT);
 				} else {
 					$_SESSION['sess_error_fields']['ssh_username'] = 'ssh_username';
 					raise_message(3);
@@ -393,8 +394,8 @@ function form_save() {
 					raise_message(3);
 				}
 
-				if (isset_request_var('sshkey_passphrase') && get_nfilter_request_var('sshkey_passphrase') != '' && get_filter_request_var('sshkey_passphrase', FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/^[a-z0-9A-Z_\/@.\- \=,]{1,100}$/']])) {
-					$cred['sshkey_passphrase'] = get_nfilter_request_var('sshkey_passphrase');
+				if (isset_request_var('sshkey_passphrase') && get_nfilter_request_var('sshkey_passphrase') != '') {
+					$cred['sshkey_passphrase'] = get_filter_request_var('sshkey_passphrase', FILTER_DEFAULT);
 				} else {
 					$_SESSION['sess_error_fields']['sshkey_passphrase'] = 'sshkey_passphrase';
 					raise_message(3);

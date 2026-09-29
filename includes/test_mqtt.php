@@ -42,33 +42,16 @@ function mqtt_try($test) {
 
 	[$category,$service] = explode('_', $test['type']);
 
-	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
-			[$test['cred_id']]);
+	if (empty($test['hostname'])) {
+		cacti_log('Empty hostname, nothing to test');
+		$results['result'] = 'error';
+		$results['error']  = 'Empty hostname';
 
-		if (!$cred) {
-			servcheck_debug('Credential is set but not found!');
-			cacti_log('Credential not found');
-			$results['result'] = 'error';
-			$results['error']  = 'Credential not found';
-
-			return $results;
-		} else {
-			servcheck_debug('Decrypting credential');
-			$credential = servcheck_decrypt_credential($test['cred_id']);
-
-			if (empty($cred)) {
-				servcheck_debug('Credential is empty!');
-				cacti_log('Credential is empty');
-				$results['result'] = 'error';
-				$results['error']  = 'Credential is empty';
-
-				return $results;
-			}
-		}
+		return $results;
 	}
 
 	$cred = '';
+	$debug_cred = '';
 
 	if ($test['cred_id'] > 0) {
 		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
@@ -100,11 +83,18 @@ function mqtt_try($test) {
 		// curl needs username with %40 instead of @
 		$cred = str_replace('@', '%40', $credential['username']);
 		$cred .= ':';
-		$cred .= $credial['password'];
+		$cred .= $credential['password'];
 		$cred .= '@';
+
+		$debug_cred = str_replace('@', '%40', mask_string($credential['username']));
+		$debug_cred .= ':';
+		$debug_cred .= mask_string($credential['password'], true);
+		$debug_cred .= '@';
 	}
 
-	if (strpos($test['hostname'], ':') === 0) {
+	$parsed = parse_url('//' . $test['hostname']);
+
+	if (!isset($parsed['port'])) {
 		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
 	}
 
@@ -115,7 +105,7 @@ function mqtt_try($test) {
 
 	$url = 'mqtt://' . $cred . $test['hostname'] . $test['path'];
 
-	servcheck_debug('Final url is ' . $url);
+	servcheck_debug('Final url is ' . 'mqtt://' . $debug_cred . $test['hostname'] . $test['path']);
 
 	$process = curl_init($url);
 

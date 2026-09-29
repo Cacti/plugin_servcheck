@@ -23,7 +23,6 @@
 */
 
 $user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
-$ca_info    = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
 
 function curl_try($test) {
 	global $user_agent, $config, $ca_info, $service_types_ports;
@@ -49,6 +48,14 @@ function curl_try($test) {
 	];
 
 	[$category,$service] = explode('_', $test['type']);
+
+	if (empty($test['hostname'])) {
+		cacti_log('Empty hostname, nothing to test');
+		$results['result'] = 'error';
+		$results['error']  = 'Empty hostname';
+
+		return $results;
+	}
 
 	if (($test['type'] == 'web_http' || $test['type'] == 'web_https') && empty($test['path'])) {
 		cacti_log('Empty path, nothing to test');
@@ -84,7 +91,9 @@ function curl_try($test) {
 		}
 	}
 
-	if (!str_contains($test['hostname'], ':')) {
+	$parsed = parse_url('//' . $test['hostname']);
+
+	if (!isset($parsed['port'])) {
 		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
 	}
 
@@ -124,19 +133,19 @@ function curl_try($test) {
 	}
 
 	if ($test['ca_id'] > 0) {
-		$ca_file = $config['base_path'] . '/plugins/servcheck/tmp_data/ca_cert_' . $test['id'] . '_' . $test['ca_id'] . '.pem';
 		servcheck_debug('Preparing own CA chain file ' . $ca_file);
 		// CURLOPT_CAINFO is to updated based on the custom CA certificate
-		$options[CURLOPT_CAINFO] = $ca_file;
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
 			[$test['ca_id']]);
 
+		$ca_file = tempnam(sys_get_temp_dir(), 'srvck');
 		$cert_file = fopen($ca_file, 'w+');
 
 		if ($cert_file) {
 			fwrite($cert_file, $cert);
 			fclose($cert_file);
+			$options[CURLOPT_CAINFO] = $ca_file;
 		} else {
 			cacti_log('Cannot create ca cert file ' . $ca_file);
 			$results['result'] = 'error';
@@ -170,7 +179,7 @@ function curl_try($test) {
 					$proxy_cred = db_fetch_assoc_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
 						[$proxy['cred_id']]);
 
-					if (!$cred) {
+					if (!$proxy_cred) {
 						servcheck_debug('Proxy credential is set but not found!');
 						cacti_log('Credential not found');
 						$results['result'] = 'error';
@@ -225,7 +234,22 @@ function curl_try($test) {
 
 	$process = curl_init($url);
 
-	servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
+	$debug_options = $options;
+
+	foreach (array(CURLOPT_USERPWD, CURLOPT_PROXYUSERPWD) as $option) {
+		if (!empty($debug_options[$option])) {
+			$credentials = explode(':', $debug_options[$option], 2);
+			if (count($credentials) === 2) {
+				$debug_options[$option] = mask_string($credentials[0]) . ':' . mask_string($credentials[1], true);
+			} else {
+				$debug_options[$option] = mask_string($debug_options[$option]);
+			}
+		}
+	}
+
+	servcheck_debug('cURL options: ' . clean_up_lines(var_export($debug_options, true)));
+
+	unset($debug_options);
 
 	curl_setopt_array($process,$options);
 
@@ -244,9 +268,9 @@ function curl_try($test) {
 
 	servcheck_debug('Result: ' . clean_up_lines(var_export($data, true)));
 
-	if ($test['ca_id'] > 0) {
-		unlink($ca_file);
+	if ($test['ca_id'] > 0 && file_exists($ca_file)) {
 		servcheck_debug('Removing own CA file');
+		unlink($ca_file);
 	}
 
 	if (empty($results['data']) && $results['curl_return'] > 0) {

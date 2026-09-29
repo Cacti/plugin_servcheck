@@ -22,8 +22,6 @@
  +-------------------------------------------------------------------------+
 */
 
-$ca_info = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
-
 function mail_try($test) {
 	global $config, $ca_info, $service_types_ports;
 
@@ -38,6 +36,14 @@ function mail_try($test) {
 	$results['start']         = microtime(true);
 
 	[$category,$service] = explode('_', $test['type']);
+
+	if (empty($test['hostname'])) {
+		cacti_log('Empty hostname, nothing to test');
+		$results['result'] = 'error';
+		$results['error']  = 'Empty hostname';
+
+		return $results;
+	}
 
 	if ($test['cred_id'] > 0) {
 		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
@@ -65,24 +71,27 @@ function mail_try($test) {
 		}
 	}
 
-	if (!str_contains($test['hostname'], ':')) {
+	$parsed = parse_url('//' . $test['hostname']);
+
+	if (!isset($parsed['port'])) {
 		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
 	}
 
 	if ($test['ca_id'] > 0) {
-		$own_ca_info = $config['base_path'] . '/plugins/servcheck/tmp_data/ca_cert_' . $test['ca_id'] . '.pem'; // The folder /plugins/servcheck/tmp_data does exist, hence the ca_cert_x.pem can be created here
+
 		servcheck_debug('Preparing own CA chain file ' . $ca_info);
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
 			[$test['ca_id']]);
 
-		$cert_file = fopen($ca_info, 'w+');
+		$ca_file = tempnam(sys_get_temp_dir(), 'srvck');
+		$cert_file = fopen($ca_file, 'w+');
 
 		if ($cert_file) {
 			fwrite($cert_file, $cert);
 			fclose($cert_file);
 		} else {
-			cacti_log('Cannot create ca cert file ' . $ca_info);
+			cacti_log('Cannot create ca cert file ' . $ca_file);
 			$results['result'] = 'error';
 			$results['error']  = 'Cannot create ca cert file';
 
@@ -109,8 +118,8 @@ function mail_try($test) {
 		];
 	}
 
-	if (isset($own_ca_info)) {
-		$params['ssl']['cafile'] = $own_ca_info;
+	if (isset($ca_file)) {
+		$params['ssl']['cafile'] = $ca_file;
 	}
 
 	$context = stream_context_create($params);
@@ -439,9 +448,9 @@ function mail_try($test) {
 
 	servcheck_debug('Result: ' . clean_up_lines(var_export($data, true)));
 
-	if ($test['ca_id'] > 0) {
-		unlink($own_ca_info);
+	if ($test['ca_id'] > 0 && file_exists($ca_file)) {
 		servcheck_debug('Removing own CA file');
+		unlink($ca_file);
 	}
 
 	if (empty($results['data'])) {

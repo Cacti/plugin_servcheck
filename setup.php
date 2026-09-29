@@ -174,7 +174,7 @@ function plugin_servcheck_upgrade() {
 		// convert credentials to separated tab
 
 		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_test
-			WHERE username != '' OR password !='' AND type != 'restapi'");
+			WHERE (username != '' OR password !='') AND type != 'restapi'");
 
 		if (cacti_sizeof($records)) {
 			foreach ($records as $record) {
@@ -244,7 +244,7 @@ function plugin_servcheck_upgrade() {
 						$cred['oauth_client_secret'] = servcheck_show_text($record['password']);
 						$cred['token_value']         = servcheck_show_text($record['cred_value']);
 						$cred['token_name']          = $record['cred_name'];
-						$cred['cred_valiedity']      = $record['cred_validity'];
+						$cred['cred_validity']      = $record['cred_validity'];
 						$cred['data_url']            = $record['data_url'];
 						$cred['login_url']           = $record['login_url'];
 					} elseif ($record['type'] == 'cookie') {

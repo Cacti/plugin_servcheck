@@ -45,7 +45,9 @@ function ssh_try($test) {
 
 	[$category,$service] = explode('_', $test['type']);
 
-	if (strpos($test['hostname'], ':') === 0) {
+	$parsed = parse_url('//' . $test['hostname']);
+
+	if (!isset($parsed['port'])) {
 		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
 	}
 
@@ -108,17 +110,34 @@ function ssh_try($test) {
 	if ($cred['type'] == 'sshkey') {
 		servcheck_debug('Preparing ssh private key file');
 
-		$keyfilename = $config['base_path'] . '/plugins/servcheck/tmp_data/sshkey_' . $cred['id'];
+		$keyfilename = tempnam(sys_get_temp_dir(), 'srvck');
 		$keyfile     = fopen($keyfilename, 'w+');
 
 		if ($keyfile) {
 			fwrite($keyfile, $credential['sshkey']);
 			fclose($keyfile);
 
-			if (isset($credential['sshkey_passphrase'])) {
-				$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename),$credential['sshkey_passphrase']);
-			} else {
-				$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename));
+			try {
+				if (isset($credential['sshkey_passphrase'])) {
+					$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename),$credential['sshkey_passphrase']);
+				} else {
+					$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename));
+				}
+			} catch (\phpseclib3\Exception\NoKeyLoadedException $e) {
+				cacti_log("ERROR: Failed to load SSH key (invalid format or wrong passphrase): " . $e->getMessage(), false, 'INTROPAGE');
+				$key = null;
+			} catch (\Throwable $e) {
+				cacti_log("ERROR: Unexpected error while loading SSH key: " . $e->getMessage(), false, 'INTROPAGE');
+				$key = null;
+			}
+
+			if ($key === null) {
+				servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+
+				$results['result'] = 'error';
+				$results['error']  = 'Failed to load SSH key';
+
+				return $results;
 			}
 
 			if (!$ssh->login($credential['ssh_username'], $key)) {
@@ -158,7 +177,7 @@ function ssh_try($test) {
 	if ($service == 'command') {
 		$data = $ssh->exec($test['ssh_command']);
 	} else {
-		$data = $ssh->nlist($test['path']);
+		$data = implode("\n", $ssh->nlist($test['path']) ?: []);
 	}
 
 	$errors = $ssh->getStdError();
@@ -171,8 +190,8 @@ function ssh_try($test) {
 
 	$results['data'] = $data;
 
-	if (isset($key_filename)) {
-		unlink($key_filename);
+	if (isset($keyfilename)) {
+		unlink($keyfilename);
 		servcheck_debug('Removing private key file');
 	}
 

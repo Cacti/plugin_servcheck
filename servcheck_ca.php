@@ -378,7 +378,7 @@ function data_list(): void {
 			form_end_row();
 		}
 	} else {
-		print "<tr class='tableRow'><td colspan='" . $columns . "'><em>" . __('Empty', 'servcheck') . "</em></td></tr>\n";
+		print "<tr class='tableRow'><td colspan='" . $columns . "'><em>" . __('No Certificates Found', 'servcheck') . "</em></td></tr>\n";
 	}
 
 	html_end_box(false);

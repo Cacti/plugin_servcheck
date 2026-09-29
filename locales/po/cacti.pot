@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-28 21:26-0400\n"
+"POT-Creation-Date: 2026-09-28 21:47-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Cacti Developers <developers@cacti.net>>\n"
 "Language-Team: Cacti Developers <developers@cacti.net>\n"
@@ -1666,9 +1666,8 @@ msgstr ""
 msgid "CAs"
 msgstr ""
 
-#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
-#: servcheck_test.php
-msgid "Empty"
+#: servcheck_ca.php
+msgid "No Certificates Found"
 msgstr ""
 
 #: servcheck_ca.php
@@ -1739,6 +1738,10 @@ msgid "Credentials"
 msgstr ""
 
 #: servcheck_credential.php
+msgid "No Credentials Found"
+msgstr ""
+
+#: servcheck_credential.php
 msgid "Servcheck Credential Management"
 msgstr ""
 
@@ -1757,6 +1760,10 @@ msgstr ""
 
 #: servcheck_proxy.php
 msgid "Ports (http/https)"
+msgstr ""
+
+#: servcheck_proxy.php
+msgid "No Proxies Found"
 msgstr ""
 
 #: servcheck_proxy.php
@@ -2009,6 +2016,10 @@ msgstr ""
 
 #: servcheck_test.php
 msgid "Yes"
+msgstr ""
+
+#: servcheck_test.php
+msgid "No Service Checks Found"
 msgstr ""
 
 #: servcheck_test.php

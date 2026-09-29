@@ -52,6 +52,7 @@ function restapi_try(array $test): array {
 
 	$cert_info    = [];
 	$http_headers = [];
+	$debug_http_headers = [];
 
 	// default result
 	$results['result']        = 'error';
@@ -133,15 +134,22 @@ function restapi_try(array $test): array {
 			$options[CURLOPT_USERPWD]  = $credential['username'] . ':' . $credential['password'];
 			$options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
 
+			$debug_options[CURLOPT_USERPWD]  = mask_string($credential['username']) . ':' . mask_string($credential['password'], true);
+			$debug_options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
+
+			servcheck_debug('cURL options: ' . clean_up_lines(var_export($debug_options, true)));
+
 			break;
 		case 'apikey':
 			switch ($credential['option_apikey']) {
 				case 'http':
 					$http_headers[] = 'Authorization: ' . $credential['token_name'] . ' ' . $credential['token_value'];
+					$debug_http_headers[] = 'Authorization: ' . mask_string($credential['token_name']) . ' ' . mask_string($credential['token_value'], true);
 
 					break;
 				case 'custom':
 					$http_headers[] = $credential['token_name'] . ': ' . $credential['token_value'];
+					$debug_http_headers[] = mask_string($credential['token_name']) . ': ' . mask_string($credential['token_value'], true);
 
 					break;
 				case 'post':
@@ -149,8 +157,15 @@ function restapi_try(array $test): array {
 						$credential['token_name'] => $credential['token_value']
 					];
 
+					$debug_data = [
+						$credential['token_name'] => mask_string($credential['token_value'], true)
+					];
+
 					$options[CURLOPT_POST]       = true;
 					$options[CURLOPT_POSTFIELDS] = $data;
+
+					$debug_options[CURLOPT_POST]       = true;
+					$debug_options[CURLOPT_POSTFIELDS] = $debug_data;
 
 					break;
 				case 'post_json':
@@ -158,14 +173,25 @@ function restapi_try(array $test): array {
 						$credential['token_name'] => $credential['token_value']
 					]);
 
+					$debug_data = json_encode([
+						$credential['token_name'] => mask_string($credential['token_value'], true)
+					]);
+
 					$options[CURLOPT_POST]       = true;
 					$options[CURLOPT_POSTFIELDS] = $data;
 					$http_headers[]              = 'Content-Type: application/json';
+
+					$debug_options[CURLOPT_POST]       = true;
+					$debug_options[CURLOPT_POSTFIELDS] = $debug_data;
+					$debug_http_headers[]              = 'Content-Type: application/json';
 
 					break;
 			}
 
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
+			$debug_options[CURLOPT_HTTPHEADER] = $debug_http_headers;
+
+			servcheck_debug('cURL options: ' . clean_up_lines(var_export($debug_options, true)));
 
 			break;
 		case 'oauth2':
@@ -178,15 +204,27 @@ function restapi_try(array $test): array {
 					'password'   => $credential['oauth_client_secret']
 				]);
 
+				$debug_cred_data = json_encode([
+					'grant_type' => 'password',
+					'username'   => mask_string($credential['oauth_client_id']),
+					'password'   => mask_string($credential['oauth_client_secret'], true)
+				]);
+
 				$options[CURLOPT_POST]       = true;
 				$options[CURLOPT_POSTFIELDS] = $cred_data;
 				$http_headers[]              = 'Content-Type: application/json';
 
 				$options[CURLOPT_HTTPHEADER] = $http_headers;
 
+				$debug_options[CURLOPT_POST]       = true;
+				$debug_options[CURLOPT_POSTFIELDS] = $debug_cred_data;
+				$debug_http_headers[]              = 'Content-Type: application/json';
+
+				$debug_options[CURLOPT_HTTPHEADER] = $debug_http_headers;
+
 				$process = curl_init($credential['login_url']);
 
-				servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($options, true)));
+				servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($debug_options, true)));
 
 				curl_setopt_array($process,$options);
 
@@ -207,10 +245,10 @@ function restapi_try(array $test): array {
 					return $results;
 				}
 
+				$header_size = curl_getinfo($process, CURLINFO_HEADER_SIZE);
 				curl_close($process);
 
-				$header_size = curl_getinfo($process, CURLINFO_HEADER_SIZE);
-				$header      = substr((string) $response, 0, $header_size);
+				$header      = substr($response, 0, $header_size);
 				$header      = str_replace(["'", '\\'], [''], $header);
 
 				$body = json_decode(substr((string) $response, $header_size), true);
@@ -219,24 +257,24 @@ function restapi_try(array $test): array {
 					servcheck_debug('We got token and expiration, saving');
 
 					if (isset($body['expires_in'])) {
-						$cred['cred_validity'] = time() + $body['expires_in'];
+						$newcred['cred_validity'] = time() + $body['expires_in'];
 					} else {
 						servcheck_debug('We got token and don\'t know expiration. We will use it only one time.');
 					}
 
-					$cred['type']                = 'oauth2';
-					$cred['oauth_client_id']     = $credential['oauth_client_id'];
-					$cred['oauth_client_secret'] = $credential['oauth_client_secret'];
-					$cred['token_value']         = $body['token'];
-					$cred['token_name']          = $credential['token_name'];
-					$cred['data_url']            = $credential['data_url'];
-					$cred['login_url']           = $credential['login_url'];
+					$newcred['type']                = 'oauth2';
+					$newcred['oauth_client_id']     = $credential['oauth_client_id'];
+					$newcred['oauth_client_secret'] = $credential['oauth_client_secret'];
+					$newcred['token_value']         = $body['token'];
+					$newcred['token_name']          = $credential['token_name'];
+					$newcred['data_url']            = $credential['data_url'];
+					$newcred['login_url']           = $credential['login_url'];
 
-					$enc = servcheck_encrypt_credential($cred);
+					$enc = servcheck_encrypt_credential($newcred);
 
 					db_execute_prepared('UPDATE plugin_servcheck_credential
 						SET data = ? WHERE id = ?',
-						[$enc, $cred['id']]);
+						[$enc, $newcred['id']]);
 				} else {
 					servcheck_debug('We didn\'t get token.');
 					$results['options']     = curl_getinfo($process);
@@ -252,10 +290,18 @@ function restapi_try(array $test): array {
 			}
 
 			$http_headers                = [];
-			$http_headers[]              = 'Authorization: ' . $cred['token_name'] . ' ' . $cred['token_value'];
+			$http_headers[]              = 'Authorization: ' . $newcred['token_name'] . ' ' . $newcred['token_value'];
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
 			$options[CURLOPT_POST]       = false;
 			unset($options[CURLOPT_POSTFIELDS]);
+
+			$debug_http_headers                = [];
+			$debug_http_headers[]              = 'Authorization: ' . mask_string($newcred['token_name']) . ' ' . mask_stirng($newcred['token_value'], true);
+			$debug_options[CURLOPT_HTTPHEADER] = $debug_http_headers;
+			$debug_options[CURLOPT_POST]       = false;
+			unset($debug_options[CURLOPT_POSTFIELDS]);
+
+			servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($debug_options, true)));
 
 			break;
 		case 'cookie':
@@ -266,20 +312,31 @@ function restapi_try(array $test): array {
 				'password'   => $credential['password']
 			];
 
+			$debug_cred_data = [
+				'username'   => mask_string($credential['username']),
+				'password'   => mask_string($credential['password'], true)
+			];
+
 			if ($credential['option_cookie'] == 'json') {
 				$cred_data      = (string) json_encode($cred_data);
 				$http_headers[] = 'Content-Type: application/json';
+				$debug_cred_data      = json_encode($debug_cred_data);
+				$debug_http_headers[] = 'Content-Type: application/json';
 			}
 
 			$options[CURLOPT_POST]       = true;
 			$options[CURLOPT_POSTFIELDS] = $cred_data;
 			$options[CURLOPT_HTTPHEADER] = $http_headers;
 
-			$cookie_file                = $config['base_path'] . '/plugins/servcheck/tmp_data/' . $test['cred_id'];
+			$debug_options[CURLOPT_POST]       = true;
+			$debug_options[CURLOPT_POSTFIELDS] = $debug_cred_data;
+			$debug_options[CURLOPT_HTTPHEADER] = $debug_http_headers;
+
+			$cookie_file                = tempnam(sys_get_temp_dir(), 'srvck');
 			$options[CURLOPT_COOKIEJAR] = $cookie_file;  // store cookie
 			$process                    = curl_init($credential['login_url']);
 
-			servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($options, true)));
+			servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($debug_options, true)));
 
 			curl_setopt_array($process,$options);
 
@@ -338,8 +395,6 @@ function restapi_try(array $test): array {
 
 	$process = curl_init($url);
 
-	servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
-
 	curl_setopt_array($process,$options);
 
 	servcheck_debug('Executing curl request');
@@ -350,12 +405,15 @@ function restapi_try(array $test): array {
 
 	// Get information regarding a specific transfer, cert info too
 	$results['options'] = curl_getinfo($process);
-
 	$results['curl_return'] = curl_errno($process);
 
 	servcheck_debug('cURL error: ' . $results['curl_return']);
 
 	servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
+
+	if (isset($cookie_file)) {
+		unlink($cookie_file);
+	}
 
 	if ($results['curl_return'] > 0) {
 		$results['error']  =  str_replace(['"', "'"], '', (curl_error($process)));

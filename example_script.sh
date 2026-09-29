@@ -9,4 +9,4 @@
 
 
 echo OK
-return 0;
+exit 0

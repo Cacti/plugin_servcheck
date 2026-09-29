@@ -23,7 +23,9 @@
  +-------------------------------------------------------------------------+
 */
 
-pcntl_async_signals(true);
+if (function_exists('pcntl_async_signals')) {
+ 	pcntl_async_signals(true);
+}
 
 ini_set('output_buffering', 'Off');
 ini_set('max_runtime', '-1');

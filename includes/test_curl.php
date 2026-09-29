@@ -32,8 +32,6 @@ if (empty($user_agent)) {
 
 global $config;
 
-$ca_info    = $config['base_path'] . '/plugins/servcheck/cert/ca-bundle.crt';
-
 /**
  * Runs a cURL-based service check test (HTTP/HTTPS, or any other
  * type_curl-family test sharing this transport), applying the test's
@@ -87,6 +85,14 @@ function curl_try(array $test): array {
 
 	[$category,$service] = explode('_', $test['type']);
 
+	if (empty($test['hostname'])) {
+		cacti_log('Empty hostname, nothing to test');
+		$results['result'] = 'error';
+		$results['error']  = 'Empty hostname';
+
+		return $results;
+	}
+
 	if (($test['type'] == 'web_http' || $test['type'] == 'web_https') && empty($test['path'])) {
 		cacti_log('Empty path, nothing to test');
 		$results['result'] = 'error';
@@ -121,7 +127,9 @@ function curl_try(array $test): array {
 		}
 	}
 
-	if (!str_contains($test['hostname'], ':')) {
+	$parsed = parse_url('//' . $test['hostname']);
+
+	if (!isset($parsed['port'])) {
 		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
 	}
 
@@ -161,19 +169,19 @@ function curl_try(array $test): array {
 	}
 
 	if ($test['ca_id'] > 0) {
-		$ca_file = $config['base_path'] . '/plugins/servcheck/tmp_data/ca_cert_' . $test['id'] . '_' . $test['ca_id'] . '.pem';
 		servcheck_debug('Preparing own CA chain file ' . $ca_file);
 		// CURLOPT_CAINFO is to updated based on the custom CA certificate
-		$options[CURLOPT_CAINFO] = $ca_file;
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
 			[$test['ca_id']]);
 
+		$ca_file = tempnam(sys_get_temp_dir(), 'srvck');
 		$cert_file = fopen($ca_file, 'w+');
 
 		if ($cert_file) {
 			fwrite($cert_file, $cert);
 			fclose($cert_file);
+			$options[CURLOPT_CAINFO] = $ca_file;
 		} else {
 			cacti_log('Cannot create ca cert file ' . $ca_file);
 			$results['result'] = 'error';
@@ -264,7 +272,22 @@ function curl_try(array $test): array {
 
 	$process = curl_init($url);
 
-	servcheck_debug('cURL options: ' . clean_up_lines(var_export($options, true)));
+	$debug_options = $options;
+
+	foreach (array(CURLOPT_USERPWD, CURLOPT_PROXYUSERPWD) as $option) {
+		if (!empty($debug_options[$option])) {
+			$credentials = explode(':', $debug_options[$option], 2);
+			if (count($credentials) === 2) {
+				$debug_options[$option] = mask_string($credentials[0]) . ':' . mask_string($credentials[1], true);
+			} else {
+				$debug_options[$option] = mask_string($debug_options[$option]);
+			}
+		}
+	}
+
+	servcheck_debug('cURL options: ' . clean_up_lines(var_export($debug_options, true)));
+
+	unset($debug_options);
 
 	curl_setopt_array($process,$options);
 
@@ -283,9 +306,9 @@ function curl_try(array $test): array {
 
 	servcheck_debug('Result: ' . clean_up_lines(var_export($data, true)));
 
-	if ($test['ca_id'] > 0) {
-		unlink($ca_file);
+	if ($test['ca_id'] > 0 && file_exists($ca_file)) {
 		servcheck_debug('Removing own CA file');
+		unlink($ca_file);
 	}
 
 	if (empty($results['data'])) {

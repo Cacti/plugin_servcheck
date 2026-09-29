@@ -67,7 +67,8 @@ for file in `ls -1 locales/po/*.po`;do
 done
 
 for file in `ls -1 locales/po/*.po`;do
-  ofile=$(basename --suffix=.po ${file})
+#  ofile=$(basename --suffix=.po ${file})
+  ofile=$(basename -s .po ${file})
   echo "Converting $file to LC_MESSAGES/${ofile}.mo"
   msgfmt ${file} -o locales/LC_MESSAGES/${ofile}.mo
 done

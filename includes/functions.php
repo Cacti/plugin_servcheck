@@ -390,3 +390,13 @@ function servcheck_summer_time_changed(): bool {
 		return false;
 	}
 }
+
+
+// mask password, for debug messages
+function mask_string($string, $all = false) {
+	if ($all == true) {
+    		return str_pad('X', 10, 'X', STR_PAD_LEFT);
+	} else {
+    		return str_pad(substr($string, -2), 10, 'X', STR_PAD_LEFT);
+	}
+}

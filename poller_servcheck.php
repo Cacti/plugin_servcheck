@@ -23,7 +23,9 @@
  +-------------------------------------------------------------------------+
 */
 
-pcntl_async_signals(true);
+if (function_exists('pcntl_async_signals')) {
+	pcntl_async_signals(true);
+}
 
 ini_set('output_buffering', 'Off');
 ini_set('max_runtime', '-1');
@@ -184,7 +186,7 @@ $timeout = db_fetch_cell_prepared("SELECT MAX(duration_trigger*attempt)
 if ($timeout > 0) {
 	$timeout += 2;
 } else {
-	read_config_option('servcheck_test_max_duration');
+	$timeout = read_config_option('servcheck_test_max_duration');
 }
 
 $use_processes = min($tests, $max_processes);
@@ -192,7 +194,7 @@ $use_processes = min($tests, $max_processes);
 if ($tests > 0) {
 	for ($f = 1; $f <= $use_processes; $f++) {
 		if (!register_process_start('servcheck', $taskname, $f, $timeout)) {
-			cacti_log(sprintf('WARNING: Not Running Service Check %s it is still running', $taskname), false, 'SERVCHECK');
+			cacti_log(sprintf('WARNING: Not Running Service Check process %s because it is still running', $f), false, 'SERVCHECK');
 		} else {
 			servcheck_debug('Launching Servceck process ' . $f);
 

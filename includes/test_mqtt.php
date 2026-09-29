@@ -64,6 +64,7 @@ function mqtt_try(array $test): array {
 	[$category,$service] = explode('_', $test['type']);
 
 	$cred = '';
+	$debug_cred = '';
 
 	if ($test['cred_id'] > 0) {
 		$cred_row = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
@@ -95,9 +96,16 @@ function mqtt_try(array $test): array {
 		$cred .= ':';
 		$cred .= $credential['password'] ?? '';
 		$cred .= '@';
+
+		$debug_cred = str_replace('@', '%40', mask_string($credential['username']));
+		$debug_cred .= ':';
+		$debug_cred .= mask_string($credential['password'], true);
+		$debug_cred .= '@';
 	}
 
-	if (strpos($test['hostname'], ':') === 0) {
+	$parsed = parse_url('//' . $test['hostname']);
+
+	if (!isset($parsed['port'])) {
 		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
 	}
 
@@ -108,7 +116,7 @@ function mqtt_try(array $test): array {
 
 	$url = 'mqtt://' . $cred . $test['hostname'] . $test['path'];
 
-	servcheck_debug('Final url is ' . $url);
+	servcheck_debug('Final url is ' . 'mqtt://' . $debug_cred . $test['hostname'] . $test['path']);
 
 	$process = curl_init($url);
 

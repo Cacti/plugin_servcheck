@@ -250,7 +250,7 @@ function plugin_servcheck_upgrade(): bool {
 		// convert credentials to separated tab
 
 		$records = db_fetch_assoc("SELECT * FROM plugin_servcheck_test
-			WHERE username != '' OR password !='' AND type != 'restapi'");
+			WHERE (username != '' OR password !='') AND type != 'restapi'");
 
 		if (cacti_sizeof($records)) {
 			foreach ($records as $record) {

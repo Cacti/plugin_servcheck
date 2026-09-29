@@ -65,7 +65,9 @@ function ssh_try(array $test): array {
 
 	[$category,$service] = explode('_', $test['type']);
 
-	if (strpos($test['hostname'], ':') === 0) {
+	$parsed = parse_url('//' . $test['hostname']);
+
+	if (!isset($parsed['port'])) {
 		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
 	}
 
@@ -128,7 +130,7 @@ function ssh_try(array $test): array {
 	if (($cred['type'] ?? '') == 'sshkey') {
 		servcheck_debug('Preparing ssh private key file');
 
-		$keyfilename = $config['base_path'] . '/plugins/servcheck/tmp_data/sshkey_' . ($cred['id'] ?? '');
+		$keyfilename = tempnam(sys_get_temp_dir(), 'srvck');
 		$keyfile     = fopen($keyfilename, 'w+');
 
 		if ($keyfile) {
@@ -141,22 +143,39 @@ function ssh_try(array $test): array {
 				} else {
 					$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename));
 				}
-
-				if (!$ssh->login($credential['ssh_username'] ?? '', $key)) {
-					servcheck_debug('Connection failed');
-
-					$errors = $ssh->getStdError();
-					servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
-
-					$results['result'] = 'error';
-					$results['error']  = 'Connection failed';
-
-					return $results;
-				}
+			} catch (\phpseclib3\Exception\NoKeyLoadedException $e) {
+				cacti_log("ERROR: Failed to load SSH key (invalid format or wrong passphrase): " . $e->getMessage(), false, 'SERVCHECK');
+				$key = null;
+			} catch (\Throwable $e) {
+				cacti_log("ERROR: Unexpected error while loading SSH key: " . $e->getMessage(), false, 'SERVCHECK');
+				$key = null;
 			} finally {
 				// Always remove the temporary private-key file, even on auth failure or a key-load exception.
-				unlink($keyfilename);
+				if (file_exists($keyfilename)) {
+					unlink($keyfilename);
+				}
 				servcheck_debug('Removing private key file');
+			}
+
+			if ($key === null) {
+				servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+
+				$results['result'] = 'error';
+				$results['error']  = 'Failed to load SSH key';
+
+				return $results;
+			}
+
+			if (!$ssh->login($credential['ssh_username'] ?? '', $key)) {
+				servcheck_debug('Connection failed');
+
+				$errors = $ssh->getStdError();
+				servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+
+				$results['result'] = 'error';
+				$results['error']  = 'Connection failed';
+
+				return $results;
 			}
 		} else {
 			cacti_log('Cannot create private key file ' . $keyfilename);
@@ -184,7 +203,7 @@ function ssh_try(array $test): array {
 	if ($service == 'command') {
 		$data = $ssh->exec($test['ssh_command']);
 	} else {
-		$data = $ssh->nlist($test['path']);
+		$data = implode("\n", $ssh->nlist($test['path']) ?: []);
 	}
 
 	$errors = $ssh->getStdError();
@@ -196,6 +215,11 @@ function ssh_try(array $test): array {
 	$results['error']  = 'Some data returned';
 
 	$results['data'] = $data;
+
+	if (isset($keyfilename) && file_exists($keyfilename)) {
+		unlink($keyfilename);
+		servcheck_debug('Removing private key file');
+	}
 
 	// If we have set a failed search string, then ignore the normal searches and only alert on it
 	if ($test['search_failed'] != '') {

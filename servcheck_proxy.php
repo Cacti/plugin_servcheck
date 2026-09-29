@@ -112,7 +112,7 @@ function form_actions(): void {
 			input_validate_input_number($matches[1]);
 			// ====================================================
 
-			$item_list .= '<li>' . db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_proxy WHERE id = ?', [$matches[1]]) . '</li>';
+			$item_list .= '<li>' . html_escape(db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_proxy WHERE id = ?', [$matches[1]])) . '</li>';
 			$items_array[] = $matches[1];
 		}
 	}

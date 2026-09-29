@@ -1338,6 +1338,7 @@ function data_list(): void {
 			}
 
 			form_selectable_cell($row['stats_ok'] . ' / ' . $row['stats_bad'], $row['id'], '', 'right');
+
 			$tmp = ' (' . $row['failures'] . ' of ' . $row['downtrigger'] . ')';
 
 			if ($long_dur) {
@@ -1345,6 +1346,7 @@ function data_list(): void {
 			} else {
 				form_selectable_cell($row['last_duration'], $row['id'], '', 'right');
 			}
+
 			form_selectable_cell($row['triggered'] == '0' ? __('No', 'servcheck') . $tmp : __('Yes', 'servcheck') . $tmp, $row['id'], '', 'right');
 			form_selectable_cell(substr($res, 0, 30), $row['id'], '', 'right', $res);
 			form_selectable_cell($text_result_search[$row['last_result_search']], $row['id'], '', 'right');
@@ -1354,7 +1356,7 @@ function data_list(): void {
 			form_end_row();
 		}
 	} else {
-		print "<tr class='tableRow'><td colspan='" . $columns . "'><em>" . __('Empty', 'servcheck') . "</em></td></tr>\n";
+		print "<tr class='tableRow'><td colspan='" . $columns . "'><em>" . __('No Service Checks Found', 'servcheck') . '</em></td></tr>';
 	}
 
 	html_end_box(false);

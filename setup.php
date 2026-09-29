@@ -891,6 +891,18 @@ function servcheck_config_settings(): void {
 			'method'        => 'textbox',
 			'max_length'    => 2,
 			'default'       => '3',
+		],
+		'servcheck_web_header' => [
+			'friendly_name' => __('HTTP/HTTPS Check Settings', 'servcheck'),
+			'method'        => 'spacer',
+		],
+		'servcheck_user_agent' => [
+			'friendly_name' => __('User Agent', 'servcheck'),
+			'description'   => __('The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default.', 'servcheck'),
+			'method'        => 'textbox',
+			'size'          => '100',
+			'max_length'    => '255',
+			'default'       => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
 		]
 	];
 }

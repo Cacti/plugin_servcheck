@@ -144,37 +144,38 @@ function ssh_try(array $test): array {
 					$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename));
 				}
 			} catch (\phpseclib3\Exception\NoKeyLoadedException $e) {
-				  cacti_log("ERROR: Failed to load SSH key (invalid format or wrong passphrase): " . $e->getMessage(), false, 'INTROPAGE');
-				  $key = null;
-			  } catch (\Throwable $e) {
-				  cacti_log("ERROR: Unexpected error while loading SSH key: " . $e->getMessage(), false, 'INTROPAGE');
-				  $key = null;
-			  }
-
-			  if ($key === null) {
-				  servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
-
-				  $results['result'] = 'error';
-				  $results['error']  = 'Failed to load SSH key';
-
-				  return $results;
-			  }
-
-				if (!$ssh->login($credential['ssh_username'] ?? '', $key)) {
-					servcheck_debug('Connection failed');
-
-					$errors = $ssh->getStdError();
-					servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
-
-					$results['result'] = 'error';
-					$results['error']  = 'Connection failed';
-
-					return $results;
-				}
+				cacti_log("ERROR: Failed to load SSH key (invalid format or wrong passphrase): " . $e->getMessage(), false, 'INTROPAGE');
+				$key = null;
+			} catch (\Throwable $e) {
+				cacti_log("ERROR: Unexpected error while loading SSH key: " . $e->getMessage(), false, 'INTROPAGE');
+				$key = null;
 			} finally {
 				// Always remove the temporary private-key file, even on auth failure or a key-load exception.
-				unlink($keyfilename);
+				if (file_exists($keyfilename)) {
+					unlink($keyfilename);
+				}
 				servcheck_debug('Removing private key file');
+			}
+
+			if ($key === null) {
+				servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+
+				$results['result'] = 'error';
+				$results['error']  = 'Failed to load SSH key';
+
+				return $results;
+			}
+
+			if (!$ssh->login($credential['ssh_username'] ?? '', $key)) {
+				servcheck_debug('Connection failed');
+
+				$errors = $ssh->getStdError();
+				servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+
+				$results['result'] = 'error';
+				$results['error']  = 'Connection failed';
+
+				return $results;
 			}
 		} else {
 			cacti_log('Cannot create private key file ' . $keyfilename);

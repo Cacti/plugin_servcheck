@@ -104,7 +104,6 @@ class dnslookup {
 		$socket = @fsockopen("udp://$dns", 53, $errno, $errstr, $timeout);
 
 		if (!$socket) {
-      more_fixes
 			$this->error = 'DNS server did not respond';
 			return false;
 		}
@@ -112,7 +111,7 @@ class dnslookup {
 		fwrite($socket, $packet);
 		stream_set_timeout($socket, $timeout);
 
-    $this->dns_reply = fread($socket, 512);
+		$this->dns_reply = fread($socket, 512);
 
 		$socket_status = stream_get_meta_data($socket);
 

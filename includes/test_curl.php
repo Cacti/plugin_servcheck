@@ -22,7 +22,13 @@
  +-------------------------------------------------------------------------+
 */
 
-$user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
+// The User-Agent is configurable via the 'User Agent' plugin setting; fall
+// back to a sane default when it has not been set.
+$user_agent = read_config_option('servcheck_user_agent');
+
+if (empty($user_agent)) {
+	$user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
+}
 
 global $config;
 

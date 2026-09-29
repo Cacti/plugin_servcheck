@@ -27,8 +27,14 @@ if (!defined('SERVCHECK_CIPHER')) {
 	define('SERVCHECK_CIPHER', 'aes-256-cbc');
 }
 
-// $user_agent can be of user's choice e.g. Linux or Windows based
-$user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
+// $user_agent can be of user's choice e.g. Linux or Windows based. The
+// value is configurable via the 'User Agent' plugin setting; fall back to a
+// sane default when it has not been set.
+$user_agent = read_config_option('servcheck_user_agent');
+
+if (empty($user_agent)) {
+	$user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
+}
 
 global $config;
 

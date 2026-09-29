@@ -342,12 +342,15 @@ function servcheck_legend(): void {
 
 	html_start_box('', '100%', false, 3, 'center', '');
 
-	print '<tr class="tableRow">';
+	print '<tr class="tableRow"><td>';
+	print '<div class="servcheck_legend">';
 
 	foreach ($servcheck_states as $index => $state) {
-		print '<td class="servcheck_' . $index . '">' . $state . '</td>';
+		print '<div class="servcheck_legend_item servcheck_' . $index . '">' . $state . '</div>';
 	}
-	print '</tr>';
+
+	print '</div>';
+	print '</td></tr>';
 
 	html_end_box(false);
 }

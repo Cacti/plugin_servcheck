@@ -27,11 +27,6 @@ tr.tableRow.selectable:hover, tr.tableRow.selectable:hover td {
 	color: inherit !important;
 }
 
-tr.tableRow.selectable.selected, tr.tableRow.selectable.selected td {
-	background-color: #000 !important;
-	color: #FFF !important;
-}
-
 .servcheck_pre {
 	white-space: pre-wrap;
 	word-wrap: break-word;

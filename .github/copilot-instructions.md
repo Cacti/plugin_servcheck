@@ -4,7 +4,7 @@
 
 When generating code for this repository:
 
-1. **Version Compatibility**: This is a Cacti plugin (version 0.3) requiring Cacti 1.2.24+ compatibility
+1. **Version Compatibility**: This is a Cacti plugin (version 0.3) requiring Cacti 1.2.32+ compatibility
 2. **Context Files**: Prioritize patterns and standards defined in this file (`.github/copilot-instructions.md`)
 3. **Codebase Patterns**: When context files don't provide specific guidance, scan the codebase for established patterns
 4. **Architectural Consistency**: Maintain plugin-based architecture extending Cacti core
@@ -14,7 +14,7 @@ When generating code for this repository:
 
 ### Core Technologies
 - **PHP**: Minimum PHP 7.x (inherited from Cacti requirements)
-- **Platform**: Cacti Plugin Architecture (Cacti 1.2.24+)
+- **Platform**: Cacti Plugin Architecture (Cacti 1.2.32+)
 - **Database**: MySQL/MariaDB with InnoDB engine
 - **Encryption**: OpenSSL with AES-256-CBC cipher
 

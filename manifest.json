@@ -13,7 +13,6 @@
         "index.php",
         "locales/",
         "manifest.json",
-        "phpunit.xml",
         "poller_servcheck.php",
         "servcheck_ca.php",
         "servcheck_credential.php",

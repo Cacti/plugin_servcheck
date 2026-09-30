@@ -17,6 +17,17 @@ is going to be down can be configured so that escallation does not needlessly
 take place during maintenance periods.
 
 
+## Upgrading
+
+`poller_servcheck.php` runs as a long-lived background process, so a running
+copy keeps the old code in memory across a plugin upgrade. After upgrading the
+plugin files, restart the servcheck background process (stop the running
+`poller_servcheck.php`; Cacti's poller relaunches it on the next cycle) so it
+picks up the new code. On upgrade the plugin also prunes its own bundled
+development-only files (for example the `tests/` directory) from the installed
+tree.
+
+
 ## Tests and results
 Servcheck try to run test once or more than once (you can configure it).
 If successful on the first attempt, no further tests will be performed.

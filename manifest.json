@@ -1,0 +1,29 @@
+{
+    "tombstones": [],
+    "expected": [
+        "CHANGELOG.md",
+        "INFO",
+        "LICENSE",
+        "README.md",
+        "ca-bundle.crt",
+        "cert/",
+        "css/",
+        "example_script.sh",
+        "includes/",
+        "index.php",
+        "locales/",
+        "manifest.json",
+        "phpunit.xml",
+        "poller_servcheck.php",
+        "servcheck_ca.php",
+        "servcheck_credential.php",
+        "servcheck_curl_code.php",
+        "servcheck_process.php",
+        "servcheck_proxy.php",
+        "servcheck_restapi.php",
+        "servcheck_test.php",
+        "setup.php",
+        "templates/"
+    ],
+    "whitelist": []
+}

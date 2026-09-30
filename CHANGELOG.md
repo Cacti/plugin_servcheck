@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* dev: Measure CI coverage with xdebug instead of pcov so the plugin's own sources are instrumented (pcov auto-scopes to the Composer root and skipped cacti/plugins/, leaving the patch-coverage gate with nothing to measure)
 * dev: Enforce patch coverage of changed lines in CI and remove the inert COMPOSER_ROOT_VERSION env from the Pest step
 * feature: Add a configurable User-Agent setting for HTTP/HTTPS and other cURL based service checks, so outdated-browser blocking no longer rejects the plugin's requests
 * issue: Fix a fatal "Call to undefined function replicate_out()" by only re-registering hooks during an actual version upgrade and loading core lib/poller.php robustly before doing so

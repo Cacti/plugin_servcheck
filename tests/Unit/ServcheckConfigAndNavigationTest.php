@@ -21,7 +21,7 @@ beforeEach(function () {
 	$GLOBALS['__test_db_fetch_cell_return'] = '99.0';
 
 	// Sandbox base_path so the on-page version check runs
-	// plugin_servcheck_prune_files() against a throwaway tree with no
+	// servcheck_prune_files() against a throwaway tree with no
 	// manifest.json (prune no-ops), never the real checkout.
 	$GLOBALS['__servcheck_base_restore'] = $GLOBALS['config']['base_path'];
 	$base = sys_get_temp_dir() . '/servcheck-test-' . uniqid();

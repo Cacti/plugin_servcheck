@@ -30,7 +30,7 @@ beforeEach(function () {
 	$GLOBALS['__test_registered_hooks']     = array();
 	$GLOBALS['__test_db_fetch_cell_return'] = '99.0';
 
-	// Sandbox base_path so the drift branch runs plugin_servcheck_prune_files()
+	// Sandbox base_path so the drift branch runs servcheck_prune_files()
 	// against a throwaway tree with no manifest.json (prune no-ops), never the
 	// real checkout. The temp tree carries a copy of the real INFO so
 	// plugin_servcheck_version() still matches.

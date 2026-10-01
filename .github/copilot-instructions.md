@@ -4,7 +4,7 @@
 
 When generating code for this repository:
 
-1. **Version Compatibility**: This is a Cacti plugin (version 0.3) requiring Cacti 1.2.32+ compatibility
+1. **Version Compatibility**: This is a Cacti plugin (version 0.3) requiring Cacti 1.2.29+ compatibility
 2. **Context Files**: Prioritize patterns and standards defined in this file (`.github/copilot-instructions.md`)
 3. **Codebase Patterns**: When context files don't provide specific guidance, scan the codebase for established patterns
 4. **Architectural Consistency**: Maintain plugin-based architecture extending Cacti core
@@ -14,7 +14,7 @@ When generating code for this repository:
 
 ### Core Technologies
 - **PHP**: Minimum PHP 7.x (inherited from Cacti requirements)
-- **Platform**: Cacti Plugin Architecture (Cacti 1.2.32+)
+- **Platform**: Cacti Plugin Architecture (Cacti 1.2.29+)
 - **Database**: MySQL/MariaDB with InnoDB engine
 - **Encryption**: OpenSSL with AES-256-CBC cipher
 
@@ -26,20 +26,20 @@ When generating code for this repository:
 ## Project Structure
 
 ```
-servcheck/             # Repository root (install to plugins/servcheck/ in Cacti)
-├── includes/          # Test implementation modules
-│   ├── functions.php  # Core utility functions
-│   ├── arrays.php     # Configuration arrays and constants
-│   ├── test_*.php     # Protocol-specific test implementations
-│   └── index.php      # Access protection
-├── locales/           # Internationalization files
-│   ├── po/            # Translation source files
-│   └── LC_MESSAGES/   # Compiled translation files
-├── cert/              # SSL/TLS certificates
-├── tmp_data/          # Temporary data storage
-├── setup.php          # Plugin installation and upgrade hooks
-├── servcheck_*.php    # Main UI/management pages
-└── poller_servcheck.php  # Background poller integration
+servcheck/               # Repository root (install to plugins/servcheck/ in Cacti)
+├── includes/            # Test implementation modules
+│   ├── functions.php    # Core utility functions
+│   ├── arrays.php       # Configuration arrays and constants
+│   ├── test_*.php       # Protocol-specific test implementations
+│   └── index.php        # Access protection
+├── locales/             # Internationalization files
+│   ├── po/              # Translation source files
+│   └── LC_MESSAGES/     # Compiled translation files
+├── cert/                # SSL/TLS certificates
+├── tmp_data/            # Temporary data storage
+├── setup.php            # Plugin installation and upgrade hooks
+├── servcheck_*.php      # Main UI/management pages
+└── poller_servcheck.php # Background poller integration
 ```
 
 ## Naming Conventions
@@ -693,3 +693,7 @@ existing code or adding new code, not just in dedicated cleanup passes:
   line, `@param` lines, a blank comment line, then `@return`. Infer parameter/return types from
   actual usage; don't change the function's real type-hints in the same pass (let static analysis
   flag mismatches separately). Skip vendored third-party library files.
+
+## File manifest & upgrade pruning
+
+The plugin ships a root `manifest.json` with three arrays: `tombstones` (files/directories older versions shipped that have since moved or been removed), `expected` (the top-level files and directories that ship today, directories written with a trailing `/`), and `whitelist` (paths holding user data that must never be touched). Keep `expected` current: CI runs `tests/bin/validate-manifest.php`, which fails on any drift between `expected` and the real top-level tree (it ignores `tests/`, `phpunit.xml`, `.git*`, `.md*`, and whitelisted paths). Custom customer CSS/theme files belong in `expected`, and stylesheets live in `css/` (not `themes/`). On upgrade, `servcheck_prune_files()` deletes the tombstoned paths, the dev-only `tests/` tree, and the `phpunit.xml` test config, leaves `whitelist`, `.git*`, and `.md*` alone, and logs (without removing) any top-level entry the manifest does not account for. As a safety measure it refuses any tombstone that resolves outside the plugin directory (a tampered manifest.json) and logs a warning for any file or directory it cannot remove. When you move or delete a shipped file, add its old path to `tombstones` and update `expected` in the same change.

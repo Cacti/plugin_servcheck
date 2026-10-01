@@ -19,6 +19,21 @@ beforeEach(function () {
 	$GLOBALS['__test_db_calls']         = array();
 	$GLOBALS['__test_current_page']     = 'graphs.php';
 	$GLOBALS['__test_db_fetch_cell_return'] = '99.0';
+
+	// Sandbox base_path so the on-page version check runs
+	// servcheck_prune_files() against a throwaway tree with no
+	// manifest.json (prune no-ops), never the real checkout.
+	$GLOBALS['__servcheck_base_restore'] = $GLOBALS['config']['base_path'];
+	$base = sys_get_temp_dir() . '/servcheck-test-' . uniqid();
+	mkdir($base . '/plugins/servcheck', 0777, true);
+	copy(__DIR__ . '/../../INFO', $base . '/plugins/servcheck/INFO');
+	$GLOBALS['config']['base_path'] = $base;
+});
+
+afterEach(function () {
+	if (isset($GLOBALS['__servcheck_base_restore'])) {
+		$GLOBALS['config']['base_path'] = $GLOBALS['__servcheck_base_restore'];
+	}
 });
 
 it('adds the Service Checker menu entry and skips the version check off relevant pages', function () {

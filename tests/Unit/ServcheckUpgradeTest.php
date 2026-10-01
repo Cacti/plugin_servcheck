@@ -29,6 +29,22 @@ beforeEach(function () {
 	$GLOBALS['__test_db_calls']             = array();
 	$GLOBALS['__test_registered_hooks']     = array();
 	$GLOBALS['__test_db_fetch_cell_return'] = '99.0';
+
+	// Sandbox base_path so the drift branch runs servcheck_prune_files()
+	// against a throwaway tree with no manifest.json (prune no-ops), never the
+	// real checkout. The temp tree carries a copy of the real INFO so
+	// plugin_servcheck_version() still matches.
+	$GLOBALS['__servcheck_base_restore'] = $GLOBALS['config']['base_path'];
+	$base = sys_get_temp_dir() . '/servcheck-test-' . uniqid();
+	mkdir($base . '/plugins/servcheck', 0777, true);
+	copy(__DIR__ . '/../../INFO', $base . '/plugins/servcheck/INFO');
+	$GLOBALS['config']['base_path'] = $base;
+});
+
+afterEach(function () {
+	if (isset($GLOBALS['__servcheck_base_restore'])) {
+		$GLOBALS['config']['base_path'] = $GLOBALS['__servcheck_base_restore'];
+	}
 });
 
 it('reports success, updates the realm file list, re-registers hooks, and updates plugin_config', function () {

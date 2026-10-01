@@ -26,20 +26,20 @@ When generating code for this repository:
 ## Project Structure
 
 ```
-servcheck/             # Repository root (install to plugins/servcheck/ in Cacti)
-├── includes/          # Test implementation modules
-│   ├── functions.php  # Core utility functions
-│   ├── arrays.php     # Configuration arrays and constants
-│   ├── test_*.php     # Protocol-specific test implementations
-│   └── index.php      # Access protection
-├── locales/           # Internationalization files
-│   ├── po/            # Translation source files
-│   └── LC_MESSAGES/   # Compiled translation files
-├── cert/              # SSL/TLS certificates
-├── tmp_data/          # Temporary data storage
-├── setup.php          # Plugin installation and upgrade hooks
-├── servcheck_*.php    # Main UI/management pages
-└── poller_servcheck.php  # Background poller integration
+servcheck/               # Repository root (install to plugins/servcheck/ in Cacti)
+├── includes/            # Test implementation modules
+│   ├── functions.php    # Core utility functions
+│   ├── arrays.php       # Configuration arrays and constants
+│   ├── test_*.php       # Protocol-specific test implementations
+│   └── index.php        # Access protection
+├── locales/             # Internationalization files
+│   ├── po/              # Translation source files
+│   └── LC_MESSAGES/     # Compiled translation files
+├── cert/                # SSL/TLS certificates
+├── tmp_data/            # Temporary data storage
+├── setup.php            # Plugin installation and upgrade hooks
+├── servcheck_*.php      # Main UI/management pages
+└── poller_servcheck.php # Background poller integration
 ```
 
 ## Naming Conventions

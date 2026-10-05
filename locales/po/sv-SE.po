@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-09-12 08:18+0000\n"
+"PO-Revision-Date: 2026-10-06 08:18+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
-"Language-Team: Swedish <https://translate.cacti.net/projects/cacti/servcheck/sv/>\n"
+"Language-Team: Swedish <https://translate.cacti.net/projects/cacti/servcheck/"
+"sv/>\n"
 "Language: sv-SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -51,6 +52,17 @@ msgid ""
 "\t\t<i>MQTT</i> - optional<br/>\\\n"
 "\t\t<i>SCP, SSH command</i> - you can use this method or private key method"
 msgstr ""
+"<b>Kan användas för många tjänstekontroller:</b><br/>\\\n"
+"\t\t<i>Http/https</i> – valfritt; när det är angivet provas HTTP-"
+"grundautentisering<br/>\\\n"
+"\t\t<i>SMTP på port 587 – valfritt. Utan användarnamn/lösenord testas bara "
+"serversvaret. Med användarnamn och lösenord utförs även inloggning<br/>\\\n"
+"\t\t<i>Imap, imaps, pop3, pop3s, ftp</i> – valfritt. För anonym FTP används "
+"användarnamnet \\\"anonymous\\\" och e-postadressen som lösenord<br/>\\\n"
+"\t\t<i>LDAP, smb, smbs</i> – obligatoriskt<br/>\\\n"
+"\t\t<i>MQTT</i> – valfritt<br/>\\\n"
+"\t\t<i>SCP, SSH-kommando</i> – du kan använda den här metoden eller metoden "
+"med privat nyckel"
 
 #: includes/arrays.php
 msgid "A Useful Name for this CA chain."
@@ -94,31 +106,31 @@ msgstr "En efterfrågad funktion, ett protokoll eller ett alternativ hittades in
 
 #: includes/arrays.php
 msgid "AES"
-msgstr ""
+msgstr "AES"
 
 #: includes/arrays.php
 msgid "AES-128"
-msgstr ""
+msgstr "AES-128"
 
 #: includes/arrays.php
 msgid "AES-192"
-msgstr ""
+msgstr "AES-192"
 
 #: includes/arrays.php
 msgid "AES-192-C"
-msgstr ""
+msgstr "AES-192-C"
 
 #: includes/arrays.php
 msgid "AES-256"
-msgstr ""
+msgstr "AES-256"
 
 #: includes/arrays.php
 msgid "AES-256-C"
-msgstr ""
+msgstr "AES-256-C"
 
 #: includes/arrays.php
 msgid "API key auth"
-msgstr ""
+msgstr "API-nyckelautentisering"
 
 #: includes/arrays.php
 msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
@@ -138,11 +150,11 @@ msgstr "Allt bra. Fortsätt som vanligt."
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform encrypted LDAP login and search"
-msgstr ""
+msgstr "Alla parametrar krävs. Utför krypterad LDAP-inloggning och -sökning"
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform unencrypted LDAP login and search"
-msgstr ""
+msgstr "Alla parametrar krävs. Utför okrypterad LDAP-inloggning och -sökning"
 
 #: includes/arrays.php
 msgid "An API function was called from inside a callback."
@@ -181,15 +193,19 @@ msgid ""
 "Auth can use different token or API Key name. You can specify it here.\n"
 "\t\tCommonly used names are  'Bearer' for OAuth2,  'apikey' for API Key method. You need know correct name, check your Rest API server documentation. "
 msgstr ""
+"Autentisering kan använda olika token- eller API-nyckelnamn. Du kan ange det "
+"här.\n"
+"\t\tVanliga namn är ”Bearer” för OAuth2 och ”apikey” för API-nyckelmetoden. "
+"Du måste känna till rätt namn; kontrollera dokumentationen för din REST API-"
+"server. "
 
 #: includes/arrays.php
 msgid "Auth in HTTP headers"
-msgstr ""
+msgstr "Autentisering i HTTP-huvuden"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Auth type"
-msgstr "Auth"
+msgstr "Autentiseringstyp"
 
 #: includes/arrays.php
 msgid "Bad Gateway"
@@ -201,7 +217,7 @@ msgstr "Felaktig begäran"
 
 #: includes/arrays.php
 msgid "Basic HTTP auth"
-msgstr ""
+msgstr "Grundautentisering för HTTP"
 
 #: includes/arrays.php
 msgid "CA Chain"
@@ -218,6 +234,10 @@ msgstr "CA-certifikat"
 #: includes/arrays.php
 msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
 msgstr ""
+"Cacti försöker köra varje test flera gånger. Det första lyckade försöket "
+"avslutar testningen och registrerar resultatet. Om inget av försöken lyckas "
+"avbryts testet och ett fel registreras. Ett högt antal förlänger loggtestets "
+"varaktighet."
 
 #: includes/arrays.php
 msgid "Check Certificate"
@@ -233,15 +253,15 @@ msgstr "Markera den här rutan om webbplatsen normalt ska returnera ett 401-fel 
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Authorization Protocol."
-msgstr ""
+msgstr "Välj auktoriseringsprotokoll för SNMPv3."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Passphrase."
-msgstr ""
+msgstr "Välj sekretesslösenfras för SNMPv3."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Protocol."
-msgstr ""
+msgstr "Välj sekretessprotokoll för SNMPv3."
 
 #: includes/arrays.php
 msgid "Chunk callback reported error."
@@ -249,11 +269,11 @@ msgstr "Återanrop av segment rapporterade fel."
 
 #: includes/arrays.php
 msgid "Client ID"
-msgstr ""
+msgstr "Klient-ID"
 
 #: includes/arrays.php
 msgid "Client secret"
-msgstr ""
+msgstr "Klienthemlighet"
 
 #: includes/arrays.php
 msgid "Conflict"
@@ -262,6 +282,9 @@ msgstr "Konflikt"
 #: includes/arrays.php
 msgid "Connetct to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \\\"Long duration alert\\\""
 msgstr ""
+"Anslut till MQTT-servern och lyssna efter valfritt meddelande. Du kan ange "
+"ämne i Sökväg (sovrum/temp), eller lämna tomt för valfritt ämne. För det här "
+"testet rekommenderas att öka ”Varning för lång varaktighet”."
 
 #: includes/arrays.php servcheck_ca.php servcheck_credential.php
 #: servcheck_proxy.php servcheck_restapi.php servcheck_test.php
@@ -270,7 +293,7 @@ msgstr "Fortsätt"
 
 #: includes/arrays.php
 msgid "Cookie based auth"
-msgstr ""
+msgstr "Kakbaserad autentisering"
 
 #: includes/arrays.php
 msgid "Could not resolve host. The given remote host was not resolved."
@@ -290,15 +313,15 @@ msgstr "Skapad"
 
 #: includes/arrays.php setup.php
 msgid "Credential"
-msgstr ""
+msgstr "Inloggningsuppgift"
 
 #: includes/arrays.php
 msgid "Credential Name"
-msgstr ""
+msgstr "Namn på inloggningsuppgift"
 
 #: includes/arrays.php
 msgid "Credential type"
-msgstr ""
+msgstr "Typ av inloggningsuppgift"
 
 #: includes/arrays.php
 msgid "Curl return codes"
@@ -306,12 +329,11 @@ msgstr "Returkoder för curl"
 
 #: includes/arrays.php
 msgid "Custom HTTP header"
-msgstr ""
+msgstr "Anpassat HTTP-huvud"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DES"
-msgstr "DNS"
+msgstr "DES"
 
 #: includes/arrays.php
 msgid "DNS Name for Query"
@@ -320,20 +342,21 @@ msgstr "DNS-namn för fråga"
 #: includes/arrays.php
 msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
 msgstr ""
+"DNS-namn att fråga efter. För DoH (DNS över HTTPS) används /"
+"resolve?name=example.com eller /dns-query?name=example.com&type=A. För "
+"okrypterad DNS returneras A- och AAAA-poster"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DNS over HTTPS, default port 443"
-msgstr "HTTP-krypterad (HTTPS), standardport 443"
+msgstr "DNS över HTTPS, standardport 443"
 
 #: includes/arrays.php
 msgid "DNS plaintext, default port 53"
 msgstr "DNS-klartext, standardport 53"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Data URL"
-msgstr "Duplicera"
+msgstr "Data-URL"
 
 #: includes/arrays.php
 msgid ""
@@ -345,6 +368,20 @@ msgid ""
 "\t\tCookie - <i>Use your credentials for getting cookie. Cookie will be send with each request.</i><br/>\n"
 "\t\tNote: HTTP method POST is used for login. For data query is used GET."
 msgstr ""
+"Information om autentiseringsmetoder:<br/>\n"
+"\t\tIngen auktorisering – <i>skicka bara begäran och läs svaret.</i><br/>\\\n"
+"\t\tGrundläggande – <i>använder HTTP-autentisering. Användarnamn och "
+"lösenord är Base64-kodade. Inloggningsuppgifterna är inte krypterade.</i><br/"
+">\\\n"
+"\t\tAPI-nyckel – <i>du behöver en API-nyckel från din REST API-server. Den "
+"skickas med alla begäranden. Nyckeln skickas i HTTP-huvuden. Du kan också "
+"lägga till den i data-URL:en.</i><br/>\\\n"
+"\t\tOAuth2 – <i>autentisering med OAuth2/bearer-token. Ange din token eller "
+"använd dina inloggningsuppgifter för att hämta en token.</i><br/>\\\n"
+"\t\tKaka – <i>använd dina inloggningsuppgifter för att hämta en kaka. Kakan "
+"skickas med varje begäran.</i><br/>\\\n"
+"\t\tObservera: HTTP-metoden POST används för inloggning. GET används för "
+"datafrågan."
 
 #: includes/arrays.php setup.php
 msgid "Disabled"
@@ -359,54 +396,61 @@ msgid "Early initialization code failed. This is likely to be an internal error 
 msgstr "Koden för tidig initiering misslyckades. Detta är sannolikt ett internt fel eller problem, eller ett resursproblem där något grundläggande inte kunde göras vid starttillfället."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Email notification"
-msgstr "Notifieringslista"
+msgstr "E-postavisering"
 
 #: includes/arrays.php
 msgid "Enable run script for this test"
-msgstr ""
+msgstr "Aktivera körning av skript för detta test"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enable test"
 msgstr "Aktivera test"
 
 #: includes/arrays.php
 msgid "Encrypted IMAP, you can try login and test certificate and user login"
 msgstr ""
+"Krypterad IMAP; du kan prova inloggning och testa certifikat och "
+"användarinloggning"
 
 #: includes/arrays.php
 msgid "Encrypted POP3, you can try login and test certificate and user login."
 msgstr ""
+"Krypterad POP3; du kan prova inloggning och testa certifikat och "
+"användarinloggning."
 
 #: includes/arrays.php
 msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
 msgstr ""
+"Krypterad SCP-anslutning; logga in och försök hämta filen som anges i "
+"sökvägen (/sökväg/till/fil.txt)."
 
 #: includes/arrays.php
 msgid ""
 "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password\\\n"
 "\t\tAUTH LOGIN will be tested."
 msgstr ""
+"Krypterad anslutning på standardporten 465. Det går även att testa "
+"certifikatets giltighet. Med användarnamn och lösenord\\\n"
+"\t\tprovas AUTH LOGIN."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an External ID for this test."
-msgstr "Ange ett evigt ID för denna Thold-mall."
+msgstr "Ange ett externt ID för detta test."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
-msgstr "Ange en IP-adress för att ansluta till. Om du lämnar tomt används DNS-upplösningen istället."
+msgstr ""
+"Ange en IP-adress som DNS-namnet ska slås upp till. Om du lämnar tomt "
+"används DNS-upplösning i stället."
 
 #: includes/arrays.php
 msgid "Enter the SNMP Context to use for this device."
-msgstr ""
+msgstr "Ange SNMP-kontexten som ska användas för den här enheten."
 
 #: includes/arrays.php
 msgid "Enter the SNMP v3 Engine Id or empty."
-msgstr ""
+msgstr "Ange SNMP v3-motor-ID eller lämna tomt."
 
 #: includes/arrays.php
 msgid "Error"
@@ -414,7 +458,7 @@ msgstr "Fel"
 
 #: includes/arrays.php
 msgid "Error/failed"
-msgstr ""
+msgstr "Fel/misslyckad"
 
 #: includes/arrays.php
 msgid "Expectation Failed"
@@ -453,9 +497,8 @@ msgid "Failed string found"
 msgstr "En sträng som misslyckades hittades"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Failed string not found"
-msgstr "Det gick inte att hitta den misslyckade strängen"
+msgstr "Misslyckad sträng hittades inte"
 
 #: includes/arrays.php
 msgid "Failed to connect() to host or proxy."
@@ -475,7 +518,7 @@ msgstr "Det gick inte att stänga av SSL-anslutningen."
 
 #: includes/arrays.php
 msgid "Failing"
-msgstr ""
+msgstr "Misslyckas"
 
 #: includes/arrays.php
 msgid "Failure with receiving network data."
@@ -490,14 +533,13 @@ msgid "File not found on TFTP server."
 msgstr "Det gick inte att hitta filen på TFTP-servern."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For anonymous FTP insert email address"
-msgstr "För anonym ftp ange e-postadress här."
+msgstr "Ange e-postadress för anonym FTP"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
-msgstr "För webbtjänsten anger du minst \"/\" eller något i stil med \"/any/path/\". För FTP-listning måste sluta med tecken \"/\". För TFTP/SCP/SMB ladda ner testinsats /sökväg/fil"
+msgstr ""
+"Ange minst ”/” eller något i stil med ”/valfri/sökväg/” för webbtjänsten."
 
 #: includes/arrays.php
 msgid "Forbidden"
@@ -505,7 +547,7 @@ msgstr "Förbjuden"
 
 #: includes/arrays.php
 msgid "Form urlencoded"
-msgstr ""
+msgstr "Formulärkodad URL"
 
 #: includes/arrays.php
 msgid "Found"
@@ -529,7 +571,7 @@ msgstr "Borta"
 
 #: includes/arrays.php
 msgid "HTTP Port"
-msgstr "HTTP-port"
+msgstr "HTTP-proxyport"
 
 #: includes/arrays.php
 msgid "HTTP Version Not Supported"
@@ -549,7 +591,7 @@ msgstr "HTTPS-port"
 
 #: includes/arrays.php
 msgid "Help"
-msgstr ""
+msgstr "Hjälp"
 
 #: includes/arrays.php servcheck_proxy.php
 msgid "Hostname"
@@ -561,15 +603,19 @@ msgstr "Hur ofta ska testet utföras"
 
 #: includes/arrays.php
 msgid "How many attempts"
-msgstr ""
+msgstr "Antal försök"
 
 #: includes/arrays.php
 msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
 msgstr ""
+"Hur många gånger tröskeln för varaktighet måste överskridas i följd innan en "
+"avisering skickas"
 
 #: includes/arrays.php
 msgid "How many times the service must be DOWN before an alert email is triggered."
 msgstr ""
+"Hur många gånger tjänsten måste vara NERE innan ett varningsmeddelande "
+"skickas."
 
 #: includes/arrays.php
 msgid "IMAP encrypted (IMAPS), default port 993"
@@ -590,23 +636,33 @@ msgstr "IP-adress eller DNS-namn för server"
 #: includes/arrays.php
 msgid "If enabled email notification about state, duration and search result will be send"
 msgstr ""
+"Om aktiverat skickas e-postavisering om tillstånd, varaktighet och "
+"sökresultat"
 
 #: includes/arrays.php
 msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
 msgstr ""
+"Om den globala funktionen för kommandoexekvering är aktiverad kan du ange "
+"här om skriptet ska köras för detta test eller inte."
 
 #: includes/arrays.php
 msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
 msgstr ""
+"Om testtiden överstiger detta värde flera gånger i följd skickas en "
+"avisering. Relaterat till variabeln Antal varaktigheter. Testet ärver "
+"största körtid från inställningarna. Om ett högre värde anges här är största "
+"körtid detta värde + 2 sekunder."
 
 #: includes/arrays.php
 msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
 msgstr "Om denna anslutningstext kräver en proxy, välj den här.  Annars väljer du \"Ingen\"."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
-msgstr "Om du använder SSL, markera den här rutan om du vill kontrollera certifikatets utgångsdatum. Du kommer att få en varning när de sista 10 dagarna återstår."
+msgstr ""
+"Om du använder SSL markerar du den här rutan om du vill kontrollera "
+"certifikatets utgångsdatum. I inställningarna kan du ange hur många dagar "
+"före utgång som avisering ska ske."
 
 #: includes/arrays.php
 msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
@@ -614,7 +670,7 @@ msgstr "Om du använder SSL, markera den här rutan om du vill validera certifik
 
 #: includes/arrays.php
 msgid "If your key is password protected, insert password here"
-msgstr ""
+msgstr "Om din nyckel är lösenordsskyddad anger du lösenordet här"
 
 #: includes/arrays.php
 msgid "Illegal TFTP operation."
@@ -626,15 +682,16 @@ msgstr "Det gick inte att initiera SSL-motorn."
 
 #: includes/arrays.php
 msgid "Insert SNMP OID"
-msgstr ""
+msgstr "Ange SNMP OID"
 
 #: includes/arrays.php
 msgid "Insert SSH command with full path, result of command will be returned"
 msgstr ""
+"Ange SSH-kommando med fullständig sökväg; kommandots resultat returneras"
 
 #: includes/arrays.php
 msgid "Insert username here"
-msgstr ""
+msgstr "Ange användarnamn här"
 
 #: includes/arrays.php
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
@@ -651,14 +708,18 @@ msgstr "Utfärdarkontrollen misslyckades (lades till i 7.19.0)"
 #: includes/arrays.php
 msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
 msgstr ""
+"Detta kontrollerar bara om SMTP-servern svarar. Ingen autentisering. Du ser "
+"serverns inloggningsbanderoll och EHLO-svaret."
 
 #: includes/arrays.php
 msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
 msgstr ""
+"Detta kontrollerar bara om webbservern svarar. Om en inloggningsuppgift med "
+"användarnamn/lösenord används provas HTTP-grundautentisering."
 
 #: includes/arrays.php
 msgid "JSON encoded"
-msgstr ""
+msgstr "JSON-kodad"
 
 #: includes/arrays.php
 msgid "LDAP Search"
@@ -690,7 +751,7 @@ msgstr "Senaste 6 timmarna"
 
 #: includes/arrays.php
 msgid "Last day"
-msgstr "Sista dagen"
+msgstr "Senaste dygnet"
 
 #: includes/arrays.php
 msgid "Last hour"
@@ -698,7 +759,7 @@ msgstr "Senaste timmen"
 
 #: includes/arrays.php
 msgid "Last week"
-msgstr "Förra veckan"
+msgstr "Senaste veckan"
 
 #: includes/arrays.php
 msgid "Length Required"
@@ -710,25 +771,23 @@ msgstr "Libcurl misslyckades med att få ett vettigt resultat tillbaka från ser
 
 #: includes/arrays.php
 msgid "Login URL"
-msgstr ""
+msgstr "Inloggnings-URL"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Long duration"
-msgstr "Plats"
+msgstr "Lång varaktighet"
 
 #: includes/arrays.php
 msgid "Long duration alert"
-msgstr ""
+msgstr "Varning för lång varaktighet"
 
 #: includes/arrays.php
 msgid "MD5"
-msgstr ""
+msgstr "MD5"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "MQTT plaintext, default port 1883"
-msgstr "HTTP-klartext, standardport 80"
+msgstr "MQTT-klartext, standardport 1883"
 
 #: includes/arrays.php
 msgid "Maint string found"
@@ -781,7 +840,7 @@ msgstr "Icke-auktoritativ information"
 
 #: includes/arrays.php servcheck_test.php
 msgid "None"
-msgstr "inget"
+msgstr "Ingen"
 
 #: includes/arrays.php
 msgid "Not Acceptable"
@@ -837,15 +896,15 @@ msgstr "Meddela format"
 
 #: includes/arrays.php
 msgid "Number of duration violations in a row"
-msgstr ""
+msgstr "Antal överskridna varaktigheter i följd"
 
 #: includes/arrays.php
 msgid "OAuth Client secret"
-msgstr ""
+msgstr "OAuth-klienthemlighet"
 
 #: includes/arrays.php
 msgid "OAuth2/Bearer token auth"
-msgstr ""
+msgstr "Autentisering med OAuth2/bearer-token"
 
 #: includes/arrays.php
 msgid "OK"
@@ -853,7 +912,7 @@ msgstr "OK"
 
 #: includes/arrays.php
 msgid "Oauth Client ID"
-msgstr ""
+msgstr "OAuth-klient-ID"
 
 #: includes/arrays.php
 msgid "Obsolete Error"
@@ -861,16 +920,15 @@ msgstr "Föråldrat fel"
 
 #: includes/arrays.php
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: includes/arrays.php
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
 msgstr "Tidsgräns för åtgärd. Den angivna time-out-perioden uppnåddes enligt villkoren."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Options"
-msgstr "Åtgärder"
+msgstr "Alternativ"
 
 #: includes/arrays.php
 msgid "Out of disk space on the server."
@@ -890,15 +948,15 @@ msgstr "POP3 med STARTTLS, standardport 110"
 
 #: includes/arrays.php
 msgid "POST method, JSON encoded"
-msgstr ""
+msgstr "POST-metod, JSON-kodad"
 
 #: includes/arrays.php
 msgid "POST method, form-urlencoded"
-msgstr ""
+msgstr "POST-metod, formulärkodad URL"
 
 #: includes/arrays.php
 msgid "Parameters"
-msgstr ""
+msgstr "Parametrar"
 
 #: includes/arrays.php
 msgid "Partial Content"
@@ -959,18 +1017,24 @@ msgstr "QUIC-anslutningsfel. Det här felet kan orsakas av ett SSL-biblioteksfel
 #: includes/arrays.php
 msgid "REST API test with API key auth. Prepare credential first."
 msgstr ""
+"REST API-test med API-nyckelautentisering. Förbered först "
+"inloggningsuppgiften."
 
 #: includes/arrays.php
 msgid "REST API test with Oauth2. Prepare credential first."
-msgstr ""
+msgstr "REST API-test med OAuth2. Förbered först inloggningsuppgiften."
 
 #: includes/arrays.php
 msgid "REST API test with basic HTTP auth. Prepare credential first."
 msgstr ""
+"REST API-test med HTTP-grundautentisering. Förbered först "
+"inloggningsuppgiften."
 
 #: includes/arrays.php
 msgid "REST API test with cookie auth. Prepare credential first."
 msgstr ""
+"REST API-test med kakbaserad autentisering. Förbered först "
+"inloggningsuppgiften."
 
 #: includes/arrays.php
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
@@ -1006,7 +1070,7 @@ msgstr "Återställ innehåll"
 
 #: includes/arrays.php
 msgid "Resolve DNS to Address"
-msgstr ""
+msgstr "Slå upp DNS till adress"
 
 #: includes/arrays.php
 msgid "Response Search String"
@@ -1014,7 +1078,7 @@ msgstr "Söksträng för svar"
 
 #: includes/arrays.php
 msgid "Response Search String - Failed"
-msgstr "Söksträng för svar - Misslyckades"
+msgstr "Söksträng för felaktigt svar"
 
 #: includes/arrays.php
 msgid "Response Search String - Maintenance"
@@ -1022,7 +1086,7 @@ msgstr "Söksträng för svar - Underhåll"
 
 #: includes/arrays.php
 msgid "Rest API - API key auth"
-msgstr ""
+msgstr "REST API – API-nyckelautentisering"
 
 #: includes/arrays.php
 msgid ""
@@ -1031,87 +1095,101 @@ msgid ""
 "\t\tFor custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue).\\\n"
 "\t\tFor POST <i>api_key</i> is usually used."
 msgstr ""
+"REST API – API-nyckelautentisering<br/>Autentisering skickas i HTTP-huvud, "
+"anpassat huvud eller med POST-metod. Inloggningsuppgifter i URL:en stöds "
+"inte.<br/>Ange API-nyckelns namn och värde. Båda värdena krävs.\\\n"
+"\t\tFör HTTP-huvud används vanligen namnet <i>Bearer eller apikey eller \"\""
+"</i> (Authorization: Bearer apivalue).\\\n"
+"\t\tFör anpassat huvud används vanligen <i>X-API-Key</i> (X-Api-Key: "
+"keyvalue).\\\n"
+"\t\tFör POST används vanligen <i>api_key</i>."
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth"
-msgstr ""
+msgstr "REST API – HTTP-grundautentisering"
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth. Username and password are required"
-msgstr ""
+msgstr "REST API – HTTP-grundautentisering. Användarnamn och lösenord krävs"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth"
-msgstr ""
+msgstr "REST API – kakbaserad autentisering"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
 msgstr ""
+"REST API – kakbaserad autentisering – båda värdena krävs. Efter inloggning "
+"returneras en kaka"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth"
-msgstr ""
+msgstr "REST API – autentisering med OAuth2/bearer-token"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are send Json encoded."
 msgstr ""
+"REST API – autentisering med OAuth2/bearer-token<br/>Du kan ha en nyckel/"
+"token från servern och ange den här eller använda autentiseringsflöde med "
+"inloggningsuppgifter. Användarnamn och lösenord skickas JSON-kodade."
 
 #: includes/arrays.php
 msgid "Rest API Name"
-msgstr ""
+msgstr "Namn på REST API"
 
 #: includes/arrays.php
 msgid "Rest API methods"
-msgstr ""
+msgstr "REST API-metoder"
 
 #: includes/arrays.php
 msgid "Rest API with API key auth"
-msgstr ""
+msgstr "REST API med API-nyckelautentisering"
 
 #: includes/arrays.php
 msgid "Rest API with Basic HTTP auth"
-msgstr ""
+msgstr "REST API med HTTP-grundautentisering"
 
 #: includes/arrays.php
 msgid "Rest API with Cookie based auth"
-msgstr ""
+msgstr "REST API med kakbaserad autentisering"
 
 #: includes/arrays.php
 msgid "Rest API with OAuth2/Bearer token auth"
-msgstr ""
+msgstr "REST API med autentisering med OAuth2/bearer-token"
 
 #: includes/arrays.php
 msgid "SCP download file, default port 22"
 msgstr "SCP-nedladdningsfil, standardport 22"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SFTP protocol - directory listing, default port 22"
-msgstr "TFTP-protokoll – ladda ned fil, standardport 69"
+msgstr "SFTP-protokoll – kataloglistning, standardport 22"
 
 #: includes/arrays.php
 msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
 msgstr ""
+"SFTP-protokoll på port 22; användarnamn, lösenord och sökväg krävs. Försök "
+"göra en kataloglistning av sökvägen."
 
 #: includes/arrays.php
 msgid "SHA"
-msgstr ""
+msgstr "SHA"
 
 #: includes/arrays.php
 msgid "SHA-224"
-msgstr ""
+msgstr "SHA-224"
 
 #: includes/arrays.php
 msgid "SHA-256"
-msgstr ""
+msgstr "SHA-256"
 
 #: includes/arrays.php
 msgid "SHA-392"
-msgstr ""
+msgstr "SHA-392"
 
 #: includes/arrays.php
 msgid "SHA-512"
-msgstr ""
+msgstr "SHA-512"
 
 #: includes/arrays.php
 msgid "SMB encrypted (SMBS) download file, default port 445"
@@ -1130,123 +1208,122 @@ msgid "SMTP plaintext, default port 25 (or 587 for submission)"
 msgstr "SMTP-klartext, standardport 25 (eller 587 för överföring)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
 msgstr "SMTP med STARTTLS, standardport 25 (eller 587 för inlämning)"
 
 #: includes/arrays.php
 msgid "SNMP Auth Protocol (v3)"
-msgstr ""
+msgstr "SNMP-autentiseringsprotokoll (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Context (v3)"
-msgstr ""
+msgstr "SNMP-kontext (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Engine ID (v3)"
-msgstr ""
+msgstr "SNMP-motor-ID (v3)"
 
 #: includes/arrays.php
 msgid "SNMP OID"
-msgstr ""
+msgstr "SNMP OID"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Password (v3)"
-msgstr "Lösenord"
+msgstr "SNMP-lösenord (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Passphrase (v3)"
-msgstr ""
+msgstr "SNMP-sekretesslösenfras (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Protocol (v3)"
-msgstr ""
+msgstr "SNMP-sekretessprotokoll (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Security Level"
-msgstr ""
+msgstr "SNMP-säkerhetsnivå"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Username (v3)"
-msgstr "Användarnamn"
+msgstr "SNMP-användarnamn (v3)"
 
 #: includes/arrays.php
 msgid "SNMP community string for SNMP v1 or v2(c)"
-msgstr ""
+msgstr "SNMP-communitysträng för SNMP v1 eller v2(c)"
 
 #: includes/arrays.php
 msgid "SNMP get"
-msgstr ""
+msgstr "SNMP-hämtning"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2"
-msgstr ""
+msgstr "SNMP v1 eller v2"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 - required, insert community name here"
-msgstr ""
+msgstr "SNMP v1 eller v2 – obligatoriskt, ange communitynamn här"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 community"
-msgstr ""
+msgstr "SNMP-community för v1 eller v2"
 
 #: includes/arrays.php
 msgid "SNMP v3"
-msgstr ""
+msgstr "SNMP v3"
 
 #: includes/arrays.php
 msgid "SNMP v3 - The security level determines which parameters are required"
-msgstr ""
+msgstr "SNMP v3 – säkerhetsnivån avgör vilka parametrar som krävs"
 
 #: includes/arrays.php
 msgid "SNMP v3 Security Level to use when querying the device."
-msgstr ""
+msgstr "Säkerhetsnivå för SNMP v3 som ska användas vid frågor till enheten."
 
 #: includes/arrays.php
 msgid "SNMP v3 password for this device."
-msgstr ""
+msgstr "SNMP v3-lösenord för den här enheten."
 
 #: includes/arrays.php
 msgid "SNMP v3 username for this device."
-msgstr ""
+msgstr "SNMP v3-användarnamn för den här enheten."
 
 #: includes/arrays.php
 msgid "SNMP walk"
-msgstr ""
+msgstr "SNMP-genomgång"
 
 #: includes/arrays.php
 msgid "SSH command"
-msgstr ""
+msgstr "SSH-kommando"
 
 #: includes/arrays.php
 msgid "SSH command on remote system"
-msgstr ""
+msgstr "SSH-kommando på fjärrsystem"
 
 #: includes/arrays.php
 msgid "SSH private key"
-msgstr ""
+msgstr "SSH-privatnyckel"
 
 #: includes/arrays.php
 msgid "SSH private key "
-msgstr ""
+msgstr "SSH-privatnyckel "
 
 #: includes/arrays.php
 msgid "SSH private key - Cacti 1.2.31+"
-msgstr ""
+msgstr "SSH-privatnyckel – Cacti 1.2.31+"
 
 #: includes/arrays.php
 msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
 msgstr ""
+"SSH-privatnyckel – kan användas för test med SCP eller SSH-kommando. Dessa "
+"tester kan också använda användarnamn/lösenord"
 
 #: includes/arrays.php
 msgid "SSH private key passphrase"
-msgstr ""
+msgstr "Lösenfras för SSH-privatnyckel"
 
 #: includes/arrays.php
 msgid "SSH user"
-msgstr ""
+msgstr "SSH-användare"
 
 #: includes/arrays.php
 msgid "SSL Client Certificate required."
@@ -1262,15 +1339,15 @@ msgstr "Se andra"
 
 #: includes/arrays.php
 msgid "Select correct Credential type."
-msgstr ""
+msgstr "Välj rätt typ av inloggningsuppgift."
 
 #: includes/arrays.php
 msgid "Select correct credential"
-msgstr ""
+msgstr "Välj rätt inloggningsuppgift"
 
 #: includes/arrays.php
 msgid "Select correct credential or left empty."
-msgstr ""
+msgstr "Välj rätt inloggningsuppgift eller lämna tomt."
 
 #: includes/arrays.php
 msgid "Service Check Name"
@@ -1286,7 +1363,7 @@ msgstr "Inställningar för tjänster"
 
 #: includes/arrays.php
 msgid "Set according to your REST API server"
-msgstr ""
+msgstr "Ange enligt din REST API-server"
 
 #: includes/arrays.php
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
@@ -1322,7 +1399,7 @@ msgstr "Temporär omdirigering"
 
 #: includes/arrays.php
 msgid "Test every xth poller run"
-msgstr ""
+msgstr "Testa var x:e körning av pollern"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Tests"
@@ -1365,13 +1442,12 @@ msgid "The download could not be resumed because the specified offset was out of
 msgstr "Det gick inte att återuppta nedladdningen eftersom den angivna förskjutningen låg utanför filgränsen."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The name that is displayed for this Credential."
-msgstr "Det namn som visas för denna servicekontroll och som ingår i eventuella varningsmeddelanden."
+msgstr "Namnet som visas för denna inloggningsuppgift."
 
 #: includes/arrays.php
 msgid "The name that is displayed for this Rest API."
-msgstr ""
+msgstr "Namnet som visas för detta REST API."
 
 #: includes/arrays.php
 msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
@@ -1391,15 +1467,19 @@ msgstr "Resursen som refereras i URL:en finns inte."
 
 #: includes/arrays.php
 msgid "The same as HTTP plaintext but adds the ability to test certificates."
-msgstr ""
+msgstr "Samma som okrypterad HTTP men med möjlighet att testa certifikat."
 
 #: includes/arrays.php
 msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS."
 msgstr ""
+"Samma som okrypterad IMAP men STARTTLS används efter inloggning. Det går "
+"även att testa certifikatets giltighet efter STARTTLS."
 
 #: includes/arrays.php
 msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS."
 msgstr ""
+"Samma som okrypterad POP3 men STARTTLS används efter inloggning. Det går "
+"även att testa certifikatets giltighet efter STARTTLS."
 
 #: includes/arrays.php
 msgid "The server does not support or accept range requests."
@@ -1455,15 +1535,15 @@ msgstr "Detta var antingen ett konstigt svar på ett \"RETR\"-kommando eller en 
 
 #: includes/arrays.php
 msgid "Token name"
-msgstr ""
+msgstr "Tokennamn"
 
 #: includes/arrays.php
 msgid "Token value"
-msgstr ""
+msgstr "Tokenvärde"
 
 #: includes/arrays.php
 msgid "Token/API Key name"
-msgstr ""
+msgstr "Token-/API-nyckelnamn"
 
 #: includes/arrays.php
 msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
@@ -1475,27 +1555,37 @@ msgstr "Utlösare"
 
 #: includes/arrays.php
 msgid "Try DNS over HTTPS."
-msgstr ""
+msgstr "Prova DNS över HTTPS."
 
 #: includes/arrays.php
 msgid "Try SMB protocol, username and password are required. Try to login and download file."
 msgstr ""
+"Prova SMB-protokollet; användarnamn och lösenord krävs. Försök logga in och "
+"hämta fil."
 
 #: includes/arrays.php
 msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
 msgstr ""
+"Prova SNMP-hämtningsmetoden. Utdata för angivet OID returneras. "
+"Inloggningsuppgift krävs; förbered först en SNMP v1-, v2- eller "
+"v3-inloggningsuppgift."
 
 #: includes/arrays.php
 msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
 msgstr ""
+"Prova SNMP-genomgångsmetoden. Utdata för angivet OID returneras. "
+"Inloggningsuppgift krävs; förbered först en SNMP v1-, v2- eller "
+"v3-inloggningsuppgift."
 
 #: includes/arrays.php
 msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
 msgstr ""
+"Försök hämta filen som anges i sökvägen (/sökväg/till/fil.txt) från TFTP-"
+"servern. Filens innehåll returneras."
 
 #: includes/arrays.php
 msgid "Try to resolve DNS record on specified DNS server"
-msgstr ""
+msgstr "Försök slå upp DNS-post på angiven DNS-server"
 
 #: includes/arrays.php
 msgid "Type of service"
@@ -1503,11 +1593,11 @@ msgstr "Typ av service"
 
 #: includes/arrays.php
 msgid "URL to retrieve data. Insert with http:// or https://"
-msgstr ""
+msgstr "URL för att hämta data. Ange med http:// eller https://"
 
 #: includes/arrays.php
 msgid "URL which is used to log in or get the token."
-msgstr ""
+msgstr "URL som används för att logga in eller hämta token."
 
 #: includes/arrays.php
 msgid "Unable to Connect"
@@ -1522,33 +1612,49 @@ msgid "Unauthorized"
 msgstr "Obehörig"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Uncheck this box to disable this test from being checked."
-msgstr "Avmarkera denna ruta för att inaktivera detta test från att kontrolleras."
+msgstr "Avmarkera den här rutan för att inaktivera kontroll av detta test."
 
 #: includes/arrays.php
 msgid ""
 "Unencrypted + STARTTL. It is also possible to test the validity of the certificate. Without username and password, \\\n"
 "\t\tyou will see server login banner and ehlo response. With credential, login will be performed"
 msgstr ""
+"Okrypterad + STARTTLS. Det går också att testa certifikatets giltighet. Utan "
+"användarnamn och lösenord \\\n"
+"\t\tvisas serverns inloggningsbanderoll och EHLO-svar. Med "
+"inloggningsuppgift utförs inloggning"
 
 #: includes/arrays.php
 msgid ""
 "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content \\\n"
 "\t\tof the file is returned."
 msgstr ""
+"Okrypterad FTP-anslutning; logga in och försök hämta filen som anges i "
+"sökvägen (/sökväg/till/fil.txt). För anonym anslutning används inloggningen "
+"*anonymous* och e-postadressen som lösenord. Filens innehåll \\\n"
+"\t\treturneras."
 
 #: includes/arrays.php
 msgid ""
 "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. \\\n"
 "\t\tWith credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
 msgstr ""
+"Okrypterad IMAP-anslutning. Utan inloggningsuppgift testas bara "
+"anslutningen. Du ser endast inloggningsbanderollen. \\\n"
+"\t\tMed inloggningsuppgift testas inloggning och försök görs att läsa "
+"meddelandelistan. Du kan använda metoden AUTHENTICATE PLAIN eller "
+"AUTHENTICATE LOGIN."
 
 #: includes/arrays.php
 msgid ""
 "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. \\\n"
 "\t\tWith credential login will be tested and try to read list of messages"
 msgstr ""
+"Okrypterad POP3-anslutning. Utan inloggningsuppgift testas bara "
+"anslutningen. Du ser endast inloggningsbanderollen. \\\n"
+"\t\tMed inloggningsuppgift testas inloggning och försök görs att läsa "
+"meddelandelistan"
 
 #: includes/arrays.php
 msgid "Unknown TFTP transfer ID."
@@ -1569,6 +1675,9 @@ msgstr "Använd proxy"
 #: includes/arrays.php
 msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
 msgstr ""
+"Använd SSH och anslut till fjärrvärden. Kör angivet kommando efter "
+"inloggning och returnera utdata. Användarnamn och lösenord eller privat "
+"nyckel kan användas."
 
 #: includes/arrays.php
 msgid "Use this Notification List for those to be notified when this service goes down."
@@ -1580,7 +1689,7 @@ msgstr "Användarnamn"
 
 #: includes/arrays.php
 msgid "Username and password"
-msgstr ""
+msgstr "Användarnamn och lösenord"
 
 #: includes/arrays.php
 msgid "Verification Strings"
@@ -1588,7 +1697,7 @@ msgstr "Verifiering Strängar"
 
 #: includes/arrays.php
 msgid "Warning"
-msgstr ""
+msgstr "Varning"
 
 #: includes/arrays.php
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
@@ -1612,11 +1721,15 @@ msgstr "I väntan på att servern skulle ansluta tillbaka när en aktiv FTP-sess
 
 #: includes/arrays.php
 msgid "Without auth"
-msgstr ""
+msgstr "Utan autentisering"
 
 #: includes/arrays.php
 msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
 msgstr ""
+"Du kan ange en annan port (example.com:5000), annars används standardporten. "
+"För numerisk IPv6-adress används [ip:ad:dr:es:fo:rma:at]. För DoH (DNS över "
+"HTTPS) anger du serverns namn här (till exempel 10.10.10.10, cloudflare-"
+"dns.com, …)"
 
 #: includes/arrays.php
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
@@ -1627,9 +1740,8 @@ msgid "Your own CA and intermediate certs"
 msgstr "Din egen certifikatutfärdare och mellanliggande certifikat"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "[None]"
-msgstr "inget"
+msgstr "[Inget]"
 
 #: includes/arrays.php
 msgid "problem with the local client certificate."
@@ -1673,11 +1785,10 @@ msgstr "Rensa"
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Clear Filters"
-msgstr ""
+msgstr "Rensa filter"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
-#, fuzzy
 msgid "Click 'Continue' to delete the following items."
 msgid_plural "Click 'Continue' to delete following items."
 msgstr[0] "Klicka på \"Fortsätt\" för att ta bort följande tester."
@@ -1691,11 +1802,10 @@ msgstr "Standard"
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
 msgid "Delete"
-msgstr "Ta bort"
+msgstr "Radera"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
-#, fuzzy
 msgid "Delete item"
 msgid_plural "Delete items"
 msgstr[0] "Ta bort vila"
@@ -1704,12 +1814,11 @@ msgstr[1] "Ta bort tester"
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
 msgid "Go"
-msgstr "Utför"
+msgstr "Start"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "No Certificates Found"
-msgstr "Inga servrar hittades"
+msgstr "Inga certifikat hittades"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1723,65 +1832,60 @@ msgstr "Servcheck CA-hantering"
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Set/Refresh Filters"
-msgstr ""
+msgstr "Ställ in/uppdatera filter"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 msgid "Used"
 msgstr "Använda"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Click 'Continue' to Duplicate the following Credential."
 msgid_plural "Click 'Continue' to Duplicate following Credential."
 msgstr[0] "Klicka på \"Fortsätt\" för att duplicera följande test."
 msgstr[1] "Klicka på \"Fortsätt\" för att duplicera följande tester."
 
 #: servcheck_credential.php
-#, fuzzy, php-format
+#, php-format
 msgid "Credential [edit: %s]"
-msgstr "CA [redigera: %s]"
+msgstr "Inloggningsuppgift [redigera: %s]"
 
 #: servcheck_credential.php
 msgid "Credential [new]"
-msgstr ""
+msgstr "Inloggningsuppgift [ny]"
 
 #: servcheck_credential.php
 msgid "Credentials"
-msgstr ""
+msgstr "Inloggningsuppgifter"
 
 #: servcheck_credential.php servcheck_restapi.php servcheck_test.php
 msgid "Duplicate"
 msgstr "Duplicera"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Duplicate Credential"
 msgid_plural "Duplicate Credential"
 msgstr[0] "Duplikat test"
 msgstr[1] "Dubbla tester"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "No Credentials Found"
-msgstr "Inga tester hittades"
+msgstr "Inga inloggningsuppgifter hittades"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Servcheck Credential Management"
-msgstr "Servcheck CA-hantering"
+msgstr "Hantering av Servcheck-inloggningsuppgifter"
 
 #: servcheck_credential.php servcheck_restapi.php
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: servcheck_curl_code.php
 msgid "No error codes"
 msgstr "Inga felkoder"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "No Proxies Found"
-msgstr "Inga servrar hittades"
+msgstr "Inga proxyservrar hittades"
 
 #: servcheck_proxy.php
 msgid "Ports (http/https)"
@@ -1805,32 +1909,28 @@ msgid "Any"
 msgstr "Vilken som helst"
 
 #: servcheck_restapi.php
-#, fuzzy
 msgid "Click 'Continue' to Delete the following Rest API."
 msgid_plural "Click 'Continue' to Delete following Rest API."
-msgstr[0] "Klicka på \"Fortsätt\" för att ta bort följande tester."
-msgstr[1] "Klicka på \"Fortsätt\" för att ta bort följande tester."
+msgstr[0] "Klicka på ”Fortsätt” för att ta bort följande REST API."
+msgstr[1] "Klicka på ”Fortsätt” för att ta bort följande REST API:er."
 
 #: servcheck_restapi.php
-#, fuzzy
 msgid "Click 'Continue' to Duplicate the following Rest API."
 msgid_plural "Click 'Continue' to Duplicate following Rest APIs."
-msgstr[0] "Klicka på \"Fortsätt\" för att duplicera följande test."
-msgstr[1] "Klicka på \"Fortsätt\" för att duplicera följande tester."
+msgstr[0] "Klicka på ”Fortsätt” för att duplicera följande REST API."
+msgstr[1] "Klicka på ”Fortsätt” för att duplicera följande REST API:er."
 
 #: servcheck_restapi.php
-#, fuzzy
 msgid "Delete Rest API"
 msgid_plural "Delete Rest API"
-msgstr[0] "Ta bort vila"
-msgstr[1] "Ta bort tester"
+msgstr[0] "Ta bort REST API"
+msgstr[1] "Ta bort REST API:er"
 
 #: servcheck_restapi.php
-#, fuzzy
 msgid "Duplicate Rest API"
 msgid_plural "Duplicate Rest API"
-msgstr[0] "Duplikat test"
-msgstr[1] "Dubbla tester"
+msgstr[0] "Duplicera REST API"
+msgstr[1] "Duplicera REST API:er"
 
 #: servcheck_restapi.php
 #, php-format
@@ -1843,15 +1943,15 @@ msgstr "Fråga [ny]"
 
 #: servcheck_restapi.php
 msgid "Records"
-msgstr ""
+msgstr "Poster"
 
 #: servcheck_restapi.php setup.php
 msgid "Rest API"
-msgstr ""
+msgstr "REST API"
 
 #: servcheck_restapi.php
 msgid "Rest API Method"
-msgstr ""
+msgstr "REST API-metod"
 
 #: servcheck_test.php
 msgid "Actions"
@@ -1867,60 +1967,53 @@ msgstr "Alla användare valda"
 
 #: servcheck_test.php
 msgid "Attempt"
-msgstr ""
+msgstr "Försök"
 
 #: servcheck_test.php
 msgid "CPU u/CPU s/Memory"
-msgstr ""
+msgstr "CPU u/CPU s/minne"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Certificate"
-msgstr "CA-certifikat"
+msgstr "Certifikat"
 
 #: servcheck_test.php
 msgid "Checks"
 msgstr "Kontroller"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Clear log"
-msgstr "Rensa"
+msgstr "Rensa logg"
 
 #: servcheck_test.php
 msgid "Clear statistics"
-msgstr ""
+msgstr "Rensa statistik"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Click 'Continue' to clear log of following items."
 msgid_plural "Click 'Continue' to clear log of following items."
 msgstr[0] "Klicka på \"Fortsätt\" för att aktivera följande test."
 msgstr[1] "Klicka på \"Fortsätt\" för att aktivera följande tester."
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Click 'Continue' to clear statistics of following items."
 msgid_plural "Click 'Continue' to clear statistics of following items."
 msgstr[0] "Klicka på \"Fortsätt\" för att aktivera följande test."
 msgstr[1] "Klicka på \"Fortsätt\" för att aktivera följande tester."
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Click 'Continue' to disable the following items."
 msgid_plural "Click 'Continue' to disable following items."
 msgstr[0] "Klicka på \"Fortsätt\" för att avaktivera följande test."
 msgstr[1] "Klicka på \"Fortsätt\" för att inaktivera följande tester."
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Click 'Continue' to duplicate the following items."
 msgid_plural "Click 'Continue' to duplicate following items."
 msgstr[0] "Klicka på \"Fortsätt\" för att duplicera följande test."
 msgstr[1] "Klicka på \"Fortsätt\" för att duplicera följande tester."
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Click 'Continue' to enable the following items."
 msgid_plural "Click 'Continue' to enable following items."
 msgstr[0] "Klicka på \"Fortsätt\" för att aktivera följande test."
@@ -1928,7 +2021,7 @@ msgstr[1] "Klicka på \"Fortsätt\" för att aktivera följande tester."
 
 #: servcheck_test.php
 msgid "Curl"
-msgstr ""
+msgstr "Curl"
 
 #: servcheck_test.php
 msgid "Date"
@@ -1947,23 +2040,20 @@ msgid "Disable Service Check"
 msgstr "Avaktivera servicekontroll"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable item"
 msgid_plural "Disable items"
 msgstr[0] "Avaktivera test"
 msgstr[1] "Inaktivera tester"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duplicate item"
 msgid_plural "Duplicate items"
 msgstr[0] "Duplikat test"
 msgstr[1] "Dubbla tester"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duration"
-msgstr "Plats"
+msgstr "Varaktighet"
 
 #: servcheck_test.php
 msgid "Edit Service Check"
@@ -1978,7 +2068,6 @@ msgid "Enable Service Check"
 msgstr "Aktivera servicekontroll"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable item"
 msgid_plural "Enable items"
 msgstr[0] "Aktivera test"
@@ -1991,16 +2080,15 @@ msgstr "Poster"
 #: servcheck_test.php
 #, php-format
 msgid "Expired %s days ago"
-msgstr ""
+msgstr "Förföll för %s dagar sedan"
 
 #: servcheck_test.php
 msgid "Insufficient data, wait a few poller cycles"
-msgstr ""
+msgstr "Otillräckliga data, vänta några poller-cykler"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Last Check (attempt)"
-msgstr "Senaste kontrollen"
+msgstr "Senaste kontroll (försök)"
 
 #: servcheck_test.php
 msgid "Last returned data of test"
@@ -2008,20 +2096,19 @@ msgstr "Senast returnerade data för testet"
 
 #: servcheck_test.php
 msgid "Logs"
-msgstr ""
+msgstr "Loggar"
 
 #: servcheck_test.php
 msgid "N/A (N/A)"
-msgstr ""
+msgstr "Ej tillämpligt (ej tillämpligt)"
 
 #: servcheck_test.php
 msgid "No"
 msgstr "Nej"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Service Checks Found"
-msgstr "Inga servrar hittades"
+msgstr "Inga tjänstekontroller hittades"
 
 #: servcheck_test.php
 msgid "No Users Selected"
@@ -2041,16 +2128,15 @@ msgstr "Resultat"
 
 #: servcheck_test.php
 msgid "Ret. data size"
-msgstr ""
+msgstr "Storlek på returnerade data"
 
 #: servcheck_test.php
 msgid "Search result"
 msgstr "Sökresultat"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Servcheck Test Management"
-msgstr "Servcheck CA-hantering"
+msgstr "Hantering av Servcheck-tester"
 
 #: servcheck_test.php
 msgid "Service Check History"
@@ -2058,21 +2144,20 @@ msgstr "Service Check Historik"
 
 #: servcheck_test.php
 msgid "State"
-msgstr "Län"
+msgstr "Status"
 
 #: servcheck_test.php
 msgid "Stats (OK/problem)"
 msgstr "Statistik (OK/problem)"
 
 #: servcheck_test.php
-#, fuzzy, php-format
+#, php-format
 msgid "Test [edit: %s]"
-msgstr "CA [redigera: %s]"
+msgstr "Test [redigera: %s]"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Test [new]"
-msgstr "CA [ny]"
+msgstr "Test [ny]"
 
 #: servcheck_test.php
 #, php-format
@@ -2080,7 +2165,6 @@ msgid "The Service Check history was purged for %s"
 msgstr "Servicekontrollens historik rensades för %s"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Triggered"
 msgstr "Utlöst"
 
@@ -2106,56 +2190,55 @@ msgstr "Ja"
 
 #: servcheck_test.php
 msgid "days"
-msgstr ""
+msgstr "dagar"
 
 #: setup.php
 #, php-format
 msgid "%d Processes"
-msgstr ""
+msgstr "%d processer"
 
 #: setup.php
 #, php-format
 msgid "%d days"
-msgstr ""
+msgstr "%d dygn"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d hours"
-msgstr "Senaste 6 timmarna"
+msgstr "%d timmar"
 
 #: setup.php
 #, php-format
 msgid "%d year"
-msgstr ""
+msgstr "%d år"
 
 #: setup.php
-#, fuzzy
 msgid "1 Process"
-msgstr "Proxyservrar för webb"
+msgstr "1 process"
 
 #: setup.php
 msgid "1 week in advance"
-msgstr ""
+msgstr "1 vecka i förväg"
 
 #: setup.php
 msgid "3 days in advance"
-msgstr ""
+msgstr "3 dagar i förväg"
 
 #: setup.php
 msgid "3 weeks in advance"
-msgstr ""
+msgstr "3 veckor i förväg"
 
 #: setup.php
 msgid "30 days in advance"
-msgstr ""
+msgstr "30 dagar i förväg"
 
 #: setup.php
 msgid "60 days in advance"
-msgstr ""
+msgstr "60 dagar i förväg"
 
 #: setup.php
 msgid "90 days in advance"
-msgstr ""
+msgstr "90 dagar i förväg"
 
 #: setup.php
 msgid "CA"
@@ -2167,51 +2250,57 @@ msgstr "CA-redigering"
 
 #: setup.php
 msgid "Certificate expiry date advanced notification email"
-msgstr ""
+msgstr "E-postmeddelande med förvarning om certifikatets utgångsdatum"
 
 #: setup.php
 msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
 msgstr ""
+"Om den här rutan markeras kan kommandon köras vid Servcheck-händelser. Du "
+"kan aktivera eller inaktivera detta för varje test."
 
 #: setup.php
 msgid "Concurrent Check Processes"
-msgstr ""
+msgstr "Samtidiga kontrollprocesser"
 
 #: setup.php
 msgid "Credential Edit"
-msgstr ""
+msgstr "Redigera inloggningsuppgift"
 
 #: setup.php
 msgid "Credential Save"
-msgstr ""
+msgstr "Spara inloggningsuppgift"
 
 #: setup.php
 msgid "Enable Command Execution"
-msgstr ""
+msgstr "Aktivera kommandoexekvering"
 
 #: setup.php
 msgid "Enter the period after which older logs will be automatically deleted."
-msgstr ""
+msgstr "Ange perioden efter vilken äldre loggar ska tas bort automatiskt."
 
 #: setup.php
 msgid "HTTP/HTTPS Check Settings"
-msgstr ""
+msgstr "Inställningar för HTTP/HTTPS-kontroll"
 
 #: setup.php
 msgid "How long to keep logs"
-msgstr ""
+msgstr "Hur länge loggar ska behållas"
 
 #: setup.php
 msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
 msgstr ""
+"Om utgång av SSL/TLS-tjänstcertifikat är aktiverad anger du hur många dagars "
+"förvarning systemet ska skicka före certifikatets utgångsdatum"
 
 #: setup.php
 msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
 msgstr ""
+"Om markerat skickar Servcheck inga e-postmeddelanden. Du kan också "
+"inaktivera aviseringar endast för särskilda tester"
 
 #: setup.php
 msgid "If checked, this will cause all Emails to be sent separately for each address."
-msgstr ""
+msgstr "Om markerat skickas alla e-postmeddelanden separat till varje adress."
 
 #: setup.php
 msgid "Management"
@@ -2219,25 +2308,23 @@ msgstr "Hantering"
 
 #: setup.php
 msgid "Maximum test duration in seconds"
-msgstr ""
+msgstr "Längsta testvaraktighet i sekunder"
 
 #: setup.php
 msgid "Never"
-msgstr ""
+msgstr "Aldrig"
 
 #: setup.php
-#, fuzzy
 msgid "Notification Preferences"
 msgstr "Inställningar för aviseringar"
 
 #: setup.php
-#, fuzzy
 msgid "Rest API Edit"
-msgstr "CA-redigering"
+msgstr "Redigera REST API"
 
 #: setup.php
 msgid "Rest API Save"
-msgstr ""
+msgstr "Spara REST API"
 
 #: setup.php
 msgid "Save CA"
@@ -2249,71 +2336,83 @@ msgstr "Spara webbproxy"
 
 #: setup.php
 msgid "Send Email separately for each address"
-msgstr ""
+msgstr "Skicka e-post separat till varje adress"
 
 #: setup.php
-#, fuzzy
 msgid "Servcheck"
-msgstr "Servicekontroller"
+msgstr "Servcheck"
 
 #: setup.php
 msgid "Service Check Admin"
-msgstr "Service Check Admin"
+msgstr "Administration av tjänstekontroller"
 
 #: setup.php
 msgid "Service Check Edit"
-msgstr "Service Check Edit"
+msgstr "Redigera tjänstekontroll"
 
 #: setup.php
 msgid "Service Check Save"
-msgstr "Service Kontrollera Spara"
+msgstr "Spara tjänstekontroll"
 
 #: setup.php
 msgid "Service Checker"
-msgstr "Service Checker"
+msgstr "Tjänstekontroll"
 
 #: setup.php
 msgid "Service Checks"
-msgstr "Servicekontroller"
+msgstr "Tjänstekontroller"
 
 #: setup.php
 msgid "Status Change Command"
-msgstr ""
+msgstr "Kommando vid statusändring"
 
 #: setup.php
 msgid "Stop sending all notification"
-msgstr ""
+msgstr "Sluta skicka alla aviseringar"
 
 #: setup.php
 msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
 msgstr ""
+"User-Agent-strängen som skickas med HTTP/HTTPS och andra cURL-baserade "
+"tjänstekontroller. Vissa webbplatser blockerar gamla eller ovanliga "
+"webbläsare, så du kan ange en aktuell User-Agent här. Lämna tomt för att "
+"använda den inbyggda standarden."
 
 #: setup.php
 msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
 msgstr ""
+"Standardvärdet för tester där körningstidskontroll inte är aktiverad. Om den "
+"är aktiverad beräknas längsta varaktighet som varaktighetströskeln + 2 "
+"sekunder."
 
 #: setup.php
 msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
 msgstr ""
+"Antalet tjänstekontrollprocesser som körs samtidigt. Det rekommenderas inte "
+"att öka detta antal till två gånger antalet kärnor."
 
 #: setup.php
-#, fuzzy
 msgid "User Agent"
-msgstr "Användarnamn"
+msgstr "User-Agent"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy"
-msgstr "Proxyservrar för webb"
+msgstr "Webbproxy"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy Edit"
-msgstr "Web Proxie Edit"
+msgstr "Redigera webbproxy"
 
 #: setup.php
 msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
 msgstr ""
+"När ett grund-, sök- eller test för certifikatets utgång returnerar ett "
+"annat resultat, kör följande kommando … Detta kommando får INTE innehålla "
+"kommandoradsargument … Däremot kan följande variabler hämtas från skriptets "
+"miljö:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 "
+"&#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 "
+"&#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 "
+"&#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
 
 #, fuzzy
 #~ msgid "%d Minute"

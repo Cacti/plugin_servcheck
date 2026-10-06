@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-01-16 03:18+0000\n"
-"Last-Translator: sucharlie <su.charlie@gmail.com>\n"
-"Language-Team: Chinese (Traditional Han script) <https://translate.cacti.net/projects/cacti/servcheck/zh_Hant/>\n"
+"PO-Revision-Date: 2026-10-07 09:18+0000\n"
+"Last-Translator: YU HAO HUANG <mix@b51.tw>\n"
+"Language-Team: Chinese (Traditional Han script) <https://translate.cacti.net/"
+"projects/cacti/servcheck/zh_Hant/>\n"
 "Language: zh-TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1731,14 +1732,13 @@ msgstr "取消"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
-#, fuzzy
 msgid "Clear"
 msgstr "清除"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Clear Filters"
-msgstr ""
+msgstr "清除過濾器"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
@@ -1749,9 +1749,8 @@ msgstr[0] "單擊“繼續”以刪除以下代理。"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
-#, fuzzy
 msgid "Default"
-msgstr "默认"
+msgstr "預設"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1768,7 +1767,6 @@ msgstr[0] "WebSeer服務器"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
-#, fuzzy
 msgid "Go"
 msgstr "送出"
 
@@ -1779,7 +1777,6 @@ msgstr "找不到服務器"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
-#, fuzzy
 msgid "Search"
 msgstr "搜尋"
 
@@ -1791,7 +1788,7 @@ msgstr "Webseer服務器管理"
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Set/Refresh Filters"
-msgstr ""
+msgstr "設置/刷新過濾器"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 msgid "Used"
@@ -1927,7 +1924,6 @@ msgid "Actions"
 msgstr "動作"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "All"
 msgstr "全部"
 

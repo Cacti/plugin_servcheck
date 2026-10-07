@@ -361,6 +361,16 @@ if (!function_exists('form_input_validate')) {
 	}
 }
 
+if (!function_exists('html_start_box')) {
+	function html_start_box($title = '', $width = '100%', $div = '', $cell_padding = 3, $align = 'center', $add_text = '') {
+	}
+}
+
+if (!function_exists('html_end_box')) {
+	function html_end_box($trailing_br = true, $resizable = false) {
+	}
+}
+
 if (!function_exists('is_error_message')) {
 	function is_error_message() {
 		return false;

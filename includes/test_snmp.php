@@ -37,11 +37,12 @@
  *
  * @global array $config        Cacti global configuration array; used to
  *                              locate lib/snmp.php.
- * @global array $service_types Valid service/test type keys (declared
- *                              but not directly used here).
+ * @global array $service_types_ports Default port numbers per service
+ *                                    type, used when the test's
+ *                                    hostname doesn't specify one.
  */
 function snmp_try(array $test): array {
-	global $config, $service_types;
+	global $config, $service_types_ports;
 
 	include_once($config['base_path'] . '/lib/snmp.php');
 

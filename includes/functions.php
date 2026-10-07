@@ -342,11 +342,17 @@ function servcheck_legend(): void {
 
 	html_start_box('', '100%', false, 3, 'center', '');
 
+	$chip_min = 0;
+
+	foreach ($servcheck_states as $state) {
+		$chip_min = max($chip_min, mb_strlen($state));
+	}
+
 	print '<tr class="tableRow"><td>';
-	print '<div class="servcheck_legend">';
+	print '<div class="servcheck_legend" style="--servcheck-chip-min: calc(' . $chip_min . 'ch + 1.5rem)">';
 
 	foreach ($servcheck_states as $index => $state) {
-		print '<div class="servcheck_legend_item servcheck_' . $index . '">' . $state . '</div>';
+		print '<div class="servcheck_legend_item servcheck_' . $index . '">' . html_escape($state) . '</div>';
 	}
 
 	print '</div>';

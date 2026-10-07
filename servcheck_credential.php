@@ -155,7 +155,7 @@ function form_actions(): void {
 					</td>
 				</tr>";
 
-			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete item', 'Delete items', cacti_sizeof($items_array)) . "'>";
+			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete item', 'Delete items', cacti_sizeof($items_array)) . "'>";
 		} elseif (get_filter_request_var('drp_action') == 2) { // duplicate
 			print "<tr>
 				<td class='topBoxAlt'>
@@ -163,7 +163,7 @@ function form_actions(): void {
 				</td>
 			</tr>";
 
-			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate Credential', 'Duplicate Credential', cacti_sizeof($items_array)) . "'>";
+			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate Credential', 'Duplicate Credential', cacti_sizeof($items_array)) . "'>";
 		}
 	} else {
 		raise_message(40);
@@ -944,7 +944,7 @@ function servcheck_filter(): void {
 						<?php print __('Credentials', 'servcheck'); ?>
 					</td>
 					<td>
-						<select id='rows' onChange='applyFilter()'>
+						<select id='rows'>
 							<?php
 							print "<option value='-1'" . (get_request_var('rows') == -1 ? ' selected' : '') . '>' . __('Default', 'servcheck') . '</option>';
 
@@ -984,6 +984,10 @@ function servcheck_filter(): void {
 		}
 
 		$(function() {
+			$('#rows').change(function() {
+				applyFilter();
+			});
+
 			$('#refresh').click(function() {
 				applyFilter();
 			});

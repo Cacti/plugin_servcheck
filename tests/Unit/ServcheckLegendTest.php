@@ -29,7 +29,12 @@ it('renders one chip per state with a longest-label chip-min variable', function
 
 	$states = $GLOBALS['servcheck_states'];
 
-	expect($output)->toContain('<div class="servcheck_legend" style="--servcheck-chip-min: calc(');
+	$expected = 0;
+	foreach ($states as $state) {
+		$expected = max($expected, mb_strlen($state));
+	}
+
+	expect($output)->toContain('<div class="servcheck_legend" style="--servcheck-chip-min: calc(' . $expected . 'ch + 1.5rem)">');
 	expect(substr_count($output, 'servcheck_legend_item'))->toBe(count($states));
 
 	foreach ($states as $index => $state) {

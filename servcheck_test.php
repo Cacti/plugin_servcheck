@@ -1365,7 +1365,9 @@ function data_list(): void {
 		print $nav;
 	}
 
+	print '<div class="center servcheck_legend_footer">';
 	servcheck_legend();
+	print '</div>';
 
 	draw_actions_dropdown($servcheck_actions_menu, 1);
 

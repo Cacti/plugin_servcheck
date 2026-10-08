@@ -160,9 +160,11 @@ foreach ($clover->xpath('//file') as $file) {
  * Empty by default; add entries per repository as the need arises.
  */
 $unmeasured_allowlist = [
-	// Web page controller: chdir()s and includes auth.php at the top level, so it
-	// cannot be loaded into the isolated unit process and is absent from Clover.
-	'servcheck_test.php',
+	'servcheck_ca.php',         // web UI entry point (require auth.php); not loadable in the isolated unit process
+	'servcheck_credential.php', // web UI entry point (require auth.php); not loadable in the isolated unit process
+	'servcheck_proxy.php',      // web UI entry point (require auth.php); not loadable in the isolated unit process
+	'servcheck_restapi.php',    // web UI entry point (require auth.php); not loadable in the isolated unit process
+	'servcheck_test.php',       // web UI entry point (require auth.php); not loadable in the isolated unit process
 ];
 $unmeasured            = array_values(array_diff(array_keys($changed), array_keys($measured)));
 $unexpected_unmeasured = array_values(array_diff($unmeasured, $unmeasured_allowlist));

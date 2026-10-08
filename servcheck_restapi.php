@@ -168,7 +168,7 @@ function form_actions(): void {
 				</td>
 			</tr>";
 
-			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete Rest API', 'Delete Rest API', cacti_sizeof($restapi_array)) . "'>";
+			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete Rest API', 'Delete Rest API', cacti_sizeof($restapi_array)) . "'>";
 		} elseif ($action == 'duplicate') {
 			print "<tr>
 				<td class='topBoxAlt'>
@@ -177,7 +177,7 @@ function form_actions(): void {
 				</td>
 			</tr>";
 
-			$save_html = "<input type='button' value='" . __esc('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate Rest API', 'Duplicate Rest API', cacti_sizeof($restapi_array)) . "'>";
+			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate Rest API', 'Duplicate Rest API', cacti_sizeof($restapi_array)) . "'>";
 		}
 	} else {
 		raise_message(40);

@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* security: Replace the confirmation pages' inline `onClick='cactiReturnTo()'` Cancel buttons with the CSP-safe `cactiReturnTo` class and move the filter rows selects' inline `onChange` handlers into the ready block (bound via change, not click) so the pages no longer trip Cacti's Content-Security-Policy script-src-attr directive
 * dev: Keep the status-legend chips equal width (sized to the longest label, laid out as a CSS grid so chips stay equal across wrapped rows) as the legend wraps responsively
 * dev: Measure CI coverage with xdebug instead of pcov so the plugin's own sources are instrumented (pcov auto-scopes to the Composer root and skipped cacti/plugins/, leaving the patch-coverage gate with nothing to measure)
 * dev: Enforce patch coverage of changed lines in CI and remove the inert COMPOSER_ROOT_VERSION env from the Pest step

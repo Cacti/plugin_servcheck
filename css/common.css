@@ -79,6 +79,14 @@
 	width: 100%;
 }
 
+/* Keeps the legend centered beneath the results in normal document flow, so it
+   never overlays the bottom pagination or bulk-action controls. */
+.servcheck_legend_footer {
+	display: table;
+	width: 100%;
+	margin: 8px auto 0;
+}
+
 .servcheck_legend .servcheck_legend_item {
 	text-align: center;
 	white-space: nowrap;

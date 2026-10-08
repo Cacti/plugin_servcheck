@@ -1222,6 +1222,11 @@ function data_list(): void {
 			'sort'    => 'ASC',
 			'align'   => 'left'
 		],
+		'status' => [
+			'display' => __('Status', 'servcheck'),
+			'sort'    => '',
+			'align'   => 'left'
+		],
 		'last_check' => [
 			'display' => __('Last Check (attempt)', 'servcheck'),
 			'sort'    => 'ASC',
@@ -1299,7 +1304,7 @@ function data_list(): void {
 				$style = 'servcheck_error';
 			}
 
-			print "<tr class='tableRow selectable $style id='line{$row['id']}'>";
+			print "<tr class='tableRow selectable $style' id='line{$row['id']}'>";
 
 			print "<td width='1%' style='padding:0px;white-space:nowrap'>
 				<a class='pic' href='" . html_escape($config['url_path'] . 'plugins/servcheck/servcheck_test.php?action=edit&id=' . $row['id']) . "' title='" . __esc('Edit Service Check', 'servcheck') . "'>
@@ -1330,6 +1335,11 @@ function data_list(): void {
 			</td>";
 
 			form_selectable_cell($row['name'], $row['id']);
+
+			$state_key   = substr($style, strlen('servcheck_'));
+			$state_label = $servcheck_states[$state_key] ?? $state_key;
+
+			form_selectable_cell('<span class="servcheck_pill ' . $style . '">' . html_escape($state_label) . '</span>', $row['id']);
 
 			if ($row['last_check'] == '0000-00-00 00:00:00') {
 				form_selectable_cell(__('N/A (N/A)', 'servcheck'), $row['id'], '', 'right');

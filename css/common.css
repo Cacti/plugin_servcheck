@@ -112,7 +112,7 @@
 }
 
 .servcheck_legend .servcheck_ok {
-	background-color: #2f8f3a;
+	background-color: #2e7d32;
 }
 
 .servcheck_legend .servcheck_disabled {
@@ -154,7 +154,7 @@
 }
 
 .servcheck_pill.servcheck_ok {
-	background-color: #2f8f3a;
+	background-color: #2e7d32;
 }
 
 .servcheck_pill.servcheck_disabled {

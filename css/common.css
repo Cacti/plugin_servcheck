@@ -118,3 +118,45 @@
 .servcheck_legend .servcheck_disabled {
 	background-color: #5f5f57;
 }
+
+/*
+ * Status pill shown in the Tests list's Status column. It reuses the same
+ * solid, opaque state colours as the legend chips so the status reads as a
+ * compact badge that stays legible on top of the subtle row tint behind it on
+ * every theme. The compound selectors keep a higher specificity than the
+ * per-theme single-class row tints so the badge colour always wins.
+ */
+.servcheck_pill {
+	display: inline-block;
+	min-width: 7ch;
+	text-align: center;
+	white-space: nowrap;
+	padding: 2px 10px;
+	border-radius: 10px;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.servcheck_pill.servcheck_error {
+	background-color: #a12820;
+}
+
+.servcheck_pill.servcheck_duration {
+	background-color: #1f6f86;
+}
+
+.servcheck_pill.servcheck_warning {
+	background-color: #a85712;
+}
+
+.servcheck_pill.servcheck_failing {
+	background-color: #7d6f18;
+}
+
+.servcheck_pill.servcheck_ok {
+	background-color: #2f8f3a;
+}
+
+.servcheck_pill.servcheck_disabled {
+	background-color: #5f5f57;
+}

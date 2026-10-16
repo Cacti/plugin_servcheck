@@ -162,6 +162,7 @@ foreach ($clover->xpath('//file') as $file) {
 $unmeasured_allowlist = [
 	'servcheck_ca.php',         // web UI entry point (require auth.php); not loadable in the isolated unit process
 	'servcheck_credential.php', // web UI entry point (require auth.php); not loadable in the isolated unit process
+	'servcheck_process.php',    // CLI/daemon poller entry point (shebang, chdir + include, pcntl signal handling); not loadable in the isolated unit process
 	'servcheck_proxy.php',      // web UI entry point (require auth.php); not loadable in the isolated unit process
 	'servcheck_restapi.php',    // web UI entry point (require auth.php); not loadable in the isolated unit process
 	'servcheck_test.php',       // web UI entry point (require auth.php); not loadable in the isolated unit process

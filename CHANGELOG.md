@@ -1,6 +1,7 @@
-﻿# ChangeLog
+# ChangeLog
 
 --- develop ---
+* security: Pin CI fixtures and shared test dependencies, disable persisted checkout credentials, and limit workflow permissions and runtime
 
 * feature: Add a Status column to the Tests list (right after Name) that shows each service check's current state as a colour-coded pill, reusing the status legend's solid colours so the badge stays legible on top of the row tint on every theme
 * security: Replace the confirmation pages' inline `onClick='cactiReturnTo()'` Cancel buttons with the CSP-safe `cactiReturnTo` class and move the filter rows selects' inline `onChange` handlers into the ready block (bound via change, not click) so the pages no longer trip Cacti's Content-Security-Policy script-src-attr directive

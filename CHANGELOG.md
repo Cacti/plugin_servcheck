@@ -1,7 +1,6 @@
 # ChangeLog
 
 --- develop ---
-* security: Pin CI fixtures and shared test dependencies, disable persisted checkout credentials, and limit workflow permissions and runtime
 
 * feature: Add a Status column to the Tests list (right after Name) that shows each service check's current state as a colour-coded pill, reusing the status legend's solid colours so the badge stays legible on top of the row tint on every theme
 * security: Replace the confirmation pages' inline `onClick='cactiReturnTo()'` Cancel buttons with the CSP-safe `cactiReturnTo` class and move the filter rows selects' inline `onChange` handlers into the ready block (bound via change, not click) so the pages no longer trip Cacti's Content-Security-Policy script-src-attr directive
@@ -16,6 +15,7 @@
 * security: Require a CSRF token on the enable, disable and purge GET actions
 * dev: Bring the plugin to PHPStan level 8 with native return/parameter type declarations and fix the bugs it uncovered (duplicate credential-load block and undefined variables in the MQTT test, a credential lookup checking the wrong variable in the cURL/SSH/REST tests, an SSH private-key cleanup that never ran, a wrong variable in the poller warning, missing globals, dead bulk-action confirmation variables on the credential page, a mistyped credential key and duplicate form-field keys, and several unguarded database-row and certificate accesses)
 * dev: Ensure lib/poller.php is loaded wherever its functions (exec_background, replicate_out_table, unregister_process) are used rather than relying on it being included elsewhere
+* dev: Pin CI fixtures and shared test dependencies, disable persisted checkout credentials, and limit workflow permissions and runtime
 
 --- 0.4 ---
 

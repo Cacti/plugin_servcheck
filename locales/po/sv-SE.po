@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-10-06 08:18+0000\n"
+"PO-Revision-Date: 2026-10-19 09:24+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://translate.cacti.net/projects/cacti/servcheck/"
 "sv/>\n"
@@ -284,7 +284,7 @@ msgid "Connetct to MQTT server and listen for any message. You can specify topic
 msgstr ""
 "Anslut till MQTT-servern och lyssna efter valfritt meddelande. Du kan ange "
 "ämne i Sökväg (sovrum/temp), eller lämna tomt för valfritt ämne. För det här "
-"testet rekommenderas att öka ”Varning för lång varaktighet”."
+"testet rekommenderas att öka ”Varning för lång varaktighet”"
 
 #: includes/arrays.php servcheck_ca.php servcheck_credential.php
 #: servcheck_proxy.php servcheck_restapi.php servcheck_test.php
@@ -518,7 +518,7 @@ msgstr "Det gick inte att stänga av SSL-anslutningen."
 
 #: includes/arrays.php
 msgid "Failing"
-msgstr "Misslyckas"
+msgstr "Fallerar"
 
 #: includes/arrays.php
 msgid "Failure with receiving network data."
@@ -1791,8 +1791,8 @@ msgstr "Rensa filter"
 #: servcheck_test.php
 msgid "Click 'Continue' to delete the following items."
 msgid_plural "Click 'Continue' to delete following items."
-msgstr[0] "Klicka på \"Fortsätt\" för att ta bort följande tester."
-msgstr[1] "Klicka på \"Fortsätt\" för att ta bort följande tester."
+msgstr[0] "Klicka på \"Fortsätt\" för att ta bort följande objekt."
+msgstr[1] "Klicka på \"Fortsätt\" för att ta bort följande objekt."
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
@@ -1836,7 +1836,7 @@ msgstr "Ställ in/uppdatera filter"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 msgid "Used"
-msgstr "Använda"
+msgstr "Använt"
 
 #: servcheck_credential.php
 msgid "Click 'Continue' to Duplicate the following Credential."
@@ -2200,7 +2200,7 @@ msgstr "%d processer"
 #: setup.php
 #, php-format
 msgid "%d days"
-msgstr "%d dygn"
+msgstr "%d dagar"
 
 #: setup.php
 #, php-format

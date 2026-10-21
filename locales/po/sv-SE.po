@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-10-20 16:40+0000\n"
+"PO-Revision-Date: 2026-10-22 06:18+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://translate.cacti.net/projects/cacti/servcheck/"
 "sv/>\n"
@@ -2146,7 +2146,7 @@ msgstr "Inga användare valda"
 
 #: servcheck_test.php
 msgid "Purge Events"
-msgstr "Utrensning av händelser"
+msgstr "Rensa händelser"
 
 #: servcheck_test.php
 msgid "Refresh"
@@ -2192,7 +2192,7 @@ msgstr "Test [ny]"
 #: servcheck_test.php
 #, php-format
 msgid "The Service Check history was purged for %s"
-msgstr "Servicekontrollens historik rensades för %s"
+msgstr "Tjänstekontrollens historik rensades för %s"
 
 #: servcheck_test.php
 msgid "Triggered"

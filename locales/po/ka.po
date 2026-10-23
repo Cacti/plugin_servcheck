@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-09-24 21:02+0000\n"
+"PO-Revision-Date: 2026-10-24 02:18+0000\n"
 "Last-Translator: Ekaterine papava <papava.e@gtu.ge>\n"
-"Language-Team: Georgian <https://translate.cacti.net/projects/cacti/servcheck/ka/>\n"
+"Language-Team: Georgian <https://translate.cacti.net/projects/cacti/"
+"servcheck/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -850,16 +851,15 @@ msgstr "მოძველებული შეცდომა"
 
 #: includes/arrays.php
 msgid "Ok"
-msgstr ""
+msgstr "დიახ"
 
 #: includes/arrays.php
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Options"
-msgstr "ქმედებები"
+msgstr "პარამეტრები"
 
 #: includes/arrays.php
 msgid "Out of disk space on the server."
@@ -1824,7 +1824,7 @@ msgstr "მოთხოვნა [ახალი]"
 
 #: servcheck_restapi.php
 msgid "Records"
-msgstr ""
+msgstr "ჩანაწერები"
 
 #: servcheck_restapi.php setup.php
 msgid "Rest API"
@@ -1938,7 +1938,7 @@ msgstr[1] "ტესტების დუბლირება"
 
 #: servcheck_test.php
 msgid "Duration"
-msgstr ""
+msgstr "ხანგრძლივობა"
 
 #: servcheck_test.php
 msgid "Edit Service Check"
@@ -1953,11 +1953,10 @@ msgid "Enable Service Check"
 msgstr "სერვისის შემოწმებების ჩართვა"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable item"
 msgid_plural "Enable items"
-msgstr[0] "ჩართვა"
-msgstr[1] "ჩართვა"
+msgstr[0] "ელემენტის ჩართვა"
+msgstr[1] "ელემენტების ჩართვა"
 
 #: servcheck_test.php
 msgid "Entries"
@@ -2033,7 +2032,7 @@ msgstr "სერვისის შემოწმების ისტორ�
 
 #: servcheck_test.php
 msgid "State"
-msgstr "შტატი"
+msgstr "მდგომარეობა"
 
 #: servcheck_test.php
 msgid "Stats (OK/problem)"
@@ -2080,7 +2079,7 @@ msgstr "კი"
 
 #: servcheck_test.php
 msgid "days"
-msgstr ""
+msgstr "დღე"
 
 #: setup.php
 #, php-format
@@ -2090,12 +2089,12 @@ msgstr ""
 #: setup.php
 #, php-format
 msgid "%d days"
-msgstr ""
+msgstr "%d დღე"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d hours"
-msgstr "ბოლო 6 საათი"
+msgstr "%d საათი"
 
 #: setup.php
 #, php-format
@@ -2226,7 +2225,6 @@ msgid "Send Email separately for each address"
 msgstr ""
 
 #: setup.php
-#, fuzzy
 msgid "Servcheck"
 msgstr "სერვისის შემოწმებები"
 

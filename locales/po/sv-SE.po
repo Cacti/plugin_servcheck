@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-10-22 06:18+0000\n"
+"PO-Revision-Date: 2026-10-26 10:29+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://translate.cacti.net/projects/cacti/servcheck/"
 "sv/>\n"
@@ -267,11 +267,11 @@ msgstr "Välj auktoriseringsprotokoll för SNMPv3."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Passphrase."
-msgstr "Välj sekretesslösenfras för SNMPv3."
+msgstr "Välj lösenfras för SNMPv3-kryptering."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Protocol."
-msgstr "Välj sekretessprotokoll för SNMPv3."
+msgstr "Välj krypteringsprotokoll för SNMPv3."
 
 #: includes/arrays.php
 msgid "Chunk callback reported error."
@@ -530,7 +530,7 @@ msgstr "Det gick inte att stänga av SSL-anslutningen."
 
 #: includes/arrays.php
 msgid "Failing"
-msgstr "Fallerar"
+msgstr "Misslyckas"
 
 #: includes/arrays.php
 msgid "Failure with receiving network data."
@@ -994,7 +994,7 @@ msgstr "Behörighetsproblem på TFTP-servern."
 
 #: includes/arrays.php
 msgid "Poller"
-msgstr "Poller"
+msgstr "Insamlare"
 
 #: includes/arrays.php
 msgid "Poller on which the test will run"
@@ -1247,11 +1247,11 @@ msgstr "SNMP-lösenord (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Passphrase (v3)"
-msgstr "SNMP-sekretesslösenfras (v3)"
+msgstr "SNMP-lösenfras för kryptering (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Protocol (v3)"
-msgstr "SNMP-sekretessprotokoll (v3)"
+msgstr "SNMP-krypteringsprotokoll (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Security Level"
@@ -2174,7 +2174,7 @@ msgstr "Historik för tjänstekontroller"
 
 #: servcheck_test.php
 msgid "State"
-msgstr "Status"
+msgstr "Delstat eller region"
 
 #: servcheck_test.php
 msgid "Stats (OK/problem)"

@@ -249,6 +249,9 @@ function doh_try(array $test): array {
 	$results['options'] = curl_getinfo($process);
 
 	$results['curl_return'] = curl_errno($process);
+	$connection_error       = curl_error($process);
+
+	curl_close($process);
 
 	servcheck_debug('cURL error: ' . $results['curl_return']);
 
@@ -260,13 +263,11 @@ function doh_try(array $test): array {
 	}
 
 	if ($results['curl_return'] > 0) {
-		$results['error']  =  str_replace(['"', "'"], '', (curl_error($process)));
+		$results['error']  =  str_replace(['"', "'"], '', $connection_error);
 		$results['result'] = 'error';
 
 		return $results;
 	}
-
-	curl_close($process);
 
 	if ($test['type'] == 'web_http' || $test['type'] == 'web_https') {
 		// not found?

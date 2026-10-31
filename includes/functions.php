@@ -406,3 +406,39 @@ function mask_string($string, $all = false) {
     		return str_pad(substr($string, -2), 10, 'X', STR_PAD_LEFT);
 	}
 }
+
+/**
+ * Runs one network operation, capturing only warnings from the listed functions.
+ * Other warnings are passed to the previous handler. Always restores it.
+ *
+ * @param callable $operation The operation to run.
+ * @param array $functions PHP function names whose warnings are expected.
+ * @param string|null $warning Receives the first warning, or an empty string.
+ * @return mixed The operation's return value. Exceptions propagate to the caller.
+ */
+function servcheck_network_call(callable $operation, array $functions, &$warning) {
+	$warning = '';
+	$previous = null;
+	$previous = set_error_handler(
+		static function ($severity, $message, $file, $line) use ($functions, &$warning, &$previous) {
+			foreach ($functions as $function) {
+				if ($severity === E_WARNING && strpos($message, $function . '():') === 0) {
+					if ($warning === '') {
+						$warning = $message;
+					}
+
+					return true;
+				}
+			}
+
+			return is_callable($previous) ? $previous($severity, $message, $file, $line) : false;
+		},
+		E_ALL
+	);
+
+	try {
+		return $operation();
+	} finally {
+		restore_error_handler();
+	}
+}

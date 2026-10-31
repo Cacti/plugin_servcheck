@@ -169,7 +169,7 @@ function curl_try(array $test): array {
 	}
 
 	if ($test['ca_id'] > 0) {
-		servcheck_debug('Preparing own CA chain file ' . $ca_file);
+		servcheck_debug('Preparing own CA chain file');
 		// CURLOPT_CAINFO is to updated based on the custom CA certificate
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
@@ -301,6 +301,9 @@ function curl_try(array $test): array {
 	$results['options'] = curl_getinfo($process);
 
 	$results['curl_return'] = curl_errno($process);
+	$connection_error       = curl_error($process);
+
+	curl_close($process);
 
 	servcheck_debug('cURL error: ' . $results['curl_return']);
 
@@ -311,21 +314,20 @@ function curl_try(array $test): array {
 		unlink($ca_file);
 	}
 
+	// Preserve transport errors even when no response body was received.
+	if ($results['curl_return'] > 0) {
+		$results['error']  = str_replace(['"', "'"], '', $connection_error);
+		$results['result'] = 'error';
+
+		return $results;
+	}
+
 	if (empty($results['data'])) {
-		$results['error']  =  'No data returned';
+		$results['error']  = 'No data returned';
 		$results['result'] = 'error';
 
 		return $results;
 	}
-
-	if (!empty($results['data']) && $results['curl_return'] > 0) {
-		$results['error']  =  str_replace(['"', "'"], '', (curl_error($process)));
-		$results['result'] = 'error';
-
-		return $results;
-	}
-
-	curl_close($process);
 
 	if ($test['type'] == 'web_http' || $test['type'] == 'web_https') {
 		// not found?

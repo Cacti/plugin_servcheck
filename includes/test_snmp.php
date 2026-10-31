@@ -42,7 +42,9 @@
  *                                    hostname doesn't specify one.
  */
 function snmp_try(array $test): array {
-	global $config, $service_types_ports;
+	global $config, $service_types_ports, $snmp_error;
+
+	require_once(__DIR__ . '/functions.php');
 
 	include_once($config['base_path'] . '/lib/snmp.php');
 
@@ -56,6 +58,8 @@ function snmp_try(array $test): array {
 	$results['time']   = time();
 	$results['error']  = '';
 	$results['start']  = microtime(true);
+	$results['data'] = '';
+	$results['result_search'] = 'not tested';
 
 	if (empty($test['hostname'])) {
 		cacti_log('Empty hostname, nothing to test');
@@ -105,9 +109,8 @@ function snmp_try(array $test): array {
 
 	$parsed = parse_url('//' . $test['hostname']);
 
-	if (!isset($parsed['port'])) {
-		$port = $service_types_ports[$test['type']];
-	}
+	$port = $parsed['port'] ?? $service_types_ports[$test['type']];
+	$test['hostname'] = $parsed['host'] ?? $test['hostname'];
 
 	if (($cred['type'] ?? '') == 'snmp3') {
 		$version                 = 3;
@@ -128,25 +131,45 @@ function snmp_try(array $test): array {
 	servcheck_debug('SNMP request: ' . $test['snmp_oid']);
 	servcheck_debug('SNMP options: ' . clean_up_lines(var_export($debug_credential, true)));
 
-	if ($test['type'] == 'snmp_get') {
+	$snmp_error = '';
 
-		servcheck_debug('SNMP GET request, hostname ' . $test['hostname'] . ':' . $port);
+	try {
+		$data = servcheck_network_call(function () use ($test, $credential, $version, $port, $timeout) {
+			if ($test['type'] == 'snmp_get') {
 
-		$data = cacti_snmp_get($test['hostname'], $credential['community'], $test['snmp_oid'], $version,
-			$credential['snmp_username'], $credential['snmp_password'], $credential['snmp_auth_protocol'],
-			$credential['snmp_priv_passphrase'], $credential['snmp_priv_protocol'], $credential['snmp_context'],
-			$port, $timeout);
-	} else {
+				servcheck_debug('SNMP GET request, hostname ' . $test['hostname'] . ':' . $port);
 
-		servcheck_debug('SNMP WALK request, hostname ' . $test['hostname'] . ':' . $port);
+				return cacti_snmp_get($test['hostname'], $credential['community'], $test['snmp_oid'], $version,
+					$credential['snmp_username'], $credential['snmp_password'], $credential['snmp_auth_protocol'],
+					$credential['snmp_priv_passphrase'], $credential['snmp_priv_protocol'], $credential['snmp_context'],
+					$port, $timeout);
+			} else {
 
-		$data = cacti_snmp_walk($test['hostname'], $credential['community'], $test['snmp_oid'], $version,
-			$credential['snmp_username'], $credential['snmp_password'], $credential['snmp_auth_protocol'],
-			$credential['snmp_priv_passphrase'], $credential['snmp_priv_protocol'], $credential['snmp_context'],
-			$port, $timeout);
+				servcheck_debug('SNMP WALK request, hostname ' . $test['hostname'] . ':' . $port);
 
-		$data = var_export($data, true);
+				return cacti_snmp_walk($test['hostname'], $credential['community'], $test['snmp_oid'], $version,
+					$credential['snmp_username'], $credential['snmp_password'], $credential['snmp_auth_protocol'],
+					$credential['snmp_priv_passphrase'], $credential['snmp_priv_protocol'], $credential['snmp_context'],
+					$port, $timeout);
+
+			}
+
+		}, ['snmpget', 'snmp2_get', 'snmp3_get', 'snmpwalk', 'snmprealwalk',
+			'snmp2_real_walk', 'snmp3_real_walk', 'SNMP::get', 'SNMP::walk'], $warning);
+	} catch (\Exception | \ValueError $e) {
+		$results['error'] = $e->getMessage();
+
+		return $results;
 	}
+
+	if ($data === false || $data === null || $data === '' || $data === 'U'
+		|| (is_array($data) && $data === []) || $snmp_error !== '' || $warning !== '') {
+		$results['error'] = $snmp_error ?: $warning ?: 'SNMP request failed or no response received';
+
+		return $results;
+	}
+
+	$data = is_array($data) ? var_export($data, true) : (string) $data;
 
 	servcheck_debug('Result: ' . clean_up_lines(var_export($data, true)));
 

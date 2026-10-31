@@ -22,6 +22,8 @@
  +-------------------------------------------------------------------------+
 */
 
+require_once(__DIR__ . '/functions.php');
+
 class dnslookup {
 	/** @var string */
 	private $dns_reply = '';
@@ -101,29 +103,53 @@ class dnslookup {
 		$packet = $header . $this->dns_name($domain) .
 			chr(0x00) . chr($qtype) . chr(0x00) . chr(0x01);
 
-		$socket = @fsockopen("udp://$dns", 53, $errno, $errstr, $timeout);
+		$server = parse_url('udp://' . $dns);
+		$address = 'udp://' . ($server['host'] ?? $dns);
+		$port = $server['port'] ?? 53;
 
-		if (!$socket) {
-			$this->error = 'DNS server did not respond';
+		$socket = servcheck_network_call(
+			static function () use ($address, $port, $timeout, &$errno, &$errstr) {
+				return fsockopen($address, $port, $errno, $errstr, $timeout);
+			},
+			['fsockopen'],
+			$warning
+		);
+
+		if ($socket === false) {
+			$this->error = 'Cannot connect to DNS server: ' . ($errstr ?: $warning ?: 'Connection failed');
+
 			return false;
 		}
 
-		fwrite($socket, $packet);
-		stream_set_timeout($socket, $timeout);
+		try {
+			stream_set_timeout($socket, $timeout);
+			$written = servcheck_network_call(static function () use ($socket, $packet) {
+				return fwrite($socket, $packet);
+			}, ['fwrite'], $warning);
 
-		$this->dns_reply = fread($socket, 512);
+			if ($written !== strlen($packet)) {
+				$this->error = $warning ?: 'Cannot send DNS request';
 
-		$socket_status = stream_get_meta_data($socket);
+				return false;
+			}
 
-		fclose($socket);
-
-		if (empty($this->dns_reply)) {
-			$this->error = 'DNS server returned no response';
-			return false;
+			$this->dns_reply = servcheck_network_call(static function () use ($socket) {
+				return fread($socket, 512);
+			}, ['fread'], $warning);
+			$socket_status = stream_get_meta_data($socket);
+		} finally {
+			fclose($socket);
 		}
 
 		if (!empty($socket_status['timed_out'])) {
 			$this->error = 'DNS request timed out';
+
+			return false;
+		}
+
+		if ($this->dns_reply === false || $this->dns_reply === '') {
+			$this->error = $warning ?: 'DNS server returned no response';
+
 			return false;
 		}
 

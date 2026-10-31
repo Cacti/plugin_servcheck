@@ -55,6 +55,7 @@ function mail_try(array $test): array {
 	$results['error']         = '';
 	$results['result_search'] = 'not tested';
 	$results['start']         = microtime(true);
+	$results['data']          = '';
 
 	[$category,$service] = explode('_', $test['type']);
 
@@ -151,18 +152,18 @@ function mail_try(array $test): array {
 			case 'smtp':
 				servcheck_debug('Trying to connect ' . 'tcp://' . $test['hostname']);
 
-				$fp = stream_socket_client(
+				$fp = servcheck_mail_connect(
 					'tcp://' . $test['hostname'],
 					$errno,
 					$errstr,
 					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-					STREAM_CLIENT_CONNECT,
 					$context
 				);
 
 				if (!$fp) {
 					$results['result'] = 'error';
-					$results['error']  = 'Cannot connect';
+					$results['error']  = sprintf('Cannot connect to %s: %s (code %d)',
+						$test['hostname'], $errstr, $errno);
 
 					return $results;
 				}
@@ -181,18 +182,18 @@ function mail_try(array $test): array {
 			case 'smtps':
 				servcheck_debug('Trying to connect ' . 'ssl://' . $test['hostname']);
 
-				$fp = stream_socket_client(
+				$fp = servcheck_mail_connect(
 					'ssl://' . $test['hostname'],
 					$errno,
 					$errstr,
 					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-					STREAM_CLIENT_CONNECT,
 					$context
 				);
 
 				if (!$fp) {
 					$results['result'] = 'error';
-					$results['error']  = 'Cannot connect';
+					$results['error']  = sprintf('Cannot connect to %s: %s (code %d)',
+						$test['hostname'], $errstr, $errno);
 
 					return $results;
 				}
@@ -232,18 +233,18 @@ function mail_try(array $test): array {
 			case 'smtptls':
 				servcheck_debug('Trying to connect ' . 'tcp://' . $test['hostname']);
 
-				$fp = stream_socket_client(
+				$fp = servcheck_mail_connect(
 					'tcp://' . $test['hostname'],
 					$errno,
 					$errstr,
 					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-					STREAM_CLIENT_CONNECT,
 					$context
 				);
 
 				if (!$fp) {
 					$results['result'] = 'error';
-					$results['error']  = 'Cannot connect';
+					$results['error']  = sprintf('Cannot connect to %s: %s (code %d)',
+						$test['hostname'], $errstr, $errno);
 
 					return $results;
 				}
@@ -267,7 +268,9 @@ function mail_try(array $test): array {
 
 				$data .= $xdata;
 
-				if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+				if (!servcheck_mail_io(static function () use ($fp) {
+					return stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+				}, ['stream_socket_enable_crypto'])) {
 					$results['result'] = 'error';
 					$results['error']  = 'TLS handshake failed';
 
@@ -311,18 +314,18 @@ function mail_try(array $test): array {
 
 				servcheck_debug('Trying to connect ' . $method . '://' . $test['hostname']);
 
-				$fp = stream_socket_client(
+				$fp = servcheck_mail_connect(
 					$method . '://' . $test['hostname'],
 					$errno,
 					$errstr,
 					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-					STREAM_CLIENT_CONNECT,
 					$context
 				);
 
 				if (!$fp) {
 					$results['result'] = 'error';
-					$results['error']  = 'Cannot connect';
+					$results['error']  = sprintf('Cannot connect to %s: %s (code %d)',
+						$test['hostname'], $errstr, $errno);
 
 					return $results;
 				}
@@ -336,7 +339,7 @@ function mail_try(array $test): array {
 					$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
 				}
 
-				$data .= fgets($fp); // welcome banner
+				$data .= servcheck_mail_read($fp); // welcome banner
 
 				if ($service == 'imaptls') {
 					servcheck_debug('Trying STARTTLS');
@@ -344,7 +347,9 @@ function mail_try(array $test): array {
 					send($fp, 'A002 STARTTLS');
 					$data .= read_response_imap($fp, 'A002');
 
-					if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+					if (!servcheck_mail_io(static function () use ($fp) {
+					return stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+				}, ['stream_socket_enable_crypto'])) {
 						$results['result'] = 'error';
 						$results['error']  = 'TLS handshake failed';
 
@@ -392,25 +397,25 @@ function mail_try(array $test): array {
 
 				servcheck_debug('Trying to connect ' . $method . '://' . $test['hostname']);
 
-				$fp = stream_socket_client(
+				$fp = servcheck_mail_connect(
 					$method . '://' . $test['hostname'],
 					$errno,
 					$errstr,
 					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-					STREAM_CLIENT_CONNECT,
 					$context
 				);
 
 				if (!$fp) {
 					$results['result'] = 'error';
-					$results['error']  = 'Cannot connect';
+					$results['error']  = sprintf('Cannot connect to %s: %s (code %d)',
+						$test['hostname'], $errstr, $errno);
 
 					return $results;
 				}
 
 				servcheck_debug('Connected');
 
-				$data .= fgets($fp); // welcome banner
+				$data .= servcheck_mail_read($fp); // welcome banner
 
 				if ($service == 'pop3s' && ($test['checkcert'] || $test['certexpirenotify'])) {
 					servcheck_debug('Gathering certificate information');
@@ -423,9 +428,11 @@ function mail_try(array $test): array {
 					servcheck_debug('Trying STARTTLS');
 
 					send($fp, 'A002 STARTTLS');
-					$data .= fgets($fp);
+					$data .= servcheck_mail_read($fp);
 
-					if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+					if (!servcheck_mail_io(static function () use ($fp) {
+					return stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+				}, ['stream_socket_enable_crypto'])) {
 						$results['result'] = 'error';
 						$results['error']  = 'TLS handshake failed';
 
@@ -443,13 +450,13 @@ function mail_try(array $test): array {
 				if ($test['cred_id'] > 0) {
 					servcheck_debug('Trying to authenticate');
 					send($fp, 'USER ' . ($credential['username'] ?? ''));
-					$data .= fgets($fp);
+					$data .= servcheck_mail_read($fp);
 					send($fp, 'PASS ' . ($credential['password'] ?? ''));
-					$data .= fgets($fp);
+					$data .= servcheck_mail_read($fp);
 
 					servcheck_debug('Reading number of messages');
 					send($fp, 'STAT');
-					$data .= fgets($fp);
+					$data .= servcheck_mail_read($fp);
 				}
 
 				send($fp, 'QUIT');
@@ -462,12 +469,20 @@ function mail_try(array $test): array {
 
 				return $results;
 		}
+	} catch (\RuntimeException $e) {
+		$results['error'] = $e->getMessage();
+
+		return $results;
 	} finally {
-	  if ($test['ca_id'] > 0 && file_exists($ca_file)) {
-		  servcheck_debug('Removing own CA file');
-		  unlink($ca_file);
-	  }	
-  }
+		if (isset($fp) && is_resource($fp)) {
+			fclose($fp);
+		}
+
+		if (isset($ca_file) && file_exists($ca_file)) {
+			servcheck_debug('Removing own CA file');
+			unlink($ca_file);
+		}
+	}
 
 	$data = str_replace(["'", '\\'], [''], $data);
 
@@ -527,6 +542,80 @@ function mail_try(array $test): array {
 }
 
 /**
+ * Opens a mail socket, handling expected connection warnings as test failures.
+ * The Cacti error handler is restored even if opening the socket throws.
+ *
+ * @param string $address The transport, hostname and port.
+ * @param int    $errno   Receives the socket error code.
+ * @param string $errstr  Receives the socket error description.
+ * @param float  $timeout The connection timeout in seconds.
+ * @param resource $context The stream context, including TLS options.
+ * @return resource|false The connected socket, or false on failure.
+ */
+function servcheck_mail_connect(string $address, &$errno, &$errstr, float $timeout, $context) {
+	require_once(__DIR__ . '/functions.php');
+
+	$errno  = 0;
+	$errstr = '';
+	$fp = servcheck_network_call(
+		static function () use ($address, &$errno, &$errstr, $timeout, $context) {
+			return stream_socket_client($address, $errno, $errstr, $timeout, STREAM_CLIENT_CONNECT, $context);
+		},
+		['stream_socket_client'],
+		$warning
+	);
+
+	if ($fp === false && $errstr === '') {
+		$errstr = $warning !== '' ? $warning : 'Connection failed';
+	}
+
+	if ($fp !== false) {
+		$seconds = (int) $timeout;
+		stream_set_timeout($fp, $seconds, (int) (($timeout - $seconds) * 1000000));
+	}
+
+	return $fp;
+}
+
+/**
+ * Converts an expected mail I/O warning into a test error, not a PHP log entry.
+ *
+ * @param callable $operation The network operation.
+ * @param array $functions The PHP functions whose warnings are expected.
+ * @return mixed The operation's return value.
+ */
+function servcheck_mail_io(callable $operation, array $functions) {
+	require_once(__DIR__ . '/functions.php');
+
+	$result = servcheck_network_call($operation, $functions, $warning);
+
+	if ($warning !== '') {
+		throw new \RuntimeException($warning);
+	}
+
+	return $result;
+}
+
+/**
+ * Reads a mail response line and reports read timeouts as test failures.
+ *
+ * @param resource $fp The connected socket.
+ * @return string|false A response line, or false on end of stream.
+ */
+function servcheck_mail_read($fp) {
+	$line = servcheck_mail_io(static function () use ($fp) {
+		return fgets($fp);
+	}, ['fgets']);
+	$status = stream_get_meta_data($fp);
+
+	if (!empty($status['timed_out'])) {
+		throw new \RuntimeException('Mail server response timed out');
+	}
+
+	return $line;
+}
+
+/**
  * Writes a single command line (with a trailing CRLF) to the mail
  * server's socket stream. Called from mail_try() to send each protocol
  * command.
@@ -538,7 +627,14 @@ function mail_try(array $test): array {
  * @return void
  */
 function send($fp, string $cmd): void {
-	fwrite($fp, $cmd . "\r\n");
+	$command = $cmd . "\r\n";
+	$written = servcheck_mail_io(static function () use ($fp, $command) {
+		return fwrite($fp, $command);
+	}, ['fwrite']);
+
+	if ($written !== strlen($command)) {
+		throw new \RuntimeException('Cannot send command to mail server');
+	}
 }
 
 // response like 250 OK
@@ -555,7 +651,7 @@ function send($fp, string $cmd): void {
 function read_response($fp): string {
 	$response = '';
 
-	while ($line = fgets($fp)) {
+	while ($line = servcheck_mail_read($fp)) {
 		$response .= $line;
 
 		if (preg_match('/^\d{3} /', $line)) {
@@ -586,7 +682,7 @@ function read_response_imap($fp, string $tag = 'A001'): string {
 	stream_set_timeout($fp, 2);
 
 	while (!feof($fp)) {
-		$line = fgets($fp);
+		$line = servcheck_mail_read($fp);
 
 		if ($line === false) {
 			break;

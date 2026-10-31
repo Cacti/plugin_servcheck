@@ -197,24 +197,25 @@ function ftp_try(array $test): array {
 	$results['options'] = curl_getinfo($process);
 
 	$results['curl_return'] = curl_errno($process);
+	$connection_error       = curl_error($process);
+
+	curl_close($process);
 
 	servcheck_debug('cURL error: ' . $results['curl_return']);
 
 	servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
 
+	if ($test['ca_id'] > 0 && file_exists($ca_file)) {
+		servcheck_debug('Removing own CA file');
+		unlink($ca_file);
+	}
+
 	if ($results['curl_return'] > 0) {
-		$results['error']  =  str_replace(['"', "'"], '', (curl_error($process)));
+		$results['error']  =  str_replace(['"', "'"], '', $connection_error);
 		$results['result'] = 'error';
 
 		return $results;
 	}
-
-	if ($test['ca_id'] > 0 && file_exists($ca_file)) {
-		servcheck_debug('Removing own CA file');
-		unlink($ca_info);
-	}
-
-	curl_close($process);
 
 	if (empty($results['data'])) {
 		$results['result'] = 'error';

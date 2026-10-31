@@ -62,167 +62,286 @@ function restapi_try(array $test): array {
 	$results['result_search'] = 'not tested';
 	$results['start']         = microtime(true);
 
-	$options = [
-		CURLOPT_HEADER         => true,
-		CURLOPT_USERAGENT      => $user_agent,
-		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_MAXREDIRS      => 4,
-		CURLOPT_TIMEOUT        => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 3) : read_config_option('servcheck_test_max_duration'),
-		CURLOPT_CAINFO         => $ca_info,
-	];
+	$process = null;
+	$cookie_file = null;
 
-	[$category,$service] = explode('_', $test['type']);
+	try {
+		$options = [
+			CURLOPT_HEADER         => true,
+			CURLOPT_USERAGENT      => $user_agent,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_MAXREDIRS      => 4,
+			CURLOPT_TIMEOUT        => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 3) : read_config_option('servcheck_test_max_duration'),
+			CURLOPT_CAINFO         => $ca_info,
+		];
 
-	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
-			[$test['cred_id']]);
+		[$category,$service] = explode('_', $test['type']);
 
-		if (!$cred) {
-			servcheck_debug('Credential is set but not found!');
-			cacti_log('Credential not found');
-			$results['result'] = 'error';
-			$results['error']  = 'Credential not found';
+		if ($test['cred_id'] > 0) {
+			$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
+				[$test['cred_id']]);
 
-			return $results;
-		} else {
-			servcheck_debug('Decrypting credential');
-			$credential = servcheck_decrypt_credential($test['cred_id']);
-
-			if (empty($credential)) {
-				servcheck_debug('Credential is empty!');
-				cacti_log('Credential is empty');
+			if (!$cred) {
+				servcheck_debug('Credential is set but not found!');
+				cacti_log('Credential not found');
 				$results['result'] = 'error';
-				$results['error']  = 'Credential is empty';
+				$results['error']  = 'Credential not found';
 
 				return $results;
+			} else {
+				servcheck_debug('Decrypting credential');
+				$credential = servcheck_decrypt_credential($test['cred_id']);
+
+				if (empty($credential)) {
+					servcheck_debug('Credential is empty!');
+					cacti_log('Credential is empty');
+					$results['result'] = 'error';
+					$results['error']  = 'Credential is empty';
+
+					return $results;
+				}
 			}
+		} else {
+			servcheck_debug('No credential set!');
+			cacti_log('No credential set');
+			$results['result'] = 'error';
+			$results['error']  = 'No credential set';
+
+			return $results;
 		}
-	} else {
-		servcheck_debug('No credential set!');
-		cacti_log('No credential set');
-		$results['result'] = 'error';
-		$results['error']  = 'No credential set';
 
-		return $results;
-	}
+		if (is_null($cred['type'] ?? null)) {
+			cacti_log('Rest API method not set');
+			$results['result'] = 'error';
+			$results['error']  = 'Rest API method not set';
 
-	if (is_null($cred['type'] ?? null)) {
-		cacti_log('Rest API method not set');
-		$results['result'] = 'error';
-		$results['error']  = 'Rest API method not set';
+			return $results;
+		}
 
-		return $results;
-	}
+		// Disable Cert checking
+		if ($test['checkcert'] == '') {
+			$options[CURLOPT_SSL_VERIFYPEER] = false;
+			$options[CURLOPT_SSL_VERIFYHOST] = 0;
+		} else { // for sure, it seems that it isn't enabled by default now
+			$options[CURLOPT_SSL_VERIFYPEER] = true;
+			$options[CURLOPT_SSL_VERIFYHOST] = 2;
+		}
 
-	// Disable Cert checking
-	if ($test['checkcert'] == '') {
-		$options[CURLOPT_SSL_VERIFYPEER] = false;
-		$options[CURLOPT_SSL_VERIFYHOST] = 0;
-	} else { // for sure, it seems that it isn't enabled by default now
-		$options[CURLOPT_SSL_VERIFYPEER] = true;
-		$options[CURLOPT_SSL_VERIFYHOST] = 2;
-	}
+		$url = $credential['data_url'];
 
-	$url = $credential['data_url'];
+		servcheck_debug('Using Rest API method ' . $service_types[$test['type']]);
 
-	servcheck_debug('Using Rest API method ' . $service_types[$test['type']]);
+		switch ($cred['type']) {
+			case 'basic':
+				// we don't need set content type for login or GET/POST request because we don't set any data
+				$options[CURLOPT_USERPWD]  = $credential['username'] . ':' . $credential['password'];
+				$options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
 
-	switch ($cred['type']) {
-		case 'basic':
-			// we don't need set content type for login or GET/POST request because we don't set any data
-			$options[CURLOPT_USERPWD]  = $credential['username'] . ':' . $credential['password'];
-			$options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
+				$debug_options[CURLOPT_USERPWD]  = mask_string($credential['username']) . ':' . mask_string($credential['password'], true);
+				$debug_options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
 
-			$debug_options[CURLOPT_USERPWD]  = mask_string($credential['username']) . ':' . mask_string($credential['password'], true);
-			$debug_options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
+				servcheck_debug('cURL options: ' . clean_up_lines(var_export($debug_options, true)));
 
-			servcheck_debug('cURL options: ' . clean_up_lines(var_export($debug_options, true)));
+				break;
+			case 'apikey':
+				switch ($credential['option_apikey']) {
+					case 'http':
+						$http_headers[] = 'Authorization: ' . $credential['token_name'] . ' ' . $credential['token_value'];
+						$debug_http_headers[] = 'Authorization: ' . mask_string($credential['token_name']) . ' ' . mask_string($credential['token_value'], true);
 
-			break;
-		case 'apikey':
-			switch ($credential['option_apikey']) {
-				case 'http':
-					$http_headers[] = 'Authorization: ' . $credential['token_name'] . ' ' . $credential['token_value'];
-					$debug_http_headers[] = 'Authorization: ' . mask_string($credential['token_name']) . ' ' . mask_string($credential['token_value'], true);
+						break;
+					case 'custom':
+						$http_headers[] = $credential['token_name'] . ': ' . $credential['token_value'];
+						$debug_http_headers[] = mask_string($credential['token_name']) . ': ' . mask_string($credential['token_value'], true);
 
-					break;
-				case 'custom':
-					$http_headers[] = $credential['token_name'] . ': ' . $credential['token_value'];
-					$debug_http_headers[] = mask_string($credential['token_name']) . ': ' . mask_string($credential['token_value'], true);
+						break;
+					case 'post':
+						$data = [
+							$credential['token_name'] => $credential['token_value']
+						];
 
-					break;
-				case 'post':
-					$data = [
-						$credential['token_name'] => $credential['token_value']
-					];
+						$debug_data = [
+							$credential['token_name'] => mask_string($credential['token_value'], true)
+						];
 
-					$debug_data = [
-						$credential['token_name'] => mask_string($credential['token_value'], true)
-					];
+						$options[CURLOPT_POST]       = true;
+						$options[CURLOPT_POSTFIELDS] = $data;
 
-					$options[CURLOPT_POST]       = true;
-					$options[CURLOPT_POSTFIELDS] = $data;
+						$debug_options[CURLOPT_POST]       = true;
+						$debug_options[CURLOPT_POSTFIELDS] = $debug_data;
 
-					$debug_options[CURLOPT_POST]       = true;
-					$debug_options[CURLOPT_POSTFIELDS] = $debug_data;
+						break;
+					case 'post_json':
+						$data = (string) json_encode([
+							$credential['token_name'] => $credential['token_value']
+						]);
 
-					break;
-				case 'post_json':
-					$data = (string) json_encode([
-						$credential['token_name'] => $credential['token_value']
+						$debug_data = json_encode([
+							$credential['token_name'] => mask_string($credential['token_value'], true)
+						]);
+
+						$options[CURLOPT_POST]       = true;
+						$options[CURLOPT_POSTFIELDS] = $data;
+						$http_headers[]              = 'Content-Type: application/json';
+
+						$debug_options[CURLOPT_POST]       = true;
+						$debug_options[CURLOPT_POSTFIELDS] = $debug_data;
+						$debug_http_headers[]              = 'Content-Type: application/json';
+
+						break;
+				}
+
+				$options[CURLOPT_HTTPHEADER] = $http_headers;
+				$debug_options[CURLOPT_HTTPHEADER] = $debug_http_headers;
+
+				servcheck_debug('cURL options: ' . clean_up_lines(var_export($debug_options, true)));
+
+				break;
+			case 'oauth2':
+				if (($cred['cred_validity'] ?? 0) < time()) {
+					servcheck_debug('No valid token, generating new request');
+
+					$cred_data = (string) json_encode([
+						'grant_type' => 'password',
+						'username'   => $credential['oauth_client_id'],
+						'password'   => $credential['oauth_client_secret']
 					]);
 
-					$debug_data = json_encode([
-						$credential['token_name'] => mask_string($credential['token_value'], true)
+					$debug_cred_data = json_encode([
+						'grant_type' => 'password',
+						'username'   => mask_string($credential['oauth_client_id']),
+						'password'   => mask_string($credential['oauth_client_secret'], true)
 					]);
 
 					$options[CURLOPT_POST]       = true;
-					$options[CURLOPT_POSTFIELDS] = $data;
+					$options[CURLOPT_POSTFIELDS] = $cred_data;
 					$http_headers[]              = 'Content-Type: application/json';
 
+					$options[CURLOPT_HTTPHEADER] = $http_headers;
+
 					$debug_options[CURLOPT_POST]       = true;
-					$debug_options[CURLOPT_POSTFIELDS] = $debug_data;
+					$debug_options[CURLOPT_POSTFIELDS] = $debug_cred_data;
 					$debug_http_headers[]              = 'Content-Type: application/json';
 
-					break;
-			}
+					$debug_options[CURLOPT_HTTPHEADER] = $debug_http_headers;
 
-			$options[CURLOPT_HTTPHEADER] = $http_headers;
-			$debug_options[CURLOPT_HTTPHEADER] = $debug_http_headers;
+					$process = curl_init($credential['login_url']);
 
-			servcheck_debug('cURL options: ' . clean_up_lines(var_export($debug_options, true)));
+					servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($debug_options, true)));
 
-			break;
-		case 'oauth2':
-			if (($cred['cred_validity'] ?? 0) < time()) {
-				servcheck_debug('No valid token, generating new request');
+					curl_setopt_array($process,$options);
 
-				$cred_data = (string) json_encode([
-					'grant_type' => 'password',
-					'username'   => $credential['oauth_client_id'],
-					'password'   => $credential['oauth_client_secret']
-				]);
+					servcheck_debug('Executing curl request for login: ' . $credential['login_url']);
 
-				$debug_cred_data = json_encode([
-					'grant_type' => 'password',
-					'username'   => mask_string($credential['oauth_client_id']),
-					'password'   => mask_string($credential['oauth_client_secret'], true)
-				]);
+					$response = curl_exec($process);
+
+					if (curl_errno($process) > 0) {
+						// Get information regarding a specific transfer, cert info too
+						$results['options']     = curl_getinfo($process);
+						$results['curl_return'] = curl_errno($process);
+						$results['data']        = (string) $response;
+
+						servcheck_debug('Problem with login: ' . $results['curl_return']);
+						$results['result'] = 'error';
+						$results['error']  =  str_replace(['"', "'"], '', curl_error($process));
+
+						return $results;
+					}
+
+					$header_size = curl_getinfo($process, CURLINFO_HEADER_SIZE);
+					$login_info = curl_getinfo($process);
+					curl_close($process);
+					$process = null;
+
+					$header      = substr($response, 0, $header_size);
+					$header      = str_replace(["'", '\\'], [''], $header);
+
+					$body = json_decode(substr((string) $response, $header_size), true);
+
+					if (isset($body['token'])) {
+						servcheck_debug('We got token and expiration, saving');
+
+						if (isset($body['expires_in'])) {
+							$newcred['cred_validity'] = time() + $body['expires_in'];
+						} else {
+							servcheck_debug('We got token and don\'t know expiration. We will use it only one time.');
+						}
+
+						$newcred['type']                = 'oauth2';
+						$newcred['oauth_client_id']     = $credential['oauth_client_id'];
+						$newcred['oauth_client_secret'] = $credential['oauth_client_secret'];
+						$newcred['token_value']         = $body['token'];
+						$newcred['token_name']          = $credential['token_name'];
+						$newcred['data_url']            = $credential['data_url'];
+						$newcred['login_url']           = $credential['login_url'];
+
+						$enc = servcheck_encrypt_credential($newcred);
+
+						db_execute_prepared('UPDATE plugin_servcheck_credential
+							SET data = ? WHERE id = ?',
+							[$enc, $test['cred_id']]);
+					} else {
+						servcheck_debug('We did not get a token.');
+						$results['options']     = $login_info;
+						$results['result']      = 'error';
+						$results['curl_return'] = 0;
+						$results['data']        = (string) $response;
+						$results['error']       = 'OAuth login returned no token';
+
+						return $results;
+					}
+				} else {
+					servcheck_debug('Using existing token');
+					$newcred = $credential;
+				}
+
+				$http_headers                = [];
+				$http_headers[]              = 'Authorization: ' . $newcred['token_name'] . ' ' . $newcred['token_value'];
+				$options[CURLOPT_HTTPHEADER] = $http_headers;
+				$options[CURLOPT_POST]       = false;
+				unset($options[CURLOPT_POSTFIELDS]);
+
+				$debug_http_headers                = [];
+				$debug_http_headers[]              = 'Authorization: ' . mask_string($newcred['token_name']) . ' ' . mask_string($newcred['token_value'], true);
+				$debug_options[CURLOPT_HTTPHEADER] = $debug_http_headers;
+				$debug_options[CURLOPT_POST]       = false;
+				unset($debug_options[CURLOPT_POSTFIELDS]);
+
+				servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($debug_options, true)));
+
+				break;
+			case 'cookie':
+				// first we have to create login request and get cookie
+
+				$cred_data = [
+					'username'   => $credential['username'],
+					'password'   => $credential['password']
+				];
+
+				$debug_cred_data = [
+					'username'   => mask_string($credential['username']),
+					'password'   => mask_string($credential['password'], true)
+				];
+
+				if ($credential['option_cookie'] == 'json') {
+					$cred_data      = (string) json_encode($cred_data);
+					$http_headers[] = 'Content-Type: application/json';
+					$debug_cred_data      = json_encode($debug_cred_data);
+					$debug_http_headers[] = 'Content-Type: application/json';
+				}
 
 				$options[CURLOPT_POST]       = true;
 				$options[CURLOPT_POSTFIELDS] = $cred_data;
-				$http_headers[]              = 'Content-Type: application/json';
-
 				$options[CURLOPT_HTTPHEADER] = $http_headers;
 
 				$debug_options[CURLOPT_POST]       = true;
 				$debug_options[CURLOPT_POSTFIELDS] = $debug_cred_data;
-				$debug_http_headers[]              = 'Content-Type: application/json';
-
 				$debug_options[CURLOPT_HTTPHEADER] = $debug_http_headers;
 
-				$process = curl_init($credential['login_url']);
+				$cookie_file                = tempnam(sys_get_temp_dir(), 'srvck');
+				$options[CURLOPT_COOKIEJAR] = $cookie_file;  // store cookie
+				$process                    = curl_init($credential['login_url']);
 
 				servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($debug_options, true)));
 
@@ -236,250 +355,142 @@ function restapi_try(array $test): array {
 					// Get information regarding a specific transfer, cert info too
 					$results['options']     = curl_getinfo($process);
 					$results['curl_return'] = curl_errno($process);
-					$results['data']        = $response;
+					$results['data']        =  str_replace(["'", '\\'], [''], (string) $response);
 
 					servcheck_debug('Problem with login: ' . $results['curl_return']);
 					$results['result'] = 'error';
-					$results['error']  =  str_replace(['"', "'"], '', (string) $results['curl_return']);
+					$results['error']  =  str_replace(['"', "'"], '', curl_error($process));
 
 					return $results;
 				}
 
 				$header_size = curl_getinfo($process, CURLINFO_HEADER_SIZE);
-				curl_close($process);
+				$header      = substr((string) $response, 0, $header_size);
 
-				$header      = substr($response, 0, $header_size);
-				$header      = str_replace(["'", '\\'], [''], $header);
-
-				$body = json_decode(substr((string) $response, $header_size), true);
-
-				if (isset($body['token'])) {
-					servcheck_debug('We got token and expiration, saving');
-
-					if (isset($body['expires_in'])) {
-						$newcred['cred_validity'] = time() + $body['expires_in'];
-					} else {
-						servcheck_debug('We got token and don\'t know expiration. We will use it only one time.');
+				if (preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', $header, $matches)) {
+					foreach ($matches[1] as $cookie) {
+						servcheck_debug('We got cookie');
 					}
-
-					$newcred['type']                = 'oauth2';
-					$newcred['oauth_client_id']     = $credential['oauth_client_id'];
-					$newcred['oauth_client_secret'] = $credential['oauth_client_secret'];
-					$newcred['token_value']         = $body['token'];
-					$newcred['token_name']          = $credential['token_name'];
-					$newcred['data_url']            = $credential['data_url'];
-					$newcred['login_url']           = $credential['login_url'];
-
-					$enc = servcheck_encrypt_credential($newcred);
-
-					db_execute_prepared('UPDATE plugin_servcheck_credential
-						SET data = ? WHERE id = ?',
-						[$enc, $newcred['id']]);
 				} else {
-					servcheck_debug('We didn\'t get token.');
+					servcheck_debug('We didn\'t get cookie');
+
+					// Get information regarding a specific transfer, cert info too
 					$results['options']     = curl_getinfo($process);
-					$results['result']      = 'error';
 					$results['curl_return'] = curl_errno($process);
 					$results['data']        =  str_replace(["'", '\\'], [''], (string) $response);
-					$results['error']       =  str_replace(['"', "'"], '', (string) $results['curl_return']);
+					$results['error']       = 'Login returned no cookie';
+					$results['result']      = 'error';
 
 					return $results;
 				}
-			} else {
-				servcheck_debug('Using existing token');
-			}
 
-			$http_headers                = [];
-			$http_headers[]              = 'Authorization: ' . $newcred['token_name'] . ' ' . $newcred['token_value'];
-			$options[CURLOPT_HTTPHEADER] = $http_headers;
-			$options[CURLOPT_POST]       = false;
-			unset($options[CURLOPT_POSTFIELDS]);
+				$response = str_replace(["'", '\\'], [''], (string) $response);
 
-			$debug_http_headers                = [];
-			$debug_http_headers[]              = 'Authorization: ' . mask_string($newcred['token_name']) . ' ' . mask_stirng($newcred['token_value'], true);
-			$debug_options[CURLOPT_HTTPHEADER] = $debug_http_headers;
-			$debug_options[CURLOPT_POST]       = false;
-			unset($debug_options[CURLOPT_POSTFIELDS]);
+				curl_close($process);
+				$process = null;
 
-			servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($debug_options, true)));
+				// preparing query to protected restapi
 
-			break;
-		case 'cookie':
-			// first we have to create login request and get cookie
+				unset($http_headers);
+				$options[CURLOPT_COOKIEFILE] = $cookie_file; // send cookie
+				$options[CURLOPT_POST]       = false;
+				unset($options[CURLOPT_POSTFIELDS]);
 
-			$cred_data = [
-				'username'   => $credential['username'],
-				'password'   => $credential['password']
-			];
+				break;
+		}
 
-			$debug_cred_data = [
-				'username'   => mask_string($credential['username']),
-				'password'   => mask_string($credential['password'], true)
-			];
+		servcheck_debug('Final url is ' . $url);
 
-			if ($credential['option_cookie'] == 'json') {
-				$cred_data      = (string) json_encode($cred_data);
-				$http_headers[] = 'Content-Type: application/json';
-				$debug_cred_data      = json_encode($debug_cred_data);
-				$debug_http_headers[] = 'Content-Type: application/json';
-			}
+		$process = curl_init($url);
 
-			$options[CURLOPT_POST]       = true;
-			$options[CURLOPT_POSTFIELDS] = $cred_data;
-			$options[CURLOPT_HTTPHEADER] = $http_headers;
+		curl_setopt_array($process,$options);
 
-			$debug_options[CURLOPT_POST]       = true;
-			$debug_options[CURLOPT_POSTFIELDS] = $debug_cred_data;
-			$debug_options[CURLOPT_HTTPHEADER] = $debug_http_headers;
+		servcheck_debug('Executing curl request');
 
-			$cookie_file                = tempnam(sys_get_temp_dir(), 'srvck');
-			$options[CURLOPT_COOKIEJAR] = $cookie_file;  // store cookie
-			$process                    = curl_init($credential['login_url']);
+		$data            = curl_exec($process);
+		$data            = str_replace(["'", '\\'], [''], (string) $data);
+		$results['data'] = $data;
 
-			servcheck_debug('cURL options for login: ' . clean_up_lines(var_export($debug_options, true)));
+		// Get information regarding a specific transfer, cert info too
+		$results['options'] = curl_getinfo($process);
+		$results['curl_return'] = curl_errno($process);
 
-			curl_setopt_array($process,$options);
+		servcheck_debug('cURL error: ' . $results['curl_return']);
 
-			servcheck_debug('Executing curl request for login: ' . $credential['login_url']);
+		servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
 
-			$response = curl_exec($process);
+		if ($results['curl_return'] > 0) {
+			$results['error']  =  str_replace(['"', "'"], '', (curl_error($process)));
+			$results['result'] = 'error';
 
-			if (curl_errno($process) > 0) {
-				// Get information regarding a specific transfer, cert info too
-				$results['options']     = curl_getinfo($process);
-				$results['curl_return'] = curl_errno($process);
-				$results['data']        =  str_replace(["'", '\\'], [''], (string) $response);
+			return $results;
+		}
 
-				servcheck_debug('Problem with login: ' . $results['curl_return']);
-				$results['result'] = 'error';
-				$results['error']  =  str_replace(['"', "'"], '', (string) $results['curl_return']);
+		// not found?
+		if ($results['options']['http_code'] == 404) {
+			$results['result'] = 'error';
+			$results['error']  = '404 - Not found';
 
-				return $results;
-			}
+			return $results;
+		}
 
-			$header_size = curl_getinfo($process, CURLINFO_HEADER_SIZE);
-			$header      = substr((string) $response, 0, $header_size);
+		if (empty($results['data'])) {
+			$results['result'] = 'error';
+			$results['error']  = 'No data returned';
 
-			if (preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', $header, $matches)) {
-				foreach ($matches[1] as $cookie) {
-					servcheck_debug('We got cookie');
-				}
-			} else {
-				servcheck_debug('We didn\'t get cookie');
+			return $results;
+		}
 
-				// Get information regarding a specific transfer, cert info too
-				$results['options']     = curl_getinfo($process);
-				$results['curl_return'] = curl_errno($process);
-				$results['data']        =  str_replace(["'", '\\'], [''], (string) $response);
-				$results['error']       =  str_replace(['"', "'"], '', (string) $results['curl_return']);
-				$results['result']      = 'error';
+		$results['error']  =  'Some data returned';
+		$results['result'] = 'ok';
+
+		// If we have set a failed search string, then ignore the normal searches and only alert on it
+		if ($test['search_failed'] != '') {
+			servcheck_debug('Processing search_failed');
+
+			if (strpos($data, $test['search_failed']) !== false) {
+				servcheck_debug('Search failed string success');
+				$results['result_search'] = 'failed ok';
 
 				return $results;
 			}
+		}
 
-			$response = str_replace(["'", '\\'], [''], (string) $response);
+		servcheck_debug('Processing search');
 
+		if ($test['search'] != '') {
+			if (strpos($data, $test['search']) !== false) {
+				servcheck_debug('Search string success');
+				$results['result_search'] = 'ok';
+
+				return $results;
+			} else {
+				servcheck_debug('String not found');
+				$results['result_search'] = 'not ok';
+
+				return $results;
+			}
+		}
+
+		if ($test['search_maint'] != '') {
+			servcheck_debug('Processing search maint');
+
+			if (strpos($data, $test['search_maint']) !== false) {
+				servcheck_debug('Search maint string success');
+				$results['result_search'] = 'maint ok';
+
+				return $results;
+			}
+		}
+
+		return $results;
+	} finally {
+		if ($process !== null && $process !== false) {
 			curl_close($process);
+		}
 
-			// preparing query to protected restapi
-
-			unset($http_headers);
-			$options[CURLOPT_COOKIEFILE] = $cookie_file; // send cookie
-			$options[CURLOPT_POST]       = false;
-			unset($options[CURLOPT_POSTFIELDS]);
-
-			break;
-	}
-
-	servcheck_debug('Final url is ' . $url);
-
-	$process = curl_init($url);
-
-	curl_setopt_array($process,$options);
-
-	servcheck_debug('Executing curl request');
-
-	$data            = curl_exec($process);
-	$data            = str_replace(["'", '\\'], [''], (string) $data);
-	$results['data'] = $data;
-
-	// Get information regarding a specific transfer, cert info too
-	$results['options'] = curl_getinfo($process);
-	$results['curl_return'] = curl_errno($process);
-
-	servcheck_debug('cURL error: ' . $results['curl_return']);
-
-	servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
-
-	if (isset($cookie_file)) {
-		unlink($cookie_file);
-	}
-
-	if ($results['curl_return'] > 0) {
-		$results['error']  =  str_replace(['"', "'"], '', (curl_error($process)));
-		$results['result'] = 'error';
-
-		return $results;
-	}
-
-	curl_close($process);
-
-	// not found?
-	if ($results['options']['http_code'] == 404) {
-		$results['result'] = 'error';
-		$results['error']  = '404 - Not found';
-
-		return $results;
-	}
-
-	if (empty($results['data'])) {
-		$results['result'] = 'error';
-		$results['error']  = 'No data returned';
-
-		return $results;
-	}
-
-	$results['error']  =  'Some data returned';
-	$results['result'] = 'ok';
-
-	// If we have set a failed search string, then ignore the normal searches and only alert on it
-	if ($test['search_failed'] != '') {
-		servcheck_debug('Processing search_failed');
-
-		if (strpos($data, $test['search_failed']) !== false) {
-			servcheck_debug('Search failed string success');
-			$results['result_search'] = 'failed ok';
-
-			return $results;
+		if ($cookie_file !== null && $cookie_file !== false && file_exists($cookie_file)) {
+			unlink($cookie_file);
 		}
 	}
-
-	servcheck_debug('Processing search');
-
-	if ($test['search'] != '') {
-		if (strpos($data, $test['search']) !== false) {
-			servcheck_debug('Search string success');
-			$results['result_search'] = 'ok';
-
-			return $results;
-		} else {
-			servcheck_debug('String not found');
-			$results['result_search'] = 'not ok';
-
-			return $results;
-		}
-	}
-
-	if ($test['search_maint'] != '') {
-		servcheck_debug('Processing search maint');
-
-		if (strpos($data, $test['search_maint']) !== false) {
-			servcheck_debug('Search maint string success');
-			$results['result_search'] = 'maint ok';
-
-			return $results;
-		}
-	}
-
-	return $results;
 }

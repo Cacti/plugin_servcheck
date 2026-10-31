@@ -45,7 +45,6 @@ it('drops every servcheck table on uninstall', function () {
 		'plugin_servcheck_processes',
 		'plugin_servcheck_contacts',
 		'plugin_servcheck_ca',
-		'plugin_servcheck_restapi_method',
 		'plugin_servcheck_credential',
 	));
 });

@@ -29,6 +29,7 @@
         <include>
             <file>setup.php</file>
             <file>includes/functions.php</file>
+            <file>includes/database.php</file>
         </include>
     </source>
 </phpunit>

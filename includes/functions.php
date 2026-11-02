@@ -552,3 +552,49 @@ function servcheck_evaluate_search(array $test, string $data, array $results): a
 
 	return $results;
 }
+
+/**
+ * Validates that a test has a hostname to check, recording an error on the
+ * result when it does not. Centralises the empty-hostname guard shared by the
+ * service-check runners.
+ *
+ * @param array $test    The plugin_servcheck_test row.
+ * @param array $results The result array, updated on failure (by reference).
+ *
+ * @return bool True when a hostname is present, false otherwise.
+ */
+function servcheck_require_hostname(array $test, array &$results): bool {
+	if (empty($test['hostname'])) {
+		cacti_log('Empty hostname, nothing to test');
+		$results['result'] = 'error';
+		$results['error']  = 'Empty hostname';
+
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Builds the cURL options shared by the HTTP-based service-check runners
+ * (web, FTP/SCP and DNS-over-HTTPS). Centralises the common transfer, redirect,
+ * timeout and CA settings so every cURL check starts from the same baseline.
+ *
+ * @param array  $test       The plugin_servcheck_test row; 'duration_trigger'
+ *                           sets the per-test timeout.
+ * @param string $user_agent The User-Agent string to send.
+ * @param string $ca_info    Path to the default CA bundle.
+ *
+ * @return array<int, mixed> The cURL option map keyed by CURLOPT_* constant.
+ */
+function servcheck_curl_base_options(array $test, string $user_agent, string $ca_info): array {
+	return [
+		CURLOPT_HEADER         => true,
+		CURLOPT_USERAGENT      => $user_agent,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_MAXREDIRS      => 4,
+		CURLOPT_TIMEOUT        => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
+		CURLOPT_CAINFO         => $ca_info,
+	];
+}

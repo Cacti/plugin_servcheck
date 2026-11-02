@@ -139,6 +139,47 @@ it('loads and decrypts a configured credential', function () {
 });
 
 // ---------------------------------------------------------------------------
+// servcheck_require_hostname()
+// ---------------------------------------------------------------------------
+
+it('accepts a test that has a hostname', function () {
+	$results = ['result' => 'ok'];
+
+	expect(servcheck_require_hostname(['hostname' => 'example.com'], $results))->toBeTrue();
+	expect($results['result'])->toBe('ok');
+});
+
+it('rejects a test without a hostname', function () {
+	$results = [];
+
+	$ok = servcheck_require_hostname(['hostname' => ''], $results);
+
+	expect($ok)->toBeFalse();
+	expect($results['result'])->toBe('error');
+	expect($results['error'])->toBe('Empty hostname');
+});
+
+// ---------------------------------------------------------------------------
+// servcheck_curl_base_options()
+// ---------------------------------------------------------------------------
+
+it('builds cURL base options with a per-test timeout', function () {
+	$options = servcheck_curl_base_options(['duration_trigger' => 5], 'Servcheck/1.0', '/tmp/ca.pem');
+
+	expect($options[CURLOPT_USERAGENT])->toBe('Servcheck/1.0');
+	expect($options[CURLOPT_CAINFO])->toBe('/tmp/ca.pem');
+	expect($options[CURLOPT_TIMEOUT])->toBe(7);
+	expect($options[CURLOPT_FOLLOWLOCATION])->toBeTrue();
+});
+
+it('falls back to the configured maximum when no per-test timeout is set', function () {
+	$options = servcheck_curl_base_options(['duration_trigger' => 0], 'Servcheck/1.0', '/tmp/ca.pem');
+
+	expect($options)->toHaveKey(CURLOPT_HEADER);
+	expect($options)->toHaveKey(CURLOPT_TIMEOUT);
+});
+
+// ---------------------------------------------------------------------------
 // servcheck_evaluate_search()
 // ---------------------------------------------------------------------------
 

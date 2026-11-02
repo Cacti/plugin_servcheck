@@ -65,23 +65,11 @@ function ftp_try(array $test): array {
 	$final_cred = '';
 	$debug_final_cred = '';
 
-	$options = [
-		CURLOPT_HEADER         => true,
-		CURLOPT_USERAGENT      => $user_agent,
-		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_MAXREDIRS      => 4,
-		CURLOPT_TIMEOUT        => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-		CURLOPT_CAINFO         => $ca_info,
-	];
+	$options = servcheck_curl_base_options($test, $user_agent, $ca_info);
 
 	[$category,$service] = explode('_', $test['type']);
 
-	if (empty($test['hostname'])) {
-		cacti_log('Empty hostname, nothing to test');
-		$results['result'] = 'error';
-		$results['error']  = 'Empty hostname';
-
+	if (!servcheck_require_hostname($test, $results)) {
 		return $results;
 	}
 

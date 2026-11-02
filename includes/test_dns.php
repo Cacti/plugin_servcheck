@@ -164,15 +164,7 @@ function doh_try(array $test): array {
 	$results['result_search'] = 'not tested';
 	$results['start']         = microtime(true);
 
-	$options = [
-		CURLOPT_HEADER         => true,
-		CURLOPT_USERAGENT      => $user_agent,
-		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_MAXREDIRS      => 4,
-		CURLOPT_TIMEOUT        => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-		CURLOPT_CAINFO         => $ca_info,
-	];
+	$options = servcheck_curl_base_options($test, $user_agent, $ca_info);
 
 	[$category,$service] = explode('_', $test['type']);
 

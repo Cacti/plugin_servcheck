@@ -59,11 +59,7 @@ function mail_try(array $test): array {
 
 	[$category,$service] = explode('_', $test['type']);
 
-	if (empty($test['hostname'])) {
-		cacti_log('Empty hostname, nothing to test');
-		$results['result'] = 'error';
-		$results['error']  = 'Empty hostname';
-
+	if (!servcheck_require_hostname($test, $results)) {
 		return $results;
 	}
 

@@ -69,21 +69,8 @@ function ftp_try(array $test): array {
 
 	[$category,$service] = explode('_', $test['type']);
 
-	if (!servcheck_require_hostname($test, $results)) {
+	if (!servcheck_prepare_test($test, $results, $cred, $credential)) {
 		return $results;
-	}
-
-	if (!servcheck_load_credential($test, $cred, $credential, $cred_error)) {
-		$results['result'] = 'error';
-		$results['error']  = $cred_error;
-
-		return $results;
-	}
-
-	$parsed = parse_url('//' . $test['hostname']);
-
-	if (!isset($parsed['port'])) {
-		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
 	}
 
 	if ($service == 'ftp' || $service == 'scp') {

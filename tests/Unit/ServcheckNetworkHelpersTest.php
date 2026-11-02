@@ -40,6 +40,7 @@ afterEach(function () {
 	$GLOBALS['__test_db_fetch_row_prepared_return']  = array();
 	$GLOBALS['__test_db_fetch_cell_prepared_return'] = '';
 	$GLOBALS['__test_user_settings']                 = array();
+	$GLOBALS['service_types_ports']                  = array();
 });
 
 // ---------------------------------------------------------------------------
@@ -177,6 +178,56 @@ it('falls back to the configured maximum when no per-test timeout is set', funct
 
 	expect($options)->toHaveKey(CURLOPT_HEADER);
 	expect($options)->toHaveKey(CURLOPT_TIMEOUT);
+});
+
+// ---------------------------------------------------------------------------
+// servcheck_prepare_test()
+// ---------------------------------------------------------------------------
+
+it('prepares a test and appends the default port when absent', function () {
+	$GLOBALS['service_types_ports'] = ['mail_smtp' => '25'];
+
+	$test    = ['type' => 'mail_smtp', 'hostname' => 'example.com', 'cred_id' => 0];
+	$results = [];
+	$cred    = $credential = null;
+
+	$ok = servcheck_prepare_test($test, $results, $cred, $credential);
+
+	expect($ok)->toBeTrue();
+	expect($test['hostname'])->toBe('example.com:25');
+});
+
+it('keeps an explicit port when preparing a test', function () {
+	$GLOBALS['service_types_ports'] = ['mail_smtp' => '25'];
+
+	$test    = ['type' => 'mail_smtp', 'hostname' => 'example.com:587', 'cred_id' => 0];
+	$results = [];
+	$cred    = $credential = null;
+
+	$ok = servcheck_prepare_test($test, $results, $cred, $credential);
+
+	expect($ok)->toBeTrue();
+	expect($test['hostname'])->toBe('example.com:587');
+});
+
+it('fails to prepare a test without a hostname', function () {
+	$test    = ['type' => 'mail_smtp', 'hostname' => '', 'cred_id' => 0];
+	$results = [];
+	$cred    = $credential = null;
+
+	expect(servcheck_prepare_test($test, $results, $cred, $credential))->toBeFalse();
+	expect($results['error'])->toBe('Empty hostname');
+});
+
+it('fails to prepare a test when the credential cannot be loaded', function () {
+	$GLOBALS['__test_db_fetch_row_prepared_return'] = ['id' => 5, 'type' => 'userpass'];
+
+	$test    = ['type' => 'mail_smtp', 'hostname' => 'example.com', 'cred_id' => 5];
+	$results = [];
+	$cred    = $credential = null;
+
+	expect(servcheck_prepare_test($test, $results, $cred, $credential))->toBeFalse();
+	expect($results['error'])->toBe('Credential is empty');
 });
 
 // ---------------------------------------------------------------------------

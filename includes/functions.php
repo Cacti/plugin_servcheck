@@ -598,3 +598,43 @@ function servcheck_curl_base_options(array $test, string $user_agent, string $ca
 		CURLOPT_CAINFO         => $ca_info,
 	];
 }
+
+/**
+ * Runs the common service-check preamble: validates the hostname, loads and
+ * decrypts the stored credential, and appends the default port for the test
+ * type when the hostname does not already specify one. Centralises the setup
+ * shared by the socket-based runners so they all behave identically.
+ *
+ * @param array $test        The plugin_servcheck_test row; 'hostname' may be
+ *                           updated with the default port (by reference).
+ * @param array $results     The result array, updated on failure (by reference).
+ * @param mixed $cred        Receives the raw credential row (by reference).
+ * @param mixed $credential  Receives the decrypted credential (by reference).
+ *
+ * @return bool True when the test is ready to run, false when it failed
+ *              validation (with the error recorded on $results).
+ *
+ * @global array $service_types_ports Default port numbers per service type.
+ */
+function servcheck_prepare_test(array &$test, array &$results, &$cred, &$credential): bool {
+	global $service_types_ports;
+
+	if (!servcheck_require_hostname($test, $results)) {
+		return false;
+	}
+
+	if (!servcheck_load_credential($test, $cred, $credential, $error)) {
+		$results['result'] = 'error';
+		$results['error']  = $error;
+
+		return false;
+	}
+
+	$parsed = parse_url('//' . $test['hostname']);
+
+	if (!isset($parsed['port'])) {
+		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
+	}
+
+	return true;
+}

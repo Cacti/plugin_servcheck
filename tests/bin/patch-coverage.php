@@ -166,6 +166,15 @@ $unmeasured_allowlist = [
 	'servcheck_proxy.php',      // web UI entry point (require auth.php); not loadable in the isolated unit process
 	'servcheck_restapi.php',    // web UI entry point (require auth.php); not loadable in the isolated unit process
 	'servcheck_test.php',       // web UI entry point (require auth.php); not loadable in the isolated unit process
+	'includes/dnslookup.php',    // raw-socket DNS lookup class; needs a live DNS server, not exercisable in the isolated unit process
+	'includes/test_curl.php',    // HTTP(S) service-check runner; needs a live HTTP endpoint, not exercisable in the isolated unit process
+	'includes/test_dns.php',     // DNS/DoH service-check runner; needs live DNS resolution, not exercisable in the isolated unit process
+	'includes/test_ftp.php',     // FTP/SCP service-check runner; needs a live FTP server, not exercisable in the isolated unit process
+	'includes/test_mail.php',    // SMTP/IMAP/POP3 service-check runner; needs a live mail server and TLS, not exercisable in the isolated unit process
+	'includes/test_mqtt.php',    // MQTT service-check runner; needs a live MQTT broker, not exercisable in the isolated unit process
+	'includes/test_restapi.php', // REST API service-check runner; needs a live HTTP API, not exercisable in the isolated unit process
+	'includes/test_snmp.php',    // SNMP service-check runner; needs a live SNMP agent, not exercisable in the isolated unit process
+	'includes/test_ssh.php',     // SSH/SFTP service-check runner; needs a live SSH server, not exercisable in the isolated unit process
 ];
 $unmeasured            = array_values(array_diff(array_keys($changed), array_keys($measured)));
 $unexpected_unmeasured = array_values(array_diff($unmeasured, $unmeasured_allowlist));

@@ -442,3 +442,113 @@ function servcheck_network_call(callable $operation, array $functions, &$warning
 		restore_error_handler();
 	}
 }
+
+/**
+ * Loads and decrypts a test's stored credential, reporting lookup or
+ * decryption failures. Centralises the credential handling shared by the
+ * service-check runners so each one validates the credential the same way.
+ *
+ * @param array $test        The plugin_servcheck_test row; 'cred_id' selects
+ *                           the credential to load.
+ * @param mixed $cred        Receives the raw plugin_servcheck_credential row
+ *                           (by reference), or null.
+ * @param mixed $credential  Receives the decrypted credential (by reference),
+ *                           or null.
+ * @param string $error      Receives a human-readable error on failure (by
+ *                           reference), or an empty string.
+ *
+ * @return bool True when no credential is configured or it was loaded
+ *              successfully, false when it is configured but missing or empty.
+ */
+function servcheck_load_credential(array $test, &$cred, &$credential, &$error): bool {
+	$cred       = null;
+	$credential = null;
+	$error      = '';
+
+	if ($test['cred_id'] <= 0) {
+		return true;
+	}
+
+	$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
+		[$test['cred_id']]);
+
+	if (!$cred) {
+		servcheck_debug('Credential is set but not found!');
+		cacti_log('Credential not found');
+		$error = 'Credential not found';
+
+		return false;
+	}
+
+	servcheck_debug('Decrypting credential');
+	$credential = servcheck_decrypt_credential($test['cred_id']);
+
+	if (empty($credential)) {
+		servcheck_debug('Credential is empty!');
+		cacti_log('Credential is empty');
+		$error = 'Credential is empty';
+
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Evaluates a test's failure, success and maintenance search strings against
+ * the response text and records the resulting 'result_search' state.
+ * Centralises the pattern evaluation shared by every service-check runner.
+ *
+ * If a failed-search string is configured it takes precedence; otherwise the
+ * expected search string, and finally the maintenance search string, are
+ * checked. When none are configured the result array is returned unchanged.
+ *
+ * @param array  $test    The plugin_servcheck_test row holding the search
+ *                        strings ('search_failed', 'search', 'search_maint').
+ * @param string $data    The response text to search.
+ * @param array  $results The in-progress result array.
+ *
+ * @return array The result array with 'result_search' updated.
+ */
+function servcheck_evaluate_search(array $test, string $data, array $results): array {
+	// If we have set a failed search string, then ignore the normal searches and only alert on it
+	if ($test['search_failed'] != '') {
+		servcheck_debug('Processing search_failed');
+
+		if (strpos($data, $test['search_failed']) !== false) {
+			servcheck_debug('Search failed string success');
+			$results['result_search'] = 'failed ok';
+
+			return $results;
+		}
+	}
+
+	servcheck_debug('Processing search');
+
+	if ($test['search'] != '') {
+		if (strpos($data, $test['search']) !== false) {
+			servcheck_debug('Search string success');
+			$results['result_search'] = 'ok';
+
+			return $results;
+		} else {
+			servcheck_debug('String not found');
+			$results['result_search'] = 'not ok';
+
+			return $results;
+		}
+	}
+
+	if ($test['search_maint'] != '') {
+		servcheck_debug('Processing search maint');
+
+		if (strpos($data, $test['search_maint']) !== false) {
+			servcheck_debug('Search maint string success');
+			$results['result_search'] = 'maint ok';
+
+			return $results;
+		}
+	}
+
+	return $results;
+}

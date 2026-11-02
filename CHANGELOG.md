@@ -17,6 +17,9 @@
 * dev: Ensure lib/poller.php is loaded wherever its functions (exec_background, replicate_out_table, unregister_process) are used rather than relying on it being included elsewhere
 * dev: Pin the CI database image and shared test dependencies, disable persisted checkout credentials, and limit workflow permissions and runtime
 * issue: Fix tests timeouts, improved error detection 
+* security: Negotiate only TLS 1.2/1.3 for SMTP/IMAP/POP3 STARTTLS and implicit-TLS mail checks instead of `STREAM_CRYPTO_METHOD_TLS_CLIENT`, which also enables the weak TLS 1.0/1.1 protocols
+* dev: De-duplicate the service-check runners by extracting shared helpers (`servcheck_load_credential()`, `servcheck_evaluate_search()`, and mail connect/TLS/certificate helpers) so credential handling, search-string evaluation and the mail handshake live in one place
+* dev: Add unit coverage for the shared network helpers and allowlist the network service-check includes in the patch-coverage gate, since they require live servers to exercise
 
 --- 0.4 ---
 

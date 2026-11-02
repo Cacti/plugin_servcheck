@@ -85,30 +85,11 @@ function ftp_try(array $test): array {
 		return $results;
 	}
 
-	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
-			[$test['cred_id']]);
+	if (!servcheck_load_credential($test, $cred, $credential, $cred_error)) {
+		$results['result'] = 'error';
+		$results['error']  = $cred_error;
 
-		if (!$cred) {
-			servcheck_debug('Credential is set but not found!');
-			cacti_log('Credential not found');
-			$results['result'] = 'error';
-			$results['error']  = 'Credential not found';
-
-			return $results;
-		} else {
-			servcheck_debug('Decrypting credential');
-			$credential = servcheck_decrypt_credential($test['cred_id']);
-
-			if (empty($credential)) {
-				servcheck_debug('Credential is empty!');
-				cacti_log('Credential is empty');
-				$results['result'] = 'error';
-				$results['error']  = 'Credential is empty';
-
-				return $results;
-			}
-		}
+		return $results;
 	}
 
 	$parsed = parse_url('//' . $test['hostname']);
@@ -227,43 +208,5 @@ function ftp_try(array $test): array {
 	$results['result'] = 'ok';
 	$results['error']  = 'Some data returned';
 
-	// If we have set a failed search string, then ignore the normal searches and only alert on it
-	if ($test['search_failed'] != '') {
-		servcheck_debug('Processing search_failed');
-
-		if (strpos($data, $test['search_failed']) !== false) {
-			servcheck_debug('Search failed string success');
-			$results['result_search'] = 'failed ok';
-
-			return $results;
-		}
-	}
-
-	servcheck_debug('Processing search');
-
-	if ($test['search'] != '') {
-		if (strpos($data, $test['search']) !== false) {
-			servcheck_debug('Search string success');
-			$results['result_search'] = 'ok';
-
-			return $results;
-		} else {
-			$results['result_search'] = 'not ok';
-
-			return $results;
-		}
-	}
-
-	if ($test['search_maint'] != '') {
-		servcheck_debug('Processing search maint');
-
-		if (strpos($data, $test['search_maint']) !== false) {
-			servcheck_debug('Search maint string success');
-			$results['result_search'] = 'maint ok';
-
-			return $results;
-		}
-	}
-
-	return $results;
+	return servcheck_evaluate_search($test, $data, $results);
 }

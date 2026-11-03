@@ -76,7 +76,6 @@ function plugin_servcheck_uninstall(): void {
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_processes');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_contacts');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_ca');
-	db_execute('DROP TABLE IF EXISTS plugin_servcheck_restapi_method');
 	db_execute('DROP TABLE IF EXISTS plugin_servcheck_credential');
 }
 

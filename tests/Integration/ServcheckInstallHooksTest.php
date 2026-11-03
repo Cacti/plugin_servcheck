@@ -47,7 +47,7 @@ it('registers every hook servcheck depends on, its realm, and provisions its tab
 	}
 
 	expect($GLOBALS['__test_registered_realms'])->toHaveCount(1);
-	expect($GLOBALS['__test_registered_realms'][0]['file'])->toBe('servcheck_test.php,servcheck_restapi.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxy.php,servcheck_ca.php');
+	expect($GLOBALS['__test_registered_realms'][0]['file'])->toBe('servcheck_test.php,servcheck_credential.php,servcheck_curl_code.php,servcheck_proxy.php,servcheck_ca.php');
 
 	$createdTables = array_values(array_unique(array_map(function ($call) {
 		return $call['table'];

@@ -19,7 +19,6 @@
         "servcheck_curl_code.php",
         "servcheck_process.php",
         "servcheck_proxy.php",
-        "servcheck_restapi.php",
         "servcheck_test.php",
         "setup.php",
         "templates/"

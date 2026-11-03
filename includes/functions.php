@@ -216,48 +216,6 @@ function servcheck_graph(int $id, int $interval): void {
 	print $content;
 }
 
-// It is not secure, it is better than plaintext
-// will be removed in 0.5
-
-/**
- * Obscures a string by hex-encoding each byte. It is not secure, it is
- * better than plaintext, and will be removed in 0.5. Called from
- * servcheck_restapi.php's form_save() to obscure legacy REST API
- * credential fields before storage.
- *
- * @param string $string The plain-text string to obscure.
- *
- * @return string The hex-encoded string.
- */
-function servcheck_hide_text(string $string): string {
-	$output = '';
-
-	for ($f = 0; $f < strlen($string); $f++) {
-		$output .= dechex(ord($string[$f]));
-	}
-
-	return $output;
-}
-
-/**
- * Reverses servcheck_hide_text()'s hex-encoding back to the original
- * string. Called from servcheck_restapi.php's servcheck_edit_rest() to
- * display a legacy REST API method's obscured credential fields.
- *
- * @param string $string The hex-encoded string to decode.
- *
- * @return string The original plain-text string.
- */
-function servcheck_show_text(string $string): string {
-	$output = '';
-
-	for ($f = 0; $f < strlen($string); $f = $f + 2) {
-		$output .= chr((int) hexdec($string[$f] . $string[($f + 1)]));
-	}
-
-	return $output;
-}
-
 /**
  * Encrypts a credential's fields for storage: JSON-encodes them and
  * encrypts with a per-installation symmetric key (generating and

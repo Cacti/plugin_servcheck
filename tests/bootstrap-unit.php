@@ -160,9 +160,11 @@ if (!function_exists('db_index_exists')) {
 	}
 }
 
+$GLOBALS['__test_db_column_exists'] = false;
+
 if (!function_exists('db_column_exists')) {
 	function db_column_exists($table, $column) {
-		return false;
+		return $GLOBALS['__test_db_column_exists'] ?? false;
 	}
 }
 
@@ -227,9 +229,20 @@ if (!function_exists('cacti_version_compare')) {
 	}
 }
 
+$GLOBALS['__test_db_table_exists'] = false;
+
 if (!function_exists('db_table_exists')) {
 	function db_table_exists($table) {
-		return false;
+		return $GLOBALS['__test_db_table_exists'] ?? false;
+	}
+}
+
+$GLOBALS['__test_db_update_table'] = true;
+
+if (!function_exists('db_update_table')) {
+	function db_update_table($table, $data) {
+		$GLOBALS['__test_db_calls'][] = array('fn' => 'db_update_table', 'table' => $table, 'data' => $data);
+		return $GLOBALS['__test_db_update_table'] ?? true;
 	}
 }
 

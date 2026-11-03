@@ -16,6 +16,10 @@
 * dev: Bring the plugin to PHPStan level 8 with native return/parameter type declarations and fix the bugs it uncovered (duplicate credential-load block and undefined variables in the MQTT test, a credential lookup checking the wrong variable in the cURL/SSH/REST tests, an SSH private-key cleanup that never ran, a wrong variable in the poller warning, missing globals, dead bulk-action confirmation variables on the credential page, a mistyped credential key and duplicate form-field keys, and several unguarded database-row and certificate accesses)
 * dev: Ensure lib/poller.php is loaded wherever its functions (exec_background, replicate_out_table, unregister_process) are used rather than relying on it being included elsewhere
 * dev: Pin the CI database image and shared test dependencies, disable persisted checkout credentials, and limit workflow permissions and runtime
+* issue: Fix tests timeouts, improved error detection 
+* security: Negotiate only TLS 1.2/1.3 for SMTP/IMAP/POP3 STARTTLS and implicit-TLS mail checks instead of `STREAM_CRYPTO_METHOD_TLS_CLIENT`, which also enables the weak TLS 1.0/1.1 protocols
+* dev: De-duplicate the service-check runners by extracting shared helpers (`servcheck_load_credential()`, `servcheck_evaluate_search()`, and mail connect/TLS/certificate helpers) so credential handling, search-string evaluation and the mail handshake live in one place
+* dev: Add unit coverage for the shared network helpers and allowlist the network service-check includes in the patch-coverage gate, since they require live servers to exercise
 
 --- 0.4 ---
 

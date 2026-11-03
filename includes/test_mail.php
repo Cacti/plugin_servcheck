@@ -55,47 +55,12 @@ function mail_try(array $test): array {
 	$results['error']         = '';
 	$results['result_search'] = 'not tested';
 	$results['start']         = microtime(true);
+	$results['data']          = '';
 
 	[$category,$service] = explode('_', $test['type']);
 
-	if (empty($test['hostname'])) {
-		cacti_log('Empty hostname, nothing to test');
-		$results['result'] = 'error';
-		$results['error']  = 'Empty hostname';
-
+	if (!servcheck_prepare_test($test, $results, $cred, $credential)) {
 		return $results;
-	}
-
-	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
-			[$test['cred_id']]);
-
-		if (!$cred) {
-			servcheck_debug('Credential is set but not found!');
-			cacti_log('Credential not found');
-			$results['result'] = 'error';
-			$results['error']  = 'Credential not found';
-
-			return $results;
-		} else {
-			servcheck_debug('Decrypting credential');
-			$credential = servcheck_decrypt_credential($test['cred_id']);
-
-			if (empty($credential)) {
-				servcheck_debug('Credential is empty!');
-				cacti_log('Credential is empty');
-				$results['result'] = 'error';
-				$results['error']  = 'Credential is empty';
-
-				return $results;
-			}
-		}
-	}
-
-	$parsed = parse_url('//' . $test['hostname']);
-
-	if (!isset($parsed['port'])) {
-		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
 	}
 
 	if ($test['ca_id'] > 0) {
@@ -149,25 +114,11 @@ function mail_try(array $test): array {
 	try {
 		switch ($service) {
 			case 'smtp':
-				servcheck_debug('Trying to connect ' . 'tcp://' . $test['hostname']);
+				$fp = servcheck_mail_open($test, 'tcp://', $context, $results);
 
-				$fp = stream_socket_client(
-					'tcp://' . $test['hostname'],
-					$errno,
-					$errstr,
-					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-					STREAM_CLIENT_CONNECT,
-					$context
-				);
-
-				if (!$fp) {
-					$results['result'] = 'error';
-					$results['error']  = 'Cannot connect';
-
+				if ($fp === false) {
 					return $results;
 				}
-
-				servcheck_debug('Connected');
 
 				$data .= read_response($fp); // welcome banner
 
@@ -179,32 +130,14 @@ function mail_try(array $test): array {
 
 				break;
 			case 'smtps':
-				servcheck_debug('Trying to connect ' . 'ssl://' . $test['hostname']);
+				$fp = servcheck_mail_open($test, 'ssl://', $context, $results);
 
-				$fp = stream_socket_client(
-					'ssl://' . $test['hostname'],
-					$errno,
-					$errstr,
-					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-					STREAM_CLIENT_CONNECT,
-					$context
-				);
-
-				if (!$fp) {
-					$results['result'] = 'error';
-					$results['error']  = 'Cannot connect';
-
+				if ($fp === false) {
 					return $results;
 				}
 
-				servcheck_debug('Connected');
-
 				if ($test['checkcert'] || $test['certexpirenotify']) {
-					servcheck_debug('Gathering certificate information');
-					$con_params = stream_context_get_params($fp);
-					$certinfo   = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
-
-					$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
+					servcheck_mail_cert_expiry($fp, $results);
 				}
 
 				$data .= read_response($fp); // welcome banner
@@ -230,25 +163,11 @@ function mail_try(array $test): array {
 
 				break;
 			case 'smtptls':
-				servcheck_debug('Trying to connect ' . 'tcp://' . $test['hostname']);
+				$fp = servcheck_mail_open($test, 'tcp://', $context, $results);
 
-				$fp = stream_socket_client(
-					'tcp://' . $test['hostname'],
-					$errno,
-					$errstr,
-					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-					STREAM_CLIENT_CONNECT,
-					$context
-				);
-
-				if (!$fp) {
-					$results['result'] = 'error';
-					$results['error']  = 'Cannot connect';
-
+				if ($fp === false) {
 					return $results;
 				}
-
-				servcheck_debug('Connected');
 
 				$data .= read_response($fp); // welcome banner
 
@@ -267,7 +186,7 @@ function mail_try(array $test): array {
 
 				$data .= $xdata;
 
-				if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+				if (!servcheck_mail_enable_crypto($fp)) {
 					$results['result'] = 'error';
 					$results['error']  = 'TLS handshake failed';
 
@@ -275,10 +194,7 @@ function mail_try(array $test): array {
 				}
 
 				if ($test['checkcert'] || $test['certexpirenotify']) {
-					servcheck_debug('Gathering certificate information');
-					$context                  = stream_context_get_options($fp);
-					$certinfo                 = openssl_x509_parse($context['ssl']['peer_certificate']);
-					$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
+					servcheck_mail_cert_expiry($fp, $results);
 				}
 
 				// we need ehlo again
@@ -309,34 +225,17 @@ function mail_try(array $test): array {
 			case 'imaps':
 				$method = $service == 'imaps' ? 'ssl' : 'tcp';
 
-				servcheck_debug('Trying to connect ' . $method . '://' . $test['hostname']);
+				$fp = servcheck_mail_open($test, $method . '://', $context, $results);
 
-				$fp = stream_socket_client(
-					$method . '://' . $test['hostname'],
-					$errno,
-					$errstr,
-					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-					STREAM_CLIENT_CONNECT,
-					$context
-				);
-
-				if (!$fp) {
-					$results['result'] = 'error';
-					$results['error']  = 'Cannot connect';
-
+				if ($fp === false) {
 					return $results;
 				}
 
-				servcheck_debug('Connected');
-
 				if ($service == 'imaps' && ($test['checkcert'] || $test['certexpirenotify'])) {
-					servcheck_debug('Gathering certificate information');
-					$con_params               = stream_context_get_params($fp);
-					$certinfo                 = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
-					$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
+					servcheck_mail_cert_expiry($fp, $results);
 				}
 
-				$data .= fgets($fp); // welcome banner
+				$data .= servcheck_mail_read($fp); // welcome banner
 
 				if ($service == 'imaptls') {
 					servcheck_debug('Trying STARTTLS');
@@ -344,7 +243,7 @@ function mail_try(array $test): array {
 					send($fp, 'A002 STARTTLS');
 					$data .= read_response_imap($fp, 'A002');
 
-					if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+					if (!servcheck_mail_enable_crypto($fp)) {
 						$results['result'] = 'error';
 						$results['error']  = 'TLS handshake failed';
 
@@ -352,10 +251,7 @@ function mail_try(array $test): array {
 					}
 
 					if ($test['checkcert'] || $test['certexpirenotify']) {
-						servcheck_debug('Gathering certificate information');
-						$context                  = stream_context_get_options($fp);
-						$certinfo                 = openssl_x509_parse($context['ssl']['peer_certificate']);
-						$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
+						servcheck_mail_cert_expiry($fp, $results);
 					}
 				}
 
@@ -390,42 +286,25 @@ function mail_try(array $test): array {
 			case 'pop3s':
 				$method = $service == 'pop3s' ? 'ssl' : 'tcp';
 
-				servcheck_debug('Trying to connect ' . $method . '://' . $test['hostname']);
+				$fp = servcheck_mail_open($test, $method . '://', $context, $results);
 
-				$fp = stream_socket_client(
-					$method . '://' . $test['hostname'],
-					$errno,
-					$errstr,
-					$test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-					STREAM_CLIENT_CONNECT,
-					$context
-				);
-
-				if (!$fp) {
-					$results['result'] = 'error';
-					$results['error']  = 'Cannot connect';
-
+				if ($fp === false) {
 					return $results;
 				}
 
-				servcheck_debug('Connected');
-
-				$data .= fgets($fp); // welcome banner
+				$data .= servcheck_mail_read($fp); // welcome banner
 
 				if ($service == 'pop3s' && ($test['checkcert'] || $test['certexpirenotify'])) {
-					servcheck_debug('Gathering certificate information');
-					$con_params               = stream_context_get_params($fp);
-					$certinfo                 = openssl_x509_parse($con_params['options']['ssl']['peer_certificate']);
-					$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
+					servcheck_mail_cert_expiry($fp, $results);
 				}
 
 				if ($service == 'pop3tls') {
 					servcheck_debug('Trying STARTTLS');
 
 					send($fp, 'A002 STARTTLS');
-					$data .= fgets($fp);
+					$data .= servcheck_mail_read($fp);
 
-					if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+					if (!servcheck_mail_enable_crypto($fp)) {
 						$results['result'] = 'error';
 						$results['error']  = 'TLS handshake failed';
 
@@ -433,23 +312,20 @@ function mail_try(array $test): array {
 					}
 
 					if ($test['checkcert'] || $test['certexpirenotify']) {
-						servcheck_debug('Gathering certificate information');
-						$context                  = stream_context_get_options($fp);
-						$certinfo                 = openssl_x509_parse($context['ssl']['peer_certificate']);
-						$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
+						servcheck_mail_cert_expiry($fp, $results);
 					}
 				}
 
 				if ($test['cred_id'] > 0) {
 					servcheck_debug('Trying to authenticate');
 					send($fp, 'USER ' . ($credential['username'] ?? ''));
-					$data .= fgets($fp);
+					$data .= servcheck_mail_read($fp);
 					send($fp, 'PASS ' . ($credential['password'] ?? ''));
-					$data .= fgets($fp);
+					$data .= servcheck_mail_read($fp);
 
 					servcheck_debug('Reading number of messages');
 					send($fp, 'STAT');
-					$data .= fgets($fp);
+					$data .= servcheck_mail_read($fp);
 				}
 
 				send($fp, 'QUIT');
@@ -462,12 +338,20 @@ function mail_try(array $test): array {
 
 				return $results;
 		}
+	} catch (\RuntimeException $e) {
+		$results['error'] = $e->getMessage();
+
+		return $results;
 	} finally {
-	  if ($test['ca_id'] > 0 && file_exists($ca_file)) {
-		  servcheck_debug('Removing own CA file');
-		  unlink($ca_file);
-	  }	
-  }
+		if (isset($fp) && is_resource($fp)) {
+			fclose($fp);
+		}
+
+		if (isset($ca_file) && file_exists($ca_file)) {
+			servcheck_debug('Removing own CA file');
+			unlink($ca_file);
+		}
+	}
 
 	$data = str_replace(["'", '\\'], [''], $data);
 
@@ -485,45 +369,152 @@ function mail_try(array $test): array {
 	$results['result'] = 'ok';
 	$results['error']  = 'Some data returned';
 
-	// If we have set a failed search string, then ignore the normal searches and only alert on it
-	if ($test['search_failed'] != '') {
-		servcheck_debug('Processing search_failed');
+	return servcheck_evaluate_search($test, $data, $results);
+}
 
-		if (strpos($data, $test['search_failed']) !== false) {
-			servcheck_debug('Search failed string success');
-			$results['result_search'] = 'failed ok';
+/**
+ * Connects to a mail server for a service check and records a connection
+ * failure on the result. Centralises the connect-and-check sequence shared by
+ * every mail service type.
+ *
+ * @param array    $test    The plugin_servcheck_test row (hostname,
+ *                          duration_trigger).
+ * @param string   $scheme  The transport scheme prefix, e.g. 'tcp://' or
+ *                          'ssl://'.
+ * @param resource $context The stream context, including TLS options.
+ * @param array    $results The result array, updated on failure (by reference).
+ *
+ * @return resource|false The connected socket, or false on failure.
+ */
+function servcheck_mail_open(array $test, string $scheme, $context, array &$results) {
+	servcheck_debug('Trying to connect ' . $scheme . $test['hostname']);
 
-			return $results;
-		}
+	$timeout = $test['duration_trigger'] > 0
+		? ($test['duration_trigger'] + 2)
+		: read_config_option('servcheck_test_max_duration');
+
+	$fp = servcheck_mail_connect($scheme . $test['hostname'], $errno, $errstr, $timeout, $context);
+
+	if ($fp === false) {
+		$results['result'] = 'error';
+		$results['error']  = sprintf('Cannot connect to %s: %s (code %d)',
+			$test['hostname'], $errstr, $errno);
+	} else {
+		servcheck_debug('Connected');
 	}
 
-	servcheck_debug('Processing search');
+	return $fp;
+}
 
-	if ($test['search'] != '') {
-		if (strpos($data, $test['search']) !== false) {
-			servcheck_debug('Search string success');
-			$results['result_search'] = 'ok';
+/**
+ * Opens a mail socket, handling expected connection warnings as test failures.
+ * The Cacti error handler is restored even if opening the socket throws.
+ *
+ * @param string $address The transport, hostname and port.
+ * @param int    $errno   Receives the socket error code.
+ * @param string $errstr  Receives the socket error description.
+ * @param float  $timeout The connection timeout in seconds.
+ * @param resource $context The stream context, including TLS options.
+ * @return resource|false The connected socket, or false on failure.
+ */
+function servcheck_mail_connect(string $address, &$errno, &$errstr, float $timeout, $context) {
+	require_once(__DIR__ . '/functions.php');
 
-			return $results;
-		} else {
-			$results['result_search'] = 'not ok';
+	$errno  = 0;
+	$errstr = '';
+	$fp = servcheck_network_call(
+		static function () use ($address, &$errno, &$errstr, $timeout, $context) {
+			return stream_socket_client($address, $errno, $errstr, $timeout, STREAM_CLIENT_CONNECT, $context);
+		},
+		['stream_socket_client'],
+		$warning
+	);
 
-			return $results;
-		}
+	if ($fp === false && $errstr === '') {
+		$errstr = $warning !== '' ? $warning : 'Connection failed';
 	}
 
-	if ($test['search_maint'] != '') {
-		servcheck_debug('Processing search maint');
-
-		if (strpos($data, $test['search_maint']) !== false) {
-			servcheck_debug('Search maint string success');
-			$results['result_search'] = 'maint ok';
-
-			return $results;
-		}
+	if ($fp !== false) {
+		$seconds = (int) $timeout;
+		stream_set_timeout($fp, $seconds, (int) (($timeout - $seconds) * 1000000));
 	}
 
-	return $results;
+	return $fp;
+}
+
+/**
+ * Converts an expected mail I/O warning into a test error, not a PHP log entry.
+ *
+ * @param callable $operation The network operation.
+ * @param array $functions The PHP functions whose warnings are expected.
+ * @return mixed The operation's return value.
+ */
+function servcheck_mail_io(callable $operation, array $functions) {
+	require_once(__DIR__ . '/functions.php');
+
+	$result = servcheck_network_call($operation, $functions, $warning);
+
+	if ($warning !== '') {
+		throw new \RuntimeException($warning);
+	}
+
+	return $result;
+}
+
+/**
+ * Completes a TLS handshake on an open mail socket, negotiating only TLS 1.2
+ * and TLS 1.3. The weak TLS 1.0 and 1.1 protocols implied by
+ * STREAM_CRYPTO_METHOD_TLS_CLIENT are intentionally excluded. Centralises the
+ * handshake so every mail service type negotiates the same strong protocols.
+ *
+ * @param resource $fp The connected mail socket.
+ *
+ * @return bool True on a successful handshake, false otherwise.
+ */
+function servcheck_mail_enable_crypto($fp): bool {
+	$method = STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT | STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT;
+
+	return (bool) servcheck_mail_io(static function () use ($fp, $method) {
+		return stream_socket_enable_crypto($fp, true, $method);
+	}, ['stream_socket_enable_crypto']);
+}
+
+/**
+ * Reads the peer certificate expiry from an open TLS mail socket and records
+ * it on the result as 'cert_valid_to'. Centralises certificate gathering so
+ * every mail service type reads the expiry the same way.
+ *
+ * @param resource $fp      The TLS-enabled mail socket.
+ * @param array    $results The result array to update (by reference).
+ *
+ * @return void
+ */
+function servcheck_mail_cert_expiry($fp, array &$results): void {
+	servcheck_debug('Gathering certificate information');
+	$options  = stream_context_get_options($fp);
+	$certinfo = isset($options['ssl']['peer_certificate'])
+		? openssl_x509_parse($options['ssl']['peer_certificate'])
+		: false;
+	$results['cert_valid_to'] = is_array($certinfo) ? ($certinfo['validTo_time_t'] ?? null) : null;
+}
+
+/**
+ * Reads a mail response line and reports read timeouts as test failures.
+ *
+ * @param resource $fp The connected socket.
+ * @return string|false A response line, or false on end of stream.
+ */
+function servcheck_mail_read($fp) {
+	$line = servcheck_mail_io(static function () use ($fp) {
+		return fgets($fp);
+	}, ['fgets']);
+	$status = stream_get_meta_data($fp);
+
+	if (!empty($status['timed_out'])) {
+		throw new \RuntimeException('Mail server response timed out');
+	}
+
+	return $line;
 }
 
 /**
@@ -538,7 +529,14 @@ function mail_try(array $test): array {
  * @return void
  */
 function send($fp, string $cmd): void {
-	fwrite($fp, $cmd . "\r\n");
+	$command = $cmd . "\r\n";
+	$written = servcheck_mail_io(static function () use ($fp, $command) {
+		return fwrite($fp, $command);
+	}, ['fwrite']);
+
+	if ($written !== strlen($command)) {
+		throw new \RuntimeException('Cannot send command to mail server');
+	}
 }
 
 // response like 250 OK
@@ -555,7 +553,7 @@ function send($fp, string $cmd): void {
 function read_response($fp): string {
 	$response = '';
 
-	while ($line = fgets($fp)) {
+	while ($line = servcheck_mail_read($fp)) {
 		$response .= $line;
 
 		if (preg_match('/^\d{3} /', $line)) {
@@ -586,7 +584,7 @@ function read_response_imap($fp, string $tag = 'A001'): string {
 	stream_set_timeout($fp, 2);
 
 	while (!feof($fp)) {
-		$line = fgets($fp);
+		$line = servcheck_mail_read($fp);
 
 		if ($line === false) {
 			break;

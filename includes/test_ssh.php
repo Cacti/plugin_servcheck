@@ -45,6 +45,8 @@
 function ssh_try(array $test): array {
 	global $config, $service_types_ports;
 
+	require_once(__DIR__ . '/functions.php');
+
 	// default result
 	$results['result']        = 'error';
 	$results['curl']          = false;
@@ -52,6 +54,7 @@ function ssh_try(array $test): array {
 	$results['error']         = '';
 	$results['result_search'] = 'not tested';
 	$results['start']         = microtime(true);
+	$results['data']          = '';
 
 	[$category,$service] = explode('_', $test['type']);
 
@@ -75,189 +78,164 @@ function ssh_try(array $test): array {
 
 	servcheck_debug('Creating ssh connection');
 
-	if ($service == 'command') {
-		$ssh = new \phpseclib3\Net\SSH2($test['hostname']);
-		$ssh->enableQuietMode();
-	} else {
-		$ssh = new \phpseclib3\Net\SFTP($test['hostname']);
-		$ssh->enableQuietMode();
-	}
+	$ssh = null;
+	$timeout = $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration');
 
-	$ssh->setTimeout($test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'));
+	try {
+		if ($service == 'command') {
+			$ssh = new \phpseclib3\Net\SSH2($parsed['host'], $parsed['port'] ?? $service_types_ports[$test['type']], $timeout);
+			$ssh->enableQuietMode();
+		} else {
+			$ssh = new \phpseclib3\Net\SFTP($parsed['host'], $parsed['port'] ?? $service_types_ports[$test['type']], $timeout);
+			$ssh->enableQuietMode();
+		}
 
-	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
-			[$test['cred_id']]);
+		$ssh->setTimeout($timeout);
 
-		if (!$cred) {
-			servcheck_debug('Credential is set but not found!');
-			cacti_log('Credential not found');
+		if (!servcheck_load_credential($test, $cred, $credential, $cred_error)) {
 			$results['result'] = 'error';
-			$results['error']  = 'Credential not found';
+			$results['error']  = $cred_error;
 
 			return $results;
-		} else {
-			servcheck_debug('Decrypting credential');
-			$credential = servcheck_decrypt_credential($test['cred_id']);
-
-			if (empty($credential)) {
-				servcheck_debug('Credential is empty!');
-				cacti_log('Credential is empty');
-				$results['result'] = 'error';
-				$results['error']  = 'Credential is empty';
-
-				return $results;
-			}
-
-			if (($cred['type'] ?? '') != 'userpass' && ($cred['type'] ?? '') != 'sshkey') {
-				servcheck_debug('Incorrect credential type, use user/pass or sshkey');
-				cacti_log('Incorrect credential type, use user/pass or sshkey');
-				$results['result'] = 'error';
-				$results['error']  = 'Incorrect credential type';
-
-				return $results;
-			}
 		}
-	} else {
-		servcheck_debug('Credential is not set!');
-		cacti_log('Credential is not set');
-		$results['result'] = 'error';
-		$results['error']  = 'Credential is not set';
 
-		return $results;
-	}
+		if ($cred === null) {
+			servcheck_debug('Credential is not set!');
+			cacti_log('Credential is not set');
+			$results['result'] = 'error';
+			$results['error']  = 'Credential is not set';
 
-	if (($cred['type'] ?? '') == 'sshkey') {
-		servcheck_debug('Preparing ssh private key file');
+			return $results;
+		}
 
-		$keyfilename = tempnam(sys_get_temp_dir(), 'srvck');
-		$keyfile     = fopen($keyfilename, 'w+');
+		if (($cred['type'] ?? '') != 'userpass' && ($cred['type'] ?? '') != 'sshkey') {
+			servcheck_debug('Incorrect credential type, use user/pass or sshkey');
+			cacti_log('Incorrect credential type, use user/pass or sshkey');
+			$results['result'] = 'error';
+			$results['error']  = 'Incorrect credential type';
 
-		if ($keyfile) {
-			fwrite($keyfile, $credential['sshkey'] ?? '');
-			fclose($keyfile);
+			return $results;
+		}
 
-			try {
-				if (isset($credential['sshkey_passphrase'])) {
-					$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename),$credential['sshkey_passphrase']);
-				} else {
-					$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename));
+		if (($cred['type'] ?? '') == 'sshkey') {
+			servcheck_debug('Preparing ssh private key file');
+
+			$keyfilename = tempnam(sys_get_temp_dir(), 'srvck');
+			$keyfile     = fopen($keyfilename, 'w+');
+
+			if ($keyfile) {
+				fwrite($keyfile, $credential['sshkey'] ?? '');
+				fclose($keyfile);
+
+				try {
+					if (isset($credential['sshkey_passphrase'])) {
+						$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename),$credential['sshkey_passphrase']);
+					} else {
+						$key = \phpseclib3\Crypt\PublicKeyLoader::load(file_get_contents($keyfilename));
+					}
+				} catch (\phpseclib3\Exception\NoKeyLoadedException $e) {
+					cacti_log("ERROR: Failed to load SSH key (invalid format or wrong passphrase): " . $e->getMessage(), false, 'SERVCHECK');
+					$key = null;
+				} catch (\Throwable $e) {
+					cacti_log("ERROR: Unexpected error while loading SSH key: " . $e->getMessage(), false, 'SERVCHECK');
+					$key = null;
+				} finally {
+					// Always remove the temporary private-key file, even on auth failure or a key-load exception.
+					if (file_exists($keyfilename)) {
+						unlink($keyfilename);
+					}
+					servcheck_debug('Removing private key file');
 				}
-			} catch (\phpseclib3\Exception\NoKeyLoadedException $e) {
-				cacti_log("ERROR: Failed to load SSH key (invalid format or wrong passphrase): " . $e->getMessage(), false, 'SERVCHECK');
-				$key = null;
-			} catch (\Throwable $e) {
-				cacti_log("ERROR: Unexpected error while loading SSH key: " . $e->getMessage(), false, 'SERVCHECK');
-				$key = null;
-			} finally {
-				// Always remove the temporary private-key file, even on auth failure or a key-load exception.
-				if (file_exists($keyfilename)) {
-					unlink($keyfilename);
+
+				if ($key === null) {
+					servcheck_debug('Failed to load SSH key');
+
+					$results['result'] = 'error';
+					$results['error']  = 'Failed to load SSH key';
+
+					return $results;
 				}
-				servcheck_debug('Removing private key file');
-			}
 
-			if ($key === null) {
-				servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+				if (!servcheck_network_call(static function () use ($ssh, $credential, $key) {
+					return $ssh->login($credential['ssh_username'] ?? '', $key);
+				}, ['fsockopen', 'stream_socket_client', 'fread', 'fwrite'], $network_warning)) {
+					servcheck_debug('Connection failed');
 
+					$errors = $ssh->getStdError();
+					servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+
+					$results['result'] = 'error';
+					$results['error']  = $network_warning ?: $ssh->getLastError() ?: 'SSH authentication failed';
+
+					return $results;
+				}
+			} else {
+				cacti_log('Cannot create private key file ' . $keyfilename);
 				$results['result'] = 'error';
-				$results['error']  = 'Failed to load SSH key';
+				$results['error']  = 'Cannot create private key file';
 
 				return $results;
 			}
-
-			if (!$ssh->login($credential['ssh_username'] ?? '', $key)) {
+		} elseif (($cred['type'] ?? '') == 'userpass') {
+			if (!servcheck_network_call(static function () use ($ssh, $credential) {
+				return $ssh->login($credential['username'] ?? '', $credential['password'] ?? '');
+			}, ['fsockopen', 'stream_socket_client', 'fread', 'fwrite'], $network_warning)) {
 				servcheck_debug('Connection failed');
 
 				$errors = $ssh->getStdError();
 				servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
 
 				$results['result'] = 'error';
-				$results['error']  = 'Connection failed';
+				$results['error']  = $network_warning ?: $ssh->getLastError() ?: 'SSH authentication failed';
 
 				return $results;
 			}
-		} else {
-			cacti_log('Cannot create private key file ' . $keyfilename);
-			$results['result'] = 'error';
-			$results['error']  = 'Cannot create private key file';
+		}
+
+		servcheck_debug('Connected, running command ' . $test['ssh_command']);
+
+		$data = servcheck_network_call(static function () use ($ssh, $service, $test) {
+			return $service == 'command' ? $ssh->exec($test['ssh_command']) : $ssh->nlist($test['path']);
+		}, ['fsockopen', 'stream_socket_client', 'fread', 'fwrite'], $network_warning);
+
+		if ($data === false || $ssh->isTimeout() || $network_warning !== '') {
+			$results['error'] = $network_warning ?: ($ssh->isTimeout() ? 'SSH operation timed out' : ($ssh->getLastError() ?: 'SSH operation failed'));
 
 			return $results;
 		}
-	} elseif (($cred['type'] ?? '') == 'userpass') {
-		if (!$ssh->login($credential['username'] ?? '', $credential['password'] ?? '')) {
-			servcheck_debug('Connection failed');
 
-			$errors = $ssh->getStdError();
-			servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
+		$data = is_array($data) ? implode("\n", $data) : (string) $data;
 
-			$results['result'] = 'error';
-			$results['error']  = 'Connection failed';
+		$errors = $ssh->getStdError();
+		servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
 
-			return $results;
+		servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
+
+		$results['result'] = 'ok';
+		$results['error']  = 'Some data returned';
+
+		$results['data'] = $data;
+
+		if (isset($keyfilename) && file_exists($keyfilename)) {
+			unlink($keyfilename);
+			servcheck_debug('Removing private key file');
+		}
+
+		return servcheck_evaluate_search($test, $data, $results);
+	} catch (\RuntimeException | \UnexpectedValueException $e) {
+		$results['result'] = 'error';
+		$results['error']  = $e->getMessage();
+
+		return $results;
+	} finally {
+		if ($ssh !== null) {
+			try {
+				servcheck_network_call(static function () use ($ssh) {
+					$ssh->disconnect();
+				}, ['fread', 'fwrite'], $disconnect_warning);
+			} catch (\RuntimeException $e) {
+				servcheck_debug('SSH disconnect failed: ' . $e->getMessage());
+			}
 		}
 	}
-
-	servcheck_debug('Connected, running command ' . $test['ssh_command']);
-
-	if ($service == 'command') {
-		$data = $ssh->exec($test['ssh_command']);
-	} else {
-		$data = implode("\n", $ssh->nlist($test['path']) ?: []);
-	}
-
-	$errors = $ssh->getStdError();
-	servcheck_debug('Error: ' . clean_up_lines(var_export($errors, true)));
-
-	servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
-
-	$results['result'] = 'ok';
-	$results['error']  = 'Some data returned';
-
-	$results['data'] = $data;
-
-	if (isset($keyfilename) && file_exists($keyfilename)) {
-		unlink($keyfilename);
-		servcheck_debug('Removing private key file');
-	}
-
-	// If we have set a failed search string, then ignore the normal searches and only alert on it
-	if ($test['search_failed'] != '') {
-		servcheck_debug('Processing search_failed');
-
-		if (strpos($data, $test['search_failed']) !== false) {
-			servcheck_debug('Search failed string success');
-			$results['result_search'] = 'failed ok';
-
-			return $results;
-		}
-	}
-
-	servcheck_debug('Processing search');
-
-	if ($test['search'] != '') {
-		if (strpos($data, $test['search']) !== false) {
-			servcheck_debug('Search string success');
-			$results['result_search'] = 'ok';
-
-			return $results;
-		} else {
-			$results['result_search'] = 'not ok';
-
-			return $results;
-		}
-	}
-
-	if ($test['search_maint'] != '') {
-		servcheck_debug('Processing search maint');
-
-		if (strpos($data, $test['search_maint']) !== false) {
-			servcheck_debug('Search maint string success');
-			$results['result_search'] = 'maint ok';
-
-			return $results;
-		}
-	}
-
-	return $results;
 }

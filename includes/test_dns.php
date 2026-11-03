@@ -164,15 +164,7 @@ function doh_try(array $test): array {
 	$results['result_search'] = 'not tested';
 	$results['start']         = microtime(true);
 
-	$options = [
-		CURLOPT_HEADER         => true,
-		CURLOPT_USERAGENT      => $user_agent,
-		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_MAXREDIRS      => 4,
-		CURLOPT_TIMEOUT        => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-		CURLOPT_CAINFO         => $ca_info,
-	];
+	$options = servcheck_curl_base_options($test, $user_agent, $ca_info);
 
 	[$category,$service] = explode('_', $test['type']);
 
@@ -249,6 +241,9 @@ function doh_try(array $test): array {
 	$results['options'] = curl_getinfo($process);
 
 	$results['curl_return'] = curl_errno($process);
+	$connection_error       = curl_error($process);
+
+	curl_close($process);
 
 	servcheck_debug('cURL error: ' . $results['curl_return']);
 
@@ -260,13 +255,11 @@ function doh_try(array $test): array {
 	}
 
 	if ($results['curl_return'] > 0) {
-		$results['error']  =  str_replace(['"', "'"], '', (curl_error($process)));
+		$results['error']  =  str_replace(['"', "'"], '', $connection_error);
 		$results['result'] = 'error';
 
 		return $results;
 	}
-
-	curl_close($process);
 
 	if ($test['type'] == 'web_http' || $test['type'] == 'web_https') {
 		// not found?
@@ -288,43 +281,5 @@ function doh_try(array $test): array {
 	$results['result'] = 'ok';
 	$results['error']  = 'Some data returned';
 
-	// If we have set a failed search string, then ignore the normal searches and only alert on it
-	if ($test['search_failed'] != '') {
-		servcheck_debug('Processing search_failed');
-
-		if (strpos($data, $test['search_failed']) !== false) {
-			servcheck_debug('Search failed string success');
-			$results['result_search'] = 'failed ok';
-
-			return $results;
-		}
-	}
-
-	servcheck_debug('Processing search');
-
-	if ($test['search'] != '') {
-		if (strpos($data, $test['search']) !== false) {
-			servcheck_debug('Search string success');
-			$results['result_search'] = 'ok';
-
-			return $results;
-		} else {
-			$results['result_search'] = 'not ok';
-
-			return $results;
-		}
-	}
-
-	if ($test['search_maint'] != '') {
-		servcheck_debug('Processing search maint');
-
-		if (strpos($data, $test['search_maint']) !== false) {
-			servcheck_debug('Search maint string success');
-			$results['result_search'] = 'maint ok';
-
-			return $results;
-		}
-	}
-
-	return $results;
+	return servcheck_evaluate_search($test, $data, $results);
 }

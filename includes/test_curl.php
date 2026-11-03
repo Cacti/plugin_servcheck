@@ -73,23 +73,11 @@ function curl_try(array $test): array {
 	$results['result_search'] = 'not tested';
 	$results['start']         = microtime(true);
 
-	$options = [
-		CURLOPT_HEADER         => true,
-		CURLOPT_USERAGENT      => $user_agent,
-		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_MAXREDIRS      => 4,
-		CURLOPT_TIMEOUT        => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
-		CURLOPT_CAINFO         => $ca_info,
-	];
+	$options = servcheck_curl_base_options($test, $user_agent, $ca_info);
 
 	[$category,$service] = explode('_', $test['type']);
 
-	if (empty($test['hostname'])) {
-		cacti_log('Empty hostname, nothing to test');
-		$results['result'] = 'error';
-		$results['error']  = 'Empty hostname';
-
+	if (!servcheck_require_hostname($test, $results)) {
 		return $results;
 	}
 
@@ -101,30 +89,11 @@ function curl_try(array $test): array {
 		return $results;
 	}
 
-	if ($test['cred_id'] > 0) {
-		$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
-			[$test['cred_id']]);
+	if (!servcheck_load_credential($test, $cred, $credential, $cred_error)) {
+		$results['result'] = 'error';
+		$results['error']  = $cred_error;
 
-		if (!$cred) {
-			servcheck_debug('Credential is set but not found!');
-			cacti_log('Credential not found');
-			$results['result'] = 'error';
-			$results['error']  = 'Credential not found';
-
-			return $results;
-		} else {
-			servcheck_debug('Decrypting credential');
-			$credential = servcheck_decrypt_credential($test['cred_id']);
-
-			if (empty($credential)) {
-				servcheck_debug('Credential is empty!');
-				cacti_log('Credential is empty');
-				$results['result'] = 'error';
-				$results['error']  = 'Credential is empty';
-
-				return $results;
-			}
-		}
+		return $results;
 	}
 
 	$parsed = parse_url('//' . $test['hostname']);
@@ -169,7 +138,7 @@ function curl_try(array $test): array {
 	}
 
 	if ($test['ca_id'] > 0) {
-		servcheck_debug('Preparing own CA chain file ' . $ca_file);
+		servcheck_debug('Preparing own CA chain file');
 		// CURLOPT_CAINFO is to updated based on the custom CA certificate
 
 		$cert = db_fetch_cell_prepared('SELECT cert FROM plugin_servcheck_ca WHERE id = ?',
@@ -301,6 +270,9 @@ function curl_try(array $test): array {
 	$results['options'] = curl_getinfo($process);
 
 	$results['curl_return'] = curl_errno($process);
+	$connection_error       = curl_error($process);
+
+	curl_close($process);
 
 	servcheck_debug('cURL error: ' . $results['curl_return']);
 
@@ -311,21 +283,20 @@ function curl_try(array $test): array {
 		unlink($ca_file);
 	}
 
+	// Preserve transport errors even when no response body was received.
+	if ($results['curl_return'] > 0) {
+		$results['error']  = str_replace(['"', "'"], '', $connection_error);
+		$results['result'] = 'error';
+
+		return $results;
+	}
+
 	if (empty($results['data'])) {
-		$results['error']  =  'No data returned';
+		$results['error']  = 'No data returned';
 		$results['result'] = 'error';
 
 		return $results;
 	}
-
-	if (!empty($results['data']) && $results['curl_return'] > 0) {
-		$results['error']  =  str_replace(['"', "'"], '', (curl_error($process)));
-		$results['result'] = 'error';
-
-		return $results;
-	}
-
-	curl_close($process);
 
 	if ($test['type'] == 'web_http' || $test['type'] == 'web_https') {
 		// not found?
@@ -340,42 +311,10 @@ function curl_try(array $test): array {
 	$results['result'] = 'ok';
 	$results['error']  = 'Some data returned';
 
-	// If we have set a failed search string, then ignore the normal searches and only alert on it
-	if ($test['search_failed'] != '') {
-		servcheck_debug('Processing search_failed');
+	$results = servcheck_evaluate_search($test, $data, $results);
 
-		if (strpos($data, $test['search_failed']) !== false) {
-			servcheck_debug('Search failed string success');
-			$results['result_search'] = 'failed ok';
-
-			return $results;
-		}
-	}
-
-	servcheck_debug('Processing search');
-
-	if ($test['search'] != '') {
-		if (strpos($data, $test['search']) !== false) {
-			servcheck_debug('Search string success');
-			$results['result_search'] = 'ok';
-
-			return $results;
-		} else {
-			$results['result_search'] = 'not ok';
-
-			return $results;
-		}
-	}
-
-	if ($test['search_maint'] != '') {
-		servcheck_debug('Processing search maint');
-
-		if (strpos($data, $test['search_maint']) !== false) {
-			servcheck_debug('Search maint string success');
-			$results['result_search'] = 'maint ok';
-
-			return $results;
-		}
+	if ($results['result_search'] != 'not tested') {
+		return $results;
 	}
 
 	if ($test['requiresauth'] != '') {

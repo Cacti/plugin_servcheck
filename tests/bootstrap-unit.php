@@ -134,9 +134,11 @@ if (!function_exists('db_fetch_row')) {
 	}
 }
 
+$GLOBALS['__test_db_fetch_row_prepared_return'] = array();
+
 if (!function_exists('db_fetch_row_prepared')) {
 	function db_fetch_row_prepared($sql, $params = array()) {
-		return array();
+		return $GLOBALS['__test_db_fetch_row_prepared_return'];
 	}
 }
 
@@ -148,9 +150,11 @@ if (!function_exists('db_fetch_cell')) {
 	}
 }
 
+$GLOBALS['__test_db_fetch_cell_prepared_return'] = '';
+
 if (!function_exists('db_fetch_cell_prepared')) {
 	function db_fetch_cell_prepared($sql, $params = array()) {
-		return '';
+		return $GLOBALS['__test_db_fetch_cell_prepared_return'];
 	}
 }
 
@@ -288,6 +292,16 @@ if (!function_exists('replicate_out_table')) {
 if (!function_exists('read_config_option')) {
 	function read_config_option($name, $force = false) {
 		return '';
+	}
+}
+
+$GLOBALS['__test_user_settings'] = array();
+
+if (!function_exists('read_user_setting')) {
+	function read_user_setting($name, $default = false, $force = false, $user = 0) {
+		return array_key_exists($name, $GLOBALS['__test_user_settings'])
+			? $GLOBALS['__test_user_settings'][$name]
+			: $default;
 	}
 }
 

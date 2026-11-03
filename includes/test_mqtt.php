@@ -120,11 +120,11 @@ function mqtt_try(array $test): array {
 
 	$process = curl_init($url);
 
-	$filename = '/tmp/mqtt_' . time() . '.txt';
-	$file     = fopen($filename, 'w');
+	$file = tmpfile();
 
 	if ($file === false) {
-		cacti_log('Cannot create temporary file ' . $filename);
+		cacti_log('Cannot create MQTT temporary stream');
+		curl_close($process);
 		$results['result'] = 'error';
 		$results['error']  = 'Cannot create temporary file';
 
@@ -137,10 +137,12 @@ function mqtt_try(array $test): array {
 		CURLOPT_FILE             => $file,
 		CURLOPT_TIMEOUT          => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
 		CURLOPT_NOPROGRESS       => false,
-		CURLOPT_XFERINFOFUNCTION => function ($download_size, $downloaded, $upload_size, $uploaded) {
+		CURLOPT_XFERINFOFUNCTION => function ($handle, $download_size, $downloaded, $upload_size, $uploaded) {
 			if ($downloaded > 0) {
 				return 1;
 			}
+
+			return 0;
 		},
 	];
 
@@ -151,12 +153,12 @@ function mqtt_try(array $test): array {
 	servcheck_debug('Executing curl request');
 
 	curl_exec($process);
-	fclose($file);
+	rewind($file);
 
-	$data            = str_replace(["'", '\\'], [''], (string) file_get_contents($filename));
+	$data            = str_replace(["'", '\\'], [''], (string) stream_get_contents($file));
 	$results['data'] = $data;
 
-	unlink($filename);
+	fclose($file);
 
 	// Get information regarding a specific transfer
 	$results['options'] = curl_getinfo($process);
@@ -167,16 +169,22 @@ function mqtt_try(array $test): array {
 
 	servcheck_debug('Data: ' . clean_up_lines(var_export($data, true)));
 
-	// 42 is ok, it is own CURLE_ABORTED_BY_CALLBACK. Normal return is 28 (timeout)
-	if ($results['curl_return'] == 42) {
-		$results['curl_return'] = 0;
-	} elseif ($results['curl_return'] > 0) {
-		$results['error'] =  str_replace(['"', "'"], '', (curl_error($process)));
-	}
-
+	$connection_error = curl_error($process);
 	curl_close($process);
 
-	if (empty($results['data']) && $results['curl_return'] > 0) {
+	// The callback deliberately aborts only after receiving a message.
+	if ($results['curl_return'] == CURLE_ABORTED_BY_CALLBACK && $results['data'] !== '') {
+		$results['curl_return'] = 0;
+	}
+
+	if ($results['curl_return'] > 0) {
+		$results['result'] = 'error';
+		$results['error']  = str_replace(['"', "'"], '', $connection_error);
+
+		return $results;
+	}
+
+	if ($results['data'] === '') {
 		$results['result'] = 'error';
 		$results['error']  = 'No data returned';
 
@@ -186,43 +194,5 @@ function mqtt_try(array $test): array {
 	$results['result'] = 'ok';
 	$results['error']  = 'Some data returned';
 
-	// If we have set a failed search string, then ignore the normal searches and only alert on it
-	if ($test['search_failed'] != '') {
-		servcheck_debug('Processing search_failed');
-
-		if (strpos($data, $test['search_failed']) !== false) {
-			servcheck_debug('Search failed string success');
-			$results['result_search'] = 'failed ok';
-
-			return $results;
-		}
-	}
-
-	servcheck_debug('Processing search');
-
-	if ($test['search'] != '') {
-		if (strpos($data, $test['search']) !== false) {
-			servcheck_debug('Search string success');
-			$results['result_search'] = 'ok';
-
-			return $results;
-		} else {
-			$results['result_search'] = 'not ok';
-
-			return $results;
-		}
-	}
-
-	if ($test['search_maint'] != '') {
-		servcheck_debug('Processing search maint');
-
-		if (strpos($data, $test['search_maint']) !== false) {
-			servcheck_debug('Search maint string success');
-			$results['result_search'] = 'maint ok';
-
-			return $results;
-		}
-	}
-
-	return $results;
+	return servcheck_evaluate_search($test, $data, $results);
 }

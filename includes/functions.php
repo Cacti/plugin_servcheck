@@ -364,3 +364,235 @@ function mask_string($string, $all = false) {
     		return str_pad(substr($string, -2), 10, 'X', STR_PAD_LEFT);
 	}
 }
+
+/**
+ * Runs one network operation, capturing only warnings from the listed functions.
+ * Other warnings are passed to the previous handler. Always restores it.
+ *
+ * @param callable $operation The operation to run.
+ * @param array $functions PHP function names whose warnings are expected.
+ * @param string|null $warning Receives the first warning, or an empty string.
+ * @return mixed The operation's return value. Exceptions propagate to the caller.
+ */
+function servcheck_network_call(callable $operation, array $functions, &$warning) {
+	$warning = '';
+	$previous = null;
+	$previous = set_error_handler(
+		static function ($severity, $message, $file, $line) use ($functions, &$warning, &$previous) {
+			foreach ($functions as $function) {
+				if ($severity === E_WARNING && strpos($message, $function . '():') === 0) {
+					if ($warning === '') {
+						$warning = $message;
+					}
+
+					return true;
+				}
+			}
+
+			return is_callable($previous) ? $previous($severity, $message, $file, $line) : false;
+		},
+		E_ALL
+	);
+
+	try {
+		return $operation();
+	} finally {
+		restore_error_handler();
+	}
+}
+
+/**
+ * Loads and decrypts a test's stored credential, reporting lookup or
+ * decryption failures. Centralises the credential handling shared by the
+ * service-check runners so each one validates the credential the same way.
+ *
+ * @param array $test        The plugin_servcheck_test row; 'cred_id' selects
+ *                           the credential to load.
+ * @param mixed $cred        Receives the raw plugin_servcheck_credential row
+ *                           (by reference), or null.
+ * @param mixed $credential  Receives the decrypted credential (by reference),
+ *                           or null.
+ * @param string $error      Receives a human-readable error on failure (by
+ *                           reference), or an empty string.
+ *
+ * @return bool True when no credential is configured or it was loaded
+ *              successfully, false when it is configured but missing or empty.
+ */
+function servcheck_load_credential(array $test, &$cred, &$credential, &$error): bool {
+	$cred       = null;
+	$credential = null;
+	$error      = '';
+
+	if ($test['cred_id'] <= 0) {
+		return true;
+	}
+
+	$cred = db_fetch_row_prepared('SELECT * FROM plugin_servcheck_credential WHERE id = ?',
+		[$test['cred_id']]);
+
+	if (!$cred) {
+		servcheck_debug('Credential is set but not found!');
+		cacti_log('Credential not found');
+		$error = 'Credential not found';
+
+		return false;
+	}
+
+	servcheck_debug('Decrypting credential');
+	$credential = servcheck_decrypt_credential($test['cred_id']);
+
+	if (empty($credential)) {
+		servcheck_debug('Credential is empty!');
+		cacti_log('Credential is empty');
+		$error = 'Credential is empty';
+
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Evaluates a test's failure, success and maintenance search strings against
+ * the response text and records the resulting 'result_search' state.
+ * Centralises the pattern evaluation shared by every service-check runner.
+ *
+ * If a failed-search string is configured it takes precedence; otherwise the
+ * expected search string, and finally the maintenance search string, are
+ * checked. When none are configured the result array is returned unchanged.
+ *
+ * @param array  $test    The plugin_servcheck_test row holding the search
+ *                        strings ('search_failed', 'search', 'search_maint').
+ * @param string $data    The response text to search.
+ * @param array  $results The in-progress result array.
+ *
+ * @return array The result array with 'result_search' updated.
+ */
+function servcheck_evaluate_search(array $test, string $data, array $results): array {
+	// If we have set a failed search string, then ignore the normal searches and only alert on it
+	if ($test['search_failed'] != '') {
+		servcheck_debug('Processing search_failed');
+
+		if (strpos($data, $test['search_failed']) !== false) {
+			servcheck_debug('Search failed string success');
+			$results['result_search'] = 'failed ok';
+
+			return $results;
+		}
+	}
+
+	servcheck_debug('Processing search');
+
+	if ($test['search'] != '') {
+		if (strpos($data, $test['search']) !== false) {
+			servcheck_debug('Search string success');
+			$results['result_search'] = 'ok';
+
+			return $results;
+		} else {
+			servcheck_debug('String not found');
+			$results['result_search'] = 'not ok';
+
+			return $results;
+		}
+	}
+
+	if ($test['search_maint'] != '') {
+		servcheck_debug('Processing search maint');
+
+		if (strpos($data, $test['search_maint']) !== false) {
+			servcheck_debug('Search maint string success');
+			$results['result_search'] = 'maint ok';
+
+			return $results;
+		}
+	}
+
+	return $results;
+}
+
+/**
+ * Validates that a test has a hostname to check, recording an error on the
+ * result when it does not. Centralises the empty-hostname guard shared by the
+ * service-check runners.
+ *
+ * @param array $test    The plugin_servcheck_test row.
+ * @param array $results The result array, updated on failure (by reference).
+ *
+ * @return bool True when a hostname is present, false otherwise.
+ */
+function servcheck_require_hostname(array $test, array &$results): bool {
+	if (empty($test['hostname'])) {
+		cacti_log('Empty hostname, nothing to test');
+		$results['result'] = 'error';
+		$results['error']  = 'Empty hostname';
+
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Builds the cURL options shared by the HTTP-based service-check runners
+ * (web, FTP/SCP and DNS-over-HTTPS). Centralises the common transfer, redirect,
+ * timeout and CA settings so every cURL check starts from the same baseline.
+ *
+ * @param array  $test       The plugin_servcheck_test row; 'duration_trigger'
+ *                           sets the per-test timeout.
+ * @param string $user_agent The User-Agent string to send.
+ * @param string $ca_info    Path to the default CA bundle.
+ *
+ * @return array<int, mixed> The cURL option map keyed by CURLOPT_* constant.
+ */
+function servcheck_curl_base_options(array $test, string $user_agent, string $ca_info): array {
+	return [
+		CURLOPT_HEADER         => true,
+		CURLOPT_USERAGENT      => $user_agent,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_MAXREDIRS      => 4,
+		CURLOPT_TIMEOUT        => $test['duration_trigger'] > 0 ? ($test['duration_trigger'] + 2) : read_config_option('servcheck_test_max_duration'),
+		CURLOPT_CAINFO         => $ca_info,
+	];
+}
+
+/**
+ * Runs the common service-check preamble: validates the hostname, loads and
+ * decrypts the stored credential, and appends the default port for the test
+ * type when the hostname does not already specify one. Centralises the setup
+ * shared by the socket-based runners so they all behave identically.
+ *
+ * @param array $test        The plugin_servcheck_test row; 'hostname' may be
+ *                           updated with the default port (by reference).
+ * @param array $results     The result array, updated on failure (by reference).
+ * @param mixed $cred        Receives the raw credential row (by reference).
+ * @param mixed $credential  Receives the decrypted credential (by reference).
+ *
+ * @return bool True when the test is ready to run, false when it failed
+ *              validation (with the error recorded on $results).
+ *
+ * @global array $service_types_ports Default port numbers per service type.
+ */
+function servcheck_prepare_test(array &$test, array &$results, &$cred, &$credential): bool {
+	global $service_types_ports;
+
+	if (!servcheck_require_hostname($test, $results)) {
+		return false;
+	}
+
+	if (!servcheck_load_credential($test, $cred, $credential, $error)) {
+		$results['result'] = 'error';
+		$results['error']  = $error;
+
+		return false;
+	}
+
+	$parsed = parse_url('//' . $test['hostname']);
+
+	if (!isset($parsed['port'])) {
+		$test['hostname'] .= ':' . $service_types_ports[$test['type']];
+	}
+
+	return true;
+}

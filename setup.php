@@ -503,6 +503,7 @@ function servcheck_config_settings(): void {
 				'5'  => __('5 days', 'servcheck'),
 				'7'  => __('7 days', 'servcheck'),
 				'10' => __('10 days', 'servcheck'),
+				'15' => __('15 days', 'servcheck'),
 				'20' => __('20 days', 'servcheck'),
 				'30' => __('30 days', 'servcheck'),
 			]

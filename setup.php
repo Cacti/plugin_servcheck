@@ -492,6 +492,22 @@ function servcheck_config_settings(): void {
 				'90' => __('90 days in advance', 'servcheck'),
 			]
 		],
+		'servcheck_certificate_expiry_email_interval' => [
+			'friendly_name' => __('Certificate expiry notification email interval', 'servcheck'),
+			'description'   => __('If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday', 'servcheck'),
+			'method'        => 'drop_array',
+			'default'       => 10,
+			'array'         => [
+				'1'  => __('1 day', 'servcheck'),
+				'3'  => __('3 days', 'servcheck'),
+				'5'  => __('5 days', 'servcheck'),
+				'7'  => __('7 days', 'servcheck'),
+				'10' => __('10 days', 'servcheck'),
+				'15' => __('15 days', 'servcheck'),
+				'20' => __('20 days', 'servcheck'),
+				'30' => __('30 days', 'servcheck'),
+			]
+		],
 		'servcheck_data_retention' => [
 			'friendly_name' => __('How long to keep logs', 'servcheck'),
 			'description'   => __('Enter the period after which older logs will be automatically deleted.', 'servcheck'),

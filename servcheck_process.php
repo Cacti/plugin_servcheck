@@ -528,19 +528,24 @@ function servcheck_run_test(array $test, bool $force): void {
 
 	// checks only if test passed or some search string exists
 	if ($results['result_search'] != 'not tested' && $results['result'] == 'ok') {
-		if ($last_log['result_search'] != $results['result_search']) {
+		if ($last_log['result_search'] != $results['result_search'] && ($results['result_search'] == 'failed ok' || $results['result_search'] == 'not ok') ) {
 			servcheck_debug('Search result changed, notification will be send');
 			$test['notify_search'] = true;
 		}
 	}
 
 	// check certificate expiry
-	if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days_left'] < $cert_expiry_days && $results['result'] == 'ok') {
-		// notify once per day
-		$new_notify = db_fetch_cell_prepared('SELECT UNIX_TIMESTAMP(DATE_ADD(last_exp_notify, INTERVAL 1 DAY))
-			FROM plugin_servcheck_test
-			WHERE id = ?',
-			[$test['id']]);
+	if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days_left'] <= $cert_expiry_days && $results['result'] == 'ok') {
+		// notify once per $cert_expiry_interval_days
+		if ($test['days_left'] > 0) {
+			/* added by MSS on 2026-11-04 */
+			$cert_expiry_interval_days = read_config_option('servcheck_certificate_expiry_email_interval');
+		}
+		// nofify once per day
+		else {
+			$cert_expiry_interval_days = 1;
+		}
+		$new_notify = db_fetch_cell_prepared('SELECT UNIX_TIMESTAMP(DATE_ADD(last_exp_notify, INTERVAL ' . $cert_expiry_interval_days . ' DAY)) FROM plugin_servcheck_test WHERE id = ?', [$test['id']]);
 
 		if ($new_notify < time()) {
 			servcheck_debug('Certificate will expire soon (or is expired), will notify about expiration');

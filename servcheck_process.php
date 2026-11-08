@@ -538,15 +538,14 @@ function servcheck_run_test(array $test, bool $force): void {
 	if ($test['certexpirenotify'] && $cert_expiry_days > 0 && $test['days_left'] <= $cert_expiry_days && $results['result'] == 'ok') {
 		// notify once per $cert_expiry_interval_days
 		if ($test['days_left'] > 0) {
-			/* added by MSS on 2026-11-04 */
 			$cert_expiry_interval_days = read_config_option('servcheck_certificate_expiry_email_interval');
 		}
-		// nofify once per day
+		// notify once per day
 		else {
 			$cert_expiry_interval_days = 1;
 		}
 		$new_notify = db_fetch_cell_prepared('SELECT UNIX_TIMESTAMP(DATE_ADD(last_exp_notify, INTERVAL ' . $cert_expiry_interval_days . ' DAY)) FROM plugin_servcheck_test WHERE id = ?', [$test['id']]);
-
+		// check if the right time to notify for cert expiry date
 		if ($new_notify < time()) {
 			servcheck_debug('Certificate will expire soon (or is expired), will notify about expiration');
 			$test['notify_certificate'] = true;

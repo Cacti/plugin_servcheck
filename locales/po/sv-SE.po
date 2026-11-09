@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-10-27 11:18+0000\n"
+"PO-Revision-Date: 2026-11-09 22:18+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://translate.cacti.net/projects/cacti/servcheck/"
 "sv/>\n"
@@ -1873,7 +1873,7 @@ msgstr[1] "Ta bort objekt"
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
 msgid "Go"
-msgstr "Start"
+msgstr "Gå"
 
 #: servcheck_ca.php
 msgid "No Certificates Found"
@@ -1965,7 +1965,7 @@ msgstr "Hantering av Servcheck-proxyer"
 
 #: servcheck_restapi.php servcheck_test.php
 msgid "Any"
-msgstr "Vilken som helst"
+msgstr "Valfri"
 
 #: servcheck_restapi.php
 msgid "Click 'Continue' to Delete the following Rest API."

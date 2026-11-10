@@ -543,10 +543,12 @@ function servcheck_run_test(array $test, bool $force): void {
 		}
 		// notify once per day
 		else {
+			$cert_expiry_interval_days = 1;
 			$new_notify = 1;
 		}
+		$new_notify_date = db_fetch_cell_prepared('SELECT UNIX_TIMESTAMP(DATE_ADD(last_exp_notify, INTERVAL ' . $cert_expiry_interval_days . ' DAY)) FROM plugin_servcheck_test WHERE id = ?', [$test['id']]);
 		// check if the right time to notify for cert expiry date
-		if ($new_notify == 1) {
+		if ($new_notify == 1 && $new_notify_date < time()) {
 			servcheck_debug('Certificate will expire soon (or is expired), will notify about expiration');
 			$test['notify_certificate'] = true;
 			$test['certificate_state']  = 'ko';

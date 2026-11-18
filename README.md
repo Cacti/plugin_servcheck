@@ -77,13 +77,18 @@ POP3, POP3S - try to server connection and eventually login and display first un
 IMAP, IMAPS - try to server connection and eventually  login and display unread messages in inbox
 DNS, DOH - try to resolve A (and AAAA for plaintext dns) record and return answer
 LDAP and LDAPS - do searching in LDAP
-FTP, FTPS, SFTP - try to login and return directory listing
+FTP, SFTP - try to login and return directory listing
 TFTP - try to download specific file
 SCP - try to login and download specific file
 SMB, SMBS - try to login and download specific file
 MQTT - try to subscribe topic or wait for any message and print result
 SNMP - get or walk specified OID and return answer
 SSH_COMMAND - ssh connect, run command and return output
+REST API (Basic, API key, OAuth2/Bearer token and Cookie based authentication) - send the request with the selected
+authentication and return the response
+
+Tests are managed under **Management > Service Checker**. The tabs on that page list the tests, CA certificates,
+proxies, credentials and Curl return codes. Grant the **Service Check Admin** realm to users who need to manage them.
 
 ## Graph template
 You can create graph for each test. How to and template is in templates directory. 
@@ -92,9 +97,13 @@ You can create graph for each test. How to and template is in templates director
 Servcheck has great debug output. If you have any problem, try to run your test:
 /path/to/php servcheck_process.php --id=<ID> --force --debug
 
+To split the tests across several processes, run:
+/path/to/php servcheck_process.php --process=N
+Each process then runs its share of the tests (total number of tests divided by the maximum number of processes).
+
 Example_script.sh shows you how to use returned variables in own script.
 
-Test duration - default test duration is 5 seconds, you can change it in settings. If you need different for 
+Test duration - default test duration is 3 seconds, you can change it in settings. If you need different for
 specific test, change "Long duration alert" parameter in test. After that the max. duration will be
 Long duration alert + 2 seconds.
 

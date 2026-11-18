@@ -1,7 +1,5 @@
 # servcheck
 
-## Cacti Service checker Plugin
-
 This is Cacti's Services monitoring plugin. Based on Webseer plugin.
 This plugin allows you to add service monitoring to Cacti.
 You simply add service check, allow service specific test
@@ -16,6 +14,23 @@ plugin so you can setup maintenance schedules so that known times when a service
 is going to be down can be configured so that escallation does not needlessly
 take place during maintenance periods.
 
+## Versions and compatibility
+
+This README describes the `main` source branch.
+
+| Code | Plugin version | Minimum Cacti declared in `INFO` |
+| --- | --- | --- |
+| [Source branch](INFO) | 0.4 | 1.2.29 |
+| [Published v0.3](https://github.com/Cacti/plugin_servcheck/releases/tag/v0.3) | 0.3 | 1.2.24 |
+
+Use the published release’s assets and tagged documentation when installing that
+package. Branch code can include later changes, even when its version number
+matches the release. Cacti’s own PHP and database requirements also apply.
+
+Install this plugin in **`<cacti-root>/plugins/servcheck`**, using the directory
+name `servcheck` rather than `plugin_servcheck`.
+
+See [CHANGELOG.md](CHANGELOG.md) for the version history.
 
 ## Cacti compatibility
 

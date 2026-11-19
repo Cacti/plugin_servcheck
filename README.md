@@ -20,7 +20,7 @@ This README describes the `main` source branch.
 
 | Code | Plugin version | Minimum Cacti declared in `INFO` |
 | --- | --- | --- |
-| [Source branch](INFO) | 0.4 | 1.2.29 |
+| [Source branch](https://github.com/Cacti/plugin_servcheck/blob/main/INFO) | 0.4 | 1.2.29 |
 | [Published v0.3](https://github.com/Cacti/plugin_servcheck/releases/tag/v0.3) | 0.3 | 1.2.24 |
 
 Use the published release’s assets and tagged documentation when installing that
@@ -30,7 +30,7 @@ matches the release. Cacti’s own PHP and database requirements also apply.
 Install this plugin in **`<cacti-root>/plugins/servcheck`**, using the directory
 name `servcheck` rather than `plugin_servcheck`.
 
-See [CHANGELOG.md](CHANGELOG.md) for the version history.
+See [CHANGELOG.md](https://github.com/Cacti/plugin_servcheck/blob/main/CHANGELOG.md) for the version history.
 
 ## Cacti compatibility
 

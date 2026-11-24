@@ -30,7 +30,7 @@ msgid "%d Poller runs"
 msgstr "%d Poller τρέχει"
 
 #: includes/arrays.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Seconds"
 msgstr "%d δευτερόλεπτα"
 
@@ -54,12 +54,10 @@ msgid ""
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "A Useful Name for this CA chain."
-msgstr "Ένα χρήσιμο όνομα για αυτόν τον διακομιστή μεσολάβησης."
+msgstr "Ένα χρήσιμο όνομα για αυτήν την αλυσίδα CA."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "A Useful Name for this Proxy."
 msgstr "Ένα χρήσιμο όνομα για αυτόν τον διακομιστή μεσολάβησης."
 
@@ -97,27 +95,27 @@ msgstr "Ένα ζητούμενο χαρακτηριστικό, πρωτόκολ
 
 #: includes/arrays.php
 msgid "AES"
-msgstr ""
+msgstr "ΑΕS"
 
 #: includes/arrays.php
 msgid "AES-128"
-msgstr ""
+msgstr "AES-128"
 
 #: includes/arrays.php
 msgid "AES-192"
-msgstr ""
+msgstr "AES-192"
 
 #: includes/arrays.php
 msgid "AES-192-C"
-msgstr ""
+msgstr "AES-192-C"
 
 #: includes/arrays.php
 msgid "AES-256"
-msgstr ""
+msgstr "AES-256"
 
 #: includes/arrays.php
 msgid "AES-256-C"
-msgstr ""
+msgstr "AES-256-C"
 
 #: includes/arrays.php
 msgid "API key auth"
@@ -141,11 +139,11 @@ msgstr "Όλα καλά. Προχωρήστε ως συνήθως."
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform encrypted LDAP login and search"
-msgstr ""
+msgstr "Απαιτούνται όλες οι παράμετροι. Εκτέλεση κρυπτογραφημένης σύνδεσης και αναζήτησης LDAP"
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform unencrypted LDAP login and search"
-msgstr ""
+msgstr "Απαιτούνται όλες οι παράμετροι. Εκτέλεση μη κρυπτογραφημένης σύνδεσης και αναζήτησης LDAP"
 
 #: includes/arrays.php
 msgid "An API function was called from inside a callback."
@@ -187,7 +185,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Auth in HTTP headers"
-msgstr ""
+msgstr "Έλεγχος ταυτότητας στις κεφαλίδες HTTP"
 
 #: includes/arrays.php
 #, fuzzy
@@ -215,40 +213,36 @@ msgid "CA and intermediate certs, PEM encoded"
 msgstr "CA και ενδιάμεσα πιστοποιητικά, κωδικοποιημένα PEM"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "CA certificates"
-msgstr "Ελέγξτε το πιστοποιητικό"
+msgstr "Πιστοποιητικά CA"
 
 #: includes/arrays.php
 msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
-msgstr ""
+msgstr "Το Cacti επιχειρεί να εκτελέσει κάθε έλεγχο πολλές φορές. Η πρώτη επιτυχής προσπάθεια τερματίζει τον έλεγχο και καταγράφει την επιτυχία. Εάν καμία από τις προσπάθειες δεν είναι επιτυχής, ο έλεγχος τερματίζεται και καταγράφεται αποτυχία. Ένας μεγάλος αριθμός προκαλεί μεγάλη διάρκεια ελέγχου."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check Certificate"
-msgstr "Ελέγξτε το πιστοποιητικό"
+msgstr "Έλεγχος πιστοποιητικού"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check and notify Certificate expiration"
-msgstr "Ελέγξτε το πιστοποιητικό"
+msgstr "Έλεγχος και ειδοποίηση λήξης πιστοποιητικού"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
-msgstr "Επιλέξτε αυτό το πλαίσιο εάν ο ιστότοπος θα επιστρέψει κανονικά ένα σφάλμα 401, καθώς απαιτεί όνομα χρήστη και κωδικό πρόσβασης."
+msgstr "Επιλέξτε αυτό το πλαίσιο εάν ο ιστότοπος επιστρέφει κανονικά σφάλμα 401, καθώς απαιτεί όνομα χρήστη και κωδικό πρόσβασης."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Authorization Protocol."
-msgstr ""
+msgstr "Επιλέξτε το πρωτόκολλο εξουσιοδότησης SNMPv3."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Passphrase."
-msgstr ""
+msgstr "Επιλέξτε τη φράση πρόσβασης απορρήτου SNMPv3."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Protocol."
-msgstr ""
+msgstr "Επιλέξτε το πρωτόκολλο απορρήτου SNMPv3."
 
 #: includes/arrays.php
 msgid "Chunk callback reported error."
@@ -256,11 +250,11 @@ msgstr "Η επιστροφή κλήσης μπλοκ ανέφερε σφάλμ�
 
 #: includes/arrays.php
 msgid "Client ID"
-msgstr ""
+msgstr "Αναγνωριστικό πελάτη (Client ID)"
 
 #: includes/arrays.php
 msgid "Client secret"
-msgstr ""
+msgstr "Μυστικό πελάτη (Client secret)"
 
 #: includes/arrays.php
 msgid "Conflict"
@@ -297,15 +291,15 @@ msgstr "Δημιουργήθηκε"
 
 #: includes/arrays.php setup.php
 msgid "Credential"
-msgstr ""
+msgstr "Διαπιστευτήριο"
 
 #: includes/arrays.php
 msgid "Credential Name"
-msgstr ""
+msgstr "Όνομα διαπιστευτηρίου"
 
 #: includes/arrays.php
 msgid "Credential type"
-msgstr ""
+msgstr "Τύπος διαπιστευτηρίου"
 
 #: includes/arrays.php
 msgid "Curl return codes"
@@ -313,12 +307,11 @@ msgstr "Κωδικοί επιστροφής μπούκλας"
 
 #: includes/arrays.php
 msgid "Custom HTTP header"
-msgstr ""
+msgstr "Προσαρμοσμένη κεφαλίδα HTTP"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DES"
-msgstr "DNS"
+msgstr "DES"
 
 #: includes/arrays.php
 msgid "DNS Name for Query"
@@ -326,21 +319,19 @@ msgstr "Όνομα DNS για ερώτημα"
 
 #: includes/arrays.php
 msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
-msgstr ""
+msgstr "Όνομα DNS για υποβολή ερωτήματος. Για DOH (DNS over HTTPS) χρησιμοποιήστε /resolve?name=example.com ή /dns-query?name=example.com&type=A. Για απλό DNS θα επιστραφούν εγγραφές A και AAAA"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DNS over HTTPS, default port 443"
-msgstr "Κρυπτογραφημένο HTTP (HTTPS), προεπιλεγμένη θύρα 443"
+msgstr "DNS μέσω HTTPS, προεπιλεγμένη θύρα 443"
 
 #: includes/arrays.php
 msgid "DNS plaintext, default port 53"
 msgstr "DNS plaintext, προεπιλεγμένη θύρα 53"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Data URL"
-msgstr "Αντιγραφή"
+msgstr "URL δεδομένων"
 
 #: includes/arrays.php
 msgid ""
@@ -366,30 +357,28 @@ msgid "Early initialization code failed. This is likely to be an internal error 
 msgstr "Ο κωδικός πρώιμης προετοιμασίας απέτυχε. Αυτό είναι πιθανό να είναι ένα εσωτερικό σφάλμα ή πρόβλημα, ή ένα πρόβλημα πόρων όπου κάτι θεμελιώδες δεν θα μπορούσε να γίνει εκείνη τη στιγμή."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Email notification"
-msgstr "Ρυθμίσεις ειδοποιήσεων"
+msgstr "Ειδοποίηση μέσω email"
 
 #: includes/arrays.php
 msgid "Enable run script for this test"
-msgstr ""
+msgstr "Ενεργοποίηση εκτέλεσης σεναρίου για αυτή τη δοκιμή"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enable test"
-msgstr "Ενεργοποίηση διακομιστή"
+msgstr "Ενεργοποίηση δοκιμής"
 
 #: includes/arrays.php
 msgid "Encrypted IMAP, you can try login and test certificate and user login"
-msgstr ""
+msgstr "Κρυπτογραφημένο IMAP, μπορείτε να δοκιμάσετε σύνδεση και να ελέγξετε το πιστοποιητικό και τη σύνδεση χρήστη"
 
 #: includes/arrays.php
 msgid "Encrypted POP3, you can try login and test certificate and user login."
-msgstr ""
+msgstr "Κρυπτογραφημένο POP3, μπορείτε να δοκιμάσετε σύνδεση και να ελέγξετε το πιστοποιητικό και τη σύνδεση χρήστη."
 
 #: includes/arrays.php
 msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
-msgstr ""
+msgstr "Κρυπτογραφημένη σύνδεση SCP, σύνδεση και προσπάθεια λήψης του αρχείου που καθορίζεται στη διαδρομή (/path/to/file.txt)."
 
 #: includes/arrays.php
 msgid ""
@@ -398,22 +387,20 @@ msgid ""
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an External ID for this test."
-msgstr "Εισαγάγετε ένα αιώνιο αναγνωριστικό για αυτό το πρότυπο Thold."
+msgstr "Εισαγάγετε ένα εξωτερικό αναγνωριστικό για αυτήν τη δοκιμή."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
-msgstr "Καταχωρίστε μια διεύθυνση IP για σύνδεση. Αν αφήσετε κενό, αντί να χρησιμοποιήσετε την ανάλυση DNS."
+msgstr "Εισαγάγετε μια διεύθυνση IP στην οποία θα επιβάλλεται η επίλυση του ονόματος DNS. Αν το αφήσετε κενό, θα χρησιμοποιηθεί ανάλυση DNS."
 
 #: includes/arrays.php
 msgid "Enter the SNMP Context to use for this device."
-msgstr ""
+msgstr "Εισαγάγετε το περιβάλλον SNMP που θα χρησιμοποιηθεί για αυτήν τη συσκευή."
 
 #: includes/arrays.php
 msgid "Enter the SNMP v3 Engine Id or empty."
-msgstr ""
+msgstr "Εισαγάγετε το SNMP v3 Engine Id ή αφήστε κενό."
 
 #: includes/arrays.php
 msgid "Error"
@@ -421,7 +408,7 @@ msgstr "Σφάλμα"
 
 #: includes/arrays.php
 msgid "Error/failed"
-msgstr ""
+msgstr "Σφάλμα/απέτυχε"
 
 #: includes/arrays.php
 msgid "Expectation Failed"
@@ -432,9 +419,8 @@ msgid "External ID"
 msgstr "Εξωτερικό αναγνωριστικό (ID)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Extra Alert Emails"
-msgstr "Ειδοποιήσεις με επιπλέον ειδοποιήσεις"
+msgstr "Επιπλέον διευθύνσεις email ειδοποιήσεων"
 
 #: includes/arrays.php
 msgid "FTP plaintext, default port 21"
@@ -461,9 +447,8 @@ msgid "Failed string found"
 msgstr "Βρέθηκε αποτυχημένη συμβολοσειρά"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Failed string not found"
-msgstr "Η αποτυχημένη προσπάθεια δεν βρέθηκε"
+msgstr "Η συμβολοσειρά αποτυχίας δεν βρέθηκε"
 
 #: includes/arrays.php
 msgid "Failed to connect() to host or proxy."
@@ -483,7 +468,7 @@ msgstr "Αποτυχία τερματισμού της σύνδεσης SSL."
 
 #: includes/arrays.php
 msgid "Failing"
-msgstr ""
+msgstr "Σε αποτυχία"
 
 #: includes/arrays.php
 msgid "Failure with receiving network data."
@@ -498,14 +483,12 @@ msgid "File not found on TFTP server."
 msgstr "Το αρχείο δεν βρέθηκε στον εξυπηρετητή TFTP."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For anonymous FTP insert email address"
-msgstr "Για ανώνυμο ftp εισάγετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου εδώ."
+msgstr "Για ανώνυμο FTP εισαγάγετε διεύθυνση email"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
-msgstr "Για υπηρεσία web, εισαγάγετε τουλάχιστον \"/\" ή κάτι σαν \"/any/path/\". Για FTP, η λίστα πρέπει να τελειώνει με χαρακτήρα \"/\". Για TFTP/SCP/SMB κατεβάστε το δοκιμαστικό ένθετο /διαδρομή/αρχείο"
+msgstr "Για υπηρεσία ιστού (web service) εισαγάγετε τουλάχιστον \"/\" ή κάτι όπως \"/any/path/\"."
 
 #: includes/arrays.php
 msgid "Forbidden"
@@ -513,7 +496,7 @@ msgstr "Απαγορευμένος"
 
 #: includes/arrays.php
 msgid "Form urlencoded"
-msgstr ""
+msgstr "Φόρμα κωδικοποιημένη με URL (urlencoded)"
 
 #: includes/arrays.php
 msgid "Found"
@@ -524,9 +507,8 @@ msgid "Function not found. A required zlib function was not found."
 msgstr "Η λειτουργία δεν βρέθηκε. Δεν βρέθηκε μια απαιτούμενη συνάρτηση zlib."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Gateway Timeout"
-msgstr "Τέλος χρόνου"
+msgstr "Λήξη χρονικού ορίου πύλης (Gateway Timeout)"
 
 #: includes/arrays.php
 msgid "General Settings"
@@ -537,9 +519,8 @@ msgid "Gone"
 msgstr "Φευγάτος"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "HTTP Port"
-msgstr "Κωδικός HTTP"
+msgstr "Θύρα HTTP"
 
 #: includes/arrays.php
 msgid "HTTP Version Not Supported"
@@ -554,13 +535,12 @@ msgid "HTTP plaintext, default port 80"
 msgstr "Απλό κείμενο HTTP, προεπιλεγμένη θύρα 80"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "HTTPS Port"
-msgstr "Κωδικός HTTP"
+msgstr "Θύρα HTTPS"
 
 #: includes/arrays.php
 msgid "Help"
-msgstr ""
+msgstr "Βοήθεια"
 
 #: includes/arrays.php servcheck_proxy.php
 msgid "Hostname"
@@ -572,15 +552,15 @@ msgstr "Πόσο συχνά πρέπει να δοκιμάζετε"
 
 #: includes/arrays.php
 msgid "How many attempts"
-msgstr ""
+msgstr "Πόσες προσπάθειες"
 
 #: includes/arrays.php
 msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
-msgstr ""
+msgstr "Πόσες διαδοχικές φορές πρέπει να ξεπεραστεί το όριο διάρκειας για να αποσταλεί ειδοποίηση"
 
 #: includes/arrays.php
 msgid "How many times the service must be DOWN before an alert email is triggered."
-msgstr ""
+msgstr "Πόσες φορές πρέπει η υπηρεσία να είναι ΑΝΕΝΕΡΓΗ πριν ενεργοποιηθεί email ειδοποίησης."
 
 #: includes/arrays.php
 msgid "IMAP encrypted (IMAPS), default port 993"
@@ -595,40 +575,36 @@ msgid "IMAP with STARTTLS, default port 143"
 msgstr "IMAP με STARTTLS, προεπιλεγμένη θύρα 143"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "IP Address or DNS name of server"
-msgstr "Διεύθυνση IP για σύνδεση σε αυτόν τον διακομιστή"
+msgstr "Διεύθυνση IP ή όνομα DNS του διακομιστή"
 
 #: includes/arrays.php
 msgid "If enabled email notification about state, duration and search result will be send"
-msgstr ""
+msgstr "Εάν ενεργοποιηθεί, θα αποστέλλεται ειδοποίηση μέσω email σχετικά με την κατάσταση, τη διάρκεια και το αποτέλεσμα αναζήτησης"
 
 #: includes/arrays.php
 msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
-msgstr ""
+msgstr "Εάν είναι ενεργοποιημένη η καθολική λειτουργία εκτέλεσης εντολών, μπορείτε να ορίσετε εδώ εάν θα εκτελείται το σενάριο για αυτόν τον έλεγχο ή όχι."
 
 #: includes/arrays.php
 msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
-msgstr ""
+msgstr "Εάν ο χρόνος ελέγχου υπερβαίνει αυτήν την τιμή περισσότερες διαδοχικές φορές, αποστέλλεται ειδοποίηση. Σχετίζεται με τη μεταβλητή «Πλήθος διάρκειας». Ο έλεγχος κληρονομεί τον μέγιστο χρόνο εκτέλεσης από τις ρυθμίσεις. Εάν οριστεί υψηλότερη τιμή εδώ, ο μέγιστος χρόνος εκτέλεσης είναι αυτή η τιμή + 2 δευτερόλεπτα."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
-msgstr "Εάν αυτό το κείμενο σύνδεσης απαιτεί διακομιστή μεσολάβησης, επιλέξτε το εδώ. Διαφορετικά επιλέξτε \"Κανένα\"."
+msgstr "Εάν αυτό το κείμενο σύνδεσης απαιτεί διακομιστή μεσολάβησης, επιλέξτε τον εδώ. Διαφορετικά επιλέξτε «Κανένας»."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
-msgstr "Αν χρησιμοποιείτε SSL, επιλέξτε αυτό το πλαίσιο εάν θέλετε να επικυρώσετε το πιστοποιητικό. Η προεπιλογή είναι ενεργοποιημένη, απενεργοποιήστε εάν ο ιστότοπος χρησιμοποιεί πιστοποιητικό που έχει υπογράψει αυτόματα."
+msgstr "Εάν χρησιμοποιείτε SSL, επιλέξτε αυτό το πλαίσιο εάν θέλετε να ελέγχεται η λήξη του πιστοποιητικού. Μπορείτε να ορίσετε στις ρυθμίσεις πόσες ημέρες πριν τη λήξη θα γίνεται ειδοποίηση."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
-msgstr "Αν χρησιμοποιείτε SSL, επιλέξτε αυτό το πλαίσιο εάν θέλετε να επικυρώσετε το πιστοποιητικό. Η προεπιλογή είναι ενεργοποιημένη, απενεργοποιήστε εάν ο ιστότοπος χρησιμοποιεί πιστοποιητικό που έχει υπογράψει αυτόματα."
+msgstr "Εάν χρησιμοποιείτε SSL, επιλέξτε αυτό το πλαίσιο εάν θέλετε να επικυρώνεται το πιστοποιητικό. Προεπιλεγμένα ενεργό· απενεργοποιήστε το εάν ο ιστότοπος χρησιμοποιεί αυτοϋπογεγραμμένο πιστοποιητικό."
 
 #: includes/arrays.php
 msgid "If your key is password protected, insert password here"
-msgstr ""
+msgstr "Εάν το κλειδί σας προστατεύεται με κωδικό πρόσβασης, εισαγάγετε τον κωδικό πρόσβασης εδώ"
 
 #: includes/arrays.php
 msgid "Illegal TFTP operation."
@@ -640,15 +616,15 @@ msgstr "Η εκκίνηση του μηχανισμού SSL απέτυχε."
 
 #: includes/arrays.php
 msgid "Insert SNMP OID"
-msgstr ""
+msgstr "Εισαγωγή SNMP OID"
 
 #: includes/arrays.php
 msgid "Insert SSH command with full path, result of command will be returned"
-msgstr ""
+msgstr "Εισαγωγή εντολής SSH με πλήρη διαδρομή· το αποτέλεσμα της εντολής θα επιστραφεί"
 
 #: includes/arrays.php
 msgid "Insert username here"
-msgstr ""
+msgstr "Εισαγάγετε όνομα χρήστη εδώ"
 
 #: includes/arrays.php
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
@@ -664,20 +640,19 @@ msgstr "Ο έλεγχος εκδότη απέτυχε (προστέθηκε στ
 
 #: includes/arrays.php
 msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
-msgstr ""
+msgstr "Ελέγχει μόνο εάν ανταποκρίνεται ο διακομιστής SMTP. Χωρίς έλεγχο ταυτότητας. Θα δείτε το μήνυμα υποδοχής σύνδεσης του διακομιστή και την απόκριση EHLO."
 
 #: includes/arrays.php
 msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
-msgstr ""
+msgstr "Ελέγχει μόνο εάν ανταποκρίνεται ο διακομιστής ιστού. Εάν χρησιμοποιούνται διαπιστευτήρια ονόματος χρήστη/κωδικού πρόσβασης, θα δοκιμάσει Basic HTTP authentication."
 
 #: includes/arrays.php
 msgid "JSON encoded"
-msgstr ""
+msgstr "Κωδικοποιημένο σε JSON"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "LDAP Search"
-msgstr "Αναζήτηση"
+msgstr "Αναζήτηση LDAP"
 
 #: includes/arrays.php
 msgid "LDAP cannot bind. LDAP bind operation failed."
@@ -692,9 +667,8 @@ msgid "LDAP plaintext, default port 389"
 msgstr "Απλό κείμενο LDAP, προεπιλεγμένη θύρα 389"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "LDAP search failed."
-msgstr "Αναζήτηση"
+msgstr "Η αναζήτηση LDAP απέτυχε."
 
 #: includes/arrays.php
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
@@ -709,9 +683,8 @@ msgid "Last day"
 msgstr "Τελευταία μέρα"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Last hour"
-msgstr "Τελευταία Έλεγχος"
+msgstr "Τελευταία ώρα"
 
 #: includes/arrays.php
 msgid "Last week"
@@ -727,25 +700,23 @@ msgstr "Το Libcurl απέτυχε να πάρει πίσω ένα λογικό
 
 #: includes/arrays.php
 msgid "Login URL"
-msgstr ""
+msgstr "URL σύνδεσης"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Long duration"
-msgstr "Τοποθεσία"
+msgstr "Μεγάλη διάρκεια"
 
 #: includes/arrays.php
 msgid "Long duration alert"
-msgstr ""
+msgstr "Ειδοποίηση μεγάλης διάρκειας"
 
 #: includes/arrays.php
 msgid "MD5"
-msgstr ""
+msgstr "MD5"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "MQTT plaintext, default port 1883"
-msgstr "Απλό κείμενο HTTP, προεπιλεγμένη θύρα 80"
+msgstr "Απλό κείμενο MQTT, προεπιλεγμένη θύρα 1883"
 
 #: includes/arrays.php
 msgid "Maint string found"
@@ -785,13 +756,12 @@ msgid "New CA"
 msgstr "Νέα CA"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "New Proxy"
 msgstr "Νέος διακομιστής μεσολάβησης"
 
 #: includes/arrays.php
 msgid "No Content"
-msgstr "Επιλέξτε για περισσότερα"
+msgstr "Χωρίς περιεχόμενο"
 
 #: includes/arrays.php
 msgid "Non-Authoritative Information"
@@ -814,9 +784,8 @@ msgid "Not Implemented"
 msgstr "Δεν εφαρμόζεται"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Not Modified"
-msgstr "Τελευταία τροποποίηση"
+msgstr "Δεν έχει τροποποιηθεί"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Not tested yet"
@@ -839,31 +808,28 @@ msgid "Nothing was returned from the server, and under the circumstances, gettin
 msgstr "Τίποτα δεν επιστράφηκε από το διακομιστή και υπό αυτές τις συνθήκες, η λήψη τίποτα θεωρείται σφάλμα."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notification List"
-msgstr "Ρυθμίσεις ειδοποιήσεων"
+msgstr "Λίστα ειδοποιήσεων"
 
 #: includes/arrays.php
 msgid "Notification Settings"
 msgstr "Ρυθμίσεις ειδοποιήσεων"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notify Accounts"
-msgstr "Ειδοποιήστε τους λογαριασμούς"
+msgstr "Λογαριασμοί ειδοποίησης"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notify Format"
-msgstr "Ειδοποιήστε τους λογαριασμούς"
+msgstr "Μορφή ειδοποίησης"
 
 #: includes/arrays.php
 msgid "Number of duration violations in a row"
-msgstr ""
+msgstr "Αριθμός διαδοχικών παραβιάσεων διάρκειας"
 
 #: includes/arrays.php
 msgid "OAuth Client secret"
-msgstr ""
+msgstr "Μυστικό πελάτη OAuth"
 
 #: includes/arrays.php
 msgid "OAuth2/Bearer token auth"
@@ -875,7 +841,7 @@ msgstr "καλά"
 
 #: includes/arrays.php
 msgid "Oauth Client ID"
-msgstr ""
+msgstr "Αναγνωριστικό πελάτη OAuth"
 
 #: includes/arrays.php
 msgid "Obsolete Error"
@@ -883,16 +849,15 @@ msgstr "Παρωχημένο σφάλμα"
 
 #: includes/arrays.php
 msgid "Ok"
-msgstr ""
+msgstr "Εντάξει"
 
 #: includes/arrays.php
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
 msgstr "Λήξη χρονικού ορίου λειτουργίας. Το καθορισμένο χρονικό όριο συμπληρώθηκε σύμφωνα με τους όρους."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Options"
-msgstr "Ενέργειες"
+msgstr "Επιλογές"
 
 #: includes/arrays.php
 msgid "Out of disk space on the server."
@@ -912,15 +877,15 @@ msgstr "POP3 με STARTTLS, προεπιλεγμένη θύρα 110"
 
 #: includes/arrays.php
 msgid "POST method, JSON encoded"
-msgstr ""
+msgstr "Μέθοδος POST, κωδικοποίηση JSON"
 
 #: includes/arrays.php
 msgid "POST method, form-urlencoded"
-msgstr ""
+msgstr "Μέθοδος POST, μορφή form-urlencoded"
 
 #: includes/arrays.php
 msgid "Parameters"
-msgstr ""
+msgstr "Παράμετροι"
 
 #: includes/arrays.php
 msgid "Partial Content"
@@ -959,19 +924,16 @@ msgid "Problem with reading the SSL CA cert (path? access rights?)"
 msgstr "Πρόβλημα με την ανάγνωση του πιστοποιητικού SSL CA (διαδρομή; δικαιώματα πρόσβασης;)"
 
 #: includes/arrays.php servcheck_proxy.php
-#, fuzzy
 msgid "Proxies"
-msgstr "Πληρεξούσιοι"
+msgstr "Διακομιστές μεσολάβησης"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Proxy Authentication Required"
-msgstr "Απαιτεί έλεγχο ταυτότητας"
+msgstr "Απαιτείται έλεγχος ταυτότητας διακομιστή μεσολάβησης"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Proxy Server"
-msgstr "Master Server"
+msgstr "Διακομιστής διαμεσολάβησης"
 
 #: includes/arrays.php
 msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
@@ -983,19 +945,19 @@ msgstr "Σφάλμα σύνδεσης QUIC. Αυτό το σφάλμα μπορ�
 
 #: includes/arrays.php
 msgid "REST API test with API key auth. Prepare credential first."
-msgstr ""
+msgstr "Δοκιμή REST API με έλεγχο ταυτότητας κλειδιού API. Προετοιμάστε πρώτα τα διαπιστευτήρια."
 
 #: includes/arrays.php
 msgid "REST API test with Oauth2. Prepare credential first."
-msgstr ""
+msgstr "Δοκιμή REST API με OAuth2. Προετοιμάστε πρώτα τα διαπιστευτήρια."
 
 #: includes/arrays.php
 msgid "REST API test with basic HTTP auth. Prepare credential first."
-msgstr ""
+msgstr "Δοκιμή REST API με βασικό έλεγχο ταυτότητας HTTP. Προετοιμάστε πρώτα τα διαπιστευτήρια."
 
 #: includes/arrays.php
 msgid "REST API test with cookie auth. Prepare credential first."
-msgstr ""
+msgstr "Δοκιμή REST API με έλεγχο ταυτότητας cookie. Προετοιμάστε πρώτα τα διαπιστευτήρια."
 
 #: includes/arrays.php
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
@@ -1006,9 +968,8 @@ msgid "Request Entity Too Large"
 msgstr "Αίτηση οντότητας πολύ μεγάλη"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Request Timeout"
-msgstr "Τέλος χρόνου"
+msgstr "Λήξη χρονικού ορίου αιτήματος"
 
 #: includes/arrays.php
 msgid "Request-URI Too Long"
@@ -1023,7 +984,6 @@ msgid "Requested Range Not Satisfiable"
 msgstr "Το ζητούμενο εύρος δεν ικανοποιείται"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Requires Authentication"
 msgstr "Απαιτεί έλεγχο ταυτότητας"
 
@@ -1033,26 +993,23 @@ msgstr "Επαναφορά περιεχομένου"
 
 #: includes/arrays.php
 msgid "Resolve DNS to Address"
-msgstr ""
+msgstr "Επίλυση DNS σε διεύθυνση"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String"
-msgstr "Ακολουθία αναζήτησης"
+msgstr "Συμβολοσειρά αναζήτησης απόκρισης"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String - Failed"
-msgstr "Επαναληπτική αναζήτηση - Αποτυχία"
+msgstr "Συμβολοσειρά αναζήτησης απόκρισης - Αποτυχία"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String - Maintenance"
-msgstr "Σειρά αναζήτησης απόκρισης - Σελίδα συντήρησης"
+msgstr "Συμβολοσειρά αναζήτησης απόκρισης - Συντήρηση"
 
 #: includes/arrays.php
 msgid "Rest API - API key auth"
-msgstr ""
+msgstr "Rest API - Έλεγχος ταυτότητας με κλειδί API"
 
 #: includes/arrays.php
 msgid ""
@@ -1064,23 +1021,23 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth"
-msgstr ""
+msgstr "Rest API - Βασικός έλεγχος ταυτότητας HTTP"
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth. Username and password are required"
-msgstr ""
+msgstr "Rest API - Βασικός έλεγχος ταυτότητας HTTP. Απαιτούνται όνομα χρήστη και κωδικός πρόσβασης"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth"
-msgstr ""
+msgstr "Rest API - Έλεγχος ταυτότητας βάσει cookie"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
-msgstr ""
+msgstr "Rest API - Έλεγχος ταυτότητας βάσει cookie - απαιτούνται και οι δύο τιμές. Μετά τη σύνδεση, επιστρέφεται cookie"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth"
-msgstr ""
+msgstr "Rest API - Έλεγχος ταυτότητας OAuth2/Bearer token"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are send Json encoded."
@@ -1096,52 +1053,51 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Rest API with API key auth"
-msgstr ""
+msgstr "Rest API με έλεγχο ταυτότητας κλειδιού API"
 
 #: includes/arrays.php
 msgid "Rest API with Basic HTTP auth"
-msgstr ""
+msgstr "Rest API με βασικό έλεγχο ταυτότητας HTTP"
 
 #: includes/arrays.php
 msgid "Rest API with Cookie based auth"
-msgstr ""
+msgstr "Rest API με έλεγχο ταυτότητας βάσει cookie"
 
 #: includes/arrays.php
 msgid "Rest API with OAuth2/Bearer token auth"
-msgstr ""
+msgstr "Rest API με έλεγχο ταυτότητας OAuth2/Bearer token"
 
 #: includes/arrays.php
 msgid "SCP download file, default port 22"
 msgstr "Αρχείο λήψης SCP, προεπιλεγμένη θύρα 22"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SFTP protocol - directory listing, default port 22"
-msgstr "Πρωτόκολλο TFTP - λήψη αρχείου, προεπιλεγμένη θύρα 69"
+msgstr "Πρωτόκολλο SFTP - λίστα καταλόγου, προεπιλεγμένη θύρα 22"
 
 #: includes/arrays.php
 msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
-msgstr ""
+msgstr "Πρωτόκολλο SFTP στη θύρα 22, απαιτούνται όνομα χρήστη, κωδικός πρόσβασης και διαδρομή. Προσπάθεια εμφάνισης περιεχομένων καταλόγου της διαδρομής."
 
 #: includes/arrays.php
 msgid "SHA"
-msgstr ""
+msgstr "SHA"
 
 #: includes/arrays.php
 msgid "SHA-224"
-msgstr ""
+msgstr "SHA-224"
 
 #: includes/arrays.php
 msgid "SHA-256"
-msgstr ""
+msgstr "SHA-256"
 
 #: includes/arrays.php
 msgid "SHA-392"
-msgstr ""
+msgstr "SHA-392"
 
 #: includes/arrays.php
 msgid "SHA-512"
-msgstr ""
+msgstr "SHA-512"
 
 #: includes/arrays.php
 msgid "SMB encrypted (SMBS) download file, default port 445"
@@ -1160,123 +1116,120 @@ msgid "SMTP plaintext, default port 25 (or 587 for submission)"
 msgstr "Απλό κείμενο SMTP, προεπιλεγμένη θύρα 25 (ή 587 για υποβολή)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
 msgstr "SMTP με STARTTLS, προεπιλεγμένη θύρα 25 (ή 587 για υποβολή)"
 
 #: includes/arrays.php
 msgid "SNMP Auth Protocol (v3)"
-msgstr ""
+msgstr "Πρωτόκολλο SNMP Auth (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Context (v3)"
-msgstr ""
+msgstr "SNMP Context (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Engine ID (v3)"
-msgstr ""
+msgstr "Αναγνωριστικό κινητήρα SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP OID"
-msgstr ""
+msgstr "SNMP OID"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Password (v3)"
-msgstr "Κωδικός"
+msgstr "Κωδικός πρόσβασης SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Passphrase (v3)"
-msgstr ""
+msgstr "Φράση κωδικού πρόσβασης απορρήτου SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Protocol (v3)"
-msgstr ""
+msgstr "Πρωτόκολλο απορρήτου SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Security Level"
-msgstr ""
+msgstr "Επίπεδο ασφάλειας (SL)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Username (v3)"
-msgstr "Όνομα Χρήστη"
+msgstr "Όνομα χρήστη SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP community string for SNMP v1 or v2(c)"
-msgstr ""
+msgstr "Συμβολοσειρά κοινότητας (community string) SNMP για SNMP v1 ή v2(c)"
 
 #: includes/arrays.php
 msgid "SNMP get"
-msgstr ""
+msgstr "SNMP get"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2"
-msgstr ""
+msgstr "SNMP v1 ή v2"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 - required, insert community name here"
-msgstr ""
+msgstr "SNMP v1 ή v2 - απαιτείται, εισαγάγετε το όνομα κοινότητας (community) εδώ"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 community"
-msgstr ""
+msgstr "Κοινότητα (community) SNMP v1 ή v2"
 
 #: includes/arrays.php
 msgid "SNMP v3"
-msgstr ""
+msgstr "SNMP v3"
 
 #: includes/arrays.php
 msgid "SNMP v3 - The security level determines which parameters are required"
-msgstr ""
+msgstr "SNMP v3 - Το επίπεδο ασφαλείας καθορίζει ποιες παράμετροι απαιτούνται"
 
 #: includes/arrays.php
 msgid "SNMP v3 Security Level to use when querying the device."
-msgstr ""
+msgstr "Επίπεδο ασφαλείας SNMP v3 για χρήση κατά την υποβολή ερωτήματος στη συσκευή."
 
 #: includes/arrays.php
 msgid "SNMP v3 password for this device."
-msgstr ""
+msgstr "Κωδικός πρόσβασης SNMP v3 για αυτήν τη συσκευή."
 
 #: includes/arrays.php
 msgid "SNMP v3 username for this device."
-msgstr ""
+msgstr "Όνομα χρήστη SNMP v3 για αυτήν τη συσκευή."
 
 #: includes/arrays.php
 msgid "SNMP walk"
-msgstr ""
+msgstr "SNMP walk"
 
 #: includes/arrays.php
 msgid "SSH command"
-msgstr ""
+msgstr "Εντολή SSH"
 
 #: includes/arrays.php
 msgid "SSH command on remote system"
-msgstr ""
+msgstr "Εντολή SSH σε απομακρυσμένο σύστημα"
 
 #: includes/arrays.php
 msgid "SSH private key"
-msgstr ""
+msgstr "Ιδιωτικό κλειδί SSH"
 
 #: includes/arrays.php
 msgid "SSH private key "
-msgstr ""
+msgstr "Ιδιωτικό κλειδί SSH "
 
 #: includes/arrays.php
 msgid "SSH private key - Cacti 1.2.31+"
-msgstr ""
+msgstr "Ιδιωτικό κλειδί SSH - Cacti 1.2.31+"
 
 #: includes/arrays.php
 msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
-msgstr ""
+msgstr "Ιδιωτικό κλειδί SSH - Μπορεί να χρησιμοποιηθεί για δοκιμή SCP ή εντολής SSH. Αυτές οι δοκιμές μπορούν επίσης να χρησιμοποιήσουν όνομα χρήστη/κωδικό πρόσβασης"
 
 #: includes/arrays.php
 msgid "SSH private key passphrase"
-msgstr ""
+msgstr "Φράση πρόσβασης ιδιωτικού κλειδιού SSH"
 
 #: includes/arrays.php
 msgid "SSH user"
-msgstr ""
+msgstr "Χρήστης SSH"
 
 #: includes/arrays.php
 msgid "SSL Client Certificate required."
@@ -1292,33 +1245,31 @@ msgstr "Δείτε Άλλα"
 
 #: includes/arrays.php
 msgid "Select correct Credential type."
-msgstr ""
+msgstr "Επιλέξτε σωστό τύπο διαπιστευτηρίων."
 
 #: includes/arrays.php
 msgid "Select correct credential"
-msgstr ""
+msgstr "Επιλέξτε σωστό διαπιστευτήριο"
 
 #: includes/arrays.php
 msgid "Select correct credential or left empty."
-msgstr ""
+msgstr "Επιλέξτε σωστό διαπιστευτήριο ή αφήστε το κενό."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Service Check Name"
-msgstr "Όνομα υπηρεσίας ελέγχου"
+msgstr "Όνομα ελέγχου υπηρεσίας"
 
 #: includes/arrays.php
 msgid "Service Unavailable"
 msgstr "Η υπηρεσία δεν είναι διαθέσιμη"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Service settings"
-msgstr "Γενικές Ρυθμίσεις"
+msgstr "Ρυθμίσεις υπηρεσίας"
 
 #: includes/arrays.php
 msgid "Set according to your REST API server"
-msgstr ""
+msgstr "Ορίστε σύμφωνα με τον διακομιστή REST API σας"
 
 #: includes/arrays.php
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
@@ -1349,13 +1300,12 @@ msgid "TFTP protocol - download file, default port 69"
 msgstr "Πρωτόκολλο TFTP - λήψη αρχείου, προεπιλεγμένη θύρα 69"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Temporary Redirect"
-msgstr "Ανακατεύθυνση"
+msgstr "Προσωρινή ανακατεύθυνση"
 
 #: includes/arrays.php
 msgid "Test every xth poller run"
-msgstr ""
+msgstr "Δοκιμή κάθε x-οστή εκτέλεση Poller"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Tests"
@@ -1374,19 +1324,16 @@ msgid "The FTP server does not understand the PRET command at all or does not su
 msgstr "Ο διακομιστής FTP δεν κατανοεί καθόλου την εντολή PRET ή δεν υποστηρίζει το συγκεκριμένο όρισμα. Να είστε προσεκτικοί όταν χρησιμοποιείτε CURLOPT_CUSTOMREQUEST, μια προσαρμοσμένη εντολή LIST αποστέλλεται με την εντολή PRET πριν από το PASV επίσης. (Προστέθηκε στο 7.20.0)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The HTTP Proxy Port."
 msgstr "Η θύρα διακομιστή μεσολάβησης HTTP."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The HTTPS Proxy Port."
 msgstr "Η θύρα διακομιστή μεσολάβησης HTTPS."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The Proxy Hostname."
-msgstr "Το όνομα κεντρικού υπολογιστή διακομιστή μεσολάβησης."
+msgstr "Το όνομα κεντρικού υπολογιστή του διακομιστή μεσολάβησης."
 
 #: includes/arrays.php
 msgid "The URL was not properly formatted."
@@ -1401,18 +1348,16 @@ msgid "The download could not be resumed because the specified offset was out of
 msgstr "Δεν ήταν δυνατή η συνέχιση της λήψης, επειδή η καθορισμένη μετατόπιση ήταν εκτός του ορίου του αρχείου."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The name that is displayed for this Credential."
-msgstr "Το όνομα που εμφανίζεται για αυτόν τον έλεγχο υπηρεσίας και περιλαμβάνεται σε όλες τις ειδοποιήσεις ειδοποιήσεων."
+msgstr "Το όνομα που εμφανίζεται για αυτό το διαπιστευτήριο."
 
 #: includes/arrays.php
 msgid "The name that is displayed for this Rest API."
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
-msgstr "Το όνομα που εμφανίζεται για αυτόν τον έλεγχο υπηρεσίας και περιλαμβάνεται σε όλες τις ειδοποιήσεις ειδοποιήσεων."
+msgstr "Το όνομα που εμφανίζεται για αυτόν τον έλεγχο υπηρεσίας και περιλαμβάνεται σε τυχόν ειδοποιήσεις συναγερμού."
 
 #: includes/arrays.php
 msgid "The remote server denied curl to login (Added in 7.13.1)"
@@ -1428,7 +1373,7 @@ msgstr "Ο πόρος που αναφέρεται στη διεύθυνση URL 
 
 #: includes/arrays.php
 msgid "The same as HTTP plaintext but adds the ability to test certificates."
-msgstr ""
+msgstr "Το ίδιο με το απλό κείμενο HTTP, αλλά προσθέτει τη δυνατότητα ελέγχου πιστοποιητικών."
 
 #: includes/arrays.php
 msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS."
@@ -1459,9 +1404,8 @@ msgid "This error should never be returned by a properly functioning TFTP server
 msgstr "Αυτό το σφάλμα δεν πρέπει ποτέ να επιστρέφεται από έναν εξυπηρετητή TFTP που λειτουργεί σωστά."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is a listing of accounts that will be notified when this service goes down."
-msgstr "Πρόκειται για μια λίστα λογαριασμών που θα ειδοποιούνται όταν ο ιστότοπος αυτός κατεβαίνει."
+msgstr "Αυτή είναι μια λίστα λογαριασμών που θα ειδοποιούνται όταν αυτή η υπηρεσία καταστεί ανενεργή."
 
 #: includes/arrays.php
 msgid "This is an odd error that mainly occurs due to internal confusion."
@@ -1472,24 +1416,20 @@ msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server r
 msgstr "Αυτό επιστρέφεται εάν CURLOPT_FAILONERROR έχει οριστεί true και ο διακομιστής HTTP επιστρέφει έναν κωδικό σφάλματος που είναι >= 400."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the format to use when sending the notification email"
-msgstr "Αυτή είναι η μορφή που πρέπει να χρησιμοποιείτε κατά την αποστολή του email ειδοποίησης"
+msgstr "Αυτή είναι η μορφή που θα χρησιμοποιείται κατά την αποστολή του email ειδοποίησης"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
-msgstr "Αυτή είναι η συμβολοσειρά για να αναζητήσετε μια γνωστή αποτυχία στην απάντηση υπηρεσίας Web. Ο έλεγχος υπηρεσίας θα ειδοποιεί μόνο εάν αυτή η συμβολοσειρά βρίσκεται, αγνοώντας τυχόν προβλήματα χρονικού ορίου και τις παραπάνω συμβολοσειρές αναζήτησης."
+msgstr "Αυτή είναι η συμβολοσειρά αναζήτησης για μια γνωστή αποτυχία στην απόκριση της υπηρεσίας. Ο έλεγχος υπηρεσίας θα ειδοποιεί μόνο εάν βρεθεί αυτή η συμβολοσειρά, αγνοώντας τυχόν ζητήματα λήξης χρονικού ορίου και τις παραπάνω συμβολοσειρές αναζήτησης."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for in the response for a live and working service."
-msgstr "Αυτή είναι η συμβολοσειρά που αναζητά στην απάντηση URL για μια υπηρεσία Web Live και Work."
+msgstr "Αυτή είναι η συμβολοσειρά αναζήτησης στην απόκριση για μια ενεργή και λειτουργική υπηρεσία."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
-msgstr "Αυτή είναι η συμβολοσειρά που θέλετε να αναζητήσετε στη σελίδα συντήρησης. Ο έλεγχος υπηρεσίας θα ελέγξει για αυτήν την συμβολοσειρά αν δεν βρέθηκε η παραπάνω συμβολοσειρά. Αν βρεθεί, σημαίνει ότι η υπηρεσία Web βρίσκεται υπό συντήρηση."
+msgstr "Αυτή είναι η συμβολοσειρά αναζήτησης κατά τη Συντήρηση. Ο έλεγχος υπηρεσίας θα ελέγξει για αυτή τη συμβολοσειρά εάν δεν βρεθεί η παραπάνω συμβολοσειρά. Εάν βρεθεί, σημαίνει ότι η υπηρεσία βρίσκεται υπό συντήρηση."
 
 #: includes/arrays.php
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
@@ -1497,11 +1437,11 @@ msgstr "Αυτή ήταν είτε μια περίεργη απάντηση σε
 
 #: includes/arrays.php
 msgid "Token name"
-msgstr ""
+msgstr "Όνομα διακριτικού (token)"
 
 #: includes/arrays.php
 msgid "Token value"
-msgstr ""
+msgstr "Τιμή διακριτικού (token)"
 
 #: includes/arrays.php
 msgid "Token/API Key name"
@@ -1517,27 +1457,27 @@ msgstr "Ενεργοποίηση"
 
 #: includes/arrays.php
 msgid "Try DNS over HTTPS."
-msgstr ""
+msgstr "Δοκιμή DNS over HTTPS."
 
 #: includes/arrays.php
 msgid "Try SMB protocol, username and password are required. Try to login and download file."
-msgstr ""
+msgstr "Δοκιμή πρωτοκόλλου SMB· απαιτούνται όνομα χρήστη και κωδικός πρόσβασης. Προσπάθεια σύνδεσης και λήψης αρχείου."
 
 #: includes/arrays.php
 msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
-msgstr ""
+msgstr "Δοκιμή μεθόδου SNMP get. Επιστρέφεται η έξοδος για το καθορισμένο OID. Απαιτείται διαπιστευτήριο· πρέπει πρώτα να προετοιμάσετε διαπιστευτήριο SNMP v.1,2 ή v3."
 
 #: includes/arrays.php
 msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
-msgstr ""
+msgstr "Δοκιμή μεθόδου SNMP walk. Επιστρέφεται η έξοδος για το καθορισμένο OID. Απαιτείται διαπιστευτήριο· πρέπει πρώτα να προετοιμάσετε διαπιστευτήριο SNMP v.1,2 ή v3."
 
 #: includes/arrays.php
 msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
-msgstr ""
+msgstr "Προσπάθεια λήψης του αρχείου που καθορίζεται στη διαδρομή (/path/to/file.txt) από διακομιστή TFTP. Επιστρέφεται το περιεχόμενο του αρχείου."
 
 #: includes/arrays.php
 msgid "Try to resolve DNS record on specified DNS server"
-msgstr ""
+msgstr "Προσπάθεια επίλυσης εγγραφής DNS στον καθορισμένο διακομιστή DNS"
 
 #: includes/arrays.php
 msgid "Type of service"
@@ -1545,16 +1485,15 @@ msgstr "Είδος υπηρεσίας"
 
 #: includes/arrays.php
 msgid "URL to retrieve data. Insert with http:// or https://"
-msgstr ""
+msgstr "URL για ανάκτηση δεδομένων. Εισαγάγετε με http:// ή https://"
 
 #: includes/arrays.php
 msgid "URL which is used to log in or get the token."
-msgstr ""
+msgstr "URL που χρησιμοποιείται για σύνδεση ή λήψη του διακριτικού (token)."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Unable to Connect"
-msgstr "Ενεργοποίηση διακομιστή"
+msgstr "Αδυναμία σύνδεσης"
 
 #: includes/arrays.php
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
@@ -1565,9 +1504,8 @@ msgid "Unauthorized"
 msgstr "Μη εξουσιοδοτημένος"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Uncheck this box to disable this test from being checked."
-msgstr "Καταργήστε την επιλογή αυτού του πλαισίου για να απενεργοποιηθεί αυτή η διεύθυνση URL."
+msgstr "Αποεπιλέξτε αυτό το πλαίσιο για να απενεργοποιήσετε τον έλεγχο αυτής της δοκιμής."
 
 #: includes/arrays.php
 msgid ""
@@ -1606,18 +1544,16 @@ msgid "Unsupported Media Type"
 msgstr "Μη υποστηριζόμενος τύπος μέσου"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Use Proxy"
-msgstr "Νέος διακομιστής μεσολάβησης"
+msgstr "Χρήση διακομιστή μεσολάβησης"
 
 #: includes/arrays.php
 msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
-msgstr ""
+msgstr "Χρήση ssh και σύνδεση σε απομακρυσμένο κεντρικό υπολογιστή. Μετά τη σύνδεση εκτελείται η καθορισμένη εντολή και επιστρέφεται η έξοδος. Είναι δυνατή η χρήση ονόματος χρήστη και κωδικού πρόσβασης ή ιδιωτικού κλειδιού."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Use this Notification List for those to be notified when this service goes down."
-msgstr "Πρόκειται για μια λίστα λογαριασμών που θα ειδοποιούνται όταν ο ιστότοπος αυτός κατεβαίνει."
+msgstr "Χρησιμοποιήστε αυτή τη λίστα ειδοποιήσεων για όσους πρέπει να ειδοποιούνται όταν αυτή η υπηρεσία τεθεί εκτός λειτουργίας."
 
 #: includes/arrays.php
 msgid "Username"
@@ -1625,16 +1561,15 @@ msgstr "Όνομα Χρήστη"
 
 #: includes/arrays.php
 msgid "Username and password"
-msgstr ""
+msgstr "Όνομα χρήστη και κωδικός πρόσβασης"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Verification Strings"
 msgstr "Συμβολοσειρές επαλήθευσης"
 
 #: includes/arrays.php
 msgid "Warning"
-msgstr ""
+msgstr "Προσοχή"
 
 #: includes/arrays.php
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
@@ -1662,21 +1597,19 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
-msgstr ""
+msgstr "Μπορείτε να καθορίσετε άλλη θύρα (example.com:5000), διαφορετικά θα χρησιμοποιηθεί η προεπιλεγμένη. Για αριθμητική διεύθυνση IPv6 χρησιμοποιήστε [ip:ad:dr:es:fo:rma:at]. Για DOH (DNS over HTTPS) χρησιμοποιήστε εδώ το όνομα του διακομιστή (παράδειγμα 10.10.10.10, cloudflare-dns.com, ..)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
-msgstr "Μπορείτε να ορίσετε επιπλέον μηνύματα ηλεκτρονικού ταχυδρομείου για να λαμβάνετε ειδοποιήσεις για αυτήν τη διεύθυνση URL (διαχωρισμένα με κόμμα)"
+msgstr "Μπορείτε να ορίσετε εδώ επιπλέον διευθύνσεις email για τη λήψη ειδοποιήσεων για αυτή τη δοκιμή (διαχωρισμένες με κόμμα)"
 
 #: includes/arrays.php
 msgid "Your own CA and intermediate certs"
 msgstr "Η δική σας CA και τα ενδιάμεσα πιστοποιητικά"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "[None]"
-msgstr "Κανένα"
+msgstr "[Κανένα]"
 
 #: includes/arrays.php
 msgid "problem with the local client certificate."
@@ -1687,24 +1620,21 @@ msgid "Graphs"
 msgstr "Γραφήματα"
 
 #: includes/functions.php
-#, fuzzy
 msgid "Log History"
-msgstr "Προβολή Ιστορικού"
+msgstr "Ιστορικό καταγραφής"
 
 #: includes/functions.php
-#, fuzzy
 msgid "No data"
-msgstr "Ανεπεξέργαστη πηγή"
+msgstr "Δεν υπάρχουν δεδομένα"
 
 #: servcheck_ca.php
-#, fuzzy, php-format
+#, php-format
 msgid "CA [edit: %s]"
-msgstr "Ερώτημα [επεξεργασία: %s]"
+msgstr "CA [επεξεργασία: %s]"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "CA [new]"
-msgstr "Ερώτημα [νέο]"
+msgstr "CA [νέο]"
 
 #: servcheck_ca.php
 msgid "CAs"
@@ -1723,7 +1653,7 @@ msgstr "Καθαρισμός"
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Clear Filters"
-msgstr ""
+msgstr "Καθαρισμός Φίλτρων"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
@@ -1745,11 +1675,10 @@ msgstr "Διαγραφή"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
-#, fuzzy
 msgid "Delete item"
 msgid_plural "Delete items"
-msgstr[0] "WebServer Servers"
-msgstr[1] "WebServer Servers"
+msgstr[0] "Διαγραφή στοιχείου"
+msgstr[1] "Διαγραφή στοιχείων"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1757,9 +1686,8 @@ msgid "Go"
 msgstr "Πήγαινε"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "No Certificates Found"
-msgstr "Δεν βρέθηκαν διακομιστές"
+msgstr "Δεν βρέθηκαν πιστοποιητικά"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1767,92 +1695,83 @@ msgid "Search"
 msgstr "Αναζήτηση"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "Servcheck CA Management"
-msgstr "Διαχείριση διακομιστή WebSEer"
+msgstr "Διαχείριση CA Servcheck"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Set/Refresh Filters"
-msgstr ""
+msgstr "Ορισμός/Ανανέωση φίλτρων"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 msgid "Used"
 msgstr "Μεταχειρισμένο"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Click 'Continue' to Duplicate the following Credential."
-msgid_plural "Click 'Continue' to Duplicate following Credential."
-msgstr[0] "Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τον ακόλουθο διακομιστή μεσολάβησης."
-msgstr[1] "Κάντε κλικ στο «Συνέχεια» για να διαγράψετε τους ακόλουθους διακομιστές μεσολάβησης."
+msgid_plural "Click 'Continue' to Duplicate the following Credentials."
+msgstr[0] "Κάντε κλικ στο 'Συνέχεια' για να αντιγράψετε το ακόλουθο διαπιστευτήριο."
+msgstr[1] "Κάντε κλικ στο 'Συνέχεια' για να αντιγράψετε τα ακόλουθα διαπιστευτήρια."
 
 #: servcheck_credential.php
-#, fuzzy, php-format
+#, php-format
 msgid "Credential [edit: %s]"
-msgstr "Ερώτημα [επεξεργασία: %s]"
+msgstr "Διαπιστευτήριο [επεξεργασία: %s]"
 
 #: servcheck_credential.php
 msgid "Credential [new]"
-msgstr ""
+msgstr "Διαπιστευτήριο [νέο]"
 
 #: servcheck_credential.php
 msgid "Credentials"
-msgstr ""
+msgstr "Διαπιστευτήρια"
 
 #: servcheck_credential.php servcheck_restapi.php servcheck_test.php
 msgid "Duplicate"
 msgstr "Αντιγραφή"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Duplicate Credential"
-msgid_plural "Duplicate Credential"
-msgstr[0] "Αντιγραφή"
-msgstr[1] "Αντιγραφή"
+msgid_plural "Duplicate Credentials"
+msgstr[0] "Αντιγραφή διαπιστευτηρίου"
+msgstr[1] "Αντιγραφή διαπιστευτηρίων"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "No Credentials Found"
-msgstr "Δεν βρέθηκαν διακομιστές"
+msgstr "Δεν βρέθηκαν διαπιστευτήρια"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Servcheck Credential Management"
-msgstr "Διαχείριση διακομιστή WebSEer"
+msgstr "Διαχείριση διαπιστευτηρίων Servcheck"
 
 #: servcheck_credential.php servcheck_restapi.php
 msgid "Type"
-msgstr ""
+msgstr "Τύπος"
 
 #: servcheck_curl_code.php
 msgid "No error codes"
 msgstr "Δεν υπάρχουν κωδικοί σφάλματος"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "No Proxies Found"
-msgstr "Δεν βρέθηκαν διακομιστές"
+msgstr "Δεν βρέθηκαν διακομιστές μεσολάβησης"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Ports (http/https)"
-msgstr "Θύρες (http / https)"
+msgstr "Θύρες (http/https)"
 
 #: servcheck_proxy.php
-#, fuzzy, php-format
+#, php-format
 msgid "Proxy [edit: %s]"
-msgstr "Ερώτημα [επεξεργασία: %s]"
+msgstr "Διακομιστής μεσολάβησης [επεξεργασία: %s]"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Proxy [new]"
-msgstr "Ερώτημα [νέο]"
+msgstr "Διακομιστής μεσολάβησης [νέος]"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Servcheck Proxy Management"
-msgstr "Διαχείριση διακομιστή WebSEer"
+msgstr "Διαχείριση διακομιστή μεσολάβησης Servcheck"
 
 #: servcheck_restapi.php servcheck_test.php
 msgid "Any"
@@ -1917,36 +1836,32 @@ msgid "All"
 msgstr "Όλα"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "All Users Selected"
 msgstr "Όλοι οι χρήστες έχουν επιλεγεί"
 
 #: servcheck_test.php
 msgid "Attempt"
-msgstr ""
+msgstr "Προσπάθεια"
 
 #: servcheck_test.php
 msgid "CPU u/CPU s/Memory"
-msgstr ""
+msgstr "CPU u/CPU s/Μνήμη"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Certificate"
-msgstr "Ελέγξτε το πιστοποιητικό"
+msgstr "Πιστοποιητικό"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Checks"
 msgstr "Έλεγχοι"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Clear log"
-msgstr "Καθαρισμός"
+msgstr "Εκκαθάριση αρχείου καταγραφής"
 
 #: servcheck_test.php
 msgid "Clear statistics"
-msgstr ""
+msgstr "Εκκαθάριση στατιστικών"
 
 #: servcheck_test.php
 #, fuzzy
@@ -1985,65 +1900,57 @@ msgstr[1] "Κάντε κλικ στο «Συνέχεια» για να διαγ�
 
 #: servcheck_test.php
 msgid "Curl"
-msgstr ""
+msgstr "Curl"
 
 #: servcheck_test.php
 msgid "Date"
 msgstr "Ημερομηνία"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Date Search"
-msgstr "Αναζήτηση"
+msgstr "Αναζήτηση ημερομηνίας"
 
 #: servcheck_test.php
 msgid "Disable"
 msgstr "Απενεργοποίηση"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable Service Check"
-msgstr "Ενεργοποίηση ελέγχου υπηρεσίας"
+msgstr "Απενεργοποίηση ελέγχου υπηρεσίας"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable item"
 msgid_plural "Disable items"
-msgstr[0] "Απενεργοποίηση"
-msgstr[1] "Απενεργοποίηση"
+msgstr[0] "Απενεργοποίηση στοιχείου"
+msgstr[1] "Απενεργοποίηση στοιχείων"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duplicate item"
 msgid_plural "Duplicate items"
-msgstr[0] "Αντιγραφή"
-msgstr[1] "Αντιγραφή"
+msgstr[0] "Αντιγραφή στοιχείου"
+msgstr[1] "Αντιγραφή στοιχείων"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duration"
-msgstr "Τοποθεσία"
+msgstr "Διάρκεια"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Edit Service Check"
-msgstr "Ενεργοποίηση ελέγχου υπηρεσίας"
+msgstr "Επεξεργασία ελέγχου υπηρεσίας"
 
 #: servcheck_test.php
 msgid "Enable"
 msgstr "Ενεργοποίηση"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable Service Check"
 msgstr "Ενεργοποίηση ελέγχου υπηρεσίας"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable item"
 msgid_plural "Enable items"
-msgstr[0] "Ενεργοποίηση διακομιστή"
-msgstr[1] "Ενεργοποίηση διακομιστή"
+msgstr[0] "Ενεργοποίηση στοιχείου"
+msgstr[1] "Ενεργοποίηση στοιχείων"
 
 #: servcheck_test.php
 msgid "Entries"
@@ -2052,16 +1959,15 @@ msgstr "Εγγραφές"
 #: servcheck_test.php
 #, php-format
 msgid "Expired %s days ago"
-msgstr ""
+msgstr "Έληξε πριν από %s ημέρες"
 
 #: servcheck_test.php
 msgid "Insufficient data, wait a few poller cycles"
-msgstr ""
+msgstr "Ανεπαρκή δεδομένα, περιμένετε μερικούς κύκλους του Poller"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Last Check (attempt)"
-msgstr "Τελευταία Έλεγχος"
+msgstr "Τελευταίος έλεγχος (προσπάθεια)"
 
 #: servcheck_test.php
 msgid "Last returned data of test"
@@ -2069,23 +1975,21 @@ msgstr "Τελευταία δεδομένα δοκιμής που επιστρά
 
 #: servcheck_test.php
 msgid "Logs"
-msgstr ""
+msgstr "Αρχεία καταγραφής"
 
 #: servcheck_test.php
 msgid "N/A (N/A)"
-msgstr ""
+msgstr "Μ/Δ (Μ/Δ)"
 
 #: servcheck_test.php
 msgid "No"
 msgstr "Όχι"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Service Checks Found"
-msgstr "Δεν βρέθηκαν διακομιστές"
+msgstr "Δεν βρέθηκαν έλεγχοι υπηρεσιών"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Users Selected"
 msgstr "Δεν έχουν επιλεγεί χρήστες"
 
@@ -2103,21 +2007,19 @@ msgstr "Αποτέλεσμα"
 
 #: servcheck_test.php
 msgid "Ret. data size"
-msgstr ""
+msgstr "Μέγεθος επιστρ. δεδομένων"
 
 #: servcheck_test.php
 msgid "Search result"
 msgstr "Αποτέλεσμα αναζήτησης"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Servcheck Test Management"
-msgstr "Διαχείριση διακομιστή WebSEer"
+msgstr "Διαχείριση δοκιμών Servcheck"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Service Check History"
-msgstr "Έλεγχοι υπηρεσίας Web"
+msgstr "Ιστορικό ελέγχου υπηρεσιών"
 
 #: servcheck_test.php
 msgid "State"
@@ -2128,14 +2030,13 @@ msgid "Stats (OK/problem)"
 msgstr "Στατιστικά (OK/πρόβλημα)"
 
 #: servcheck_test.php
-#, fuzzy, php-format
+#, php-format
 msgid "Test [edit: %s]"
-msgstr "Ερώτημα [επεξεργασία: %s]"
+msgstr "Δοκιμή [επεξεργασία: %s]"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Test [new]"
-msgstr "Ερώτημα [νέο]"
+msgstr "Δοκιμή [νέα]"
 
 #: servcheck_test.php
 #, php-format
@@ -2143,14 +2044,12 @@ msgid "The Service Check history was purged for %s"
 msgstr "Το ιστορικό του Service Check εκκαθαρίστηκε για %s"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Triggered"
-msgstr "Ξεκίνησε"
+msgstr "Ενεργοποιημένο"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Users Selected"
-msgstr "Οι χρήστες επιλέχθηκαν"
+msgstr "Επιλεγμένοι χρήστες"
 
 #: servcheck_test.php
 msgid "View Graph"
@@ -2161,9 +2060,8 @@ msgid "View Last returned data"
 msgstr "Προβολή δεδομένων που επιστράφηκαν τελευταία"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "View Service Check History"
-msgstr "Έλεγχοι υπηρεσίας Web"
+msgstr "Προβολή ιστορικού ελέγχου υπηρεσίας"
 
 #: servcheck_test.php
 msgid "Yes"
@@ -2171,7 +2069,7 @@ msgstr "Ναι"
 
 #: servcheck_test.php
 msgid "days"
-msgstr ""
+msgstr "ημέρες"
 
 #: setup.php
 #, php-format
@@ -2181,7 +2079,7 @@ msgstr "%d Διαδικασίες"
 #: setup.php
 #, php-format
 msgid "%d days"
-msgstr ""
+msgstr "%d ημέρες"
 
 #: setup.php
 #, php-format
@@ -2194,33 +2092,32 @@ msgid "%d year"
 msgstr "%d Έτος"
 
 #: setup.php
-#, fuzzy
 msgid "1 Process"
-msgstr "WebServer Servers"
+msgstr "1 Διαδικασία"
 
 #: setup.php
 msgid "1 week in advance"
-msgstr ""
+msgstr "1 εβδομάδα νωρίτερα"
 
 #: setup.php
 msgid "3 days in advance"
-msgstr ""
+msgstr "3 ημέρες νωρίτερα"
 
 #: setup.php
 msgid "3 weeks in advance"
-msgstr ""
+msgstr "3 εβδομάδες νωρίτερα"
 
 #: setup.php
 msgid "30 days in advance"
-msgstr ""
+msgstr "30 ημέρες νωρίτερα"
 
 #: setup.php
 msgid "60 days in advance"
-msgstr ""
+msgstr "60 ημέρες νωρίτερα"
 
 #: setup.php
 msgid "90 days in advance"
-msgstr ""
+msgstr "90 ημέρες νωρίτερα"
 
 #: setup.php
 msgid "CA"
@@ -2232,51 +2129,51 @@ msgstr "CA Επεξεργασία"
 
 #: setup.php
 msgid "Certificate expiry date advanced notification email"
-msgstr ""
+msgstr "Email έγκαιρης ειδοποίησης ημερομηνίας λήξης πιστοποιητικού"
 
 #: setup.php
 msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
-msgstr ""
+msgstr "Η επιλογή αυτού του πλαισίου θα ενεργοποιήσει τη δυνατότητα εκτέλεσης εντολών σε συμβάντα Servcheck. Μπορείτε να την ενεργοποιείτε ή να την απενεργοποιείτε για κάθε έλεγχο."
 
 #: setup.php
 msgid "Concurrent Check Processes"
-msgstr ""
+msgstr "Ταυτόχρονες διεργασίες ελέγχου"
 
 #: setup.php
 msgid "Credential Edit"
-msgstr ""
+msgstr "Επεξεργασία διαπιστευτηρίου"
 
 #: setup.php
 msgid "Credential Save"
-msgstr ""
+msgstr "Αποθήκευση διαπιστευτηρίου"
 
 #: setup.php
 msgid "Enable Command Execution"
-msgstr ""
+msgstr "Ενεργοποίηση εκτέλεσης εντολών"
 
 #: setup.php
 msgid "Enter the period after which older logs will be automatically deleted."
-msgstr ""
+msgstr "Εισαγάγετε την περίοδο μετά την οποία τα παλαιότερα αρχεία καταγραφής θα διαγράφονται αυτόματα."
 
 #: setup.php
 msgid "HTTP/HTTPS Check Settings"
-msgstr ""
+msgstr "Ρυθμίσεις ελέγχου HTTP/HTTPS"
 
 #: setup.php
 msgid "How long to keep logs"
-msgstr ""
+msgstr "Για πόσο χρόνο να διατηρούνται τα αρχεία καταγραφής"
 
 #: setup.php
 msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
-msgstr ""
+msgstr "Εάν είναι ενεργοποιημένος ο έλεγχος λήξης πιστοποιητικού υπηρεσίας SSL/TLS, ορίστε πόσες ημέρες πριν από την ημερομηνία λήξης του πιστοποιητικού θα αποστέλλει ειδοποίηση το σύστημα"
 
 #: setup.php
 msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
-msgstr ""
+msgstr "Εάν επιλεγεί, το servcheck δεν θα αποστέλλει κανένα email. Μπορείτε επίσης να απενεργοποιήσετε τις ειδοποιήσεις μόνο για συγκεκριμένους ελέγχους"
 
 #: setup.php
 msgid "If checked, this will cause all Emails to be sent separately for each address."
-msgstr ""
+msgstr "Εάν επιλεγεί, όλα τα email θα αποστέλλονται ξεχωριστά για κάθε διεύθυνση."
 
 #: setup.php
 msgid "Management"
@@ -2284,16 +2181,15 @@ msgstr "Διοίκηση"
 
 #: setup.php
 msgid "Maximum test duration in seconds"
-msgstr ""
+msgstr "Μέγιστη διάρκεια δοκιμής σε δευτερόλεπτα"
 
 #: setup.php
 msgid "Never"
-msgstr ""
+msgstr "Ποτέ"
 
 #: setup.php
-#, fuzzy
 msgid "Notification Preferences"
-msgstr "Ρυθμίσεις ειδοποιήσεων"
+msgstr "Προτιμήσεις ειδοποιήσεων"
 
 #: setup.php
 #, fuzzy
@@ -2309,82 +2205,197 @@ msgid "Save CA"
 msgstr "Αποθήκευση CA"
 
 #: setup.php
-#, fuzzy
 msgid "Save Web Proxy"
-msgstr "Νέος διακομιστής μεσολάβησης"
+msgstr "Αποθήκευση διακομιστή μεσολάβησης Web"
 
 #: setup.php
 msgid "Send Email separately for each address"
-msgstr ""
+msgstr "Αποστολή email ξεχωριστά για κάθε διεύθυνση"
 
 #: setup.php
-#, fuzzy
 msgid "Servcheck"
-msgstr "Έλεγχοι υπηρεσίας Web"
+msgstr "Servcheck"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Admin"
-msgstr "Web Service Check Admin"
+msgstr "Διαχείριση ελέγχου υπηρεσιών"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Edit"
 msgstr "Επεξεργασία ελέγχου υπηρεσίας"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Save"
-msgstr "Όνομα υπηρεσίας ελέγχου"
+msgstr "Αποθήκευση ελέγχου υπηρεσίας"
 
 #: setup.php
-#, fuzzy
 msgid "Service Checker"
-msgstr "Όνομα υπηρεσίας ελέγχου"
+msgstr "Ελεγκτής υπηρεσιών"
 
 #: setup.php
-#, fuzzy
 msgid "Service Checks"
-msgstr "Έλεγχοι υπηρεσίας Web"
+msgstr "Έλεγχοι υπηρεσιών"
 
 #: setup.php
 msgid "Status Change Command"
-msgstr ""
+msgstr "Εντολή αλλαγής κατάστασης"
 
 #: setup.php
 msgid "Stop sending all notification"
-msgstr ""
+msgstr "Διακοπή αποστολής όλων των ειδοποιήσεων"
 
 #: setup.php
 msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
-msgstr ""
+msgstr "Η συμβολοσειρά User-Agent που αποστέλλεται με τους ελέγχους υπηρεσιών HTTP/HTTPS και άλλους ελέγχους που βασίζονται στο cURL. Ορισμένοι ιστότοποι αποκλείουν παλαιά ή ασυνήθιστα προγράμματα περιήγησης, οπότε μπορείτε να ορίσετε εδώ ένα τρέχον User-Agent. Αφήστε το κενό για χρήση της ενσωματωμένης προεπιλογής."
 
 #: setup.php
 msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
-msgstr ""
+msgstr "Η προεπιλεγμένη τιμή για ελέγχους όπου δεν είναι ενεργοποιημένος ο έλεγχος χρόνου εκτέλεσης. Εάν είναι ενεργοποιημένος, η μέγιστη διάρκεια υπολογίζεται ως το όριο διάρκειας + 2 δευτερόλεπτα."
 
 #: setup.php
 msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
-msgstr ""
+msgstr "Ο αριθμός των διεργασιών ελέγχου υπηρεσιών που θα εκτελούνται ταυτόχρονα. Δεν συνιστάται η αύξηση αυτού του αριθμού στο 2πλάσιο του αριθμού των πυρήνων."
 
 #: setup.php
-#, fuzzy
 msgid "User Agent"
-msgstr "Όνομα Χρήστη"
+msgstr "User Agent"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy"
-msgstr "WebServer Servers"
+msgstr "Διακομιστής μεσολάβησης Web"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy Edit"
-msgstr "Πληρεξούσιοι"
+msgstr "Επεξεργασία διακομιστή μεσολάβησης Web"
 
 #: setup.php
 msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
-msgstr ""
+msgstr "Όταν ένας βασικός έλεγχος, έλεγχος αναζήτησης ή έλεγχος λήξης πιστοποιητικού επιστρέφει διαφορετικό αποτέλεσμα, εκτελέστε την ακόλουθη εντολή... Αυτή η εντολή ΔΕΝ πρέπει να περιλαμβάνει ορίσματα γραμμής εντολών... Ωστόσο, οι ακόλουθες μεταβλητές μπορούν να ληφθούν από το περιβάλλον του σεναρίου:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+
+#: includes/arrays.php
+msgid "<b>Can be used for a lot of service checks:</b><br/><i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/><i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/><i>LDAP, smb, smbs</i> - required<br/><i>MQTT</i> - optional<br/><i>SCP, SSH command</i> - you can use this method or private key method"
+msgstr "<b>Μπορεί να χρησιμοποιηθεί για πολλούς ελέγχους υπηρεσιών:</b><br/><i>Http/https</i> - προαιρετικό, όταν έχει οριστεί, δοκιμάζει βασικό έλεγχο ταυτότητας HTTP<br/><i>SMTP στη θύρα 587</i> - προαιρετικό. Χωρίς όνομα χρήστη/κωδικό πρόσβασης, ελέγχεται μόνο η απόκριση του διακομιστή. Με όνομα χρήστη και κωδικό πρόσβασης, εκτελείται και σύνδεση<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - προαιρετικό. Για ανώνυμο ftp, χρησιμοποιήστε όνομα χρήστη \"anonymous\" και διεύθυνση email ως κωδικό πρόσβασης<br/><i>LDAP, smb, smbs</i> - απαιτείται<br/><i>MQTT</i> - προαιρετικό<br/><i>Εντολή SCP, SSH</i> - μπορείτε να χρησιμοποιήσετε αυτή τη μέθοδο ή τη μέθοδο ιδιωτικού κλειδιού"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue). For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). For POST <i>api_key</i> is usually used."
+msgstr "Rest API - Έλεγχος ταυτότητας με κλειδί API<br/>Ο έλεγχος ταυτότητας αποστέλλεται σε κεφαλίδα HTTP, προσαρμοσμένη κεφαλίδα ή μέθοδο POST. Τα διαπιστευτήρια στο URL δεν υποστηρίζονται.<br/>Εισαγάγετε το όνομα και την τιμή του κλειδιού API. Απαιτούνται και οι δύο τιμές. Για κεφαλίδα HTTP χρησιμοποιείται συνήθως το όνομα <i>Bearer ή apikey ή \"\"</i> (Authorization: Bearer apivalue). Για προσαρμοσμένη κεφαλίδα χρησιμοποιείται συνήθως το <i>X-API-Key</i> (X-Api-Key: keyvalue). Για POST χρησιμοποιείται συνήθως το <i>api_key</i>."
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded."
+msgstr "Rest API - Έλεγχος ταυτότητας OAuth2/Bearer token<br/>Μπορείτε να λάβετε κλειδί/token από τον διακομιστή και να το εισαγάγετε εδώ ή να χρησιμοποιήσετε ροή ελέγχου ταυτότητας με διαπιστευτήρια. Το όνομα χρήστη και ο κωδικός πρόσβασης αποστέλλονται κωδικοποιημένα σε JSON."
+
+#: includes/arrays.php
+msgid "Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, you will see server login banner and ehlo response. With credential, login will be performed"
+msgstr "Μη κρυπτογραφημένη σύνδεση + STARTTLS. Είναι επίσης δυνατός ο έλεγχος της εγκυρότητας του πιστοποιητικού. Χωρίς όνομα χρήστη και κωδικό πρόσβασης, θα δείτε το μήνυμα εισόδου (banner) του διακομιστή και την απόκριση ehlo. Με διαπιστευτήρια, θα πραγματοποιηθεί σύνδεση"
+
+#: includes/arrays.php
+msgid "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password AUTH LOGIN will be tested."
+msgstr "Κρυπτογραφημένη σύνδεση στην προεπιλεγμένη θύρα 465. Είναι επίσης δυνατό να ελεγχθεί η εγκυρότητα του πιστοποιητικού. Με όνομα χρήστη και κωδικό πρόσβασης θα ελεγχθεί το AUTH LOGIN."
+
+#: includes/arrays.php
+msgid "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgstr "Μη κρυπτογραφημένη σύνδεση IMAP. Χωρίς διαπιστευτήρια, θα ελεγχθεί μόνο η σύνδεση. Θα δείτε μόνο το μήνυμα εισόδου (banner). Με διαπιστευτήρια θα ελεγχθεί η σύνδεση και θα γίνει προσπάθεια ανάγνωσης της λίστας μηνυμάτων. Μπορείτε να χρησιμοποιήσετε τη μέθοδο AUTHENTICATE PLAIN ή AUTHENTICATE LOGIN."
+
+#: includes/arrays.php
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Το ίδιο με το μη κρυπτογραφημένο IMAP, αλλά μετά τη σύνδεση χρησιμοποιείται STARTTLS. Είναι επίσης δυνατός ο έλεγχος της εγκυρότητας του πιστοποιητικού μετά το STARTTLS."
+
+#: includes/arrays.php
+msgid "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages"
+msgstr "Μη κρυπτογραφημένη σύνδεση POP3. Χωρίς διαπιστευτήρια, θα ελεγχθεί μόνο η σύνδεση. Θα δείτε μόνο το μήνυμα εισόδου (banner). Με διαπιστευτήρια θα ελεγχθεί η σύνδεση και θα γίνει προσπάθεια ανάγνωσης της λίστας μηνυμάτων"
+
+#: includes/arrays.php
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Το ίδιο με το μη κρυπτογραφημένο POP3, αλλά μετά τη σύνδεση χρησιμοποιείται STARTTLS. Είναι επίσης δυνατός ο έλεγχος της εγκυρότητας του πιστοποιητικού μετά το STARTTLS."
+
+#: includes/arrays.php
+msgid "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content of the file is returned."
+msgstr "Μη κρυπτογραφημένη σύνδεση FTP, σύνδεση και προσπάθεια λήψης του αρχείου που καθορίζεται στη διαδρομή (/path/to/file.txt). Για ανώνυμη σύνδεση χρησιμοποιήστε όνομα χρήστη *anonymous* και μια διεύθυνση email ως κωδικό πρόσβασης. Επιστρέφεται το περιεχόμενο του αρχείου."
+
+#: includes/arrays.php
+msgid "Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\""
+msgstr "Σύνδεση στον διακομιστή MQTT και ακρόαση για οποιοδήποτε μήνυμα. Μπορείτε να καθορίσετε το θέμα (topic) στη Διαδρομή (bedroom/temp), ή να το αφήσετε κενό για οποιοδήποτε θέμα. Για αυτή τη δοκιμή συνιστάται η αύξηση της \"Ειδοποίησης μεγάλης διάρκειας\""
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
+msgstr[0] "Κάντε κλικ στο 'Συνέχεια' για να διαγράψετε το ακόλουθο στοιχείο."
+msgstr[1] "Κάντε κλικ στο 'Συνέχεια' για να διαγράψετε τα ακόλουθα στοιχεία."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
+msgstr[0] "Κάντε κλικ στο 'Συνέχεια' για να απενεργοποιήσετε το ακόλουθο στοιχείο."
+msgstr[1] "Κάντε κλικ στο 'Συνέχεια' για να απενεργοποιήσετε τα ακόλουθα στοιχεία."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
+msgstr[0] "Κάντε κλικ στο 'Συνέχεια' για να ενεργοποιήσετε το ακόλουθο στοιχείο."
+msgstr[1] "Κάντε κλικ στο 'Συνέχεια' για να ενεργοποιήσετε τα ακόλουθα στοιχεία."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
+msgstr[0] "Κάντε κλικ στο 'Συνέχεια' για να αντιγράψετε το ακόλουθο στοιχείο."
+msgstr[1] "Κάντε κλικ στο 'Συνέχεια' για να αντιγράψετε τα ακόλουθα στοιχεία."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear statistics of the following item."
+msgid_plural "Click 'Continue' to clear statistics of the following items."
+msgstr[0] "Κάντε κλικ στο 'Συνέχεια' για να εκκαθαρίσετε τα στατιστικά του ακόλουθου στοιχείου."
+msgstr[1] "Κάντε κλικ στο 'Συνέχεια' για να εκκαθαρίσετε τα στατιστικά των ακόλουθων στοιχείων."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear log of the following item."
+msgid_plural "Click 'Continue' to clear log of the following items."
+msgstr[0] "Κάντε κλικ στο 'Συνέχεια' για να εκκαθαρίσετε το αρχείο καταγραφής του ακόλουθου στοιχείου."
+msgstr[1] "Κάντε κλικ στο 'Συνέχεια' για να εκκαθαρίσετε το αρχείο καταγραφής των ακόλουθων στοιχείων."
+
+#: servcheck_test.php
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: setup.php
+msgid "Certificate expiry notification email interval"
+msgstr "Χρονικό διάστημα αποστολής email ειδοποίησης λήξης πιστοποιητικού"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday"
+msgstr "Εάν είναι ενεργοποιημένος ο έλεγχος λήξης πιστοποιητικού υπηρεσίας SSL/TLS, ορίστε το διάστημα (σε ημέρες) αποστολής της ειδοποίησης μέσω email· ωστόσο, εάν η ημερομηνία λήξης έχει παρέλθει, η ειδοποίηση μέσω email θα αποστέλλεται καθημερινά"
+
+#: setup.php
+msgid "1 day"
+msgstr "1 ημέρα"
+
+#: setup.php
+msgid "3 days"
+msgstr "3 ημέρες"
+
+#: setup.php
+msgid "5 days"
+msgstr "5 ημέρες"
+
+#: setup.php
+msgid "7 days"
+msgstr "7 ημέρες"
+
+#: setup.php
+msgid "10 days"
+msgstr "10 ημέρες"
+
+#: setup.php
+msgid "15 days"
+msgstr "15 ημέρες"
+
+#: setup.php
+msgid "20 days"
+msgstr "20 ημέρες"
+
+#: setup.php
+msgid "30 days"
+msgstr "30 ημέρες"
 
 #, fuzzy
 #~ msgid "%d Minute"
@@ -2608,9 +2619,6 @@ msgstr ""
 
 #~ msgid "Sites"
 #~ msgstr "Ιστοσελίδες"
-
-#~ msgid "Status"
-#~ msgstr "Κατάσταση"
 
 #~ msgid "Test each poller cycle or less"
 #~ msgstr "Δοκιμάστε κάθε κύκλο δημοσκόπησης ή λιγότερο"

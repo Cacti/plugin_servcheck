@@ -54,12 +54,10 @@ msgid ""
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "A Useful Name for this CA chain."
-msgstr "Полезно име за този прокси сървър."
+msgstr "Полезно име за тази CA верига."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "A Useful Name for this Proxy."
 msgstr "Полезно име за този прокси сървър."
 
@@ -97,27 +95,27 @@ msgstr "Исканата функция, протокол или опция не
 
 #: includes/arrays.php
 msgid "AES"
-msgstr ""
+msgstr "AES"
 
 #: includes/arrays.php
 msgid "AES-128"
-msgstr ""
+msgstr "AES-128"
 
 #: includes/arrays.php
 msgid "AES-192"
-msgstr ""
+msgstr "AES-192"
 
 #: includes/arrays.php
 msgid "AES-192-C"
-msgstr ""
+msgstr "AES-192"
 
 #: includes/arrays.php
 msgid "AES-256"
-msgstr ""
+msgstr "AES-256"
 
 #: includes/arrays.php
 msgid "AES-256-C"
-msgstr ""
+msgstr "AES-256"
 
 #: includes/arrays.php
 msgid "API key auth"
@@ -141,11 +139,11 @@ msgstr "Всичко е наред. Продължете както обикно
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform encrypted LDAP login and search"
-msgstr ""
+msgstr "Всички параметри са задължителни. Извършва шифровано влизане и търсене в LDAP"
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform unencrypted LDAP login and search"
-msgstr ""
+msgstr "Всички параметри са задължителни. Извършва нешифровано влизане и търсене в LDAP"
 
 #: includes/arrays.php
 msgid "An API function was called from inside a callback."
@@ -187,7 +185,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Auth in HTTP headers"
-msgstr ""
+msgstr "Удостоверяване в HTTP заглавките"
 
 #: includes/arrays.php
 #, fuzzy
@@ -215,40 +213,36 @@ msgid "CA and intermediate certs, PEM encoded"
 msgstr "CA и междинни сертификати, PEM кодирани"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "CA certificates"
-msgstr "Проверете сертификата"
+msgstr "CA сертификати"
 
 #: includes/arrays.php
 msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
-msgstr ""
+msgstr "Cacti опитва да изпълни всеки тест многократно. Първият успешен опит прекратява тестването и записва успех. Ако нито един от опитите не е успешен, тестът се прекратява и се записва неуспех. Големият брой води до дълга продължителност на теста."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check Certificate"
-msgstr "Проверете сертификата"
+msgstr "Проверка на сертификат"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check and notify Certificate expiration"
-msgstr "Проверете сертификата"
+msgstr "Проверка и известяване при изтичане на сертификата"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
-msgstr "Поставете отметка в това квадратче, ако сайтът обикновено връща грешка 401, тъй като изисква потребителско име и парола."
+msgstr "Отметнете това поле, ако сайтът обикновено връща грешка 401, тъй като изисква потребителско име и парола."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Authorization Protocol."
-msgstr ""
+msgstr "Изберете протокола за оторизиране на SNMPv3."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Passphrase."
-msgstr ""
+msgstr "Изберете паролата за поверителност на SNMPv3."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Protocol."
-msgstr ""
+msgstr "Изберете протокола за поверителност на SNMPv3."
 
 #: includes/arrays.php
 msgid "Chunk callback reported error."
@@ -256,11 +250,11 @@ msgstr "Чунк обратно повикване съобщава за гре�
 
 #: includes/arrays.php
 msgid "Client ID"
-msgstr ""
+msgstr "ИД на клиент"
 
 #: includes/arrays.php
 msgid "Client secret"
-msgstr ""
+msgstr "Клиентска тайна"
 
 #: includes/arrays.php
 msgid "Conflict"
@@ -297,15 +291,15 @@ msgstr "Създаден"
 
 #: includes/arrays.php setup.php
 msgid "Credential"
-msgstr ""
+msgstr "Идентификационни данни"
 
 #: includes/arrays.php
 msgid "Credential Name"
-msgstr ""
+msgstr "Име на идентификационните данни"
 
 #: includes/arrays.php
 msgid "Credential type"
-msgstr ""
+msgstr "Тип идентификационни данни"
 
 #: includes/arrays.php
 msgid "Curl return codes"
@@ -313,12 +307,11 @@ msgstr "Кодове за връщане на къдрици"
 
 #: includes/arrays.php
 msgid "Custom HTTP header"
-msgstr ""
+msgstr "Потребителска HTTP заглавка"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DES"
-msgstr "DNS"
+msgstr "DES"
 
 #: includes/arrays.php
 msgid "DNS Name for Query"
@@ -326,21 +319,19 @@ msgstr "DNS име за заявка"
 
 #: includes/arrays.php
 msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
-msgstr ""
+msgstr "DNS име за заявка. За DOH (DNS over HTTPS) използвайте /resolve?name=example.com или /dns-query?name=example.com&type=A. За некриптиран DNS ще бъдат върнати A и AAAA записи"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DNS over HTTPS, default port 443"
-msgstr "HTTP криптиран (HTTPS), порт по подразбиране 443"
+msgstr "DNS през HTTPS, порт по подразбиране 443"
 
 #: includes/arrays.php
 msgid "DNS plaintext, default port 53"
 msgstr "DNS обикновен текст, порт по подразбиране 53"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Data URL"
-msgstr "Дублирай"
+msgstr "URL адрес на данните"
 
 #: includes/arrays.php
 msgid ""
@@ -366,30 +357,28 @@ msgid "Early initialization code failed. This is likely to be an internal error 
 msgstr "Неуспешен код за ранна инициализация. Това вероятно е вътрешна грешка или проблем, или проблем с ресурсите, при който нещо фундаментално не може да се направи в инициализираното време."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Email notification"
-msgstr "Настройки за известията"
+msgstr "Имейл известие"
 
 #: includes/arrays.php
 msgid "Enable run script for this test"
-msgstr ""
+msgstr "Активиране на стартиране на скрипт за този тест"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enable test"
-msgstr "Активиране на сървъра"
+msgstr "Активиране на теста"
 
 #: includes/arrays.php
 msgid "Encrypted IMAP, you can try login and test certificate and user login"
-msgstr ""
+msgstr "Шифрован IMAP; можете да опитате влизане и да тествате сертификата и потребителското влизане"
 
 #: includes/arrays.php
 msgid "Encrypted POP3, you can try login and test certificate and user login."
-msgstr ""
+msgstr "Шифрован POP3; можете да опитате влизане и да тествате сертификата и потребителското влизане."
 
 #: includes/arrays.php
 msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
-msgstr ""
+msgstr "Шифрована SCP връзка, влизане и опит за изтегляне на файл, зададен в пътя (/path/to/file.txt)."
 
 #: includes/arrays.php
 msgid ""
@@ -398,22 +387,20 @@ msgid ""
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an External ID for this test."
-msgstr "Въведете вечен идентификатор за този Thold шаблон."
+msgstr "Въведете външен идентификатор за този тест."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
-msgstr "Въведете IP адрес, с който да се свържете. Ако оставите празно, вместо това ще се използва DNS резолюция."
+msgstr "Въведете IP адрес, към който принудително да се преобразува DNS името. Ако оставите празно, ще се използва стандартно DNS преобразуване."
 
 #: includes/arrays.php
 msgid "Enter the SNMP Context to use for this device."
-msgstr ""
+msgstr "Въведете SNMP контекста, който да използвате за това устройство."
 
 #: includes/arrays.php
 msgid "Enter the SNMP v3 Engine Id or empty."
-msgstr ""
+msgstr "Въведете SNMP v3 Engine Id или оставете празно."
 
 #: includes/arrays.php
 msgid "Error"
@@ -421,7 +408,7 @@ msgstr "Грешка"
 
 #: includes/arrays.php
 msgid "Error/failed"
-msgstr ""
+msgstr "Грешка/неуспешно"
 
 #: includes/arrays.php
 msgid "Expectation Failed"
@@ -432,9 +419,8 @@ msgid "External ID"
 msgstr "Външен идентификатор"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Extra Alert Emails"
-msgstr "Допълнителни предупредителни имейли"
+msgstr "Допълнителни имейли за предупреждения"
 
 #: includes/arrays.php
 msgid "FTP plaintext, default port 21"
@@ -461,9 +447,8 @@ msgid "Failed string found"
 msgstr "Намерен неуспешен низ"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Failed string not found"
-msgstr "Неуспешен strint не е намерен"
+msgstr "Низът за грешка не е намерен"
 
 #: includes/arrays.php
 msgid "Failed to connect() to host or proxy."
@@ -483,7 +468,7 @@ msgstr "Неуспешно изключване на SSL връзката."
 
 #: includes/arrays.php
 msgid "Failing"
-msgstr ""
+msgstr "Неуспешно"
 
 #: includes/arrays.php
 msgid "Failure with receiving network data."
@@ -498,14 +483,12 @@ msgid "File not found on TFTP server."
 msgstr "Файлът не е намерен на TFTP сървъра."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For anonymous FTP insert email address"
-msgstr "За анонимен ftp въведете имейл адрес тук."
+msgstr "За анонимен FTP въведете имейл адрес"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
-msgstr "За уеб услуга въведете поне \"/\" или нещо като \"/any/path/\". За FTP списъкът трябва да завършва със символ \"/\". За тест за изтегляне на TFTP/SCP/SMB вмъкнете /path/file"
+msgstr "За уеб услуга въведете поне \"/\" или нещо подобно на \"/any/path/\"."
 
 #: includes/arrays.php
 msgid "Forbidden"
@@ -513,7 +496,7 @@ msgstr "Забранено"
 
 #: includes/arrays.php
 msgid "Form urlencoded"
-msgstr ""
+msgstr "URL-кодиран формуляр"
 
 #: includes/arrays.php
 msgid "Found"
@@ -524,9 +507,8 @@ msgid "Function not found. A required zlib function was not found."
 msgstr "Функцията не е намерена. Необходимата zlib функция не беше намерена."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Gateway Timeout"
-msgstr "Време за изчакване"
+msgstr "Изтекло време на шлюза (Gateway Timeout)"
 
 #: includes/arrays.php
 msgid "General Settings"
@@ -537,9 +519,8 @@ msgid "Gone"
 msgstr "Си отиде"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "HTTP Port"
-msgstr "HTTP код"
+msgstr "HTTP порт"
 
 #: includes/arrays.php
 msgid "HTTP Version Not Supported"
@@ -554,13 +535,12 @@ msgid "HTTP plaintext, default port 80"
 msgstr "HTTP обикновен текст, порт по подразбиране 80"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "HTTPS Port"
-msgstr "HTTP код"
+msgstr "HTTPS порт"
 
 #: includes/arrays.php
 msgid "Help"
-msgstr ""
+msgstr "Помощ"
 
 #: includes/arrays.php servcheck_proxy.php
 msgid "Hostname"
@@ -572,15 +552,15 @@ msgstr "Колко често да се тества"
 
 #: includes/arrays.php
 msgid "How many attempts"
-msgstr ""
+msgstr "Брой опити"
 
 #: includes/arrays.php
 msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
-msgstr ""
+msgstr "Колко поредни пъти трябва да бъде превишен прагът за продължителност, за да се изпрати известие"
 
 #: includes/arrays.php
 msgid "How many times the service must be DOWN before an alert email is triggered."
-msgstr ""
+msgstr "Колко пъти услугата трябва да бъде НЕАКТИВНА, преди да се задейства имейл за аларма."
 
 #: includes/arrays.php
 msgid "IMAP encrypted (IMAPS), default port 993"
@@ -595,40 +575,36 @@ msgid "IMAP with STARTTLS, default port 143"
 msgstr "IMAP с STARTTLS, порт по подразбиране 143"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "IP Address or DNS name of server"
-msgstr "IP адрес за свързване към този сървър"
+msgstr "IP адрес или DNS име на сървъра"
 
 #: includes/arrays.php
 msgid "If enabled email notification about state, duration and search result will be send"
-msgstr ""
+msgstr "Ако е активирано, ще се изпраща имейл известие за състоянието, продължителността и резултата от търсенето"
 
 #: includes/arrays.php
 msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
-msgstr ""
+msgstr "Ако глобалната функция за изпълнение на команди е активирана, тук можете да зададете дали скриптът да се изпълнява за този тест, или не."
 
 #: includes/arrays.php
 msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
-msgstr ""
+msgstr "Ако времето за теста е по-голямо от тази стойност няколко поредни пъти, изпраща се известие. Свързано е с променливата „Брой превишавания на продължителността“. Тестът наследява максималното време за изпълнение от настройките. Ако тук е зададена по-висока стойност, максималното време за изпълнение е тази стойност + 2 секунди."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
-msgstr "Ако този текст за връзка изисква прокси, изберете го тук. В противен случай изберете „Няма“."
+msgstr "Ако този текст за връзка изисква прокси, изберете го тук.  В противен случай изберете „Няма“."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
-msgstr "Ако използвате SSL, поставете отметка в това квадратче, ако искате да потвърдите сертификата. По подразбиране, изключете, ако сайтът използва самостоятелно подписан сертификат."
+msgstr "Ако използвате SSL, поставете отметка в това поле, ако желаете да се проверява срокът на валидност на сертификата. В настройките можете да зададете колко дни преди изтичането да се изпраща известие.."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
-msgstr "Ако използвате SSL, поставете отметка в това квадратче, ако искате да потвърдите сертификата. По подразбиране, изключете, ако сайтът използва самостоятелно подписан сертификат."
+msgstr "Ако използвате SSL, поставете отметка в това поле, ако желаете да се валидира сертификатът. По подразбиране е включено; изключете, ако сайтът използва самоподписан сертификат."
 
 #: includes/arrays.php
 msgid "If your key is password protected, insert password here"
-msgstr ""
+msgstr "Ако ключът ви е защитен с парола, въведете паролата тук"
 
 #: includes/arrays.php
 msgid "Illegal TFTP operation."
@@ -640,15 +616,15 @@ msgstr "Стартирането на SSL машината е неуспешно
 
 #: includes/arrays.php
 msgid "Insert SNMP OID"
-msgstr ""
+msgstr "Въведете SNMP OID"
 
 #: includes/arrays.php
 msgid "Insert SSH command with full path, result of command will be returned"
-msgstr ""
+msgstr "Въведете SSH команда с пълния път; резултатът от командата ще бъде върнат"
 
 #: includes/arrays.php
 msgid "Insert username here"
-msgstr ""
+msgstr "Въведете потребителско име тук"
 
 #: includes/arrays.php
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
@@ -664,20 +640,19 @@ msgstr "Неуспешна проверка на издателя (добаве�
 
 #: includes/arrays.php
 msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
-msgstr ""
+msgstr "Проверява само дали SMTP сървърът отговаря. Без удостоверяване. Ще видите банера за вход на сървъра и отговора на EHLO."
 
 #: includes/arrays.php
 msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
-msgstr ""
+msgstr "Проверява само дали уеб сървърът отговаря. Ако се използват данни за вход с потребителско име и парола, ще опита Basic HTTP удостоверяване."
 
 #: includes/arrays.php
 msgid "JSON encoded"
-msgstr ""
+msgstr "Кодирано в JSON"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "LDAP Search"
-msgstr "Търсене"
+msgstr "LDAP търсене"
 
 #: includes/arrays.php
 msgid "LDAP cannot bind. LDAP bind operation failed."
@@ -692,9 +667,8 @@ msgid "LDAP plaintext, default port 389"
 msgstr "LDAP обикновен текст, порт по подразбиране 389"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "LDAP search failed."
-msgstr "Търсене"
+msgstr "LDAP търсенето е неуспешно."
 
 #: includes/arrays.php
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
@@ -709,9 +683,8 @@ msgid "Last day"
 msgstr "Последен ден"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Last hour"
-msgstr "Последна проверка"
+msgstr "Последния час"
 
 #: includes/arrays.php
 msgid "Last week"
@@ -727,25 +700,23 @@ msgstr "Libcurl не успя да получи разумен резултат 
 
 #: includes/arrays.php
 msgid "Login URL"
-msgstr ""
+msgstr "URL адрес за вход"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Long duration"
-msgstr "Местоположение"
+msgstr "Голяма продължителност"
 
 #: includes/arrays.php
 msgid "Long duration alert"
-msgstr ""
+msgstr "Предупреждение за дълга продължителност"
 
 #: includes/arrays.php
 msgid "MD5"
-msgstr ""
+msgstr "MD5"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "MQTT plaintext, default port 1883"
-msgstr "HTTP обикновен текст, порт по подразбиране 80"
+msgstr "MQTT обикновен текст, порт по подразбиране 1883"
 
 #: includes/arrays.php
 msgid "Maint string found"
@@ -785,13 +756,12 @@ msgid "New CA"
 msgstr "Нов CA"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "New Proxy"
-msgstr "Нов прокси"
+msgstr "Ново прокси"
 
 #: includes/arrays.php
 msgid "No Content"
-msgstr "Съдържание"
+msgstr "Няма съдържание"
 
 #: includes/arrays.php
 msgid "Non-Authoritative Information"
@@ -814,9 +784,8 @@ msgid "Not Implemented"
 msgstr "Не е изпълнено"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Not Modified"
-msgstr "Последна промяна"
+msgstr "Не е променяно"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Not tested yet"
@@ -836,35 +805,31 @@ msgstr "Бележки, изпратени по имейл"
 
 #: includes/arrays.php
 msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
-msgstr "Нищо не е върнато от сървъра и при тези обстоятелства получаването на нищо не се счита за грешка."
+msgstr "Нищо не беше върнато от сървъра и при тези обстоятелства получаването на нищо се счита за грешка."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notification List"
-msgstr "Настройки за известията"
+msgstr "Списък за известия"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notification Settings"
 msgstr "Настройки за известията"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notify Accounts"
-msgstr "Известяване на профили"
+msgstr "Профили за известяване"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notify Format"
-msgstr "Известяване на профили"
+msgstr "Формат на известяване"
 
 #: includes/arrays.php
 msgid "Number of duration violations in a row"
-msgstr ""
+msgstr "Брой поредни нарушения на продължителността"
 
 #: includes/arrays.php
 msgid "OAuth Client secret"
-msgstr ""
+msgstr "OAuth таен ключ на клиента"
 
 #: includes/arrays.php
 msgid "OAuth2/Bearer token auth"
@@ -876,7 +841,7 @@ msgstr "ОК"
 
 #: includes/arrays.php
 msgid "Oauth Client ID"
-msgstr ""
+msgstr "OAuth идентификатор на клиента (Client ID)"
 
 #: includes/arrays.php
 msgid "Obsolete Error"
@@ -884,16 +849,15 @@ msgstr "Остаряла грешка"
 
 #: includes/arrays.php
 msgid "Ok"
-msgstr ""
+msgstr "Добре"
 
 #: includes/arrays.php
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
 msgstr "Време на изчакване на операцията. Посоченият период на изчакване е достигнат според условията."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Options"
-msgstr "Действия"
+msgstr "Опции"
 
 #: includes/arrays.php
 msgid "Out of disk space on the server."
@@ -913,15 +877,15 @@ msgstr "POP3 с STARTTLS, порт по подразбиране 110"
 
 #: includes/arrays.php
 msgid "POST method, JSON encoded"
-msgstr ""
+msgstr "Метод POST, кодиран в JSON"
 
 #: includes/arrays.php
 msgid "POST method, form-urlencoded"
-msgstr ""
+msgstr "Метод POST, form-urlencoded"
 
 #: includes/arrays.php
 msgid "Parameters"
-msgstr ""
+msgstr "Параметри"
 
 #: includes/arrays.php
 msgid "Partial Content"
@@ -960,19 +924,16 @@ msgid "Problem with reading the SSL CA cert (path? access rights?)"
 msgstr "Проблем с четенето на SSL CA cert (път? права за достъп?)"
 
 #: includes/arrays.php servcheck_proxy.php
-#, fuzzy
 msgid "Proxies"
-msgstr "Пълномощници"
+msgstr "Прокси сървъри"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Proxy Authentication Required"
-msgstr "Изисква удостоверяване"
+msgstr "Изисква се удостоверяване пред прокси"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Proxy Server"
-msgstr "Главен сървър"
+msgstr "Прокси сървър"
 
 #: includes/arrays.php
 msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
@@ -984,19 +945,19 @@ msgstr "Грешка при свързване с QUIC. Тази грешка м
 
 #: includes/arrays.php
 msgid "REST API test with API key auth. Prepare credential first."
-msgstr ""
+msgstr "REST API тест с удостоверяване чрез API ключ. Подгответе идентификационните данни предварително."
 
 #: includes/arrays.php
 msgid "REST API test with Oauth2. Prepare credential first."
-msgstr ""
+msgstr "REST API тест с OAuth2. Подгответе идентификационните данни предварително."
 
 #: includes/arrays.php
 msgid "REST API test with basic HTTP auth. Prepare credential first."
-msgstr ""
+msgstr "REST API тест с базово HTTP удостоверяване. Подгответе идентификационните данни предварително."
 
 #: includes/arrays.php
 msgid "REST API test with cookie auth. Prepare credential first."
-msgstr ""
+msgstr "REST API тест с удостоверяване чрез бисквитка. Подгответе идентификационните данни предварително."
 
 #: includes/arrays.php
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
@@ -1007,9 +968,8 @@ msgid "Request Entity Too Large"
 msgstr "Обектът на заявката е твърде голям"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Request Timeout"
-msgstr "Време за изчакване"
+msgstr "Време за изчакване на заявката"
 
 #: includes/arrays.php
 msgid "Request-URI Too Long"
@@ -1024,7 +984,6 @@ msgid "Requested Range Not Satisfiable"
 msgstr "Заявеният диапазон не е удовлетворим"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Requires Authentication"
 msgstr "Изисква удостоверяване"
 
@@ -1034,26 +993,23 @@ msgstr "Нулиране на съдържанието"
 
 #: includes/arrays.php
 msgid "Resolve DNS to Address"
-msgstr ""
+msgstr "Преобразуване на DNS към адрес"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String"
-msgstr "Строка за търсене на отговор"
+msgstr "Низ за търсене в отговора"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String - Failed"
-msgstr "Ред за търсене на отговор - неуспешно"
+msgstr "Низ за търсене в отговора - Неуспешно"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String - Maintenance"
-msgstr "Низ за търсене на отговор - страница за поддръжка"
+msgstr "Низ за търсене в отговора - Поддръжка"
 
 #: includes/arrays.php
 msgid "Rest API - API key auth"
-msgstr ""
+msgstr "Rest API - удостоверяване с API ключ"
 
 #: includes/arrays.php
 msgid ""
@@ -1065,23 +1021,23 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth"
-msgstr ""
+msgstr "Rest API - основно HTTP удостоверяване"
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth. Username and password are required"
-msgstr ""
+msgstr "Rest API - основно HTTP удостоверяване. Потребителското име и паролата са задължителни"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth"
-msgstr ""
+msgstr "Rest API - удостоверяване чрез бисквитка (Cookie)"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
-msgstr ""
+msgstr "Rest API - удостоверяване чрез бисквитка (Cookie) - и двете стойности са задължителни. След вход се връща бисквитка"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth"
-msgstr ""
+msgstr "Rest API - удостоверяване с OAuth2/Bearer токен"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are send Json encoded."
@@ -1097,52 +1053,51 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Rest API with API key auth"
-msgstr ""
+msgstr "Rest API с удостоверяване чрез API ключ"
 
 #: includes/arrays.php
 msgid "Rest API with Basic HTTP auth"
-msgstr ""
+msgstr "Rest API с основно HTTP удостоверяване"
 
 #: includes/arrays.php
 msgid "Rest API with Cookie based auth"
-msgstr ""
+msgstr "Rest API с удостоверяване чрез бисквитка (Cookie)"
 
 #: includes/arrays.php
 msgid "Rest API with OAuth2/Bearer token auth"
-msgstr ""
+msgstr "Rest API с удостоверяване чрез OAuth2/Bearer токен"
 
 #: includes/arrays.php
 msgid "SCP download file, default port 22"
 msgstr "Файл за изтегляне на SCP, порт по подразбиране 22"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SFTP protocol - directory listing, default port 22"
-msgstr "TFTP протокол - файл за изтегляне, порт по подразбиране 69"
+msgstr "SFTP протокол - списък на директорията, порт по подразбиране 22"
 
 #: includes/arrays.php
 msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
-msgstr ""
+msgstr "Протокол SFTP на порт 22, изискват се потребителско име, парола и път. Опитва се извеждане на списъка с директории на пътя."
 
 #: includes/arrays.php
 msgid "SHA"
-msgstr ""
+msgstr "SHA"
 
 #: includes/arrays.php
 msgid "SHA-224"
-msgstr ""
+msgstr "SHA-224"
 
 #: includes/arrays.php
 msgid "SHA-256"
-msgstr ""
+msgstr "SHA-256"
 
 #: includes/arrays.php
 msgid "SHA-392"
-msgstr ""
+msgstr "SHA-392"
 
 #: includes/arrays.php
 msgid "SHA-512"
-msgstr ""
+msgstr "SHA-512"
 
 #: includes/arrays.php
 msgid "SMB encrypted (SMBS) download file, default port 445"
@@ -1161,123 +1116,120 @@ msgid "SMTP plaintext, default port 25 (or 587 for submission)"
 msgstr "SMTP обикновен текст, порт по подразбиране 25 (или 587 за изпращане)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
-msgstr "SMTP с STARTTLS, порт по подразбиране 25 (или 587 за изпращане)"
+msgstr "SMTP със STARTTLS, порт по подразбиране 25 (или 587 за изпращане)"
 
 #: includes/arrays.php
 msgid "SNMP Auth Protocol (v3)"
-msgstr ""
+msgstr "SNMP Auth Protocol (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Context (v3)"
-msgstr ""
+msgstr "Контекст на SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Engine ID (v3)"
-msgstr ""
+msgstr "Идентификатор на SNMP двигателя (v3)"
 
 #: includes/arrays.php
 msgid "SNMP OID"
-msgstr ""
+msgstr "SNMP OID"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Password (v3)"
-msgstr "Парола"
+msgstr "SNMP парола (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Passphrase (v3)"
-msgstr ""
+msgstr "Декларация за поверителност на SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Protocol (v3)"
-msgstr ""
+msgstr "Протокол за поверителност на SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Security Level"
-msgstr ""
+msgstr "Ниво на сигурност на SNMP"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Username (v3)"
-msgstr "Потребител"
+msgstr "SNMP потребителско име (v3)"
 
 #: includes/arrays.php
 msgid "SNMP community string for SNMP v1 or v2(c)"
-msgstr ""
+msgstr "SNMP community низ за SNMP v1 или v2(c)"
 
 #: includes/arrays.php
 msgid "SNMP get"
-msgstr ""
+msgstr "SNMP get"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2"
-msgstr ""
+msgstr "SNMP v1 или v2"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 - required, insert community name here"
-msgstr ""
+msgstr "SNMP v1 или v2 - задължително, въведете името на community тук"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 community"
-msgstr ""
+msgstr "SNMP v1 или v2 community"
 
 #: includes/arrays.php
 msgid "SNMP v3"
-msgstr ""
+msgstr "SNMP v3"
 
 #: includes/arrays.php
 msgid "SNMP v3 - The security level determines which parameters are required"
-msgstr ""
+msgstr "SNMP v3 - нивото на сигурност определя кои параметри са задължителни"
 
 #: includes/arrays.php
 msgid "SNMP v3 Security Level to use when querying the device."
-msgstr ""
+msgstr "Ниво на защита SNMP v3, което да се използва при запитване към устройството."
 
 #: includes/arrays.php
 msgid "SNMP v3 password for this device."
-msgstr ""
+msgstr "SNMP v3 парола за това устройство."
 
 #: includes/arrays.php
 msgid "SNMP v3 username for this device."
-msgstr ""
+msgstr "SNMP v3 потребителско име за това устройство."
 
 #: includes/arrays.php
 msgid "SNMP walk"
-msgstr ""
+msgstr "SNMP walk"
 
 #: includes/arrays.php
 msgid "SSH command"
-msgstr ""
+msgstr "SSH команда"
 
 #: includes/arrays.php
 msgid "SSH command on remote system"
-msgstr ""
+msgstr "SSH команда на отдалечена система"
 
 #: includes/arrays.php
 msgid "SSH private key"
-msgstr ""
+msgstr "Частен SSH ключ"
 
 #: includes/arrays.php
 msgid "SSH private key "
-msgstr ""
+msgstr "Частен SSH ключ "
 
 #: includes/arrays.php
 msgid "SSH private key - Cacti 1.2.31+"
-msgstr ""
+msgstr "Частен SSH ключ - Cacti 1.2.31+"
 
 #: includes/arrays.php
 msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
-msgstr ""
+msgstr "Частен SSH ключ - може да се използва за тест с SCP или SSH команда. Тези тестове могат да използват също потребителско име и парола"
 
 #: includes/arrays.php
 msgid "SSH private key passphrase"
-msgstr ""
+msgstr "Парола на частния SSH ключ"
 
 #: includes/arrays.php
 msgid "SSH user"
-msgstr ""
+msgstr "SSH потребител"
 
 #: includes/arrays.php
 msgid "SSL Client Certificate required."
@@ -1293,33 +1245,31 @@ msgstr "Вижте Други"
 
 #: includes/arrays.php
 msgid "Select correct Credential type."
-msgstr ""
+msgstr "Изберете правилен тип данни за достъп."
 
 #: includes/arrays.php
 msgid "Select correct credential"
-msgstr ""
+msgstr "Изберете правилни данни за достъп"
 
 #: includes/arrays.php
 msgid "Select correct credential or left empty."
-msgstr ""
+msgstr "Изберете правилни данни за достъп или оставете празно."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Service Check Name"
-msgstr "Име за проверка на услугата"
+msgstr "Име на проверка на услуга"
 
 #: includes/arrays.php
 msgid "Service Unavailable"
 msgstr "Услугата не е достъпна"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Service settings"
-msgstr "Основни настройки"
+msgstr "Настройки на услугата"
 
 #: includes/arrays.php
 msgid "Set according to your REST API server"
-msgstr ""
+msgstr "Задайте според вашия REST API сървър"
 
 #: includes/arrays.php
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
@@ -1327,7 +1277,7 @@ msgstr "Сокетът не е готов за изпращане/получав
 
 #: includes/arrays.php
 msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
-msgstr "Статусът се върна при поискване с CURLOPT_SSL_VERIFYSTATUS."
+msgstr "Върнат е неуспешен статус при заявка с CURLOPT_SSL_VERIFYSTATUS."
 
 #: includes/arrays.php
 msgid "Stream error in the HTTP/2 framing layer."
@@ -1350,13 +1300,12 @@ msgid "TFTP protocol - download file, default port 69"
 msgstr "TFTP протокол - файл за изтегляне, порт по подразбиране 69"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Temporary Redirect"
-msgstr "Пренасочване"
+msgstr "Временно пренасочване"
 
 #: includes/arrays.php
 msgid "Test every xth poller run"
-msgstr ""
+msgstr "Тестване при всяко x-то изпълнение на Poller"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Tests"
@@ -1375,19 +1324,16 @@ msgid "The FTP server does not understand the PRET command at all or does not su
 msgstr "FTP сървърът изобщо не разбира командата PRET или не поддържа дадения аргумент. Бъдете внимателни, когато използвате CURLOPT_CUSTOMREQUEST, персонализирана команда LIST се изпраща с командата PRET и преди PASV. (Добавено в 7.20.0)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The HTTP Proxy Port."
-msgstr "HTTP прокси портът."
+msgstr "Порт за HTTP прокси."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The HTTPS Proxy Port."
-msgstr "HTTPS прокси портът."
+msgstr "Порт за HTTPS прокси."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The Proxy Hostname."
-msgstr "Името на хоста на прокси сървъра."
+msgstr "Име на хоста на прокси сървъра."
 
 #: includes/arrays.php
 msgid "The URL was not properly formatted."
@@ -1402,18 +1348,16 @@ msgid "The download could not be resumed because the specified offset was out of
 msgstr "Изтеглянето не можа да бъде възобновено, защото указаното отместване е извън границите на файла."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The name that is displayed for this Credential."
-msgstr "Името, което се показва за тази Проверка на услугата, и е включено във всички известия за предупреждения."
+msgstr "Името, което се показва за тези идентификационни данни."
 
 #: includes/arrays.php
 msgid "The name that is displayed for this Rest API."
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
-msgstr "Името, което се показва за тази Проверка на услугата, и е включено във всички известия за предупреждения."
+msgstr "Името, което се показва за тази проверка на услуга и се включва във всички известия за предупреждения."
 
 #: includes/arrays.php
 msgid "The remote server denied curl to login (Added in 7.13.1)"
@@ -1429,7 +1373,7 @@ msgstr "Ресурсът, посочен в URL адреса, не същест�
 
 #: includes/arrays.php
 msgid "The same as HTTP plaintext but adds the ability to test certificates."
-msgstr ""
+msgstr "Същото като некриптиран HTTP, но добавя възможност за тестване на сертификати."
 
 #: includes/arrays.php
 msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS."
@@ -1460,9 +1404,8 @@ msgid "This error should never be returned by a properly functioning TFTP server
 msgstr "Тази грешка никога не трябва да се връща от правилно функциониращ TFTP сървър."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is a listing of accounts that will be notified when this service goes down."
-msgstr "Това е списък с профили, които ще бъдат известени, когато този уебсайт се понижи."
+msgstr "Това е списък с акаунти, които ще бъдат уведомени, когато тази услуга стане неактивна."
 
 #: includes/arrays.php
 msgid "This is an odd error that mainly occurs due to internal confusion."
@@ -1473,24 +1416,20 @@ msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server r
 msgstr "Това се връща, ако CURLOPT_FAILONERROR е зададено вярно и HTTP сървърът връща код на грешка, който е >= 400."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the format to use when sending the notification email"
-msgstr "Това е форматът, който трябва да се използва при изпращане на имейл за известие"
+msgstr "Това е форматът, който да се използва при изпращане на имейла за известие"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
-msgstr "Това е низът за търсене на известна грешка в отговора на уеб услугата. Проверката на услугата ще предупреждава само ако този низ е намерен, пренебрегвайки всички проблеми с изчакване и по-горните нива за търсене."
+msgstr "Това е низът, който се търси за известна грешка в отговора на услугата. Проверката на услугата ще известява само ако този низ бъде намерен, като пренебрегва проблемите с изтичане на времето и горните низове за търсене."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for in the response for a live and working service."
-msgstr "Това е низът, който трябва да се търси в отговора на URL адреса за жива и работеща уеб услуга."
+msgstr "Това е низът, който се търси в отговора за активна и работеща услуга."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
-msgstr "Това е низ за търсене на страницата за поддръжка. Сервизната проверка ще провери за този низ, ако горният низ не е намерен. Ако е намерено, това означава, че уеб услугата се поддържа."
+msgstr "Това е низът, който се търси на страницата за поддръжка. Проверката на услугата ще проверява за този низ, ако горният низ не бъде намерен. Ако бъде намерен, това означава, че услугата е в режим на поддръжка."
 
 #: includes/arrays.php
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
@@ -1498,11 +1437,11 @@ msgstr "Това беше или странен отговор на команд
 
 #: includes/arrays.php
 msgid "Token name"
-msgstr ""
+msgstr "Име на токен"
 
 #: includes/arrays.php
 msgid "Token value"
-msgstr ""
+msgstr "Стойност на токен"
 
 #: includes/arrays.php
 msgid "Token/API Key name"
@@ -1518,27 +1457,27 @@ msgstr "Тригер"
 
 #: includes/arrays.php
 msgid "Try DNS over HTTPS."
-msgstr ""
+msgstr "Изпробване на DNS over HTTPS."
 
 #: includes/arrays.php
 msgid "Try SMB protocol, username and password are required. Try to login and download file."
-msgstr ""
+msgstr "Изпробване на протокол SMB; изискват се потребителско име и парола. Опит за влизане и изтегляне на файл."
 
 #: includes/arrays.php
 msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
-msgstr ""
+msgstr "Изпробване на метода SNMP get. Връща се изходът за посочения OID. Изискват се данни за достъп; първо трябва да подготвите данни за достъп за SNMP v.1, 2 или v3."
 
 #: includes/arrays.php
 msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
-msgstr ""
+msgstr "Изпробване на метода SNMP walk. Връща се изходът за посочения OID. Изискват се данни за достъп; първо трябва да подготвите данни за достъп за SNMP v.1, 2 или v3."
 
 #: includes/arrays.php
 msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
-msgstr ""
+msgstr "Опит за изтегляне на файла, посочен в пътя (/path/to/file.txt), от TFTP сървъра. Връща се съдържанието на файла."
 
 #: includes/arrays.php
 msgid "Try to resolve DNS record on specified DNS server"
-msgstr ""
+msgstr "Опит за разрешаване на DNS запис на посочения DNS сървър"
 
 #: includes/arrays.php
 msgid "Type of service"
@@ -1546,16 +1485,15 @@ msgstr "Вид услуга"
 
 #: includes/arrays.php
 msgid "URL to retrieve data. Insert with http:// or https://"
-msgstr ""
+msgstr "URL адрес за извличане на данни. Въведете с http:// или https://"
 
 #: includes/arrays.php
 msgid "URL which is used to log in or get the token."
-msgstr ""
+msgstr "URL адрес, който се използва за влизане или получаване на токена."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Unable to Connect"
-msgstr "Активиране на сървъра"
+msgstr "Невъзможно свързване"
 
 #: includes/arrays.php
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
@@ -1566,9 +1504,8 @@ msgid "Unauthorized"
 msgstr "Неупълномощен"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Uncheck this box to disable this test from being checked."
-msgstr "Махнете отметката от това квадратче, за да деактивирате този URL адрес от проверка."
+msgstr "Премахнете отметката от това поле, за да деактивирате проверката на този тест."
 
 #: includes/arrays.php
 msgid ""
@@ -1607,18 +1544,16 @@ msgid "Unsupported Media Type"
 msgstr "Неподдържан тип медия"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Use Proxy"
-msgstr "Нов прокси"
+msgstr "Използване на прокси"
 
 #: includes/arrays.php
 msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
-msgstr ""
+msgstr "Използва ssh и се свързва с отдалечен хост. След вход изпълнява указаната команда и връща изхода. Възможно е използване на потребителско име и парола или частен ключ."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Use this Notification List for those to be notified when this service goes down."
-msgstr "Това е списък с профили, които ще бъдат известени, когато този уебсайт се понижи."
+msgstr "Използвайте този списък за известяване за получателите, които да бъдат уведомени, когато тази услуга стане неактивна."
 
 #: includes/arrays.php
 msgid "Username"
@@ -1626,16 +1561,15 @@ msgstr "Потребител"
 
 #: includes/arrays.php
 msgid "Username and password"
-msgstr ""
+msgstr "Потребителско име и парола"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Verification Strings"
 msgstr "Низове за проверка"
 
 #: includes/arrays.php
 msgid "Warning"
-msgstr ""
+msgstr "Внимание"
 
 #: includes/arrays.php
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
@@ -1663,21 +1597,19 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
-msgstr ""
+msgstr "Можете да укажете друг порт (example.com:5000), в противен случай ще се използва портът по подразбиране. За числов IPv6 адрес използвайте [ip:ad:dr:es:fo:rma:at]. За DOH (DNS over HTTPS) въведете тук името на сървъра (напр. 10.10.10.10, cloudflare-dns.com, ..)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
-msgstr "Можете да посочите тук допълнителни имейли за получаване на сигнали за този URL адрес (разделени със запетая)"
+msgstr "Тук можете да посочите допълнителни имейли за получаване на известия за този тест (разделени със запетая)"
 
 #: includes/arrays.php
 msgid "Your own CA and intermediate certs"
 msgstr "Ваш собствен CA и междинни сертификати"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "[None]"
-msgstr "Няма"
+msgstr "[Нищо]"
 
 #: includes/arrays.php
 msgid "problem with the local client certificate."
@@ -1688,23 +1620,21 @@ msgid "Graphs"
 msgstr "Графики"
 
 #: includes/functions.php
-#, fuzzy
 msgid "Log History"
-msgstr "Преглед на хронология"
+msgstr "История на журнала"
 
 #: includes/functions.php
 msgid "No data"
 msgstr "Няма данни"
 
 #: servcheck_ca.php
-#, fuzzy, php-format
+#, php-format
 msgid "CA [edit: %s]"
-msgstr "Заявка [редактиране: %s]"
+msgstr "CA [редактиране: %s]"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "CA [new]"
-msgstr "Заявка [нова]"
+msgstr "CA [нов]"
 
 #: servcheck_ca.php
 msgid "CAs"
@@ -1723,7 +1653,7 @@ msgstr "Изчисти"
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Clear Filters"
-msgstr ""
+msgstr "Изчистване на филтрите"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
@@ -1745,11 +1675,10 @@ msgstr "Изтрий"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
-#, fuzzy
 msgid "Delete item"
 msgid_plural "Delete items"
-msgstr[0] "WebSeer сървъри"
-msgstr[1] "WebSeer сървъри"
+msgstr[0] "Изтриване на елемент"
+msgstr[1] "Изтриване на елементи"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1757,9 +1686,8 @@ msgid "Go"
 msgstr "Търси"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "No Certificates Found"
-msgstr "Не са намерени сървъри"
+msgstr "Не са намерени сертификати"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1767,92 +1695,83 @@ msgid "Search"
 msgstr "Търсене"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "Servcheck CA Management"
-msgstr "Управление на сървър за уеб сървъри"
+msgstr "Управление на CA в ServCheck"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Set/Refresh Filters"
-msgstr ""
+msgstr "Задаване / опресняване на филтрите"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 msgid "Used"
 msgstr "Употребяван"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Click 'Continue' to Duplicate the following Credential."
-msgid_plural "Click 'Continue' to Duplicate following Credential."
-msgstr[0] "Щракнете върху „Напред“, за да изтриете следния прокси сървър."
-msgstr[1] "Щракнете върху „Напред“, за да изтриете следните прокси сървъри."
+msgid_plural "Click 'Continue' to Duplicate the following Credentials."
+msgstr[0] "Щракнете върху „Продължи“, за да дублирате следния набор от идентификационни данни."
+msgstr[1] "Щракнете върху „Продължи“, за да дублирате следните набори от идентификационни данни."
 
 #: servcheck_credential.php
-#, fuzzy, php-format
+#, php-format
 msgid "Credential [edit: %s]"
-msgstr "Заявка [редактиране: %s]"
+msgstr "Удостоверителни данни [редактиране: %s]"
 
 #: servcheck_credential.php
 msgid "Credential [new]"
-msgstr ""
+msgstr "Идентификационни данни [нови]"
 
 #: servcheck_credential.php
 msgid "Credentials"
-msgstr ""
+msgstr "Идентификационни данни"
 
 #: servcheck_credential.php servcheck_restapi.php servcheck_test.php
 msgid "Duplicate"
 msgstr "Дублирай"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Duplicate Credential"
-msgid_plural "Duplicate Credential"
-msgstr[0] "Дублирай"
-msgstr[1] "Дублирай"
+msgid_plural "Duplicate Credentials"
+msgstr[0] "Дублиране на набор от идентификационни данни"
+msgstr[1] "Дублиране на набори от идентификационни данни"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "No Credentials Found"
-msgstr "Не са намерени сървъри"
+msgstr "Не са намерени идентификационни данни"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Servcheck Credential Management"
-msgstr "Управление на сървър за уеб сървъри"
+msgstr "Управление на идентификационни данни в ServCheck"
 
 #: servcheck_credential.php servcheck_restapi.php
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: servcheck_curl_code.php
 msgid "No error codes"
 msgstr "Няма кодове на грешки"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "No Proxies Found"
-msgstr "Не са намерени сървъри"
+msgstr "Не са намерени прокси сървъри"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Ports (http/https)"
-msgstr "Портове (http / https)"
+msgstr "Портове (http/https)"
 
 #: servcheck_proxy.php
-#, fuzzy, php-format
+#, php-format
 msgid "Proxy [edit: %s]"
-msgstr "Заявка [редактиране: %s]"
+msgstr "Прокси [редактиране: %s]"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Proxy [new]"
-msgstr "Заявка [нова]"
+msgstr "Прокси [ново]"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Servcheck Proxy Management"
-msgstr "Управление на сървър за уеб сървъри"
+msgstr "Управление на прокси в ServCheck"
 
 #: servcheck_restapi.php servcheck_test.php
 msgid "Any"
@@ -1917,36 +1836,32 @@ msgid "All"
 msgstr "Всички"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "All Users Selected"
 msgstr "Всички потребители са избрани"
 
 #: servcheck_test.php
 msgid "Attempt"
-msgstr ""
+msgstr "Опит"
 
 #: servcheck_test.php
 msgid "CPU u/CPU s/Memory"
-msgstr ""
+msgstr "CPU u/CPU s/Памет"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Certificate"
-msgstr "Проверете сертификата"
+msgstr "Сертификат"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Checks"
 msgstr "Проверки"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Clear log"
-msgstr "Изчисти"
+msgstr "Изчистване на дневника"
 
 #: servcheck_test.php
 msgid "Clear statistics"
-msgstr ""
+msgstr "Изчистване на статистиката"
 
 #: servcheck_test.php
 #, fuzzy
@@ -1985,83 +1900,74 @@ msgstr[1] "Щракнете върху „Напред“, за да изтри�
 
 #: servcheck_test.php
 msgid "Curl"
-msgstr ""
+msgstr "Curl"
 
 #: servcheck_test.php
 msgid "Date"
 msgstr "Дата"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Date Search"
-msgstr "Търсене"
+msgstr "Търсене по дата"
 
 #: servcheck_test.php
 msgid "Disable"
 msgstr "Изключи"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable Service Check"
-msgstr "Активиране на услугата Проверка"
+msgstr "Деактивиране на проверката на услуга"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable item"
 msgid_plural "Disable items"
-msgstr[0] "Изключи"
-msgstr[1] "Изключи"
+msgstr[0] "Деактивиране на елемент"
+msgstr[1] "Деактивиране на елементи"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duplicate item"
 msgid_plural "Duplicate items"
-msgstr[0] "Дублирай"
-msgstr[1] "Дублирай"
+msgstr[0] "Дублиране на елемент"
+msgstr[1] "Дублиране на елементи"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duration"
-msgstr "Местоположение"
+msgstr "Продължителност"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Edit Service Check"
-msgstr "Активиране на услугата Проверка"
+msgstr "Редактиране на проверка на услуга"
 
 #: servcheck_test.php
 msgid "Enable"
 msgstr "Включи"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable Service Check"
-msgstr "Активиране на услугата Проверка"
+msgstr "Активиране на проверката на услуга"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable item"
 msgid_plural "Enable items"
-msgstr[0] "Активиране на сървъра"
-msgstr[1] "Активиране на сървъра"
+msgstr[0] "Активиране на елемент"
+msgstr[1] "Активиране на елементи"
 
 #: servcheck_test.php
 msgid "Entries"
-msgstr "Получени съобщения"
+msgstr "Записи"
 
 #: servcheck_test.php
 #, php-format
 msgid "Expired %s days ago"
-msgstr ""
+msgstr "Изтекъл преди %s дни"
 
 #: servcheck_test.php
 msgid "Insufficient data, wait a few poller cycles"
-msgstr ""
+msgstr "Недостатъчни данни, изчакайте няколко цикъла на Poller"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Last Check (attempt)"
-msgstr "Последна проверка"
+msgstr "Последна проверка (опит)"
 
 #: servcheck_test.php
 msgid "Last returned data of test"
@@ -2069,23 +1975,21 @@ msgstr "Последно върнати данни от теста"
 
 #: servcheck_test.php
 msgid "Logs"
-msgstr ""
+msgstr "Регистри"
 
 #: servcheck_test.php
 msgid "N/A (N/A)"
-msgstr ""
+msgstr "Н/Д (Н/Д)"
 
 #: servcheck_test.php
 msgid "No"
 msgstr "Не"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Service Checks Found"
-msgstr "Не са намерени сървъри"
+msgstr "Не са намерени проверки на услуги"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Users Selected"
 msgstr "Няма избрани потребители"
 
@@ -2103,22 +2007,19 @@ msgstr "Резултат"
 
 #: servcheck_test.php
 msgid "Ret. data size"
-msgstr ""
+msgstr "Размер на върн. данни"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Search result"
-msgstr "Търсене"
+msgstr "Резултат от търсенето"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Servcheck Test Management"
-msgstr "Управление на сървър за уеб сървъри"
+msgstr "Управление на тестове в ServCheck"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Service Check History"
-msgstr "Проверки на уеб услуги"
+msgstr "История на проверките на услуги"
 
 #: servcheck_test.php
 msgid "State"
@@ -2129,14 +2030,13 @@ msgid "Stats (OK/problem)"
 msgstr "Статистика (OK/проблем)"
 
 #: servcheck_test.php
-#, fuzzy, php-format
+#, php-format
 msgid "Test [edit: %s]"
-msgstr "Заявка [редактиране: %s]"
+msgstr "Тест [редактиране: %s]"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Test [new]"
-msgstr "Заявка [нова]"
+msgstr "Тест [нов]"
 
 #: servcheck_test.php
 #, php-format
@@ -2144,12 +2044,10 @@ msgid "The Service Check history was purged for %s"
 msgstr "Историята на проверката на услугата е изчистена за %s"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Triggered"
-msgstr "Задействани"
+msgstr "Задействан"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Users Selected"
 msgstr "Избрани потребители"
 
@@ -2162,9 +2060,8 @@ msgid "View Last returned data"
 msgstr "Преглед на последно върнатите данни"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "View Service Check History"
-msgstr "Проверки на уеб услуги"
+msgstr "Преглед на историята на проверките на услуги"
 
 #: servcheck_test.php
 msgid "Yes"
@@ -2172,7 +2069,7 @@ msgstr "Да"
 
 #: servcheck_test.php
 msgid "days"
-msgstr ""
+msgstr "дни"
 
 #: setup.php
 #, php-format
@@ -2185,9 +2082,9 @@ msgid "%d days"
 msgstr "%d дни"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d hours"
-msgstr "Последни 6 часа"
+msgstr "%d часа"
 
 #: setup.php
 #, php-format
@@ -2195,33 +2092,32 @@ msgid "%d year"
 msgstr "%d Година"
 
 #: setup.php
-#, fuzzy
 msgid "1 Process"
-msgstr "WebSeer сървъри"
+msgstr "1 Процес"
 
 #: setup.php
 msgid "1 week in advance"
-msgstr ""
+msgstr "1 седмица предварително"
 
 #: setup.php
 msgid "3 days in advance"
-msgstr ""
+msgstr "3 дни предварително"
 
 #: setup.php
 msgid "3 weeks in advance"
-msgstr ""
+msgstr "3 седмици предварително"
 
 #: setup.php
 msgid "30 days in advance"
-msgstr ""
+msgstr "30 дни предварително"
 
 #: setup.php
 msgid "60 days in advance"
-msgstr ""
+msgstr "60 дни предварително"
 
 #: setup.php
 msgid "90 days in advance"
-msgstr ""
+msgstr "90 дни предварително"
 
 #: setup.php
 msgid "CA"
@@ -2233,51 +2129,51 @@ msgstr "CA Редактиране"
 
 #: setup.php
 msgid "Certificate expiry date advanced notification email"
-msgstr ""
+msgstr "Имейл за предварително известяване за изтичане на сертификат"
 
 #: setup.php
 msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
-msgstr ""
+msgstr "Отмятането на това поле ще активира възможността за изпълнение на команди при събития на Servcheck. Можете да го активирате или деактивирате за всеки тест."
 
 #: setup.php
 msgid "Concurrent Check Processes"
-msgstr ""
+msgstr "Едновременни процеси за проверка"
 
 #: setup.php
 msgid "Credential Edit"
-msgstr ""
+msgstr "Редактиране на идентификационни данни"
 
 #: setup.php
 msgid "Credential Save"
-msgstr ""
+msgstr "Запазване на идентификационните данни"
 
 #: setup.php
 msgid "Enable Command Execution"
-msgstr ""
+msgstr "Активиране на изпълнението на команди"
 
 #: setup.php
 msgid "Enter the period after which older logs will be automatically deleted."
-msgstr ""
+msgstr "Въведете периода, след който по-старите журнали ще бъдат автоматично изтривани."
 
 #: setup.php
 msgid "HTTP/HTTPS Check Settings"
-msgstr ""
+msgstr "Настройки за проверка на HTTP/HTTPS"
 
 #: setup.php
 msgid "How long to keep logs"
-msgstr ""
+msgstr "Колко дълго да се пазят журналите"
 
 #: setup.php
 msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
-msgstr ""
+msgstr "Ако проверката за изтичане на SSL/TLS сертификата на услугата е активирана, задайте колко дни предварително преди датата на изтичане на сертификата системата да изпрати известие"
 
 #: setup.php
 msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
-msgstr ""
+msgstr "Ако е отметнато, servcheck няма да изпраща никакви имейли. Можете също да деактивирате известията само за конкретни тестове"
 
 #: setup.php
 msgid "If checked, this will cause all Emails to be sent separately for each address."
-msgstr ""
+msgstr "Ако е отметнато, всички имейли ще се изпращат поотделно за всеки адрес."
 
 #: setup.php
 msgid "Management"
@@ -2285,16 +2181,15 @@ msgstr "управление"
 
 #: setup.php
 msgid "Maximum test duration in seconds"
-msgstr ""
+msgstr "Максимална продължителност на теста в секунди"
 
 #: setup.php
 msgid "Never"
-msgstr ""
+msgstr "Никога"
 
 #: setup.php
-#, fuzzy
 msgid "Notification Preferences"
-msgstr "Настройки за известията"
+msgstr "Предпочитания за известия"
 
 #: setup.php
 #, fuzzy
@@ -2310,82 +2205,197 @@ msgid "Save CA"
 msgstr "Запиши CA"
 
 #: setup.php
-#, fuzzy
 msgid "Save Web Proxy"
-msgstr "Нов прокси"
+msgstr "Запазване на уеб прокси"
 
 #: setup.php
 msgid "Send Email separately for each address"
-msgstr ""
+msgstr "Изпращане на имейл поотделно за всеки адрес"
 
 #: setup.php
-#, fuzzy
 msgid "Servcheck"
-msgstr "Проверки на уеб услуги"
+msgstr "Servcheck"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Admin"
-msgstr "Проверка на уеб услуги Админ"
+msgstr "Администриране на проверки на услуги"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Edit"
-msgstr "Проверка на услугата Редактиране"
+msgstr "Редактиране на проверка на услуга"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Save"
-msgstr "Име за проверка на услугата"
+msgstr "Запазване на проверка на услуга"
 
 #: setup.php
-#, fuzzy
 msgid "Service Checker"
-msgstr "Име за проверка на услугата"
+msgstr "Проверка на услуги"
 
 #: setup.php
-#, fuzzy
 msgid "Service Checks"
-msgstr "Проверки на уеб услуги"
+msgstr "Проверки на услуги"
 
 #: setup.php
 msgid "Status Change Command"
-msgstr ""
+msgstr "Команда при промяна на състоянието"
 
 #: setup.php
 msgid "Stop sending all notification"
-msgstr ""
+msgstr "Спиране на изпращането на всички известия"
 
 #: setup.php
 msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
-msgstr ""
+msgstr "Низът User-Agent, изпращан при HTTP/HTTPS и други базирани на cURL проверки на услуги. Някои сайтове блокират стари или необичайни браузъри, така че тук можете да зададете актуален User-Agent. Оставете празно, за да използвате вградената стойност по подразбиране."
 
 #: setup.php
 msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
-msgstr ""
+msgstr "Стойността по подразбиране за тестове, при които не е активирано тестване на времето за изпълнение. Ако е активирано, макс. продължителност се изчислява като прага на продължителност + 2 секунди."
 
 #: setup.php
 msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
-msgstr ""
+msgstr "Броят процеси за проверка на услуги, които да се изпълняват едновременно. Не се препоръчва увеличаването на този брой до 2 пъти броя на ядрата."
 
 #: setup.php
-#, fuzzy
 msgid "User Agent"
-msgstr "Потребителско име"
+msgstr "Потребителски агент"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy"
-msgstr "WebSeer сървъри"
+msgstr "Уеб прокси"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy Edit"
-msgstr "Пълномощници"
+msgstr "Редактиране на уеб прокси"
 
 #: setup.php
 msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
-msgstr ""
+msgstr "Когато основен тест, тест за търсене или тест за изтичане на сертификат върне различен резултат, изпълнете следната команда... Тази команда НЕ трябва да включва аргументи от командния ред... Въпреки това следните променливи могат да бъдат извлечени от средата на скрипта:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+
+#: includes/arrays.php
+msgid "<b>Can be used for a lot of service checks:</b><br/><i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/><i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/><i>LDAP, smb, smbs</i> - required<br/><i>MQTT</i> - optional<br/><i>SCP, SSH command</i> - you can use this method or private key method"
+msgstr "<b>Може да се използва за много проверки на услуги:</b><br/><i>Http/https</i> - по избор, когато е зададено, опитва HTTP basic удостоверяване<br/><i>SMTP на порт 587</i> - по избор. Без потребителско име/парола се тества само отговорът на сървъра. С потребителско име и парола се извършва и влизане<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - по избор. За анонимен ftp използвайте потребителско име \"anonymous\" и имейл адрес като парола<br/><i>LDAP, smb, smbs</i> - задължително<br/><i>MQTT</i> - по избор<br/><i>SCP, SSH команда</i> - можете да използвате този метод или метода с частен ключ"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue). For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). For POST <i>api_key</i> is usually used."
+msgstr "Rest API - удостоверяване с API ключ<br/>Удостоверяването се изпраща в HTTP заглавка, персонализирана заглавка или чрез POST метод. Данни за достъп в URL не се поддържат.<br/>Въведете име и стойност на API ключа. И двете стойности са задължителни. За HTTP заглавка обикновено се използва името <i>Bearer или apikey или \"\"</i> (Authorization: Bearer apivalue). За персонализирана заглавка обикновено се използва <i>X-API-Key</i> (X-Api-Key: keyvalue). За POST обикновено се използва <i>api_key</i>."
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded."
+msgstr "Rest API - удостоверяване с OAuth2/Bearer токен<br/>Можете да въведете ключ/токен от сървъра тук или да използвате процес на удостоверяване с данни за вход. Потребителското име и паролата се изпращат кодирани в JSON."
+
+#: includes/arrays.php
+msgid "Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, you will see server login banner and ehlo response. With credential, login will be performed"
+msgstr "Некриптирана връзка + STARTTLS. Възможно е също да се провери валидността на сертификата. Без потребителско име и парола ще видите банера за вход на сървъра и отговора на ehlo. С идентификационни данни ще бъде извършено влизане"
+
+#: includes/arrays.php
+msgid "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password AUTH LOGIN will be tested."
+msgstr "Шифрована връзка на порт 465 по подразбиране. Възможно е също да се тества валидността на сертификата. При въведени потребителско име и парола ще бъде тестван AUTH LOGIN."
+
+#: includes/arrays.php
+msgid "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgstr "Некриптирана IMAP връзка. Без идентификационни данни ще бъде тествана само връзката. Ще видите само банера за вход. С идентификационни данни ще бъде тествано влизането и ще се направи опит за прочитане на списъка със съобщения. Можете да използвате метода AUTHENTICATE PLAIN или AUTHENTICATE LOGIN."
+
+#: includes/arrays.php
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Същото като некриптиран IMAP, но след влизане се използва STARTTLS. Също така е възможно да се тества валидността на сертификата след STARTTLS."
+
+#: includes/arrays.php
+msgid "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages"
+msgstr "Некриптирана POP3 връзка. Без идентификационни данни ще бъде тествана само връзката. Ще видите само банера за вход. С идентификационни данни ще бъде тествано влизането и ще се направи опит за прочитане на списъка със съобщения"
+
+#: includes/arrays.php
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Същото като некриптиран POP3, но след влизане се използва STARTTLS. Също така е възможно да се тества валидността на сертификата след STARTTLS."
+
+#: includes/arrays.php
+msgid "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content of the file is returned."
+msgstr "Некриптирана FTP връзка, влизане и опит за изтегляне на файла, указан в пътя (/path/to/file.txt). За анонимна връзка използвайте потребителско име *anonymous* и имейл адрес като парола. Връща се съдържанието на файла."
+
+#: includes/arrays.php
+msgid "Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\""
+msgstr "Свързване с MQTT сървър и слушане за всяко съобщение. Можете да зададете тема в „Път“ (bedroom/temp) или да оставите празно за всяка тема. За този тест се препоръчва да увеличите „Предупреждение за дълга продължителност“"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
+msgstr[0] "Щракнете върху „Продължи“, за да изтриете следния елемент."
+msgstr[1] "Щракнете върху „Продължи“, за да изтриете следните елементи."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
+msgstr[0] "Щракнете върху „Продължи“, за да деактивирате следния елемент."
+msgstr[1] "Щракнете върху „Продължи“, за да деактивирате следните елементи."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
+msgstr[0] "Щракнете върху „Продължи“, за да активирате следния елемент."
+msgstr[1] "Щракнете върху „Продължи“, за да активирате следните елементи."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
+msgstr[0] "Щракнете върху „Продължи“, за да дублирате следния елемент."
+msgstr[1] "Щракнете върху „Продължи“, за да дублирате следните елементи."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear statistics of the following item."
+msgid_plural "Click 'Continue' to clear statistics of the following items."
+msgstr[0] "Щракнете върху „Продължи“, за да изчистите статистиката на следния елемент."
+msgstr[1] "Щракнете върху „Продължи“, за да изчистите статистиката на следните елементи."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear log of the following item."
+msgid_plural "Click 'Continue' to clear log of the following items."
+msgstr[0] "Щракнете върху „Продължи“, за да изчистите журнала на следния елемент."
+msgstr[1] "Щракнете върху „Продължи“, за да изчистите журнала на следните елементи."
+
+#: servcheck_test.php
+msgid "Status"
+msgstr "Статус"
+
+#: setup.php
+msgid "Certificate expiry notification email interval"
+msgstr "Интервал за имейл известяване при изтичане на сертификат"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday"
+msgstr "Ако проверката за изтичане на SSL/TLS сертификата на услугата е активирана, задайте интервала (в дни) за изпращане на имейл известието; ако обаче датата на изтичане е изминала, имейл известието ще се изпраща всеки ден"
+
+#: setup.php
+msgid "1 day"
+msgstr "1 ден"
+
+#: setup.php
+msgid "3 days"
+msgstr "3 дни"
+
+#: setup.php
+msgid "5 days"
+msgstr "5 дни"
+
+#: setup.php
+msgid "7 days"
+msgstr "7 дни"
+
+#: setup.php
+msgid "10 days"
+msgstr "10 дни"
+
+#: setup.php
+msgid "15 days"
+msgstr "15 дни"
+
+#: setup.php
+msgid "20 days"
+msgstr "20 дни"
+
+#: setup.php
+msgid "30 days"
+msgstr "30 дни"
 
 #~ msgid "%d Minute"
 #~ msgstr "%d минута"
@@ -2606,9 +2616,6 @@ msgstr ""
 
 #~ msgid "Sites"
 #~ msgstr "за инжектиране e предната страна на бедрата"
-
-#~ msgid "Status"
-#~ msgstr "Статус"
 
 #~ msgid "Test each poller cycle or less"
 #~ msgstr "Тествайте всеки полер цикъл или по-малко"

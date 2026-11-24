@@ -30,7 +30,7 @@ msgid "%d Poller runs"
 msgstr "%d Poller の実行"
 
 #: includes/arrays.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Seconds"
 msgstr "%d 秒"
 
@@ -54,14 +54,12 @@ msgid ""
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "A Useful Name for this CA chain."
-msgstr "このプロキシの便利な名前。"
+msgstr "この CA チェーンの分かりやすい名前。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "A Useful Name for this Proxy."
-msgstr "このプロキシの便利な名前。"
+msgstr "このプロキシ用の分かりやすい名前。"
 
 #: includes/arrays.php
 msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
@@ -97,27 +95,27 @@ msgstr "要求された機能、プロトコルまたはオプションの組み
 
 #: includes/arrays.php
 msgid "AES"
-msgstr ""
+msgstr "AES"
 
 #: includes/arrays.php
 msgid "AES-128"
-msgstr ""
+msgstr "AES-128"
 
 #: includes/arrays.php
 msgid "AES-192"
-msgstr ""
+msgstr "AES-192"
 
 #: includes/arrays.php
 msgid "AES-192-C"
-msgstr ""
+msgstr "AES-192"
 
 #: includes/arrays.php
 msgid "AES-256"
-msgstr ""
+msgstr "AES-256"
 
 #: includes/arrays.php
 msgid "AES-256-C"
-msgstr ""
+msgstr "AES-256"
 
 #: includes/arrays.php
 msgid "API key auth"
@@ -137,15 +135,15 @@ msgstr "サーバーに FTP のパスワードを送信すると後、は、libc
 
 #: includes/arrays.php
 msgid "All fine. Proceed as usual."
-msgstr "すべての罰金。いつものように進んでください。"
+msgstr "問題ありません。通常どおり続行してください。"
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform encrypted LDAP login and search"
-msgstr ""
+msgstr "すべてのパラメーターが必須です。暗号化された LDAP ログインと検索を実行します"
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform unencrypted LDAP login and search"
-msgstr ""
+msgstr "すべてのパラメーターが必須です。暗号化されていない LDAP ログインと検索を実行します"
 
 #: includes/arrays.php
 msgid "An API function was called from inside a callback."
@@ -187,7 +185,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Auth in HTTP headers"
-msgstr ""
+msgstr "HTTP ヘッダーでの認証"
 
 #: includes/arrays.php
 #, fuzzy
@@ -215,40 +213,36 @@ msgid "CA and intermediate certs, PEM encoded"
 msgstr "CA および中間証明書、PEM エンコード"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "CA certificates"
-msgstr "証明書を確認する"
+msgstr "CA 証明書"
 
 #: includes/arrays.php
 msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
-msgstr ""
+msgstr "Cacti は各テストを複数回実行しようとします。最初の成功した試行でテストが終了し、成功が記録されます。すべての試行が成功しない場合、テストは終了し失敗が記録されます。高い数値を設定するとテスト時間が長くなります。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check Certificate"
 msgstr "証明書を確認する"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check and notify Certificate expiration"
-msgstr "証明書を確認する"
+msgstr "証明書の有効期限を確認して通知する"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
-msgstr "ユーザー名とパスワードが必要なため、サイトが通常401エラーを返す場合は、このボックスをオンにします。"
+msgstr "ユーザー名とパスワードが必要なため、サイトが通常 401 エラーを返す場合は、このチェックボックスをオンにします。"
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Authorization Protocol."
-msgstr ""
+msgstr "SNMPv3認証プロトコルを選択してください。"
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Passphrase."
-msgstr ""
+msgstr "SNMPv3プライバシーパスフレーズを選択してください。"
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Protocol."
-msgstr ""
+msgstr "SNMPv3プライバシープロトコルを選択して下さい。"
 
 #: includes/arrays.php
 msgid "Chunk callback reported error."
@@ -256,11 +250,11 @@ msgstr "チャンク コールバックには、エラーが報告されまし�
 
 #: includes/arrays.php
 msgid "Client ID"
-msgstr ""
+msgstr "クライアント ID"
 
 #: includes/arrays.php
 msgid "Client secret"
-msgstr ""
+msgstr "クライアントシークレット"
 
 #: includes/arrays.php
 msgid "Conflict"
@@ -297,15 +291,15 @@ msgstr "作成日"
 
 #: includes/arrays.php setup.php
 msgid "Credential"
-msgstr ""
+msgstr "認証情報"
 
 #: includes/arrays.php
 msgid "Credential Name"
-msgstr ""
+msgstr "認証情報名"
 
 #: includes/arrays.php
 msgid "Credential type"
-msgstr ""
+msgstr "認証情報の種類"
 
 #: includes/arrays.php
 msgid "Curl return codes"
@@ -313,12 +307,11 @@ msgstr "Curl の戻りコード"
 
 #: includes/arrays.php
 msgid "Custom HTTP header"
-msgstr ""
+msgstr "カスタム HTTP ヘッダー"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DES"
-msgstr "DNS"
+msgstr "DES"
 
 #: includes/arrays.php
 msgid "DNS Name for Query"
@@ -326,21 +319,19 @@ msgstr "クエリの DNS 名"
 
 #: includes/arrays.php
 msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
-msgstr ""
+msgstr "クエリ対象の DNS 名。DOH（DNS over HTTPS）の場合は /resolve?name=example.com または /dns-query?name=example.com&type=A を使用してください。平文 DNS の場合は A および AAAA レコードが返されます"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DNS over HTTPS, default port 443"
-msgstr "HTTP 暗号化 (HTTPS)、デフォルト ポート 443"
+msgstr "DNS over HTTPS、デフォルトポート 443"
 
 #: includes/arrays.php
 msgid "DNS plaintext, default port 53"
 msgstr "DNS プレーンテキスト、デフォルト ポート 53"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Data URL"
-msgstr "複製"
+msgstr "データ URL"
 
 #: includes/arrays.php
 msgid ""
@@ -366,30 +357,28 @@ msgid "Early initialization code failed. This is likely to be an internal error 
 msgstr "早期初期化コードが失敗しました。これは、内部エラーまたは問題、または初期化時に基本的な処理を実行できなかったリソースの問題である可能性があります。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Email notification"
-msgstr "通知設定"
+msgstr "メール通知"
 
 #: includes/arrays.php
 msgid "Enable run script for this test"
-msgstr ""
+msgstr "このテストでスクリプト実行を有効にする"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enable test"
-msgstr "サーバーを有効にする"
+msgstr "テストを有効にする"
 
 #: includes/arrays.php
 msgid "Encrypted IMAP, you can try login and test certificate and user login"
-msgstr ""
+msgstr "暗号化 IMAP です。ログインを試行し、証明書とユーザーログインをテストできます"
 
 #: includes/arrays.php
 msgid "Encrypted POP3, you can try login and test certificate and user login."
-msgstr ""
+msgstr "暗号化 POP3 です。ログインを試行し、証明書とユーザーログインをテストできます。"
 
 #: includes/arrays.php
 msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
-msgstr ""
+msgstr "暗号化 SCP 接続です。ログインしてパスに指定されたファイル (/path/to/file.txt) のダウンロードを試行します。"
 
 #: includes/arrays.php
 msgid ""
@@ -398,22 +387,20 @@ msgid ""
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an External ID for this test."
-msgstr "この Thold テンプレートの Eternal ID を入力します。"
+msgstr "このテストの外部IDを入力してください。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
-msgstr "接続するIPアドレスを入力してください。空白のままにすると、代わりにDNS解決が使用されます。"
+msgstr "DNS名の解決先として強制するIPアドレスを入力してください。空白のままにすると、通常のDNS名前解決が使用されます。"
 
 #: includes/arrays.php
 msgid "Enter the SNMP Context to use for this device."
-msgstr ""
+msgstr "このデバイスに使用するSNMPコンテキストを入力してください。"
 
 #: includes/arrays.php
 msgid "Enter the SNMP v3 Engine Id or empty."
-msgstr ""
+msgstr "SNMP v3 エンジン ID を入力するか、空のままにしてください。"
 
 #: includes/arrays.php
 msgid "Error"
@@ -421,7 +408,7 @@ msgstr "エラー"
 
 #: includes/arrays.php
 msgid "Error/failed"
-msgstr ""
+msgstr "エラー/失敗"
 
 #: includes/arrays.php
 msgid "Expectation Failed"
@@ -432,7 +419,6 @@ msgid "External ID"
 msgstr "外部ID"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Extra Alert Emails"
 msgstr "追加のアラートメール"
 
@@ -461,9 +447,8 @@ msgid "Failed string found"
 msgstr "失敗した文字列が見つかりました"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Failed string not found"
-msgstr "失敗したストリントが見つかりません"
+msgstr "失敗文字列が見つかりません"
 
 #: includes/arrays.php
 msgid "Failed to connect() to host or proxy."
@@ -483,7 +468,7 @@ msgstr "SSL 接続をシャット ダウンに失敗しました。"
 
 #: includes/arrays.php
 msgid "Failing"
-msgstr ""
+msgstr "失敗中"
 
 #: includes/arrays.php
 msgid "Failure with receiving network data."
@@ -498,14 +483,12 @@ msgid "File not found on TFTP server."
 msgstr "ファイルが TFTP サーバーに見つかりません。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For anonymous FTP insert email address"
-msgstr "匿名FTPの場合は、ここにメールアドレスを挿入してください。"
+msgstr "匿名FTPの場合はメールアドレスを入力してください"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
-msgstr "Web サービスの場合は、少なくとも \"/\" または \"/any/path/\" のようなものを挿入します。FTP の場合、リストは char \"/\" で終わる必要があります。TFTP/SCP/SMB ダウンロードテストの場合は、/path/file を挿入します。"
+msgstr "Webサービスの場合は、少なくとも \"/\" または \"/any/path/\" のようなパスを入力してください。"
 
 #: includes/arrays.php
 msgid "Forbidden"
@@ -513,7 +496,7 @@ msgstr "禁じられた"
 
 #: includes/arrays.php
 msgid "Form urlencoded"
-msgstr ""
+msgstr "フォーム URL エンコード"
 
 #: includes/arrays.php
 msgid "Found"
@@ -557,7 +540,7 @@ msgstr "HTTPSポート"
 
 #: includes/arrays.php
 msgid "Help"
-msgstr ""
+msgstr "ヘルプ"
 
 #: includes/arrays.php servcheck_proxy.php
 msgid "Hostname"
@@ -569,15 +552,15 @@ msgstr "テストの頻度"
 
 #: includes/arrays.php
 msgid "How many attempts"
-msgstr ""
+msgstr "試行回数"
 
 #: includes/arrays.php
 msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
-msgstr ""
+msgstr "通知を送信するために所要時間のトリガーを連続して何回超過する必要があるか"
 
 #: includes/arrays.php
 msgid "How many times the service must be DOWN before an alert email is triggered."
-msgstr ""
+msgstr "アラートメールがトリガーされるまでにサービスが停止中 (DOWN) になる必要がある連続回数。"
 
 #: includes/arrays.php
 msgid "IMAP encrypted (IMAPS), default port 993"
@@ -592,40 +575,36 @@ msgid "IMAP with STARTTLS, default port 143"
 msgstr "IMAP と STARTTLS、デフォルト ポート 143"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "IP Address or DNS name of server"
-msgstr "このサーバーに接続するためのIPアドレス"
+msgstr "サーバーの IP アドレスまたは DNS 名"
 
 #: includes/arrays.php
 msgid "If enabled email notification about state, duration and search result will be send"
-msgstr ""
+msgstr "有効にすると、状態、所要時間、検索結果に関するメール通知が送信されます"
 
 #: includes/arrays.php
 msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
-msgstr ""
+msgstr "グローバルのコマンド実行機能が有効な場合、このテストに対してスクリプトを実行するかどうかをここで設定できます。"
 
 #: includes/arrays.php
 msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
-msgstr ""
+msgstr "テスト時間がこの値を連続して指定回数以上超えた場合に通知を送信します。継続時間カウント変数に関連します。テストは設定から最大実行時間を継承します。ここでより高い値が設定された場合、最大実行時間は「この値 + 2 秒」になります。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
-msgstr "この接続テキストにプロキシが必要な場合は、ここで選択してください。それ以外の場合は「なし」を選択します。"
+msgstr "この接続テキストにプロキシが必要な場合は、ここで選択してください。それ以外の場合は「なし」を選択してください。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
-msgstr "SSLを使用している場合、証明書を検証したい場合はこのボックスをチェックしてください。サイトが自己署名証明書を使用している場合はデフォルトでオンになります。"
+msgstr "SSL を使用している場合に証明書の有効期限を確認するには、このボックスをチェックしてください。有効期限の何日前に通知するかは設定で指定できます。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
-msgstr "SSLを使用している場合、証明書を検証したい場合はこのボックスをチェックしてください。サイトが自己署名証明書を使用している場合はデフォルトでオンになります。"
+msgstr "SSL を使用している場合に証明書を検証するには、このボックスをチェックしてください。デフォルトではオンになっており、サイトが自己署名証明書を使用している場合はオフにしてください。"
 
 #: includes/arrays.php
 msgid "If your key is password protected, insert password here"
-msgstr ""
+msgstr "鍵がパスワードで保護されている場合は、ここにパスワードを入力してください"
 
 #: includes/arrays.php
 msgid "Illegal TFTP operation."
@@ -637,15 +616,15 @@ msgstr "SSL エンジンの開始に失敗しました。"
 
 #: includes/arrays.php
 msgid "Insert SNMP OID"
-msgstr ""
+msgstr "SNMP OID を挿入"
 
 #: includes/arrays.php
 msgid "Insert SSH command with full path, result of command will be returned"
-msgstr ""
+msgstr "SSH コマンドをフルパスで入力してください。コマンドの結果が返されます"
 
 #: includes/arrays.php
 msgid "Insert username here"
-msgstr ""
+msgstr "ここにユーザー名を入力してください"
 
 #: includes/arrays.php
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
@@ -661,20 +640,19 @@ msgstr "発行元チェックに失敗しました (7.19.0 で追加されまし
 
 #: includes/arrays.php
 msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
-msgstr ""
+msgstr "SMTP サーバーが応答しているかどうかのみを確認します。認証は行いません。サーバーのログインバナーと EHLO 応答が表示されます。"
 
 #: includes/arrays.php
 msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
-msgstr ""
+msgstr "Web サーバーが応答しているかどうかのみを確認します。ユーザー名/パスワードの資格情報が指定されている場合は、Basic HTTP 認証を試行します。"
 
 #: includes/arrays.php
 msgid "JSON encoded"
-msgstr ""
+msgstr "JSON エンコード"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "LDAP Search"
-msgstr "検索"
+msgstr "LDAP 検索"
 
 #: includes/arrays.php
 msgid "LDAP cannot bind. LDAP bind operation failed."
@@ -722,25 +700,23 @@ msgstr "Libcurl は、PASV または EPSV コマンドへの応答として、�
 
 #: includes/arrays.php
 msgid "Login URL"
-msgstr ""
+msgstr "ログイン URL"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Long duration"
-msgstr "場所"
+msgstr "長時間"
 
 #: includes/arrays.php
 msgid "Long duration alert"
-msgstr ""
+msgstr "長時間アラート"
 
 #: includes/arrays.php
 msgid "MD5"
-msgstr ""
+msgstr "MD5"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "MQTT plaintext, default port 1883"
-msgstr "HTTP プレーンテキスト、デフォルトポート 80"
+msgstr "MQTT プレーンテキスト、デフォルトポート 1883"
 
 #: includes/arrays.php
 msgid "Maint string found"
@@ -780,7 +756,6 @@ msgid "New CA"
 msgstr "新しい CA"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "New Proxy"
 msgstr "新しいプロキシ"
 
@@ -806,11 +781,11 @@ msgstr "みつかりません"
 
 #: includes/arrays.php
 msgid "Not Implemented"
-msgstr "メソッド '％s'は実装されていません。サブクラスでオーバーライドされている必要があります。"
+msgstr "未実装"
 
 #: includes/arrays.php
 msgid "Not Modified"
-msgstr "修正"
+msgstr "未変更"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Not tested yet"
@@ -830,34 +805,31 @@ msgstr "電子メールで送信されるメモ"
 
 #: includes/arrays.php
 msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
-msgstr "何がサーバーから返された、状況、エラーと見なされます得る何も。"
+msgstr "サーバーから何も返されませんでした。この状況では、何も返されないことはエラーとみなされます。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notification List"
-msgstr "通知設定"
+msgstr "通知リスト"
 
 #: includes/arrays.php
 msgid "Notification Settings"
 msgstr "通知設定"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notify Accounts"
-msgstr "アカウントを通知する"
+msgstr "通知先アカウント"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notify Format"
-msgstr "アカウントを通知する"
+msgstr "通知形式"
 
 #: includes/arrays.php
 msgid "Number of duration violations in a row"
-msgstr ""
+msgstr "連続した所要時間違反の回数"
 
 #: includes/arrays.php
 msgid "OAuth Client secret"
-msgstr ""
+msgstr "OAuth クライアントシークレット"
 
 #: includes/arrays.php
 msgid "OAuth2/Bearer token auth"
@@ -869,7 +841,7 @@ msgstr "OK"
 
 #: includes/arrays.php
 msgid "Oauth Client ID"
-msgstr ""
+msgstr "OAuth クライアント ID"
 
 #: includes/arrays.php
 msgid "Obsolete Error"
@@ -877,20 +849,19 @@ msgstr "廃止されたエラー"
 
 #: includes/arrays.php
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: includes/arrays.php
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
 msgstr "操作のタイムアウト。条件に応じて、指定されたタイムアウト期間に達しました。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Options"
-msgstr "操作"
+msgstr "オプション"
 
 #: includes/arrays.php
 msgid "Out of disk space on the server."
-msgstr "サーバー上のディスク領域のうち。"
+msgstr "サーバーのディスク容量が不足しています。"
 
 #: includes/arrays.php
 msgid "POP3 encrypted (POP3S), default port 995"
@@ -906,15 +877,15 @@ msgstr "POP3 と STARTTLS、デフォルトポート 110"
 
 #: includes/arrays.php
 msgid "POST method, JSON encoded"
-msgstr ""
+msgstr "POST メソッド、JSON エンコード"
 
 #: includes/arrays.php
 msgid "POST method, form-urlencoded"
-msgstr ""
+msgstr "POST メソッド、form-urlencoded"
 
 #: includes/arrays.php
 msgid "Parameters"
-msgstr ""
+msgstr "パラメーター"
 
 #: includes/arrays.php
 msgid "Partial Content"
@@ -937,9 +908,8 @@ msgid "Permission problem on TFTP server."
 msgstr "TFTP サーバー上のアクセス許可の問題。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Poller"
-msgstr "収集キャッシュ管理"
+msgstr "ポーラー"
 
 #: includes/arrays.php
 msgid "Poller on which the test will run"
@@ -954,7 +924,6 @@ msgid "Problem with reading the SSL CA cert (path? access rights?)"
 msgstr "SSL CA 証明書を読んで問題 (パス? アクセス権?)"
 
 #: includes/arrays.php servcheck_proxy.php
-#, fuzzy
 msgid "Proxies"
 msgstr "プロキシ"
 
@@ -976,19 +945,19 @@ msgstr "QUIC接続エラー。このエラーは、SSL ライブラリのエラ�
 
 #: includes/arrays.php
 msgid "REST API test with API key auth. Prepare credential first."
-msgstr ""
+msgstr "API キー認証による REST API テスト。先に認証情報を準備してください。"
 
 #: includes/arrays.php
 msgid "REST API test with Oauth2. Prepare credential first."
-msgstr ""
+msgstr "OAuth2 による REST API テスト。先に認証情報を準備してください。"
 
 #: includes/arrays.php
 msgid "REST API test with basic HTTP auth. Prepare credential first."
-msgstr ""
+msgstr "基本 HTTP 認証による REST API テスト。先に認証情報を準備してください。"
 
 #: includes/arrays.php
 msgid "REST API test with cookie auth. Prepare credential first."
-msgstr ""
+msgstr "Cookie 認証による REST API テスト。先に認証情報を準備してください。"
 
 #: includes/arrays.php
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
@@ -999,9 +968,8 @@ msgid "Request Entity Too Large"
 msgstr "要求エンティティが大きすぎます"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Request Timeout"
-msgstr "タイムアウト"
+msgstr "リクエストタイムアウト"
 
 #: includes/arrays.php
 msgid "Request-URI Too Long"
@@ -1016,7 +984,6 @@ msgid "Requested Range Not Satisfiable"
 msgstr "要求された範囲内にない"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Requires Authentication"
 msgstr "認証が必要"
 
@@ -1026,26 +993,23 @@ msgstr "コンテンツをリセット"
 
 #: includes/arrays.php
 msgid "Resolve DNS to Address"
-msgstr ""
+msgstr "DNS をアドレスに解決"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String"
-msgstr "レスポンス検索文字列"
+msgstr "応答検索文字列"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String - Failed"
 msgstr "応答検索文字列 - 失敗"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String - Maintenance"
-msgstr "応答検索文字列 - メンテナンスページ"
+msgstr "応答検索文字列 - メンテナンス"
 
 #: includes/arrays.php
 msgid "Rest API - API key auth"
-msgstr ""
+msgstr "REST API - API キー認証"
 
 #: includes/arrays.php
 msgid ""
@@ -1057,23 +1021,23 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth"
-msgstr ""
+msgstr "REST API - Basic HTTP 認証"
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth. Username and password are required"
-msgstr ""
+msgstr "REST API - Basic HTTP 認証。ユーザー名とパスワードが必須です"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth"
-msgstr ""
+msgstr "REST API - Cookie ベース認証"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
-msgstr ""
+msgstr "REST API - Cookie ベース認証 - 両方の値が必須です。ログイン後に Cookie が返されます"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth"
-msgstr ""
+msgstr "REST API - OAuth2/Bearer トークン認証"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are send Json encoded."
@@ -1089,52 +1053,51 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Rest API with API key auth"
-msgstr ""
+msgstr "API キー認証付き REST API"
 
 #: includes/arrays.php
 msgid "Rest API with Basic HTTP auth"
-msgstr ""
+msgstr "Basic HTTP 認証付き REST API"
 
 #: includes/arrays.php
 msgid "Rest API with Cookie based auth"
-msgstr ""
+msgstr "Cookie ベース認証付き REST API"
 
 #: includes/arrays.php
 msgid "Rest API with OAuth2/Bearer token auth"
-msgstr ""
+msgstr "OAuth2/Bearer トークン認証付き REST API"
 
 #: includes/arrays.php
 msgid "SCP download file, default port 22"
 msgstr "SCP ダウンロード ファイル、デフォルト ポート 22"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SFTP protocol - directory listing, default port 22"
-msgstr "TFTPプロトコル - ダウンロードファイル、デフォルトポート69"
+msgstr "SFTP プロトコル - ディレクトリ一覧、デフォルトポート 22"
 
 #: includes/arrays.php
 msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
-msgstr ""
+msgstr "ポート 22 の SFTP プロトコルです。ユーザー名、パスワード、およびパスが必須です。パスのディレクトリ一覧取得を試行します。"
 
 #: includes/arrays.php
 msgid "SHA"
-msgstr ""
+msgstr "SHA"
 
 #: includes/arrays.php
 msgid "SHA-224"
-msgstr ""
+msgstr "SHA-224"
 
 #: includes/arrays.php
 msgid "SHA-256"
-msgstr ""
+msgstr "SHA-256"
 
 #: includes/arrays.php
 msgid "SHA-392"
-msgstr ""
+msgstr "SHA-392"
 
 #: includes/arrays.php
 msgid "SHA-512"
-msgstr ""
+msgstr "SHA-512"
 
 #: includes/arrays.php
 msgid "SMB encrypted (SMBS) download file, default port 445"
@@ -1153,123 +1116,120 @@ msgid "SMTP plaintext, default port 25 (or 587 for submission)"
 msgstr "SMTP プレーンテキスト、デフォルト ポート 25 (送信の場合は 587)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
-msgstr "STARTTLS を使用した SMTP、デフォルト ポート 25 (または送信の場合は 587)"
+msgstr "STARTTLS を使用した SMTP、デフォルトポート 25 (サブミッションの場合は 587)"
 
 #: includes/arrays.php
 msgid "SNMP Auth Protocol (v3)"
-msgstr ""
+msgstr "SNMP認証プロトコル（v3）"
 
 #: includes/arrays.php
 msgid "SNMP Context (v3)"
-msgstr ""
+msgstr "SNMPコンテキスト（v3）"
 
 #: includes/arrays.php
 msgid "SNMP Engine ID (v3)"
-msgstr ""
+msgstr "SNMPエンジンID（v3）"
 
 #: includes/arrays.php
 msgid "SNMP OID"
-msgstr ""
+msgstr "SNMP OID"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Password (v3)"
-msgstr "パスワード"
+msgstr "SNMPパスワード（v3）"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Passphrase (v3)"
-msgstr ""
+msgstr "SNMPプライバシーパスフレーズ（v3）"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Protocol (v3)"
-msgstr ""
+msgstr "SNMPプライバシープロトコル（v3）"
 
 #: includes/arrays.php
 msgid "SNMP Security Level"
-msgstr ""
+msgstr "SNMPセキュリティレベル"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Username (v3)"
-msgstr "ユーザー名"
+msgstr "SNMPユーザー名（v3）"
 
 #: includes/arrays.php
 msgid "SNMP community string for SNMP v1 or v2(c)"
-msgstr ""
+msgstr "SNMP v1 または v2(c) 用の SNMP コミュニティ文字列"
 
 #: includes/arrays.php
 msgid "SNMP get"
-msgstr ""
+msgstr "SNMP get"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2"
-msgstr ""
+msgstr "SNMP v1 または v2"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 - required, insert community name here"
-msgstr ""
+msgstr "SNMP v1 または v2 - 必須です。ここにコミュニティ名を入力してください"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 community"
-msgstr ""
+msgstr "SNMP v1 または v2 コミュニティ"
 
 #: includes/arrays.php
 msgid "SNMP v3"
-msgstr ""
+msgstr "SNMP v3"
 
 #: includes/arrays.php
 msgid "SNMP v3 - The security level determines which parameters are required"
-msgstr ""
+msgstr "SNMP v3 - セキュリティレベルによって必要なパラメーターが決まります"
 
 #: includes/arrays.php
 msgid "SNMP v3 Security Level to use when querying the device."
-msgstr ""
+msgstr "デバイスを照会するときに使用するSNMP v3セキュリティレベル。"
 
 #: includes/arrays.php
 msgid "SNMP v3 password for this device."
-msgstr ""
+msgstr "このデバイスのSNMP v3パスワード。"
 
 #: includes/arrays.php
 msgid "SNMP v3 username for this device."
-msgstr ""
+msgstr "このデバイスのSNMP v3ユーザー名。"
 
 #: includes/arrays.php
 msgid "SNMP walk"
-msgstr ""
+msgstr "SNMP walk"
 
 #: includes/arrays.php
 msgid "SSH command"
-msgstr ""
+msgstr "SSH コマンド"
 
 #: includes/arrays.php
 msgid "SSH command on remote system"
-msgstr ""
+msgstr "リモートシステム上の SSH コマンド"
 
 #: includes/arrays.php
 msgid "SSH private key"
-msgstr ""
+msgstr "SSH 秘密鍵"
 
 #: includes/arrays.php
 msgid "SSH private key "
-msgstr ""
+msgstr "SSH 秘密鍵 "
 
 #: includes/arrays.php
 msgid "SSH private key - Cacti 1.2.31+"
-msgstr ""
+msgstr "SSH 秘密鍵 - Cacti 1.2.31 以降"
 
 #: includes/arrays.php
 msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
-msgstr ""
+msgstr "SSH 秘密鍵 - SCP または SSH コマンドテストに使用できます。これらのテストではユーザー名/パスワードも使用できます"
 
 #: includes/arrays.php
 msgid "SSH private key passphrase"
-msgstr ""
+msgstr "SSH 秘密鍵のパスフレーズ"
 
 #: includes/arrays.php
 msgid "SSH user"
-msgstr ""
+msgstr "SSH ユーザー"
 
 #: includes/arrays.php
 msgid "SSL Client Certificate required."
@@ -1285,18 +1245,17 @@ msgstr "その他を見る"
 
 #: includes/arrays.php
 msgid "Select correct Credential type."
-msgstr ""
+msgstr "正しい認証情報タイプを選択してください。"
 
 #: includes/arrays.php
 msgid "Select correct credential"
-msgstr ""
+msgstr "正しい認証情報を選択してください"
 
 #: includes/arrays.php
 msgid "Select correct credential or left empty."
-msgstr ""
+msgstr "正しい認証情報を選択するか、空のままにしてください。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Service Check Name"
 msgstr "サービスチェック名"
 
@@ -1305,13 +1264,12 @@ msgid "Service Unavailable"
 msgstr "SMTP サービスが利用できません"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Service settings"
-msgstr "一般設定"
+msgstr "サービス設定"
 
 #: includes/arrays.php
 msgid "Set according to your REST API server"
-msgstr ""
+msgstr "REST API サーバーに合わせて設定してください"
 
 #: includes/arrays.php
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
@@ -1347,7 +1305,7 @@ msgstr "一時的なリダイレクト"
 
 #: includes/arrays.php
 msgid "Test every xth poller run"
-msgstr ""
+msgstr "ポーラー実行の x 回ごとにテスト"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Tests"
@@ -1366,19 +1324,16 @@ msgid "The FTP server does not understand the PRET command at all or does not su
 msgstr "FTP サーバーが PRET コマンドをまったく認識しないか、または指定された引数をサポートしません。CURLOPT_CUSTOMREQUEST を使用するときは、PASV の前にも PRET コマンドでカスタム LIST コマンドが送信されるので注意してください。(7.20.0 で追加)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The HTTP Proxy Port."
-msgstr "HTTPプロキシポート。"
+msgstr "HTTP プロキシポート。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The HTTPS Proxy Port."
-msgstr "HTTPSプロキシポート。"
+msgstr "HTTPS プロキシポート。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The Proxy Hostname."
-msgstr "プロキシホスト名。"
+msgstr "プロキシのホスト名。"
 
 #: includes/arrays.php
 msgid "The URL was not properly formatted."
@@ -1393,18 +1348,16 @@ msgid "The download could not be resumed because the specified offset was out of
 msgstr "指定したオフセットは、ファイルの境界外でしたので、ダウンロードを再開できませんでした。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The name that is displayed for this Credential."
-msgstr "このサービスチェックに表示される名前で、アラート通知に含まれています。"
+msgstr "この認証情報に表示される名前。"
 
 #: includes/arrays.php
 msgid "The name that is displayed for this Rest API."
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
-msgstr "このサービスチェックに表示される名前で、アラート通知に含まれています。"
+msgstr "このサービスチェックに表示される名前で、アラート通知に含まれます。"
 
 #: includes/arrays.php
 msgid "The remote server denied curl to login (Added in 7.13.1)"
@@ -1420,7 +1373,7 @@ msgstr "URL で参照されるリソースが存在しません。"
 
 #: includes/arrays.php
 msgid "The same as HTTP plaintext but adds the ability to test certificates."
-msgstr ""
+msgstr "HTTP 平文と同じですが、証明書をテストする機能が追加されています。"
 
 #: includes/arrays.php
 msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS."
@@ -1448,12 +1401,11 @@ msgstr "ローカル ファイルまたは読み取りコールバックから�
 
 #: includes/arrays.php
 msgid "This error should never be returned by a properly functioning TFTP server."
-msgstr "このエラーは正しく機能している TFTP サーバーによって返されます。"
+msgstr "このエラーは、正常に機能している TFTP サーバーからは決して返されないはずです。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is a listing of accounts that will be notified when this service goes down."
-msgstr "これはこのウェブサイトがダウンしたときに通知されるアカウントのリストです。"
+msgstr "このサービスが停止したときに通知されるアカウントの一覧です。"
 
 #: includes/arrays.php
 msgid "This is an odd error that mainly occurs due to internal confusion."
@@ -1464,24 +1416,20 @@ msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server r
 msgstr "これは、CURLOPT_FAILONERROR が true に設定され、HTTP サーバーが >= 400 のエラー コードを返した場合に返されます。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the format to use when sending the notification email"
-msgstr "これは、通知メールを送信するときに使用する形式です"
+msgstr "通知メールの送信時に使用する形式です"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
-msgstr "これは、Webサービスの応答における既知の失敗を検索するための文字列です。 Service Checkは、この文字列が見つかった場合にのみ警告を発し、タイムアウトの問題や上記の検索文字列は無視します。"
+msgstr "サービスの応答内で既知の障害を検索するための文字列です。タイムアウトの問題や上記の検索文字列を無視し、この文字列が見つかった場合にのみサービスチェックがアラートを発行します。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for in the response for a live and working service."
-msgstr "これは、稼働中の機能しているWebサービスのURL応答で検索する文字列です。"
+msgstr "正常に稼働しているサービスの応答内で検索する文字列です。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
-msgstr "これは、メンテナンスページで検索する文字列です。上記の文字列が見つからない場合、Service Checkはこの文字列をチェックします。見つかった場合は、Webサービスがメンテナンス中であることを意味します。"
+msgstr "メンテナンスページで検索する文字列です。上記の文字列が見つからない場合、サービスチェックはこの文字列を確認します。見つかった場合は、サービスがメンテナンス中であることを意味します。"
 
 #: includes/arrays.php
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
@@ -1489,11 +1437,11 @@ msgstr "これは、いずれかの 'RETR' コマンドに奇妙な返信また�
 
 #: includes/arrays.php
 msgid "Token name"
-msgstr ""
+msgstr "トークン名"
 
 #: includes/arrays.php
 msgid "Token value"
-msgstr ""
+msgstr "トークン値"
 
 #: includes/arrays.php
 msgid "Token/API Key name"
@@ -1509,27 +1457,27 @@ msgstr "トリガー"
 
 #: includes/arrays.php
 msgid "Try DNS over HTTPS."
-msgstr ""
+msgstr "DNS over HTTPS を試行します。"
 
 #: includes/arrays.php
 msgid "Try SMB protocol, username and password are required. Try to login and download file."
-msgstr ""
+msgstr "SMB プロトコルを試行します。ユーザー名とパスワードが必要です。ログインしてファイルのダウンロードを試行します。"
 
 #: includes/arrays.php
 msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
-msgstr ""
+msgstr "SNMP get メソッドを試行します。指定した OID の出力が返されます。認証情報が必要となるため、あらかじめ SNMP v1、v2、または v3 の認証情報を用意しておく必要があります。"
 
 #: includes/arrays.php
 msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
-msgstr ""
+msgstr "SNMP walk メソッドを試行します。指定した OID の出力が返されます。認証情報が必要となるため、あらかじめ SNMP v1、v2、または v3 の認証情報を用意しておく必要があります。"
 
 #: includes/arrays.php
 msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
-msgstr ""
+msgstr "TFTP サーバーからパス（/path/to/file.txt）で指定されたファイルのダウンロードを試行します。ファイルの内容が返されます。"
 
 #: includes/arrays.php
 msgid "Try to resolve DNS record on specified DNS server"
-msgstr ""
+msgstr "指定された DNS サーバーで DNS レコードの名前解決を試行します"
 
 #: includes/arrays.php
 msgid "Type of service"
@@ -1537,16 +1485,15 @@ msgstr "サービスの種類"
 
 #: includes/arrays.php
 msgid "URL to retrieve data. Insert with http:// or https://"
-msgstr ""
+msgstr "データを取得する URL。http:// または https:// から入力してください"
 
 #: includes/arrays.php
 msgid "URL which is used to log in or get the token."
-msgstr ""
+msgstr "ログインまたはトークンの取得に使用する URL。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Unable to Connect"
-msgstr "サーバーを有効にする"
+msgstr "接続できません"
 
 #: includes/arrays.php
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
@@ -1557,9 +1504,8 @@ msgid "Unauthorized"
 msgstr "無許可"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Uncheck this box to disable this test from being checked."
-msgstr "このチェックボックスをオフにすると、このURLはチェックされません。"
+msgstr "このテストのチェックを無効にするには、このチェックボックスをオフにします。"
 
 #: includes/arrays.php
 msgid ""
@@ -1598,18 +1544,16 @@ msgid "Unsupported Media Type"
 msgstr "サポートされていないメディアの種類"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Use Proxy"
-msgstr "新しいプロキシ"
+msgstr "プロキシを使用"
 
 #: includes/arrays.php
 msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
-msgstr ""
+msgstr "SSH を使用してリモートホストに接続します。ログイン後に指定されたコマンドを実行して出力を返します。ユーザー名とパスワード、または秘密鍵が使用可能です。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Use this Notification List for those to be notified when this service goes down."
-msgstr "これはこのウェブサイトがダウンしたときに通知されるアカウントのリストです。"
+msgstr "このサービスがダウンしたときの通知先にこの通知リストを使用します。"
 
 #: includes/arrays.php
 msgid "Username"
@@ -1617,16 +1561,15 @@ msgstr "ユーザー名"
 
 #: includes/arrays.php
 msgid "Username and password"
-msgstr ""
+msgstr "ユーザー名とパスワード"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Verification Strings"
 msgstr "検証文字列"
 
 #: includes/arrays.php
 msgid "Warning"
-msgstr ""
+msgstr "警告"
 
 #: includes/arrays.php
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
@@ -1654,19 +1597,17 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
-msgstr ""
+msgstr "別のポートを指定できます (example.com:5000)。指定しない場合はデフォルトが使用されます。IPv6 数値アドレスには [ip:ad:dr:es:fo:rma:at] を使用してください。DOH (DNS over HTTPS) の場合は、ここにサーバー名を入力してください (例: 10.10.10.10、cloudflare-dns.com など)。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
-msgstr "このURLのアラートを受け取るための追加のEメールをここで指定できます（コンマ区切り）。"
+msgstr "このテストのアラートを受信する追加のメールアドレスをここで指定できます（カンマ区切り）"
 
 #: includes/arrays.php
 msgid "Your own CA and intermediate certs"
 msgstr "独自の CA と中間証明書"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "[None]"
 msgstr "なし"
 
@@ -1687,14 +1628,13 @@ msgid "No data"
 msgstr "データなし"
 
 #: servcheck_ca.php
-#, fuzzy, php-format
+#, php-format
 msgid "CA [edit: %s]"
-msgstr "クエリ[編集：％s]"
+msgstr "CA [編集: %s]"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "CA [new]"
-msgstr "クエリ[新規]"
+msgstr "CA [新規]"
 
 #: servcheck_ca.php
 msgid "CAs"
@@ -1713,7 +1653,7 @@ msgstr "クリア"
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Clear Filters"
-msgstr ""
+msgstr "絞り込み条件を解除する"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
@@ -1734,10 +1674,9 @@ msgstr "削除"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
-#, fuzzy
 msgid "Delete item"
 msgid_plural "Delete items"
-msgstr[0] "WebSeerサーバー"
+msgstr[0] "項目を削除"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1745,9 +1684,8 @@ msgid "Go"
 msgstr "Go"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "No Certificates Found"
-msgstr "サーバーが見つかりません"
+msgstr "証明書が見つかりません"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1755,90 +1693,81 @@ msgid "Search"
 msgstr "検索"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "Servcheck CA Management"
-msgstr "Webseerサーバー管理"
+msgstr "ServCheck CA 管理"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Set/Refresh Filters"
-msgstr ""
+msgstr "フィルタの設定/更新"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 msgid "Used"
 msgstr "使用済み"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Click 'Continue' to Duplicate the following Credential."
-msgid_plural "Click 'Continue' to Duplicate following Credential."
-msgstr[0] "[続行]をクリックして、次のプロキシを削除します。"
+msgid_plural "Click 'Continue' to Duplicate the following Credentials."
+msgstr[0] "「続行」をクリックして、次の認証情報を複製します。"
 
 #: servcheck_credential.php
-#, fuzzy, php-format
+#, php-format
 msgid "Credential [edit: %s]"
-msgstr "クエリ[編集：％s]"
+msgstr "認証情報 [編集: %s]"
 
 #: servcheck_credential.php
 msgid "Credential [new]"
-msgstr ""
+msgstr "認証情報 [新規]"
 
 #: servcheck_credential.php
 msgid "Credentials"
-msgstr ""
+msgstr "認証情報"
 
 #: servcheck_credential.php servcheck_restapi.php servcheck_test.php
 msgid "Duplicate"
 msgstr "複製"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Duplicate Credential"
-msgid_plural "Duplicate Credential"
-msgstr[0] "複製"
+msgid_plural "Duplicate Credentials"
+msgstr[0] "認証情報を複製"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "No Credentials Found"
-msgstr "サーバーが見つかりません"
+msgstr "認証情報が見つかりません"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Servcheck Credential Management"
-msgstr "Webseerサーバー管理"
+msgstr "ServCheck 認証情報管理"
 
 #: servcheck_credential.php servcheck_restapi.php
 msgid "Type"
-msgstr ""
+msgstr "タイプ"
 
 #: servcheck_curl_code.php
 msgid "No error codes"
 msgstr "エラーコードなし"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "No Proxies Found"
-msgstr "サーバーが見つかりません"
+msgstr "プロキシが見つかりません"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Ports (http/https)"
-msgstr "ポート（http / https）"
+msgstr "ポート (http/https)"
 
 #: servcheck_proxy.php
-#, fuzzy, php-format
+#, php-format
 msgid "Proxy [edit: %s]"
-msgstr "クエリ[編集：％s]"
+msgstr "プロキシ [編集: %s]"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Proxy [new]"
-msgstr "クエリ[新規]"
+msgstr "プロキシ [新規]"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Servcheck Proxy Management"
-msgstr "Webseerサーバー管理"
+msgstr "ServCheck プロキシ管理"
 
 #: servcheck_restapi.php servcheck_test.php
 msgid "Any"
@@ -1899,35 +1828,32 @@ msgid "All"
 msgstr "すべて"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "All Users Selected"
-msgstr "選択したすべてのユーザー"
+msgstr "すべてのユーザーを選択済み"
 
 #: servcheck_test.php
 msgid "Attempt"
-msgstr ""
+msgstr "試行"
 
 #: servcheck_test.php
 msgid "CPU u/CPU s/Memory"
-msgstr ""
+msgstr "CPU u/CPU s/メモリ"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Certificate"
-msgstr "証明書を確認する"
+msgstr "証明書"
 
 #: servcheck_test.php
 msgid "Checks"
-msgstr "銀行振り込み"
+msgstr "チェック"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Clear log"
-msgstr "クリア"
+msgstr "ログをクリア"
 
 #: servcheck_test.php
 msgid "Clear statistics"
-msgstr ""
+msgstr "統計をクリア"
 
 #: servcheck_test.php
 #, fuzzy
@@ -1961,62 +1887,54 @@ msgstr[0] "[続行]をクリックして、次のプロキシを削除します�
 
 #: servcheck_test.php
 msgid "Curl"
-msgstr ""
+msgstr "Curl"
 
 #: servcheck_test.php
 msgid "Date"
 msgstr "日付"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Date Search"
-msgstr "検索"
+msgstr "日付検索"
 
 #: servcheck_test.php
 msgid "Disable"
 msgstr "無効"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable Service Check"
-msgstr "サービスチェックを有効にする"
+msgstr "サービスチェックを無効にする"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable item"
 msgid_plural "Disable items"
-msgstr[0] "無効"
+msgstr[0] "項目を無効化"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duplicate item"
 msgid_plural "Duplicate items"
-msgstr[0] "複製"
+msgstr[0] "項目を複製"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duration"
-msgstr "場所"
+msgstr "期間"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Edit Service Check"
-msgstr "サービスチェックを有効にする"
+msgstr "サービスチェックを編集"
 
 #: servcheck_test.php
 msgid "Enable"
 msgstr "有効"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable Service Check"
 msgstr "サービスチェックを有効にする"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable item"
 msgid_plural "Enable items"
-msgstr[0] "サーバーを有効にする"
+msgstr[0] "項目を有効化"
 
 #: servcheck_test.php
 msgid "Entries"
@@ -2025,16 +1943,15 @@ msgstr "エントリー"
 #: servcheck_test.php
 #, php-format
 msgid "Expired %s days ago"
-msgstr ""
+msgstr "%s 日前に期限切れ"
 
 #: servcheck_test.php
 msgid "Insufficient data, wait a few poller cycles"
-msgstr ""
+msgstr "データが不足しています。数回のポーラーサイクルをお待ちください"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Last Check (attempt)"
-msgstr "最終チェック"
+msgstr "最終チェック (試行)"
 
 #: servcheck_test.php
 msgid "Last returned data of test"
@@ -2042,23 +1959,21 @@ msgstr "テストの最終返却データ"
 
 #: servcheck_test.php
 msgid "Logs"
-msgstr ""
+msgstr "ログ"
 
 #: servcheck_test.php
 msgid "N/A (N/A)"
-msgstr ""
+msgstr "該当なし (該当なし)"
 
 #: servcheck_test.php
 msgid "No"
 msgstr "いいえ"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Service Checks Found"
-msgstr "サーバーが見つかりません"
+msgstr "サービスチェックが見つかりません"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Users Selected"
 msgstr "ユーザーが選択されていません"
 
@@ -2076,21 +1991,19 @@ msgstr "結果"
 
 #: servcheck_test.php
 msgid "Ret. data size"
-msgstr ""
+msgstr "取得データサイズ"
 
 #: servcheck_test.php
 msgid "Search result"
 msgstr "検索結果"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Servcheck Test Management"
-msgstr "Webseerサーバー管理"
+msgstr "ServCheck テスト管理"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Service Check History"
-msgstr "Webサービスチェック"
+msgstr "サービスチェック履歴"
 
 #: servcheck_test.php
 msgid "State"
@@ -2101,14 +2014,13 @@ msgid "Stats (OK/problem)"
 msgstr "統計 (OK/問題)"
 
 #: servcheck_test.php
-#, fuzzy, php-format
+#, php-format
 msgid "Test [edit: %s]"
-msgstr "クエリ[編集：％s]"
+msgstr "テスト [編集: %s]"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Test [new]"
-msgstr "クエリ[新規]"
+msgstr "テスト [新規]"
 
 #: servcheck_test.php
 #, php-format
@@ -2116,14 +2028,12 @@ msgid "The Service Check history was purged for %s"
 msgstr "サービスチェックの履歴がパージされました%s"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Triggered"
-msgstr "トリガーされた"
+msgstr "トリガー済み"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Users Selected"
-msgstr "選択したユーザー"
+msgstr "選択されたユーザー"
 
 #: servcheck_test.php
 msgid "View Graph"
@@ -2134,9 +2044,8 @@ msgid "View Last returned data"
 msgstr "最後に返されたデータの表示"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "View Service Check History"
-msgstr "Webサービスチェック"
+msgstr "サービスチェック履歴を表示"
 
 #: servcheck_test.php
 msgid "Yes"
@@ -2144,12 +2053,12 @@ msgstr "はい"
 
 #: servcheck_test.php
 msgid "days"
-msgstr ""
+msgstr "日"
 
 #: setup.php
 #, php-format
 msgid "%d Processes"
-msgstr ""
+msgstr "%d プロセス"
 
 #: setup.php
 #, php-format
@@ -2167,33 +2076,32 @@ msgid "%d year"
 msgstr "%d年"
 
 #: setup.php
-#, fuzzy
 msgid "1 Process"
-msgstr "WebSeerサーバー"
+msgstr "1プロセス"
 
 #: setup.php
 msgid "1 week in advance"
-msgstr ""
+msgstr "1 週間前"
 
 #: setup.php
 msgid "3 days in advance"
-msgstr ""
+msgstr "3 日前"
 
 #: setup.php
 msgid "3 weeks in advance"
-msgstr ""
+msgstr "3 週間前"
 
 #: setup.php
 msgid "30 days in advance"
-msgstr ""
+msgstr "30 日前"
 
 #: setup.php
 msgid "60 days in advance"
-msgstr ""
+msgstr "60 日前"
 
 #: setup.php
 msgid "90 days in advance"
-msgstr ""
+msgstr "90 日前"
 
 #: setup.php
 msgid "CA"
@@ -2205,51 +2113,51 @@ msgstr "CA 編集"
 
 #: setup.php
 msgid "Certificate expiry date advanced notification email"
-msgstr ""
+msgstr "証明書有効期限の事前通知メール"
 
 #: setup.php
 msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
-msgstr ""
+msgstr "このチェックボックスをオンにすると、ServCheck イベント時にコマンドを実行できるようになります。各テストごとに有効または無効にできます。"
 
 #: setup.php
 msgid "Concurrent Check Processes"
-msgstr ""
+msgstr "同時チェックプロセス数"
 
 #: setup.php
 msgid "Credential Edit"
-msgstr ""
+msgstr "認証情報の編集"
 
 #: setup.php
 msgid "Credential Save"
-msgstr ""
+msgstr "認証情報の保存"
 
 #: setup.php
 msgid "Enable Command Execution"
-msgstr ""
+msgstr "コマンド実行を有効にする"
 
 #: setup.php
 msgid "Enter the period after which older logs will be automatically deleted."
-msgstr ""
+msgstr "古いログが自動的に削除されるまでの期間を入力してください。"
 
 #: setup.php
 msgid "HTTP/HTTPS Check Settings"
-msgstr ""
+msgstr "HTTP/HTTPS チェック設定"
 
 #: setup.php
 msgid "How long to keep logs"
-msgstr ""
+msgstr "ログの保持期間"
 
 #: setup.php
 msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
-msgstr ""
+msgstr "SSL/TLS サービス証明書の有効期限チェックが有効な場合、証明書の有効期限の何日前から事前通知を送信するかを設定します"
 
 #: setup.php
 msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
-msgstr ""
+msgstr "チェックすると、servcheck はメールを一切送信しません。特定のテストに対してのみ通知を無効にすることもできます"
 
 #: setup.php
 msgid "If checked, this will cause all Emails to be sent separately for each address."
-msgstr ""
+msgstr "チェックすると、すべてのメールが各アドレスごとに個別に送信されます。"
 
 #: setup.php
 msgid "Management"
@@ -2257,14 +2165,13 @@ msgstr "マネジメント"
 
 #: setup.php
 msgid "Maximum test duration in seconds"
-msgstr ""
+msgstr "秒単位の最大テスト時間"
 
 #: setup.php
 msgid "Never"
-msgstr ""
+msgstr "決して"
 
 #: setup.php
-#, fuzzy
 msgid "Notification Preferences"
 msgstr "通知設定"
 
@@ -2282,82 +2189,191 @@ msgid "Save CA"
 msgstr "CA の保存"
 
 #: setup.php
-#, fuzzy
 msgid "Save Web Proxy"
-msgstr "新しいプロキシ"
+msgstr "Web プロキシを保存"
 
 #: setup.php
 msgid "Send Email separately for each address"
-msgstr ""
+msgstr "各アドレスごとに個別にメールを送信する"
 
 #: setup.php
-#, fuzzy
 msgid "Servcheck"
-msgstr "Webサービスチェック"
+msgstr "Servcheck"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Admin"
-msgstr "Webサービスチェック管理"
+msgstr "サービスチェック管理"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Edit"
 msgstr "サービスチェック編集"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Save"
-msgstr "サービスチェック名"
+msgstr "サービスチェック保存"
 
 #: setup.php
-#, fuzzy
 msgid "Service Checker"
-msgstr "サービスチェック名"
+msgstr "サービスチェッカー"
 
 #: setup.php
-#, fuzzy
 msgid "Service Checks"
-msgstr "Webサービスチェック"
+msgstr "サービスチェック"
 
 #: setup.php
 msgid "Status Change Command"
-msgstr ""
+msgstr "ステータス変更コマンド"
 
 #: setup.php
 msgid "Stop sending all notification"
-msgstr ""
+msgstr "すべての通知の送信を停止"
 
 #: setup.php
 msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
-msgstr ""
+msgstr "HTTP/HTTPS およびその他の cURL ベースのサービスチェックで送信される User-Agent 文字列です。サイトによっては古いブラウザや一般的でないブラウザをブロックするため、ここで最新の User-Agent を設定できます。組み込みのデフォルトを使用するには空白のままにしてください。"
 
 #: setup.php
 msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
-msgstr ""
+msgstr "実行時間テストが有効になっていないテストのデフォルト値です。有効な場合、最大所要時間は「所要時間のしきい値 + 2 秒」として計算されます。"
 
 #: setup.php
 msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
-msgstr ""
+msgstr "同時に実行するサービスチェックプロセスの数です。この値をコア数の 2 倍まで増やすことは推奨されません。"
 
 #: setup.php
-#, fuzzy
 msgid "User Agent"
-msgstr "ユーザー名"
+msgstr "ユーザーエージェント"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy"
-msgstr "WebSeerサーバー"
+msgstr "Web プロキシ"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy Edit"
-msgstr "プロキシ"
+msgstr "Web プロキシの編集"
 
 #: setup.php
 msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
-msgstr ""
+msgstr "基本テスト、検索テスト、または証明書有効期限テストで異なる結果が返されたときに、次のコマンドを実行します... このコマンドにはコマンドライン引数を含めないでください... ただし、スクリプトの環境から次の変数を取得できます:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+
+#: includes/arrays.php
+msgid "<b>Can be used for a lot of service checks:</b><br/><i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/><i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/><i>LDAP, smb, smbs</i> - required<br/><i>MQTT</i> - optional<br/><i>SCP, SSH command</i> - you can use this method or private key method"
+msgstr "<b>多くのサービスチェックで使用可能:</b><br/><i>Http/https</i> - 任意。設定すると HTTP 基本認証を試行します<br/><i>SMTP (ポート 587)</i> - 任意。ユーザー名/パスワードを指定しない場合はサーバー応答のみをテストします。ユーザー名とパスワードを指定した場合はログインも実行します<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - 任意。匿名 FTP の場合は、ユーザー名に \"anonymous\"、パスワードにメールアドレスを使用します<br/><i>LDAP, smb, smbs</i> - 必須<br/><i>MQTT</i> - 任意<br/><i>SCP, SSH コマンド</i> - この方式または秘密鍵方式を使用できます"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue). For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). For POST <i>api_key</i> is usually used."
+msgstr "REST API - API キー認証<br/>認証情報は HTTP ヘッダー、カスタムヘッダー、または POST メソッドで送信されます。URL 内の認証情報はサポートされていません。<br/>API キー名と値を入力してください。両方の値が必須です。HTTP ヘッダーの場合は通常、<i>Bearer or apikey or \"\"</i> が使用されます (Authorization: Bearer apivalue)。カスタムヘッダーの場合は通常、<i>X-API-Key</i> が使用されます (X-Api-Key: keyvalue)。POST の場合は通常、<i>api_key</i> が使用されます。"
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded."
+msgstr "REST API - OAuth2/Bearer トークン認証<br/>サーバーから取得したキー/トークンをここに入力するか、認証情報を使用した認証フローを利用できます。ユーザー名とパスワードは JSON エンコードして送信されます。"
+
+#: includes/arrays.php
+msgid "Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, you will see server login banner and ehlo response. With credential, login will be performed"
+msgstr "非暗号化 + STARTTLS。証明書の有効性をテストすることも可能です。ユーザー名とパスワードを指定しない場合は、サーバーのログインバナーと ehlo 応答が表示されます。認証情報を指定するとログインが実行されます"
+
+#: includes/arrays.php
+msgid "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password AUTH LOGIN will be tested."
+msgstr "デフォルトポート 465 での暗号化接続です。証明書の有効性もテストできます。ユーザー名とパスワードを指定した場合は AUTH LOGIN がテストされます。"
+
+#: includes/arrays.php
+msgid "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgstr "非暗号化 IMAP 接続です。認証情報がない場合は接続のみがテストされ、ログインバナーのみが表示されます。認証情報がある場合はログインがテストされ、メッセージ一覧の読み取りを試行します。AUTHENTICATE PLAIN または AUTHENTICATE LOGIN 方式を使用できます。"
+
+#: includes/arrays.php
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "暗号化なしの IMAP と同じですが、ログイン後に STARTTLS が使用されます。STARTTLS 後に証明書の有効性をテストすることも可能です。"
+
+#: includes/arrays.php
+msgid "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages"
+msgstr "非暗号化 POP3 接続です。認証情報がない場合は接続のみがテストされ、ログインバナーのみが表示されます。認証情報がある場合はログインがテストされ、メッセージ一覧の読み取りを試行します"
+
+#: includes/arrays.php
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "暗号化なしの POP3 と同じですが、ログイン後に STARTTLS が使用されます。STARTTLS 後に証明書の有効性をテストすることも可能です。"
+
+#: includes/arrays.php
+msgid "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content of the file is returned."
+msgstr "非暗号化 FTP 接続を行い、ログインしてパス（/path/to/file.txt）で指定されたファイルのダウンロードを試行します。匿名接続の場合はログイン名に *anonymous*、パスワードにメールアドレスを使用してください。ファイルの内容が返されます。"
+
+#: includes/arrays.php
+msgid "Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\""
+msgstr "MQTT サーバーに接続して任意のメッセージを待ち受けます。パスにトピック（bedroom/temp など）を指定でき、空欄にするとすべてのトピックが対象になります。このテストでは「長時間アラート」の値を増やすことを推奨します"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
+msgstr[0] "「続行」をクリックして、次の項目を削除します。"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
+msgstr[0] "「続行」をクリックして、次の項目を無効化します。"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
+msgstr[0] "「続行」をクリックして、次の項目を有効化します。"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
+msgstr[0] "「続行」をクリックして、次の項目を複製します。"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear statistics of the following item."
+msgid_plural "Click 'Continue' to clear statistics of the following items."
+msgstr[0] "「続行」をクリックして、次の項目の統計をクリアします。"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear log of the following item."
+msgid_plural "Click 'Continue' to clear log of the following items."
+msgstr[0] "「続行」をクリックして、次の項目のログをクリアします。"
+
+#: servcheck_test.php
+msgid "Status"
+msgstr "状態"
+
+#: setup.php
+msgid "Certificate expiry notification email interval"
+msgstr "証明書有効期限通知メールの間隔"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday"
+msgstr "SSL/TLS サービス証明書の有効期限チェックが有効な場合、メール通知を送信する間隔（日数）を設定します。ただし、有効期限を過ぎた場合は毎日メール通知が送信されます"
+
+#: setup.php
+msgid "1 day"
+msgstr "1 日"
+
+#: setup.php
+msgid "3 days"
+msgstr "3 日"
+
+#: setup.php
+msgid "5 days"
+msgstr "5 日"
+
+#: setup.php
+msgid "7 days"
+msgstr "7 日"
+
+#: setup.php
+msgid "10 days"
+msgstr "10 日"
+
+#: setup.php
+msgid "15 days"
+msgstr "15 日"
+
+#: setup.php
+msgid "20 days"
+msgstr "20 日"
+
+#: setup.php
+msgid "30 days"
+msgstr "30 日"
 
 #, fuzzy
 #~ msgid "%d Minute"
@@ -2566,9 +2582,6 @@ msgstr ""
 
 #~ msgid "Sites"
 #~ msgstr "サイト"
-
-#~ msgid "Status"
-#~ msgstr "状態"
 
 #~ msgid "Test each poller cycle or less"
 #~ msgstr "各ポーラー・サイクル以下をテストする"

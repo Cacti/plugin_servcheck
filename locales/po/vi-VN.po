@@ -54,12 +54,10 @@ msgid ""
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "A Useful Name for this CA chain."
-msgstr "Tên hữu ích cho Proxy này."
+msgstr "Tên hữu ích cho chuỗi CA này."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "A Useful Name for this Proxy."
 msgstr "Tên hữu ích cho Proxy này."
 
@@ -97,27 +95,27 @@ msgstr "Không tìm thấy tính năng, giao thức hoặc tùy chọn được 
 
 #: includes/arrays.php
 msgid "AES"
-msgstr ""
+msgstr "AES"
 
 #: includes/arrays.php
 msgid "AES-128"
-msgstr ""
+msgstr "AES-128"
 
 #: includes/arrays.php
 msgid "AES-192"
-msgstr ""
+msgstr "AES-192"
 
 #: includes/arrays.php
 msgid "AES-192-C"
-msgstr ""
+msgstr "AES-192"
 
 #: includes/arrays.php
 msgid "AES-256"
-msgstr ""
+msgstr "AES-256"
 
 #: includes/arrays.php
 msgid "AES-256-C"
-msgstr ""
+msgstr "AES-256"
 
 #: includes/arrays.php
 msgid "API key auth"
@@ -141,11 +139,11 @@ msgstr "Tất cả đều ổn. Tiến hành như bình thường."
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform encrypted LDAP login and search"
-msgstr ""
+msgstr "Bắt buộc nhập tất cả tham số. Thực hiện đăng nhập và tìm kiếm LDAP có mã hóa"
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform unencrypted LDAP login and search"
-msgstr ""
+msgstr "Bắt buộc nhập tất cả tham số. Thực hiện đăng nhập và tìm kiếm LDAP không mã hóa"
 
 #: includes/arrays.php
 msgid "An API function was called from inside a callback."
@@ -187,7 +185,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Auth in HTTP headers"
-msgstr ""
+msgstr "Xác thực trong tiêu đề HTTP"
 
 #: includes/arrays.php
 #, fuzzy
@@ -215,40 +213,36 @@ msgid "CA and intermediate certs, PEM encoded"
 msgstr "CA và chứng chỉ trung gian, PEM được mã hóa"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "CA certificates"
-msgstr "Kiểm tra giấy chứng nhận"
+msgstr "Chứng chỉ CA"
 
 #: includes/arrays.php
 msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
-msgstr ""
+msgstr "Cacti sẽ thử chạy mỗi bài kiểm tra nhiều lần. Lần thử thành công đầu tiên sẽ kết thúc kiểm tra và ghi nhận thành công. Nếu không có lần thử nào thành công, bài kiểm tra sẽ chấm dứt và ghi nhận thất bại. Số lần cao sẽ làm tăng thời gian kiểm tra."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check Certificate"
-msgstr "Kiểm tra giấy chứng nhận"
+msgstr "Kiểm tra chứng chỉ"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check and notify Certificate expiration"
-msgstr "Kiểm tra giấy chứng nhận"
+msgstr "Kiểm tra và thông báo hết hạn chứng chỉ"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
-msgstr "Chọn hộp này nếu trang web thường trả về Lỗi 401 vì nó yêu cầu tên người dùng và mật khẩu."
+msgstr "Chọn hộp này nếu trang web thường trả về Lỗi 401 do yêu cầu tên người dùng và mật khẩu."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Authorization Protocol."
-msgstr ""
+msgstr "Chọn Giao thức ủy quyền SNMPv3."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Passphrase."
-msgstr ""
+msgstr "Chọn cụm mật khẩu riêng tư SNMPv3."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Protocol."
-msgstr ""
+msgstr "Chọn Giao thức bảo mật SNMPv3."
 
 #: includes/arrays.php
 msgid "Chunk callback reported error."
@@ -256,11 +250,11 @@ msgstr "Chunk callback báo cáo lỗi."
 
 #: includes/arrays.php
 msgid "Client ID"
-msgstr ""
+msgstr "Client ID"
 
 #: includes/arrays.php
 msgid "Client secret"
-msgstr ""
+msgstr "Client secret"
 
 #: includes/arrays.php
 msgid "Conflict"
@@ -297,15 +291,15 @@ msgstr "Đã tạo"
 
 #: includes/arrays.php setup.php
 msgid "Credential"
-msgstr ""
+msgstr "Thông tin xác thực"
 
 #: includes/arrays.php
 msgid "Credential Name"
-msgstr ""
+msgstr "Tên thông tin xác thực"
 
 #: includes/arrays.php
 msgid "Credential type"
-msgstr ""
+msgstr "Loại thông tin xác thực"
 
 #: includes/arrays.php
 msgid "Curl return codes"
@@ -313,12 +307,11 @@ msgstr "Mã trả hàng Curl"
 
 #: includes/arrays.php
 msgid "Custom HTTP header"
-msgstr ""
+msgstr "Tiêu đề HTTP tùy chỉnh"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DES"
-msgstr "DNS"
+msgstr "DES"
 
 #: includes/arrays.php
 msgid "DNS Name for Query"
@@ -326,21 +319,19 @@ msgstr "Tên DNS cho truy vấn"
 
 #: includes/arrays.php
 msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
-msgstr ""
+msgstr "Tên miền DNS để truy vấn. Đối với DOH (DNS over HTTPS), dùng /resolve?name=example.com hoặc /dns-query?name=example.com&type=A. Đối với DNS dạng văn bản thuần, các bản ghi A và AAAA sẽ được trả về"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DNS over HTTPS, default port 443"
-msgstr "Mã hóa HTTP (HTTPS), cổng mặc định 443"
+msgstr "DNS qua HTTPS, cổng mặc định 443"
 
 #: includes/arrays.php
 msgid "DNS plaintext, default port 53"
 msgstr "DNS plaintext, cổng mặc định 53"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Data URL"
-msgstr "Bản sao"
+msgstr "URL dữ liệu"
 
 #: includes/arrays.php
 msgid ""
@@ -366,30 +357,28 @@ msgid "Early initialization code failed. This is likely to be an internal error 
 msgstr "Mã khởi tạo sớm không thành công. Đây có thể là một lỗi hoặc vấn đề nội bộ, hoặc một vấn đề tài nguyên mà một cái gì đó cơ bản không thể được thực hiện tại thời điểm đó."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Email notification"
-msgstr "Thiết lập Thông báo"
+msgstr "Thông báo qua email"
 
 #: includes/arrays.php
 msgid "Enable run script for this test"
-msgstr ""
+msgstr "Bật chạy tập lệnh cho kiểm tra này"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enable test"
-msgstr "Kích hoạt máy chủ"
+msgstr "Bật kiểm tra"
 
 #: includes/arrays.php
 msgid "Encrypted IMAP, you can try login and test certificate and user login"
-msgstr ""
+msgstr "IMAP được mã hóa, bạn có thể thử đăng nhập và kiểm tra chứng chỉ cũng như đăng nhập người dùng"
 
 #: includes/arrays.php
 msgid "Encrypted POP3, you can try login and test certificate and user login."
-msgstr ""
+msgstr "POP3 được mã hóa, bạn có thể thử đăng nhập và kiểm tra chứng chỉ cũng như đăng nhập người dùng."
 
 #: includes/arrays.php
 msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
-msgstr ""
+msgstr "Kết nối SCP được mã hóa, đăng nhập và thử tải xuống tệp được chỉ định trong đường dẫn (/path/to/file.txt)."
 
 #: includes/arrays.php
 msgid ""
@@ -398,22 +387,20 @@ msgid ""
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an External ID for this test."
-msgstr "Nhập ID vĩnh cửu cho Mẫu Thold này."
+msgstr "Nhập ID bên ngoài cho bài kiểm tra này."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
-msgstr "Nhập địa chỉ IP để kết nối. Để trống sẽ sử dụng Độ phân giải DNS thay thế."
+msgstr "Nhập địa chỉ IP để ép tên DNS phân giải thành địa chỉ đó. Để trống sẽ sử dụng phân giải DNS thông thường."
 
 #: includes/arrays.php
 msgid "Enter the SNMP Context to use for this device."
-msgstr ""
+msgstr "Nhập Bối cảnh SNMP để sử dụng cho thiết bị này."
 
 #: includes/arrays.php
 msgid "Enter the SNMP v3 Engine Id or empty."
-msgstr ""
+msgstr "Nhập SNMP v3 Engine Id hoặc để trống."
 
 #: includes/arrays.php
 msgid "Error"
@@ -421,7 +408,7 @@ msgstr "Lỗi"
 
 #: includes/arrays.php
 msgid "Error/failed"
-msgstr ""
+msgstr "Lỗi/thất bại"
 
 #: includes/arrays.php
 msgid "Expectation Failed"
@@ -432,9 +419,8 @@ msgid "External ID"
 msgstr "ID ngoài"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Extra Alert Emails"
-msgstr "Email thông báo thêm"
+msgstr "Email cảnh báo bổ sung"
 
 #: includes/arrays.php
 msgid "FTP plaintext, default port 21"
@@ -461,9 +447,8 @@ msgid "Failed string found"
 msgstr "Tìm thấy chuỗi không thành công"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Failed string not found"
-msgstr "Không tìm thấy strint thất bại"
+msgstr "Không tìm thấy chuỗi lỗi"
 
 #: includes/arrays.php
 msgid "Failed to connect() to host or proxy."
@@ -483,7 +468,7 @@ msgstr "Không thể tắt kết nối SSL."
 
 #: includes/arrays.php
 msgid "Failing"
-msgstr ""
+msgstr "Đang lỗi"
 
 #: includes/arrays.php
 msgid "Failure with receiving network data."
@@ -498,14 +483,12 @@ msgid "File not found on TFTP server."
 msgstr "Không tìm thấy tệp trên máy chủ TFTP."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For anonymous FTP insert email address"
-msgstr "Đối với ftp ẩn danh chèn địa chỉ email ở đây."
+msgstr "Đối với FTP ẩn danh, hãy nhập địa chỉ email"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
-msgstr "Đối với dịch vụ web, hãy chèn ít nhất \"/\" hoặc một cái gì đó như \"/any/path/\". Đối với danh sách FTP phải kết thúc bằng ký tự \"/\". Đối với thử nghiệm tải xuống TFTP / SCP / SMB chèn / đường dẫn / tệp"
+msgstr "Đối với dịch vụ web, hãy nhập ít nhất \"/\" hoặc dạng như \"/any/path/\"."
 
 #: includes/arrays.php
 msgid "Forbidden"
@@ -513,7 +496,7 @@ msgstr "Bị cấm"
 
 #: includes/arrays.php
 msgid "Form urlencoded"
-msgstr ""
+msgstr "Dạng form urlencoded"
 
 #: includes/arrays.php
 msgid "Found"
@@ -524,9 +507,8 @@ msgid "Function not found. A required zlib function was not found."
 msgstr "Không tìm thấy chức năng. Không tìm thấy hàm zlib bắt buộc."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Gateway Timeout"
-msgstr "Hết giờ"
+msgstr "Hết thời gian chờ Gateway"
 
 #: includes/arrays.php
 msgid "General Settings"
@@ -537,9 +519,8 @@ msgid "Gone"
 msgstr "Đi"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "HTTP Port"
-msgstr "Mã HTTP"
+msgstr "Cổng HTTP"
 
 #: includes/arrays.php
 msgid "HTTP Version Not Supported"
@@ -554,13 +535,12 @@ msgid "HTTP plaintext, default port 80"
 msgstr "Bản rõ HTTP, cổng mặc định 80"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "HTTPS Port"
-msgstr "Mã HTTP"
+msgstr "Cổng HTTPS"
 
 #: includes/arrays.php
 msgid "Help"
-msgstr ""
+msgstr "Trợ giúp"
 
 #: includes/arrays.php servcheck_proxy.php
 msgid "Hostname"
@@ -572,15 +552,15 @@ msgstr "Tần suất kiểm tra"
 
 #: includes/arrays.php
 msgid "How many attempts"
-msgstr ""
+msgstr "Số lần thử"
 
 #: includes/arrays.php
 msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
-msgstr ""
+msgstr "Số lần liên tiếp vượt ngưỡng kích hoạt thời lượng để gửi thông báo"
 
 #: includes/arrays.php
 msgid "How many times the service must be DOWN before an alert email is triggered."
-msgstr ""
+msgstr "Số lần dịch vụ phải ở trạng thái NGỪNG HOẠT ĐỘNG trước khi kích hoạt email cảnh báo."
 
 #: includes/arrays.php
 msgid "IMAP encrypted (IMAPS), default port 993"
@@ -595,40 +575,36 @@ msgid "IMAP with STARTTLS, default port 143"
 msgstr "IMAP với STARTTLS, cổng mặc định 143"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "IP Address or DNS name of server"
-msgstr "Địa chỉ IP để kết nối với máy chủ này"
+msgstr "Địa chỉ IP hoặc tên DNS của máy chủ"
 
 #: includes/arrays.php
 msgid "If enabled email notification about state, duration and search result will be send"
-msgstr ""
+msgstr "Nếu được bật, thông báo qua email về trạng thái, thời lượng và kết quả tìm kiếm sẽ được gửi đi"
 
 #: includes/arrays.php
 msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
-msgstr ""
+msgstr "Nếu chức năng Thực thi lệnh toàn cục được bật, bạn có thể thiết lập tại đây liệu tập lệnh có nên được chạy cho bài kiểm tra này hay không."
 
 #: includes/arrays.php
 msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
-msgstr ""
+msgstr "Nếu thời gian kiểm tra lớn hơn giá trị này nhiều lần liên tiếp, hãy gửi thông báo. Liên quan đến biến Số lần vượt thời lượng. Bài kiểm tra kế thừa thời gian chạy tối đa từ phần cài đặt. Nếu giá trị cao hơn được đặt tại đây, thời gian chạy tối đa sẽ là giá trị này + 2 giây."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
-msgstr "Nếu văn bản kết nối này yêu cầu proxy, hãy chọn nó ở đây. Nếu không, hãy chọn 'Không có'."
+msgstr "Nếu chuỗi kết nối này yêu cầu proxy, hãy chọn tại đây. Nếu không, hãy chọn 'Không có'."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
-msgstr "Nếu sử dụng SSL, hãy chọn hộp này nếu bạn muốn xác thực chứng chỉ. Mặc định bật, tắt nếu trang web của bạn sử dụng chứng chỉ tự ký."
+msgstr "Nếu sử dụng SSL, hãy chọn hộp kiểm này nếu bạn muốn kiểm tra thời hạn chứng chỉ. Bạn có thể thiết lập số ngày thông báo trước khi hết hạn trong phần cài đặt."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
-msgstr "Nếu sử dụng SSL, hãy chọn hộp này nếu bạn muốn xác thực chứng chỉ. Mặc định bật, tắt nếu trang web của bạn sử dụng chứng chỉ tự ký."
+msgstr "Nếu sử dụng SSL, hãy chọn hộp kiểm này nếu bạn muốn xác thực chứng chỉ. Mặc định bật; hãy tắt nếu trang web sử dụng chứng chỉ tự ký."
 
 #: includes/arrays.php
 msgid "If your key is password protected, insert password here"
-msgstr ""
+msgstr "Nếu khóa của bạn được bảo vệ bằng mật khẩu, hãy nhập mật khẩu vào đây"
 
 #: includes/arrays.php
 msgid "Illegal TFTP operation."
@@ -640,15 +616,15 @@ msgstr "Khởi tạo SSL Engine không thành công."
 
 #: includes/arrays.php
 msgid "Insert SNMP OID"
-msgstr ""
+msgstr "Nhập SNMP OID"
 
 #: includes/arrays.php
 msgid "Insert SSH command with full path, result of command will be returned"
-msgstr ""
+msgstr "Nhập lệnh SSH kèm đường dẫn đầy đủ, kết quả của lệnh sẽ được trả về"
 
 #: includes/arrays.php
 msgid "Insert username here"
-msgstr ""
+msgstr "Nhập tên người dùng tại đây"
 
 #: includes/arrays.php
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
@@ -664,20 +640,19 @@ msgstr "Kiểm tra nhà phát hành không thành công (Đã thêm vào 7.19.0)
 
 #: includes/arrays.php
 msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
-msgstr ""
+msgstr "Chỉ kiểm tra xem máy chủ SMTP có phản hồi hay không. Không xác thực. Bạn sẽ thấy biểu ngữ đăng nhập của máy chủ và phản hồi ehlo."
 
 #: includes/arrays.php
 msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
-msgstr ""
+msgstr "Chỉ kiểm tra xem máy chủ web có phản hồi hay không. Nếu sử dụng thông tin xác thực tên người dùng/mật khẩu, nó sẽ thử xác thực Basic HTTP."
 
 #: includes/arrays.php
 msgid "JSON encoded"
-msgstr ""
+msgstr "Đã mã hóa JSON"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "LDAP Search"
-msgstr "Tìm kiếm"
+msgstr "Tìm kiếm LDAP"
 
 #: includes/arrays.php
 msgid "LDAP cannot bind. LDAP bind operation failed."
@@ -692,9 +667,8 @@ msgid "LDAP plaintext, default port 389"
 msgstr "LDAP plaintext, cổng mặc định 389"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "LDAP search failed."
-msgstr "Tìm kiếm"
+msgstr "Tìm kiếm LDAP thất bại."
 
 #: includes/arrays.php
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
@@ -709,9 +683,8 @@ msgid "Last day"
 msgstr "Ngày cuối"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Last hour"
-msgstr "1 giờ trước"
+msgstr "Giờ vừa qua"
 
 #: includes/arrays.php
 msgid "Last week"
@@ -727,25 +700,23 @@ msgstr "Libcurl không nhận được kết quả hợp lý từ máy chủ dư
 
 #: includes/arrays.php
 msgid "Login URL"
-msgstr ""
+msgstr "URL đăng nhập"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Long duration"
-msgstr "Vị trí"
+msgstr "Thời lượng dài"
 
 #: includes/arrays.php
 msgid "Long duration alert"
-msgstr ""
+msgstr "Cảnh báo thời lượng kéo dài"
 
 #: includes/arrays.php
 msgid "MD5"
-msgstr ""
+msgstr "MD5"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "MQTT plaintext, default port 1883"
-msgstr "Bản rõ HTTP, cổng mặc định 80"
+msgstr "MQTT dạng văn bản thuần, cổng mặc định 1883"
 
 #: includes/arrays.php
 msgid "Maint string found"
@@ -785,7 +756,6 @@ msgid "New CA"
 msgstr "CA mới"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "New Proxy"
 msgstr "Proxy mới"
 
@@ -814,9 +784,8 @@ msgid "Not Implemented"
 msgstr "Không được thực hiện"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Not Modified"
-msgstr "Sửa đổi lần cuối"
+msgstr "Không thay đổi"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Not tested yet"
@@ -839,31 +808,28 @@ msgid "Nothing was returned from the server, and under the circumstances, gettin
 msgstr "Không có gì được trả về từ máy chủ và trong các trường hợp, không nhận được gì được coi là lỗi."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notification List"
-msgstr "Thiết lập Thông báo"
+msgstr "Danh sách thông báo"
 
 #: includes/arrays.php
 msgid "Notification Settings"
 msgstr "Thiết lập Thông báo"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notify Accounts"
-msgstr "Thông báo tài khoản"
+msgstr "Tài khoản nhận thông báo"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notify Format"
-msgstr "Thông báo tài khoản"
+msgstr "Định dạng thông báo"
 
 #: includes/arrays.php
 msgid "Number of duration violations in a row"
-msgstr ""
+msgstr "Số lần vi phạm thời lượng liên tiếp"
 
 #: includes/arrays.php
 msgid "OAuth Client secret"
-msgstr ""
+msgstr "Mã bí mật OAuth Client"
 
 #: includes/arrays.php
 msgid "OAuth2/Bearer token auth"
@@ -875,7 +841,7 @@ msgstr "OK"
 
 #: includes/arrays.php
 msgid "Oauth Client ID"
-msgstr ""
+msgstr "ID OAuth Client"
 
 #: includes/arrays.php
 msgid "Obsolete Error"
@@ -883,16 +849,15 @@ msgstr "Lỗi thời"
 
 #: includes/arrays.php
 msgid "Ok"
-msgstr ""
+msgstr "Đồng ý"
 
 #: includes/arrays.php
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
 msgstr "Thời gian chờ hoạt động. Khoảng thời gian chờ quy định đã đạt được theo các điều kiện."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Options"
-msgstr "Hành động"
+msgstr "Tùy chọn"
 
 #: includes/arrays.php
 msgid "Out of disk space on the server."
@@ -912,15 +877,15 @@ msgstr "POP3 với STARTTLS, cổng mặc định 110"
 
 #: includes/arrays.php
 msgid "POST method, JSON encoded"
-msgstr ""
+msgstr "Phương thức POST, mã hóa JSON"
 
 #: includes/arrays.php
 msgid "POST method, form-urlencoded"
-msgstr ""
+msgstr "Phương thức POST, form-urlencoded"
 
 #: includes/arrays.php
 msgid "Parameters"
-msgstr ""
+msgstr "Tham số"
 
 #: includes/arrays.php
 msgid "Partial Content"
@@ -959,14 +924,12 @@ msgid "Problem with reading the SSL CA cert (path? access rights?)"
 msgstr "Vấn đề với việc đọc chứng chỉ SSL CA (đường dẫn? quyền truy cập?)"
 
 #: includes/arrays.php servcheck_proxy.php
-#, fuzzy
 msgid "Proxies"
 msgstr "Proxy"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Proxy Authentication Required"
-msgstr "Yêu cầu xác thực"
+msgstr "Yêu cầu xác thực Proxy"
 
 #: includes/arrays.php
 msgid "Proxy Server"
@@ -982,19 +945,19 @@ msgstr "Lỗi kết nối QUIC. Lỗi này có thể do lỗi thư viện SSL. Q
 
 #: includes/arrays.php
 msgid "REST API test with API key auth. Prepare credential first."
-msgstr ""
+msgstr "Kiểm tra REST API với xác thực bằng khóa API. Hãy chuẩn bị thông tin xác thực trước."
 
 #: includes/arrays.php
 msgid "REST API test with Oauth2. Prepare credential first."
-msgstr ""
+msgstr "Kiểm tra REST API với OAuth2. Hãy chuẩn bị thông tin xác thực trước."
 
 #: includes/arrays.php
 msgid "REST API test with basic HTTP auth. Prepare credential first."
-msgstr ""
+msgstr "Kiểm tra REST API với xác thực HTTP cơ bản. Hãy chuẩn bị thông tin xác thực trước."
 
 #: includes/arrays.php
 msgid "REST API test with cookie auth. Prepare credential first."
-msgstr ""
+msgstr "Kiểm tra REST API với xác thực bằng cookie. Hãy chuẩn bị thông tin xác thực trước."
 
 #: includes/arrays.php
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
@@ -1005,9 +968,8 @@ msgid "Request Entity Too Large"
 msgstr "Yêu cầu thực thể quá lớn"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Request Timeout"
-msgstr "Hết giờ"
+msgstr "Thời gian chờ yêu cầu"
 
 #: includes/arrays.php
 msgid "Request-URI Too Long"
@@ -1022,7 +984,6 @@ msgid "Requested Range Not Satisfiable"
 msgstr "Phạm vi yêu cầu không thỏa mãn"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Requires Authentication"
 msgstr "Yêu cầu xác thực"
 
@@ -1032,26 +993,23 @@ msgstr "Đặt lại nội dung"
 
 #: includes/arrays.php
 msgid "Resolve DNS to Address"
-msgstr ""
+msgstr "Phân giải DNS thành địa chỉ"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String"
 msgstr "Chuỗi tìm kiếm phản hồi"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String - Failed"
-msgstr "Chuỗi tìm kiếm phản hồi - Không thành công"
+msgstr "Chuỗi tìm kiếm phản hồi - Thất bại"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String - Maintenance"
-msgstr "Chuỗi tìm kiếm phản hồi - Trang bảo trì"
+msgstr "Chuỗi tìm kiếm phản hồi - Bảo trì"
 
 #: includes/arrays.php
 msgid "Rest API - API key auth"
-msgstr ""
+msgstr "REST API - Xác thực bằng khóa API"
 
 #: includes/arrays.php
 msgid ""
@@ -1063,23 +1021,23 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth"
-msgstr ""
+msgstr "REST API - Xác thực HTTP cơ bản"
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth. Username and password are required"
-msgstr ""
+msgstr "REST API - Xác thực HTTP cơ bản. Tên người dùng và mật khẩu là bắt buộc"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth"
-msgstr ""
+msgstr "REST API - Xác thực dựa trên cookie"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
-msgstr ""
+msgstr "REST API - Xác thực dựa trên cookie - cả hai giá trị đều bắt buộc. Sau khi đăng nhập, cookie sẽ được trả về"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth"
-msgstr ""
+msgstr "REST API - Xác thực OAuth2/Bearer token"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are send Json encoded."
@@ -1095,52 +1053,51 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Rest API with API key auth"
-msgstr ""
+msgstr "REST API với xác thực bằng khóa API"
 
 #: includes/arrays.php
 msgid "Rest API with Basic HTTP auth"
-msgstr ""
+msgstr "REST API với xác thực HTTP cơ bản"
 
 #: includes/arrays.php
 msgid "Rest API with Cookie based auth"
-msgstr ""
+msgstr "REST API với xác thực dựa trên cookie"
 
 #: includes/arrays.php
 msgid "Rest API with OAuth2/Bearer token auth"
-msgstr ""
+msgstr "REST API với xác thực OAuth2/Bearer token"
 
 #: includes/arrays.php
 msgid "SCP download file, default port 22"
 msgstr "Tệp tải xuống SCP, cổng mặc định 22"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SFTP protocol - directory listing, default port 22"
-msgstr "Giao thức TFTP - Tải file mặc định 69"
+msgstr "Giao thức SFTP - liệt kê thư mục, cổng mặc định 22"
 
 #: includes/arrays.php
 msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
-msgstr ""
+msgstr "Giao thức SFTP trên cổng 22, yêu cầu tên người dùng, mật khẩu và đường dẫn. Thử liệt kê danh sách thư mục của đường dẫn."
 
 #: includes/arrays.php
 msgid "SHA"
-msgstr ""
+msgstr "SHA"
 
 #: includes/arrays.php
 msgid "SHA-224"
-msgstr ""
+msgstr "SHA-224"
 
 #: includes/arrays.php
 msgid "SHA-256"
-msgstr ""
+msgstr "SHA-256"
 
 #: includes/arrays.php
 msgid "SHA-392"
-msgstr ""
+msgstr "SHA-392"
 
 #: includes/arrays.php
 msgid "SHA-512"
-msgstr ""
+msgstr "SHA-512"
 
 #: includes/arrays.php
 msgid "SMB encrypted (SMBS) download file, default port 445"
@@ -1159,123 +1116,120 @@ msgid "SMTP plaintext, default port 25 (or 587 for submission)"
 msgstr "SMTP bản rõ, cổng mặc định 25 (hoặc 587 để gửi)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
 msgstr "SMTP với STARTTLS, cổng mặc định 25 (hoặc 587 để gửi)"
 
 #: includes/arrays.php
 msgid "SNMP Auth Protocol (v3)"
-msgstr ""
+msgstr "Giao thức xác thực SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Context (v3)"
-msgstr ""
+msgstr "Bối cảnh SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Engine ID (v3)"
-msgstr ""
+msgstr "ID động cơ SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP OID"
-msgstr ""
+msgstr "SNMP OID"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Password (v3)"
-msgstr "Mật khẩu"
+msgstr "Mật khẩu SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Passphrase (v3)"
-msgstr ""
+msgstr "Cụm mật khẩu riêng tư SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Protocol (v3)"
-msgstr ""
+msgstr "Giao thức bảo mật SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Security Level"
-msgstr ""
+msgstr "Cấp độ bảo mật SNMP"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Username (v3)"
-msgstr "Tên đăng nhập"
+msgstr "Tên người dùng SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP community string for SNMP v1 or v2(c)"
-msgstr ""
+msgstr "Chuỗi cộng đồng SNMP (community string) cho SNMP v1 hoặc v2(c)"
 
 #: includes/arrays.php
 msgid "SNMP get"
-msgstr ""
+msgstr "SNMP get"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2"
-msgstr ""
+msgstr "SNMP v1 hoặc v2"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 - required, insert community name here"
-msgstr ""
+msgstr "SNMP v1 hoặc v2 - bắt buộc, nhập tên community tại đây"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 community"
-msgstr ""
+msgstr "Community SNMP v1 hoặc v2"
 
 #: includes/arrays.php
 msgid "SNMP v3"
-msgstr ""
+msgstr "SNMP v3"
 
 #: includes/arrays.php
 msgid "SNMP v3 - The security level determines which parameters are required"
-msgstr ""
+msgstr "SNMP v3 - Mức độ bảo mật xác định các tham số nào là bắt buộc"
 
 #: includes/arrays.php
 msgid "SNMP v3 Security Level to use when querying the device."
-msgstr ""
+msgstr "Cấp độ bảo mật SNMP v3 để sử dụng khi truy vấn thiết bị."
 
 #: includes/arrays.php
 msgid "SNMP v3 password for this device."
-msgstr ""
+msgstr "Mật khẩu SNMP v3 cho thiết bị này."
 
 #: includes/arrays.php
 msgid "SNMP v3 username for this device."
-msgstr ""
+msgstr "Tên người dùng SNMP v3 cho thiết bị này."
 
 #: includes/arrays.php
 msgid "SNMP walk"
-msgstr ""
+msgstr "SNMP walk"
 
 #: includes/arrays.php
 msgid "SSH command"
-msgstr ""
+msgstr "Lệnh SSH"
 
 #: includes/arrays.php
 msgid "SSH command on remote system"
-msgstr ""
+msgstr "Lệnh SSH trên hệ thống từ xa"
 
 #: includes/arrays.php
 msgid "SSH private key"
-msgstr ""
+msgstr "Khóa riêng tư SSH"
 
 #: includes/arrays.php
 msgid "SSH private key "
-msgstr ""
+msgstr "Khóa riêng tư SSH "
 
 #: includes/arrays.php
 msgid "SSH private key - Cacti 1.2.31+"
-msgstr ""
+msgstr "Khóa riêng tư SSH - Cacti 1.2.31+"
 
 #: includes/arrays.php
 msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
-msgstr ""
+msgstr "Khóa riêng tư SSH - Có thể dùng cho kiểm tra SCP hoặc lệnh SSH. Các kiểm tra này cũng có thể dùng tên người dùng/mật khẩu"
 
 #: includes/arrays.php
 msgid "SSH private key passphrase"
-msgstr ""
+msgstr "Cụm mật khẩu khóa riêng tư SSH"
 
 #: includes/arrays.php
 msgid "SSH user"
-msgstr ""
+msgstr "Người dùng SSH"
 
 #: includes/arrays.php
 msgid "SSL Client Certificate required."
@@ -1291,18 +1245,17 @@ msgstr "Xem khác"
 
 #: includes/arrays.php
 msgid "Select correct Credential type."
-msgstr ""
+msgstr "Chọn đúng loại Thông tin xác thực."
 
 #: includes/arrays.php
 msgid "Select correct credential"
-msgstr ""
+msgstr "Chọn đúng thông tin xác thực"
 
 #: includes/arrays.php
 msgid "Select correct credential or left empty."
-msgstr ""
+msgstr "Chọn đúng thông tin xác thực hoặc để trống."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Service Check Name"
 msgstr "Tên kiểm tra dịch vụ"
 
@@ -1316,7 +1269,7 @@ msgstr "Cài đặt dịch vụ"
 
 #: includes/arrays.php
 msgid "Set according to your REST API server"
-msgstr ""
+msgstr "Đặt theo máy chủ REST API của bạn"
 
 #: includes/arrays.php
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
@@ -1347,13 +1300,12 @@ msgid "TFTP protocol - download file, default port 69"
 msgstr "Giao thức TFTP - Tải file mặc định 69"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Temporary Redirect"
-msgstr "Chuyển hướng"
+msgstr "Chuyển hướng tạm thời"
 
 #: includes/arrays.php
 msgid "Test every xth poller run"
-msgstr ""
+msgstr "Kiểm tra sau mỗi lần chạy poller thứ x"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Tests"
@@ -1372,19 +1324,16 @@ msgid "The FTP server does not understand the PRET command at all or does not su
 msgstr "Máy chủ FTP hoàn toàn không hiểu lệnh PRET hoặc không hỗ trợ đối số đã cho. Hãy cẩn thận khi sử dụng CURLOPT_CUSTOMREQUEST, một lệnh LIST tùy chỉnh cũng được gửi bằng lệnh PRET trước PASV. (Thêm vào trong 7.20.0)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The HTTP Proxy Port."
-msgstr "Cổng proxy HTTP."
+msgstr "Cổng Proxy HTTP."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The HTTPS Proxy Port."
 msgstr "Cổng Proxy HTTPS."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The Proxy Hostname."
-msgstr "Tên máy chủ proxy."
+msgstr "Tên máy chủ Proxy."
 
 #: includes/arrays.php
 msgid "The URL was not properly formatted."
@@ -1399,18 +1348,16 @@ msgid "The download could not be resumed because the specified offset was out of
 msgstr "Không thể tiếp tục tải xuống vì phần bù được chỉ định nằm ngoài ranh giới tệp."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The name that is displayed for this Credential."
-msgstr "Tên được hiển thị cho Kiểm tra dịch vụ này và được bao gồm trong mọi thông báo Thông báo."
+msgstr "Tên được hiển thị cho thông tin xác thực này."
 
 #: includes/arrays.php
 msgid "The name that is displayed for this Rest API."
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
-msgstr "Tên được hiển thị cho Kiểm tra dịch vụ này và được bao gồm trong mọi thông báo Thông báo."
+msgstr "Tên được hiển thị cho Kiểm tra dịch vụ này và được đưa vào mọi thông báo cảnh báo."
 
 #: includes/arrays.php
 msgid "The remote server denied curl to login (Added in 7.13.1)"
@@ -1426,7 +1373,7 @@ msgstr "Tài nguyên được tham chiếu trong URL không tồn tại."
 
 #: includes/arrays.php
 msgid "The same as HTTP plaintext but adds the ability to test certificates."
-msgstr ""
+msgstr "Tương tự như HTTP văn bản thuần túy nhưng bổ sung khả năng kiểm tra chứng chỉ."
 
 #: includes/arrays.php
 msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS."
@@ -1457,9 +1404,8 @@ msgid "This error should never be returned by a properly functioning TFTP server
 msgstr "Lỗi này không bao giờ được trả về bởi một máy chủ TFTP hoạt động đúng."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is a listing of accounts that will be notified when this service goes down."
-msgstr "Đây là danh sách các tài khoản sẽ được thông báo khi trang web này bị sập."
+msgstr "Đây là danh sách các tài khoản sẽ được thông báo khi dịch vụ này ngừng hoạt động."
 
 #: includes/arrays.php
 msgid "This is an odd error that mainly occurs due to internal confusion."
@@ -1470,24 +1416,20 @@ msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server r
 msgstr "Điều này được trả về nếu CURLOPT_FAILONERROR được đặt true và máy chủ HTTP trả về mã lỗi > = 400."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the format to use when sending the notification email"
-msgstr "Đây là định dạng để sử dụng khi gửi email thông báo"
+msgstr "Đây là định dạng được sử dụng khi gửi email thông báo"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
-msgstr "Đây là chuỗi để tìm kiếm một lỗi đã biết trong phản hồi của Dịch vụ web. Kiểm tra dịch vụ sẽ chỉ cảnh báo nếu chuỗi này được tìm thấy, bỏ qua mọi vấn đề về thời gian chờ và chuỗi tìm kiếm ở trên."
+msgstr "Đây là chuỗi cần tìm để phát hiện lỗi đã biết trong phản hồi của dịch vụ. Kiểm tra dịch vụ sẽ chỉ cảnh báo nếu tìm thấy chuỗi này, bỏ qua mọi vấn đề hết thời gian chờ và các chuỗi tìm kiếm ở trên."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for in the response for a live and working service."
-msgstr "Đây là chuỗi để tìm kiếm trong phản hồi URL cho Dịch vụ web trực tiếp và đang hoạt động."
+msgstr "Đây là chuỗi cần tìm trong phản hồi để xác định dịch vụ đang hoạt động bình thường."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
-msgstr "Đây là chuỗi để tìm kiếm trên Trang Bảo trì. Kiểm tra dịch vụ sẽ kiểm tra chuỗi này nếu không tìm thấy chuỗi trên. Nếu được tìm thấy, điều đó có nghĩa là Dịch vụ Web đang được bảo trì."
+msgstr "Đây là chuỗi cần tìm trên trang Bảo trì. Kiểm tra dịch vụ sẽ kiểm tra chuỗi này nếu không tìm thấy chuỗi ở trên. Nếu tìm thấy, điều đó có nghĩa là dịch vụ đang được bảo trì."
 
 #: includes/arrays.php
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
@@ -1495,11 +1437,11 @@ msgstr "Đây là một câu trả lời kỳ lạ cho lệnh 'RETR' hoặc hoà
 
 #: includes/arrays.php
 msgid "Token name"
-msgstr ""
+msgstr "Tên token"
 
 #: includes/arrays.php
 msgid "Token value"
-msgstr ""
+msgstr "Giá trị token"
 
 #: includes/arrays.php
 msgid "Token/API Key name"
@@ -1515,27 +1457,27 @@ msgstr "Nút kích hoạt"
 
 #: includes/arrays.php
 msgid "Try DNS over HTTPS."
-msgstr ""
+msgstr "Thử DNS qua HTTPS."
 
 #: includes/arrays.php
 msgid "Try SMB protocol, username and password are required. Try to login and download file."
-msgstr ""
+msgstr "Thử giao thức SMB, yêu cầu tên người dùng và mật khẩu. Thử đăng nhập và tải tệp xuống."
 
 #: includes/arrays.php
 msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
-msgstr ""
+msgstr "Thử phương thức SNMP get. Kết quả đầu ra cho OID đã chỉ định sẽ được trả về. Yêu cầu thông tin xác thực, bạn phải chuẩn bị thông tin xác thực SNMP v.1,2 hoặc v3 trước."
 
 #: includes/arrays.php
 msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
-msgstr ""
+msgstr "Thử phương thức SNMP walk. Kết quả đầu ra cho OID đã chỉ định sẽ được trả về. Yêu cầu thông tin xác thực, bạn phải chuẩn bị thông tin xác thực SNMP v.1,2 hoặc v3 trước."
 
 #: includes/arrays.php
 msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
-msgstr ""
+msgstr "Thử tải xuống tệp được chỉ định trong đường dẫn (/path/to/file.txt) từ máy chủ TFTP. Nội dung của tệp sẽ được trả về."
 
 #: includes/arrays.php
 msgid "Try to resolve DNS record on specified DNS server"
-msgstr ""
+msgstr "Thử phân giải bản ghi DNS trên máy chủ DNS đã chỉ định"
 
 #: includes/arrays.php
 msgid "Type of service"
@@ -1543,16 +1485,15 @@ msgstr "Loại hình dịch vụ"
 
 #: includes/arrays.php
 msgid "URL to retrieve data. Insert with http:// or https://"
-msgstr ""
+msgstr "URL để truy xuất dữ liệu. Nhập kèm http:// hoặc https://"
 
 #: includes/arrays.php
 msgid "URL which is used to log in or get the token."
-msgstr ""
+msgstr "URL được sử dụng để đăng nhập hoặc lấy token."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Unable to Connect"
-msgstr "Kích hoạt máy chủ"
+msgstr "Không thể kết nối"
 
 #: includes/arrays.php
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
@@ -1560,12 +1501,11 @@ msgstr "Không thể phân tích cú pháp danh sách tệp FTP (trong khi tải
 
 #: includes/arrays.php
 msgid "Unauthorized"
-msgstr "Phép"
+msgstr "Không được phép"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Uncheck this box to disable this test from being checked."
-msgstr "Bỏ chọn hộp này để vô hiệu hóa url này khỏi bị kiểm tra."
+msgstr "Bỏ chọn ô này để vô hiệu hóa việc kiểm tra bài kiểm tra này."
 
 #: includes/arrays.php
 msgid ""
@@ -1604,18 +1544,16 @@ msgid "Unsupported Media Type"
 msgstr "Loại phương tiện không được hỗ trợ"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Use Proxy"
-msgstr "Proxy mới"
+msgstr "Sử dụng Proxy"
 
 #: includes/arrays.php
 msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
-msgstr ""
+msgstr "Sử dụng ssh và kết nối đến máy chủ từ xa. Sau khi đăng nhập, chạy lệnh đã chỉ định và trả về kết quả đầu ra. Có thể sử dụng tên người dùng và mật khẩu hoặc khóa riêng tư."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Use this Notification List for those to be notified when this service goes down."
-msgstr "Đây là danh sách các tài khoản sẽ được thông báo khi trang web này bị sập."
+msgstr "Sử dụng Danh sách thông báo này cho những người sẽ được thông báo khi dịch vụ này ngừng hoạt động."
 
 #: includes/arrays.php
 msgid "Username"
@@ -1623,16 +1561,15 @@ msgstr "Tên đăng nhập"
 
 #: includes/arrays.php
 msgid "Username and password"
-msgstr ""
+msgstr "Tên người dùng và mật khẩu"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Verification Strings"
 msgstr "Chuỗi xác minh"
 
 #: includes/arrays.php
 msgid "Warning"
-msgstr ""
+msgstr "Cảnh báo"
 
 #: includes/arrays.php
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
@@ -1660,21 +1597,19 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
-msgstr ""
+msgstr "Bạn có thể chỉ định cổng khác (example.com:5000), nếu không cổng mặc định sẽ được sử dụng. Đối với địa chỉ số IPv6, hãy dùng [ip:ad:dr:es:fo:rma:at]. Đối với DOH (DNS over HTTPS), hãy nhập tên máy chủ tại đây (ví dụ 10.10.10.10, cloudflare-dns.com, ..)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
-msgstr "Bạn có thể chỉ định ở đây thêm Email để nhận thông báo cho URL này (được phân tách bằng dấu phẩy)"
+msgstr "Bạn có thể chỉ định thêm các địa chỉ Email tại đây để nhận cảnh báo cho bài kiểm tra này (phân tách bằng dấu phẩy)"
 
 #: includes/arrays.php
 msgid "Your own CA and intermediate certs"
 msgstr "Chứng chỉ CA và trung cấp của riêng bạn"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "[None]"
-msgstr "Không"
+msgstr "[Không]"
 
 #: includes/arrays.php
 msgid "problem with the local client certificate."
@@ -1685,23 +1620,21 @@ msgid "Graphs"
 msgstr "Đồ thị"
 
 #: includes/functions.php
-#, fuzzy
 msgid "Log History"
-msgstr "Xem lịch sử"
+msgstr "Lịch sử nhật ký"
 
 #: includes/functions.php
 msgid "No data"
 msgstr "Không có dữ liệu"
 
 #: servcheck_ca.php
-#, fuzzy, php-format
+#, php-format
 msgid "CA [edit: %s]"
-msgstr "Truy vấn [chỉnh sửa: %s]"
+msgstr "CA [chỉnh sửa: %s]"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "CA [new]"
-msgstr "Truy vấn [mới]"
+msgstr "CA [mới]"
 
 #: servcheck_ca.php
 msgid "CAs"
@@ -1720,7 +1653,7 @@ msgstr "Xóa"
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Clear Filters"
-msgstr ""
+msgstr "Xóa bộ lọc"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
@@ -1741,10 +1674,9 @@ msgstr "Xóa"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
-#, fuzzy
 msgid "Delete item"
 msgid_plural "Delete items"
-msgstr[0] "Máy chủ WebSeer"
+msgstr[0] "Xóa mục"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1752,9 +1684,8 @@ msgid "Go"
 msgstr "Đi"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "No Certificates Found"
-msgstr "Không tìm thấy máy chủ"
+msgstr "Không tìm thấy chứng chỉ nào"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1762,90 +1693,81 @@ msgid "Search"
 msgstr "Tìm kiếm"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "Servcheck CA Management"
-msgstr "Quản lý máy chủ Webseer"
+msgstr "Quản lý CA ServCheck"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Set/Refresh Filters"
-msgstr ""
+msgstr "Đặt / Làm mới Bộ lọc"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 msgid "Used"
 msgstr "Đã sử dụng"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Click 'Continue' to Duplicate the following Credential."
-msgid_plural "Click 'Continue' to Duplicate following Credential."
-msgstr[0] "Nhấp vào 'Tiếp tục' để xóa Proxy sau."
+msgid_plural "Click 'Continue' to Duplicate the following Credentials."
+msgstr[0] "Nhấp vào 'Tiếp tục' để nhân bản (các) Thông tin xác thực sau."
 
 #: servcheck_credential.php
-#, fuzzy, php-format
+#, php-format
 msgid "Credential [edit: %s]"
-msgstr "Truy vấn [chỉnh sửa: %s]"
+msgstr "Thông tin xác thực [chỉnh sửa: %s]"
 
 #: servcheck_credential.php
 msgid "Credential [new]"
-msgstr ""
+msgstr "Thông tin xác thực [mới]"
 
 #: servcheck_credential.php
 msgid "Credentials"
-msgstr ""
+msgstr "Thông tin xác thực"
 
 #: servcheck_credential.php servcheck_restapi.php servcheck_test.php
 msgid "Duplicate"
 msgstr "Bản sao"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Duplicate Credential"
-msgid_plural "Duplicate Credential"
-msgstr[0] "Bản sao"
+msgid_plural "Duplicate Credentials"
+msgstr[0] "Nhân bản thông tin xác thực"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "No Credentials Found"
-msgstr "Không tìm thấy máy chủ"
+msgstr "Không tìm thấy thông tin xác thực nào"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Servcheck Credential Management"
-msgstr "Quản lý máy chủ Webseer"
+msgstr "Quản lý thông tin xác thực ServCheck"
 
 #: servcheck_credential.php servcheck_restapi.php
 msgid "Type"
-msgstr ""
+msgstr "Loại"
 
 #: servcheck_curl_code.php
 msgid "No error codes"
 msgstr "Không có mã lỗi"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "No Proxies Found"
-msgstr "Không tìm thấy máy chủ"
+msgstr "Không tìm thấy Proxy nào"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Ports (http/https)"
-msgstr "Cổng (http / https)"
+msgstr "Cổng (http/https)"
 
 #: servcheck_proxy.php
-#, fuzzy, php-format
+#, php-format
 msgid "Proxy [edit: %s]"
-msgstr "Truy vấn [chỉnh sửa: %s]"
+msgstr "Proxy [chỉnh sửa: %s]"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Proxy [new]"
-msgstr "Truy vấn [mới]"
+msgstr "Proxy [mới]"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Servcheck Proxy Management"
-msgstr "Quản lý máy chủ Webseer"
+msgstr "Quản lý Proxy ServCheck"
 
 #: servcheck_restapi.php servcheck_test.php
 msgid "Any"
@@ -1906,35 +1828,32 @@ msgid "All"
 msgstr "Tất cả"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "All Users Selected"
-msgstr "Tất cả người dùng đã chọn"
+msgstr "Đã chọn tất cả người dùng"
 
 #: servcheck_test.php
 msgid "Attempt"
-msgstr ""
+msgstr "Lần thử"
 
 #: servcheck_test.php
 msgid "CPU u/CPU s/Memory"
-msgstr ""
+msgstr "CPU u/CPU s/Bộ nhớ"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Certificate"
-msgstr "Kiểm tra giấy chứng nhận"
+msgstr "Chứng chỉ"
 
 #: servcheck_test.php
 msgid "Checks"
 msgstr "Kiểm tra"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Clear log"
-msgstr "Xóa"
+msgstr "Làm trống nhật ký"
 
 #: servcheck_test.php
 msgid "Clear statistics"
-msgstr ""
+msgstr "Xóa thống kê"
 
 #: servcheck_test.php
 #, fuzzy
@@ -1968,62 +1887,54 @@ msgstr[0] "Nhấp vào 'Tiếp tục' để xóa Proxy sau."
 
 #: servcheck_test.php
 msgid "Curl"
-msgstr ""
+msgstr "Curl"
 
 #: servcheck_test.php
 msgid "Date"
 msgstr "Ngày"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Date Search"
-msgstr "Tìm kiếm"
+msgstr "Tìm kiếm theo ngày"
 
 #: servcheck_test.php
 msgid "Disable"
 msgstr "Vô hiệu hóa"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable Service Check"
-msgstr "Cho phép kiểm tra dịch vụ"
+msgstr "Tắt kiểm tra dịch vụ"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable item"
 msgid_plural "Disable items"
-msgstr[0] "Vô hiệu hóa"
+msgstr[0] "Vô hiệu hóa mục"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duplicate item"
 msgid_plural "Duplicate items"
-msgstr[0] "Bản sao"
+msgstr[0] "Nhân bản mục"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duration"
-msgstr "Vị trí"
+msgstr "Thời lượng"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Edit Service Check"
-msgstr "Cho phép kiểm tra dịch vụ"
+msgstr "Chỉnh sửa kiểm tra dịch vụ"
 
 #: servcheck_test.php
 msgid "Enable"
 msgstr "Bật"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable Service Check"
-msgstr "Cho phép kiểm tra dịch vụ"
+msgstr "Bật kiểm tra dịch vụ"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable item"
 msgid_plural "Enable items"
-msgstr[0] "Kích hoạt máy chủ"
+msgstr[0] "Kích hoạt mục"
 
 #: servcheck_test.php
 msgid "Entries"
@@ -2032,16 +1943,15 @@ msgstr "Mục"
 #: servcheck_test.php
 #, php-format
 msgid "Expired %s days ago"
-msgstr ""
+msgstr "Đã hết hạn %s ngày trước"
 
 #: servcheck_test.php
 msgid "Insufficient data, wait a few poller cycles"
-msgstr ""
+msgstr "Không đủ dữ liệu, vui lòng đợi vài chu kỳ poller"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Last Check (attempt)"
-msgstr "Lần cuối kiểm tra vào"
+msgstr "Lần kiểm tra gần nhất (thử)"
 
 #: servcheck_test.php
 msgid "Last returned data of test"
@@ -2049,25 +1959,23 @@ msgstr "Dữ liệu trả về cuối cùng của thử nghiệm"
 
 #: servcheck_test.php
 msgid "Logs"
-msgstr ""
+msgstr "Nhật ký"
 
 #: servcheck_test.php
 msgid "N/A (N/A)"
-msgstr ""
+msgstr "N/A (N/A)"
 
 #: servcheck_test.php
 msgid "No"
 msgstr "Không"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Service Checks Found"
-msgstr "Không tìm thấy máy chủ"
+msgstr "Không tìm thấy kiểm tra dịch vụ nào"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Users Selected"
-msgstr "Không có người dùng nào được chọn"
+msgstr "Chưa chọn người dùng nào"
 
 #: servcheck_test.php
 msgid "Purge Events"
@@ -2083,21 +1991,19 @@ msgstr "Kết quả"
 
 #: servcheck_test.php
 msgid "Ret. data size"
-msgstr ""
+msgstr "Kích thước dữ liệu trả về"
 
 #: servcheck_test.php
 msgid "Search result"
 msgstr "Tìm kiếm kết quả"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Servcheck Test Management"
-msgstr "Quản lý máy chủ Webseer"
+msgstr "Quản lý kiểm tra ServCheck"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Service Check History"
-msgstr "Kiểm tra dịch vụ web"
+msgstr "Lịch sử kiểm tra dịch vụ"
 
 #: servcheck_test.php
 msgid "State"
@@ -2108,14 +2014,13 @@ msgid "Stats (OK/problem)"
 msgstr "Số liệu thống kê (OK / vấn đề)"
 
 #: servcheck_test.php
-#, fuzzy, php-format
+#, php-format
 msgid "Test [edit: %s]"
-msgstr "Truy vấn [chỉnh sửa: %s]"
+msgstr "Kiểm tra [sửa: %s]"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Test [new]"
-msgstr "Truy vấn [mới]"
+msgstr "Kiểm tra [mới]"
 
 #: servcheck_test.php
 #, php-format
@@ -2123,12 +2028,10 @@ msgid "The Service Check history was purged for %s"
 msgstr "Lịch sử Kiểm tra dịch vụ đã bị xóa trong %s"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Triggered"
-msgstr "Kích hoạt"
+msgstr "Đã kích hoạt"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Users Selected"
 msgstr "Người dùng đã chọn"
 
@@ -2141,9 +2044,8 @@ msgid "View Last returned data"
 msgstr "Xem dữ liệu trả về cuối cùng"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "View Service Check History"
-msgstr "Kiểm tra dịch vụ web"
+msgstr "Xem lịch sử kiểm tra dịch vụ"
 
 #: servcheck_test.php
 msgid "Yes"
@@ -2151,7 +2053,7 @@ msgstr "Có"
 
 #: servcheck_test.php
 msgid "days"
-msgstr ""
+msgstr "ngày"
 
 #: setup.php
 #, php-format
@@ -2174,33 +2076,32 @@ msgid "%d year"
 msgstr "%d Năm"
 
 #: setup.php
-#, fuzzy
 msgid "1 Process"
-msgstr "Máy chủ WebSeer"
+msgstr "1 quá trình"
 
 #: setup.php
 msgid "1 week in advance"
-msgstr ""
+msgstr "Trước 1 tuần"
 
 #: setup.php
 msgid "3 days in advance"
-msgstr ""
+msgstr "Trước 3 ngày"
 
 #: setup.php
 msgid "3 weeks in advance"
-msgstr ""
+msgstr "Trước 3 tuần"
 
 #: setup.php
 msgid "30 days in advance"
-msgstr ""
+msgstr "Trước 30 ngày"
 
 #: setup.php
 msgid "60 days in advance"
-msgstr ""
+msgstr "Trước 60 ngày"
 
 #: setup.php
 msgid "90 days in advance"
-msgstr ""
+msgstr "Trước 90 ngày"
 
 #: setup.php
 msgid "CA"
@@ -2212,51 +2113,51 @@ msgstr "CA Chỉnh sửa"
 
 #: setup.php
 msgid "Certificate expiry date advanced notification email"
-msgstr ""
+msgstr "Email thông báo trước ngày hết hạn chứng chỉ"
 
 #: setup.php
 msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
-msgstr ""
+msgstr "Chọn hộp này sẽ bật khả năng chạy lệnh khi có sự kiện ServCheck. Bạn có thể bật hoặc tắt tùy chọn này cho từng bài kiểm tra."
 
 #: setup.php
 msgid "Concurrent Check Processes"
-msgstr ""
+msgstr "Số tiến trình kiểm tra đồng thời"
 
 #: setup.php
 msgid "Credential Edit"
-msgstr ""
+msgstr "Chỉnh sửa thông tin xác thực"
 
 #: setup.php
 msgid "Credential Save"
-msgstr ""
+msgstr "Lưu thông tin xác thực"
 
 #: setup.php
 msgid "Enable Command Execution"
-msgstr ""
+msgstr "Bật thực thi lệnh"
 
 #: setup.php
 msgid "Enter the period after which older logs will be automatically deleted."
-msgstr ""
+msgstr "Nhập khoảng thời gian mà sau đó các nhật ký cũ hơn sẽ tự động bị xóa."
 
 #: setup.php
 msgid "HTTP/HTTPS Check Settings"
-msgstr ""
+msgstr "Cài đặt kiểm tra HTTP/HTTPS"
 
 #: setup.php
 msgid "How long to keep logs"
-msgstr ""
+msgstr "Thời gian lưu giữ nhật ký"
 
 #: setup.php
 msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
-msgstr ""
+msgstr "Nếu tính năng kiểm tra hết hạn chứng chỉ dịch vụ SSL/TLS được bật, hãy đặt số ngày thông báo trước khi chứng chỉ hết hạn mà hệ thống sẽ gửi thông báo"
 
 #: setup.php
 msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
-msgstr ""
+msgstr "Nếu được chọn, ServCheck sẽ không gửi bất kỳ email nào. Bạn cũng có thể chỉ tắt thông báo cho các bài kiểm tra cụ thể"
 
 #: setup.php
 msgid "If checked, this will cause all Emails to be sent separately for each address."
-msgstr ""
+msgstr "Nếu được chọn, tất cả email sẽ được gửi riêng lẻ tới từng địa chỉ."
 
 #: setup.php
 msgid "Management"
@@ -2264,16 +2165,15 @@ msgstr "Sự quản lý"
 
 #: setup.php
 msgid "Maximum test duration in seconds"
-msgstr ""
+msgstr "Thời lượng kiểm tra tối đa tính bằng giây"
 
 #: setup.php
 msgid "Never"
-msgstr ""
+msgstr "Không bao giờ"
 
 #: setup.php
-#, fuzzy
 msgid "Notification Preferences"
-msgstr "Thiết lập Thông báo"
+msgstr "Tùy chọn thông báo"
 
 #: setup.php
 #, fuzzy
@@ -2289,82 +2189,191 @@ msgid "Save CA"
 msgstr "Lưu CA"
 
 #: setup.php
-#, fuzzy
 msgid "Save Web Proxy"
-msgstr "Proxy mới"
+msgstr "Lưu Web Proxy"
 
 #: setup.php
 msgid "Send Email separately for each address"
-msgstr ""
+msgstr "Gửi Email riêng cho từng địa chỉ"
 
 #: setup.php
-#, fuzzy
 msgid "Servcheck"
-msgstr "Kiểm tra dịch vụ web"
+msgstr "Servcheck"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Admin"
-msgstr "Quản trị dịch vụ web"
+msgstr "Quản trị kiểm tra dịch vụ"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Edit"
-msgstr "Kiểm tra dịch vụ Chỉnh sửa"
+msgstr "Chỉnh sửa kiểm tra dịch vụ"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Save"
-msgstr "Tên kiểm tra dịch vụ"
+msgstr "Lưu kiểm tra dịch vụ"
 
 #: setup.php
-#, fuzzy
 msgid "Service Checker"
-msgstr "Tên kiểm tra dịch vụ"
+msgstr "Trình kiểm tra dịch vụ"
 
 #: setup.php
-#, fuzzy
 msgid "Service Checks"
-msgstr "Kiểm tra dịch vụ web"
+msgstr "Kiểm tra dịch vụ"
 
 #: setup.php
 msgid "Status Change Command"
-msgstr ""
+msgstr "Lệnh thay đổi trạng thái"
 
 #: setup.php
 msgid "Stop sending all notification"
-msgstr ""
+msgstr "Dừng gửi tất cả thông báo"
 
 #: setup.php
 msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
-msgstr ""
+msgstr "Chuỗi User-Agent được gửi kèm các kiểm tra dịch vụ HTTP/HTTPS và các kiểm tra khác dựa trên cURL. Một số trang chặn trình duyệt cũ hoặc ít phổ biến, nên bạn có thể đặt một User-Agent hiện đại tại đây. Để trống để dùng mặc định tích hợp sẵn."
 
 #: setup.php
 msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
-msgstr ""
+msgstr "Giá trị mặc định cho các kiểm tra chưa bật kiểm tra thời gian chạy. Nếu bật, thời lượng tối đa được tính bằng ngưỡng thời lượng + 2 giây."
 
 #: setup.php
 msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
-msgstr ""
+msgstr "Số lượng tiến trình kiểm tra dịch vụ chạy đồng thời.  Không khuyến khích tăng con số này lên gấp 2 lần số nhân CPU."
 
 #: setup.php
-#, fuzzy
 msgid "User Agent"
-msgstr "Tên người dùng"
+msgstr "User Agent"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy"
-msgstr "Máy chủ WebSeer"
+msgstr "Proxy Web"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy Edit"
-msgstr "Proxy"
+msgstr "Chỉnh sửa Proxy Web"
 
 #: setup.php
 msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
-msgstr ""
+msgstr "Khi bài kiểm tra cơ bản, tìm kiếm hoặc hết hạn chứng chỉ trả về kết quả khác, hãy chạy lệnh sau... Lệnh này KHÔNG được bao gồm tham số dòng lệnh... Tuy nhiên, các biến sau có thể được lấy từ môi trường của tập lệnh:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+
+#: includes/arrays.php
+msgid "<b>Can be used for a lot of service checks:</b><br/><i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/><i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/><i>LDAP, smb, smbs</i> - required<br/><i>MQTT</i> - optional<br/><i>SCP, SSH command</i> - you can use this method or private key method"
+msgstr "<b>Có thể dùng cho nhiều kiểm tra dịch vụ:</b><br/><i>Http/https</i> - tùy chọn, khi được đặt, sẽ thử xác thực cơ bản HTTP (HTTP basic auth)<br/><i>SMTP trên cổng 587</i> - tùy chọn. Nếu không có tên người dùng/mật khẩu, chỉ kiểm tra phản hồi của máy chủ. Nếu có tên người dùng và mật khẩu, việc đăng nhập cũng sẽ được thực hiện<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - tùy chọn. Đối với ftp ẩn danh, dùng tên người dùng \"anonymous\" và địa chỉ email làm mật khẩu<br/><i>LDAP, smb, smbs</i> - bắt buộc<br/><i>MQTT</i> - tùy chọn<br/><i>Lệnh SCP, SSH</i> - bạn có thể dùng phương thức này hoặc phương thức khóa riêng tư"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue). For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). For POST <i>api_key</i> is usually used."
+msgstr "REST API - Xác thực bằng khóa API<br/>Thông tin xác thực được gửi trong tiêu đề HTTP, tiêu đề tùy chỉnh hoặc phương thức POST. Không hỗ trợ thông tin xác thực trong URL.<br/>Nhập tên và giá trị khóa API. Cả hai giá trị đều bắt buộc. Đối với tiêu đề HTTP, tên <i>Bearer hoặc apikey hoặc \"\"</i> thường được dùng (Authorization: Bearer apivalue). Đối với tiêu đề tùy chỉnh, <i>X-API-Key</i> thường được dùng (X-Api-Key: keyvalue). Đối với POST, <i>api_key</i> thường được dùng."
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded."
+msgstr "REST API - Xác thực OAuth2/Bearer token<br/>Bạn có thể lấy khóa/token từ máy chủ và nhập vào đây hoặc sử dụng luồng xác thực với thông tin đăng nhập. Tên người dùng và mật khẩu được gửi dưới dạng mã hóa JSON."
+
+#: includes/arrays.php
+msgid "Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, you will see server login banner and ehlo response. With credential, login will be performed"
+msgstr "Không mã hóa + STARTTLS. Cũng có thể kiểm tra tính hợp lệ của chứng chỉ. Nếu không có tên người dùng và mật khẩu, bạn sẽ thấy biểu ngữ đăng nhập của máy chủ và phản hồi ehlo. Nếu có thông tin xác thực, quá trình đăng nhập sẽ được thực hiện"
+
+#: includes/arrays.php
+msgid "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password AUTH LOGIN will be tested."
+msgstr "Kết nối được mã hóa trên cổng mặc định 465. Cũng có thể kiểm tra tính hợp lệ của chứng chỉ. Với tên người dùng và mật khẩu, AUTH LOGIN sẽ được kiểm tra."
+
+#: includes/arrays.php
+msgid "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgstr "Kết nối IMAP không mã hóa. Nếu không có thông tin xác thực, chỉ kết nối được kiểm tra. Bạn sẽ chỉ thấy biểu ngữ đăng nhập. Nếu có thông tin xác thực, việc đăng nhập sẽ được kiểm tra và thử đọc danh sách thư. Bạn có thể sử dụng phương thức AUTHENTICATE PLAIN hoặc AUTHENTICATE LOGIN."
+
+#: includes/arrays.php
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Tương tự như IMAP không mã hóa nhưng sau khi đăng nhập sẽ sử dụng STARTTLS. Cũng có thể kiểm tra tính hợp lệ của chứng chỉ sau STARTTLS."
+
+#: includes/arrays.php
+msgid "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages"
+msgstr "Kết nối POP3 không mã hóa. Nếu không có thông tin xác thực, chỉ kết nối được kiểm tra. Bạn sẽ chỉ thấy biểu ngữ đăng nhập. Nếu có thông tin xác thực, việc đăng nhập sẽ được kiểm tra và thử đọc danh sách thư"
+
+#: includes/arrays.php
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Tương tự như POP3 không mã hóa nhưng sau khi đăng nhập sẽ sử dụng STARTTLS. Cũng có thể kiểm tra tính hợp lệ của chứng chỉ sau STARTTLS."
+
+#: includes/arrays.php
+msgid "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content of the file is returned."
+msgstr "Kết nối FTP không mã hóa, đăng nhập và thử tải xuống tệp được chỉ định trong đường dẫn (/path/to/file.txt). Đối với kết nối ẩn danh, sử dụng tên đăng nhập *anonymous* và địa chỉ email làm mật khẩu. Nội dung của tệp sẽ được trả về."
+
+#: includes/arrays.php
+msgid "Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\""
+msgstr "Kết nối tới máy chủ MQTT và lắng nghe mọi thông điệp. Bạn có thể chỉ định topic trong Đường dẫn (bedroom/temp), để trống cho mọi topic. Đối với bài kiểm tra này, khuyến nghị tăng \"Cảnh báo thời lượng dài\""
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
+msgstr[0] "Nhấp vào 'Tiếp tục' để xóa (các) mục sau."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
+msgstr[0] "Nhấp vào 'Tiếp tục' để vô hiệu hóa (các) mục sau."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
+msgstr[0] "Nhấp vào 'Tiếp tục' để kích hoạt (các) mục sau."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
+msgstr[0] "Nhấp vào 'Tiếp tục' để nhân bản (các) mục sau."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear statistics of the following item."
+msgid_plural "Click 'Continue' to clear statistics of the following items."
+msgstr[0] "Nhấp vào 'Tiếp tục' để xóa số liệu thống kê của (các) mục sau."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear log of the following item."
+msgid_plural "Click 'Continue' to clear log of the following items."
+msgstr[0] "Nhấp vào 'Tiếp tục' để xóa nhật ký của (các) mục sau."
+
+#: servcheck_test.php
+msgid "Status"
+msgstr "Trạng thái"
+
+#: setup.php
+msgid "Certificate expiry notification email interval"
+msgstr "Chu kỳ gửi email thông báo hết hạn chứng chỉ"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday"
+msgstr "Nếu tính năng kiểm tra hết hạn chứng chỉ dịch vụ SSL/TLS được bật, hãy đặt khoảng thời gian (ngày) để gửi thông báo qua email; tuy nhiên, nếu đã qua ngày hết hạn, thông báo email sẽ được gửi hằng ngày"
+
+#: setup.php
+msgid "1 day"
+msgstr "1 ngày"
+
+#: setup.php
+msgid "3 days"
+msgstr "3 ngày"
+
+#: setup.php
+msgid "5 days"
+msgstr "5 ngày"
+
+#: setup.php
+msgid "7 days"
+msgstr "7 ngày"
+
+#: setup.php
+msgid "10 days"
+msgstr "10 ngày"
+
+#: setup.php
+msgid "15 days"
+msgstr "15 ngày"
+
+#: setup.php
+msgid "20 days"
+msgstr "20 ngày"
+
+#: setup.php
+msgid "30 days"
+msgstr "30 ngày"
 
 #~ msgid "%d Minute"
 #~ msgstr "%d phút"
@@ -2569,9 +2578,6 @@ msgstr ""
 
 #~ msgid "Sites"
 #~ msgstr "Websites"
-
-#~ msgid "Status"
-#~ msgstr "Trạng thái"
 
 #~ msgid "Test each poller cycle or less"
 #~ msgstr "Kiểm tra từng chu kỳ thăm dò ý kiến hoặc ít hơn"

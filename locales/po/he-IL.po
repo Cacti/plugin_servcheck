@@ -31,7 +31,7 @@ msgid "%d Poller runs"
 msgstr "%d פולר רץ"
 
 #: includes/arrays.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Seconds"
 msgstr "%d שניות"
 
@@ -55,14 +55,12 @@ msgid ""
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "A Useful Name for this CA chain."
-msgstr "שם שימושי לפרוקסי זה."
+msgstr "שם שימושי עבור שרשרת CA זו."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "A Useful Name for this Proxy."
-msgstr "שם שימושי לפרוקסי זה."
+msgstr "שם שימושי עבור שרת פרוקסי זה."
 
 #: includes/arrays.php
 msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
@@ -98,27 +96,27 @@ msgstr "תכונה, פרוטוקול או אפשרות מבוקשת לא נמצ�
 
 #: includes/arrays.php
 msgid "AES"
-msgstr ""
+msgstr "AES"
 
 #: includes/arrays.php
 msgid "AES-128"
-msgstr ""
+msgstr "AES-128"
 
 #: includes/arrays.php
 msgid "AES-192"
-msgstr ""
+msgstr "AES-192"
 
 #: includes/arrays.php
 msgid "AES-192-C"
-msgstr ""
+msgstr "AES-192"
 
 #: includes/arrays.php
 msgid "AES-256"
-msgstr ""
+msgstr "AES-256"
 
 #: includes/arrays.php
 msgid "AES-256-C"
-msgstr ""
+msgstr "AES-256"
 
 #: includes/arrays.php
 msgid "API key auth"
@@ -142,11 +140,11 @@ msgstr "הכל בסדר. המשך כרגיל."
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform encrypted LDAP login and search"
-msgstr ""
+msgstr "כל הפרמטרים נדרשים. בצע התחברות וחיפוש מוצפנים ב-LDAP"
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform unencrypted LDAP login and search"
-msgstr ""
+msgstr "כל הפרמטרים נדרשים. בצע התחברות וחיפוש לא מוצפנים ב-LDAP"
 
 #: includes/arrays.php
 msgid "An API function was called from inside a callback."
@@ -188,7 +186,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Auth in HTTP headers"
-msgstr ""
+msgstr "אימות בכותרות HTTP"
 
 #: includes/arrays.php
 #, fuzzy
@@ -216,40 +214,36 @@ msgid "CA and intermediate certs, PEM encoded"
 msgstr "CA ואישורי ביניים, מקודדים PEM"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "CA certificates"
-msgstr "בדוק את התעודה"
+msgstr "תעודות CA"
 
 #: includes/arrays.php
 msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
-msgstr ""
+msgstr "Cacti מנסה להריץ כל בדיקה מספר פעמים. הניסיון המוצלח הראשון מסיים את הבדיקה ומתעד הצלחה. אם אף אחד מהניסיונות אינו מצליח, הבדיקה מופסקת ונרשם כישלון. מספר גבוה גורם למשך בדיקה ארוך."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check Certificate"
-msgstr "בדוק את התעודה"
+msgstr "בדוק תעודה"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check and notify Certificate expiration"
-msgstr "בדוק את התעודה"
+msgstr "בדוק והתרע על תפוגת תעודה"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
-msgstr "סמן תיבה זו אם האתר בדרך כלל יחזיר שגיאת 401 מכיוון שהוא דורש שם משתמש וסיסמה."
+msgstr "סמן תיבה זו אם האתר מחזיר בדרך כלל שגיאת 401 מכיוון שהוא דורש שם משתמש וסיסמה."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Authorization Protocol."
-msgstr ""
+msgstr "בחר את פרוטוקול האישור של SNMPv3."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Passphrase."
-msgstr ""
+msgstr "בחר את משפט הסיסמה של פרטיות SNMPv3."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Protocol."
-msgstr ""
+msgstr "בחר את פרוטוקול הפרטיות של SNMPv3."
 
 #: includes/arrays.php
 msgid "Chunk callback reported error."
@@ -257,11 +251,11 @@ msgstr "שיחה חוזרת של Chunk דיווחה על שגיאה."
 
 #: includes/arrays.php
 msgid "Client ID"
-msgstr ""
+msgstr "מזהה לקוח"
 
 #: includes/arrays.php
 msgid "Client secret"
-msgstr ""
+msgstr "סוד לקוח"
 
 #: includes/arrays.php
 msgid "Conflict"
@@ -298,15 +292,15 @@ msgstr "נוצר"
 
 #: includes/arrays.php setup.php
 msgid "Credential"
-msgstr ""
+msgstr "פרט הזדהות"
 
 #: includes/arrays.php
 msgid "Credential Name"
-msgstr ""
+msgstr "שם פרט ההזדהות"
 
 #: includes/arrays.php
 msgid "Credential type"
-msgstr ""
+msgstr "סוג פרטי הזדהות"
 
 #: includes/arrays.php
 msgid "Curl return codes"
@@ -314,12 +308,11 @@ msgstr "קודי החזרת תלתלים"
 
 #: includes/arrays.php
 msgid "Custom HTTP header"
-msgstr ""
+msgstr "כותרת HTTP מותאמת אישית"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DES"
-msgstr "‫DNS"
+msgstr "DES"
 
 #: includes/arrays.php
 msgid "DNS Name for Query"
@@ -327,21 +320,19 @@ msgstr "שם DNS עבור שאילתה"
 
 #: includes/arrays.php
 msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
-msgstr ""
+msgstr "שם DNS לשאילתה. עבור DOH (DNS over HTTPS) השתמש ב-/resolve?name=example.com או ב-/dns-query?name=example.com&type=A. עבור DNS רגיל (plaintext) יוחזרו רשומות A ו-AAAA"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DNS over HTTPS, default port 443"
-msgstr "HTTP מוצפן (HTTPS), יציאת ברירת מחדל 443"
+msgstr "DNS על גבי HTTPS, יציאת ברירת מחדל 443"
 
 #: includes/arrays.php
 msgid "DNS plaintext, default port 53"
 msgstr "DNS plaintext, יציאת ברירת מחדל 53"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Data URL"
-msgstr "שכפל"
+msgstr "כתובת URL של הנתונים"
 
 #: includes/arrays.php
 msgid ""
@@ -367,30 +358,28 @@ msgid "Early initialization code failed. This is likely to be an internal error 
 msgstr "קוד אתחול מוקדם נכשל. סביר להניח שזו שגיאה או בעיה פנימית, או בעיית משאבים שבה משהו בסיסי לא יכול היה להתבצע בזמן ה- init."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Email notification"
-msgstr "הגדרות התראות"
+msgstr "התראת דוא\"ל"
 
 #: includes/arrays.php
 msgid "Enable run script for this test"
-msgstr ""
+msgstr "הפעל הרצת סקריפט עבור בדיקה זו"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enable test"
-msgstr "הפעל שרת"
+msgstr "הפעל בדיקה"
 
 #: includes/arrays.php
 msgid "Encrypted IMAP, you can try login and test certificate and user login"
-msgstr ""
+msgstr "IMAP מוצפן, באפשרותך לנסות התחברות ולבדוק תעודה והתחברות משתמש"
 
 #: includes/arrays.php
 msgid "Encrypted POP3, you can try login and test certificate and user login."
-msgstr ""
+msgstr "POP3 מוצפן, באפשרותך לנסות התחברות ולבדוק תעודה והתחברות משתמש."
 
 #: includes/arrays.php
 msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
-msgstr ""
+msgstr "חיבור SCP מוצפן, התחברות וניסיון להוריד את הקובץ המצוין בנתיב (/path/to/file.txt)."
 
 #: includes/arrays.php
 msgid ""
@@ -399,22 +388,20 @@ msgid ""
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an External ID for this test."
-msgstr "הזן מזהה נצחי עבור תבנית Thold זו."
+msgstr "הזן מזהה חיצוני עבור בדיקה זו."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
-msgstr "הזן כתובת IP להתחברות אליה. השארת ריק תשתמש במקום זאת ברזולוציה של DNS."
+msgstr "הזן כתובת IP שאליה יאולץ שם ה-DNS להיפתר. השארת שדה זה ריק תשתמש בפענוח DNS רגיל."
 
 #: includes/arrays.php
 msgid "Enter the SNMP Context to use for this device."
-msgstr ""
+msgstr "הזן את ההקשר SNMP לשימוש בהתקן זה."
 
 #: includes/arrays.php
 msgid "Enter the SNMP v3 Engine Id or empty."
-msgstr ""
+msgstr "הזן את מזהה המנוע של SNMP v3 (Engine Id) או השאר ריק."
 
 #: includes/arrays.php
 msgid "Error"
@@ -422,7 +409,7 @@ msgstr "שגיאה"
 
 #: includes/arrays.php
 msgid "Error/failed"
-msgstr ""
+msgstr "שגיאה/נכשל"
 
 #: includes/arrays.php
 msgid "Expectation Failed"
@@ -433,9 +420,8 @@ msgid "External ID"
 msgstr "מזהה חיצוני"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Extra Alert Emails"
-msgstr "הודעות התראה נוספות"
+msgstr "כתובות דוא\"ל נוספות להתראות"
 
 #: includes/arrays.php
 msgid "FTP plaintext, default port 21"
@@ -462,9 +448,8 @@ msgid "Failed string found"
 msgstr "נמצאה מחרוזת שנכשלה"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Failed string not found"
-msgstr "סטרינט כושל לא נמצא"
+msgstr "מחרוזת הכשל לא נמצאה"
 
 #: includes/arrays.php
 msgid "Failed to connect() to host or proxy."
@@ -484,7 +469,7 @@ msgstr "כיבוי חיבור SSL נכשל."
 
 #: includes/arrays.php
 msgid "Failing"
-msgstr ""
+msgstr "נכשל"
 
 #: includes/arrays.php
 msgid "Failure with receiving network data."
@@ -499,14 +484,12 @@ msgid "File not found on TFTP server."
 msgstr "הקובץ לא נמצא בשרת TFTP."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For anonymous FTP insert email address"
-msgstr "עבור FTP אנונימי הכנס כתובת דוא\"ל כאן."
+msgstr "עבור FTP אנונימי הזן כתובת דוא\"ל"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
-msgstr "עבור שירות אינטרנט, הוסף לפחות \"/\" או משהו כמו \"/any/path/\". עבור רישום FTP חייב להסתיים ב- char \"/\". עבור TFTP/SCP/SMB DOWNLOAD TEST INSERT /PATH/FILE"
+msgstr "עבור שירות אינטרנט הזן לפחות \"/\" או משהו כמו \"/any/path/\"."
 
 #: includes/arrays.php
 msgid "Forbidden"
@@ -514,7 +497,7 @@ msgstr "אסור"
 
 #: includes/arrays.php
 msgid "Form urlencoded"
-msgstr ""
+msgstr "קידוד טופס URL (Form urlencoded)"
 
 #: includes/arrays.php
 msgid "Found"
@@ -525,9 +508,8 @@ msgid "Function not found. A required zlib function was not found."
 msgstr "הפונקציה לא נמצאה. פונקציית zlib נדרשת לא נמצאה."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Gateway Timeout"
-msgstr "פסק זמן"
+msgstr "פסק זמן של שער הגישה (Gateway Timeout)"
 
 #: includes/arrays.php
 msgid "General Settings"
@@ -538,9 +520,8 @@ msgid "Gone"
 msgstr "נעלם"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "HTTP Port"
-msgstr "קוד HTTP"
+msgstr "יציאת HTTP"
 
 #: includes/arrays.php
 msgid "HTTP Version Not Supported"
@@ -555,13 +536,12 @@ msgid "HTTP plaintext, default port 80"
 msgstr "טקסט רגיל HTTP, יציאת ברירת מחדל 80"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "HTTPS Port"
-msgstr "קוד HTTP"
+msgstr "יציאת HTTPS"
 
 #: includes/arrays.php
 msgid "Help"
-msgstr ""
+msgstr "עזרה"
 
 #: includes/arrays.php servcheck_proxy.php
 msgid "Hostname"
@@ -573,15 +553,15 @@ msgstr "באיזו תדירות לבדוק"
 
 #: includes/arrays.php
 msgid "How many attempts"
-msgstr ""
+msgstr "מספר ניסיונות"
 
 #: includes/arrays.php
 msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
-msgstr ""
+msgstr "כמה פעמים ברציפות יש לחרוג מסף משך הזמן כדי שתישלח התראה"
 
 #: includes/arrays.php
 msgid "How many times the service must be DOWN before an alert email is triggered."
-msgstr ""
+msgstr "כמה פעמים השירות צריך להיות במצב לא פעיל (DOWN) לפני הפעלת דוא\"ל התראה."
 
 #: includes/arrays.php
 msgid "IMAP encrypted (IMAPS), default port 993"
@@ -596,40 +576,36 @@ msgid "IMAP with STARTTLS, default port 143"
 msgstr "IMAP עם STARTTLS, יציאת ברירת מחדל 143"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "IP Address or DNS name of server"
-msgstr "כתובת IP כדי להתחבר לשרת זה"
+msgstr "כתובת IP או שם DNS של השרת"
 
 #: includes/arrays.php
 msgid "If enabled email notification about state, duration and search result will be send"
-msgstr ""
+msgstr "אם מופעל, תישלח התראת דוא\"ל על מצב, משך זמן ותוצאת חיפוש"
 
 #: includes/arrays.php
 msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
-msgstr ""
+msgstr "אם פונקציית הרצת הפקודות הגלובלית מופעלת, ניתן להגדיר כאן האם להריץ את הסקריפט עבור בדיקה זו או לא."
 
 #: includes/arrays.php
 msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
-msgstr ""
+msgstr "אם זמן הבדיקה גדול מערך זה יותר פעמים ברציפות, שלח התראה. קשור למשתנה ספירת משך הזמן. הבדיקה יורשת את זמן הריצה המרבי מההגדרות. אם מוגדר כאן ערך גבוה יותר, זמן הריצה המרבי יהיה ערך זה + 2 שניות."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
 msgstr "אם טקסט חיבור זה דורש שרת proxy, בחר אותו כאן. אחרת בחר 'ללא'."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
-msgstr "אם אתה משתמש ב- SSL, סמן תיבה זו אם ברצונך לאמת את האישור. כברירת מחדל, כבה אם האתר משתמש באישור חתום."
+msgstr "אם משתמשים ב-SSL, סמן תיבה זו אם ברצונך לבדוק את תפוגת האישור. ניתן להגדיר בהגדרות כמה ימים לפני התפוגה לשלוח התראה."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
-msgstr "אם אתה משתמש ב- SSL, סמן תיבה זו אם ברצונך לאמת את האישור. כברירת מחדל, כבה אם האתר משתמש באישור חתום."
+msgstr "אם משתמשים ב-SSL, סמן תיבה זו אם ברצונך לאמת את האישור. פעיל כברירת מחדל; כבה אם האתר משתמש באישור בחתימה עצמית."
 
 #: includes/arrays.php
 msgid "If your key is password protected, insert password here"
-msgstr ""
+msgstr "אם המפתח שלך מוגן בסיסמה, הזן סיסמה כאן"
 
 #: includes/arrays.php
 msgid "Illegal TFTP operation."
@@ -641,15 +617,15 @@ msgstr "הפעלת מנגנון SSL נכשלה."
 
 #: includes/arrays.php
 msgid "Insert SNMP OID"
-msgstr ""
+msgstr "הזן SNMP OID"
 
 #: includes/arrays.php
 msgid "Insert SSH command with full path, result of command will be returned"
-msgstr ""
+msgstr "הזן פקודת SSH עם נתיב מלא, תוצאת הפקודה תוחזר"
 
 #: includes/arrays.php
 msgid "Insert username here"
-msgstr ""
+msgstr "הזן שם משתמש כאן"
 
 #: includes/arrays.php
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
@@ -665,20 +641,19 @@ msgstr "בדיקת המנפיק נכשלה (נוסף בתאריך 7.19.0)"
 
 #: includes/arrays.php
 msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
-msgstr ""
+msgstr "בודק רק אם שרת ה-SMTP מגיב, ללא אימות. יוצגו הודעת הפתיחה (banner) של השרת ותגובת ehlo."
 
 #: includes/arrays.php
 msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
-msgstr ""
+msgstr "בודק רק אם שרת האינטרנט מגיב. אם נעשה שימוש בפרטי שם משתמש/סיסמה, יתבצע ניסיון לאימות Basic HTTP."
 
 #: includes/arrays.php
 msgid "JSON encoded"
-msgstr ""
+msgstr "מקודד JSON"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "LDAP Search"
-msgstr "חיפוש"
+msgstr "חיפוש LDAP"
 
 #: includes/arrays.php
 msgid "LDAP cannot bind. LDAP bind operation failed."
@@ -693,9 +668,8 @@ msgid "LDAP plaintext, default port 389"
 msgstr "טקסט רגיל LDAP, יציאת ברירת מחדל 389"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "LDAP search failed."
-msgstr "חיפוש"
+msgstr "חיפוש LDAP נכשל."
 
 #: includes/arrays.php
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
@@ -710,9 +684,8 @@ msgid "Last day"
 msgstr "היום האחרון"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Last hour"
-msgstr "בשעה האחרונה"
+msgstr "שעה אחרונה"
 
 #: includes/arrays.php
 msgid "Last week"
@@ -728,25 +701,23 @@ msgstr "Libcurl לא הצליח לקבל תוצאה הגיונית בחזרה מ
 
 #: includes/arrays.php
 msgid "Login URL"
-msgstr ""
+msgstr "כתובת URL לכניסה"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Long duration"
-msgstr "מיקום"
+msgstr "משך זמן ארוך"
 
 #: includes/arrays.php
 msgid "Long duration alert"
-msgstr ""
+msgstr "התרעת משך זמן ארוך"
 
 #: includes/arrays.php
 msgid "MD5"
-msgstr ""
+msgstr "MD5"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "MQTT plaintext, default port 1883"
-msgstr "טקסט רגיל HTTP, יציאת ברירת מחדל 80"
+msgstr "MQTT בטקסט גלוי, פורט ברירת מחדל 1883"
 
 #: includes/arrays.php
 msgid "Maint string found"
@@ -783,7 +754,7 @@ msgstr "שם"
 
 #: includes/arrays.php
 msgid "New CA"
-msgstr "ניו קליפורניה"
+msgstr "רשות אישורים חדשה (CA)"
 
 #: includes/arrays.php
 msgid "New Proxy"
@@ -814,9 +785,8 @@ msgid "Not Implemented"
 msgstr "לא מיושם"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Not Modified"
-msgstr "תאריך שינוי"
+msgstr "לא שונה"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Not tested yet"
@@ -839,31 +809,28 @@ msgid "Nothing was returned from the server, and under the circumstances, gettin
 msgstr "שום דבר לא הוחזר מהשרת, ובנסיבות העניין, לא מקבל כלום נחשב שגיאה."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notification List"
-msgstr "הגדרות התראות"
+msgstr "רשימת התראות"
 
 #: includes/arrays.php
 msgid "Notification Settings"
 msgstr "הגדרות התראות"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notify Accounts"
-msgstr "יידע חשבונות"
+msgstr "חשבונות להתראה"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notify Format"
-msgstr "יידע חשבונות"
+msgstr "פורמט התראה"
 
 #: includes/arrays.php
 msgid "Number of duration violations in a row"
-msgstr ""
+msgstr "מספר חריגות משך ברצף"
 
 #: includes/arrays.php
 msgid "OAuth Client secret"
-msgstr ""
+msgstr "סוד לקוח OAuth"
 
 #: includes/arrays.php
 msgid "OAuth2/Bearer token auth"
@@ -875,7 +842,7 @@ msgstr "אישור"
 
 #: includes/arrays.php
 msgid "Oauth Client ID"
-msgstr ""
+msgstr "מזהה לקוח OAuth"
 
 #: includes/arrays.php
 msgid "Obsolete Error"
@@ -883,16 +850,15 @@ msgstr "שגיאה מיושנת"
 
 #: includes/arrays.php
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: includes/arrays.php
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
 msgstr "פסק זמן למבצע. תקופת פסק הזמן שנקבעה הושגה בהתאם לתנאים."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Options"
-msgstr "פעולות"
+msgstr "אפשרויות"
 
 #: includes/arrays.php
 msgid "Out of disk space on the server."
@@ -912,15 +878,15 @@ msgstr "POP3 עם STARTTLS, יציאת ברירת מחדל 110"
 
 #: includes/arrays.php
 msgid "POST method, JSON encoded"
-msgstr ""
+msgstr "שיטת POST, בקידוד JSON"
 
 #: includes/arrays.php
 msgid "POST method, form-urlencoded"
-msgstr ""
+msgstr "שיטת POST, בקידוד form-urlencoded"
 
 #: includes/arrays.php
 msgid "Parameters"
-msgstr ""
+msgstr "פרמטרים"
 
 #: includes/arrays.php
 msgid "Partial Content"
@@ -963,14 +929,12 @@ msgid "Proxies"
 msgstr "פרוקסים"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Proxy Authentication Required"
-msgstr "מסמכים נדרשים"
+msgstr "נדרש אימות Proxy"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Proxy Server"
-msgstr "שרת ראשי"
+msgstr "שרת פרוקסי"
 
 #: includes/arrays.php
 msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
@@ -982,19 +946,19 @@ msgstr "שגיאת חיבור QUIC. שגיאה זו עשויה להיגרם על
 
 #: includes/arrays.php
 msgid "REST API test with API key auth. Prepare credential first."
-msgstr ""
+msgstr "בדיקת REST API עם אימות מפתח API. הכן פרטי גישה תחילה."
 
 #: includes/arrays.php
 msgid "REST API test with Oauth2. Prepare credential first."
-msgstr ""
+msgstr "בדיקת REST API עם OAuth2. הכן פרטי גישה תחילה."
 
 #: includes/arrays.php
 msgid "REST API test with basic HTTP auth. Prepare credential first."
-msgstr ""
+msgstr "בדיקת REST API עם אימות HTTP בסיסי. הכן פרטי גישה תחילה."
 
 #: includes/arrays.php
 msgid "REST API test with cookie auth. Prepare credential first."
-msgstr ""
+msgstr "בדיקת REST API עם אימות עוגייה (cookie). הכן פרטי גישה תחילה."
 
 #: includes/arrays.php
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
@@ -1005,9 +969,8 @@ msgid "Request Entity Too Large"
 msgstr "בקש ישות גדולה מדי"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Request Timeout"
-msgstr "פסק זמן"
+msgstr "פסק זמן לבקשה"
 
 #: includes/arrays.php
 msgid "Request-URI Too Long"
@@ -1031,26 +994,23 @@ msgstr "איפוס תוכן"
 
 #: includes/arrays.php
 msgid "Resolve DNS to Address"
-msgstr ""
+msgstr "פענח DNS לכתובת"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String"
-msgstr "מחרוזת תגובה"
+msgstr "מחרוזת חיפוש בתגובה"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String - Failed"
-msgstr "מחרוזת תגובה - נכשלה"
+msgstr "מחרוזת חיפוש בתגובה - נכשל"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String - Maintenance"
-msgstr "תגובה מחרוזת חיפוש - תחזוקה עמוד"
+msgstr "מחרוזת חיפוש בתגובה - תחזוקה"
 
 #: includes/arrays.php
 msgid "Rest API - API key auth"
-msgstr ""
+msgstr "Rest API - אימות באמצעות מפתח API"
 
 #: includes/arrays.php
 msgid ""
@@ -1062,23 +1022,23 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth"
-msgstr ""
+msgstr "Rest API - אימות HTTP בסיסי"
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth. Username and password are required"
-msgstr ""
+msgstr "Rest API - אימות HTTP בסיסי. נדרשים שם משתמש וסיסמה"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth"
-msgstr ""
+msgstr "Rest API - אימות מבוסס עוגיות (Cookie)"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
-msgstr ""
+msgstr "Rest API - אימות מבוסס עוגיות (Cookie) - שני הערכים נדרשים. לאחר הכניסה מוחזרת עוגייה"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth"
-msgstr ""
+msgstr "Rest API - אימות באמצעות אסימון OAuth2/Bearer"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are send Json encoded."
@@ -1094,52 +1054,51 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Rest API with API key auth"
-msgstr ""
+msgstr "Rest API עם אימות באמצעות מפתח API"
 
 #: includes/arrays.php
 msgid "Rest API with Basic HTTP auth"
-msgstr ""
+msgstr "Rest API עם אימות HTTP בסיסי"
 
 #: includes/arrays.php
 msgid "Rest API with Cookie based auth"
-msgstr ""
+msgstr "Rest API עם אימות מבוסס עוגיות (Cookie)"
 
 #: includes/arrays.php
 msgid "Rest API with OAuth2/Bearer token auth"
-msgstr ""
+msgstr "Rest API עם אימות באמצעות אסימון OAuth2/Bearer"
 
 #: includes/arrays.php
 msgid "SCP download file, default port 22"
 msgstr "קובץ הורדה SCP, יציאת ברירת מחדל 22"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SFTP protocol - directory listing, default port 22"
-msgstr "פרוטוקול TFTP - קובץ הורדה, יציאת ברירת מחדל 69"
+msgstr "פרוטוקול SFTP - הצגת רשימת תיקייה, יציאת ברירת מחדל 22"
 
 #: includes/arrays.php
 msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
-msgstr ""
+msgstr "פרוטוקול SFTP בפורט 22, נדרשים שם משתמש, סיסמה ונתיב. נסה לבצע הצגת רשימת תיקייה של הנתיב."
 
 #: includes/arrays.php
 msgid "SHA"
-msgstr ""
+msgstr "SHA"
 
 #: includes/arrays.php
 msgid "SHA-224"
-msgstr ""
+msgstr "SHA-224"
 
 #: includes/arrays.php
 msgid "SHA-256"
-msgstr ""
+msgstr "SHA-256"
 
 #: includes/arrays.php
 msgid "SHA-392"
-msgstr ""
+msgstr "SHA-392"
 
 #: includes/arrays.php
 msgid "SHA-512"
-msgstr ""
+msgstr "SHA-512"
 
 #: includes/arrays.php
 msgid "SMB encrypted (SMBS) download file, default port 445"
@@ -1158,123 +1117,120 @@ msgid "SMTP plaintext, default port 25 (or 587 for submission)"
 msgstr "טקסט רגיל SMTP, יציאת ברירת מחדל 25 (או 587 לשליחה)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
 msgstr "SMTP עם STARTTLS, יציאת ברירת מחדל 25 (או 587 לשליחה)"
 
 #: includes/arrays.php
 msgid "SNMP Auth Protocol (v3)"
-msgstr ""
+msgstr "פרוטוקול של SNMP Auth (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Context (v3)"
-msgstr ""
+msgstr "הקשר SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Engine ID (v3)"
-msgstr ""
+msgstr "מזהה מנוע SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP OID"
-msgstr ""
+msgstr "SNMP OID"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Password (v3)"
-msgstr "סיסמה"
+msgstr "סיסמת SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Passphrase (v3)"
-msgstr ""
+msgstr "משפט סיסמאות של SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Protocol (v3)"
-msgstr ""
+msgstr "פרוטוקול פרטיות של SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Security Level"
-msgstr ""
+msgstr "רמת אבטחה של SNMP"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Username (v3)"
-msgstr "שם משתמש"
+msgstr "שם משתמש ב- SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP community string for SNMP v1 or v2(c)"
-msgstr ""
+msgstr "מחרוזת קהילה (Community) של SNMP עבור SNMP v1 או v2(c)"
 
 #: includes/arrays.php
 msgid "SNMP get"
-msgstr ""
+msgstr "קריאת SNMP get"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2"
-msgstr ""
+msgstr "SNMP v1 או v2"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 - required, insert community name here"
-msgstr ""
+msgstr "SNMP v1 או v2 - נדרש, הזן כאן את שם הקהילה (Community)"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 community"
-msgstr ""
+msgstr "קהילת SNMP v1 או v2"
 
 #: includes/arrays.php
 msgid "SNMP v3"
-msgstr ""
+msgstr "SNMP v3"
 
 #: includes/arrays.php
 msgid "SNMP v3 - The security level determines which parameters are required"
-msgstr ""
+msgstr "SNMP v3 - רמת האבטחה קובעת אילו פרמטרים נדרשים"
 
 #: includes/arrays.php
 msgid "SNMP v3 Security Level to use when querying the device."
-msgstr ""
+msgstr "רמת אבטחה של SNMP v3 לשימוש בעת ביצוע שאילתה על ההתקן."
 
 #: includes/arrays.php
 msgid "SNMP v3 password for this device."
-msgstr ""
+msgstr "SNMP v3 סיסמה עבור התקן זה."
 
 #: includes/arrays.php
 msgid "SNMP v3 username for this device."
-msgstr ""
+msgstr "שם משתמש V3 SNMP עבור התקן זה."
 
 #: includes/arrays.php
 msgid "SNMP walk"
-msgstr ""
+msgstr "סריקת SNMP walk"
 
 #: includes/arrays.php
 msgid "SSH command"
-msgstr ""
+msgstr "פקודת SSH"
 
 #: includes/arrays.php
 msgid "SSH command on remote system"
-msgstr ""
+msgstr "פקודת SSH במערכת מרוחקת"
 
 #: includes/arrays.php
 msgid "SSH private key"
-msgstr ""
+msgstr "מפתח פרטי של SSH"
 
 #: includes/arrays.php
 msgid "SSH private key "
-msgstr ""
+msgstr "מפתח פרטי של SSH "
 
 #: includes/arrays.php
 msgid "SSH private key - Cacti 1.2.31+"
-msgstr ""
+msgstr "מפתח פרטי של SSH - Cacti 1.2.31+"
 
 #: includes/arrays.php
 msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
-msgstr ""
+msgstr "מפתח פרטי של SSH - יכול לשמש עבור בדיקת SCP או פקודת SSH. בדיקות אלו יכולות להשתמש גם בשם משתמש/סיסמה"
 
 #: includes/arrays.php
 msgid "SSH private key passphrase"
-msgstr ""
+msgstr "ביטוי סיסמה (Passphrase) למפתח הפרטי של SSH"
 
 #: includes/arrays.php
 msgid "SSH user"
-msgstr ""
+msgstr "משתמש SSH"
 
 #: includes/arrays.php
 msgid "SSL Client Certificate required."
@@ -1290,18 +1246,17 @@ msgstr "ראה אחר"
 
 #: includes/arrays.php
 msgid "Select correct Credential type."
-msgstr ""
+msgstr "בחר סוג פרטי גישה מתאים."
 
 #: includes/arrays.php
 msgid "Select correct credential"
-msgstr ""
+msgstr "בחר פרטי גישה מתאימים"
 
 #: includes/arrays.php
 msgid "Select correct credential or left empty."
-msgstr ""
+msgstr "בחר פרטי גישה מתאימים או השאר ריק."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Service Check Name"
 msgstr "שם בדיקת שירות"
 
@@ -1310,13 +1265,12 @@ msgid "Service Unavailable"
 msgstr "השירות אינו זמין"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Service settings"
-msgstr "הגדרות כלליות"
+msgstr "הגדרות שירות"
 
 #: includes/arrays.php
 msgid "Set according to your REST API server"
-msgstr ""
+msgstr "הגדר בהתאם לשרת ה-REST API שלך"
 
 #: includes/arrays.php
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
@@ -1347,13 +1301,12 @@ msgid "TFTP protocol - download file, default port 69"
 msgstr "פרוטוקול TFTP - קובץ הורדה, יציאת ברירת מחדל 69"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Temporary Redirect"
-msgstr "הפניה"
+msgstr "הפניה זמנית"
 
 #: includes/arrays.php
 msgid "Test every xth poller run"
-msgstr ""
+msgstr "בצע בדיקה בכל הרצה x של ה-Poller"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Tests"
@@ -1372,19 +1325,16 @@ msgid "The FTP server does not understand the PRET command at all or does not su
 msgstr "שרת ה- FTP אינו מבין כלל את הפקודה PRET או אינו תומך בארגומנט הנתון. היזהר בעת שימוש ב- CURLOPT_CUSTOMREQUEST, פקודת LIST מותאמת אישית נשלחת עם הפקודה PRET לפני PASV גם כן. (נוסף בתאריך 7.20.0)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The HTTP Proxy Port."
-msgstr "יציאת ה- proxy של HTTP."
+msgstr "יציאת ה-Proxy של HTTP."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The HTTPS Proxy Port."
-msgstr "יציאת ה- proxy של HTTPS."
+msgstr "יציאת ה-Proxy של HTTPS."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The Proxy Hostname."
-msgstr "שם המארח של ה- Proxy."
+msgstr "שם המארח של ה-Proxy."
 
 #: includes/arrays.php
 msgid "The URL was not properly formatted."
@@ -1399,18 +1349,16 @@ msgid "The download could not be resumed because the specified offset was out of
 msgstr "לא היתה אפשרות לחדש את ההורדה מכיוון שההסטה שצוינה הייתה מחוץ לגבול הקובץ."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The name that is displayed for this Credential."
-msgstr "השם שמוצג עבור בדיקת שירות זו, ונכלל בהודעות התראה."
+msgstr "השם המוצג עבור פרטי הזדהות אלה."
 
 #: includes/arrays.php
 msgid "The name that is displayed for this Rest API."
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
-msgstr "השם שמוצג עבור בדיקת שירות זו, ונכלל בהודעות התראה."
+msgstr "השם המוצג עבור בדיקת שירות זו, ונכלל בכל הודעות ההתראה."
 
 #: includes/arrays.php
 msgid "The remote server denied curl to login (Added in 7.13.1)"
@@ -1426,7 +1374,7 @@ msgstr "המשאב שאליו מפנה כתובת ה- URL אינו קיים."
 
 #: includes/arrays.php
 msgid "The same as HTTP plaintext but adds the ability to test certificates."
-msgstr ""
+msgstr "זהה ל-HTTP טקסט פשוט אך מוסיף אפשרות לבדוק אישורי אבטחה."
 
 #: includes/arrays.php
 msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS."
@@ -1457,9 +1405,8 @@ msgid "This error should never be returned by a properly functioning TFTP server
 msgstr "לעולם אין להחזיר שגיאה זו על-ידי שרת TFTP המתפקד כראוי."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is a listing of accounts that will be notified when this service goes down."
-msgstr "זהו רשימה של חשבונות אשר יקבלו הודעה כאשר אתר זה יורד."
+msgstr "זוהי רשימת החשבונות שיקבלו התראה כאשר שירות זה הופך ללא פעיל."
 
 #: includes/arrays.php
 msgid "This is an odd error that mainly occurs due to internal confusion."
@@ -1470,24 +1417,20 @@ msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server r
 msgstr "פעולה זו מוחזרת אם CURLOPT_FAILONERROR מוגדר true ושרת HTTP מחזיר קוד שגיאה >= 400."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the format to use when sending the notification email"
-msgstr "זהו הפורמט לשימוש בעת שליחת דוא\"ל ההודעה"
+msgstr "זהו הפורמט לשימוש בעת שליחת דוא\"ל ההתראה"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
-msgstr "זוהי המחרוזת לחפש כשל ידוע בתגובת שירות האינטרנט. בדיקת השירות תתריע רק אם מחרוזת זו תימצא, תוך התעלמות מבעיות זמן קצוב ומחרוזות החיפוש שלמעלה."
+msgstr "זוהי המחרוזת לחיפוש כשל ידוע בתגובת השירות. בדיקת השירות תתריע רק אם מחרוזת זו תימצא, תוך התעלמות מבעיות זמן קצוב וממחרוזות החיפוש שלמעלה."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for in the response for a live and working service."
-msgstr "זהו המחרוזת שתחפש בתגובת כתובת האתר עבור שירות אינטרנט פעיל ועובד."
+msgstr "זוהי המחרוזת לחיפוש בתגובה עבור שירות פעיל ותקין."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
-msgstr "זה מחרוזת לחפש בדף תחזוקה. בדיקת השירות תבדוק אם מחרוזת זו לא נמצאה. אם נמצא, משמעות הדבר היא כי שירות האינטרנט נמצא תחת תחזוקה."
+msgstr "זוהי המחרוזת לחיפוש בדף התחזוקה. בדיקת השירות תבדוק מחרוזת זו אם המחרוזת שלמעלה לא נמצאה. אם היא נמצאת, המשמעות היא שהשירות נמצא בתחזוקה."
 
 #: includes/arrays.php
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
@@ -1495,11 +1438,11 @@ msgstr "זו הייתה תשובה מוזרה לפקודת 'RETR' או העבר�
 
 #: includes/arrays.php
 msgid "Token name"
-msgstr ""
+msgstr "שם אסימון"
 
 #: includes/arrays.php
 msgid "Token value"
-msgstr ""
+msgstr "ערך אסימון"
 
 #: includes/arrays.php
 msgid "Token/API Key name"
@@ -1515,27 +1458,27 @@ msgstr "טריגר"
 
 #: includes/arrays.php
 msgid "Try DNS over HTTPS."
-msgstr ""
+msgstr "נסה DNS על גבי HTTPS."
 
 #: includes/arrays.php
 msgid "Try SMB protocol, username and password are required. Try to login and download file."
-msgstr ""
+msgstr "נסה פרוטוקול SMB, נדרשים שם משתמש וסיסמה. נסה להתחבר ולהוריד קובץ."
 
 #: includes/arrays.php
 msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
-msgstr ""
+msgstr "נסה שיטת SNMP get. הפלט עבור ה-OID שצוין יוחזר. נדרש אישור גישה (Credential), עליך להכין תחילה אישור גישה של SNMP v.1,2 או v3."
 
 #: includes/arrays.php
 msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
-msgstr ""
+msgstr "נסה שיטת SNMP walk. הפלט עבור ה-OID שצוין יוחזר. נדרש אישור גישה (Credential), עליך להכין תחילה אישור גישה של SNMP v.1,2 או v3."
 
 #: includes/arrays.php
 msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
-msgstr ""
+msgstr "נסה להוריד קובץ שצוין בנתיב (/path/to/file.txt) משרת TFTP. תוכן הקובץ יוחזר."
 
 #: includes/arrays.php
 msgid "Try to resolve DNS record on specified DNS server"
-msgstr ""
+msgstr "נסה לפתור רשומת DNS בשרת ה-DNS שצוין"
 
 #: includes/arrays.php
 msgid "Type of service"
@@ -1543,16 +1486,15 @@ msgstr "סוג השירות"
 
 #: includes/arrays.php
 msgid "URL to retrieve data. Insert with http:// or https://"
-msgstr ""
+msgstr "כתובת URL לאחזור נתונים. הזן עם http:// או https://"
 
 #: includes/arrays.php
 msgid "URL which is used to log in or get the token."
-msgstr ""
+msgstr "כתובת URL המשמשת להתחברות או לקבלת האסימון."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Unable to Connect"
-msgstr "הפעל שרת"
+msgstr "לא ניתן להתחבר"
 
 #: includes/arrays.php
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
@@ -1563,9 +1505,8 @@ msgid "Unauthorized"
 msgstr "אין הרשאה"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Uncheck this box to disable this test from being checked."
-msgstr "בטל את סימון התיבה הזו כדי להשבית את כתובת האתר הזו מסומנת."
+msgstr "בטל את סימון תיבה זו כדי להשבית בדיקה זו."
 
 #: includes/arrays.php
 msgid ""
@@ -1604,18 +1545,16 @@ msgid "Unsupported Media Type"
 msgstr "סוג מדיה שאינו נתמך"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Use Proxy"
-msgstr "פרוקסי חדש"
+msgstr "השתמש ב-Proxy"
 
 #: includes/arrays.php
 msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
-msgstr ""
+msgstr "השתמש ב-ssh והתחבר למארח מרוחק. לאחר הכניסה הפעל את הפקודה שצוינה והחזר את הפלט. ניתן להשתמש בשם משתמש וסיסמה או במפתח פרטי."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Use this Notification List for those to be notified when this service goes down."
-msgstr "זהו רשימה של חשבונות אשר יקבלו הודעה כאשר אתר זה יורד."
+msgstr "השתמש ברשימת התראות זו עבור מי שיקבל התראה כאשר שירות זה יהפוך ללא פעיל."
 
 #: includes/arrays.php
 msgid "Username"
@@ -1623,16 +1562,15 @@ msgstr "שם משתמש"
 
 #: includes/arrays.php
 msgid "Username and password"
-msgstr ""
+msgstr "שם משתמש וסיסמה"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Verification Strings"
 msgstr "מחרוזות אימות"
 
 #: includes/arrays.php
 msgid "Warning"
-msgstr ""
+msgstr "אזהרה"
 
 #: includes/arrays.php
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
@@ -1644,7 +1582,7 @@ msgstr "איזה סוג שירות?"
 
 #: includes/arrays.php
 msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
-msgstr "בעת ביצוע פעולת שליחה תלתל היה צריך להריץ אחורה את הנתונים כדי לשדר מחדש, אך פעולת ההרצה לאחור נכשלה."
+msgstr "בעת ביצוע פעולת שליחה, curl נאלץ להחזיר את הנתונים לאחור כדי לשדר מחדש, אך פעולת ההחזרה לאחור נכשלה."
 
 #: includes/arrays.php
 msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
@@ -1660,21 +1598,19 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
-msgstr ""
+msgstr "ניתן לציין יציאה אחרת (example.com:5000), אחרת ייעשה שימוש בברירת המחדל. עבור כתובת IPv6 מספרית השתמש ב-[ip:ad:dr:es:fo:rma:at]. עבור DOH (DNS over HTTPS) השתמש כאן בשם השרת (לדוגמה 10.10.10.10, cloudflare-dns.com, ..)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
-msgstr "תוכל לציין כאן הודעות אימייל נוספות כדי לקבל התראות עבור כתובת אתר זו (מופרד באמצעות פסיק)"
+msgstr "ניתן לציין כאן כתובות דוא\"ל נוספות לקבלת התראות עבור בדיקה זו (מופרדות בפסיק)"
 
 #: includes/arrays.php
 msgid "Your own CA and intermediate certs"
 msgstr "אישורי CA וביניים משלך"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "[None]"
-msgstr "ללא"
+msgstr "[אף אחד]"
 
 #: includes/arrays.php
 msgid "problem with the local client certificate."
@@ -1685,23 +1621,21 @@ msgid "Graphs"
 msgstr "גרפים"
 
 #: includes/functions.php
-#, fuzzy
 msgid "Log History"
-msgstr "צפה בהיסטוריה"
+msgstr "היסטוריית יומן"
 
 #: includes/functions.php
 msgid "No data"
 msgstr "אין נתונים"
 
 #: servcheck_ca.php
-#, fuzzy, php-format
+#, php-format
 msgid "CA [edit: %s]"
-msgstr "שאילתה [עריכה: %s]"
+msgstr "רשות אישורים (CA) [עריכה: %s]"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "CA [new]"
-msgstr "שאילתה [חדש]"
+msgstr "רשות אישורים (CA) [חדש]"
 
 #: servcheck_ca.php
 msgid "CAs"
@@ -1720,7 +1654,7 @@ msgstr "נקה"
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Clear Filters"
-msgstr ""
+msgstr "מחיקת מסננים"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
@@ -1744,13 +1678,12 @@ msgstr "מחק"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
-#, fuzzy
 msgid "Delete item"
 msgid_plural "Delete items"
-msgstr[0] "שרתים WebSeer"
-msgstr[1] "שרתים WebSeer"
-msgstr[2] "שרתים WebSeer"
-msgstr[3] "שרתים WebSeer"
+msgstr[0] "מחיקת פריט"
+msgstr[1] "מחיקת פריטים"
+msgstr[2] "מחיקת פריטים"
+msgstr[3] "מחיקת פריטים"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1758,9 +1691,8 @@ msgid "Go"
 msgstr "עבור"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "No Certificates Found"
-msgstr "לא נמצאו שרתים"
+msgstr "לא נמצאו תעודות"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1768,96 +1700,87 @@ msgid "Search"
 msgstr "חיפוש"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "Servcheck CA Management"
-msgstr "ניהול שרת Webseer"
+msgstr "ניהול אישורי CA של ServCheck"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Set/Refresh Filters"
-msgstr ""
+msgstr "הגדר / רענן מסננים"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 msgid "Used"
 msgstr "בשימוש"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Click 'Continue' to Duplicate the following Credential."
-msgid_plural "Click 'Continue' to Duplicate following Credential."
-msgstr[0] "לחץ על 'המשך' כדי למחוק את ה- Proxy הבא."
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgid_plural "Click 'Continue' to Duplicate the following Credentials."
+msgstr[0] "לחץ על 'המשך' כדי לשכפל את פרט ההזדהות הבא."
+msgstr[1] "לחץ על 'המשך' כדי לשכפל את פרטי ההזדהות הבאים."
+msgstr[2] "לחץ על 'המשך' כדי לשכפל את פרטי ההזדהות הבאים."
+msgstr[3] "לחץ על 'המשך' כדי לשכפל את פרטי ההזדהות הבאים."
 
 #: servcheck_credential.php
-#, fuzzy, php-format
+#, php-format
 msgid "Credential [edit: %s]"
-msgstr "שאילתה [עריכה: %s]"
+msgstr "פרטי גישה [עריכה: %s]"
 
 #: servcheck_credential.php
 msgid "Credential [new]"
-msgstr ""
+msgstr "פרט הזדהות [חדש]"
 
 #: servcheck_credential.php
 msgid "Credentials"
-msgstr ""
+msgstr "פרטי הזדהות"
 
 #: servcheck_credential.php servcheck_restapi.php servcheck_test.php
 msgid "Duplicate"
 msgstr "שכפל"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Duplicate Credential"
-msgid_plural "Duplicate Credential"
-msgstr[0] "שכפל"
-msgstr[1] "שכפל"
-msgstr[2] "שכפל"
-msgstr[3] "שכפל"
+msgid_plural "Duplicate Credentials"
+msgstr[0] "שכפול פרט הזדהות"
+msgstr[1] "שכפול פרטי הזדהות"
+msgstr[2] "שכפול פרטי הזדהות"
+msgstr[3] "שכפול פרטי הזדהות"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "No Credentials Found"
-msgstr "לא נמצאו שרתים"
+msgstr "לא נמצאו פרטי גישה"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Servcheck Credential Management"
-msgstr "ניהול שרת Webseer"
+msgstr "ניהול פרטי הזדהות של ServCheck"
 
 #: servcheck_credential.php servcheck_restapi.php
 msgid "Type"
-msgstr ""
+msgstr "סוג"
 
 #: servcheck_curl_code.php
 msgid "No error codes"
 msgstr "אין קודי שגיאה"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "No Proxies Found"
-msgstr "לא נמצאו שרתים"
+msgstr "לא נמצאו שרתי Proxy"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Ports (http/https)"
-msgstr "יציאות (http / https)"
+msgstr "יציאות (http/https)"
 
 #: servcheck_proxy.php
-#, fuzzy, php-format
+#, php-format
 msgid "Proxy [edit: %s]"
-msgstr "שאילתה [עריכה: %s]"
+msgstr "Proxy [עריכה: %s]"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Proxy [new]"
-msgstr "שאילתה [חדש]"
+msgstr "Proxy [חדש]"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Servcheck Proxy Management"
-msgstr "ניהול שרת Webseer"
+msgstr "ניהול שרתי פרוקסי של ServCheck"
 
 #: servcheck_restapi.php servcheck_test.php
 msgid "Any"
@@ -1930,36 +1853,32 @@ msgid "All"
 msgstr "הכל"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "All Users Selected"
 msgstr "כל המשתמשים נבחרו"
 
 #: servcheck_test.php
 msgid "Attempt"
-msgstr ""
+msgstr "ניסיון"
 
 #: servcheck_test.php
 msgid "CPU u/CPU s/Memory"
-msgstr ""
+msgstr "מעבד משתמש / מעבד מערכת / זיכרון"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Certificate"
-msgstr "בדוק את התעודה"
+msgstr "תעודה"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Checks"
-msgstr "המחאות"
+msgstr "בדיקות"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Clear log"
-msgstr "נקה"
+msgstr "נקה יומן"
 
 #: servcheck_test.php
 msgid "Clear statistics"
-msgstr ""
+msgstr "נקה סטטיסטיקה"
 
 #: servcheck_test.php
 #, fuzzy
@@ -2008,71 +1927,63 @@ msgstr[3] ""
 
 #: servcheck_test.php
 msgid "Curl"
-msgstr ""
+msgstr "Curl"
 
 #: servcheck_test.php
 msgid "Date"
 msgstr "תאריך"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Date Search"
-msgstr "חיפוש"
+msgstr "חיפוש לפי תאריך"
 
 #: servcheck_test.php
 msgid "Disable"
 msgstr "כיבוי"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable Service Check"
-msgstr "הפעל בדיקת שירות"
+msgstr "השבת בדיקת שירות"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable item"
 msgid_plural "Disable items"
-msgstr[0] "כיבוי"
-msgstr[1] "כיבוי"
-msgstr[2] "כיבוי"
-msgstr[3] "כיבוי"
+msgstr[0] "השבתת פריט"
+msgstr[1] "השבתת פריטים"
+msgstr[2] "השבתת פריטים"
+msgstr[3] "השבתת פריטים"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duplicate item"
 msgid_plural "Duplicate items"
-msgstr[0] "שכפל"
-msgstr[1] "שכפל"
-msgstr[2] "שכפל"
-msgstr[3] "שכפל"
+msgstr[0] "שכפול פריט"
+msgstr[1] "שכפול פריטים"
+msgstr[2] "שכפול פריטים"
+msgstr[3] "שכפול פריטים"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duration"
-msgstr "מיקום"
+msgstr "תקופת השכרה"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Edit Service Check"
-msgstr "הפעל בדיקת שירות"
+msgstr "ערוך בדיקת שירות"
 
 #: servcheck_test.php
 msgid "Enable"
 msgstr "אפשר"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable Service Check"
 msgstr "הפעל בדיקת שירות"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable item"
 msgid_plural "Enable items"
-msgstr[0] "הפעל שרת"
-msgstr[1] "הפעל שרת"
-msgstr[2] "הפעל שרת"
-msgstr[3] "הפעל שרת"
+msgstr[0] "הפעלת פריט"
+msgstr[1] "הפעלת פריטים"
+msgstr[2] "הפעלת פריטים"
+msgstr[3] "הפעלת פריטים"
 
 #: servcheck_test.php
 msgid "Entries"
@@ -2081,16 +1992,15 @@ msgstr "רשומות"
 #: servcheck_test.php
 #, php-format
 msgid "Expired %s days ago"
-msgstr ""
+msgstr "פג תוקף לפני %s ימים"
 
 #: servcheck_test.php
 msgid "Insufficient data, wait a few poller cycles"
-msgstr ""
+msgstr "אין מספיק נתונים, המתן מספר מחזורי דוגם (Poller)"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Last Check (attempt)"
-msgstr "בדיקה אחרונה"
+msgstr "בדיקה אחרונה (ניסיון)"
 
 #: servcheck_test.php
 msgid "Last returned data of test"
@@ -2098,23 +2008,21 @@ msgstr "נתונים אחרונים שהוחזרו של הבדיקה"
 
 #: servcheck_test.php
 msgid "Logs"
-msgstr ""
+msgstr "יומני רישום"
 
 #: servcheck_test.php
 msgid "N/A (N/A)"
-msgstr ""
+msgstr "לא זמין (לא זמין)"
 
 #: servcheck_test.php
 msgid "No"
 msgstr "לא"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Service Checks Found"
-msgstr "לא נמצאו שרתים"
+msgstr "לא נמצאו בדיקות שירות"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Users Selected"
 msgstr "לא נבחרו משתמשים"
 
@@ -2132,22 +2040,19 @@ msgstr "תוצאה"
 
 #: servcheck_test.php
 msgid "Ret. data size"
-msgstr ""
+msgstr "גודל נתונים מוחזרים"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Search result"
-msgstr "חיפוש"
+msgstr "תוצאת חיפוש"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Servcheck Test Management"
-msgstr "ניהול שרת Webseer"
+msgstr "ניהול בדיקות של ServCheck"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Service Check History"
-msgstr "בדיקות שירות אינטרנט"
+msgstr "היסטוריית בדיקת שירות"
 
 #: servcheck_test.php
 msgid "State"
@@ -2158,14 +2063,13 @@ msgid "Stats (OK/problem)"
 msgstr "סטטיסטיקה (אישור/בעיה)"
 
 #: servcheck_test.php
-#, fuzzy, php-format
+#, php-format
 msgid "Test [edit: %s]"
-msgstr "שאילתה [עריכה: %s]"
+msgstr "בדיקה [עריכה: %s]"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Test [new]"
-msgstr "שאילתה [חדש]"
+msgstr "בדיקה [חדש]"
 
 #: servcheck_test.php
 #, php-format
@@ -2173,12 +2077,10 @@ msgid "The Service Check history was purged for %s"
 msgstr "היסטוריית בדיקת השירות נמחקה עבור %s"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Triggered"
-msgstr "טריגר"
+msgstr "הופעל"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Users Selected"
 msgstr "משתמשים נבחרו"
 
@@ -2191,9 +2093,8 @@ msgid "View Last returned data"
 msgstr "הצג נתונים שהוחזרו לאחרונה"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "View Service Check History"
-msgstr "בדיקות שירות אינטרנט"
+msgstr "הצג היסטוריית בדיקות שירות"
 
 #: servcheck_test.php
 msgid "Yes"
@@ -2201,7 +2102,7 @@ msgstr "כן"
 
 #: servcheck_test.php
 msgid "days"
-msgstr ""
+msgstr "ימים"
 
 #: setup.php
 #, php-format
@@ -2211,7 +2112,7 @@ msgstr "%d תהליכים"
 #: setup.php
 #, php-format
 msgid "%d days"
-msgstr ""
+msgstr "%d ימים"
 
 #: setup.php
 #, php-format
@@ -2224,33 +2125,32 @@ msgid "%d year"
 msgstr "%d שנה"
 
 #: setup.php
-#, fuzzy
 msgid "1 Process"
-msgstr "שרתים WebSeer"
+msgstr "תהליך"
 
 #: setup.php
 msgid "1 week in advance"
-msgstr ""
+msgstr "שבוע אחד מראש"
 
 #: setup.php
 msgid "3 days in advance"
-msgstr ""
+msgstr "3 ימים מראש"
 
 #: setup.php
 msgid "3 weeks in advance"
-msgstr ""
+msgstr "3 שבועות מראש"
 
 #: setup.php
 msgid "30 days in advance"
-msgstr ""
+msgstr "30 ימים מראש"
 
 #: setup.php
 msgid "60 days in advance"
-msgstr ""
+msgstr "60 ימים מראש"
 
 #: setup.php
 msgid "90 days in advance"
-msgstr ""
+msgstr "90 ימים מראש"
 
 #: setup.php
 msgid "CA"
@@ -2262,51 +2162,51 @@ msgstr "CA עריכה"
 
 #: setup.php
 msgid "Certificate expiry date advanced notification email"
-msgstr ""
+msgstr "דוא\"ל התראה מוקדמת לתאריך תפוגת אישור"
 
 #: setup.php
 msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
-msgstr ""
+msgstr "סימון תיבה זו יאפשר הרצת פקודות באירועי ServCheck. ניתן להפעיל או להשבית זאת עבור כל בדיקה."
 
 #: setup.php
 msgid "Concurrent Check Processes"
-msgstr ""
+msgstr "תהליכי בדיקה מקביליים"
 
 #: setup.php
 msgid "Credential Edit"
-msgstr ""
+msgstr "עריכת פרטי הזדהות"
 
 #: setup.php
 msgid "Credential Save"
-msgstr ""
+msgstr "שמירת פרטי הזדהות"
 
 #: setup.php
 msgid "Enable Command Execution"
-msgstr ""
+msgstr "הפעל הרצת פקודות"
 
 #: setup.php
 msgid "Enter the period after which older logs will be automatically deleted."
-msgstr ""
+msgstr "הזן את התקופה שלאחריה יומנים ישנים יותר יימחקו אוטומטית."
 
 #: setup.php
 msgid "HTTP/HTTPS Check Settings"
-msgstr ""
+msgstr "הגדרות בדיקת HTTP/HTTPS"
 
 #: setup.php
 msgid "How long to keep logs"
-msgstr ""
+msgstr "כמה זמן לשמור יומנים"
 
 #: setup.php
 msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
-msgstr ""
+msgstr "אם בדיקת תפוגת אישור שירות SSL/TLS מופעלת, הגדר כמה ימים מראש לפני תאריך תפוגת האישור תשלח המערכת התראה"
 
 #: setup.php
 msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
-msgstr ""
+msgstr "אם מסומן, ServCheck לא ישלח הודעות דוא\"ל כלל. ניתן גם להשבית התראות רק עבור בדיקות מסוימות"
 
 #: setup.php
 msgid "If checked, this will cause all Emails to be sent separately for each address."
-msgstr ""
+msgstr "אם מסומן, הדבר יגרום לשליחת כל הודעות הדוא\"ל בנפרד עבור כל כתובת."
 
 #: setup.php
 msgid "Management"
@@ -2314,16 +2214,15 @@ msgstr "ניהול"
 
 #: setup.php
 msgid "Maximum test duration in seconds"
-msgstr ""
+msgstr "משך בדיקה מרבי בשניות"
 
 #: setup.php
 msgid "Never"
-msgstr ""
+msgstr "לעולם לא"
 
 #: setup.php
-#, fuzzy
 msgid "Notification Preferences"
-msgstr "הגדרות התראות"
+msgstr "העדפות התראות"
 
 #: setup.php
 #, fuzzy
@@ -2339,82 +2238,209 @@ msgid "Save CA"
 msgstr "שמור CA"
 
 #: setup.php
-#, fuzzy
 msgid "Save Web Proxy"
-msgstr "פרוקסי חדש"
+msgstr "שמור פרוקסי אינטרנט"
 
 #: setup.php
 msgid "Send Email separately for each address"
-msgstr ""
+msgstr "שלח דוא\"ל בנפרד עבור כל כתובת"
 
 #: setup.php
-#, fuzzy
 msgid "Servcheck"
-msgstr "בדיקות שירות אינטרנט"
+msgstr "ServCheck"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Admin"
-msgstr "שירות אינטרנט בדוק מנהל"
+msgstr "ניהול בדיקות שירות"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Edit"
-msgstr "בדוק שירות עריכה"
+msgstr "עריכת בדיקת שירות"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Save"
-msgstr "שם בדיקת שירות"
+msgstr "שמירת בדיקת שירות"
 
 #: setup.php
-#, fuzzy
 msgid "Service Checker"
-msgstr "שם בדיקת שירות"
+msgstr "בודק שירותים"
 
 #: setup.php
-#, fuzzy
 msgid "Service Checks"
-msgstr "בדיקות שירות אינטרנט"
+msgstr "בדיקות שירות"
 
 #: setup.php
 msgid "Status Change Command"
-msgstr ""
+msgstr "פקודה לשינוי מצב"
 
 #: setup.php
 msgid "Stop sending all notification"
-msgstr ""
+msgstr "הפסק לשלוח את כל ההתראות"
 
 #: setup.php
 msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
-msgstr ""
+msgstr "מחרוזת User-Agent הנשלחת עם בדיקות שירות מסוג HTTP/HTTPS ובדיקות אחרות מבוססות cURL. חלק מהאתרים חוסמים דפדפנים ישנים או לא נפוצים, ולכן ניתן להגדיר כאן User-Agent עדכני. השאר ריק כדי להשתמש בברירת המחדל המובנית."
 
 #: setup.php
 msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
-msgstr ""
+msgstr "ערך ברירת המחדל עבור בדיקות שבהן בדיקת זמן ריצה אינה מופעלת. אם מופעלת, משך הזמן המרבי מחושב כסף המשך + 2 שניות."
 
 #: setup.php
 msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
-msgstr ""
+msgstr "מספר תהליכי בדיקת השירות שירוצו במקביל. לא מומלץ להגדיל מספר זה לפי 2 ממספר הליבות."
 
 #: setup.php
-#, fuzzy
 msgid "User Agent"
-msgstr "שם משתמש"
+msgstr "סוכן משתמש (User Agent)"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy"
-msgstr "שרתים WebSeer"
+msgstr "פרוקסי אינטרנט"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy Edit"
-msgstr "פרוקסים"
+msgstr "עריכת פרוקסי אינטרנט"
 
 #: setup.php
 msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
-msgstr ""
+msgstr "כאשר בדיקה בסיסית, בדיקת חיפוש או בדיקת תפוגת אישור מחזירה תוצאה שונה, הפעל את הפקודה הבאה... פקודה זו אינה יכולה לכלול ארגומנטים בשורת הפקודה... עם זאת, ניתן לשלוף את המשתנים הבאים מסביבת הסקריפט:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+
+#: includes/arrays.php
+msgid "<b>Can be used for a lot of service checks:</b><br/><i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/><i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/><i>LDAP, smb, smbs</i> - required<br/><i>MQTT</i> - optional<br/><i>SCP, SSH command</i> - you can use this method or private key method"
+msgstr "<b>ניתן לשימוש עבור בדיקות שירות רבות:</b><br/><i>Http/https</i> - אופציונלי, כאשר מוגדר, ינסה אימות HTTP בסיסי<br/><i>SMTP ביציאה 587</i> - אופציונלי. ללא שם משתמש/סיסמה, נבדקת רק תגובת השרת. עם שם משתמש וסיסמה, מתבצעת גם התחברות<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - אופציונלי. עבור ftp אנונימי, השתמש בשם המשתמש \"anonymous\" ובכתובת דוא\"ל כסיסמה<br/><i>LDAP, smb, smbs</i> - נדרש<br/><i>MQTT</i> - אופציונלי<br/><i>פקודת SCP, SSH</i> - ניתן להשתמש בשיטה זו או בשיטת מפתח פרטי"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue). For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). For POST <i>api_key</i> is usually used."
+msgstr "Rest API - אימות באמצעות מפתח API<br/>האימות נשלח בכותרת HTTP, כותרת מותאמת אישית או בשיטת POST. פרטי התחברות בכתובת ה-URL אינם נתמכים.<br/>הזן את שם מפתח ה-API ואת ערכו. שני הערכים נדרשים. עבור כותרת HTTP מקובל להשתמש בשם <i>Bearer or apikey or \"\"</i> (Authorization: Bearer apivalue). עבור כותרת מותאמת אישית מקובל להשתמש ב-<i>X-API-Key</i> (X-Api-Key: keyvalue). עבור POST מקובל להשתמש ב-<i>api_key</i>."
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded."
+msgstr "Rest API - אימות באמצעות אסימון OAuth2/Bearer<br/>באפשרותך לקבל מפתח/אסימון מהשרת ולהזין אותו כאן או להשתמש בתהליך אימות עם פרטי גישה. שם המשתמש והסיסמה נשלחים בקידוד JSON."
+
+#: includes/arrays.php
+msgid "Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, you will see server login banner and ehlo response. With credential, login will be performed"
+msgstr "לא מוצפן + STARTTLS. ניתן גם לבדוק את תקינות האישור. ללא שם משתמש וסיסמה, תוצג כרזת הכניסה של השרת ותגובת ehlo. עם פרטי הזדהות, תתבצע כניסה"
+
+#: includes/arrays.php
+msgid "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password AUTH LOGIN will be tested."
+msgstr "חיבור מוצפן ביציאת ברירת המחדל 465. ניתן גם לבדוק את תקינות התעודה. עם שם משתמש וסיסמה תיבדק שיטת AUTH LOGIN."
+
+#: includes/arrays.php
+msgid "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgstr "חיבור IMAP לא מוצפן. ללא פרטי הזדהות, ייבדק רק החיבור ותוצג רק כרזת הכניסה. עם פרטי הזדהות תיבדק הכניסה ויתבצע ניסיון לקרוא את רשימת ההודעות. ניתן להשתמש בשיטת AUTHENTICATE PLAIN או AUTHENTICATE LOGIN."
+
+#: includes/arrays.php
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "זהה ל-IMAP לא מוצפן אך לאחר ההתחברות נעשה שימוש ב-STARTTLS. ניתן גם לבדוק את תקינות אישור האבטחה לאחר STARTTLS."
+
+#: includes/arrays.php
+msgid "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages"
+msgstr "חיבור POP3 לא מוצפן. ללא פרטי הזדהות, ייבדק רק החיבור ותוצג רק כרזת הכניסה. עם פרטי הזדהות תיבדק הכניסה ויתבצע ניסיון לקרוא את רשימת ההודעות"
+
+#: includes/arrays.php
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "זהה ל-POP3 לא מוצפן אך לאחר ההתחברות נעשה שימוש ב-STARTTLS. ניתן גם לבדוק את תקינות אישור האבטחה לאחר STARTTLS."
+
+#: includes/arrays.php
+msgid "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content of the file is returned."
+msgstr "חיבור FTP לא מוצפן, כניסה וניסיון להוריד את הקובץ שצוין בנתיב (/path/to/file.txt). לחיבור אנונימי השתמש בשם כניסה *anonymous* ובכתובת דוא\"ל כסיסמה. תוכן הקובץ מוחזר."
+
+#: includes/arrays.php
+msgid "Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\""
+msgstr "התחבר לשרת MQTT והאזן לכל הודעה. ניתן לציין נושא (topic) בנתיב (bedroom/temp), או להשאיר ריק עבור כל נושא. עבור בדיקה זו מומלץ להגדיל את הערך של \"התרעת משך זמן ארוך\""
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
+msgstr[0] "לחץ על 'המשך' כדי למחוק את הפריט הבא."
+msgstr[1] "לחץ על 'המשך' כדי למחוק את הפריטים הבאים."
+msgstr[2] "לחץ על 'המשך' כדי למחוק את הפריטים הבאים."
+msgstr[3] "לחץ על 'המשך' כדי למחוק את הפריטים הבאים."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
+msgstr[0] "לחץ על 'המשך' כדי להשבית את הפריט הבא."
+msgstr[1] "לחץ על 'המשך' כדי להשבית את הפריטים הבאים."
+msgstr[2] "לחץ על 'המשך' כדי להשבית את הפריטים הבאים."
+msgstr[3] "לחץ על 'המשך' כדי להשבית את הפריטים הבאים."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
+msgstr[0] "לחץ על 'המשך' כדי להפעיל את הפריט הבא."
+msgstr[1] "לחץ על 'המשך' כדי להפעיל את הפריטים הבאים."
+msgstr[2] "לחץ על 'המשך' כדי להפעיל את הפריטים הבאים."
+msgstr[3] "לחץ על 'המשך' כדי להפעיל את הפריטים הבאים."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
+msgstr[0] "לחץ על 'המשך' כדי לשכפל את הפריט הבא."
+msgstr[1] "לחץ על 'המשך' כדי לשכפל את הפריטים הבאים."
+msgstr[2] "לחץ על 'המשך' כדי לשכפל את הפריטים הבאים."
+msgstr[3] "לחץ על 'המשך' כדי לשכפל את הפריטים הבאים."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear statistics of the following item."
+msgid_plural "Click 'Continue' to clear statistics of the following items."
+msgstr[0] "לחץ על 'המשך' כדי לנקות את הסטטיסטיקה של הפריט הבא."
+msgstr[1] "לחץ על 'המשך' כדי לנקות את הסטטיסטיקה של הפריטים הבאים."
+msgstr[2] "לחץ על 'המשך' כדי לנקות את הסטטיסטיקה של הפריטים הבאים."
+msgstr[3] "לחץ על 'המשך' כדי לנקות את הסטטיסטיקה של הפריטים הבאים."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear log of the following item."
+msgid_plural "Click 'Continue' to clear log of the following items."
+msgstr[0] "לחץ על 'המשך' כדי לנקות את היומן של הפריט הבא."
+msgstr[1] "לחץ על 'המשך' כדי לנקות את היומן של הפריטים הבאים."
+msgstr[2] "לחץ על 'המשך' כדי לנקות את היומן של הפריטים הבאים."
+msgstr[3] "לחץ על 'המשך' כדי לנקות את היומן של הפריטים הבאים."
+
+#: servcheck_test.php
+msgid "Status"
+msgstr "סטטוס"
+
+#: setup.php
+msgid "Certificate expiry notification email interval"
+msgstr "מרווח זמנים לשליחת דוא\"ל התראת תפוגת אישור"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday"
+msgstr "אם בדיקת תפוגת אישור שירות SSL/TLS מופעלת, הגדר את המרווח (בימים) לשליחת התראת הדוא\"ל; עם זאת, אם תאריך התפוגה עבר, התראת הדוא\"ל תישלח מדי יום"
+
+#: setup.php
+msgid "1 day"
+msgstr "יום אחד"
+
+#: setup.php
+msgid "3 days"
+msgstr "3 ימים"
+
+#: setup.php
+msgid "5 days"
+msgstr "5 ימים"
+
+#: setup.php
+msgid "7 days"
+msgstr "7 ימים"
+
+#: setup.php
+msgid "10 days"
+msgstr "10 ימים"
+
+#: setup.php
+msgid "15 days"
+msgstr "15 ימים"
+
+#: setup.php
+msgid "20 days"
+msgstr "20 ימים"
+
+#: setup.php
+msgid "30 days"
+msgstr "30 ימים"
 
 #~ msgid "%d Minute"
 #~ msgstr "‫%d דקה"
@@ -2661,9 +2687,6 @@ msgstr ""
 
 #~ msgid "Sites"
 #~ msgstr "אתרים"
-
-#~ msgid "Status"
-#~ msgstr "סטטוס"
 
 #~ msgid "Test each poller cycle or less"
 #~ msgstr "בדוק כל מחזור סוקר או פחות"

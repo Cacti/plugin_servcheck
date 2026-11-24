@@ -2475,6 +2475,131 @@ msgstr ""
 "&#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 "
 "&#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
 
+#: includes/arrays.php
+msgid "<b>Can be used for a lot of service checks:</b><br/><i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/><i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/><i>LDAP, smb, smbs</i> - required<br/><i>MQTT</i> - optional<br/><i>SCP, SSH command</i> - you can use this method or private key method"
+msgstr "<b>Kan användas för många tjänstekontroller:</b><br/><i>Http/https</i> - valfritt, när det anges används HTTP Basic-autentisering<br/><i>SMTP på port 587</i> - valfritt. Utan användarnamn/lösenord testas endast serversvaret. Med användarnamn och lösenord utförs även inloggning<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - valfritt. För anonym ftp, använd användarnamnet \"anonymous\" och e-postadress som lösenord<br/><i>LDAP, smb, smbs</i> - krävs<br/><i>MQTT</i> - valfritt<br/><i>SCP, SSH-kommando</i> - du kan använda denna metod eller metoden med privat nyckel"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue). For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). For POST <i>api_key</i> is usually used."
+msgstr "REST API - autentisering med API-nyckel<br/>Autentisering skickas i HTTP-huvud, anpassat huvud eller POST-metod. Inloggningsuppgifter i URL stöds inte.<br/>Ange namn och värde för API-nyckeln. Båda värdena krävs. För HTTP-huvud används vanligtvis namnet <i>Bearer eller apikey eller \"\"</i> (Authorization: Bearer apivalue). För anpassat huvud används vanligtvis <i>X-API-Key</i> (X-Api-Key: keyvalue). För POST används vanligtvis <i>api_key</i>."
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded."
+msgstr "REST API - autentisering med OAuth2/Bearer-token<br/>Du kan hämta en nyckel/token från servern och ange den här eller använda autentiseringsflöde med inloggningsuppgifter. Användarnamn och lösenord skickas JSON-kodade."
+
+#: includes/arrays.php
+msgid "Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, you will see server login banner and ehlo response. With credential, login will be performed"
+msgstr "Okrypterad + STARTTLS. Det är även möjligt att testa certifikatets giltighet. Utan användarnamn och lösenord visas serverns inloggningsbanner och ehlo-svar. Med inloggningsuppgifter utförs inloggning"
+
+#: includes/arrays.php
+msgid "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password AUTH LOGIN will be tested."
+msgstr "Krypterad anslutning på standardport 465. Det är även möjligt att testa certifikatets giltighet. Med användarnamn och lösenord testas AUTH LOGIN."
+
+#: includes/arrays.php
+msgid "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgstr "Okrypterad IMAP-anslutning. Utan inloggningsuppgifter testas endast anslutningen och du ser bara inloggningsbannern. Med inloggningsuppgifter testas inloggningen och ett försök görs att läsa listan med meddelanden. Du kan använda metoden AUTHENTICATE PLAIN eller AUTHENTICATE LOGIN."
+
+#: includes/arrays.php
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Samma som okrypterad IMAP, men efter inloggning används STARTTLS. Det är även möjligt att testa certifikatets giltighet efter STARTTLS."
+
+#: includes/arrays.php
+msgid "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages"
+msgstr "Okrypterad POP3-anslutning. Utan inloggningsuppgifter testas endast anslutningen och du ser bara inloggningsbannern. Med inloggningsuppgifter testas inloggningen och ett försök görs att läsa listan med meddelanden"
+
+#: includes/arrays.php
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Samma som okrypterad POP3, men efter inloggning används STARTTLS. Det är även möjligt att testa certifikatets giltighet efter STARTTLS."
+
+#: includes/arrays.php
+msgid "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content of the file is returned."
+msgstr "Okrypterad FTP-anslutning, logga in och försök ladda ner filen som anges i sökvägen (/path/to/file.txt). För anonym anslutning, använd användarnamnet *anonymous* och en e-postadress som lösenord. Filens innehåll returneras."
+
+#: includes/arrays.php
+msgid "Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\""
+msgstr "Anslut till MQTT-server och lyssna efter valfritt meddelande. Du kan ange ämne (topic) i Sökväg (bedroom/temp), eller lämna tomt för valfritt ämne. För detta test rekommenderas att öka \"Varning för lång varaktighet\""
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
+msgstr[0] "Klicka på 'Fortsätt' för att ta bort följande post."
+msgstr[1] "Klicka på 'Fortsätt' för att ta bort följande poster."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
+msgstr[0] "Klicka på 'Fortsätt' för att inaktivera följande post."
+msgstr[1] "Klicka på 'Fortsätt' för att inaktivera följande poster."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
+msgstr[0] "Klicka på 'Fortsätt' för att aktivera följande post."
+msgstr[1] "Klicka på 'Fortsätt' för att aktivera följande poster."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
+msgstr[0] "Klicka på 'Fortsätt' för att duplicera följande post."
+msgstr[1] "Klicka på 'Fortsätt' för att duplicera följande poster."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear statistics of the following item."
+msgid_plural "Click 'Continue' to clear statistics of the following items."
+msgstr[0] "Klicka på 'Fortsätt' för att rensa statistiken för följande post."
+msgstr[1] "Klicka på 'Fortsätt' för att rensa statistiken för följande poster."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear log of the following item."
+msgid_plural "Click 'Continue' to clear log of the following items."
+msgstr[0] "Klicka på 'Fortsätt' för att rensa loggen för följande post."
+msgstr[1] "Klicka på 'Fortsätt' för att rensa loggen för följande poster."
+
+#: servcheck_test.php
+msgid "Status"
+msgstr "Status"
+
+#: setup.php
+msgid "Certificate expiry notification email interval"
+msgstr "E-postintervall för avisering om certifikatets utgång"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday"
+msgstr "Om SSL/TLS-tjänstcertifikatets utgångsdatum är aktiverat anger du intervallet (i dagar) för hur ofta e-postavisering ska skickas; om utgångsdatumet har passerats skickas dock e-postaviseringen varje dag"
+
+#: setup.php
+msgid "1 day"
+msgstr "1 dag"
+
+#: setup.php
+msgid "3 days"
+msgstr "3 dagar"
+
+#: setup.php
+msgid "5 days"
+msgstr "5 dagar"
+
+#: setup.php
+msgid "7 days"
+msgstr "7 dagar"
+
+#: setup.php
+msgid "10 days"
+msgstr "10 dagar"
+
+#: setup.php
+msgid "15 days"
+msgstr "15 dagar"
+
+#: setup.php
+msgid "20 days"
+msgstr "20 dagar"
+
+#: setup.php
+msgid "30 days"
+msgstr "30 dagar"
+
 #, fuzzy
 #~ msgid "%d Minute"
 #~ msgstr "% d minut"
@@ -2688,9 +2813,6 @@ msgstr ""
 
 #~ msgid "Sites"
 #~ msgstr "Webbsidor"
-
-#~ msgid "Status"
-#~ msgstr "Status"
 
 #~ msgid "Test each poller cycle or less"
 #~ msgstr "Testa varje pollercykel eller mindre"

@@ -127,12 +127,12 @@ function form_actions(): void {
 		if (get_request_var('drp_action') == 1) {
 			print "	<tr>
 					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', cacti_sizeof($items_array)) . "</p>
+						<p>" . __n('Click \'Continue\' to delete the following item.', 'Click \'Continue\' to delete the following items.', cacti_sizeof($items_array), 'servcheck') . "</p>
 						<div class='itemlist'><ul>$item_list</ul></div>
 					</td>
 				</tr>";
 
-			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete item', 'Delete items', cacti_sizeof($items_array)) . "'>";
+			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete item', 'Delete items', cacti_sizeof($items_array), 'servcheck') . "'>";
 		}
 	} else {
 		raise_message(40);
@@ -233,7 +233,7 @@ function servcheck_data_edit(): void {
 
 		$header_label = __('Proxy [edit: %s]', $data['name'] ?? '');
 	} else {
-		$header_label = __('Proxy [new]');
+		$header_label = __('Proxy [new]', 'servcheck');
 	}
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));

@@ -224,12 +224,12 @@ function form_actions(): void {
 	if (cacti_sizeof($items_array) > 0) {
 		$n = cacti_sizeof($items_array);
 		$confirm = [
-			1 => [__n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', $n), __esc_n('Delete item', 'Delete items', $n)],
-			2 => [__n('Click \'Continue\' to disable the following items.', 'Click \'Continue\' to disable following items.', $n), __esc_n('Disable item', 'Disable items', $n)],
-			3 => [__n('Click \'Continue\' to enable the following items.', 'Click \'Continue\' to enable following items.', $n), __esc_n('Enable item', 'Enable items', $n)],
-			4 => [__n('Click \'Continue\' to duplicate the following items.', 'Click \'Continue\' to duplicate following items.', $n), __esc_n('Duplicate item', 'Duplicate items', $n)],
-			5 => [__n('Click \'Continue\' to clear statistics of the following item.', 'Click \'Continue\' to clear statistics of the following items.', $n), __esc_n('Duplicate item', 'Duplicate items', $n)],
-			6 => [__n('Click \'Continue\' to clear log of the following item.', 'Click \'Continue\' to clear log of the following items.', $n), __esc_n('Duplicate item', 'Duplicate items', $n)],
+			1 => [__n('Click \'Continue\' to delete the following item.', 'Click \'Continue\' to delete the following items.', $n, 'servcheck'), __esc_n('Delete item', 'Delete items', $n, 'servcheck')],
+			2 => [__n('Click \'Continue\' to disable the following item.', 'Click \'Continue\' to disable the following items.', $n, 'servcheck'), __esc_n('Disable item', 'Disable items', $n, 'servcheck')],
+			3 => [__n('Click \'Continue\' to enable the following item.', 'Click \'Continue\' to enable the following items.', $n, 'servcheck'), __esc_n('Enable item', 'Enable items', $n, 'servcheck')],
+			4 => [__n('Click \'Continue\' to duplicate the following item.', 'Click \'Continue\' to duplicate the following items.', $n, 'servcheck'), __esc_n('Duplicate item', 'Duplicate items', $n, 'servcheck')],
+			5 => [__n('Click \'Continue\' to clear statistics of the following item.', 'Click \'Continue\' to clear statistics of the following items.', $n, 'servcheck'), __esc('Clear statistics', 'servcheck')],
+			6 => [__n('Click \'Continue\' to clear log of the following item.', 'Click \'Continue\' to clear log of the following items.', $n, 'servcheck'), __esc('Clear log', 'servcheck')],
 		];
 		$act = get_filter_request_var('drp_action');
 		if (isset($confirm[$act])) {
@@ -514,7 +514,7 @@ function servcheck_data_edit(): void {
 
 		$header_label = __('Test [edit: %s]', $data['name'] ?? '');
 	} else {
-		$header_label = __('Test [new]');
+		$header_label = __('Test [new]', 'servcheck');
 	}
 
 	if (!api_plugin_installed('thold')) {
@@ -1054,7 +1054,7 @@ function servcheck_show_graph(): void {
 		[$id]);
 
 	if ($count < 5) {
-		print __('Insufficient data, wait a few poller cycles');
+		print __('Insufficient data, wait a few poller cycles', 'servcheck');
 
 		return;
 	}

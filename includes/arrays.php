@@ -167,7 +167,7 @@ $snmp_auth_protocols = [
 	'SHA'    => __('SHA'),
 	'SHA224' => __('SHA-224'),
 	'SHA256' => __('SHA-256'),
-	'SHA392' => __('SHA-392'),
+	'SHA392' => __('SHA-392', 'servcheck'),
 	'SHA512' => __('SHA-512'),
 ];
 
@@ -791,7 +791,7 @@ $servcheck_credential_fields = [
 	'snmp_engine_id' => [
 		'method'        => 'textbox',
 		'friendly_name' => __('SNMP Engine ID (v3)'),
-		'description'   => __('Enter the SNMP v3 Engine Id or empty.'),
+		'description'   => __('Enter the SNMP v3 Engine Id or empty.', 'servcheck'),
 		'value'         => '|arg1:snmp_engine_id|',
 		'default'       => '',
 		'max_length'    => '64',

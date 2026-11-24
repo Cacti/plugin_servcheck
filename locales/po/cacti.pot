@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-11-23 17:07-0800\n"
+"POT-Creation-Date: 2026-11-02 13:51-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Cacti Developers <developers@cacti.net>\n"
+"Last-Translator: Cacti Developers <developers@cacti.net>>\n"
 "Language-Team: Cacti Developers <developers@cacti.net>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -322,8 +322,8 @@ msgstr ""
 msgid "Unable to Connect"
 msgstr ""
 
-#: includes/arrays.php servcheck_ca.php servcheck_credential.php
-#: servcheck_proxy.php servcheck_test.php
+#: includes/arrays.php includes/functions.php servcheck_ca.php
+#: servcheck_proxy.php
 msgid "Continue"
 msgstr ""
 
@@ -1547,6 +1547,10 @@ msgstr ""
 msgid "No data"
 msgstr ""
 
+#: includes/functions.php servcheck_ca.php servcheck_proxy.php
+msgid "Cancel"
+msgstr ""
+
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Delete"
@@ -1554,15 +1558,10 @@ msgstr ""
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
-msgid "Click 'Continue' to delete the following items."
-msgid_plural "Click 'Continue' to delete following items."
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
 msgstr[0] ""
 msgstr[1] ""
-
-#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
-#: servcheck_test.php
-msgid "Cancel"
-msgstr ""
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
@@ -1632,7 +1631,7 @@ msgstr ""
 
 #: servcheck_credential.php
 msgid "Click 'Continue' to Duplicate the following Credential."
-msgid_plural "Click 'Continue' to Duplicate following Credential."
+msgid_plural "Click 'Continue' to Duplicate the following Credentials."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -1709,8 +1708,8 @@ msgid "Clear log"
 msgstr ""
 
 #: servcheck_test.php
-msgid "Click 'Continue' to disable the following items."
-msgid_plural "Click 'Continue' to disable following items."
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -1721,8 +1720,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: servcheck_test.php
-msgid "Click 'Continue' to enable the following items."
-msgid_plural "Click 'Continue' to enable following items."
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -1733,8 +1732,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: servcheck_test.php
-msgid "Click 'Continue' to duplicate the following items."
-msgid_plural "Click 'Continue' to duplicate following items."
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
 msgstr[0] ""
 msgstr[1] ""
 

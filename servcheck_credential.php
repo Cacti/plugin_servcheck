@@ -149,9 +149,9 @@ function form_actions(): void {
 	if (cacti_sizeof($items_array) > 0) {
 		$n = cacti_sizeof($items_array);
 		if (get_filter_request_var('drp_action') == 1) { // delete
-			$save_html = servcheck_render_action_confirm(__n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', $n), __esc_n('Delete item', 'Delete items', $n), $item_list);
+			$save_html = servcheck_render_action_confirm(__n('Click \'Continue\' to delete the following item.', 'Click \'Continue\' to delete the following items.', $n, 'servcheck'), __esc_n('Delete item', 'Delete items', $n, 'servcheck'), $item_list);
 		} elseif (get_filter_request_var('drp_action') == 2) { // duplicate
-			$save_html = servcheck_render_action_confirm(__n('Click \'Continue\' to Duplicate the following Credential.', 'Click \'Continue\' to Duplicate following Credential.', $n), __esc_n('Duplicate Credential', 'Duplicate Credentials', $n), $item_list);
+			$save_html = servcheck_render_action_confirm(__n('Click \'Continue\' to Duplicate the following Credential.', 'Click \'Continue\' to Duplicate the following Credentials.', $n, 'servcheck'), __esc_n('Duplicate Credential', 'Duplicate Credentials', $n, 'servcheck'), $item_list);
 		}
 	} else {
 		raise_message(40);
@@ -517,7 +517,7 @@ function servcheck_data_edit(): void {
 			$data += $decrypted;
 		}
 	} else {
-		$header_label = __('Credential [new]');
+		$header_label = __('Credential [new]', 'servcheck');
 	}
 
 	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));

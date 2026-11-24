@@ -198,32 +198,7 @@ function form_actions(): void {
 		exit;
 	}
 
-	// setup some variables
-	$item_list   = '';
-	$items_array = [];
-
-	// loop through each of the graphs selected on the previous page and get more info about them
-	foreach ($_POST as $var => $val) {
-		if (preg_match('/^chk_([0-9]+)$/', $var, $matches)) {
-			// ================= input validation =================
-			input_validate_input_number($matches[1]);
-			// ====================================================
-
-			$item_list .= '<li>' . db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_test WHERE id = ?', [$matches[1]]) . '</li>';
-			$items_array[] = $matches[1];
-		}
-	}
-
-	$n = cacti_sizeof($items_array);
-
-	if (!servcheck_render_action_form($servcheck_actions_menu, get_filter_request_var('drp_action'), $items_array, $item_list, [
-		1 => [__n('Click \'Continue\' to delete the following item.', 'Click \'Continue\' to delete the following items.', $n, 'servcheck'), __esc_n('Delete item', 'Delete items', $n, 'servcheck')],
-		2 => [__n('Click \'Continue\' to disable the following item.', 'Click \'Continue\' to disable the following items.', $n, 'servcheck'), __esc_n('Disable item', 'Disable items', $n, 'servcheck')],
-		3 => [__n('Click \'Continue\' to enable the following item.', 'Click \'Continue\' to enable the following items.', $n, 'servcheck'), __esc_n('Enable item', 'Enable items', $n, 'servcheck')],
-		4 => [__n('Click \'Continue\' to duplicate the following item.', 'Click \'Continue\' to duplicate the following items.', $n, 'servcheck'), __esc_n('Duplicate item', 'Duplicate items', $n, 'servcheck')],
-		5 => [__n('Click \'Continue\' to clear statistics of the following item.', 'Click \'Continue\' to clear statistics of the following items.', $n, 'servcheck'), __esc('Clear statistics', 'servcheck')],
-		6 => [__n('Click \'Continue\' to clear log of the following item.', 'Click \'Continue\' to clear log of the following items.', $n, 'servcheck'), __esc('Clear log', 'servcheck')],
-	])) {
+	if (!servcheck_handle_action_confirm('test', $servcheck_actions_menu, get_filter_request_var('drp_action'), $_POST)) {
 		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
 	}

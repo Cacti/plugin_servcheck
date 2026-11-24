@@ -340,6 +340,23 @@ if (!function_exists('__esc')) {
 	}
 }
 
+if (!function_exists('__n')) {
+	function __n($singular, $plural, $number, $domain = '') {
+		return $number == 1 ? $singular : $plural;
+	}
+}
+
+if (!function_exists('__esc_n')) {
+	function __esc_n($singular, $plural, $number, $domain = '') {
+		return htmlspecialchars($number == 1 ? $singular : $plural, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+	}
+}
+
+if (!function_exists('input_validate_input_number')) {
+	function input_validate_input_number($value) {
+	}
+}
+
 if (!function_exists('cacti_log')) {
 	function cacti_log($message, $also_print = false, $log_type = '', $level = 0) {
 		$args = func_get_args();

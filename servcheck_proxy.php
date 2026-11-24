@@ -100,27 +100,7 @@ function form_actions(): void {
 		exit;
 	}
 
-	// setup some variables
-	$item_list   = '';
-	$items_array = [];
-
-	// loop through each of the graphs selected on the previous page and get more info about them
-	foreach ($_POST as $var => $val) {
-		if (preg_match('/^chk_([0-9]+)$/', $var, $matches)) {
-			// ================= input validation =================
-			input_validate_input_number($matches[1]);
-			// ====================================================
-
-			$item_list .= '<li>' . html_escape(db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_proxy WHERE id = ?', [$matches[1]])) . '</li>';
-			$items_array[] = $matches[1];
-		}
-	}
-
-	$n = cacti_sizeof($items_array);
-
-	if (!servcheck_render_action_form($servcheck_actions_menu, get_filter_request_var('drp_action'), $items_array, $item_list, [
-		1 => [__n('Click \'Continue\' to delete the following item.', 'Click \'Continue\' to delete the following items.', $n, 'servcheck'), __esc_n('Delete item', 'Delete items', $n, 'servcheck')],
-	])) {
+	if (!servcheck_handle_action_confirm('proxy', $servcheck_actions_menu, get_filter_request_var('drp_action'), $_POST)) {
 		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
 	}

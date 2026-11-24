@@ -73,3 +73,35 @@ it('renders bulk action confirmation form and handles empty selection via servch
 
 	expect($empty)->toBeFalse();
 });
+
+it('collects selected items and builds per-entity confirmation definitions', function () {
+	servcheck_test_load(__DIR__ . '/../../includes/functions.php');
+
+	$_SERVER['PHP_SELF']                        = '/plugins/servcheck/servcheck_proxy.php';
+	$GLOBALS['__test_db_fetch_cell_prepared_return'] = 'Proxy <A>';
+
+	[$proxyList, $proxyIds] = servcheck_collect_selected_items('proxy', ['chk_7' => 'on', 'other' => '1']);
+	expect($proxyIds)->toBe(['7']);
+	expect($proxyList)->toBe('<li>Proxy &lt;A&gt;</li>');
+
+	[$caList, $caIds] = servcheck_collect_selected_items('ca', ['chk_3' => 'on']);
+	expect($caIds)->toBe(['3']);
+	expect($caList)->toBe('<li>Proxy <A></li>');
+
+	$caDefs   = servcheck_action_confirm_defs('ca', 1);
+	$credDefs = servcheck_action_confirm_defs('credential', 2);
+	$testDefs = servcheck_action_confirm_defs('test', 1);
+
+	expect($caDefs[1][0])->toBe('Click \'Continue\' to delete the following item.');
+	expect($credDefs[2][1])->toBe('Duplicate Credentials');
+	expect($testDefs[5][1])->toBe('Clear statistics');
+	expect($testDefs[6][1])->toBe('Clear log');
+
+	ob_start();
+	$handled = servcheck_handle_action_confirm('test', [5 => 'Clear statistics'], 5, ['chk_9' => 'on']);
+	$html    = ob_get_clean();
+
+	expect($handled)->toBeTrue();
+	expect($html)->toContain('Clear statistics');
+	expect($html)->toContain("name='drp_action' value='5'");
+});

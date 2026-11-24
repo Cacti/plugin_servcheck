@@ -1,0 +1,2171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-11-02 13:51-0500\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Afrikaans\n"
+"Language: af-ZA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: includes/arrays.php servcheck_test.php
+msgid "Tests"
+msgstr "Toetse"
+
+#: includes/arrays.php
+msgid "CA certificates"
+msgstr "CA-sertifikate"
+
+#: includes/arrays.php servcheck_proxy.php
+msgid "Proxies"
+msgstr "Instaanbedieners"
+
+#: includes/arrays.php setup.php
+msgid "Credential"
+msgstr "Aanmeldbewys"
+
+#: includes/arrays.php
+msgid "Curl return codes"
+msgstr "Curl-terugkeerkodes"
+
+#: includes/arrays.php
+msgid "Error"
+msgstr "Fout"
+
+#: includes/arrays.php
+msgid "Long duration"
+msgstr "Lang duur"
+
+#: includes/arrays.php
+msgid "Warning"
+msgstr "Waarskuwing"
+
+#: includes/arrays.php
+msgid "Failing"
+msgstr "Misluk tans"
+
+#: includes/arrays.php
+msgid "Ok"
+msgstr "OK"
+
+#: includes/arrays.php setup.php
+msgid "Disabled"
+msgstr "Gedeaktiveer"
+
+#: includes/arrays.php
+msgid "HTTP plaintext, default port 80"
+msgstr "HTTP gewone teks, verstekpoort 80"
+
+#: includes/arrays.php
+msgid "HTTP encrypted (HTTPS), default port 443"
+msgstr "HTTP geënkripteer (HTTPS), verstekpoort 443"
+
+#: includes/arrays.php
+msgid "SMTP plaintext, default port 25 (or 587 for submission)"
+msgstr "SMTP skoonteks, verstekpoort 25 (of 587 vir indiening)"
+
+#: includes/arrays.php
+msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
+msgstr "SMTP met STARTTLS, verstekpoort 25 (of 587 vir indiening)"
+
+#: includes/arrays.php
+msgid "SMTP encrypted (SMTPS), default port 465"
+msgstr "SMTP geënkripteer (SMTPS), verstekpoort 465"
+
+#: includes/arrays.php
+msgid "IMAP plaintext, default port 143"
+msgstr "IMAP gewone teks, verstekpoort 143"
+
+#: includes/arrays.php
+msgid "IMAP with STARTTLS, default port 143"
+msgstr "IMAP met STARTTLS, verstekpoort 143"
+
+#: includes/arrays.php
+msgid "IMAP encrypted (IMAPS), default port 993"
+msgstr "IMAP geënkripteer (IMAPS), verstekpoort 993"
+
+#: includes/arrays.php
+msgid "POP3 plaintext, default port 110"
+msgstr "POP3 gewone teks, verstekpoort 110"
+
+#: includes/arrays.php
+msgid "POP3 with STARTTLS, default port 110"
+msgstr "POP3 met STARTTLS, verstekpoort 110"
+
+#: includes/arrays.php
+msgid "POP3 encrypted (POP3S), default port 995"
+msgstr "POP3 geënkripteer (POP3S), verstekpoort 995"
+
+#: includes/arrays.php
+msgid "DNS plaintext, default port 53"
+msgstr "DNS gewone teks, verstekpoort 53"
+
+#: includes/arrays.php
+msgid "DNS over HTTPS, default port 443"
+msgstr "DNS oor HTTPS, verstekpoort 443"
+
+#: includes/arrays.php
+msgid "LDAP plaintext, default port 389"
+msgstr "LDAP skoon teks, verstekpoort 389"
+
+#: includes/arrays.php
+msgid "LDAP encrypted (LDAPS), default port 636"
+msgstr "LDAP geënkripteer (LDAPS), verstekpoort 636"
+
+#: includes/arrays.php
+msgid "FTP plaintext, default port 21"
+msgstr "FTP-skoonteks, verstekpoort 21"
+
+#: includes/arrays.php
+msgid "TFTP protocol - download file, default port 69"
+msgstr "TFTP-protokol - laai lêer af, verstekpoort 69"
+
+#: includes/arrays.php
+msgid "SCP download file, default port 22"
+msgstr "SCP-lêeraflaai, verstekpoort 22"
+
+#: includes/arrays.php
+msgid "SMB plaintext download file, default port 445"
+msgstr "SMB skoonteks-lêeraflaai, verstekpoort 445"
+
+#: includes/arrays.php
+msgid "SMB encrypted (SMBS) download file, default port 445"
+msgstr "SMB geënkripteerde (SMBS) lêeraflaai, verstekpoort 445"
+
+#: includes/arrays.php
+msgid "MQTT plaintext, default port 1883"
+msgstr "MQTT-skoon teks, verstekpoort 1883"
+
+#: includes/arrays.php
+msgid "Rest API with Basic HTTP auth"
+msgstr "Rest API met basiese HTTP-verifikasie"
+
+#: includes/arrays.php
+msgid "Rest API with API key auth"
+msgstr "Rest API met API-sleutelverifikasie"
+
+#: includes/arrays.php
+msgid "Rest API with OAuth2/Bearer token auth"
+msgstr "Rest API met OAuth2/Bearer-tokenverifikasie"
+
+#: includes/arrays.php
+msgid "Rest API with Cookie based auth"
+msgstr "Rest API met koekiegebaseerde verifikasie"
+
+#: includes/arrays.php
+msgid "SNMP get"
+msgstr "SNMP-kry"
+
+#: includes/arrays.php
+msgid "SNMP walk"
+msgstr "SNMP-deurloop"
+
+#: includes/arrays.php
+msgid "SSH command on remote system"
+msgstr "SSH-opdrag op afgeleë stelsel"
+
+#: includes/arrays.php
+msgid "SFTP protocol - directory listing, default port 22"
+msgstr "SFTP-protokol - gidslys, verstekpoort 22"
+
+#: includes/arrays.php
+msgid "Username and password"
+msgstr "Gebruikersnaam en wagwoord"
+
+#: includes/arrays.php
+msgid "Rest API - Basic HTTP auth"
+msgstr "Rest API - Basiese HTTP-verifikasie"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth"
+msgstr "Rest API - API-sleutelverifikasie"
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth"
+msgstr "Rest API - OAuth2/Bearer-tokenverifikasie"
+
+#: includes/arrays.php
+msgid "Rest API - Cookie based auth"
+msgstr "Rest API - Koekiegebaseerde verifikasie"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2"
+msgstr "SNMP v1 of v2"
+
+#: includes/arrays.php
+msgid "SNMP v3"
+msgstr "SNMP v3"
+
+#: includes/arrays.php
+msgid "SSH private key - Cacti 1.2.31+"
+msgstr "SSH-privaatsleutel - Cacti 1.2.31+"
+
+#: includes/arrays.php
+msgid "Last hour"
+msgstr "Laaste uur"
+
+#: includes/arrays.php
+msgid "Last 6 hours"
+msgstr "Laaste 6 uur"
+
+#: includes/arrays.php
+msgid "Last day"
+msgstr "Laaste dag"
+
+#: includes/arrays.php
+msgid "Last week"
+msgstr "Verlede week"
+
+#: includes/arrays.php
+msgid "String found"
+msgstr "String gevind"
+
+#: includes/arrays.php
+msgid "String not found"
+msgstr "String nie gevind nie"
+
+#: includes/arrays.php
+msgid "Failed string found"
+msgstr "Mislukte string gevind"
+
+#: includes/arrays.php
+msgid "Failed string not found"
+msgstr "Mislukte string nie gevind nie"
+
+#: includes/arrays.php
+msgid "Maint string found"
+msgstr "Maint-string gevind"
+
+#: includes/arrays.php servcheck_test.php
+msgid "Not tested yet"
+msgstr "Nog nie getoets nie"
+
+#: includes/arrays.php
+msgid "Search not performed"
+msgstr "Soektog nie uitgevoer nie"
+
+#: includes/arrays.php
+msgid "OK"
+msgstr "OK"
+
+#: includes/arrays.php
+msgid "Error/failed"
+msgstr "Fout/misluk"
+
+#: includes/arrays.php
+msgid "[None]"
+msgstr "[Geen]"
+
+#: includes/arrays.php
+msgid "MD5"
+msgstr "MD5"
+
+#: includes/arrays.php
+msgid "SHA"
+msgstr "SHA"
+
+#: includes/arrays.php
+msgid "SHA-224"
+msgstr "SHA-224"
+
+#: includes/arrays.php
+msgid "SHA-256"
+msgstr "SHA-256"
+
+#: includes/arrays.php
+msgid "SHA-392"
+msgstr "SHA-392"
+
+#: includes/arrays.php
+msgid "SHA-512"
+msgstr "SHA-512"
+
+#: includes/arrays.php
+msgid "DES"
+msgstr "DES"
+
+#: includes/arrays.php
+msgid "AES"
+msgstr "AES"
+
+#: includes/arrays.php
+msgid "AES-128"
+msgstr "AES-128"
+
+#: includes/arrays.php
+msgid "AES-192"
+msgstr "AES-192"
+
+#: includes/arrays.php
+msgid "AES-192-C"
+msgstr "AES-192-C"
+
+#: includes/arrays.php
+msgid "AES-256"
+msgstr "AES-256"
+
+#: includes/arrays.php
+msgid "AES-256-C"
+msgstr "AES-256-C"
+
+#: includes/arrays.php
+msgid "Unable to Connect"
+msgstr "Kan nie koppel nie"
+
+#: includes/arrays.php includes/functions.php servcheck_ca.php
+#: servcheck_proxy.php
+msgid "Continue"
+msgstr "Gaan voort"
+
+#: includes/arrays.php
+msgid "Switching Protocols"
+msgstr "Skakelprotokolle"
+
+#: includes/arrays.php
+msgid "Created"
+msgstr "Geskep"
+
+#: includes/arrays.php
+msgid "Accepted"
+msgstr "Aanvaar"
+
+#: includes/arrays.php
+msgid "Non-Authoritative Information"
+msgstr "Nie-gesaghebbende inligting"
+
+#: includes/arrays.php
+msgid "No Content"
+msgstr "Geen inhoud nie"
+
+#: includes/arrays.php
+msgid "Reset Content"
+msgstr "Stel inhoud terug"
+
+#: includes/arrays.php
+msgid "Partial Content"
+msgstr "Gedeeltelike inhoud"
+
+#: includes/arrays.php
+msgid "Multiple Choices"
+msgstr "Veelvuldige keuses"
+
+#: includes/arrays.php
+msgid "Moved Permanently"
+msgstr "Permanent geskuif"
+
+#: includes/arrays.php
+msgid "Found"
+msgstr "Gevind"
+
+#: includes/arrays.php
+msgid "See Other"
+msgstr "Sien ander"
+
+#: includes/arrays.php
+msgid "Not Modified"
+msgstr "Nie gewysig nie"
+
+#: includes/arrays.php
+msgid "Use Proxy"
+msgstr "Gebruik instaanbediener"
+
+#: includes/arrays.php
+msgid "(Unused)"
+msgstr "(Ongebruik)"
+
+#: includes/arrays.php
+msgid "Temporary Redirect"
+msgstr "Tydelike herleiding"
+
+#: includes/arrays.php
+msgid "Bad Request"
+msgstr "Ongeldige versoek"
+
+#: includes/arrays.php
+msgid "Unauthorized"
+msgstr "Ongemagtig"
+
+#: includes/arrays.php
+msgid "Payment Required"
+msgstr "Betaling vereis"
+
+#: includes/arrays.php
+msgid "Forbidden"
+msgstr "Verbode"
+
+#: includes/arrays.php
+msgid "Not Found"
+msgstr "Nie gevind nie"
+
+#: includes/arrays.php
+msgid "Method Not Allowed"
+msgstr "Metode nie toegelaat nie"
+
+#: includes/arrays.php
+msgid "Not Acceptable"
+msgstr "Nie aanvaarbaar nie"
+
+#: includes/arrays.php
+msgid "Proxy Authentication Required"
+msgstr "Instaanbediener-verifikasie vereis"
+
+#: includes/arrays.php
+msgid "Request Timeout"
+msgstr "Versoektyduitloop"
+
+#: includes/arrays.php
+msgid "Conflict"
+msgstr "Konflik"
+
+#: includes/arrays.php
+msgid "Gone"
+msgstr "Weg"
+
+#: includes/arrays.php
+msgid "Length Required"
+msgstr "Lengte vereis"
+
+#: includes/arrays.php
+msgid "Precondition Failed"
+msgstr "Voorwaarde het misluk"
+
+#: includes/arrays.php
+msgid "Request Entity Too Large"
+msgstr "Versoekentiteit te groot"
+
+#: includes/arrays.php
+msgid "Request-URI Too Long"
+msgstr "Versoek-URI te lank"
+
+#: includes/arrays.php
+msgid "Unsupported Media Type"
+msgstr "Onondersteunde mediatipe"
+
+#: includes/arrays.php
+msgid "Requested Range Not Satisfiable"
+msgstr "Versoekte reeks nie bevredigbaar nie"
+
+#: includes/arrays.php
+msgid "Expectation Failed"
+msgstr "Verwagting het misluk"
+
+#: includes/arrays.php
+msgid "Internal Server Error"
+msgstr "Interne bedienerfout"
+
+#: includes/arrays.php
+msgid "Not Implemented"
+msgstr "Nie geïmplementeer nie"
+
+#: includes/arrays.php
+msgid "Bad Gateway"
+msgstr "Foutiewe deurgang"
+
+#: includes/arrays.php
+msgid "Service Unavailable"
+msgstr "Diens onbeskikbaar"
+
+#: includes/arrays.php
+msgid "Gateway Timeout"
+msgstr "Poort-tydverstreking"
+
+#: includes/arrays.php
+msgid "HTTP Version Not Supported"
+msgstr "HTTP-weergawe Word Nie Ondersteun Nie"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Poller run"
+msgstr "%d Poller-lopie"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Poller runs"
+msgstr "%d Poller-lopies"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Seconds"
+msgstr "%d Sekondes"
+
+#: includes/arrays.php
+msgid "Auth in HTTP headers"
+msgstr "Stawing in HTTP-kopskrifte"
+
+#: includes/arrays.php
+msgid "Custom HTTP header"
+msgstr "Pasgemaakte HTTP-opskrif"
+
+#: includes/arrays.php
+msgid "POST method, form-urlencoded"
+msgstr "POST-metode, form-urlencoded"
+
+#: includes/arrays.php
+msgid "POST method, JSON encoded"
+msgstr "POST-metode, JSON-geënkodeer"
+
+#: includes/arrays.php
+msgid "JSON encoded"
+msgstr "JSON-geënkodeer"
+
+#: includes/arrays.php
+msgid "Form urlencoded"
+msgstr "Vorm URL-gekodeer"
+
+#: includes/arrays.php servcheck_ca.php servcheck_credential.php
+#: servcheck_proxy.php servcheck_test.php
+msgid "Name"
+msgstr "Naam"
+
+#: includes/arrays.php
+msgid "A Useful Name for this CA chain."
+msgstr "'n Nuttige naam vir hierdie CA-ketting."
+
+#: includes/arrays.php
+msgid "New CA"
+msgstr "Nuwe CA"
+
+#: includes/arrays.php
+msgid "CA Chain"
+msgstr "CA-ketting"
+
+#: includes/arrays.php
+msgid "CA and intermediate certs, PEM encoded"
+msgstr "CA- en tussentydse sertifikate, PEM-gekodeer"
+
+#: includes/arrays.php
+msgid "A Useful Name for this Proxy."
+msgstr "'n Nuttige naam vir hierdie instaanbediener."
+
+#: includes/arrays.php
+msgid "New Proxy"
+msgstr "Nuwe instaanbediener"
+
+#: includes/arrays.php servcheck_proxy.php
+msgid "Hostname"
+msgstr "Gasheernaam"
+
+#: includes/arrays.php
+msgid "The Proxy Hostname."
+msgstr "Die proxy-gasheernaam."
+
+#: includes/arrays.php
+msgid "HTTP Port"
+msgstr "HTTP-poort"
+
+#: includes/arrays.php
+msgid "The HTTP Proxy Port."
+msgstr "Die HTTP-instaanpoort."
+
+#: includes/arrays.php
+msgid "HTTPS Port"
+msgstr "HTTPS-poort"
+
+#: includes/arrays.php
+msgid "The HTTPS Proxy Port."
+msgstr "Die HTTPS-instaanpoort."
+
+#: includes/arrays.php
+msgid "Select correct credential or left empty."
+msgstr "Kies die korrekte geloofsbrief of laat leeg."
+
+#: includes/arrays.php servcheck_test.php
+msgid "None"
+msgstr "Geen"
+
+#: includes/arrays.php
+msgid "General Settings"
+msgstr "Algemene instellings"
+
+#: includes/arrays.php
+msgid "Service Check Name"
+msgstr "Dienskontrolenaam"
+
+#: includes/arrays.php
+msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
+msgstr "Die naam wat vir hierdie Dienskontrole vertoon word, en in enige Alarmkennisgewings ingesluit word."
+
+#: includes/arrays.php
+msgid "How many attempts"
+msgstr "Hoeveel pogings"
+
+#: includes/arrays.php
+msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
+msgstr "Cacti probeer om elke toets verskeie kere uit te voer. Die eerste suksesvolle poging beëindig die toetsing en teken die sukses aan. As geeneen van die pogings suksesvol is nie, word die toets gestaak en 'n mislukking word aangeteken. 'n Hoë getal veroorsaak lang toetsduur."
+
+#: includes/arrays.php
+msgid "Enable test"
+msgstr "Aktiveer toets"
+
+#: includes/arrays.php
+msgid "Uncheck this box to disable this test from being checked."
+msgstr "Ontmerk hierdie blokkie om kontrolering van hierdie toets te deaktiveer."
+
+#: includes/arrays.php
+msgid "Enable run script for this test"
+msgstr "Aktiveer die uitvoer van skrip vir hierdie toets"
+
+#: includes/arrays.php
+msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
+msgstr "Indien die globale Opdraguitvoeringsfunksie geaktiveer is, kan u hier stel of die skrip vir hierdie toets uitgevoer moet word of nie."
+
+#: includes/arrays.php
+msgid "Poller"
+msgstr "Poller"
+
+#: includes/arrays.php
+msgid "Poller on which the test will run"
+msgstr "Poller waarop die toets sal loop"
+
+#: includes/arrays.php
+msgid "Type of service"
+msgstr "Tipe diens"
+
+#: includes/arrays.php
+msgid "What type of service?"
+msgstr "Watter tipe diens?"
+
+#: includes/arrays.php
+msgid "IP Address or DNS name of server"
+msgstr "IP-adres of DNS-naam van bediener"
+
+#: includes/arrays.php
+msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
+msgstr "Jy kan 'n ander poort spesifiseer (example.com:5000), anders sal die verstekpoort gebruik word. Vir 'n numeriese IPv6-adres gebruik [ip:ad:dr:es:fo:rma:at]. Vir DOH (DNS oor HTTPS) gebruik hier die naam van die bediener (byvoorbeeld 10.10.10.10, cloudflare-dns.com, ..)"
+
+#: includes/arrays.php
+msgid "Resolve DNS to Address"
+msgstr "Los DNS op na adres"
+
+#: includes/arrays.php
+msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
+msgstr "Voer 'n IP-adres in waarna die DNS-naam geforseer moet word om op te los. As dit leeg gelaat word, sal DNS-oplossing eerder gebruik word."
+
+#: includes/arrays.php
+msgid "Service settings"
+msgstr "Diensinstellings"
+
+#: includes/arrays.php
+msgid "Select correct credential"
+msgstr "Kies die korrekte geloofsbrief"
+
+#: includes/arrays.php
+msgid "SNMP OID"
+msgstr "SNMP-OID"
+
+#: includes/arrays.php
+msgid "Insert SNMP OID"
+msgstr "Voeg SNMP-OID in"
+
+#: includes/arrays.php
+msgid "SSH command"
+msgstr "SSH-opdrag"
+
+#: includes/arrays.php
+msgid "Insert SSH command with full path, result of command will be returned"
+msgstr "Voeg SSH-opdrag met volle pad in; resultaat van opdrag sal teruggestuur word"
+
+#: includes/arrays.php
+msgid "Your own CA and intermediate certs"
+msgstr "Jou eie CA en tussensertifikate"
+
+#: includes/arrays.php
+msgid "LDAP Search"
+msgstr "LDAP-soektog"
+
+#: includes/arrays.php
+msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
+msgstr "LDAP-soekfilter, dit kan ,OU=anygroup,DC=example,DC=com wees"
+
+#: includes/arrays.php
+msgid "DNS Name for Query"
+msgstr "DNS-naam vir Navraag"
+
+#: includes/arrays.php
+msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
+msgstr "DNS-naam vir navraag. Vir DOH (DNS oor HTTPS), gebruik /resolve?name=example.com of /dns-query?name=example.com&type=A. Vir gewone teks-DNS sal A- en AAAA-rekords teruggestuur word"
+
+#: includes/arrays.php
+msgid "Path Part of URL"
+msgstr "Paddeel van URL"
+
+#: includes/arrays.php
+msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
+msgstr "Vir webdiens, voeg ten minste \"/\" of iets soos \"/enige/pad/\" in."
+
+#: includes/arrays.php
+msgid "Requires Authentication"
+msgstr "Vereis verifikasie"
+
+#: includes/arrays.php
+msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
+msgstr "Merk hierdie blokkie as die terrein normaalweg 'n 401-fout terugstuur omdat dit 'n gebruikersnaam en wagwoord vereis."
+
+#: includes/arrays.php
+msgid "Proxy Server"
+msgstr "Instaanbediener"
+
+#: includes/arrays.php
+msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
+msgstr "Indien hierdie verbindingsteks 'n instaanbediener (proxy) vereis, kies dit hier.  Andersins kies 'Geen'."
+
+#: includes/arrays.php
+msgid "Check Certificate"
+msgstr "Kontroleer Sertifikaat"
+
+#: includes/arrays.php
+msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
+msgstr "Indien SSL gebruik word, merk hierdie blokkie as u die sertifikaat wil valideer. By verstek aan; skakel af as die terrein 'n selfondertekende sertifikaat gebruik."
+
+#: includes/arrays.php
+msgid "Check and notify Certificate expiration"
+msgstr "Kontroleer sertifikaatverval en stel in kennis"
+
+#: includes/arrays.php
+msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
+msgstr "Indien SSL gebruik word, merk hierdie blokkie as u die sertifikaatvervaldatum wil nagaan. U kan in instellings stel hoeveel dae voor vervaldatum kennis gegee moet word."
+
+#: includes/arrays.php
+msgid "Parameters"
+msgstr "Parameters"
+
+#: includes/arrays.php
+msgid "How Often to Test"
+msgstr "Hoe gereeld om te toets"
+
+#: includes/arrays.php
+msgid "Test every xth poller run"
+msgstr "Toets elke x-de Poller-lopie"
+
+#: includes/arrays.php
+msgid "Trigger"
+msgstr "Sneller"
+
+#: includes/arrays.php
+msgid "How many times the service must be DOWN before an alert email is triggered."
+msgstr "Hoeveel keer die diens AF moet wees voordat 'n waarskuwings-e-pos geaktiveer word."
+
+#: includes/arrays.php
+msgid "Long duration alert"
+msgstr "Langduur-waarskuwing"
+
+#: includes/arrays.php
+msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
+msgstr "Indien die toetstyd meer kere agtereenvolgens groter as hierdie waarde is, stuur 'n kennisgewing. Verwant aan die veranderlike Duurtelling. Die toets erf die maksimum looptyd vanaf die instellings. Indien 'n hoër waarde hier gestel word, is die maksimum looptyd hierdie waarde + 2 sekondes."
+
+#: includes/arrays.php
+msgid "Number of duration violations in a row"
+msgstr "Aantal duur-oortredings na mekaar"
+
+#: includes/arrays.php
+msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
+msgstr "Hoeveel keer agtereenvolgens die tydsduursneller oorskry moet word voordat 'n kennisgewing gestuur word"
+
+#: includes/arrays.php
+msgid "Verification Strings"
+msgstr "Verifikasiestringe"
+
+#: includes/arrays.php
+msgid "Response Search String"
+msgstr "Antwoordsoekstring"
+
+#: includes/arrays.php
+msgid "This is the string to search for in the response for a live and working service."
+msgstr "Dit is die string om in die reaksie na te soek vir 'n aktiewe en werkende diens."
+
+#: includes/arrays.php
+msgid "Response Search String - Maintenance"
+msgstr "Antwoordsoekstring - Onderhoud"
+
+#: includes/arrays.php
+msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
+msgstr "Dit is die string om na te soek vir Onderhoud. Die dienskontrole sal vir hierdie string kontroleer as bogenoemde string nie gevind word nie. Indien gevind, beteken dit dat die diens onder onderhoud is."
+
+#: includes/arrays.php
+msgid "Response Search String - Failed"
+msgstr "Antwoordsoekstring - Misluk"
+
+#: includes/arrays.php
+msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
+msgstr "Dit is die string om na te soek vir 'n bekende mislukking in die diensreaksie. Die dienskontrole sal slegs 'n alarm gee as hierdie string gevind word, en enige tydsverstrekingsprobleme en die soekstringe hierbo ignoreer."
+
+#: includes/arrays.php
+msgid "Notification Settings"
+msgstr "Kennisgewinginstellings"
+
+#: includes/arrays.php
+msgid "Email notification"
+msgstr "E-poskennisgewing"
+
+#: includes/arrays.php
+msgid "If enabled email notification about state, duration and search result will be send"
+msgstr "Indien geaktiveer, sal e-poskennisgewing oor status, duur en soekresultaat gestuur word"
+
+#: includes/arrays.php
+msgid "Notify Format"
+msgstr "Kennisgewingformaat"
+
+#: includes/arrays.php
+msgid "This is the format to use when sending the notification email"
+msgstr "Dit is die formaat wat gebruik moet word wanneer die kennisgewing-e-pos gestuur word"
+
+#: includes/arrays.php
+msgid "Notification List"
+msgstr "Kennisgewingslys"
+
+#: includes/arrays.php
+msgid "Use this Notification List for those to be notified when this service goes down."
+msgstr "Gebruik hierdie kennisgewingslys vir diegene wat in kennis gestel moet word wanneer hierdie diens afgaan."
+
+#: includes/arrays.php
+msgid "Notify Accounts"
+msgstr "Stel rekeninge in kennis"
+
+#: includes/arrays.php
+msgid "This is a listing of accounts that will be notified when this service goes down."
+msgstr "Dit is 'n lys van rekeninge wat in kennis gestel sal word wanneer hierdie diens afgaan."
+
+#: includes/arrays.php
+msgid "Extra Alert Emails"
+msgstr "Ekstra waarskuwings-e-posse"
+
+#: includes/arrays.php
+msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
+msgstr "Jy kan hier ekstra E-posse spesifiseer om alarms vir hierdie toets te ontvang (komma-geskei)"
+
+#: includes/arrays.php
+msgid "Notes"
+msgstr "Notas"
+
+#: includes/arrays.php
+msgid "Notes sent in email"
+msgstr "Notas in e-pos gestuur"
+
+#: includes/arrays.php
+msgid "External ID"
+msgstr "Eksterne ID"
+
+#: includes/arrays.php
+msgid "Enter an External ID for this test."
+msgstr "Voer 'n Eksterne ID vir hierdie toets in."
+
+#: includes/arrays.php
+msgid "Help"
+msgstr "Hulp"
+
+#: includes/arrays.php
+msgid "Credential Name"
+msgstr "Aanmeldbewysnaam"
+
+#: includes/arrays.php
+msgid "The name that is displayed for this Credential."
+msgstr "Die naam wat vir hierdie Geloofsbrief vertoon word."
+
+#: includes/arrays.php
+msgid "Credential type"
+msgstr "Aanmeldbewystipe"
+
+#: includes/arrays.php
+msgid "Select correct Credential type."
+msgstr "Kies die korrekte Geloofsbrieftipe."
+
+#: includes/arrays.php
+msgid "Options"
+msgstr "Opsies"
+
+#: includes/arrays.php
+msgid "Set according to your REST API server"
+msgstr "Stel volgens jou REST API-bediener"
+
+#: includes/arrays.php
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: includes/arrays.php
+msgid "Password"
+msgstr "Wagwoord"
+
+#: includes/arrays.php
+msgid "For anonymous FTP insert email address"
+msgstr "Vir anonieme FTP, voeg e-posadres in"
+
+#: includes/arrays.php
+msgid "Login URL"
+msgstr "Aanmeld-URL"
+
+#: includes/arrays.php
+msgid "URL which is used to log in or get the token."
+msgstr "URL wat gebruik word om aan te meld of die teken te kry."
+
+#: includes/arrays.php
+msgid "Data URL"
+msgstr "Data-URL"
+
+#: includes/arrays.php
+msgid "URL to retrieve data. Insert with http:// or https://"
+msgstr "URL om data te herwin. Voeg in met http:// of https://"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2 community"
+msgstr "SNMP v1- of v2-gemeenskap"
+
+#: includes/arrays.php
+msgid "SNMP community string for SNMP v1 or v2(c)"
+msgstr "SNMP-gemeenskapstring vir SNMP v1 of v2(c)"
+
+#: includes/arrays.php
+msgid "SNMP Security Level"
+msgstr "SNMP-sekuriteitsvlak"
+
+#: includes/arrays.php
+msgid "SNMP v3 Security Level to use when querying the device."
+msgstr "SNMP v3-sekuriteitsvlak om te gebruik wanneer die toestel bevraagteken word."
+
+#: includes/arrays.php
+msgid "SNMP Auth Protocol (v3)"
+msgstr "SNMP-verifikasieprotokol (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Authorization Protocol."
+msgstr "Kies die SNMPv3-magtigingsprotokol."
+
+#: includes/arrays.php
+msgid "SNMP Username (v3)"
+msgstr "SNMP-gebruikersnaam (v3)"
+
+#: includes/arrays.php
+msgid "SNMP v3 username for this device."
+msgstr "SNMP v3-gebruikersnaam vir hierdie toestel."
+
+#: includes/arrays.php
+msgid "SNMP Password (v3)"
+msgstr "SNMP-wagwoord (v3)"
+
+#: includes/arrays.php
+msgid "SNMP v3 password for this device."
+msgstr "SNMP v3-wagwoord vir hierdie toestel."
+
+#: includes/arrays.php
+msgid "SNMP Privacy Protocol (v3)"
+msgstr "SNMP-privaatheidsprotokol (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Privacy Protocol."
+msgstr "Kies die SNMPv3-privaatheidsprotokol."
+
+#: includes/arrays.php
+msgid "SNMP Privacy Passphrase (v3)"
+msgstr "SNMP-privaatheidswagfrase (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Privacy Passphrase."
+msgstr "Kies die SNMPv3-privaatheidswagfrase."
+
+#: includes/arrays.php
+msgid "SNMP Context (v3)"
+msgstr "SNMP-konteks (v3)"
+
+#: includes/arrays.php
+msgid "Enter the SNMP Context to use for this device."
+msgstr "Voer die SNMP-konteks in wat vir hierdie toestel gebruik moet word."
+
+#: includes/arrays.php
+msgid "SNMP Engine ID (v3)"
+msgstr "SNMP-enjin-ID (v3)"
+
+#: includes/arrays.php
+msgid "Enter the SNMP v3 Engine Id or empty."
+msgstr "Voer die SNMP v3-enjin-ID in of laat leeg."
+
+#: includes/arrays.php
+msgid "SSH user"
+msgstr "SSH-gebruiker"
+
+#: includes/arrays.php
+msgid "Insert username here"
+msgstr "Voeg gebruikersnaam hier in"
+
+#: includes/arrays.php
+msgid "SSH private key"
+msgstr "SSH-privaatsleutel"
+
+#: includes/arrays.php
+msgid "SSH private key "
+msgstr "SSH-privaatsleutel "
+
+#: includes/arrays.php
+msgid "SSH private key passphrase"
+msgstr "Wagwoordfrase vir SSH-privaatsleutel"
+
+#: includes/arrays.php
+msgid "If your key is password protected, insert password here"
+msgstr "Indien u sleutel met 'n wagwoord beskerm is, voeg wagwoord hier in"
+
+#: includes/arrays.php
+msgid "Client ID"
+msgstr "Kliënt-ID"
+
+#: includes/arrays.php
+msgid "Oauth Client ID"
+msgstr "OAuth-kliënt-ID"
+
+#: includes/arrays.php
+msgid "Client secret"
+msgstr "Kliëntgeheim"
+
+#: includes/arrays.php
+msgid "OAuth Client secret"
+msgstr "OAuth-kliëntgeheim"
+
+#: includes/arrays.php
+msgid "Token name"
+msgstr "Token-naam"
+
+#: includes/arrays.php
+msgid "Token value"
+msgstr "Token-waarde"
+
+#: includes/arrays.php
+msgid "<b>Can be used for a lot of service checks:</b><br/><i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/><i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/><i>LDAP, smb, smbs</i> - required<br/><i>MQTT</i> - optional<br/><i>SCP, SSH command</i> - you can use this method or private key method"
+msgstr "<b>Kan vir baie dienstoetse gebruik word:</b><br/><i>Http/https</i> - opsioneel, wanneer dit gestel is, probeer HTTP basiese magtiging<br/><i>SMTP op poort 587</i> - opsioneel. Sonder 'n gebruikersnaam/wagwoord word slegs die bedienerrespons getoets. Met 'n gebruikersnaam en wagwoord word aanmelding ook uitgevoer<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - opsioneel. Vir anonieme ftp, gebruik gebruikersnaam \"anonymous\" en e-posadres as wagwoord<br/><i>LDAP, smb, smbs</i> - vereis<br/><i>MQTT</i> - opsioneel<br/><i>SCP, SSH-opdrag</i> - jy kan hierdie metode of die privaatsleutel-metode gebruik"
+
+#: includes/arrays.php
+msgid "Rest API - Basic HTTP auth. Username and password are required"
+msgstr "Rest API - Basiese HTTP-verifikasie. Gebruikersnaam en wagwoord word vereis"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue). For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). For POST <i>api_key</i> is usually used."
+msgstr "Rest API - API-sleutelverifikasie<br/>Verifikasie word in HTTP-kopskrif, pasgemaakte kopskrif of POST-metode gestuur. Geloofsbriewe in URL word nie ondersteun nie.<br/>Voeg API-sleutelnaam en -waarde in. Beide waardes word vereis. Vir HTTP-kopskrif word die naam <i>Bearer of apikey of \"\"</i> gewoonlik gebruik (Authorization: Bearer apivalue). Vir pasgemaakte kopskrif word <i>X-API-Key</i> gewoonlik gebruik (X-Api-Key: keyvalue). Vir POST word <i>api_key</i> gewoonlik gebruik."
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded."
+msgstr "Rest API - OAuth2/Bearer-tokenverifikasie<br/>Jy kan 'n sleutel/token vanaf die bediener kry en dit hier invoeg, of die verifikasievloei met geloofsbriewe gebruik. Gebruikersnaam en wagwoord word JSON-geënkodeer gestuur."
+
+#: includes/arrays.php
+msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
+msgstr "Rest API - Koekiegebaseerde verifikasie - beide waardes word vereis. Na aanmelding word koekie teruggestuur"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2 - required, insert community name here"
+msgstr "SNMP v1 of v2 - vereis, voer gemeenskapsnaam hier in"
+
+#: includes/arrays.php
+msgid "SNMP v3 - The security level determines which parameters are required"
+msgstr "SNMP v3 - Die sekuriteitsvlak bepaal watter parameters vereis word"
+
+#: includes/arrays.php
+msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
+msgstr "SSH-privaatsleutel - Kan gebruik word vir SCP- of SSH-opdragtoets. Hierdie toetse kan ook gebruikersnaam/wagwoord gebruik"
+
+#: includes/arrays.php
+msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
+msgstr "Dit kontroleer slegs of die webbediener reageer. Indien gebruikersnaam/wagwoord-aanmeldbesonderhede gebruik word, sal dit Basiese HTTP-stawing probeer."
+
+#: includes/arrays.php
+msgid "The same as HTTP plaintext but adds the ability to test certificates."
+msgstr "Dieselfde as HTTP-gewone teks, maar voeg die vermoë by om sertifikate te toets."
+
+#: includes/arrays.php
+msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
+msgstr "Dit kontroleer slegs of die SMTP-bediener reageer. Geen stawing nie. U sal die bediener se aanmeldbanier en ehlo-respons sien."
+
+#: includes/arrays.php
+msgid "Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, you will see server login banner and ehlo response. With credential, login will be performed"
+msgstr "Ongeënkripteer + STARTTLS. Dit is ook moontlik om die geldigheid van die sertifikaat te toets. Sonder gebruikersnaam en wagwoord sal jy die bedieneraanmeldbanier en ehlo-reaksie sien. Met aanmeldbesonderhede sal aanmelding uitgevoer word"
+
+#: includes/arrays.php
+msgid "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password AUTH LOGIN will be tested."
+msgstr "Geënkripteerde verbinding op verstekpoort 465. Dit is ook moontlik om die geldigheid van die sertifikaat te toets. Met gebruikersnaam en wagwoord sal AUTH LOGIN getoets word."
+
+#: includes/arrays.php
+msgid "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgstr "Ongeënkripteerde IMAP-verbinding. Sonder aanmeldbesonderhede sal slegs verbinding getoets word. Jy sal slegs aanmeldbanier sien. Met aanmeldbesonderhede sal aanmelding getoets word en probeer om lys van boodskappe te lees. Jy kan AUTHENTICATE PLAIN- of AUTHENTICATE LOGIN-metode gebruik."
+
+#: includes/arrays.php
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Dieselfde as ongeënkripteerde IMAP, maar ná aanmelding word STARTTLS gebruik. Dit is ook moontlik om die geldigheid van die sertifikaat ná STARTTLS te toets."
+
+#: includes/arrays.php
+msgid "Encrypted IMAP, you can try login and test certificate and user login"
+msgstr "Geënkripteerde IMAP, u kan aanmelding probeer en sertifikaat en gebruikersaanmelding toets"
+
+#: includes/arrays.php
+msgid "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages"
+msgstr "Ongeënkripteerde POP3-verbinding. Sonder aanmeldbesonderhede sal slegs verbinding getoets word. Jy sal slegs aanmeldbanier sien. Met aanmeldbesonderhede sal aanmelding getoets word en probeer om lys van boodskappe te lees"
+
+#: includes/arrays.php
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Dieselfde as ongeënkripteerde POP3, maar ná aanmelding word STARTTLS gebruik. Dit is ook moontlik om die geldigheid van die sertifikaat ná STARTTLS te toets."
+
+#: includes/arrays.php
+msgid "Encrypted POP3, you can try login and test certificate and user login."
+msgstr "Geënkripteerde POP3, u kan aanmelding probeer en sertifikaat en gebruikersaanmelding toets."
+
+#: includes/arrays.php
+msgid "Try to resolve DNS record on specified DNS server"
+msgstr "Probeer om DNS-rekord op die gespesifiseerde DNS-bediener op te los"
+
+#: includes/arrays.php
+msgid "Try DNS over HTTPS."
+msgstr "Probeer DNS oor HTTPS."
+
+#: includes/arrays.php
+msgid "All parameters are required. Perform unencrypted LDAP login and search"
+msgstr "Alle parameters word vereis. Voer ongeënkripteerde LDAP-aanmelding en -soektog uit"
+
+#: includes/arrays.php
+msgid "All parameters are required. Perform encrypted LDAP login and search"
+msgstr "Alle parameters word vereis. Voer geënkripteerde LDAP-aanmelding en -soektog uit"
+
+#: includes/arrays.php
+msgid "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content of the file is returned."
+msgstr "Ongeënkripteerde FTP-verbinding, meld aan en probeer om die lêer wat in die pad (/path/to/file.txt) gespesifiseer is, af te laai. Vir anonieme verbinding gebruik aanmelding *anonymous* en e-posadres as wagwoord. Die inhoud van die lêer word teruggestuur."
+
+#: includes/arrays.php
+msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
+msgstr "Probeer om die lêer wat in die pad (/path/to/file.txt) gespesifiseer is vanaf die TFTP-bediener af te laai. Die inhoud van die lêer word teruggestuur."
+
+#: includes/arrays.php
+msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
+msgstr "Geënkripteerde SCP-verbinding, meld aan en probeer die lêer aflaai wat in die pad gespesifiseer is (/path/to/file.txt)."
+
+#: includes/arrays.php
+msgid "Try SMB protocol, username and password are required. Try to login and download file."
+msgstr "Probeer SMB-protokol, gebruikersnaam en wagwoord word vereis. Probeer om aan te meld en lêer af te laai."
+
+#: includes/arrays.php
+msgid "Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\""
+msgstr "Verbind aan MQTT-bediener en luister vir enige boodskap. U kan onderwerp in Pad spesifiseer (bedroom/temp), leeg vir enige onderwerp. Vir hierdie toets word aanbeveel om \"Langdurige waarskuwing\" te verhoog"
+
+#: includes/arrays.php
+msgid "REST API test with basic HTTP auth. Prepare credential first."
+msgstr "REST API-toets met basiese HTTP-verifikasie. Berei eers aanmeldbesonderhede voor."
+
+#: includes/arrays.php
+msgid "REST API test with API key auth. Prepare credential first."
+msgstr "REST API-toets met API-sleutelverifikasie. Berei eers aanmeldbesonderhede voor."
+
+#: includes/arrays.php
+msgid "REST API test with Oauth2. Prepare credential first."
+msgstr "REST API-toets met OAuth2. Berei eers aanmeldbesonderhede voor."
+
+#: includes/arrays.php
+msgid "REST API test with cookie auth. Prepare credential first."
+msgstr "REST API-toets met koekieverifikasie. Berei eers aanmeldbesonderhede voor."
+
+#: includes/arrays.php
+msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
+msgstr "Probeer SNMP get-metode. Afvoer vir gespesifiseerde OID word teruggestuur. Geloofsbrief word vereis; jy moet eers 'n SNMP v.1,2 of v3-geloofsbrief voorberei."
+
+#: includes/arrays.php
+msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
+msgstr "Probeer SNMP walk-metode. Afvoer vir gespesifiseerde OID word teruggestuur. Geloofsbrief word vereis; jy moet eers 'n SNMP v.1,2 of v3-geloofsbrief voorberei."
+
+#: includes/arrays.php
+msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
+msgstr "Gebruik ssh en koppel aan die afgeleë gasheer. Voer die gespesifiseerde opdrag na aanmelding uit en gee die uitvoer terug. Gebruikersnaam en wagwoord of privaatsleutel is moontlik."
+
+#: includes/arrays.php
+msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
+msgstr "SFTP-protokol op poort 22, gebruikersnaam en wagwoord en pad word vereis. Probeer om 'n gidslys van die pad te maak."
+
+#: includes/arrays.php
+msgid "All fine. Proceed as usual."
+msgstr "Alles is in orde. Gaan voort soos gewoonlik."
+
+#: includes/arrays.php
+msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
+msgstr "Die URL wat u aan libcurl deurgegee het, gebruik 'n protokol wat hierdie libcurl nie ondersteun nie. Die ondersteuning is dalk 'n kompileringstyd-opsie wat u nie gebruik het nie, dit kan 'n verkeerd gespelde protokolstring wees, of bloot 'n protokol waarvoor libcurl geen kode het nie."
+
+#: includes/arrays.php
+msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
+msgstr "Vroeë inisialiseringskode het misluk. Dit is waarskynlik 'n interne fout of probleem, of 'n hulpbronprobleem waar iets fundamenteels nie tydens inisialisering gedoen kon word nie."
+
+#: includes/arrays.php
+msgid "The URL was not properly formatted."
+msgstr "Die URL was nie behoorlik geformateer nie."
+
+#: includes/arrays.php
+msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
+msgstr "'n Versoekte kenmerk, protokol of opsie is nie ingebou in hierdie libcurl gevind nie weens 'n boutyd-besluit. Dit beteken dat 'n kenmerk of opsie nie geaktiveer is of uitdruklik gedeaktiveer is toe libcurl gebou is nie, en om dit te laat werk moet jy 'n herboude libcurl kry."
+
+#: includes/arrays.php
+msgid "Could not resolve proxy. The given proxy host could not be resolved."
+msgstr "Kon nie instaanbediener oplos nie. Die gegewe instaanbediener-gasheer kon nie opgelos word nie."
+
+#: includes/arrays.php
+msgid "Could not resolve host. The given remote host was not resolved."
+msgstr "Kon nie gasheer oplos nie. Die gegewe afgeleë gasheer kon nie opgelos word nie."
+
+#: includes/arrays.php
+msgid "Failed to connect() to host or proxy."
+msgstr "Kon nie met connect() aan gasheer of instaanbediener koppel nie."
+
+#: includes/arrays.php
+msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
+msgstr "Die bediener het data gestuur wat libcurl nie kon ontleed nie. Hierdie foutkode was voor 7.51.0 bekend as CURLE_FTP_WEIRD_SERVER_REPLY."
+
+#: includes/arrays.php
+msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
+msgstr "Toegang tot die hulpbron wat in die URL gegee is, is geweier. Vir FTP gebeur dit wanneer daar probeer word om na die afgeleë gids te verander."
+
+#: includes/arrays.php
+msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
+msgstr "Terwyl gewag is dat die bediener terugkoppel wanneer 'n aktiewe FTP-sessie gebruik word, is 'n foutkode oor die beheerverbinding gestuur of soortgelyk."
+
+#: includes/arrays.php
+msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
+msgstr "Nadat die FTP-wagwoord na die bediener gestuur is, verwag libcurl 'n behoorlike antwoord. Hierdie foutkode dui aan dat 'n onverwagte kode teruggestuur is."
+
+#: includes/arrays.php
+msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
+msgstr "Tydens 'n aktiewe FTP-sessie terwyl daar gewag is dat die bediener koppel, het die CURLOPT_ACCEPTTIMEOUT_MS- (of die interne verstek-) uitteltyd verstryk."
+
+#: includes/arrays.php
+msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
+msgstr "Libcurl kon nie 'n sinvolle resultaat van die bediener terugkry as antwoord op 'n PASV- of EPSV-bevel nie. Die bediener is gebrekkig."
+
+#: includes/arrays.php
+msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
+msgstr "FTP-bedieners stuur 'n 227-reël terug as antwoord op 'n PASV-opdrag. As libcurl nie daardie reël kan ontleed nie, word hierdie terugkeerkode teruggestuur."
+
+#: includes/arrays.php
+msgid "An internal failure to lookup the host used for the new connection."
+msgstr "'n Interne mislukking om die gasheer wat vir die nuwe verbinding gebruik word, op te soek."
+
+#: includes/arrays.php
+msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr "'n Probleem is in die HTTP2-raamlaag bespeur. Dit is taamlik generies en kan een van verskeie probleme wees; sien die foutbuffer vir besonderhede."
+
+#: includes/arrays.php
+msgid "Received an error when trying to set the transfer mode to binary or ASCII."
+msgstr "'n Fout het voorgekom tydens die poging om die oordragmodus na binêr of ASCII te stel."
+
+#: includes/arrays.php
+msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
+msgstr "'n Lêeroordrag was korter of groter as wat verwag is. Dit gebeur wanneer die bediener eers 'n verwagte oordraggrootte rapporteer en dan data lewer wat nie met die voorheen gegewe grootte ooreenstem nie."
+
+#: includes/arrays.php
+msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
+msgstr "Dit was óf 'n vreemde antwoord op 'n 'RETR'-opdrag óf 'n nulgreep-oordrag wat voltooi is."
+
+#: includes/arrays.php
+msgid "Obsolete Error"
+msgstr "Verouderde fout"
+
+#: includes/arrays.php
+msgid "Not used in modern versions."
+msgstr "Nie in moderne weergawes gebruik nie."
+
+#: includes/arrays.php
+msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
+msgstr "Tydens die stuur van pasgemaakte \"QUOTE\"-opdragte na die afgeleë bediener, het een van die opdragte 'n foutkode van 400 of hoër (vir FTP) teruggestuur of andersins aangedui dat die opdrag nie suksesvol voltooi is nie."
+
+#: includes/arrays.php
+msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
+msgstr "Dit word teruggestuur as CURLOPT_FAILONERROR op waar gestel is en die HTTP-bediener 'n foutkode >= 400 terugstuur."
+
+#: includes/arrays.php
+msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
+msgstr "'n Fout het voorgekom tydens die skryf van ontvangde data na 'n plaaslike lêer, of 'n fout is vanaf 'n skryf-terugroepfunksie aan libcurl teruggestuur."
+
+#: includes/arrays.php
+msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
+msgstr "Kon nie die oplaai begin nie. Vir FTP het die bediener gewoonlik die STOR-opdrag geweier. Die foutbuffer bevat gewoonlik die bediener se verduideliking hiervoor."
+
+#: includes/arrays.php
+msgid "There was a problem reading a local file or an error returned by the read callback."
+msgstr "Daar was 'n probleem met die lees van 'n plaaslike lêer of 'n fout is deur die lees-terugroepfunksie teruggestuur."
+
+#: includes/arrays.php
+msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
+msgstr "'n Geheuetoekenningsversoek het misluk. Dit is 'n ernstige fout en sake is erg verkeerd as dit ooit gebeur."
+
+#: includes/arrays.php
+msgid "Operation timeout. The specified time-out period was reached according to the conditions."
+msgstr "Tydsverloop vir bewerking. Die gespesifiseerde tydsbeperking is volgens die voorwaardes bereik."
+
+#: includes/arrays.php
+msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
+msgstr "Die FTP PORT-opdrag het 'n fout teruggestuur. Dit gebeur meestal wanneer jy nie 'n goeie genoeg adres vir libcurl gespesifiseer het om te gebruik nie. Sien CURLOPT_FTPPORT."
+
+#: includes/arrays.php
+msgid "The FTP REST command returned error. This should never happen if the server is sane."
+msgstr "Die FTP REST-opdrag het 'n fout teruggestuur. Dit behoort nooit te gebeur as die bediener reg funksioneer nie."
+
+#: includes/arrays.php
+msgid "The server does not support or accept range requests."
+msgstr "Die bediener ondersteun of aanvaar nie reeksversoeke nie."
+
+#: includes/arrays.php
+msgid "This is an odd error that mainly occurs due to internal confusion."
+msgstr "Dit is 'n vreemde fout wat hoofsaaklik weens interne verwarring voorkom."
+
+#: includes/arrays.php
+msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
+msgstr "'n Probleem het iewers in die SSL/TLS-handdruk voorgekom. Jy behoort die foutbuffer na te gaan en die boodskap daar te lees aangesien dit die probleem effens nader uitwys. Dit kan sertifikate (lêerformate, paaie, toestemmings), wagwoorde en ander dinge wees."
+
+#: includes/arrays.php
+msgid "The download could not be resumed because the specified offset was out of the file boundary."
+msgstr "Die aflaai kon nie hervat word nie omdat die gespesifiseerde verskuiwing buite die lêergrens was."
+
+#: includes/arrays.php
+msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
+msgstr "'n Lêer wat met FILE:// gegee is, kon nie oopgemaak word nie. Heel waarskynlik omdat die lêerpad nie 'n bestaande lêer aandui nie. Het jy lêertoestemmings nagegaan?"
+
+#: includes/arrays.php
+msgid "LDAP cannot bind. LDAP bind operation failed."
+msgstr "LDAP kan nie bind nie. LDAP-bindbewerking het misluk."
+
+#: includes/arrays.php
+msgid "LDAP search failed."
+msgstr "LDAP-soektog het misluk."
+
+#: includes/arrays.php
+msgid "Function not found. A required zlib function was not found."
+msgstr "Funksie nie gevind nie. 'n Vereiste zlib-funksie is nie gevind nie."
+
+#: includes/arrays.php
+msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
+msgstr "Deur terugroepfunksie gestaak. 'n Terugroepfunksie het \"abort\" aan libcurl teruggestuur."
+
+#: includes/arrays.php
+msgid "A function was called with a bad parameter."
+msgstr "'n Funksie is met 'n ongeldige parameter geroep."
+
+#: includes/arrays.php
+msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
+msgstr "Koppelvlakfout. 'n Gespesifiseerde uitgaande koppelvlak kon nie gebruik word nie. Stel watter koppelvlak gebruik moet word vir die bron-IP-adres van uitgaande verbindings met URLOPT_INTERFACE."
+
+#: includes/arrays.php
+msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
+msgstr "Te veel herleidings. Tydens die volg van herleidings het libcurl die maksimum aantal bereik. Stel u limiet met CURLOPT_MAXREDIRS."
+
+#: includes/arrays.php
+msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
+msgstr "'n Opsie wat aan libcurl deurgegee is, word nie herken nie/is onbekend. Verwys na die toepaslike dokumentasie. Dit is heel waarskynlik 'n probleem in die program wat libcurl gebruik. Die foutbuffer kan meer spesifieke inligting bevat oor presies watter opsie dit betref."
+
+#: includes/arrays.php
+msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
+msgstr "'n Opsie wat aan setopt deurgegee is, is verkeerd geformateer. Sien die foutboodskap vir besonderhede oor watter opsie."
+
+#: includes/arrays.php
+msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
+msgstr "Niks is vanaf die bediener teruggestuur nie, en onder die omstandighede word die verkryging van niks as 'n fout beskou."
+
+#: includes/arrays.php
+msgid "The specified crypto engine was not found."
+msgstr "Die gespesifiseerde kripto-enjin is nie gevind nie."
+
+#: includes/arrays.php
+msgid "Failed setting the selected SSL crypto engine as default."
+msgstr "Kon nie die gekose SSL-kripto-enjin as verstek stel nie."
+
+#: includes/arrays.php
+msgid "Failed sending network data."
+msgstr "Kon nie netwerkdata stuur nie."
+
+#: includes/arrays.php
+msgid "Failure with receiving network data."
+msgstr "Fout tydens ontvangs van netwerkdata."
+
+#: includes/arrays.php
+msgid "problem with the local client certificate."
+msgstr "probleem met die plaaslike kliëntsertifikaat."
+
+#: includes/arrays.php
+msgid "Could not use specified cipher."
+msgstr "Kon nie gespesifiseerde syfer gebruik nie."
+
+#: includes/arrays.php
+msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
+msgstr "Die afgeleë bediener se SSL-sertifikaat of SSH-vingerafdruk is nie as goed genoeg beskou nie. Hierdie foutkode is sedert 7.62.0 met CURLE_SSL_CACERT verenig. Die vorige waarde daarvan was 51."
+
+#: includes/arrays.php
+msgid "Unrecognized transfer encoding."
+msgstr "Onherkende oordragkodering."
+
+#: includes/arrays.php
+msgid "Maximum file size exceeded."
+msgstr "Maksimum lêergrootte oorskry."
+
+#: includes/arrays.php
+msgid "Requested FTP SSL level failed."
+msgstr "Versoekte FTP SSL-vlak het misluk."
+
+#: includes/arrays.php
+msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
+msgstr "Tydens 'n stuurbewerking moes curl die data terugspoel om weer te stuur, maar die terugspoelbewerking het misluk."
+
+#: includes/arrays.php
+msgid "Initiating the SSL Engine failed."
+msgstr "Inisiëring van die SSL-enjin het misluk."
+
+#: includes/arrays.php
+msgid "The remote server denied curl to login (Added in 7.13.1)"
+msgstr "Die afgeleë bediener het curl geweier om aan te meld (Bygevoeg in 7.13.1)"
+
+#: includes/arrays.php
+msgid "File not found on TFTP server."
+msgstr "Lêer nie op TFTP-bediener gevind nie."
+
+#: includes/arrays.php
+msgid "Permission problem on TFTP server."
+msgstr "Toestemmingsprobleem op TFTP-bediener."
+
+#: includes/arrays.php
+msgid "Out of disk space on the server."
+msgstr "Skyfspasie op die bediener is op."
+
+#: includes/arrays.php
+msgid "Illegal TFTP operation."
+msgstr "Onwettige TFTP-bewerking."
+
+#: includes/arrays.php
+msgid "Unknown TFTP transfer ID."
+msgstr "Onbekende TFTP-oordrag-ID."
+
+#: includes/arrays.php
+msgid "File already exists and is not overwritten."
+msgstr "Lêer bestaan reeds en word nie oorskryf nie."
+
+#: includes/arrays.php
+msgid "This error should never be returned by a properly functioning TFTP server."
+msgstr "Hierdie fout behoort nooit deur 'n behoorlik werkende TFTP-bediener teruggestuur te word nie."
+
+#: includes/arrays.php
+msgid "Problem with reading the SSL CA cert (path? access rights?)"
+msgstr "Probleem met die lees van die SSL CA-sertifikaat (pad? toegangsregte?)"
+
+#: includes/arrays.php
+msgid "The resource referenced in the URL does not exist."
+msgstr "Die hulpbron waarna in die URL verwys word, bestaan nie."
+
+#: includes/arrays.php
+msgid "An unspecified error occurred during the SSH session."
+msgstr "'n Ongespesifiseerde fout het tydens die SSH-sessie voorgekom."
+
+#: includes/arrays.php
+msgid "Failed to shut down the SSL connection."
+msgstr "Kon nie die SSL-verbinding afskakel nie."
+
+#: includes/arrays.php
+msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
+msgstr "Sok is nie gereed vir stuur/ontvang nie; wag tot dit gereed is en probeer weer. Hierdie terugkeerkode word slegs deur curl_easy_recv en curl_easy_send teruggestuur (Bygevoeg in 7.18.2)"
+
+#: includes/arrays.php
+msgid "Failed to load CRL file (Added in 7.19.0)"
+msgstr "Kon nie CRL-lêer laai nie (Bygevoeg in 7.19.0)"
+
+#: includes/arrays.php
+msgid "Issuer check failed (Added in 7.19.0)"
+msgstr "Uitreikerkontrole het misluk (bygevoeg in 7.19.0)"
+
+#: includes/arrays.php
+msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
+msgstr "Die FTP-bediener verstaan glad nie die PRET-opdrag nie of ondersteun nie die gegewe argument nie. Wees versigtig wanneer CURLOPT_CUSTOMREQUEST gebruik word; 'n pasgemaakte LIST-opdrag word ook met die PRET-opdrag voor PASV gestuur. (Bygevoeg in 7.20.0)"
+
+#: includes/arrays.php
+msgid "Mismatch of RTSP CSeq numbers."
+msgstr "Wanpassing van RTSP CSeq-nommers."
+
+#: includes/arrays.php
+msgid "Mismatch of RTSP Session Identifiers."
+msgstr "Wanpassing van RTSP-sessie-identifiseerders."
+
+#: includes/arrays.php
+msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
+msgstr "Kan nie FTP-lêerlys ontleed nie (tydens FTP-jokertekenaflaai)."
+
+#: includes/arrays.php
+msgid "Chunk callback reported error."
+msgstr "Stuk-terugroepfunksie het 'n fout aangemeld."
+
+#: includes/arrays.php
+msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
+msgstr "(Slegs vir interne gebruik, word nooit deur libcurl teruggestuur nie) Geen verbinding beskikbaar nie, die sessie is in die waglys geplaas. (bygevoeg in 7.30.0)"
+
+#: includes/arrays.php
+msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
+msgstr "Kon nie by die vasgespelde sleutel pas wat met CURLOPT_PINNEDPUBLICKEY gespesifiseer is nie."
+
+#: includes/arrays.php
+msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
+msgstr "Status het mislukking teruggestuur toe daar met CURLOPT_SSL_VERIFYSTATUS navraag gedoen is."
+
+#: includes/arrays.php
+msgid "Stream error in the HTTP/2 framing layer."
+msgstr "Stroomfout in die HTTP/2-raamlaag."
+
+#: includes/arrays.php
+msgid "An API function was called from inside a callback."
+msgstr "'n API-funksie is vanuit 'n terugroepfunksie aangeroep."
+
+#: includes/arrays.php
+msgid "An authentication function returned an error."
+msgstr "'n Verifikasiefunksie het 'n fout teruggestuur."
+
+#: includes/arrays.php
+msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr "'n Probleem is in die HTTP/3-laag bespeur. Dit is taamlik generies en kan een van verskeie probleme wees; sien die foutbuffer vir besonderhede."
+
+#: includes/arrays.php
+msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
+msgstr "QUIC-verbindingsfout. Hierdie fout kan deur 'n SSL-biblioteekfout veroorsaak word. QUIC is die protokol wat vir HTTP/3-oordragte gebruik word."
+
+#: includes/arrays.php
+msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
+msgstr "Instaanbediener-handdrukfout. CURLINFO_PROXY_ERROR verskaf ekstra besonderhede oor die spesifieke probleem."
+
+#: includes/arrays.php
+msgid "SSL Client Certificate required."
+msgstr "SSL-kliëntsertifikaat word vereis."
+
+#: includes/arrays.php
+msgid "An internal call to poll() or select() returned error that is not recoverable."
+msgstr "'n Interne aanroep na poll() of select() het 'n onherstelbare fout teruggestuur."
+
+#: includes/functions.php
+msgid "Log History"
+msgstr "Loggeskiedenis"
+
+#: includes/functions.php
+msgid "Graphs"
+msgstr "Grafieke"
+
+#: includes/functions.php
+msgid "No data"
+msgstr "Geen data"
+
+#: includes/functions.php servcheck_ca.php servcheck_proxy.php
+msgid "Cancel"
+msgstr "Kanselleer"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Delete"
+msgstr "Skrap"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
+msgstr[0] "Klik 'Gaan voort' om die volgende item te skrap."
+msgstr[1] "Klik 'Gaan voort' om die volgende items te skrap."
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Delete item"
+msgid_plural "Delete items"
+msgstr[0] "Skrap item"
+msgstr[1] "Skrap items"
+
+#: servcheck_ca.php
+#, php-format
+msgid "CA [edit: %s]"
+msgstr "CA [wysig: %s]"
+
+#: servcheck_ca.php
+msgid "CA [new]"
+msgstr "CA [nuut]"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+msgid "Used"
+msgstr "Gebruik"
+
+#: servcheck_ca.php
+msgid "CAs"
+msgstr "CA's"
+
+#: servcheck_ca.php
+msgid "No Certificates Found"
+msgstr "Geen sertifikate gevind nie"
+
+#: servcheck_ca.php
+msgid "Servcheck CA Management"
+msgstr "Servcheck CA-bestuur"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Search"
+msgstr "Soek"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Default"
+msgstr "Verstek"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Go"
+msgstr "Gaan"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Set/Refresh Filters"
+msgstr "Stel/verfris filters"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Clear"
+msgstr "Maak skoon"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Clear Filters"
+msgstr "Maak filters skoon"
+
+#: servcheck_credential.php servcheck_test.php
+msgid "Duplicate"
+msgstr "Dupliseer"
+
+#: servcheck_credential.php
+msgid "Click 'Continue' to Duplicate the following Credential."
+msgid_plural "Click 'Continue' to Duplicate the following Credentials."
+msgstr[0] "Klik 'Gaan voort' om die volgende geloofsbrief te dupliseer."
+msgstr[1] "Klik 'Gaan voort' om die volgende geloofsbriewe te dupliseer."
+
+#: servcheck_credential.php
+msgid "Duplicate Credential"
+msgid_plural "Duplicate Credentials"
+msgstr[0] "Dupliseer geloofsbrief"
+msgstr[1] "Dupliseer geloofsbriewe"
+
+#: servcheck_credential.php
+#, php-format
+msgid "Credential [edit: %s]"
+msgstr "Aanmeldbewys [wysig: %s]"
+
+#: servcheck_credential.php
+msgid "Credential [new]"
+msgstr "Aanmeldbewys [nuut]"
+
+#: servcheck_credential.php
+msgid "Type"
+msgstr "Tipe"
+
+#: servcheck_credential.php
+msgid "Credentials"
+msgstr "Aanmeldbewyse"
+
+#: servcheck_credential.php
+msgid "No Credentials Found"
+msgstr "Geen aanmeldbesonderhede gevind nie"
+
+#: servcheck_credential.php
+msgid "Servcheck Credential Management"
+msgstr "Servcheck Geloofsbriefbestuur"
+
+#: servcheck_curl_code.php
+msgid "No error codes"
+msgstr "Geen foutkodes"
+
+#: servcheck_proxy.php
+#, php-format
+msgid "Proxy [edit: %s]"
+msgstr "Instaanbediener [wysig: %s]"
+
+#: servcheck_proxy.php
+msgid "Proxy [new]"
+msgstr "Instaanbediener [nuut]"
+
+#: servcheck_proxy.php
+msgid "Ports (http/https)"
+msgstr "Poorte (http/https)"
+
+#: servcheck_proxy.php
+msgid "No Proxies Found"
+msgstr "Geen instaanbedieners gevind nie"
+
+#: servcheck_proxy.php
+msgid "Servcheck Proxy Management"
+msgstr "Servcheck Proxy-bestuur"
+
+#: servcheck_test.php
+msgid "Disable"
+msgstr "Deaktiveer"
+
+#: servcheck_test.php
+msgid "Enable"
+msgstr "Aktiveer"
+
+#: servcheck_test.php
+msgid "Clear statistics"
+msgstr "Maak statistieke skoon"
+
+#: servcheck_test.php
+msgid "Clear log"
+msgstr "Maak logboek skoon"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
+msgstr[0] "Klik 'Gaan voort' om die volgende item te deaktiveer."
+msgstr[1] "Klik 'Gaan voort' om die volgende items te deaktiveer."
+
+#: servcheck_test.php
+msgid "Disable item"
+msgid_plural "Disable items"
+msgstr[0] "Deaktiveer item"
+msgstr[1] "Deaktiveer items"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
+msgstr[0] "Klik 'Gaan voort' om die volgende item te aktiveer."
+msgstr[1] "Klik 'Gaan voort' om die volgende items te aktiveer."
+
+#: servcheck_test.php
+msgid "Enable item"
+msgid_plural "Enable items"
+msgstr[0] "Aktiveer item"
+msgstr[1] "Aktiveer items"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
+msgstr[0] "Klik 'Gaan voort' om die volgende item te dupliseer."
+msgstr[1] "Klik 'Gaan voort' om die volgende items te dupliseer."
+
+#: servcheck_test.php
+msgid "Duplicate item"
+msgid_plural "Duplicate items"
+msgstr[0] "Dupliseer item"
+msgstr[1] "Dupliseer items"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear statistics of the following item."
+msgid_plural "Click 'Continue' to clear statistics of the following items."
+msgstr[0] "Klik 'Gaan voort' om die statistieke van die volgende item skoon te maak."
+msgstr[1] "Klik 'Gaan voort' om die statistieke van die volgende items skoon te maak."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear log of the following item."
+msgid_plural "Click 'Continue' to clear log of the following items."
+msgstr[0] "Klik 'Gaan voort' om die log van die volgende item skoon te maak."
+msgstr[1] "Klik 'Gaan voort' om die log van die volgende items skoon te maak."
+
+#: servcheck_test.php
+#, php-format
+msgid "The Service Check history was purged for %s"
+msgstr "Die dienskontrole-geskiedenis is gesuiwer vir %s"
+
+#: servcheck_test.php
+#, php-format
+msgid "Test [edit: %s]"
+msgstr "Toets [wysig: %s]"
+
+#: servcheck_test.php
+msgid "Test [new]"
+msgstr "Toets [nuut]"
+
+#: servcheck_test.php
+msgid "No Users Selected"
+msgstr "Geen gebruikers gekies nie"
+
+#: servcheck_test.php
+msgid "Users Selected"
+msgstr "Gebruikers gekies"
+
+#: servcheck_test.php
+msgid "All Users Selected"
+msgstr "Alle gebruikers gekies"
+
+#: servcheck_test.php
+msgid "All"
+msgstr "Almal"
+
+#: servcheck_test.php
+msgid "Date"
+msgstr "Datum"
+
+#: servcheck_test.php
+msgid "Attempt"
+msgstr "Poging"
+
+#: servcheck_test.php
+msgid "Result"
+msgstr "Resultaat"
+
+#: servcheck_test.php
+msgid "Search result"
+msgstr "Soekresultaat"
+
+#: servcheck_test.php
+msgid "Duration"
+msgstr "Duur"
+
+#: servcheck_test.php
+msgid "Certificate"
+msgstr "Sertifikaat"
+
+#: servcheck_test.php
+msgid "Curl"
+msgstr "Curl"
+
+#: servcheck_test.php
+msgid "Ret. data size"
+msgstr "Beh. datagrootte"
+
+#: servcheck_test.php
+msgid "CPU u/CPU s/Memory"
+msgstr "SVE u/SVE s/Geheue"
+
+#: servcheck_test.php
+msgid "Logs"
+msgstr "Logboeke"
+
+#: servcheck_test.php
+msgid "days"
+msgstr "dae"
+
+#: servcheck_test.php
+#, php-format
+msgid "Expired %s days ago"
+msgstr "%s dae gelede verval"
+
+#: servcheck_test.php
+msgid "Insufficient data, wait a few poller cycles"
+msgstr "Onvoldoende data, wag 'n paar poller-siklusse"
+
+#: servcheck_test.php
+msgid "Actions"
+msgstr "Aksies"
+
+#: servcheck_test.php
+msgid "Status"
+msgstr "Status"
+
+#: servcheck_test.php
+msgid "Last Check (attempt)"
+msgstr "Laaste kontrole (poging)"
+
+#: servcheck_test.php
+msgid "Stats (OK/problem)"
+msgstr "Statistiek (OK/probleem)"
+
+#: servcheck_test.php
+msgid "Triggered"
+msgstr "Uitgelok"
+
+#: servcheck_test.php
+msgid "Edit Service Check"
+msgstr "Wysig dienstoets"
+
+#: servcheck_test.php
+msgid "Enable Service Check"
+msgstr "Aktiveer dienstoets"
+
+#: servcheck_test.php
+msgid "Disable Service Check"
+msgstr "Deaktiveer dienskontrole"
+
+#: servcheck_test.php
+msgid "View Service Check History"
+msgstr "Bekyk dienskontrolegeskiedenis"
+
+#: servcheck_test.php
+msgid "View Last returned data"
+msgstr "Bekyk laaste teruggestuurde data"
+
+#: servcheck_test.php
+msgid "View Graph"
+msgstr "Bekyk grafiek"
+
+#: servcheck_test.php
+msgid "N/A (N/A)"
+msgstr "N.v.t. (N.v.t.)"
+
+#: servcheck_test.php
+msgid "No"
+msgstr "Nee"
+
+#: servcheck_test.php
+msgid "Yes"
+msgstr "Ja"
+
+#: servcheck_test.php
+msgid "No Service Checks Found"
+msgstr "Geen dienskontroles gevind nie"
+
+#: servcheck_test.php
+msgid "Last returned data of test"
+msgstr "Laaste teruggestuurde data van toets"
+
+#: servcheck_test.php
+msgid "Servcheck Test Management"
+msgstr "Servcheck Toetsbestuur"
+
+#: servcheck_test.php
+msgid "State"
+msgstr "Staat"
+
+#: servcheck_test.php
+msgid "Any"
+msgstr "Enige"
+
+#: servcheck_test.php
+msgid "Refresh"
+msgstr "Verfris"
+
+#: servcheck_test.php
+msgid "Checks"
+msgstr "Kontroles"
+
+#: servcheck_test.php
+msgid "Service Check History"
+msgstr "Dienskontrolegeskiedenis"
+
+#: servcheck_test.php
+msgid "Date Search"
+msgstr "Datumsoektog"
+
+#: servcheck_test.php
+msgid "Entries"
+msgstr "Inskrywings"
+
+#: servcheck_test.php
+msgid "Purge Events"
+msgstr "Wis gebeure uit"
+
+#: setup.php
+msgid "Service Check Admin"
+msgstr "Dienskontrole-admin"
+
+#: setup.php
+msgid "Management"
+msgstr "Bestuur"
+
+#: setup.php
+msgid "Service Checker"
+msgstr "Dienskontroleerder"
+
+#: setup.php
+msgid "Service Checks"
+msgstr "Dienskontroles"
+
+#: setup.php
+msgid "Service Check Edit"
+msgstr "Wysig dienskontrole"
+
+#: setup.php
+msgid "Service Check Save"
+msgstr "Stoor dienskontrole"
+
+#: setup.php
+msgid "Credential Edit"
+msgstr "Wysig Aanmeldbewys"
+
+#: setup.php
+msgid "Credential Save"
+msgstr "Stoor Aanmeldbewys"
+
+#: setup.php
+msgid "Web Proxy"
+msgstr "Webinstaanbediener"
+
+#: setup.php
+msgid "Web Proxy Edit"
+msgstr "Wysig webinstaanbediener"
+
+#: setup.php
+msgid "Save Web Proxy"
+msgstr "Stoor web-instaanbediener"
+
+#: setup.php
+msgid "CA"
+msgstr "CA"
+
+#: setup.php
+msgid "CA Edit"
+msgstr "Wysig CA"
+
+#: setup.php
+msgid "Save CA"
+msgstr "Stoor CA"
+
+#: setup.php
+msgid "Servcheck"
+msgstr "Servcheck"
+
+#: setup.php
+msgid "Notification Preferences"
+msgstr "Kennisgewingvoorkeure"
+
+#: setup.php
+msgid "Send Email separately for each address"
+msgstr "Stuur E-pos afsonderlik vir elke adres"
+
+#: setup.php
+msgid "If checked, this will cause all Emails to be sent separately for each address."
+msgstr "Indien gemerk, sal alle e-posse afsonderlik vir elke adres gestuur word."
+
+#: setup.php
+msgid "Stop sending all notification"
+msgstr "Stop stuur van alle kennisgewings"
+
+#: setup.php
+msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
+msgstr "Indien gemerk, sal servcheck geen e-posse stuur nie. U kan ook kennisgewings slegs vir spesifieke toetse deaktiveer"
+
+#: setup.php
+msgid "Enable Command Execution"
+msgstr "Aktiveer opdraguitvoering"
+
+#: setup.php
+msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
+msgstr "Deur hierdie blokkie te merk, word die vermoë geaktiveer om opdragte tydens Servcheck-gebeurtenisse uit te voer. Jy kan dit vir elke toets aktiveer of deaktiveer."
+
+#: setup.php
+msgid "Status Change Command"
+msgstr "Statusveranderingsopdrag"
+
+#: setup.php
+msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+msgstr "Wanneer 'n basiese, soek- of sertifikaatvervaltoets 'n ander resultaat terugstuur, voer die volgende opdrag uit... Hierdie opdrag moet NIE opdragreëlargumente insluit NIE... Die volgende veranderlikes kan egter uit die omgewing van die skrip verkry word:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+
+#: setup.php
+msgid "Concurrent Check Processes"
+msgstr "Gelyktydige kontroleprosesse"
+
+#: setup.php
+msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
+msgstr "Die aantal dienskontroleprosesse wat gelyktydig moet loop. Om hierdie getal tot 2 keer die aantal kerns te verhoog, word nie aanbeveel nie."
+
+#: setup.php
+msgid "1 Process"
+msgstr "1 proses"
+
+#: setup.php
+#, php-format
+msgid "%d Processes"
+msgstr "%d prosesse"
+
+#: setup.php
+msgid "Certificate expiry date advanced notification email"
+msgstr "Voorafkennisgewing-e-pos vir sertifikaatvervaldatum"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
+msgstr "As SSL/TLS-dienssertifikaatverval geaktiveer is, stel die voorafkennisgewingstydperk in dae voor die sertifikaat se vervaldatum waarop die stelsel 'n kennisgewing sal stuur"
+
+#: setup.php
+msgid "3 days in advance"
+msgstr "3 dae vooruit"
+
+#: setup.php
+msgid "1 week in advance"
+msgstr "1 week vooruit"
+
+#: setup.php
+msgid "3 weeks in advance"
+msgstr "3 weke vooruit"
+
+#: setup.php
+msgid "30 days in advance"
+msgstr "30 dae vooruit"
+
+#: setup.php
+msgid "60 days in advance"
+msgstr "60 dae vooruit"
+
+#: setup.php
+msgid "90 days in advance"
+msgstr "90 dae vooruit"
+
+#: setup.php
+msgid "Certificate expiry notification email interval"
+msgstr "Interval vir sertifikaatvervalkennisgewing-e-pos"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday"
+msgstr "As SSL/TLS-dienssertifikaatverval geaktiveer is, stel die interval (dae) waarvolgens die e-poskennisgewing gestuur moet word; indien die vervaldatum egter verby is, sal die e-poskennisgewing elke dag gestuur word"
+
+#: setup.php
+msgid "1 day"
+msgstr "1 dag"
+
+#: setup.php
+msgid "3 days"
+msgstr "3 dae"
+
+#: setup.php
+msgid "5 days"
+msgstr "5 dae"
+
+#: setup.php
+msgid "7 days"
+msgstr "7 dae"
+
+#: setup.php
+msgid "10 days"
+msgstr "10 dae"
+
+#: setup.php
+msgid "15 days"
+msgstr "15 dae"
+
+#: setup.php
+msgid "20 days"
+msgstr "20 dae"
+
+#: setup.php
+msgid "30 days"
+msgstr "30 dae"
+
+#: setup.php
+msgid "How long to keep logs"
+msgstr "Hoe lank om logboeke te behou"
+
+#: setup.php
+msgid "Enter the period after which older logs will be automatically deleted."
+msgstr "Voer die tydperk in waarna ouer logboeke outomaties geskrap sal word."
+
+#: setup.php
+msgid "Never"
+msgstr "Nooit"
+
+#: setup.php
+#, php-format
+msgid "%d hours"
+msgstr "%d uur"
+
+#: setup.php
+#, php-format
+msgid "%d days"
+msgstr "%d dae"
+
+#: setup.php
+#, php-format
+msgid "%d year"
+msgstr "%d jaar"
+
+#: setup.php
+msgid "Maximum test duration in seconds"
+msgstr "Maksimum toetsduur in sekondes"
+
+#: setup.php
+msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
+msgstr "Die verstekwaarde vir toetse waar looptydtoetsing nie Geaktiveer is nie. Indien Geaktiveer, word die maks. duur bereken as die duurdrempel + 2 sekondes."
+
+#: setup.php
+msgid "HTTP/HTTPS Check Settings"
+msgstr "HTTP/HTTPS-kontrole-instellings"
+
+#: setup.php
+msgid "User Agent"
+msgstr "Gebruikersagent"
+
+#: setup.php
+msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
+msgstr "Die User-Agent-string wat saam met HTTP/HTTPS en ander cURL-gebaseerde dienskontroles gestuur word. Sommige werwe blokkeer ou of ongewone blaaiers, dus kan u 'n huidige User-Agent hier stel. Laat leeg om die ingeboude verstekwaarde te gebruik."
+

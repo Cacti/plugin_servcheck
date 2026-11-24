@@ -1,0 +1,2171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-11-02 13:51-0500\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Kinyarwanda\n"
+"Language: rw-RW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: includes/arrays.php servcheck_test.php
+msgid "Tests"
+msgstr "Amasuzuma"
+
+#: includes/arrays.php
+msgid "CA certificates"
+msgstr "Impamyabushobozi za CA"
+
+#: includes/arrays.php servcheck_proxy.php
+msgid "Proxies"
+msgstr "Za Proxy"
+
+#: includes/arrays.php setup.php
+msgid "Credential"
+msgstr "Umwirondoro wo kwinjira"
+
+#: includes/arrays.php
+msgid "Curl return codes"
+msgstr "Kode z'ibisubizo za Curl"
+
+#: includes/arrays.php
+msgid "Error"
+msgstr "Ikosa"
+
+#: includes/arrays.php
+msgid "Long duration"
+msgstr "Igihe kirekire"
+
+#: includes/arrays.php
+msgid "Warning"
+msgstr "Iburira"
+
+#: includes/arrays.php
+msgid "Failing"
+msgstr "Birimo kunanirwa"
+
+#: includes/arrays.php
+msgid "Ok"
+msgstr "Emeza"
+
+#: includes/arrays.php setup.php
+msgid "Disabled"
+msgstr "Byahagaritswe"
+
+#: includes/arrays.php
+msgid "HTTP plaintext, default port 80"
+msgstr "HTTP isanzwe itari mu ibanga, umuyoboro w'ibanze ni 80"
+
+#: includes/arrays.php
+msgid "HTTP encrypted (HTTPS), default port 443"
+msgstr "HTTP ishize mu ibanga (HTTPS), umuyoboro w'ibanze ni 443"
+
+#: includes/arrays.php
+msgid "SMTP plaintext, default port 25 (or 587 for submission)"
+msgstr "SMTP y'inyandiko isanzwe, icyambu mbanziriza ni 25 (cyangwa 587 mu kohereza)"
+
+#: includes/arrays.php
+msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
+msgstr "SMTP ikoresha STARTTLS, icyambu mbanziriza ni 25 (cyangwa 587 mu kohereza)"
+
+#: includes/arrays.php
+msgid "SMTP encrypted (SMTPS), default port 465"
+msgstr "SMTP irinzwe mu ibanga (SMTPS), icyambu mbanziriza ni 465"
+
+#: includes/arrays.php
+msgid "IMAP plaintext, default port 143"
+msgstr "IMAP y'inyandiko isanzwe, poruti mbanziriza 143"
+
+#: includes/arrays.php
+msgid "IMAP with STARTTLS, default port 143"
+msgstr "IMAP hamwe na STARTTLS, poruti mbanziriza 143"
+
+#: includes/arrays.php
+msgid "IMAP encrypted (IMAPS), default port 993"
+msgstr "IMAP ishinzwe umutekano (IMAPS), poruti mbanziriza 993"
+
+#: includes/arrays.php
+msgid "POP3 plaintext, default port 110"
+msgstr "POP3 y'inyandiko isanzwe, umuyoboro w'ibanze 110"
+
+#: includes/arrays.php
+msgid "POP3 with STARTTLS, default port 110"
+msgstr "POP3 hamwe na STARTTLS, umuyoboro w'ibanze 110"
+
+#: includes/arrays.php
+msgid "POP3 encrypted (POP3S), default port 995"
+msgstr "POP3 yashyizwe mu ibanga (POP3S), umuyoboro w'ibanze 995"
+
+#: includes/arrays.php
+msgid "DNS plaintext, default port 53"
+msgstr "DNS y'inyandiko isanzwe, poruti mbanziriza 53"
+
+#: includes/arrays.php
+msgid "DNS over HTTPS, default port 443"
+msgstr "DNS kuri HTTPS, icyambu gisanzwe 443"
+
+#: includes/arrays.php
+msgid "LDAP plaintext, default port 389"
+msgstr "LDAP mu nyandiko isanzwe, umuyoboro w'ibanze 389"
+
+#: includes/arrays.php
+msgid "LDAP encrypted (LDAPS), default port 636"
+msgstr "LDAP isobetse (LDAPS), umuyoboro w'ibanze 636"
+
+#: includes/arrays.php
+msgid "FTP plaintext, default port 21"
+msgstr "FTP mu nyandiko isanzwe, umuyoboro usanzwe 21"
+
+#: includes/arrays.php
+msgid "TFTP protocol - download file, default port 69"
+msgstr "Porotokole ya TFTP - gukurura dosiye, icyambu mbanziriza 69"
+
+#: includes/arrays.php
+msgid "SCP download file, default port 22"
+msgstr "Kurura dosiye ukoresheje SCP, icyambu mbanziriza ni 22"
+
+#: includes/arrays.php
+msgid "SMB plaintext download file, default port 445"
+msgstr "Kurura dosiye mu buryo bwa SMB bw'inyandiko isanzwe, icyambu mbanziriza ni 445"
+
+#: includes/arrays.php
+msgid "SMB encrypted (SMBS) download file, default port 445"
+msgstr "Kurura dosiye mu buryo bwa SMB burinzwe mu ibanga (SMBS), icyambu mbanziriza ni 445"
+
+#: includes/arrays.php
+msgid "MQTT plaintext, default port 1883"
+msgstr "MQTT mu mwandiko usanzwe, umuyoboro mbanziriza 1883"
+
+#: includes/arrays.php
+msgid "Rest API with Basic HTTP auth"
+msgstr "Rest API hamwe no kwemeza kwa HTTP gusanzwe"
+
+#: includes/arrays.php
+msgid "Rest API with API key auth"
+msgstr "Rest API hamwe no kwemeza ukoresheje urufunguzo rwa API"
+
+#: includes/arrays.php
+msgid "Rest API with OAuth2/Bearer token auth"
+msgstr "Rest API hamwe no kwemeza ukoresheje ikimenyetso cya OAuth2/Bearer"
+
+#: includes/arrays.php
+msgid "Rest API with Cookie based auth"
+msgstr "Rest API hamwe no kwemeza gushingiye kuri Cookie"
+
+#: includes/arrays.php
+msgid "SNMP get"
+msgstr "Kubona mu buryo bwa SNMP (get)"
+
+#: includes/arrays.php
+msgid "SNMP walk"
+msgstr "Isesengura rya SNMP (walk)"
+
+#: includes/arrays.php
+msgid "SSH command on remote system"
+msgstr "Itegeko rya SSH kuri sisitemu iri kure"
+
+#: includes/arrays.php
+msgid "SFTP protocol - directory listing, default port 22"
+msgstr "Porotokole ya SFTP - urutonde rw'ububiko, icyambu mbanziriza ni 22"
+
+#: includes/arrays.php
+msgid "Username and password"
+msgstr "Izina ry'ukoresha n'ijambobanga"
+
+#: includes/arrays.php
+msgid "Rest API - Basic HTTP auth"
+msgstr "Rest API - Kwemeza kwa HTTP gusanzwe"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth"
+msgstr "Rest API - Kwemeza ukoresheje urufunguzo rwa API"
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth"
+msgstr "Rest API - Kwemeza ukoresheje ikimenyetso cya OAuth2/Bearer"
+
+#: includes/arrays.php
+msgid "Rest API - Cookie based auth"
+msgstr "Rest API - Kwemeza gushingiye kuri Cookie"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2"
+msgstr "SNMP v1 cyangwa v2"
+
+#: includes/arrays.php
+msgid "SNMP v3"
+msgstr "SNMP v3"
+
+#: includes/arrays.php
+msgid "SSH private key - Cacti 1.2.31+"
+msgstr "Urufunguzo bwite rwa SSH - Cacti 1.2.31+"
+
+#: includes/arrays.php
+msgid "Last hour"
+msgstr "Isaha ishize"
+
+#: includes/arrays.php
+msgid "Last 6 hours"
+msgstr "Amasaha 6 ashize"
+
+#: includes/arrays.php
+msgid "Last day"
+msgstr "Umunsi ushize"
+
+#: includes/arrays.php
+msgid "Last week"
+msgstr "Icyumweru gishize"
+
+#: includes/arrays.php
+msgid "String found"
+msgstr "Inyandiko yabonetse"
+
+#: includes/arrays.php
+msgid "String not found"
+msgstr "Inyandiko ntiyabonetse"
+
+#: includes/arrays.php
+msgid "Failed string found"
+msgstr "Inyandiko y'ikosa yabonetse"
+
+#: includes/arrays.php
+msgid "Failed string not found"
+msgstr "Inyandiko y'ikosa ntiyabonetse"
+
+#: includes/arrays.php
+msgid "Maint string found"
+msgstr "Umurongo w'amagambo wa Maint wabonetse"
+
+#: includes/arrays.php servcheck_test.php
+msgid "Not tested yet"
+msgstr "Ntabwo birageragezwa"
+
+#: includes/arrays.php
+msgid "Search not performed"
+msgstr "Ishakisha ntiryakozwe"
+
+#: includes/arrays.php
+msgid "OK"
+msgstr "Emeza"
+
+#: includes/arrays.php
+msgid "Error/failed"
+msgstr "Ikosa/byanze"
+
+#: includes/arrays.php
+msgid "[None]"
+msgstr "[Nta na kimwe]"
+
+#: includes/arrays.php
+msgid "MD5"
+msgstr "MD5"
+
+#: includes/arrays.php
+msgid "SHA"
+msgstr "SHA"
+
+#: includes/arrays.php
+msgid "SHA-224"
+msgstr "SHA-224"
+
+#: includes/arrays.php
+msgid "SHA-256"
+msgstr "SHA-256"
+
+#: includes/arrays.php
+msgid "SHA-392"
+msgstr "SHA-392"
+
+#: includes/arrays.php
+msgid "SHA-512"
+msgstr "SHA-512"
+
+#: includes/arrays.php
+msgid "DES"
+msgstr "DES"
+
+#: includes/arrays.php
+msgid "AES"
+msgstr "AES"
+
+#: includes/arrays.php
+msgid "AES-128"
+msgstr "AES-128"
+
+#: includes/arrays.php
+msgid "AES-192"
+msgstr "AES-192"
+
+#: includes/arrays.php
+msgid "AES-192-C"
+msgstr "AES-192-C"
+
+#: includes/arrays.php
+msgid "AES-256"
+msgstr "AES-256"
+
+#: includes/arrays.php
+msgid "AES-256-C"
+msgstr "AES-256-C"
+
+#: includes/arrays.php
+msgid "Unable to Connect"
+msgstr "Ntibishoboka Kwihuza"
+
+#: includes/arrays.php includes/functions.php servcheck_ca.php
+#: servcheck_proxy.php
+msgid "Continue"
+msgstr "Komeza"
+
+#: includes/arrays.php
+msgid "Switching Protocols"
+msgstr "Porotokole za Switching"
+
+#: includes/arrays.php
+msgid "Created"
+msgstr "Cyaremwe"
+
+#: includes/arrays.php
+msgid "Accepted"
+msgstr "Byemewe"
+
+#: includes/arrays.php
+msgid "Non-Authoritative Information"
+msgstr "Amakuru atari ay'ububasha bwemewe"
+
+#: includes/arrays.php
+msgid "No Content"
+msgstr "Nta Birimo"
+
+#: includes/arrays.php
+msgid "Reset Content"
+msgstr "Subiza ibirimo ku ntangiriro"
+
+#: includes/arrays.php
+msgid "Partial Content"
+msgstr "Igice cy'ibirimo"
+
+#: includes/arrays.php
+msgid "Multiple Choices"
+msgstr "Amahitamo menshi"
+
+#: includes/arrays.php
+msgid "Moved Permanently"
+msgstr "Cyimuwe burundu"
+
+#: includes/arrays.php
+msgid "Found"
+msgstr "Byabonetse"
+
+#: includes/arrays.php
+msgid "See Other"
+msgstr "Reba Ikindi"
+
+#: includes/arrays.php
+msgid "Not Modified"
+msgstr "Ntibyahinduwe"
+
+#: includes/arrays.php
+msgid "Use Proxy"
+msgstr "Koresha Proxy"
+
+#: includes/arrays.php
+msgid "(Unused)"
+msgstr "(Bitakoreshejwe)"
+
+#: includes/arrays.php
+msgid "Temporary Redirect"
+msgstr "Ihinduranya ry'agateganyo"
+
+#: includes/arrays.php
+msgid "Bad Request"
+msgstr "Icyifuzo kitameze neza"
+
+#: includes/arrays.php
+msgid "Unauthorized"
+msgstr "Nta burenganzira ufite"
+
+#: includes/arrays.php
+msgid "Payment Required"
+msgstr "Kwishyura Birakenewe"
+
+#: includes/arrays.php
+msgid "Forbidden"
+msgstr "Birabujijwe"
+
+#: includes/arrays.php
+msgid "Not Found"
+msgstr "Ntibyabonetse"
+
+#: includes/arrays.php
+msgid "Method Not Allowed"
+msgstr "Uburyo butemewe"
+
+#: includes/arrays.php
+msgid "Not Acceptable"
+msgstr "Ntibyemerwa kwakirwa"
+
+#: includes/arrays.php
+msgid "Proxy Authentication Required"
+msgstr "Kwemeza umwirondoro wa Proxy birakenewe"
+
+#: includes/arrays.php
+msgid "Request Timeout"
+msgstr "Igihe cy'icyifuzo cyarenze"
+
+#: includes/arrays.php
+msgid "Conflict"
+msgstr "Ukugongana"
+
+#: includes/arrays.php
+msgid "Gone"
+msgstr "Ntibikiboneka"
+
+#: includes/arrays.php
+msgid "Length Required"
+msgstr "Uburebure burakenewe"
+
+#: includes/arrays.php
+msgid "Precondition Failed"
+msgstr "Ibisabwa mbere ntibyujujwe"
+
+#: includes/arrays.php
+msgid "Request Entity Too Large"
+msgstr "Ikigize icyifuzo ni kinini cyane"
+
+#: includes/arrays.php
+msgid "Request-URI Too Long"
+msgstr "URI y'icyifuzo ni ndende cyane"
+
+#: includes/arrays.php
+msgid "Unsupported Media Type"
+msgstr "Ubwoko bw'Itangazamakuru Budashyigikiwe"
+
+#: includes/arrays.php
+msgid "Requested Range Not Satisfiable"
+msgstr "Igice cyasabwe ntigishoboka kuboneka"
+
+#: includes/arrays.php
+msgid "Expectation Failed"
+msgstr "Ibyari byitezwe byanze"
+
+#: includes/arrays.php
+msgid "Internal Server Error"
+msgstr "Ikosa ry'imbere rya seriveri"
+
+#: includes/arrays.php
+msgid "Not Implemented"
+msgstr "Ntibishyizwe mu bikorwa"
+
+#: includes/arrays.php
+msgid "Bad Gateway"
+msgstr "Umuyoboro utameze neza"
+
+#: includes/arrays.php
+msgid "Service Unavailable"
+msgstr "Serivisi ntiboneka"
+
+#: includes/arrays.php
+msgid "Gateway Timeout"
+msgstr "Igihe cy'irembo cyarenze"
+
+#: includes/arrays.php
+msgid "HTTP Version Not Supported"
+msgstr "Verisiyo ya HTTP ntiyemewe"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Poller run"
+msgstr "Igikorwa %d cy'ikusanyamakuru"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Poller runs"
+msgstr "Ibikorwa %d by'ikusanyamakuru"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Seconds"
+msgstr "Amasegonda %d"
+
+#: includes/arrays.php
+msgid "Auth in HTTP headers"
+msgstr "Iyemeza mu mitwe ya HTTP"
+
+#: includes/arrays.php
+msgid "Custom HTTP header"
+msgstr "Umutwe wihariye wa HTTP"
+
+#: includes/arrays.php
+msgid "POST method, form-urlencoded"
+msgstr "Uburyo bwa POST, bwanditswe nka form-urlencoded"
+
+#: includes/arrays.php
+msgid "POST method, JSON encoded"
+msgstr "Uburyo bwa POST, bwanditswe muri JSON"
+
+#: includes/arrays.php
+msgid "JSON encoded"
+msgstr "Byahinduwe muri JSON"
+
+#: includes/arrays.php
+msgid "Form urlencoded"
+msgstr "Ifishi iri muri urlencoded"
+
+#: includes/arrays.php servcheck_ca.php servcheck_credential.php
+#: servcheck_proxy.php servcheck_test.php
+msgid "Name"
+msgstr "Izina"
+
+#: includes/arrays.php
+msgid "A Useful Name for this CA chain."
+msgstr "Izina ry'ingirakamaro ry'uru ruhererekane rwa CA."
+
+#: includes/arrays.php
+msgid "New CA"
+msgstr "CA Nshya"
+
+#: includes/arrays.php
+msgid "CA Chain"
+msgstr "Uruhererekane rwa CA"
+
+#: includes/arrays.php
+msgid "CA and intermediate certs, PEM encoded"
+msgstr "Impamyabushobozi za CA n'izo hagati, zishyizwe mu buryo bwa PEM"
+
+#: includes/arrays.php
+msgid "A Useful Name for this Proxy."
+msgstr "Izina ry'ingirakamaro ry'iyi Proxy."
+
+#: includes/arrays.php
+msgid "New Proxy"
+msgstr "Proxy Nshya"
+
+#: includes/arrays.php servcheck_proxy.php
+msgid "Hostname"
+msgstr "Izina ku muyoboro"
+
+#: includes/arrays.php
+msgid "The Proxy Hostname."
+msgstr "Izina rya Mwakirizi wa Proxy."
+
+#: includes/arrays.php
+msgid "HTTP Port"
+msgstr "Umuyoboro wa HTTP"
+
+#: includes/arrays.php
+msgid "The HTTP Proxy Port."
+msgstr "Icyambu cya Proxy ya HTTP."
+
+#: includes/arrays.php
+msgid "HTTPS Port"
+msgstr "Umuyoboro wa HTTPS"
+
+#: includes/arrays.php
+msgid "The HTTPS Proxy Port."
+msgstr "Icyambu cya Proxy ya HTTPS."
+
+#: includes/arrays.php
+msgid "Select correct credential or left empty."
+msgstr "Hitamo icyangombwa cyo kwinjira gikwiye cyangwa ureke harimo ubusa."
+
+#: includes/arrays.php servcheck_test.php
+msgid "None"
+msgstr "Nta na kimwe"
+
+#: includes/arrays.php
+msgid "General Settings"
+msgstr "Igenamiterere rusange"
+
+#: includes/arrays.php
+msgid "Service Check Name"
+msgstr "Izina ry'igenzura rya serivisi"
+
+#: includes/arrays.php
+msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
+msgstr "Izina ryerekanwa kuri iri Genzura rya Serivisi, kandi rishyirwa mu mamenyesha yose y'Impuruza."
+
+#: includes/arrays.php
+msgid "How many attempts"
+msgstr "Umubare w'ingerageza"
+
+#: includes/arrays.php
+msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
+msgstr "Cacti igerageza gukora buri suzuma inshuro nyinshi. Igerageza rya mbere rigeze ku ntego rirangiza isuzuma rikandika ko byagenze neza. Niba nta gerageza na rimwe rigeze ku ntego, isuzuma rirahagarikwa kandi hakandikwa ko byanze. Umubare munini utera igihe kirekire cy'isuzuma."
+
+#: includes/arrays.php
+msgid "Enable test"
+msgstr "Fungura isuzuma"
+
+#: includes/arrays.php
+msgid "Uncheck this box to disable this test from being checked."
+msgstr "Kura akamenyetso muri aka gasanduku kugira ngo uhagarike isuzumwa ry'iki gipimo."
+
+#: includes/arrays.php
+msgid "Enable run script for this test"
+msgstr "Fungura gukoresha script kuri iri suzuma"
+
+#: includes/arrays.php
+msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
+msgstr "Niba igikorwa rusange cyo Gukoresha Amategeko cyafunguwe, ushobora gushyiraho hano niba script igomba gukoreshwa kuri iri gerageza cyangwa itagomba gukoreshwa."
+
+#: includes/arrays.php
+msgid "Poller"
+msgstr "Ikusanyamakuru"
+
+#: includes/arrays.php
+msgid "Poller on which the test will run"
+msgstr "Ikusanyamakuru isuzuma rizakorerwaho"
+
+#: includes/arrays.php
+msgid "Type of service"
+msgstr "Ubwoko bwa serivisi"
+
+#: includes/arrays.php
+msgid "What type of service?"
+msgstr "Ni ubuhe bwoko bwa serivisi?"
+
+#: includes/arrays.php
+msgid "IP Address or DNS name of server"
+msgstr "Aderesi ya IP cyangwa izina rya DNS rya seriveri"
+
+#: includes/arrays.php
+msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
+msgstr "Ushobora kugaragaza indi port (example.com:5000) bitabaye ibyo hakazajya hakoreshwa isanzwe. Kuri aderesi y'imibare ya IPv6 koresha [ip:ad:dr:es:fo:rma:at]. Kuri DOH (DNS over HTTPS) koresha hano izina rya seriveri (urugero 10.10.10.10, cloudflare-dns.com, ..)"
+
+#: includes/arrays.php
+msgid "Resolve DNS to Address"
+msgstr "Hindura DNS muri Aderesi"
+
+#: includes/arrays.php
+msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
+msgstr "Andika aderesi ya IP kugira ngo uhatire izina rya DNS kuyerekezaho. Gusiga harimo ubusa bizakoresha ishakisha rya DNS aho kubikora."
+
+#: includes/arrays.php
+msgid "Service settings"
+msgstr "Amagenamiterere ya serivisi"
+
+#: includes/arrays.php
+msgid "Select correct credential"
+msgstr "Hitamo icyangombwa cyo kwinjira gikwiye"
+
+#: includes/arrays.php
+msgid "SNMP OID"
+msgstr "SNMP OID"
+
+#: includes/arrays.php
+msgid "Insert SNMP OID"
+msgstr "Shyiramo SNMP OID"
+
+#: includes/arrays.php
+msgid "SSH command"
+msgstr "Itegeko rya SSH"
+
+#: includes/arrays.php
+msgid "Insert SSH command with full path, result of command will be returned"
+msgstr "Shyiramo itegeko rya SSH hamwe n'inzira yuzuye, igisubizo cy'itegeko kizagarurwa"
+
+#: includes/arrays.php
+msgid "Your own CA and intermediate certs"
+msgstr "Impamyabushobozi zawe bwite za CA n'izo hagati"
+
+#: includes/arrays.php
+msgid "LDAP Search"
+msgstr "Ishakisha rya LDAP"
+
+#: includes/arrays.php
+msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
+msgstr "Akayunguruzo k'ishakisha rya LDAP, gashobora kuba ,OU=anygroup,DC=example,DC=com"
+
+#: includes/arrays.php
+msgid "DNS Name for Query"
+msgstr "Izina rya DNS ry'ibaza"
+
+#: includes/arrays.php
+msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
+msgstr "Izina rya DNS ryo kubaza. Kuri DOH (DNS kuri HTTPS) koresha /resolve?name=example.com cyangwa /dns-query?name=example.com&type=A. Kuri DNS y'inyandiko isanzwe hazasubizwa inyandiko za A na AAAA"
+
+#: includes/arrays.php
+msgid "Path Part of URL"
+msgstr "Igice cy'inzira cya URL"
+
+#: includes/arrays.php
+msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
+msgstr "Kuri serivisi y'urubuga shyiramo byibuze \"/\" cyangwa ikintu nka \"/inzira/yose/\"."
+
+#: includes/arrays.php
+msgid "Requires Authentication"
+msgstr "Bisaba kwemeza umwirondoro"
+
+#: includes/arrays.php
+msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
+msgstr "Hitamo aka gasanduku niba Ahantu ubusanzwe hazana ikosa rya 401 kuko hasaba izina ry'ukoresha n'ijambobanga."
+
+#: includes/arrays.php
+msgid "Proxy Server"
+msgstr "Seriveri y'umuhuza"
+
+#: includes/arrays.php
+msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
+msgstr "Niba iyi nyandiko yo kwihuza isaba proxy, yihitemo hano. Bitabaye ibyo hitamo 'Nta na kimwe'."
+
+#: includes/arrays.php
+msgid "Check Certificate"
+msgstr "Genzura icyemezo cy'umutekano"
+
+#: includes/arrays.php
+msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
+msgstr "Niba ukoresha SSL, shyira akamenyetso muri aka gasanduku niba ushaka kwemeza icyemezo. Mu buryo busanzwe birafunguye, bihagarike niba urubuga rukoresha icyemezo cyishyiriweho umukono."
+
+#: includes/arrays.php
+msgid "Check and notify Certificate expiration"
+msgstr "Genzura kandi umeneshe igihe icyemezo cy'umutekano kirangiriye"
+
+#: includes/arrays.php
+msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
+msgstr "Niba ukoresha SSL, shyira akamenyetso muri aka gasanduku niba ushaka kugenzura irangira ry'icyemezo. Ushobora gushyira mu magenamiterere umubare w'iminsi mbere y'uko rirangira ngo umenyeshwe.."
+
+#: includes/arrays.php
+msgid "Parameters"
+msgstr "Ibipimo ngenderwaho"
+
+#: includes/arrays.php
+msgid "How Often to Test"
+msgstr "Inshuro zo Kugenzura"
+
+#: includes/arrays.php
+msgid "Test every xth poller run"
+msgstr "Gerageza kuri buri nshuro ya x y'ikusanyamakuru"
+
+#: includes/arrays.php
+msgid "Trigger"
+msgstr "Imbarutso"
+
+#: includes/arrays.php
+msgid "How many times the service must be DOWN before an alert email is triggered."
+msgstr "Ni inshuro zingahe serivisi igomba kuba YAHAGAZE mbere y'uko imeyili y'impuruza yoherezwa."
+
+#: includes/arrays.php
+msgid "Long duration alert"
+msgstr "Impuruza y'igihe kirekire"
+
+#: includes/arrays.php
+msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
+msgstr "Niba igihe cy'igerageza kiruta aka gaciro inshuro nyinshi zikurikirana, ohereza imenyesha. Bifitanye isano n'igihindagurika cy'umubare w'Igihe. Igerageza rifata igihe ntarengwa cyo gukora kivuye mu magenamiterere. Niba hashyizweho agaciro karuta hano, igihe ntarengwa cyo gukora ni aka gaciro + amasegonda 2."
+
+#: includes/arrays.php
+msgid "Number of duration violations in a row"
+msgstr "Umubare w'inshuro zikurikirana zarengeje igihe"
+
+#: includes/arrays.php
+msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
+msgstr "Ni inshuro zingahe igipimo cy'igihe kigomba kurengwa zikurikiranya kugira ngo imenyesha ryoherezwe"
+
+#: includes/arrays.php
+msgid "Verification Strings"
+msgstr "Imirongo y'inyuguti yo kugenzura"
+
+#: includes/arrays.php
+msgid "Response Search String"
+msgstr "Ijambo rishakishwa mu gisubizo"
+
+#: includes/arrays.php
+msgid "This is the string to search for in the response for a live and working service."
+msgstr "Iyi ni inyandiko yo gushakisha mu gisubizo kuri serivisi iriho kandi ikora."
+
+#: includes/arrays.php
+msgid "Response Search String - Maintenance"
+msgstr "Ijambo rishakishwa mu gisubizo - Imirimo y'isana"
+
+#: includes/arrays.php
+msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
+msgstr "Iyi ni inyandiko yo gushakisha ku Rubuga rw'Isana.  Igenzura rya Serivisi rizashakisha iyi nyandiko niba inyandiko iri hejuru itabonetse.  Niba ibonetse, bisobanura ko serivisi iri mu isana."
+
+#: includes/arrays.php
+msgid "Response Search String - Failed"
+msgstr "Ijambo rishakishwa mu gisubizo - Byanze"
+
+#: includes/arrays.php
+msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
+msgstr "Iyi ni inyandiko yo gushakisha ikibazo kizwi mu gisubizo cya serivisi.  Igenzura rya Serivisi rizamenyesha gusa niba iyi nyandiko ibonetse, ryirengagiza ibibazo byo kurenza igihe n'inyandiko zo gushakisha ziri hejuru."
+
+#: includes/arrays.php
+msgid "Notification Settings"
+msgstr "Igenamiterere ry'imenyesha"
+
+#: includes/arrays.php
+msgid "Email notification"
+msgstr "Imenyesha rya Imeyili"
+
+#: includes/arrays.php
+msgid "If enabled email notification about state, duration and search result will be send"
+msgstr "Niba byafunguwe, imenyesha rya Imeyili rijyanye n'imiterere, igihe bimara n'ibisubizo by'ishakisha rizoherezwa"
+
+#: includes/arrays.php
+msgid "Notify Format"
+msgstr "Imiterere y'imenyesha"
+
+#: includes/arrays.php
+msgid "This is the format to use when sending the notification email"
+msgstr "Iyi ni imiterere yo gukoresha igihe wohereza imeyili y'imenyekanisha"
+
+#: includes/arrays.php
+msgid "Notification List"
+msgstr "Urutonde rw'abamenyeshwa"
+
+#: includes/arrays.php
+msgid "Use this Notification List for those to be notified when this service goes down."
+msgstr "Koresha uru rutonde rw'imenyesha ku bagomba kumenyeshwa igihe iyi serivisi ihagaze."
+
+#: includes/arrays.php
+msgid "Notify Accounts"
+msgstr "Konti zo kumenyesha"
+
+#: includes/arrays.php
+msgid "This is a listing of accounts that will be notified when this service goes down."
+msgstr "Uru ni urutonde rwa konti zizamenyeshwa igihe iyi serivisi ihagaze."
+
+#: includes/arrays.php
+msgid "Extra Alert Emails"
+msgstr "Imeyili z'inyongera z'intabaza"
+
+#: includes/arrays.php
+msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
+msgstr "Ushobora kugaragaza hano izindi Imeyili zakira impuruza z'iri suzuma (zitandukanyijwe n'akitso)"
+
+#: includes/arrays.php
+msgid "Notes"
+msgstr "Ibisobanuro"
+
+#: includes/arrays.php
+msgid "Notes sent in email"
+msgstr "Inyandiko zoherejwe kuri imeyili"
+
+#: includes/arrays.php
+msgid "External ID"
+msgstr "Indango yo hanze"
+
+#: includes/arrays.php
+msgid "Enter an External ID for this test."
+msgstr "Andika indangamimerere yo hanze kuri iri suzuma."
+
+#: includes/arrays.php
+msgid "Help"
+msgstr "Ubufasha"
+
+#: includes/arrays.php
+msgid "Credential Name"
+msgstr "Izina ry'umwirondoro wo kwinjira"
+
+#: includes/arrays.php
+msgid "The name that is displayed for this Credential."
+msgstr "Izina ryerekanwa kuri ibi Byemezo byo Kwinjira."
+
+#: includes/arrays.php
+msgid "Credential type"
+msgstr "Ubwoko bw'umwirondoro wo kwinjira"
+
+#: includes/arrays.php
+msgid "Select correct Credential type."
+msgstr "Hitamo ubwoko bukwiye bw'Ibyangombwa byo kwinjira."
+
+#: includes/arrays.php
+msgid "Options"
+msgstr "Amahitamo"
+
+#: includes/arrays.php
+msgid "Set according to your REST API server"
+msgstr "Gena ukurikije seriveri yawe ya REST API"
+
+#: includes/arrays.php
+msgid "Username"
+msgstr "Izina ry'ukoresha"
+
+#: includes/arrays.php
+msgid "Password"
+msgstr "Ijambobanga"
+
+#: includes/arrays.php
+msgid "For anonymous FTP insert email address"
+msgstr "Kuri FTP itazwi shyiramo aderesi ya imeyili"
+
+#: includes/arrays.php
+msgid "Login URL"
+msgstr "URL yo kwinjira"
+
+#: includes/arrays.php
+msgid "URL which is used to log in or get the token."
+msgstr "URL ikoreshwa mu kwinjira cyangwa kubona ikimenyetso (token)."
+
+#: includes/arrays.php
+msgid "Data URL"
+msgstr "URL y'amakuru"
+
+#: includes/arrays.php
+msgid "URL to retrieve data. Insert with http:// or https://"
+msgstr "URL yo gukuramo amakuru. Shyiramo http:// cyangwa https://"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2 community"
+msgstr "Umuryango wa SNMP v1 cyangwa v2"
+
+#: includes/arrays.php
+msgid "SNMP community string for SNMP v1 or v2(c)"
+msgstr "Ijambo ry'umuryango wa SNMP rya SNMP v1 cyangwa v2(c)"
+
+#: includes/arrays.php
+msgid "SNMP Security Level"
+msgstr "Urwego rw'umutekano wa SNMP"
+
+#: includes/arrays.php
+msgid "SNMP v3 Security Level to use when querying the device."
+msgstr "Urwego rw'umutekano wa SNMP v3 rukoreshwa mu kubaza igikoresho."
+
+#: includes/arrays.php
+msgid "SNMP Auth Protocol (v3)"
+msgstr "Porotokole yo kwemeza ya SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Authorization Protocol."
+msgstr "Hitamo porotokole yo gutanga uburenganzira ya SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Username (v3)"
+msgstr "Izina ry'ukoresha SNMP (v3)"
+
+#: includes/arrays.php
+msgid "SNMP v3 username for this device."
+msgstr "Izina ry'ukoresha SNMP v3 ry'iki gikoresho."
+
+#: includes/arrays.php
+msgid "SNMP Password (v3)"
+msgstr "Ijambobanga rya SNMP (v3)"
+
+#: includes/arrays.php
+msgid "SNMP v3 password for this device."
+msgstr "Ijambobanga rya SNMP v3 ry'iki gikoresho."
+
+#: includes/arrays.php
+msgid "SNMP Privacy Protocol (v3)"
+msgstr "Porotokole y'ibanga ya SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Privacy Protocol."
+msgstr "Hitamo porotokole y'ibanga ya SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Privacy Passphrase (v3)"
+msgstr "Interuro y'ibanga ya SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Privacy Passphrase."
+msgstr "Hitamo interuro y'ibanga ya SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Context (v3)"
+msgstr "Imiterere ya SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Enter the SNMP Context to use for this device."
+msgstr "Injiza imiterere ya SNMP ikoreshwa kuri iki gikoresho."
+
+#: includes/arrays.php
+msgid "SNMP Engine ID (v3)"
+msgstr "ID ya moteri ya SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Enter the SNMP v3 Engine Id or empty."
+msgstr "Andika SNMP v3 Engine Id cyangwa usige harimo ubusa."
+
+#: includes/arrays.php
+msgid "SSH user"
+msgstr "Ukoresha SSH"
+
+#: includes/arrays.php
+msgid "Insert username here"
+msgstr "Shyiramo izina ry'ukoresha hano"
+
+#: includes/arrays.php
+msgid "SSH private key"
+msgstr "Urufunguzo bwite rwa SSH"
+
+#: includes/arrays.php
+msgid "SSH private key "
+msgstr "Urufunguzo bwite rwa SSH "
+
+#: includes/arrays.php
+msgid "SSH private key passphrase"
+msgstr "Ijambobanga ry'urufunguzo bwite rwa SSH"
+
+#: includes/arrays.php
+msgid "If your key is password protected, insert password here"
+msgstr "Niba urufunguzo rwawe rurinzwe n'Ijambobanga, shyiramo Ijambobanga hano"
+
+#: includes/arrays.php
+msgid "Client ID"
+msgstr "Indango y'umukiriya (Client ID)"
+
+#: includes/arrays.php
+msgid "Oauth Client ID"
+msgstr "ID ya Oauth Client"
+
+#: includes/arrays.php
+msgid "Client secret"
+msgstr "Ibanga ry'umukiliya"
+
+#: includes/arrays.php
+msgid "OAuth Client secret"
+msgstr "Ibanga rya OAuth Client"
+
+#: includes/arrays.php
+msgid "Token name"
+msgstr "Izina ry'ikimenyetso (Token)"
+
+#: includes/arrays.php
+msgid "Token value"
+msgstr "Agaciro k'ikimenyetso (Token)"
+
+#: includes/arrays.php
+msgid "<b>Can be used for a lot of service checks:</b><br/><i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/><i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/><i>LDAP, smb, smbs</i> - required<br/><i>MQTT</i> - optional<br/><i>SCP, SSH command</i> - you can use this method or private key method"
+msgstr "<b>Ishobora gukoreshwa mu igenzura ry'imikorere myinshi ya serivisi:</b><br/><i>Http/https</i> - si itegeko, iyo yashyizweho, gerageza kwemeza kw'ibanze kwa HTTP<br/><i>SMTP kuri port 587</i> - si itegeko. Iyo nta zina ry'ukoresha/ijambobanga bihari, hagenzurwa gusa igisubizo cya seriveri. Iyo hari izina ry'ukoresha n'ijambobanga, kwinjira na byo birakorwa<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - si itegeko. Kuri ftp itazwi nyirayo, koresha izina ry'ukoresha \"anonymous\" na aderesi y'imeyili nk'ijambobanga<br/><i>LDAP, smb, smbs</i> - birakenewe<br/><i>MQTT</i> - si itegeko<br/><i>SCP, itegeko rya SSH</i> - ushobora gukoresha ubu buryo cyangwa uburyo bw'urufunguzo bwite"
+
+#: includes/arrays.php
+msgid "Rest API - Basic HTTP auth. Username and password are required"
+msgstr "Rest API - Kwemeza kwa HTTP gusanzwe. Izina ry'ukoresha n'ijambobanga birakenewe"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue). For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). For POST <i>api_key</i> is usually used."
+msgstr "Rest API - Kwemeza ukoresheje urufunguzo rwa API<br/>Kwemeza koherezwa mu mutwe wa HTTP, umutwe wihariye cyangwa uburyo bwa POST. Ibiranga umwirondoro muri URL ntibyemewe.<br/>Shyiramo izina ry'urufunguzo rwa API n'agaciro karyo. Byombi birakenewe. Ku mutwe wa HTTP izina <i>Bearer cyangwa apikey cyangwa \"\"</i> rikunze gukoreshwa (Authorization: Bearer apivalue). Ku mutwe wihariye <i>X-API-Key</i> ikunze gukoreshwa (X-Api-Key: keyvalue). Kuri POST <i>api_key</i> ikunze gukoreshwa."
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded."
+msgstr "Rest API - Kwemeza ukoresheje ikimenyetso cya OAuth2/Bearer<br/>Ushobora kugira urufunguzo/ikimenyetso kivuye kuri seriveri ukacyinjiza hano cyangwa ugakoresha inzira yo kwemeza hamwe n'ibyangombwa by'umwirondoro. Izina ry'ukoresha n'ijambobanga byoherezwa byahinduwe mu buryo bwa Json."
+
+#: includes/arrays.php
+msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
+msgstr "Rest API - Kwemeza gushingiye kuri Cookie - indangagaciro zombi zirakenewe. Nyuma yo kwinjira, cookie iragarurwa"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2 - required, insert community name here"
+msgstr "SNMP v1 cyangwa v2 - birakenewe, shyiramo izina ry'umuryango hano"
+
+#: includes/arrays.php
+msgid "SNMP v3 - The security level determines which parameters are required"
+msgstr "SNMP v3 - Urwego rw'umutekano rugena ibisabwa bikenewe"
+
+#: includes/arrays.php
+msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
+msgstr "Urufunguzo bwite rwa SSH - Rushobora gukoreshwa mu igerageza rya SCP cyangwa ry'itegeko rya SSH. Iri gerageza rishobora kandi gukoresha izina ry'ukoresha/ijambobanga"
+
+#: includes/arrays.php
+msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
+msgstr "Igenzura gusa niba seriveri y'urubuga isubiza. Niba hakoreshejwe izina ry'ukoresha/ijambobanga, izagerageza kwemeza umwirondoro kwa Basic HTTP."
+
+#: includes/arrays.php
+msgid "The same as HTTP plaintext but adds the ability to test certificates."
+msgstr "Ni kimwe na HTTP itabitswe mu ibanga ariko bikongeraho ubushobozi bwo kugerageza impamyabushobozi."
+
+#: includes/arrays.php
+msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
+msgstr "Igenzura gusa niba seriveri ya SMTP isubiza. Nta kwemeza umwirondoro. Uzabona itangazo ryo kwinjira rya seriveri n'igisubizo cya ehlo."
+
+#: includes/arrays.php
+msgid "Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, you will see server login banner and ehlo response. With credential, login will be performed"
+msgstr "Idafite umutekano w'ibanga + STARTTLS. Birashoboka kandi gusuzuma ko icyemezo kigifite agaciro. Nta zina ry'ukoresha n'ijambobanga, uzabona ubutumwa bwo kwinjira bwa seriveri n'igisubizo cya ehlo. Ukoresheje ibyangombwa byo kwinjira, kwinjira bizakorwa"
+
+#: includes/arrays.php
+msgid "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password AUTH LOGIN will be tested."
+msgstr "Umuhuza ushyizwe mu ibanga ku muryango usanzwe wa 465. Birashoboka kandi gusuzuma ko impamyabushobozi y'umutekano igifite agaciro. Hamwe n'izina ry'ukoresha n'ijambobanga, AUTH LOGIN izasuzumwa."
+
+#: includes/arrays.php
+msgid "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgstr "Umuhuzanzira wa IMAP udafite umutekano w'ibanga. Nta byangombwa byo kwinjira, umuhuzanzira gusa ni wo uzasuzumwa. Uzabona gusa ubutumwa bwo kwinjira. Ukoresheje ibyangombwa byo kwinjira, kwinjira bizasuzumwa kandi bigerageze gusoma urutonde rw'ubutumwa. Ushobora gukoresha uburyo bwa AUTHENTICATE PLAIN cyangwa AUTHENTICATE LOGIN."
+
+#: includes/arrays.php
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Ni kimwe na IMAP idasobanuye mu ibanga ariko nyuma yo kwinjira hakoreshwa STARTTLS. Birashoboka kandi kugerageza ukuri kw'impamyabushobozi nyuma ya STARTTLS."
+
+#: includes/arrays.php
+msgid "Encrypted IMAP, you can try login and test certificate and user login"
+msgstr "IMAP yashyizwe mu ibanga, ushobora kugerageza kwinjira no gusuzuma impamyabushobozi y'umutekano n'iyinjira ry'ukoresha"
+
+#: includes/arrays.php
+msgid "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages"
+msgstr "Umuhuzanzira wa POP3 udafite umutekano w'ibanga. Nta byangombwa byo kwinjira, umuhuzanzira gusa ni wo uzasuzumwa. Uzabona gusa ubutumwa bwo kwinjira. Ukoresheje ibyangombwa byo kwinjira, kwinjira bizasuzumwa kandi bigerageze gusoma urutonde rw'ubutumwa"
+
+#: includes/arrays.php
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Ni kimwe na POP3 idasobanuye mu ibanga ariko nyuma yo kwinjira hakoreshwa STARTTLS. Birashoboka kandi kugerageza ukuri kw'impamyabushobozi nyuma ya STARTTLS."
+
+#: includes/arrays.php
+msgid "Encrypted POP3, you can try login and test certificate and user login."
+msgstr "POP3 yashyizwe mu ibanga, ushobora kugerageza kwinjira no gusuzuma impamyabushobozi y'umutekano n'iyinjira ry'ukoresha."
+
+#: includes/arrays.php
+msgid "Try to resolve DNS record on specified DNS server"
+msgstr "Gerageza gushakisha amakuru ya DNS kuri seriveri ya DNS yatanzwe"
+
+#: includes/arrays.php
+msgid "Try DNS over HTTPS."
+msgstr "Gerageza DNS ukoresheje HTTPS."
+
+#: includes/arrays.php
+msgid "All parameters are required. Perform unencrypted LDAP login and search"
+msgstr "Ibipimo byose birakenewe. Kora kwinjira kutabitswe mu ibanga no gushakisha muri LDAP"
+
+#: includes/arrays.php
+msgid "All parameters are required. Perform encrypted LDAP login and search"
+msgstr "Ibipimo byose birakenewe. Kora kwinjira gushyinguye mu ibanga no gushakisha muri LDAP"
+
+#: includes/arrays.php
+msgid "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content of the file is returned."
+msgstr "Umuhuzanzira wa FTP udafite umutekano w'ibanga, injira maze ugerageze gukurura dosiye yerekanywe mu nzira (/path/to/file.txt). Ku muhuzanzira utazwi koresha izina ryo kwinjira *anonymous* na aderesi ya imeyili nk'ijambobanga. Ibirimo muri dosiye birasubizwa."
+
+#: includes/arrays.php
+msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
+msgstr "Gerageza gukuramo dosiye yatanzwe mu nzira (/path/to/file.txt) kuri seriveri ya TFTP. Ibikubiye muri iyo dosiye biragarurwa."
+
+#: includes/arrays.php
+msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
+msgstr "Umuhuza wa SCP ushyizwe mu ibanga, injira kandi ugerageze gukurura dosiye yatanzwe mu nzira (/path/to/file.txt)."
+
+#: includes/arrays.php
+msgid "Try SMB protocol, username and password are required. Try to login and download file."
+msgstr "Gerageza porotokole ya SMB, izina ry'ukoresha n'ijambobanga birakenewe. Gerageza kwinjira no gukuramo dosiye."
+
+#: includes/arrays.php
+msgid "Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\""
+msgstr "Huza na seriveri ya MQTT hanyuma utege amatwi ubutumwa ubwo ari bwo bwose. Ushobora kugaragaza ingingo muri Inzira (bedroom/temp), cyangwa ugasiga harimo ubusa ku ngingo iyo ari yo yose. Kuri iri suzuma birasabwa kongera \"Iburira ry'igihe kirekire\""
+
+#: includes/arrays.php
+msgid "REST API test with basic HTTP auth. Prepare credential first."
+msgstr "Igerageza rya REST API hakoreshejwe kwemeza kw'ibanze kwa HTTP. Banza utegure ibyangombwa byo kwinjira."
+
+#: includes/arrays.php
+msgid "REST API test with API key auth. Prepare credential first."
+msgstr "Igerageza rya REST API hakoreshejwe kwemeza kwa urufunguzo rwa API. Banza utegure ibyangombwa byo kwinjira."
+
+#: includes/arrays.php
+msgid "REST API test with Oauth2. Prepare credential first."
+msgstr "Igerageza rya REST API hakoreshejwe Oauth2. Banza utegure ibyangombwa byo kwinjira."
+
+#: includes/arrays.php
+msgid "REST API test with cookie auth. Prepare credential first."
+msgstr "Igerageza rya REST API hakoreshejwe kwemeza kwa cookie. Banza utegure ibyangombwa byo kwinjira."
+
+#: includes/arrays.php
+msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
+msgstr "Gerageza uburyo bwa SNMP get. Ibisohoka kuri OID yatanzwe biragarurwa. Ibyangombwa byo kwinjira birakenewe, ugomba kubanza gutegura ibyangombwa bya SNMP v.1,2 cyangwa v3."
+
+#: includes/arrays.php
+msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
+msgstr "Gerageza uburyo bwa SNMP walk. Ibisohoka kuri OID yatanzwe biragarurwa. Ibyangombwa byo kwinjira birakenewe, ugomba kubanza gutegura ibyangombwa bya SNMP v.1,2 cyangwa v3."
+
+#: includes/arrays.php
+msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
+msgstr "Koresha ssh maze wiyunge kuri mwakirizi iri kure. Nyuma yo kwinjira, koresha itegeko ryatanzwe maze ugarure ibisubizo. Izina ry'ukoresha n'ijambobanga cyangwa urufunguzo rw'ibanga birashoboka."
+
+#: includes/arrays.php
+msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
+msgstr "Porotokole ya SFTP ku cyambu 22, izina ry'ukoresha n'ijambobanga n'inzira birakenewe. Gerageza gukora urutonde rw'ububiko bw'inzira."
+
+#: includes/arrays.php
+msgid "All fine. Proceed as usual."
+msgstr "Byose bimeze neza. Komeza nk'uko bisanzwe."
+
+#: includes/arrays.php
+msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
+msgstr "URL wahaye libcurl yakoresheje porotokole iyi libcurl idashyigikiye. Ubushobozi bushobora kuba ari ihitamo ryo mu gihe cyo gukoranya porogaramu utigeze ukoresha, bishobora kuba ari porotokole yanditse nabi cyangwa gusa porotokole libcurl itagirira kode."
+
+#: includes/arrays.php
+msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
+msgstr "Kode yo gutangira kare yanze. Ibi bishobora kuba ari ikosa ry'imbere cyangwa ikibazo, cyangwa ikibazo cy'ibikoresho aho ikintu cy'ibanze kitashoboye gukorwa mu gihe cyo gutangira."
+
+#: includes/arrays.php
+msgid "The URL was not properly formatted."
+msgstr "URL ntiyari yanditse mu buryo bukwiye."
+
+#: includes/arrays.php
+msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
+msgstr "Igikorwa, uburyo bw'itumanaho cyangwa ihitamo ryasabwe ntibyabonetse muri iyi libcurl bitewe n'icyemezo cyafashwe igihe yubakwaga. Ibi bisobanura ko igikorwa cyangwa ihitamo bitafunguwe cyangwa byahagaritswe ku bushake igihe libcurl yubakwaga kandi kugira ngo bikore ugomba kubona libcurl yongeye kubakwa."
+
+#: includes/arrays.php
+msgid "Could not resolve proxy. The given proxy host could not be resolved."
+msgstr "Ntibyashobotse kubona proxy. Mwakirizi wa proxy watanzwe ntiyabonetse."
+
+#: includes/arrays.php
+msgid "Could not resolve host. The given remote host was not resolved."
+msgstr "Ntibyashobotse kubona mwakirizi. Mwakirizi wa kure watanzwe ntiyabonetse."
+
+#: includes/arrays.php
+msgid "Failed to connect() to host or proxy."
+msgstr "Kwihuza connect() na mwakirizi cyangwa proxy byanze."
+
+#: includes/arrays.php
+msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
+msgstr "Seriveri yohereje amakuru libcurl itashoboye gusesengura. Iyi kode y'ikosa yari izwi nka CURLE_FTP_WEIRD_SERVER_REPLY mbere ya 7.51.0."
+
+#: includes/arrays.php
+msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
+msgstr "Twimwe uburenganzira bwo kugera ku mutungo watanzwe muri URL. Kuri FTP, ibi bibaho iyo ugerageza guhindura ububiko bwa kure."
+
+#: includes/arrays.php
+msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
+msgstr "Mu gihe hategerejwe ko seriveri yongera kwihuza iyo igikorwa gikora cya FTP gikoreshejwe, kode y'ikosa yoherejwe ku muyoboro w'igenzura cyangwa ibimeze nk'ibyo."
+
+#: includes/arrays.php
+msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
+msgstr "Nyuma yo kohereza ijambobanga rya FTP kuri seriveri, libcurl yiteze igisubizo gikwiye. Iyi kode y'ikosa igaragaza ko hagaruwe kode itari yitezwe."
+
+#: includes/arrays.php
+msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
+msgstr "Mu gihe cy'ikiganiro cya FTP kirimo gukora hategerejwe ko seriveri yihuza, igihe ntarengwa cya CURLOPT_ACCEPTTIMEOUT_MS (cyangwa icy'imbere fatizo) cyarangiye."
+
+#: includes/arrays.php
+msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
+msgstr "Libcurl yananiwe kubona igisubizo cyumvikana kivuye kuri seriveri nk'igisubizo ku itegeko rya PASV cyangwa rya EPSV. Seriveri ifite ikibazo."
+
+#: includes/arrays.php
+msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
+msgstr "Seriveri za FTP zisubiza umurongo wa 227 nk'igisubizo ku itegeko rya PASV. Iyo libcurl inanirwe gusesengura uwo murongo, iyi kode y'igisubizo irasubizwa."
+
+#: includes/arrays.php
+msgid "An internal failure to lookup the host used for the new connection."
+msgstr "Ikosa ry'imbere mu gushakisha mwakirizi wakoreshejwe ku ihuza rishya."
+
+#: includes/arrays.php
+msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr "Ikibazo cyagaragaye mu cyiciro cyo kubaka amapaki ya HTTP2. Ibi ni rusange kandi bishobora kuba kimwe mu bibazo byinshi, reba mu bubiko bw'amakosa ku bisobanuro birambuye."
+
+#: includes/arrays.php
+msgid "Received an error when trying to set the transfer mode to binary or ASCII."
+msgstr "Habonetse ikosa mu gihe cyo gushyiraho uburyo bw'iyohereza kuri binary cyangwa ASCII."
+
+#: includes/arrays.php
+msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
+msgstr "Iyoherezwa ry'idosiye ryabaye rigufi cyangwa rinini kurusha uko byari byitezwe. Ibi bibaho iyo seriveri ibanje gutangaza ingano y'iyoherezwa yitezwe, hanyuma igatanga amakuru adahuye n'ingano yari yatanzwe mbere."
+
+#: includes/arrays.php
+msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
+msgstr "Iki cyari igisubizo kidasanzwe ku itegeko rya 'RETR' cyangwa iyimura ryarangiye rifite bayiti zeru."
+
+#: includes/arrays.php
+msgid "Obsolete Error"
+msgstr "Ikosa ritagikoreshwa"
+
+#: includes/arrays.php
+msgid "Not used in modern versions."
+msgstr "Ntibikoreshwa muri verisiyo zigezweho."
+
+#: includes/arrays.php
+msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
+msgstr "Mu gihe hoherezwa amategeko yihariye ya \"QUOTE\" kuri seriveri ya kure, rimwe mu mategeko ryagaruye kode y'ikosa iri ku 400 cyangwa hejuru yayo (kuri FTP) cyangwa ryerekanye ko iryo tegeko ritarangiye neza."
+
+#: includes/arrays.php
+msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
+msgstr "Ibi bigarurwa niba CURLOPT_FAILONERROR yashyizwe kuri true kandi seriveri ya HTTP ikagarura kode y'ikosa iri >= 400."
+
+#: includes/arrays.php
+msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
+msgstr "Habaye ikosa mu gihe cyo kwandika amakuru yakiriwe muri dosiye y'imbere, cyangwa hasubijwe ikosa kuri libcurl rivuye muri callback yo kwandika."
+
+#: includes/arrays.php
+msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
+msgstr "Gutangira kohereza byanze. Kuri FTP, ubusanzwe seriveri yanze itegeko rya STOR. Ububiko bw'amakosa ubusanzwe buba burimo ibisobanuro bya seriveri kuri ibi."
+
+#: includes/arrays.php
+msgid "There was a problem reading a local file or an error returned by the read callback."
+msgstr "Habaye ikibazo mu gusoma dosiye y'imbere cyangwa ikosa ryagaruwe na callback yo gusoma."
+
+#: includes/arrays.php
+msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
+msgstr "Ubusabe bwo gutanga umwanya mu bubiko bw'imashini bwanze. Iri ni ikosa rikomeye cyane kandi ibintu biba byangiritse bikabije iyo ibi bibayeho."
+
+#: includes/arrays.php
+msgid "Operation timeout. The specified time-out period was reached according to the conditions."
+msgstr "Igihe cy'igikorwa cyarangiye. Igihe ntarengwa cyagenwe cyagezweho ukurikije ibisabwa."
+
+#: includes/arrays.php
+msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
+msgstr "Itegeko rya FTP PORT ryagaruye ikosa. Ibi akenshi biba iyo utatanze aderesi ihagije neza kuri libcurl ngo iyikoreshe. Reba CURLOPT_FTPPORT."
+
+#: includes/arrays.php
+msgid "The FTP REST command returned error. This should never happen if the server is sane."
+msgstr "Itegeko rya FTP REST ryagaruye ikosa. Ibi ntibyakabaye biba niba seriveri ikora neza."
+
+#: includes/arrays.php
+msgid "The server does not support or accept range requests."
+msgstr "Seriveri ntiyemera cyangwa ntiyakira ibyifuzo by'interuro y'ibice."
+
+#: includes/arrays.php
+msgid "This is an odd error that mainly occurs due to internal confusion."
+msgstr "Iri ni ikosa ridasanzwe rikunze kubaho kubera ukwivanga kw'imbere."
+
+#: includes/arrays.php
+msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
+msgstr "Ikibazo cyabereye ahantu runaka mu guhana amakuru kw'ibanze kwa SSL/TLS. Ugomba kureba mu bubiko bw'amakosa ugasoma ubutumwa burimo kuko bugaragaza neza kurushaho aho ikibazo kiri. Bishobora kuba ibyemezo (ubwoko bw'amadosiye, inzira, uburenganzira), amagambobanga, n'ibindi."
+
+#: includes/arrays.php
+msgid "The download could not be resumed because the specified offset was out of the file boundary."
+msgstr "Gukurura dosiye ntibyashoboye gukomeza kuko aho byatangiriye hagenwe harenze imbibi za dosiye."
+
+#: includes/arrays.php
+msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
+msgstr "Idosiye yatanzwe na FILE:// ntiyashoboye gufungurwa. Birashoboka cyane ko inzira y'idosiye itagaragaza idosiye iriho. Wigeze ugenzura uburenganzira bw'idosiye?"
+
+#: includes/arrays.php
+msgid "LDAP cannot bind. LDAP bind operation failed."
+msgstr "LDAP ntishobora kwihuza. Igikorwa cyo guhuza LDAP cyananiranye."
+
+#: includes/arrays.php
+msgid "LDAP search failed."
+msgstr "Ishakisha rya LDAP ryananiranye."
+
+#: includes/arrays.php
+msgid "Function not found. A required zlib function was not found."
+msgstr "Umumaro ntiwabonetse. Umumaro wa zlib ukenewe ntiwabonetse."
+
+#: includes/arrays.php
+msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
+msgstr "Byahagaritswe na callback. Callback yasubije \"abort\" kuri libcurl."
+
+#: includes/arrays.php
+msgid "A function was called with a bad parameter."
+msgstr "Imikorere yahamagawe hakoreshejwe igipimo kitari cyo."
+
+#: includes/arrays.php
+msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
+msgstr "Ikosa ry'impuza. Impuza isohoka yatanzwe ntiyashoboye gukoreshwa. Genamo impuza igomba gukoreshwa kuri aderesi ya IP y'inkomoko y'imiyoboro isohoka ukoresheje URLOPT_INTERFACE."
+
+#: includes/arrays.php
+msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
+msgstr "Koherezwa ku zindi paji kwinshi cyane. Mu gukurikira aho byoherezwa, libcurl yageze ku rugero ntarengwa. Shyiraho urugero rwawe ukoresheje CURLOPT_MAXREDIRS."
+
+#: includes/arrays.php
+msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
+msgstr "Ihitamo ryoherejwe kuri libcurl ntirizwi. Reba inyandiko zikwiye. Birashoboka ko ari ikibazo muri porogaramu ikoresha libcurl. Ububiko bw'ikosa bushobora kuba burimo amakuru arambuye ku ihitamo nyaryo bireba."
+
+#: includes/arrays.php
+msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
+msgstr "Ihitamo ryoherejwe muri setopt ryari ryanditswe nabi. Reba ubutumwa bw'ikosa kugira ngo umenye ibisobanuro ku ihitamo iryo ari ryo."
+
+#: includes/arrays.php
+msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
+msgstr "Nta kintu cyagarutse kivuye kuri seriveri, kandi muri ibi bihe, kutabona ikintu bifatwa nk'ikosa."
+
+#: includes/arrays.php
+msgid "The specified crypto engine was not found."
+msgstr "Moteri y'ibanga yavuzwe ntiyabonetse."
+
+#: includes/arrays.php
+msgid "Failed setting the selected SSL crypto engine as default."
+msgstr "Gushyira moteri ya SSL crypto yahiswemo nk'isanzwe byanze."
+
+#: includes/arrays.php
+msgid "Failed sending network data."
+msgstr "Kohereza amakuru y'urusobe byanze."
+
+#: includes/arrays.php
+msgid "Failure with receiving network data."
+msgstr "Ikibazo mu kwakira amakuru y'urusobe."
+
+#: includes/arrays.php
+msgid "problem with the local client certificate."
+msgstr "ikibazo ku cyemezo cy'umukiriya w'imbere."
+
+#: includes/arrays.php
+msgid "Could not use specified cipher."
+msgstr "Ntibyashobotse gukoresha uburyo bw'ibanga bwagenwe."
+
+#: includes/arrays.php
+msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
+msgstr "Impamyabushobozi ya SSL ya seriveri ya kure cyangwa ikimenyetso cya SSH byasanzwe bitameze neza. Iyi kode y'ikosa yahujwe na CURLE_SSL_CACERT guhera kuri 7.62.0. Agaciro kayo ka mbere kari 51."
+
+#: includes/arrays.php
+msgid "Unrecognized transfer encoding."
+msgstr "Imisobekere y'iyohereza itamenyekanye."
+
+#: includes/arrays.php
+msgid "Maximum file size exceeded."
+msgstr "Ingano ntarengwa ya dosiye yarenzwe."
+
+#: includes/arrays.php
+msgid "Requested FTP SSL level failed."
+msgstr "Urwego rwa FTP SSL rwasabwe rwananiwe."
+
+#: includes/arrays.php
+msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
+msgstr "Mu gihe cyo kohereza amakuru, curl yagombaga gusubiza amakuru inyuma ngo yongere iyohereze, ariko igikorwa cyo kuyasubiza inyuma cyananiranye."
+
+#: includes/arrays.php
+msgid "Initiating the SSL Engine failed."
+msgstr "Gutangiza moteri ya SSL byanze."
+
+#: includes/arrays.php
+msgid "The remote server denied curl to login (Added in 7.13.1)"
+msgstr "Seriveri ya kure yangiye curl kwinjira (Byongeweho muri 7.13.1)"
+
+#: includes/arrays.php
+msgid "File not found on TFTP server."
+msgstr "Dosiye ntiyabonetse kuri seriveri ya TFTP."
+
+#: includes/arrays.php
+msgid "Permission problem on TFTP server."
+msgstr "Ikibazo cy'uruhushya kuri seriveri ya TFTP."
+
+#: includes/arrays.php
+msgid "Out of disk space on the server."
+msgstr "Umwanya wo kuri disiki ya seriveri washize."
+
+#: includes/arrays.php
+msgid "Illegal TFTP operation."
+msgstr "Igikorwa cya TFTP kitemewe."
+
+#: includes/arrays.php
+msgid "Unknown TFTP transfer ID."
+msgstr "Indangamubare y'iyohereza rya TFTP itazwi."
+
+#: includes/arrays.php
+msgid "File already exists and is not overwritten."
+msgstr "Dosiye isanzwe ihari kandi ntiyasimbuwe."
+
+#: includes/arrays.php
+msgid "This error should never be returned by a properly functioning TFTP server."
+msgstr "Iri kosa ntirikwiye na rimwe kugarurwa na seriveri ya TFTP ikora neza."
+
+#: includes/arrays.php
+msgid "Problem with reading the SSL CA cert (path? access rights?)"
+msgstr "Ikibazo mu gusoma impamyabushobozi ya SSL CA (inzira? uburenganzira bwo kwinjira?)"
+
+#: includes/arrays.php
+msgid "The resource referenced in the URL does not exist."
+msgstr "Umutungo werekejweho muri URL ntubaho."
+
+#: includes/arrays.php
+msgid "An unspecified error occurred during the SSH session."
+msgstr "Habaye ikosa ritasobanuwe mu gihe cy'umukoro wa SSH."
+
+#: includes/arrays.php
+msgid "Failed to shut down the SSL connection."
+msgstr "Gufunga ihuzanzira rya SSL byanze."
+
+#: includes/arrays.php
+msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
+msgstr "Socket ntiyiteguye kohereza/kwakira, tegereza yitegure maze wongere ugerageze. Iyi kode yo gusubiza itangwa gusa na curl_easy_recv na curl_easy_send (Yongeweho muri 7.18.2)"
+
+#: includes/arrays.php
+msgid "Failed to load CRL file (Added in 7.19.0)"
+msgstr "Gupakira dosiye ya CRL byanze (Byongewe muri 7.19.0)"
+
+#: includes/arrays.php
+msgid "Issuer check failed (Added in 7.19.0)"
+msgstr "Igenzura ry'uwatanze icyemezo ryananiwe (Byongewe muri 7.19.0)"
+
+#: includes/arrays.php
+msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
+msgstr "Seriveri ya FTP ntiyumva na gato itegeko rya PRET cyangwa ntishyigikira impamvu yatanzwe. Itondere igihe ukoresha CURLOPT_CUSTOMREQUEST, itegeko ryihariye rya LIST ryoherezwa hamwe n'itegeko rya PRET mbere ya PASV na ryo. (Byongeweho muri 7.20.0)"
+
+#: includes/arrays.php
+msgid "Mismatch of RTSP CSeq numbers."
+msgstr "Kutajyana kw'imibare ya RTSP CSeq."
+
+#: includes/arrays.php
+msgid "Mismatch of RTSP Session Identifiers."
+msgstr "Kutajyana kw'ibirango by'icyiciro cya RTSP."
+
+#: includes/arrays.php
+msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
+msgstr "Ntibishoboka gusesengura urutonde rw'amadosiye ya FTP (mu gihe cyo gukurura hakoreshejwe utumenyetso tw'inyandiko kuri FTP)."
+
+#: includes/arrays.php
+msgid "Chunk callback reported error."
+msgstr "Isubizanyuma ry'igice ryagaragaje ikosa."
+
+#: includes/arrays.php
+msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
+msgstr "(Bikoreshwa imbere gusa, ntibitangwa na libcurl) Nta murongo uhari, igikorwa gishyizwe ku murongo wo gutegereza. (byongeweho muri 7.30.0)"
+
+#: includes/arrays.php
+msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
+msgstr "Guhuza urufunguzo rwometseho rwatanzwe na CURLOPT_PINNEDPUBLICKEY byanze."
+
+#: includes/arrays.php
+msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
+msgstr "Imiterere yagaragaje ko byanze ubwo yabazwaga na CURLOPT_SSL_VERIFYSTATUS."
+
+#: includes/arrays.php
+msgid "Stream error in the HTTP/2 framing layer."
+msgstr "Ikosa ry'umuyoboro w'amakuru mu rwego rwa HTTP/2."
+
+#: includes/arrays.php
+msgid "An API function was called from inside a callback."
+msgstr "Umukoro wa API wahamagawe imbere muri callback."
+
+#: includes/arrays.php
+msgid "An authentication function returned an error."
+msgstr "Umukoro wo kwemeza umwirondoro wasubije ikosa."
+
+#: includes/arrays.php
+msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr "Ikibazo cyagaragaye mu cyiciro cya HTTP/3. Ibi ni rusange kandi bishobora kuba kimwe mu bibazo byinshi, reba mu bubiko bw'amakosa ku bisobanuro birambuye."
+
+#: includes/arrays.php
+msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
+msgstr "Ikosa ryo guhuza na QUIC. Iri kosa rishobora guterwa n'ikosa rya libureri ya SSL. QUIC ni porotokole ikoreshwa mu kohereza amakuru ya HTTP/3."
+
+#: includes/arrays.php
+msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
+msgstr "Ikosa mu guhuza na Proxy. CURLINFO_PROXY_ERROR itanga ibisobanuro byisumbuyeho ku kibazo nyirizina."
+
+#: includes/arrays.php
+msgid "SSL Client Certificate required."
+msgstr "Icyemezo cy'umukiriya wa SSL kirakenewe."
+
+#: includes/arrays.php
+msgid "An internal call to poll() or select() returned error that is not recoverable."
+msgstr "Ihamagara ry'imbere rya poll() cyangwa select() ryasubije ikosa ridashobora gukosorwa."
+
+#: includes/functions.php
+msgid "Log History"
+msgstr "Amateka y'inyandiko z'ibikorwa"
+
+#: includes/functions.php
+msgid "Graphs"
+msgstr "Ibishushanyo"
+
+#: includes/functions.php
+msgid "No data"
+msgstr "Nta makuru"
+
+#: includes/functions.php servcheck_ca.php servcheck_proxy.php
+msgid "Cancel"
+msgstr "Hagarika"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Delete"
+msgstr "Siba"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
+msgstr[0] "Kanda 'Komeza' kugira ngo usibe ikintu gikurikira."
+msgstr[1] "Kanda 'Komeza' kugira ngo usibe ibintu bikurikira."
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Delete item"
+msgid_plural "Delete items"
+msgstr[0] "Siba ikintu"
+msgstr[1] "Siba ibintu"
+
+#: servcheck_ca.php
+#, php-format
+msgid "CA [edit: %s]"
+msgstr "CA [hindura: %s]"
+
+#: servcheck_ca.php
+msgid "CA [new]"
+msgstr "CA [nshya]"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+msgid "Used"
+msgstr "Byakoreshejwe"
+
+#: servcheck_ca.php
+msgid "CAs"
+msgstr "Ama-CA"
+
+#: servcheck_ca.php
+msgid "No Certificates Found"
+msgstr "Nta Mpamyabushobozi Zabonetse"
+
+#: servcheck_ca.php
+msgid "Servcheck CA Management"
+msgstr "Imicungire ya CA ya Servcheck"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Search"
+msgstr "Shakisha"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Default"
+msgstr "Mburabuzi"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Go"
+msgstr "Komeza"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Set/Refresh Filters"
+msgstr "Gushyiraho/Kuvugurura muyunguruzi"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Clear"
+msgstr "Siba"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Clear Filters"
+msgstr "Gusiba muyunguruzi"
+
+#: servcheck_credential.php servcheck_test.php
+msgid "Duplicate"
+msgstr "Kora kopi"
+
+#: servcheck_credential.php
+msgid "Click 'Continue' to Duplicate the following Credential."
+msgid_plural "Click 'Continue' to Duplicate the following Credentials."
+msgstr[0] "Kanda 'Komeza' kugira ngo ukore kopi y'Icyangombwa cyo kwinjira gikurikira."
+msgstr[1] "Kanda 'Komeza' kugira ngo ukore kopi y'Ibyangombwa byo kwinjira bikurikira."
+
+#: servcheck_credential.php
+msgid "Duplicate Credential"
+msgid_plural "Duplicate Credentials"
+msgstr[0] "Kora kopi y'icyangombwa cyo kwinjira"
+msgstr[1] "Kora kopi y'ibyangombwa byo kwinjira"
+
+#: servcheck_credential.php
+#, php-format
+msgid "Credential [edit: %s]"
+msgstr "Umwirondoro wo kwinjira [hindura: %s]"
+
+#: servcheck_credential.php
+msgid "Credential [new]"
+msgstr "Umwirondoro wo kwinjira [mushya]"
+
+#: servcheck_credential.php
+msgid "Type"
+msgstr "Ubwoko"
+
+#: servcheck_credential.php
+msgid "Credentials"
+msgstr "Imyirondoro yo kwinjira"
+
+#: servcheck_credential.php
+msgid "No Credentials Found"
+msgstr "Nta Myirondoro yo Kwinjira Yabonetse"
+
+#: servcheck_credential.php
+msgid "Servcheck Credential Management"
+msgstr "Imicungire y'Ibyangombwa byo kwinjira ya Servcheck"
+
+#: servcheck_curl_code.php
+msgid "No error codes"
+msgstr "Nta makode y'amakosa"
+
+#: servcheck_proxy.php
+#, php-format
+msgid "Proxy [edit: %s]"
+msgstr "Proxy [hindura: %s]"
+
+#: servcheck_proxy.php
+msgid "Proxy [new]"
+msgstr "Proxy [nshya]"
+
+#: servcheck_proxy.php
+msgid "Ports (http/https)"
+msgstr "Poruti (http/https)"
+
+#: servcheck_proxy.php
+msgid "No Proxies Found"
+msgstr "Nta bikoresho bya proxy byabonetse"
+
+#: servcheck_proxy.php
+msgid "Servcheck Proxy Management"
+msgstr "Imicungire ya Proxy ya Servcheck"
+
+#: servcheck_test.php
+msgid "Disable"
+msgstr "Hagarika"
+
+#: servcheck_test.php
+msgid "Enable"
+msgstr "Koresha"
+
+#: servcheck_test.php
+msgid "Clear statistics"
+msgstr "Hanagura imibare"
+
+#: servcheck_test.php
+msgid "Clear log"
+msgstr "Hanagura inyandiko y'ibyakozwe"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
+msgstr[0] "Kanda 'Komeza' kugira ngo uhagarike ikintu gikurikira."
+msgstr[1] "Kanda 'Komeza' kugira ngo uhagarike ibintu bikurikira."
+
+#: servcheck_test.php
+msgid "Disable item"
+msgid_plural "Disable items"
+msgstr[0] "Hagarika ikintu"
+msgstr[1] "Hagarika ibintu"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
+msgstr[0] "Kanda 'Komeza' kugira ngo ufungure ikintu gikurikira."
+msgstr[1] "Kanda 'Komeza' kugira ngo ufungure ibintu bikurikira."
+
+#: servcheck_test.php
+msgid "Enable item"
+msgid_plural "Enable items"
+msgstr[0] "Fungura ikintu"
+msgstr[1] "Fungura ibintu"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
+msgstr[0] "Kanda 'Komeza' kugira ngo ukore kopi y'ikintu gikurikira."
+msgstr[1] "Kanda 'Komeza' kugira ngo ukore kopi y'ibintu bikurikira."
+
+#: servcheck_test.php
+msgid "Duplicate item"
+msgid_plural "Duplicate items"
+msgstr[0] "Kora kopi y'ikintu"
+msgstr[1] "Kora kopi y'ibintu"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear statistics of the following item."
+msgid_plural "Click 'Continue' to clear statistics of the following items."
+msgstr[0] "Kanda 'Komeza' kugira ngo uhanagure imibare y'ikintu gikurikira."
+msgstr[1] "Kanda 'Komeza' kugira ngo uhanagure imibare y'ibintu bikurikira."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear log of the following item."
+msgid_plural "Click 'Continue' to clear log of the following items."
+msgstr[0] "Kanda 'Komeza' kugira ngo uhanagure inyandiko y'ibikorwa by'ikintu gikurikira."
+msgstr[1] "Kanda 'Komeza' kugira ngo uhanagure inyandiko y'ibikorwa by'ibintu bikurikira."
+
+#: servcheck_test.php
+#, php-format
+msgid "The Service Check history was purged for %s"
+msgstr "Amateka y'igenzura rya serivisi yasibwe burundu kuri %s"
+
+#: servcheck_test.php
+#, php-format
+msgid "Test [edit: %s]"
+msgstr "Isuzuma [hindura: %s]"
+
+#: servcheck_test.php
+msgid "Test [new]"
+msgstr "Isuzuma [rishya]"
+
+#: servcheck_test.php
+msgid "No Users Selected"
+msgstr "Nta bakoresha bahiswemo"
+
+#: servcheck_test.php
+msgid "Users Selected"
+msgstr "Abakoresha bahiswemo"
+
+#: servcheck_test.php
+msgid "All Users Selected"
+msgstr "Abakoresha bose batoranyijwe"
+
+#: servcheck_test.php
+msgid "All"
+msgstr "Byose"
+
+#: servcheck_test.php
+msgid "Date"
+msgstr "Itariki"
+
+#: servcheck_test.php
+msgid "Attempt"
+msgstr "Igerageza"
+
+#: servcheck_test.php
+msgid "Result"
+msgstr "Ibyavuyemo"
+
+#: servcheck_test.php
+msgid "Search result"
+msgstr "Igisubizo cy'ishakisha"
+
+#: servcheck_test.php
+msgid "Duration"
+msgstr "Igihe byamaze"
+
+#: servcheck_test.php
+msgid "Certificate"
+msgstr "Icyemezo cy'umutekano"
+
+#: servcheck_test.php
+msgid "Curl"
+msgstr "Curl"
+
+#: servcheck_test.php
+msgid "Ret. data size"
+msgstr "Ingano y'amakuru abitswe"
+
+#: servcheck_test.php
+msgid "CPU u/CPU s/Memory"
+msgstr "CPU u/CPU s/Ububiko bw'akanya gato"
+
+#: servcheck_test.php
+msgid "Logs"
+msgstr "Inyandiko z'ibyabaye"
+
+#: servcheck_test.php
+msgid "days"
+msgstr "iminsi"
+
+#: servcheck_test.php
+#, php-format
+msgid "Expired %s days ago"
+msgstr "Byarangiye hashize iminsi %s"
+
+#: servcheck_test.php
+msgid "Insufficient data, wait a few poller cycles"
+msgstr "Amakuru adahagije, tegereza inshuro nke z'ikusanyamakuru"
+
+#: servcheck_test.php
+msgid "Actions"
+msgstr "Ibikorwa"
+
+#: servcheck_test.php
+msgid "Status"
+msgstr "Imiterere"
+
+#: servcheck_test.php
+msgid "Last Check (attempt)"
+msgstr "Igenzura rya nyuma (igerageza)"
+
+#: servcheck_test.php
+msgid "Stats (OK/problem)"
+msgstr "Imibare (Byiza/ikibazo)"
+
+#: servcheck_test.php
+msgid "Triggered"
+msgstr "Byatewe imbarutso"
+
+#: servcheck_test.php
+msgid "Edit Service Check"
+msgstr "Hindura Igenzura rya Serivisi"
+
+#: servcheck_test.php
+msgid "Enable Service Check"
+msgstr "Fungura Igenzura rya Serivisi"
+
+#: servcheck_test.php
+msgid "Disable Service Check"
+msgstr "Hagarika Igenzura rya Serivisi"
+
+#: servcheck_test.php
+msgid "View Service Check History"
+msgstr "Reba amateka y'igenzura rya serivisi"
+
+#: servcheck_test.php
+msgid "View Last returned data"
+msgstr "Reba amakuru aheruka kugarurwa"
+
+#: servcheck_test.php
+msgid "View Graph"
+msgstr "Reba igishushanyo"
+
+#: servcheck_test.php
+msgid "N/A (N/A)"
+msgstr "Ntibikoreshwa (Ntibikoreshwa)"
+
+#: servcheck_test.php
+msgid "No"
+msgstr "Oya"
+
+#: servcheck_test.php
+msgid "Yes"
+msgstr "Yego"
+
+#: servcheck_test.php
+msgid "No Service Checks Found"
+msgstr "Nta magenzura ya serivisi yabonetse"
+
+#: servcheck_test.php
+msgid "Last returned data of test"
+msgstr "Amakuru ya nyuma yagaruwe n'isuzuma"
+
+#: servcheck_test.php
+msgid "Servcheck Test Management"
+msgstr "Imicungire y'Isuzuma rya Servcheck"
+
+#: servcheck_test.php
+msgid "State"
+msgstr "Intara cyangwa Leta"
+
+#: servcheck_test.php
+msgid "Any"
+msgstr "Icyo ari cyo cyose"
+
+#: servcheck_test.php
+msgid "Refresh"
+msgstr "Vugurura"
+
+#: servcheck_test.php
+msgid "Checks"
+msgstr "Amasuzuma"
+
+#: servcheck_test.php
+msgid "Service Check History"
+msgstr "Amateka y'igenzura rya serivisi"
+
+#: servcheck_test.php
+msgid "Date Search"
+msgstr "Ishakisha ry'itariki"
+
+#: servcheck_test.php
+msgid "Entries"
+msgstr "Ibyinjijwe"
+
+#: servcheck_test.php
+msgid "Purge Events"
+msgstr "Siba burundu ibyabaye"
+
+#: setup.php
+msgid "Service Check Admin"
+msgstr "Umuyobozi w'Igenzura rya Serivisi"
+
+#: setup.php
+msgid "Management"
+msgstr "Imicungire"
+
+#: setup.php
+msgid "Service Checker"
+msgstr "Ikigenzura serivisi"
+
+#: setup.php
+msgid "Service Checks"
+msgstr "Amagenzura ya serivisi"
+
+#: setup.php
+msgid "Service Check Edit"
+msgstr "Hindura igenzura rya serivisi"
+
+#: setup.php
+msgid "Service Check Save"
+msgstr "Bika igenzura rya serivisi"
+
+#: setup.php
+msgid "Credential Edit"
+msgstr "Hindura Umwirondoro wo kwinjira"
+
+#: setup.php
+msgid "Credential Save"
+msgstr "Bika Umwirondoro wo kwinjira"
+
+#: setup.php
+msgid "Web Proxy"
+msgstr "Proxy ya Web"
+
+#: setup.php
+msgid "Web Proxy Edit"
+msgstr "Hindura Proxy ya Web"
+
+#: setup.php
+msgid "Save Web Proxy"
+msgstr "Bika Proxy y'Urubuga"
+
+#: setup.php
+msgid "CA"
+msgstr "CA"
+
+#: setup.php
+msgid "CA Edit"
+msgstr "Hindura CA"
+
+#: setup.php
+msgid "Save CA"
+msgstr "Bika CA"
+
+#: setup.php
+msgid "Servcheck"
+msgstr "Servcheck"
+
+#: setup.php
+msgid "Notification Preferences"
+msgstr "Ibyifuzo by'imenyesha"
+
+#: setup.php
+msgid "Send Email separately for each address"
+msgstr "Ohereza Imeyili ukwazo kuri buri aderesi"
+
+#: setup.php
+msgid "If checked, this will cause all Emails to be sent separately for each address."
+msgstr "Niba bihiswemo, ibi bizatuma Imeyili zose zoherezwa ukwayo kuri buri aderesi."
+
+#: setup.php
+msgid "Stop sending all notification"
+msgstr "Hagarika kohereza amamenyesha yose"
+
+#: setup.php
+msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
+msgstr "Niba bihiswemo, servcheck ntizohereza imeyili iyo ari yo yose. Ushobora kandi guhagarika imenyesha ku bizamini byihariye gusa"
+
+#: setup.php
+msgid "Enable Command Execution"
+msgstr "Fungura Ishyirwa mu Bikorwa ry'Amabwiriza"
+
+#: setup.php
+msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
+msgstr "Guhitamo aka gasanduku bizafungura ubushobozi bwo gukoresha amabwiriza ku bibaye muri Servcheck. Ushobora kubifungura cyangwa kubihagarika kuri buri suzuma."
+
+#: setup.php
+msgid "Status Change Command"
+msgstr "Ibwiriza ryo guhindura imiterere"
+
+#: setup.php
+msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+msgstr "Iyo isuzuma ry'ibanze, iry'ishakisha cyangwa iry'igihe impamyabushobozi irangirira rigaruye igisubizo gitandukanye, koresha iri tegeko rikurikira... Iri tegeko NTIRIGOMBA kuba ririmo ibintu byongerwa ku murongo w'amabwiriza... Ariko rero, ibipimo bikurikira bishobora gukurwa mu bidukikije bya porogaramu:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+
+#: setup.php
+msgid "Concurrent Check Processes"
+msgstr "Ibikorwa by'igenzura bibera rimwe"
+
+#: setup.php
+msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
+msgstr "Umubare w'ibikorwa byo kugenzura serivisi bikorera icyarimwe. Kongera uyu mubare ukagera ku nshuro 2 z'umubare wa za cores ntibisabwa."
+
+#: setup.php
+msgid "1 Process"
+msgstr "Igikorwa 1"
+
+#: setup.php
+#, php-format
+msgid "%d Processes"
+msgstr "Ibikorwa %d"
+
+#: setup.php
+msgid "Certificate expiry date advanced notification email"
+msgstr "Imeyili imenyesha mbere itariki yo kurangira kw'icyemezo cy'umutekano"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
+msgstr "Niba kurangira kw'icyemezo cya serivisi ya SSL/TLS byafunguwe, shyiraho umubare w'iminsi y'imbere y'itariki yo kurangira kw'icyemezo igihe sisitemu izohereza imenyesha"
+
+#: setup.php
+msgid "3 days in advance"
+msgstr "Iminsi 3 mbere y'igihe"
+
+#: setup.php
+msgid "1 week in advance"
+msgstr "Icyumweru 1 mbere y'igihe"
+
+#: setup.php
+msgid "3 weeks in advance"
+msgstr "Ibyumweru 3 mbere y'igihe"
+
+#: setup.php
+msgid "30 days in advance"
+msgstr "Iminsi 30 mbere y'igihe"
+
+#: setup.php
+msgid "60 days in advance"
+msgstr "Iminsi 60 mbere y'igihe"
+
+#: setup.php
+msgid "90 days in advance"
+msgstr "Iminsi 90 mbere y'igihe"
+
+#: setup.php
+msgid "Certificate expiry notification email interval"
+msgstr "Intera y'imeyili imenyesha kurangira kw'icyemezo cy'umutekano"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday"
+msgstr "Niba kurangira kw'icyemezo cya serivisi ya SSL/TLS byafunguwe, shyiraho intera (iminsi) yo kohereza imenyesha rya imeyili, nyamara, niba itariki yo kurangira yarenze, imenyesha rya imeyili rizajya ryoherezwa buri munsi"
+
+#: setup.php
+msgid "1 day"
+msgstr "Umunsi 1"
+
+#: setup.php
+msgid "3 days"
+msgstr "Iminsi 3"
+
+#: setup.php
+msgid "5 days"
+msgstr "Iminsi 5"
+
+#: setup.php
+msgid "7 days"
+msgstr "Iminsi 7"
+
+#: setup.php
+msgid "10 days"
+msgstr "Iminsi 10"
+
+#: setup.php
+msgid "15 days"
+msgstr "Iminsi 15"
+
+#: setup.php
+msgid "20 days"
+msgstr "Iminsi 20"
+
+#: setup.php
+msgid "30 days"
+msgstr "Iminsi 30"
+
+#: setup.php
+msgid "How long to keep logs"
+msgstr "Igihe cyo kubika inyandiko z'ibikorwa"
+
+#: setup.php
+msgid "Enter the period after which older logs will be automatically deleted."
+msgstr "Andika igihe nyuma yacyo inyandiko z'ibikorwa zishaje zizajya zisibwa mu buryo bwikora."
+
+#: setup.php
+msgid "Never"
+msgstr "Nta na rimwe"
+
+#: setup.php
+#, php-format
+msgid "%d hours"
+msgstr "amasaha %d"
+
+#: setup.php
+#, php-format
+msgid "%d days"
+msgstr "iminsi %d"
+
+#: setup.php
+#, php-format
+msgid "%d year"
+msgstr "umwaka %d"
+
+#: setup.php
+msgid "Maximum test duration in seconds"
+msgstr "Igihe ntarengwa cy'isuzuma mu masegonda"
+
+#: setup.php
+msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
+msgstr "Agaciro gasanzwe ku mageragezwa aho igenzura ry'igihe cyo gukora ritafunguwe. Niba rifunguwe, igihe kinini ntarengwa kibarwa nk'urwego ntarengwa rw'igihe + amasegonda 2."
+
+#: setup.php
+msgid "HTTP/HTTPS Check Settings"
+msgstr "Amagenamiterere y'igenzura rya HTTP/HTTPS"
+
+#: setup.php
+msgid "User Agent"
+msgstr "Porogaramu y'ukoresha (User Agent)"
+
+#: setup.php
+msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
+msgstr "Inyandiko ya User-Agent yoherezwa hamwe na HTTP/HTTPS n'andi magenzura ya serivisi ashingiye kuri cURL. Imbuga zimwe zifunga za mushakisha zishaje cyangwa zidasanzwe, bityo ushobora gushyiraho User-Agent igezweho hano. Siga ubusa kugira ngo ukoreshe isanzwe irimo."
+

@@ -1,0 +1,2219 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-11-02 13:51-0500\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Arabic (Egypt)\n"
+"Language: ar-EG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: includes/arrays.php servcheck_test.php
+msgid "Tests"
+msgstr "الاختبارات"
+
+#: includes/arrays.php
+msgid "CA certificates"
+msgstr "شهادات CA"
+
+#: includes/arrays.php servcheck_proxy.php
+msgid "Proxies"
+msgstr "الوكلاء"
+
+#: includes/arrays.php setup.php
+msgid "Credential"
+msgstr "بيانات الاعتماد"
+
+#: includes/arrays.php
+msgid "Curl return codes"
+msgstr "رموز العودة الضفيرة"
+
+#: includes/arrays.php
+msgid "Error"
+msgstr "خطأ"
+
+#: includes/arrays.php
+msgid "Long duration"
+msgstr "مدة طويلة"
+
+#: includes/arrays.php
+msgid "Warning"
+msgstr "تحذير"
+
+#: includes/arrays.php
+msgid "Failing"
+msgstr "فاشل"
+
+#: includes/arrays.php
+msgid "Ok"
+msgstr "أوك"
+
+#: includes/arrays.php setup.php
+msgid "Disabled"
+msgstr "معطل"
+
+#: includes/arrays.php
+msgid "HTTP plaintext, default port 80"
+msgstr "نص عادي HTTP، المنفذ الافتراضي 80"
+
+#: includes/arrays.php
+msgid "HTTP encrypted (HTTPS), default port 443"
+msgstr "HTTP المشفر (HTTPS)، المنفذ الافتراضي 443"
+
+#: includes/arrays.php
+msgid "SMTP plaintext, default port 25 (or 587 for submission)"
+msgstr "نص عادي SMTP، المنفذ الافتراضي 25 (أو 587 للإرسال)"
+
+#: includes/arrays.php
+msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
+msgstr "بروتوكول SMTP مع STARTTLS، المنفذ الافتراضي 25 (أو 587 للإرسال)"
+
+#: includes/arrays.php
+msgid "SMTP encrypted (SMTPS), default port 465"
+msgstr "SMTP مشفر (SMTPS)، المنفذ الافتراضي 465"
+
+#: includes/arrays.php
+msgid "IMAP plaintext, default port 143"
+msgstr "نص عادي لـ IMAP، المنفذ الافتراضي 143"
+
+#: includes/arrays.php
+msgid "IMAP with STARTTLS, default port 143"
+msgstr "IMAP مع STARTTLS، المنفذ الافتراضي 143"
+
+#: includes/arrays.php
+msgid "IMAP encrypted (IMAPS), default port 993"
+msgstr "IMAP مشفر (IMAPS)، المنفذ الافتراضي 993"
+
+#: includes/arrays.php
+msgid "POP3 plaintext, default port 110"
+msgstr "نص عادي لـ POP3، المنفذ الافتراضي 110"
+
+#: includes/arrays.php
+msgid "POP3 with STARTTLS, default port 110"
+msgstr "POP3 مع STARTTLS، المنفذ الافتراضي 110"
+
+#: includes/arrays.php
+msgid "POP3 encrypted (POP3S), default port 995"
+msgstr "بروتوكول POP3 مشفر (POP3S)، المنفذ الافتراضي 995"
+
+#: includes/arrays.php
+msgid "DNS plaintext, default port 53"
+msgstr "نص عادي لـ DNS، المنفذ الافتراضي 53"
+
+#: includes/arrays.php
+msgid "DNS over HTTPS, default port 443"
+msgstr "DNS عبر HTTPS، المنفذ الافتراضي 443"
+
+#: includes/arrays.php
+msgid "LDAP plaintext, default port 389"
+msgstr "نص عادي LDAP، المنفذ الافتراضي 389"
+
+#: includes/arrays.php
+msgid "LDAP encrypted (LDAPS), default port 636"
+msgstr "LDAP مشفر (LDAPS)، المنفذ الافتراضي 636"
+
+#: includes/arrays.php
+msgid "FTP plaintext, default port 21"
+msgstr "نص عادي لـ FTP، المنفذ الافتراضي 21"
+
+#: includes/arrays.php
+msgid "TFTP protocol - download file, default port 69"
+msgstr "بروتوكول TFTP - تنزيل الملف، المنفذ الافتراضي 69"
+
+#: includes/arrays.php
+msgid "SCP download file, default port 22"
+msgstr "ملف تنزيل SCP، المنفذ الافتراضي 22"
+
+#: includes/arrays.php
+msgid "SMB plaintext download file, default port 445"
+msgstr "ملف تنزيل النص العادي SMB، المنفذ الافتراضي 445"
+
+#: includes/arrays.php
+msgid "SMB encrypted (SMBS) download file, default port 445"
+msgstr "ملف تنزيل SMB المشفر (SMBS)، المنفذ الافتراضي 445"
+
+#: includes/arrays.php
+msgid "MQTT plaintext, default port 1883"
+msgstr "بروتوكول MQTT بنص عادي، المنفذ الافتراضي 1883"
+
+#: includes/arrays.php
+msgid "Rest API with Basic HTTP auth"
+msgstr "Rest API مع مصادقة HTTP الأساسية"
+
+#: includes/arrays.php
+msgid "Rest API with API key auth"
+msgstr "Rest API مع مصادقة مفتاح API"
+
+#: includes/arrays.php
+msgid "Rest API with OAuth2/Bearer token auth"
+msgstr "Rest API مع مصادقة رمز OAuth2/Bearer"
+
+#: includes/arrays.php
+msgid "Rest API with Cookie based auth"
+msgstr "Rest API مع مصادقة معتمدة على ملفات تعريف الارتباط (Cookie)"
+
+#: includes/arrays.php
+msgid "SNMP get"
+msgstr "استعلام SNMP get"
+
+#: includes/arrays.php
+msgid "SNMP walk"
+msgstr "استعراض SNMP walk"
+
+#: includes/arrays.php
+msgid "SSH command on remote system"
+msgstr "أمر SSH على نظام بعيد"
+
+#: includes/arrays.php
+msgid "SFTP protocol - directory listing, default port 22"
+msgstr "بروتوكول SFTP - عرض قائمة الدليل، المنفذ الافتراضي 22"
+
+#: includes/arrays.php
+msgid "Username and password"
+msgstr "اسم المستخدم وكلمة المرور"
+
+#: includes/arrays.php
+msgid "Rest API - Basic HTTP auth"
+msgstr "Rest API - مصادقة HTTP الأساسية"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth"
+msgstr "Rest API - مصادقة مفتاح API"
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth"
+msgstr "Rest API - مصادقة رمز OAuth2/Bearer"
+
+#: includes/arrays.php
+msgid "Rest API - Cookie based auth"
+msgstr "Rest API - مصادقة معتمدة على ملفات تعريف الارتباط (Cookie)"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2"
+msgstr "SNMP v1 أو v2"
+
+#: includes/arrays.php
+msgid "SNMP v3"
+msgstr "SNMP v3"
+
+#: includes/arrays.php
+msgid "SSH private key - Cacti 1.2.31+"
+msgstr "مفتاح SSH الخاص - Cacti 1.2.31+"
+
+#: includes/arrays.php
+msgid "Last hour"
+msgstr "آخر ساعة"
+
+#: includes/arrays.php
+msgid "Last 6 hours"
+msgstr "آخر 6 ساعات"
+
+#: includes/arrays.php
+msgid "Last day"
+msgstr "آخر يوم"
+
+#: includes/arrays.php
+msgid "Last week"
+msgstr "الأسبوع الماضي"
+
+#: includes/arrays.php
+msgid "String found"
+msgstr "تم العثور على سلسلة"
+
+#: includes/arrays.php
+msgid "String not found"
+msgstr "سلسلة لم يتم العثور"
+
+#: includes/arrays.php
+msgid "Failed string found"
+msgstr "تم العثور على سلسلة فاشلة"
+
+#: includes/arrays.php
+msgid "Failed string not found"
+msgstr "لم يتم العثور على سلسلة الفشل"
+
+#: includes/arrays.php
+msgid "Maint string found"
+msgstr "تم العثور على السلسلة الأساسية"
+
+#: includes/arrays.php servcheck_test.php
+msgid "Not tested yet"
+msgstr "لم يتم اختباره بعد"
+
+#: includes/arrays.php
+msgid "Search not performed"
+msgstr "لم يتم تنفيذ البحث"
+
+#: includes/arrays.php
+msgid "OK"
+msgstr "موافق"
+
+#: includes/arrays.php
+msgid "Error/failed"
+msgstr "خطأ/فشل"
+
+#: includes/arrays.php
+msgid "[None]"
+msgstr "[لا شيء]"
+
+#: includes/arrays.php
+msgid "MD5"
+msgstr "MD5"
+
+#: includes/arrays.php
+msgid "SHA"
+msgstr "SHA"
+
+#: includes/arrays.php
+msgid "SHA-224"
+msgstr "SHA-224"
+
+#: includes/arrays.php
+msgid "SHA-256"
+msgstr "SHA-256"
+
+#: includes/arrays.php
+msgid "SHA-392"
+msgstr "SHA-392"
+
+#: includes/arrays.php
+msgid "SHA-512"
+msgstr "SHA-512"
+
+#: includes/arrays.php
+msgid "DES"
+msgstr "DES"
+
+#: includes/arrays.php
+msgid "AES"
+msgstr "AES"
+
+#: includes/arrays.php
+msgid "AES-128"
+msgstr "AES-128"
+
+#: includes/arrays.php
+msgid "AES-192"
+msgstr "AES-192"
+
+#: includes/arrays.php
+msgid "AES-192-C"
+msgstr "AES-192-C"
+
+#: includes/arrays.php
+msgid "AES-256"
+msgstr "AES-256"
+
+#: includes/arrays.php
+msgid "AES-256-C"
+msgstr "AES-256-C"
+
+#: includes/arrays.php
+msgid "Unable to Connect"
+msgstr "تعذر الاتصال"
+
+#: includes/arrays.php includes/functions.php servcheck_ca.php
+#: servcheck_proxy.php
+msgid "Continue"
+msgstr "إستمرار"
+
+#: includes/arrays.php
+msgid "Switching Protocols"
+msgstr "تبديل البروتوكولات"
+
+#: includes/arrays.php
+msgid "Created"
+msgstr "تاريخ الإنشاء"
+
+#: includes/arrays.php
+msgid "Accepted"
+msgstr "وافقت"
+
+#: includes/arrays.php
+msgid "Non-Authoritative Information"
+msgstr "معلومات غير موثوقة"
+
+#: includes/arrays.php
+msgid "No Content"
+msgstr "لا يوجد محتوى"
+
+#: includes/arrays.php
+msgid "Reset Content"
+msgstr "إعادة ضبط المحتوى"
+
+#: includes/arrays.php
+msgid "Partial Content"
+msgstr "المحتوى الجزئي"
+
+#: includes/arrays.php
+msgid "Multiple Choices"
+msgstr "خيارات متعددة"
+
+#: includes/arrays.php
+msgid "Moved Permanently"
+msgstr "منقول نهائيا"
+
+#: includes/arrays.php
+msgid "Found"
+msgstr "يوجد"
+
+#: includes/arrays.php
+msgid "See Other"
+msgstr "انظر أخرى"
+
+#: includes/arrays.php
+msgid "Not Modified"
+msgstr "غير معدل"
+
+#: includes/arrays.php
+msgid "Use Proxy"
+msgstr "استخدام Proxy"
+
+#: includes/arrays.php
+msgid "(Unused)"
+msgstr "(غير مستعمل)"
+
+#: includes/arrays.php
+msgid "Temporary Redirect"
+msgstr "إعادة توجيه مؤقتة"
+
+#: includes/arrays.php
+msgid "Bad Request"
+msgstr "اقتراح غير جيد"
+
+#: includes/arrays.php
+msgid "Unauthorized"
+msgstr "غير مخول"
+
+#: includes/arrays.php
+msgid "Payment Required"
+msgstr "الدفع مطلوب"
+
+#: includes/arrays.php
+msgid "Forbidden"
+msgstr "مُحرَّم"
+
+#: includes/arrays.php
+msgid "Not Found"
+msgstr "لم يتم العثور على شيء"
+
+#: includes/arrays.php
+msgid "Method Not Allowed"
+msgstr "الطريقة غير مسموحة"
+
+#: includes/arrays.php
+msgid "Not Acceptable"
+msgstr "غير مقبول"
+
+#: includes/arrays.php
+msgid "Proxy Authentication Required"
+msgstr "مطلوب مصادقة الوكيل"
+
+#: includes/arrays.php
+msgid "Request Timeout"
+msgstr "مهلة الطلب"
+
+#: includes/arrays.php
+msgid "Conflict"
+msgstr "صراع"
+
+#: includes/arrays.php
+msgid "Gone"
+msgstr "ذهب"
+
+#: includes/arrays.php
+msgid "Length Required"
+msgstr "الطول مطلوب"
+
+#: includes/arrays.php
+msgid "Precondition Failed"
+msgstr "فشل الشرط المسبق"
+
+#: includes/arrays.php
+msgid "Request Entity Too Large"
+msgstr "طلب الوحدة كبير جدا"
+
+#: includes/arrays.php
+msgid "Request-URI Too Long"
+msgstr "طلب-URI طويل جدًا"
+
+#: includes/arrays.php
+msgid "Unsupported Media Type"
+msgstr "نوع الوسائط غير مدعوم"
+
+#: includes/arrays.php
+msgid "Requested Range Not Satisfiable"
+msgstr "النطاق المطلوب غير مرضي"
+
+#: includes/arrays.php
+msgid "Expectation Failed"
+msgstr "فشل التوقع"
+
+#: includes/arrays.php
+msgid "Internal Server Error"
+msgstr "خطأ في الخادم الداخلي"
+
+#: includes/arrays.php
+msgid "Not Implemented"
+msgstr "لم تنفذ"
+
+#: includes/arrays.php
+msgid "Bad Gateway"
+msgstr "مدخل خاطأ"
+
+#: includes/arrays.php
+msgid "Service Unavailable"
+msgstr "الخدمة غير متوفرة"
+
+#: includes/arrays.php
+msgid "Gateway Timeout"
+msgstr "انتهت مهلة البوابة"
+
+#: includes/arrays.php
+msgid "HTTP Version Not Supported"
+msgstr "إصدار HTTP غير مدعوم"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Poller run"
+msgstr "%d تشغيل الاستطلاع"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Poller runs"
+msgstr "%d يجري استطلاع الرأي"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Seconds"
+msgstr "%d ثواني"
+
+#: includes/arrays.php
+msgid "Auth in HTTP headers"
+msgstr "المصادقة في ترويسات HTTP"
+
+#: includes/arrays.php
+msgid "Custom HTTP header"
+msgstr "ترويسة HTTP مخصصة"
+
+#: includes/arrays.php
+msgid "POST method, form-urlencoded"
+msgstr "طريقة POST، بصيغة form-urlencoded"
+
+#: includes/arrays.php
+msgid "POST method, JSON encoded"
+msgstr "طريقة POST، مشفرة بصيغة JSON"
+
+#: includes/arrays.php
+msgid "JSON encoded"
+msgstr "مرمّز بصيغة JSON"
+
+#: includes/arrays.php
+msgid "Form urlencoded"
+msgstr "نموذج مرمز بـ URL"
+
+#: includes/arrays.php servcheck_ca.php servcheck_credential.php
+#: servcheck_proxy.php servcheck_test.php
+msgid "Name"
+msgstr "الاسم"
+
+#: includes/arrays.php
+msgid "A Useful Name for this CA chain."
+msgstr "اسم مفيد لسلسلة CA هذه."
+
+#: includes/arrays.php
+msgid "New CA"
+msgstr "كاليفورنيا الجديدة"
+
+#: includes/arrays.php
+msgid "CA Chain"
+msgstr "سلسلة كاليفورنيا"
+
+#: includes/arrays.php
+msgid "CA and intermediate certs, PEM encoded"
+msgstr "CA والشهادات المتوسطة، مشفرة PEM"
+
+#: includes/arrays.php
+msgid "A Useful Name for this Proxy."
+msgstr "اسم مفيد لهذا الوكيل (Proxy)."
+
+#: includes/arrays.php
+msgid "New Proxy"
+msgstr "وكيل جديد"
+
+#: includes/arrays.php servcheck_proxy.php
+msgid "Hostname"
+msgstr "اسم الخادم"
+
+#: includes/arrays.php
+msgid "The Proxy Hostname."
+msgstr "اسم المستضيف للوكيل."
+
+#: includes/arrays.php
+msgid "HTTP Port"
+msgstr "منفذ HTTP"
+
+#: includes/arrays.php
+msgid "The HTTP Proxy Port."
+msgstr "منفذ وكيل HTTP."
+
+#: includes/arrays.php
+msgid "HTTPS Port"
+msgstr "منفذ HTTPS"
+
+#: includes/arrays.php
+msgid "The HTTPS Proxy Port."
+msgstr "منفذ وكيل HTTPS."
+
+#: includes/arrays.php
+msgid "Select correct credential or left empty."
+msgstr "اختر بيانات الاعتماد الصحيحة أو اتركه فارغًا."
+
+#: includes/arrays.php servcheck_test.php
+msgid "None"
+msgstr "لا شيء"
+
+#: includes/arrays.php
+msgid "General Settings"
+msgstr "الاعدادات العامة"
+
+#: includes/arrays.php
+msgid "Service Check Name"
+msgstr "اسم فحص الخدمة"
+
+#: includes/arrays.php
+msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
+msgstr "الاسم الذي يتم عرضه لفحص الخدمة هذا، ويتم تضمينه في أي إشعارات تنبيه."
+
+#: includes/arrays.php
+msgid "How many attempts"
+msgstr "عدد المحاولات"
+
+#: includes/arrays.php
+msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
+msgstr "يحاول Cacti تشغيل كل اختبار عدة مرات. تُنهي أول محاولة ناجحة الاختبار وتسجّل النجاح. وإذا لم تنجح أي من المحاولات، يتم إنهاء الاختبار وتسجيل الفشل. يؤدي الرقم المرتفع إلى إطالة مدة الاختبار."
+
+#: includes/arrays.php
+msgid "Enable test"
+msgstr "تفعيل الاختبار"
+
+#: includes/arrays.php
+msgid "Uncheck this box to disable this test from being checked."
+msgstr "ألغِ تحديد هذا المربع لتعطيل فحص هذا الاختبار."
+
+#: includes/arrays.php
+msgid "Enable run script for this test"
+msgstr "تفعيل تشغيل البرنامج النصي لهذا الاختبار"
+
+#: includes/arrays.php
+msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
+msgstr "إذا كانت وظيفة تنفيذ الأوامر العامة مفعلة، يمكنك تحديد ما إذا كان يجب تشغيل السكربت لهذا الاختبار أم لا هنا."
+
+#: includes/arrays.php
+msgid "Poller"
+msgstr "المستفتي"
+
+#: includes/arrays.php
+msgid "Poller on which the test will run"
+msgstr "المستفتي الذي سيتم تشغيل الاختبار عليه"
+
+#: includes/arrays.php
+msgid "Type of service"
+msgstr "نوع الخدمة"
+
+#: includes/arrays.php
+msgid "What type of service?"
+msgstr "ما نوع الخدمة؟"
+
+#: includes/arrays.php
+msgid "IP Address or DNS name of server"
+msgstr "عنوان IP أو اسم DNS للخادم"
+
+#: includes/arrays.php
+msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
+msgstr "يمكنك تحديد منفذ آخر (example.com:5000) وإلا فسيتم استخدام المنفذ الافتراضي. لعنوان IPv6 الرقمي استخدم [ip:ad:dr:es:fo:rma:at]. بالنسبة إلى DOH (DNS عبر HTTPS) استخدم هنا اسم الخادم (مثال: 10.10.10.10، cloudflare-dns.com، ..)"
+
+#: includes/arrays.php
+msgid "Resolve DNS to Address"
+msgstr "تحليل DNS إلى عنوان"
+
+#: includes/arrays.php
+msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
+msgstr "أدخل عنوان IP لفرض تحليل اسم DNS إليه. تركه فارغاً سيستخدم تحليل DNS بدلاً من ذلك."
+
+#: includes/arrays.php
+msgid "Service settings"
+msgstr "إعدادات الخدمة"
+
+#: includes/arrays.php
+msgid "Select correct credential"
+msgstr "اختر بيانات الاعتماد الصحيحة"
+
+#: includes/arrays.php
+msgid "SNMP OID"
+msgstr "معرف SNMP OID"
+
+#: includes/arrays.php
+msgid "Insert SNMP OID"
+msgstr "أدخل SNMP OID"
+
+#: includes/arrays.php
+msgid "SSH command"
+msgstr "أمر SSH"
+
+#: includes/arrays.php
+msgid "Insert SSH command with full path, result of command will be returned"
+msgstr "أدخل أمر SSH بالمسار الكامل، وسيتم إرجاع نتيجة الأمر"
+
+#: includes/arrays.php
+msgid "Your own CA and intermediate certs"
+msgstr "شهادات CA والشهادات المتوسطة الخاصة بك"
+
+#: includes/arrays.php
+msgid "LDAP Search"
+msgstr "بحث LDAP"
+
+#: includes/arrays.php
+msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
+msgstr "يمكن أن يكون مرشح بحث LDAP، OU=anygroup،DC=example،DC=com"
+
+#: includes/arrays.php
+msgid "DNS Name for Query"
+msgstr "اسم DNS للاستعلام"
+
+#: includes/arrays.php
+msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
+msgstr "اسم DNS للاستعلام. بالنسبة لـ DOH (DNS عبر HTTPS)، استخدم /resolve?name=example.com أو /dns-query?name=example.com&type=A. وبالنسبة لـ DNS النصي، سيتم إرجاع سجلات A و AAAA"
+
+#: includes/arrays.php
+msgid "Path Part of URL"
+msgstr "جزء المسار من URL"
+
+#: includes/arrays.php
+msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
+msgstr "بالنسبة لخدمة الويب، أدخل \"/\" على الأقل أو مسارًا مثل \"/any/path/\"."
+
+#: includes/arrays.php
+msgid "Requires Authentication"
+msgstr "يتطلب مصادقة"
+
+#: includes/arrays.php
+msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
+msgstr "حدّد هذا المربع إذا كان الموقع يُرجع عادةً خطأ 401 لأنه يتطلب اسم مستخدم وكلمة مرور."
+
+#: includes/arrays.php
+msgid "Proxy Server"
+msgstr "خادم وكيل"
+
+#: includes/arrays.php
+msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
+msgstr "إذا كان نص الاتصال هذا يتطلب وكيلاً (Proxy)، فحدده هنا. وإلا فاختر 'لا شيء'."
+
+#: includes/arrays.php
+msgid "Check Certificate"
+msgstr "فحص الشهادة"
+
+#: includes/arrays.php
+msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
+msgstr "عند استخدام SSL، حدد هذا المربع إذا كنت تريد التحقق من صحة الشهادة. يكون مفعلاً افتراضياً، قم بإيقاف تشغيله إذا كان الموقع يستخدم شهادة موقعة ذاتياً."
+
+#: includes/arrays.php
+msgid "Check and notify Certificate expiration"
+msgstr "فحص انتهاء صلاحية الشهادة والإشعار به"
+
+#: includes/arrays.php
+msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
+msgstr "عند استخدام SSL، حدد هذا المربع إذا كنت تريد التحقق من انتهاء صلاحية الشهادة. يمكنك تحديد عدد الأيام قبل انتهاء الصلاحية للإشعار في الإعدادات.."
+
+#: includes/arrays.php
+msgid "Parameters"
+msgstr "المعلمات"
+
+#: includes/arrays.php
+msgid "How Often to Test"
+msgstr "كم مرة للاختبار"
+
+#: includes/arrays.php
+msgid "Test every xth poller run"
+msgstr "الاختبار في كل دورة رقم x للمستفتي"
+
+#: includes/arrays.php
+msgid "Trigger"
+msgstr "مشغل"
+
+#: includes/arrays.php
+msgid "How many times the service must be DOWN before an alert email is triggered."
+msgstr "عدد المرات التي يجب أن تكون فيها الخدمة متوقفة (DOWN) قبل إرسال بريد إلكتروني للتنبيه."
+
+#: includes/arrays.php
+msgid "Long duration alert"
+msgstr "تنبيه المدة الطويلة"
+
+#: includes/arrays.php
+msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
+msgstr "إذا كان وقت الاختبار أكبر من هذه القيمة لعدة مرات متتالية، فأرسل إشعاراً. مرتبط بمتغير عدد مرات المدة. يرث الاختبار الحد الأقصى لوقت التشغيل من الإعدادات. إذا تم تعيين قيمة أعلى هنا، فسيكون الحد الأقصى لوقت التشغيل هو هذه القيمة + ثانيتين."
+
+#: includes/arrays.php
+msgid "Number of duration violations in a row"
+msgstr "عدد انتهاكات المدة المتتالية"
+
+#: includes/arrays.php
+msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
+msgstr "عدد المرات المتتالية التي يجب فيها تجاوز حد المدة لإرسال إشعار"
+
+#: includes/arrays.php
+msgid "Verification Strings"
+msgstr "سلاسل التحقق"
+
+#: includes/arrays.php
+msgid "Response Search String"
+msgstr "نص البحث في الاستجابة"
+
+#: includes/arrays.php
+msgid "This is the string to search for in the response for a live and working service."
+msgstr "هذه هي السلسلة النصية للبحث عنها في الاستجابة للتأكد من أن الخدمة نشطة وتعمل."
+
+#: includes/arrays.php
+msgid "Response Search String - Maintenance"
+msgstr "نص البحث في الاستجابة - صيانة"
+
+#: includes/arrays.php
+msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
+msgstr "هذه هي السلسلة النصية للبحث عنها في صفحة الصيانة. سيتحقق فحص الخدمة من وجود هذه السلسلة إذا لم يتم العثور على السلسلة المذكورة أعلاه. وإذا وُجدت، فهذا يعني أن الخدمة قيد الصيانة."
+
+#: includes/arrays.php
+msgid "Response Search String - Failed"
+msgstr "نص البحث في الاستجابة - فشل"
+
+#: includes/arrays.php
+msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
+msgstr "هذه هي السلسلة النصية للبحث عن فشل معروف في استجابة الخدمة. لن يُصدر فحص الخدمة تنبيهًا إلا إذا تم العثور على هذه السلسلة، مع تجاهل أي مشكلات في مهلة الانتظار وسلاسل البحث المذكورة أعلاه."
+
+#: includes/arrays.php
+msgid "Notification Settings"
+msgstr "إعدادات الإشعار"
+
+#: includes/arrays.php
+msgid "Email notification"
+msgstr "إشعار البريد الإلكتروني"
+
+#: includes/arrays.php
+msgid "If enabled email notification about state, duration and search result will be send"
+msgstr "إذا كان مفعلاً، فسيتم إرسال إشعار عبر البريد الإلكتروني حول الحالة والمدة ونتيجة البحث"
+
+#: includes/arrays.php
+msgid "Notify Format"
+msgstr "تنسيق الإشعار"
+
+#: includes/arrays.php
+msgid "This is the format to use when sending the notification email"
+msgstr "هذا هو التنسيق المستخدم عند إرسال البريد الإلكتروني للإشعار"
+
+#: includes/arrays.php
+msgid "Notification List"
+msgstr "قائمة الإشعارات"
+
+#: includes/arrays.php
+msgid "Use this Notification List for those to be notified when this service goes down."
+msgstr "استخدم قائمة الإشعارات هذه لإبلاغ المعنيين عند توقف هذه الخدمة."
+
+#: includes/arrays.php
+msgid "Notify Accounts"
+msgstr "حسابات الإشعار"
+
+#: includes/arrays.php
+msgid "This is a listing of accounts that will be notified when this service goes down."
+msgstr "هذه قائمة بالحسابات التي سيتم إشعارها عند توقف هذه الخدمة."
+
+#: includes/arrays.php
+msgid "Extra Alert Emails"
+msgstr "عناوين بريد إلكتروني إضافية للتنبيهات"
+
+#: includes/arrays.php
+msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
+msgstr "يمكنك تحديد عناوين بريد إلكتروني إضافية هنا لتلقي تنبيهات لهذا الاختبار (مفصولة بفواصل)"
+
+#: includes/arrays.php
+msgid "Notes"
+msgstr "الملاحظات"
+
+#: includes/arrays.php
+msgid "Notes sent in email"
+msgstr "الملاحظات المرسلة في البريد الإلكتروني"
+
+#: includes/arrays.php
+msgid "External ID"
+msgstr "معرف خارجي"
+
+#: includes/arrays.php
+msgid "Enter an External ID for this test."
+msgstr "أدخل معرفاً خارجياً لهذا الاختبار."
+
+#: includes/arrays.php
+msgid "Help"
+msgstr "مساعدة"
+
+#: includes/arrays.php
+msgid "Credential Name"
+msgstr "اسم بيانات الاعتماد"
+
+#: includes/arrays.php
+msgid "The name that is displayed for this Credential."
+msgstr "الاسم الذي يتم عرضه لبيانات الاعتماد هذه."
+
+#: includes/arrays.php
+msgid "Credential type"
+msgstr "نوع بيانات الاعتماد"
+
+#: includes/arrays.php
+msgid "Select correct Credential type."
+msgstr "اختر نوع بيانات الاعتماد الصحيح."
+
+#: includes/arrays.php
+msgid "Options"
+msgstr "خيارات"
+
+#: includes/arrays.php
+msgid "Set according to your REST API server"
+msgstr "اضبط وفقًا لخادم REST API الخاص بك"
+
+#: includes/arrays.php
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: includes/arrays.php
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: includes/arrays.php
+msgid "For anonymous FTP insert email address"
+msgstr "لاستخدام FTP مجهول، أدخل عنوان البريد الإلكتروني"
+
+#: includes/arrays.php
+msgid "Login URL"
+msgstr "عنوان URL لتسجيل الدخول"
+
+#: includes/arrays.php
+msgid "URL which is used to log in or get the token."
+msgstr "عنوان URL المستخدم لتسجيل الدخول أو الحصول على الرمز المميز."
+
+#: includes/arrays.php
+msgid "Data URL"
+msgstr "عنوان URL للبيانات"
+
+#: includes/arrays.php
+msgid "URL to retrieve data. Insert with http:// or https://"
+msgstr "عنوان URL لاسترداد البيانات. أدخله مسبوقاً بـ http:// أو https://"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2 community"
+msgstr "مجتمع SNMP v1 أو v2"
+
+#: includes/arrays.php
+msgid "SNMP community string for SNMP v1 or v2(c)"
+msgstr "سلسلة مجتمع SNMP لـ SNMP v1 أو v2(c)"
+
+#: includes/arrays.php
+msgid "SNMP Security Level"
+msgstr "مستوى الأمان SNMP"
+
+#: includes/arrays.php
+msgid "SNMP v3 Security Level to use when querying the device."
+msgstr "مستوى أمان SNMP v3 لاستخدامه عند الاستعلام عن الجهاز."
+
+#: includes/arrays.php
+msgid "SNMP Auth Protocol (v3)"
+msgstr "بروتوكول مصادقة SNMP (الإصدار 3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Authorization Protocol."
+msgstr "اختر بروتوكول تخويل SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Username (v3)"
+msgstr "اسم المستخدم SNMP (الإصدار 3)"
+
+#: includes/arrays.php
+msgid "SNMP v3 username for this device."
+msgstr "اسم مستخدم SNMP v3 لهذا الجهاز."
+
+#: includes/arrays.php
+msgid "SNMP Password (v3)"
+msgstr "كلمة مرور SNMP (الإصدار 3)"
+
+#: includes/arrays.php
+msgid "SNMP v3 password for this device."
+msgstr "كلمة مرور SNMP v3 لهذا الجهاز."
+
+#: includes/arrays.php
+msgid "SNMP Privacy Protocol (v3)"
+msgstr "بروتوكول SNMP الخصوصية (الإصدار 3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Privacy Protocol."
+msgstr "اختر بروتوكول خصوصية SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Privacy Passphrase (v3)"
+msgstr "عبارة مرور خصوصية SNMP (الإصدار 3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Privacy Passphrase."
+msgstr "اختر عبارة مرور خصوصية SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Context (v3)"
+msgstr "سياق SNMP (الإصدار 3)"
+
+#: includes/arrays.php
+msgid "Enter the SNMP Context to use for this device."
+msgstr "أدخل سياق SNMP المراد استخدامه لهذا الجهاز."
+
+#: includes/arrays.php
+msgid "SNMP Engine ID (v3)"
+msgstr "معرف مشغل SNMP (الإصدار 3)"
+
+#: includes/arrays.php
+msgid "Enter the SNMP v3 Engine Id or empty."
+msgstr "أدخل معرف محرك SNMP v3 أو اتركه فارغاً."
+
+#: includes/arrays.php
+msgid "SSH user"
+msgstr "مستخدم SSH"
+
+#: includes/arrays.php
+msgid "Insert username here"
+msgstr "أدخل اسم المستخدم هنا"
+
+#: includes/arrays.php
+msgid "SSH private key"
+msgstr "مفتاح SSH الخاص"
+
+#: includes/arrays.php
+msgid "SSH private key "
+msgstr "مفتاح SSH الخاص "
+
+#: includes/arrays.php
+msgid "SSH private key passphrase"
+msgstr "عبارة مرور مفتاح SSH الخاص"
+
+#: includes/arrays.php
+msgid "If your key is password protected, insert password here"
+msgstr "إذا كان مفتاحك محمياً بكلمة مرور، فأدخل كلمة المرور هنا"
+
+#: includes/arrays.php
+msgid "Client ID"
+msgstr "معرف العميل"
+
+#: includes/arrays.php
+msgid "Oauth Client ID"
+msgstr "معرّف عميل OAuth"
+
+#: includes/arrays.php
+msgid "Client secret"
+msgstr "سر العميل"
+
+#: includes/arrays.php
+msgid "OAuth Client secret"
+msgstr "سر عميل OAuth"
+
+#: includes/arrays.php
+msgid "Token name"
+msgstr "اسم الرمز المميز"
+
+#: includes/arrays.php
+msgid "Token value"
+msgstr "قيمة الرمز المميز"
+
+#: includes/arrays.php
+msgid "<b>Can be used for a lot of service checks:</b><br/><i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/><i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/><i>LDAP, smb, smbs</i> - required<br/><i>MQTT</i> - optional<br/><i>SCP, SSH command</i> - you can use this method or private key method"
+msgstr "<b>يمكن استخدامه للعديد من فحوصات الخدمة:</b><br/><i>HTTP/HTTPS</i> - اختياري، عند تعيينه، يتم تجربة مصادقة HTTP الأساسية<br/><i>SMTP على المنفذ 587</i> - اختياري. بدون اسم مستخدم/كلمة مرور، يتم اختبار استجابة الخادم فقط. مع اسم المستخدم وكلمة المرور، يتم تنفيذ تسجيل الدخول أيضًا<br/><i>IMAP، IMAPS، POP3، POP3S، FTP</i> - اختياري. لـ FTP المجهول، استخدم اسم المستخدم \"anonymous\" والبريد الإلكتروني ككلمة مرور<br/><i>LDAP، SMB، SMBS</i> - مطلوب<br/><i>MQTT</i> - اختياري<br/><i>أمر SCP، SSH</i> - يمكنك استخدام هذه الطريقة أو طريقة المفتاح الخاص"
+
+#: includes/arrays.php
+msgid "Rest API - Basic HTTP auth. Username and password are required"
+msgstr "Rest API - مصادقة HTTP الأساسية. اسم المستخدم وكلمة المرور مطلوبان"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue). For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). For POST <i>api_key</i> is usually used."
+msgstr "Rest API - مصادقة مفتاح API<br/>تُرسل المصادقة في ترويسة HTTP أو ترويسة مخصصة أو عبر طريقة POST. بيانات الاعتماد في عنوان URL غير مدعومة.<br/>أدخل اسم مفتاح API وقيمته. كلتا القيمتين مطلوبتان. لترويسة HTTP يُستخدم الاسم <i>Bearer أو apikey أو \"\"</i> عادةً (Authorization: Bearer apivalue). وللترويسة المخصصة يُستخدم <i>X-API-Key</i> عادةً (X-Api-Key: keyvalue). ولطريقة POST يُستخدم <i>api_key</i> عادةً."
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded."
+msgstr "Rest API - مصادقة رمز OAuth2/Bearer<br/>يمكنك الحصول على المفتاح/الرمز من الخادم وإدخاله هنا أو استخدام مسار المصادقة ببيانات الاعتماد. يتم إرسال اسم المستخدم وكلمة المرور بترميز JSON."
+
+#: includes/arrays.php
+msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
+msgstr "Rest API - مصادقة معتمدة على ملفات تعريف الارتباط (Cookie) - كلتا القيمتين مطلوبتان. بعد تسجيل الدخول، يتم إرجاع ملف تعريف الارتباط"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2 - required, insert community name here"
+msgstr "SNMP v1 أو v2 - مطلوب، أدخل اسم المجتمع هنا"
+
+#: includes/arrays.php
+msgid "SNMP v3 - The security level determines which parameters are required"
+msgstr "SNMP v3 - يحدد مستوى الأمان المعاملات المطلوبة"
+
+#: includes/arrays.php
+msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
+msgstr "مفتاح SSH الخاص - يمكن استخدامه لاختبار SCP أو أمر SSH. يمكن لهذه الاختبارات استخدام اسم المستخدم/كلمة المرور أيضًا"
+
+#: includes/arrays.php
+msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
+msgstr "يتحقق فقط مما إذا كان خادم الويب يستجيب. إذا تم استخدام بيانات اعتماد اسم المستخدم/كلمة المرور، فسيحاول استخدام مصادقة Basic HTTP."
+
+#: includes/arrays.php
+msgid "The same as HTTP plaintext but adds the ability to test certificates."
+msgstr "مثل HTTP بالنص العادي ولكنه يضيف القدرة على اختبار الشهادات."
+
+#: includes/arrays.php
+msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
+msgstr "يتحقق فقط مما إذا كان خادم SMTP يستجيب. بدون مصادقة. سترى شعار تسجيل الدخول الخاص بالخادم واستجابة ehlo."
+
+#: includes/arrays.php
+msgid "Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, you will see server login banner and ehlo response. With credential, login will be performed"
+msgstr "اتصال غير مشفر + STARTTLS. يمكن أيضاً اختبار صلاحية الشهادة. بدون اسم المستخدم وكلمة المرور، ستظهر لك لافتة تسجيل دخول الخادم واستجابة EHLO. باستخدام بيانات الاعتماد، سيتم إجراء تسجيل الدخول"
+
+#: includes/arrays.php
+msgid "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password AUTH LOGIN will be tested."
+msgstr "اتصال مشفر على المنفذ الافتراضي 465. من الممكن أيضًا اختبار صلاحية الشهادة. مع اسم المستخدم وكلمة المرور سيتم اختبار AUTH LOGIN."
+
+#: includes/arrays.php
+msgid "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgstr "اتصال IMAP غير مشفر. بدون بيانات الاعتماد، سيتم اختبار الاتصال فقط وستظهر لك لافتة تسجيل الدخول فقط. باستخدام بيانات الاعتماد، سيتم اختبار تسجيل الدخول ومحاولة قراءة قائمة الرسائل. يمكنك استخدام طريقة AUTHENTICATE PLAIN أو AUTHENTICATE LOGIN."
+
+#: includes/arrays.php
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "مثل IMAP غير المشفر ولكن بعد تسجيل الدخول يتم استخدام STARTTLS. من الممكن أيضًا اختبار صلاحية الشهادة بعد STARTTLS."
+
+#: includes/arrays.php
+msgid "Encrypted IMAP, you can try login and test certificate and user login"
+msgstr "بروتوكول IMAP مشفر، يمكنك تجربة تسجيل الدخول واختبار الشهادة وتسجيل دخول المستخدم"
+
+#: includes/arrays.php
+msgid "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages"
+msgstr "اتصال POP3 غير مشفر. بدون بيانات الاعتماد، سيتم اختبار الاتصال فقط وستظهر لك لافتة تسجيل الدخول فقط. باستخدام بيانات الاعتماد، سيتم اختبار تسجيل الدخول ومحاولة قراءة قائمة الرسائل"
+
+#: includes/arrays.php
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "مثل POP3 غير المشفر ولكن بعد تسجيل الدخول يتم استخدام STARTTLS. من الممكن أيضًا اختبار صلاحية الشهادة بعد STARTTLS."
+
+#: includes/arrays.php
+msgid "Encrypted POP3, you can try login and test certificate and user login."
+msgstr "بروتوكول POP3 مشفر، يمكنك تجربة تسجيل الدخول واختبار الشهادة وتسجيل دخول المستخدم."
+
+#: includes/arrays.php
+msgid "Try to resolve DNS record on specified DNS server"
+msgstr "حاول تحليل سجل DNS على خادم DNS المحدد"
+
+#: includes/arrays.php
+msgid "Try DNS over HTTPS."
+msgstr "جرّب DNS عبر HTTPS."
+
+#: includes/arrays.php
+msgid "All parameters are required. Perform unencrypted LDAP login and search"
+msgstr "جميع المعاملات مطلوبة. إجراء تسجيل دخول وبحث LDAP غير مشفر"
+
+#: includes/arrays.php
+msgid "All parameters are required. Perform encrypted LDAP login and search"
+msgstr "جميع المعاملات مطلوبة. إجراء تسجيل دخول وبحث LDAP مشفر"
+
+#: includes/arrays.php
+msgid "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content of the file is returned."
+msgstr "اتصال FTP غير مشفر، يتم تسجيل الدخول ومحاولة تنزيل الملف المحدد في المسار (/path/to/file.txt). للاتصال المجهول استخدم اسم الدخول *anonymous* وعنوان البريد الإلكتروني ككلمة مرور. يتم إرجاع محتوى الملف."
+
+#: includes/arrays.php
+msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
+msgstr "حاول تنزيل الملف المحدد في المسار (/path/to/file.txt) من خادم TFTP. يتم إرجاع محتوى الملف."
+
+#: includes/arrays.php
+msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
+msgstr "اتصال SCP مشفر، قم بتسجيل الدخول وحاول تنزيل الملف المحدد في المسار (/path/to/file.txt)."
+
+#: includes/arrays.php
+msgid "Try SMB protocol, username and password are required. Try to login and download file."
+msgstr "جرّب بروتوكول SMB، يلزم توفر اسم المستخدم وكلمة المرور. حاول تسجيل الدخول وتنزيل الملف."
+
+#: includes/arrays.php
+msgid "Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\""
+msgstr "الاتصال بخادم MQTT والاستماع لأي رسالة. يمكنك تحديد الموضوع في المسار (bedroom/temp)، أو تركه فارغاً لأي موضوع. يُنصح لهذا الاختبار بزيادة \"تنبيه المدة الطويلة\""
+
+#: includes/arrays.php
+msgid "REST API test with basic HTTP auth. Prepare credential first."
+msgstr "اختبار REST API باستخدام مصادقة HTTP الأساسية. قم بتجهيز بيانات الاعتماد أولاً."
+
+#: includes/arrays.php
+msgid "REST API test with API key auth. Prepare credential first."
+msgstr "اختبار REST API باستخدام مصادقة مفتاح API. قم بتجهيز بيانات الاعتماد أولاً."
+
+#: includes/arrays.php
+msgid "REST API test with Oauth2. Prepare credential first."
+msgstr "اختبار REST API باستخدام Oauth2. قم بتجهيز بيانات الاعتماد أولاً."
+
+#: includes/arrays.php
+msgid "REST API test with cookie auth. Prepare credential first."
+msgstr "اختبار REST API باستخدام مصادقة ملفات تعريف الارتباط (Cookie). قم بتجهيز بيانات الاعتماد أولاً."
+
+#: includes/arrays.php
+msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
+msgstr "جرّب طريقة SNMP get. يتم إرجاع المخرجات لمعرّف OID المحدد. يلزم توفر بيانات اعتماد، يجب تجهيز بيانات اعتماد SNMP v.1,2 أو v3 أولاً."
+
+#: includes/arrays.php
+msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
+msgstr "جرّب طريقة SNMP walk. يتم إرجاع المخرجات لمعرّف OID المحدد. يلزم توفر بيانات اعتماد، يجب تجهيز بيانات اعتماد SNMP v.1,2 أو v3 أولاً."
+
+#: includes/arrays.php
+msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
+msgstr "استخدم SSH والاتصال بالمستضيف Host البعيد. بعد تسجيل الدخول، نفّذ الأمر المحدد وأرجع المخرجات. يمكن استخدام اسم المستخدم وكلمة المرور أو المفتاح الخاص."
+
+#: includes/arrays.php
+msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
+msgstr "بروتوكول SFTP على المنفذ 22؛ اسم المستخدم وكلمة المرور والمسار مطلوبة. يحاول عرض قائمة الدليل للمسار."
+
+#: includes/arrays.php
+msgid "All fine. Proceed as usual."
+msgstr "كل شيء بخير. المضي قدما كالمعتاد."
+
+#: includes/arrays.php
+msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
+msgstr "يستخدم عنوان URL الذي قمت بتمريره إلى libcurl بروتوكولًا لا يدعمه libcurl هذا. قد يكون الدعم عبارة عن خيار وقت الترجمة الذي لم تستخدمه، أو يمكن أن يكون سلسلة بروتوكول بها أخطاء إملائية أو مجرد بروتوكول libcurl لا يحتوي على رمز له."
+
+#: includes/arrays.php
+msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
+msgstr "فشل رمز التهيئة المبكرة. من المحتمل أن يكون هذا خطأً أو مشكلة داخلية، أو مشكلة في الموارد حيث لا يمكن إنجاز شيء أساسي في وقت البدء."
+
+#: includes/arrays.php
+msgid "The URL was not properly formatted."
+msgstr "لم يتم تنسيق عنوان URL بشكل صحيح."
+
+#: includes/arrays.php
+msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
+msgstr "لم يتم العثور على الميزة أو البروتوكول أو الخيار المطلوب المدمج في libcurl هذا بسبب قرار وقت الإنشاء. هذا يعني أن الميزة أو الخيار لم يتم تمكينه أو تعطيله بشكل صريح عندما تم إنشاء libcurl ومن أجل تشغيله، يجب عليك الحصول على libcurl مُعاد بناؤه."
+
+#: includes/arrays.php
+msgid "Could not resolve proxy. The given proxy host could not be resolved."
+msgstr "لا يمكن حل الوكيل. تعذر حل مضيف الوكيل المحدد."
+
+#: includes/arrays.php
+msgid "Could not resolve host. The given remote host was not resolved."
+msgstr "لا يمكن حل المضيف. لم يتم حل المضيف البعيد المحدد."
+
+#: includes/arrays.php
+msgid "Failed to connect() to host or proxy."
+msgstr "فشل الاتصال () بالمضيف أو الوكيل."
+
+#: includes/arrays.php
+msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
+msgstr "أرسل الخادم بيانات libcurl تعذر تحليلها. كان رمز الخطأ هذا يُعرف باسم CURLE_FTP_WEIRD_SERVER_REPLY قبل 7.51.0."
+
+#: includes/arrays.php
+msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
+msgstr "لقد مُنعنا من الوصول إلى المورد الوارد في عنوان URL. بالنسبة لـ FTP، يحدث هذا أثناء محاولة التغيير إلى الدليل البعيد."
+
+#: includes/arrays.php
+msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
+msgstr "أثناء انتظار اتصال الخادم مرة أخرى عند استخدام جلسة FTP نشطة، تم إرسال رمز خطأ عبر اتصال التحكم أو ما شابه."
+
+#: includes/arrays.php
+msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
+msgstr "بعد إرسال كلمة مرور FTP إلى الخادم، يتوقع libcurl الرد المناسب. يشير رمز الخطأ هذا إلى أنه تم إرجاع رمز غير متوقع."
+
+#: includes/arrays.php
+msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
+msgstr "أثناء جلسة FTP نشطة أثناء انتظار اتصال الخادم، انتهت مهلة CURLOPT_ACCEPTTIMEOUT_MS (أو الافتراضي الداخلي)."
+
+#: includes/arrays.php
+msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
+msgstr "فشل Libcurl في الحصول على نتيجة معقولة من الخادم كاستجابة لأمر PASV أو أمر EPSV. الخادم معيب."
+
+#: includes/arrays.php
+msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
+msgstr "تقوم خوادم FTP بإرجاع سطر 227 كرد على أمر PASV. إذا فشل libcurl في تحليل هذا السطر، فسيتم تمرير رمز الإرجاع هذا مرة أخرى."
+
+#: includes/arrays.php
+msgid "An internal failure to lookup the host used for the new connection."
+msgstr "فشل داخلي في البحث عن المضيف المستخدم للاتصال الجديد."
+
+#: includes/arrays.php
+msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr "تم اكتشاف مشكلة في طبقة تأطير HTTP2. هذا أمر عام إلى حد ما ويمكن أن يكون واحدًا من عدة مشكلات، راجع المخزن المؤقت للأخطاء للحصول على التفاصيل."
+
+#: includes/arrays.php
+msgid "Received an error when trying to set the transfer mode to binary or ASCII."
+msgstr "تم تلقي خطأ عند محاولة ضبط وضع النقل على ثنائي أو ASCII."
+
+#: includes/arrays.php
+msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
+msgstr "كانت عملية نقل الملفات أقصر أو أكبر من المتوقع. يحدث هذا عندما يقوم الخادم أولاً بالإبلاغ عن حجم النقل المتوقع، ثم يقوم بتسليم البيانات التي لا تتطابق مع الحجم المحدد مسبقًا."
+
+#: includes/arrays.php
+msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
+msgstr "كان هذا إما ردًا غريبًا على أمر \"RETR\" أو اكتمال نقل صفر بايت."
+
+#: includes/arrays.php
+msgid "Obsolete Error"
+msgstr "خطأ عفا عليه الزمن"
+
+#: includes/arrays.php
+msgid "Not used in modern versions."
+msgstr "لا يستخدم في الإصدارات الحديثة."
+
+#: includes/arrays.php
+msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
+msgstr "عند إرسال أوامر \"QUOTE\" مخصصة إلى الخادم البعيد، قام أحد الأوامر بإرجاع رمز خطأ يبلغ 400 أو أعلى (لـ FTP) أو أشار بخلاف ذلك إلى إكمال الأمر بشكل غير ناجح."
+
+#: includes/arrays.php
+msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
+msgstr "يتم إرجاع هذا إذا تم تعيين CURLOPT_FAILONERROR على \"صحيح\" وقام خادم HTTP بإرجاع رمز خطأ >= 400."
+
+#: includes/arrays.php
+msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
+msgstr "حدث خطأ أثناء كتابة البيانات المستلمة إلى ملف محلي، أو تم إرجاع خطأ إلى libcurl من رد اتصال الكتابة."
+
+#: includes/arrays.php
+msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
+msgstr "فشل بدء التحميل. بالنسبة لـ FTP، يرفض الخادم عادةً أمر STOR. عادةً ما يحتوي المخزن المؤقت للأخطاء على شرح الخادم لهذا الأمر."
+
+#: includes/arrays.php
+msgid "There was a problem reading a local file or an error returned by the read callback."
+msgstr "حدثت مشكلة في قراءة ملف محلي أو حدث خطأ تم إرجاعه بواسطة رد اتصال القراءة."
+
+#: includes/arrays.php
+msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
+msgstr "فشل طلب تخصيص الذاكرة. وهذا أمر سيء للغاية، وستفسد الأمور بشدة إذا حدث هذا."
+
+#: includes/arrays.php
+msgid "Operation timeout. The specified time-out period was reached according to the conditions."
+msgstr "مهلة العملية. تم الوصول إلى فترة المهلة المحددة وفقًا للشروط."
+
+#: includes/arrays.php
+msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
+msgstr "أرجع أمر FTP PORT خطأً. يحدث هذا غالبًا عندما لا تحدد عنوانًا جيدًا بما يكفي لاستخدامه من قبل libcurl. راجع CURLOPT_FTPPORT."
+
+#: includes/arrays.php
+msgid "The FTP REST command returned error. This should never happen if the server is sane."
+msgstr "أرجع أمر FTP REST خطأً. لا ينبغي أن يحدث هذا أبدًا إذا كان الخادم عاقلًا."
+
+#: includes/arrays.php
+msgid "The server does not support or accept range requests."
+msgstr "الخادم لا يدعم أو يقبل طلبات النطاق."
+
+#: includes/arrays.php
+msgid "This is an odd error that mainly occurs due to internal confusion."
+msgstr "هذا خطأ غريب يحدث بشكل رئيسي بسبب الارتباك الداخلي."
+
+#: includes/arrays.php
+msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
+msgstr "حدثت مشكلة في مكان ما في مصافحة SSL/TLS. أنت تريد حقًا وجود مخزن مؤقت للأخطاء وقراءة الرسالة هناك لأنها تحدد المشكلة بشكل أكثر قليلاً. يمكن أن تكون شهادات (تنسيقات الملفات والمسارات والأذونات) وكلمات المرور وغيرها."
+
+#: includes/arrays.php
+msgid "The download could not be resumed because the specified offset was out of the file boundary."
+msgstr "تعذر استئناف التنزيل لأن الإزاحة المحددة كانت خارج حدود الملف."
+
+#: includes/arrays.php
+msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
+msgstr "الملف المقدم مع FILE:// لا يمكن فتحه. على الأرجح لأن مسار الملف لا يتعرف على ملف موجود. هل تأكدت من صلاحيات الملف؟"
+
+#: includes/arrays.php
+msgid "LDAP cannot bind. LDAP bind operation failed."
+msgstr "لا يمكن ربط LDAP. فشلت عملية ربط LDAP."
+
+#: includes/arrays.php
+msgid "LDAP search failed."
+msgstr "فشل بحث LDAP."
+
+#: includes/arrays.php
+msgid "Function not found. A required zlib function was not found."
+msgstr "لم يتم العثور على الوظيفة. لم يتم العثور على دالة zlib المطلوبة."
+
+#: includes/arrays.php
+msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
+msgstr "تم إحباطه عن طريق رد الاتصال. أعاد رد الاتصال \"إحباط\" إلى libcurl."
+
+#: includes/arrays.php
+msgid "A function was called with a bad parameter."
+msgstr "تم استدعاء دالة بمعلمة سيئة."
+
+#: includes/arrays.php
+msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
+msgstr "خطأ في الواجهة. لا يمكن استخدام واجهة صادرة محددة. قم بتعيين الواجهة التي سيتم استخدامها لعنوان IP المصدر للاتصالات الصادرة باستخدام URLOPT_INTERFACE."
+
+#: includes/arrays.php
+msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
+msgstr "عدد كبير جدًا من عمليات إعادة التوجيه. عند اتباع عمليات إعادة التوجيه، يصل libcurl إلى الحد الأقصى للمبلغ. قم بتعيين الحد الخاص بك باستخدام CURLOPT_MAXREDIRS."
+
+#: includes/arrays.php
+msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
+msgstr "لم يتم التعرف/المعروف على الخيار الذي تم تمريره إلى libcurl. الرجوع إلى الوثائق المناسبة. هذه على الأرجح مشكلة في البرنامج الذي يستخدم libcurl. قد يحتوي المخزن المؤقت للأخطاء على معلومات أكثر تحديدًا حول الخيار الذي يتعلق به بالضبط."
+
+#: includes/arrays.php
+msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
+msgstr "تم تنسيق الخيار الذي تم تمريره إلى setopt بشكل خاطئ. راجع رسالة الخطأ للحصول على تفاصيل حول الخيار."
+
+#: includes/arrays.php
+msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
+msgstr "لم يتم إرجاع أي شيء من الخادم، وفي ظل هذه الظروف، يعتبر عدم الحصول على أي شيء خطأً."
+
+#: includes/arrays.php
+msgid "The specified crypto engine was not found."
+msgstr "لم يتم العثور على محرك التشفير المحدد."
+
+#: includes/arrays.php
+msgid "Failed setting the selected SSL crypto engine as default."
+msgstr "فشل تعيين محرك تشفير SSL المحدد كإعداد افتراضي."
+
+#: includes/arrays.php
+msgid "Failed sending network data."
+msgstr "فشل إرسال بيانات الشبكة."
+
+#: includes/arrays.php
+msgid "Failure with receiving network data."
+msgstr "فشل في تلقي بيانات الشبكة."
+
+#: includes/arrays.php
+msgid "problem with the local client certificate."
+msgstr "مشكلة مع شهادة العميل المحلي."
+
+#: includes/arrays.php
+msgid "Could not use specified cipher."
+msgstr "لا يمكن استخدام التشفير المحدد."
+
+#: includes/arrays.php
+msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
+msgstr "تم اعتبار شهادة SSL للخادم البعيد أو بصمة SSH غير مقبولة. تم توحيد رمز الخطأ هذا مع CURLE_SSL_CACERT منذ 7.62.0. وكانت قيمته السابقة 51."
+
+#: includes/arrays.php
+msgid "Unrecognized transfer encoding."
+msgstr "ترميز النقل غير معروف."
+
+#: includes/arrays.php
+msgid "Maximum file size exceeded."
+msgstr "تم تجاوز الحد الأقصى لحجم الملف."
+
+#: includes/arrays.php
+msgid "Requested FTP SSL level failed."
+msgstr "فشل مستوى FTP SSL المطلوب."
+
+#: includes/arrays.php
+msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
+msgstr "عند إجراء عملية إرسال، كان على شركة Curl إرجاع البيانات لإعادة إرسالها، لكن عملية الإرجاع فشلت."
+
+#: includes/arrays.php
+msgid "Initiating the SSL Engine failed."
+msgstr "فشل بدء تشغيل محرك SSL."
+
+#: includes/arrays.php
+msgid "The remote server denied curl to login (Added in 7.13.1)"
+msgstr "رفض الخادم البعيد تسجيل الدخول (أضيف في 7.13.1)"
+
+#: includes/arrays.php
+msgid "File not found on TFTP server."
+msgstr "لم يتم العثور على الملف على خادم TFTP."
+
+#: includes/arrays.php
+msgid "Permission problem on TFTP server."
+msgstr "مشكلة في الإذن على خادم TFTP."
+
+#: includes/arrays.php
+msgid "Out of disk space on the server."
+msgstr "نفاد مساحة القرص على الخادم."
+
+#: includes/arrays.php
+msgid "Illegal TFTP operation."
+msgstr "عملية TFTP غير قانونية."
+
+#: includes/arrays.php
+msgid "Unknown TFTP transfer ID."
+msgstr "معرف نقل TFTP غير معروف."
+
+#: includes/arrays.php
+msgid "File already exists and is not overwritten."
+msgstr "الملف موجود بالفعل ولم تتم الكتابة فوقه."
+
+#: includes/arrays.php
+msgid "This error should never be returned by a properly functioning TFTP server."
+msgstr "لا ينبغي أبدًا إرجاع هذا الخطأ بواسطة خادم TFTP يعمل بشكل صحيح."
+
+#: includes/arrays.php
+msgid "Problem with reading the SSL CA cert (path? access rights?)"
+msgstr "مشكلة في قراءة شهادة SSL CA (المسار؟ حقوق الوصول؟)"
+
+#: includes/arrays.php
+msgid "The resource referenced in the URL does not exist."
+msgstr "المورد المشار إليه في عنوان URL غير موجود."
+
+#: includes/arrays.php
+msgid "An unspecified error occurred during the SSH session."
+msgstr "حدث خطأ غير محدد أثناء جلسة SSH."
+
+#: includes/arrays.php
+msgid "Failed to shut down the SSL connection."
+msgstr "فشل في إيقاف اتصال SSL."
+
+#: includes/arrays.php
+msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
+msgstr "المقبس غير جاهز للإرسال/الاستقبال، انتظر حتى يصبح جاهزًا وحاول مرة أخرى. يتم إرجاع رمز الإرجاع هذا فقط من curl_easy_recv وcurl_easy_send (أضيف في 7.18.2)"
+
+#: includes/arrays.php
+msgid "Failed to load CRL file (Added in 7.19.0)"
+msgstr "فشل تحميل ملف CRL (أضيف في 7.19.0)"
+
+#: includes/arrays.php
+msgid "Issuer check failed (Added in 7.19.0)"
+msgstr "فشل التحقق من جهة الإصدار (أضيف في 7.19.0)"
+
+#: includes/arrays.php
+msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
+msgstr "لا يفهم خادم FTP أمر PRET على الإطلاق أو لا يدعم الوسيطة المحددة. كن حذرًا عند استخدام CURLOPT_CUSTOMREQUEST، فسيتم إرسال أمر LIST مخصص مع أمر PRET قبل PASV أيضًا. (أضيف في 7.20.0)"
+
+#: includes/arrays.php
+msgid "Mismatch of RTSP CSeq numbers."
+msgstr "عدم تطابق أرقام RTSP CSeq."
+
+#: includes/arrays.php
+msgid "Mismatch of RTSP Session Identifiers."
+msgstr "عدم تطابق معرفات جلسة RTSP."
+
+#: includes/arrays.php
+msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
+msgstr "غير قادر على تحليل قائمة ملفات FTP (أثناء تنزيل حرف بدل FTP)."
+
+#: includes/arrays.php
+msgid "Chunk callback reported error."
+msgstr "تم الإبلاغ عن خطأ في رد الاتصال."
+
+#: includes/arrays.php
+msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
+msgstr "(للاستخدام الداخلي فقط، لا يتم إرجاعه أبدًا بواسطة libcurl) لا يوجد اتصال متاح، الجلسة في قائمة الانتظار. (أضيف في 7.30.0)"
+
+#: includes/arrays.php
+msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
+msgstr "فشلت مطابقة المفتاح المثبت المحدد بـ CURLOPT_PINNEDPUBLICKEY."
+
+#: includes/arrays.php
+msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
+msgstr "أرجعت الحالة فشلًا عند سؤالها باستخدام CURLOPT_SSL_VERIFYSTATUS."
+
+#: includes/arrays.php
+msgid "Stream error in the HTTP/2 framing layer."
+msgstr "خطأ في الدفق في طبقة تأطير HTTP/2."
+
+#: includes/arrays.php
+msgid "An API function was called from inside a callback."
+msgstr "تم استدعاء وظيفة API من داخل رد الاتصال."
+
+#: includes/arrays.php
+msgid "An authentication function returned an error."
+msgstr "أرجعت وظيفة المصادقة خطأ."
+
+#: includes/arrays.php
+msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr "تم اكتشاف مشكلة في طبقة HTTP/3. هذا أمر عام إلى حد ما ويمكن أن يكون واحدًا من عدة مشكلات، راجع المخزن المؤقت للأخطاء للحصول على التفاصيل."
+
+#: includes/arrays.php
+msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
+msgstr "خطأ في اتصال QUIC. قد يكون سبب هذا الخطأ خطأ في مكتبة SSL. QUIC هو البروتوكول المستخدم لعمليات نقل HTTP/3."
+
+#: includes/arrays.php
+msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
+msgstr "خطأ في مصافحة الوكيل. يوفر CURLINFO_PROXY_ERROR تفاصيل إضافية حول المشكلة المحددة."
+
+#: includes/arrays.php
+msgid "SSL Client Certificate required."
+msgstr "مطلوب شهادة عميل SSL."
+
+#: includes/arrays.php
+msgid "An internal call to poll() or select() returned error that is not recoverable."
+msgstr "أدى استدعاء داخلي للاستقصاء () أو التحديد () إلى إرجاع خطأ غير قابل للاسترداد."
+
+#: includes/functions.php
+msgid "Log History"
+msgstr "محفوظات السجل"
+
+#: includes/functions.php
+msgid "Graphs"
+msgstr "الرسوم"
+
+#: includes/functions.php
+msgid "No data"
+msgstr "لايوجد بيانات"
+
+#: includes/functions.php servcheck_ca.php servcheck_proxy.php
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Delete"
+msgstr "حذف"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
+msgstr[0] "انقر على 'إستمرار' لحذف العناصر التالية."
+msgstr[1] "انقر على 'إستمرار' لحذف العنصر التالي."
+msgstr[2] "انقر على 'إستمرار' لحذف العنصرين التاليين."
+msgstr[3] "انقر على 'إستمرار' لحذف العناصر التالية."
+msgstr[4] "انقر على 'إستمرار' لحذف العناصر التالية."
+msgstr[5] "انقر على 'إستمرار' لحذف العناصر التالية."
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Delete item"
+msgid_plural "Delete items"
+msgstr[0] "حذف عناصر"
+msgstr[1] "حذف عنصر"
+msgstr[2] "حذف عنصرين"
+msgstr[3] "حذف عناصر"
+msgstr[4] "حذف عناصر"
+msgstr[5] "حذف عناصر"
+
+#: servcheck_ca.php
+#, php-format
+msgid "CA [edit: %s]"
+msgstr "CA [تحرير: %s]"
+
+#: servcheck_ca.php
+msgid "CA [new]"
+msgstr "CA [جديد]"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+msgid "Used"
+msgstr "مستعمل"
+
+#: servcheck_ca.php
+msgid "CAs"
+msgstr "المراجع المصدقة"
+
+#: servcheck_ca.php
+msgid "No Certificates Found"
+msgstr "لم يتم العثور على شهادات"
+
+#: servcheck_ca.php
+msgid "Servcheck CA Management"
+msgstr "إدارة المراجع المصدقة (CA) في Servcheck"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Search"
+msgstr "بحث"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Default"
+msgstr "الافتراضي"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Go"
+msgstr "انتقال"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Set/Refresh Filters"
+msgstr "مجموعة / تحديث الفلاتر"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Clear"
+msgstr "مسح"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Clear Filters"
+msgstr "مسح الفلتر"
+
+#: servcheck_credential.php servcheck_test.php
+msgid "Duplicate"
+msgstr "تكرار"
+
+#: servcheck_credential.php
+msgid "Click 'Continue' to Duplicate the following Credential."
+msgid_plural "Click 'Continue' to Duplicate the following Credentials."
+msgstr[0] "انقر على 'إستمرار' لتكرار بيانات الاعتماد التالية."
+msgstr[1] "انقر على 'إستمرار' لتكرار بيان الاعتماد التالي."
+msgstr[2] "انقر على 'إستمرار' لتكرار بياني الاعتماد التاليين."
+msgstr[3] "انقر على 'إستمرار' لتكرار بيانات الاعتماد التالية."
+msgstr[4] "انقر على 'إستمرار' لتكرار بيانات الاعتماد التالية."
+msgstr[5] "انقر على 'إستمرار' لتكرار بيانات الاعتماد التالية."
+
+#: servcheck_credential.php
+msgid "Duplicate Credential"
+msgid_plural "Duplicate Credentials"
+msgstr[0] "تكرار بيانات اعتماد"
+msgstr[1] "تكرار بيان اعتماد"
+msgstr[2] "تكرار بياني اعتماد"
+msgstr[3] "تكرار بيانات اعتماد"
+msgstr[4] "تكرار بيانات اعتماد"
+msgstr[5] "تكرار بيانات اعتماد"
+
+#: servcheck_credential.php
+#, php-format
+msgid "Credential [edit: %s]"
+msgstr "بيانات الاعتماد [تحرير: %s]"
+
+#: servcheck_credential.php
+msgid "Credential [new]"
+msgstr "بيانات الاعتماد [جديد]"
+
+#: servcheck_credential.php
+msgid "Type"
+msgstr "النوع"
+
+#: servcheck_credential.php
+msgid "Credentials"
+msgstr "بيانات الاعتماد"
+
+#: servcheck_credential.php
+msgid "No Credentials Found"
+msgstr "لم يتم العثور على بيانات اعتماد"
+
+#: servcheck_credential.php
+msgid "Servcheck Credential Management"
+msgstr "إدارة بيانات الاعتماد في Servcheck"
+
+#: servcheck_curl_code.php
+msgid "No error codes"
+msgstr "لا توجد رموز الخطأ"
+
+#: servcheck_proxy.php
+#, php-format
+msgid "Proxy [edit: %s]"
+msgstr "الوكيل [تحرير: %s]"
+
+#: servcheck_proxy.php
+msgid "Proxy [new]"
+msgstr "الوكيل [جديد]"
+
+#: servcheck_proxy.php
+msgid "Ports (http/https)"
+msgstr "المنافذ (http/https)"
+
+#: servcheck_proxy.php
+msgid "No Proxies Found"
+msgstr "لم يتم العثور على وكلاء"
+
+#: servcheck_proxy.php
+msgid "Servcheck Proxy Management"
+msgstr "إدارة الوكيل (Proxy) في Servcheck"
+
+#: servcheck_test.php
+msgid "Disable"
+msgstr "تعطيل"
+
+#: servcheck_test.php
+msgid "Enable"
+msgstr "تفعيل"
+
+#: servcheck_test.php
+msgid "Clear statistics"
+msgstr "مسح الإحصائيات"
+
+#: servcheck_test.php
+msgid "Clear log"
+msgstr "مسح السجل"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
+msgstr[0] "انقر على 'إستمرار' لتعطيل العناصر التالية."
+msgstr[1] "انقر على 'إستمرار' لتعطيل العنصر التالي."
+msgstr[2] "انقر على 'إستمرار' لتعطيل العنصرين التاليين."
+msgstr[3] "انقر على 'إستمرار' لتعطيل العناصر التالية."
+msgstr[4] "انقر على 'إستمرار' لتعطيل العناصر التالية."
+msgstr[5] "انقر على 'إستمرار' لتعطيل العناصر التالية."
+
+#: servcheck_test.php
+msgid "Disable item"
+msgid_plural "Disable items"
+msgstr[0] "تعطيل عناصر"
+msgstr[1] "تعطيل عنصر"
+msgstr[2] "تعطيل عنصرين"
+msgstr[3] "تعطيل عناصر"
+msgstr[4] "تعطيل عناصر"
+msgstr[5] "تعطيل عناصر"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
+msgstr[0] "انقر على 'إستمرار' لتفعيل العناصر التالية."
+msgstr[1] "انقر على 'إستمرار' لتفعيل العنصر التالي."
+msgstr[2] "انقر على 'إستمرار' لتفعيل العنصرين التاليين."
+msgstr[3] "انقر على 'إستمرار' لتفعيل العناصر التالية."
+msgstr[4] "انقر على 'إستمرار' لتفعيل العناصر التالية."
+msgstr[5] "انقر على 'إستمرار' لتفعيل العناصر التالية."
+
+#: servcheck_test.php
+msgid "Enable item"
+msgid_plural "Enable items"
+msgstr[0] "تفعيل عناصر"
+msgstr[1] "تفعيل عنصر"
+msgstr[2] "تفعيل عنصرين"
+msgstr[3] "تفعيل عناصر"
+msgstr[4] "تفعيل عناصر"
+msgstr[5] "تفعيل عناصر"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
+msgstr[0] "انقر على 'إستمرار' لتكرار العناصر التالية."
+msgstr[1] "انقر على 'إستمرار' لتكرار العنصر التالي."
+msgstr[2] "انقر على 'إستمرار' لتكرار العنصرين التاليين."
+msgstr[3] "انقر على 'إستمرار' لتكرار العناصر التالية."
+msgstr[4] "انقر على 'إستمرار' لتكرار العناصر التالية."
+msgstr[5] "انقر على 'إستمرار' لتكرار العناصر التالية."
+
+#: servcheck_test.php
+msgid "Duplicate item"
+msgid_plural "Duplicate items"
+msgstr[0] "تكرار عناصر"
+msgstr[1] "تكرار عنصر"
+msgstr[2] "تكرار عنصرين"
+msgstr[3] "تكرار عناصر"
+msgstr[4] "تكرار عناصر"
+msgstr[5] "تكرار عناصر"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear statistics of the following item."
+msgid_plural "Click 'Continue' to clear statistics of the following items."
+msgstr[0] "انقر على 'إستمرار' لمسح إحصائيات العناصر التالية."
+msgstr[1] "انقر على 'إستمرار' لمسح إحصائيات العنصر التالي."
+msgstr[2] "انقر على 'إستمرار' لمسح إحصائيات العنصرين التاليين."
+msgstr[3] "انقر على 'إستمرار' لمسح إحصائيات العناصر التالية."
+msgstr[4] "انقر على 'إستمرار' لمسح إحصائيات العناصر التالية."
+msgstr[5] "انقر على 'إستمرار' لمسح إحصائيات العناصر التالية."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear log of the following item."
+msgid_plural "Click 'Continue' to clear log of the following items."
+msgstr[0] "انقر على 'إستمرار' لمسح سجل العناصر التالية."
+msgstr[1] "انقر على 'إستمرار' لمسح سجل العنصر التالي."
+msgstr[2] "انقر على 'إستمرار' لمسح سجل العنصرين التاليين."
+msgstr[3] "انقر على 'إستمرار' لمسح سجل العناصر التالية."
+msgstr[4] "انقر على 'إستمرار' لمسح سجل العناصر التالية."
+msgstr[5] "انقر على 'إستمرار' لمسح سجل العناصر التالية."
+
+#: servcheck_test.php
+#, php-format
+msgid "The Service Check history was purged for %s"
+msgstr "تمت إزالة سجل فحص الخدمة لـ %s"
+
+#: servcheck_test.php
+#, php-format
+msgid "Test [edit: %s]"
+msgstr "اختبار [تحرير: %s]"
+
+#: servcheck_test.php
+msgid "Test [new]"
+msgstr "اختبار [جديد]"
+
+#: servcheck_test.php
+msgid "No Users Selected"
+msgstr "لم يتم تحديد أي مستخدمين"
+
+#: servcheck_test.php
+msgid "Users Selected"
+msgstr "مستخدمين مختارين"
+
+#: servcheck_test.php
+msgid "All Users Selected"
+msgstr "تم تحديد جميع المستخدمين"
+
+#: servcheck_test.php
+msgid "All"
+msgstr "الكل"
+
+#: servcheck_test.php
+msgid "Date"
+msgstr "التاريخ"
+
+#: servcheck_test.php
+msgid "Attempt"
+msgstr "محاولة"
+
+#: servcheck_test.php
+msgid "Result"
+msgstr "النتيجة"
+
+#: servcheck_test.php
+msgid "Search result"
+msgstr "نتيجة البحث"
+
+#: servcheck_test.php
+msgid "Duration"
+msgstr "المدة الزمنية"
+
+#: servcheck_test.php
+msgid "Certificate"
+msgstr "الشهادة"
+
+#: servcheck_test.php
+msgid "Curl"
+msgstr "Curl"
+
+#: servcheck_test.php
+msgid "Ret. data size"
+msgstr "حجم البيانات المسترجعة"
+
+#: servcheck_test.php
+msgid "CPU u/CPU s/Memory"
+msgstr "CPU مستخدم / CPU نظام / الذاكرة"
+
+#: servcheck_test.php
+msgid "Logs"
+msgstr "السجل"
+
+#: servcheck_test.php
+msgid "days"
+msgstr "أيام"
+
+#: servcheck_test.php
+#, php-format
+msgid "Expired %s days ago"
+msgstr "انتهت الصلاحية منذ %s يوم"
+
+#: servcheck_test.php
+msgid "Insufficient data, wait a few poller cycles"
+msgstr "البيانات غير كافية، انتظر بضع دورات للمستفتي"
+
+#: servcheck_test.php
+msgid "Actions"
+msgstr "أفعال"
+
+#: servcheck_test.php
+msgid "Status"
+msgstr "الحالة"
+
+#: servcheck_test.php
+msgid "Last Check (attempt)"
+msgstr "آخر فحص (محاولة)"
+
+#: servcheck_test.php
+msgid "Stats (OK/problem)"
+msgstr "الإحصائيات (موافق/مشكلة)"
+
+#: servcheck_test.php
+msgid "Triggered"
+msgstr "تشغيل"
+
+#: servcheck_test.php
+msgid "Edit Service Check"
+msgstr "تحرير فحص الخدمة"
+
+#: servcheck_test.php
+msgid "Enable Service Check"
+msgstr "تفعيل فحص الخدمة"
+
+#: servcheck_test.php
+msgid "Disable Service Check"
+msgstr "تعطيل فحص الخدمة"
+
+#: servcheck_test.php
+msgid "View Service Check History"
+msgstr "عرض سجل فحص الخدمة"
+
+#: servcheck_test.php
+msgid "View Last returned data"
+msgstr "عرض آخر البيانات التي تم إرجاعها"
+
+#: servcheck_test.php
+msgid "View Graph"
+msgstr "عرض الرسم البياني"
+
+#: servcheck_test.php
+msgid "N/A (N/A)"
+msgstr "غير متاح (غير متاح)"
+
+#: servcheck_test.php
+msgid "No"
+msgstr "لا"
+
+#: servcheck_test.php
+msgid "Yes"
+msgstr "نعم"
+
+#: servcheck_test.php
+msgid "No Service Checks Found"
+msgstr "لم يتم العثور على فحوصات خدمة"
+
+#: servcheck_test.php
+msgid "Last returned data of test"
+msgstr "آخر بيانات الاختبار التي تم إرجاعها"
+
+#: servcheck_test.php
+msgid "Servcheck Test Management"
+msgstr "إدارة الاختبارات في Servcheck"
+
+#: servcheck_test.php
+msgid "State"
+msgstr "الحالة"
+
+#: servcheck_test.php
+msgid "Any"
+msgstr "الجميع"
+
+#: servcheck_test.php
+msgid "Refresh"
+msgstr "تحديث"
+
+#: servcheck_test.php
+msgid "Checks"
+msgstr "الفحوصات"
+
+#: servcheck_test.php
+msgid "Service Check History"
+msgstr "سجل فحص الخدمة"
+
+#: servcheck_test.php
+msgid "Date Search"
+msgstr "تاريخ البحث"
+
+#: servcheck_test.php
+msgid "Entries"
+msgstr "مقالات"
+
+#: servcheck_test.php
+msgid "Purge Events"
+msgstr "أحداث التطهير"
+
+#: setup.php
+msgid "Service Check Admin"
+msgstr "إدارة فحص الخدمات"
+
+#: setup.php
+msgid "Management"
+msgstr "الإدارة"
+
+#: setup.php
+msgid "Service Checker"
+msgstr "فاحص الخدمات"
+
+#: setup.php
+msgid "Service Checks"
+msgstr "فحوصات الخدمات"
+
+#: setup.php
+msgid "Service Check Edit"
+msgstr "تحرير فحص الخدمة"
+
+#: setup.php
+msgid "Service Check Save"
+msgstr "حفظ فحص الخدمة"
+
+#: setup.php
+msgid "Credential Edit"
+msgstr "تحرير بيانات الاعتماد"
+
+#: setup.php
+msgid "Credential Save"
+msgstr "حفظ بيانات الاعتماد"
+
+#: setup.php
+msgid "Web Proxy"
+msgstr "وكيل الويب"
+
+#: setup.php
+msgid "Web Proxy Edit"
+msgstr "تحرير وكيل الويب"
+
+#: setup.php
+msgid "Save Web Proxy"
+msgstr "حفظ وكيل الويب"
+
+#: setup.php
+msgid "CA"
+msgstr "كاليفورنيا"
+
+#: setup.php
+msgid "CA Edit"
+msgstr "تحرير CA"
+
+#: setup.php
+msgid "Save CA"
+msgstr "حفظ كاليفورنيا"
+
+#: setup.php
+msgid "Servcheck"
+msgstr "Servcheck"
+
+#: setup.php
+msgid "Notification Preferences"
+msgstr "تفضيلات الإشعارات"
+
+#: setup.php
+msgid "Send Email separately for each address"
+msgstr "إرسال بريد إلكتروني بشكل منفصل لكل عنوان"
+
+#: setup.php
+msgid "If checked, this will cause all Emails to be sent separately for each address."
+msgstr "إذا تم تحديده ، فسيؤدي ذلك إلى إرسال جميع رسائل البريد الإلكتروني بشكل منفصل لكل عنوان."
+
+#: setup.php
+msgid "Stop sending all notification"
+msgstr "إيقاف إرسال جميع الإشعارات"
+
+#: setup.php
+msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
+msgstr "إذا تم تحديده، فلن يرسل servcheck أي رسائل بريد إلكتروني. يمكنك أيضاً تعطيل الإشعارات لاختبارات محددة فقط"
+
+#: setup.php
+msgid "Enable Command Execution"
+msgstr "تمكين تنفيذ الأوامر"
+
+#: setup.php
+msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
+msgstr "سيؤدي تحديد هذا المربع إلى تفعيل إمكانية تشغيل الأوامر عند أحداث Servcheck. يمكنك تفعيله أو تعطيله لكل اختبار."
+
+#: setup.php
+msgid "Status Change Command"
+msgstr "أمر تغيير الحالة"
+
+#: setup.php
+msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+msgstr "عندما يُرجع اختبار أساسي أو اختبار بحث أو اختبار انتهاء صلاحية الشهادة نتيجة مختلفة، قم بتشغيل الأمر التالي... يجب ألا يتضمن هذا الأمر وسائط سطر الأوامر... ومع ذلك، يمكن سحب المتغيرات التالية من بيئة السكربت:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+
+#: setup.php
+msgid "Concurrent Check Processes"
+msgstr "عمليات الفحص المتزامنة"
+
+#: setup.php
+msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
+msgstr "عدد عمليات فحص الخدمة المراد تشغيلها بشكل متزامن. لا يُنصح بزيادة هذا الرقم إلى ضعف عدد الأنوية."
+
+#: setup.php
+msgid "1 Process"
+msgstr "1 عملية"
+
+#: setup.php
+#, php-format
+msgid "%d Processes"
+msgstr "العمليات %d"
+
+#: setup.php
+msgid "Certificate expiry date advanced notification email"
+msgstr "بريد إلكتروني للإشعار المسبق بتاريخ انتهاء صلاحية الشهادة"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
+msgstr "إذا كان فحص انتهاء صلاحية شهادة خدمة SSL/TLS مفعلاً، فحدد عدد الأيام لفترة الإشعار المسبق قبل تاريخ انتهاء الشهادة التي سيرسل النظام الإشعار خلالها"
+
+#: setup.php
+msgid "3 days in advance"
+msgstr "3 أيام مقدمًا"
+
+#: setup.php
+msgid "1 week in advance"
+msgstr "أسبوع واحد مقدمًا"
+
+#: setup.php
+msgid "3 weeks in advance"
+msgstr "3 أسابيع مقدمًا"
+
+#: setup.php
+msgid "30 days in advance"
+msgstr "30 يومًا مقدمًا"
+
+#: setup.php
+msgid "60 days in advance"
+msgstr "60 يومًا مقدمًا"
+
+#: setup.php
+msgid "90 days in advance"
+msgstr "90 يومًا مقدمًا"
+
+#: setup.php
+msgid "Certificate expiry notification email interval"
+msgstr "الفاصل الزمني لبريد إشعار انتهاء صلاحية الشهادة"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday"
+msgstr "إذا كان فحص انتهاء صلاحية شهادة خدمة SSL/TLS مفعلاً، فحدد الفاصل الزمني (بالأيام) لإرسال إشعار البريد الإلكتروني، ومع ذلك، إذا انقضى تاريخ انتهاء الصلاحية، فسيتم إرسال إشعار البريد الإلكتروني يومياً"
+
+#: setup.php
+msgid "1 day"
+msgstr "يوم 1"
+
+#: setup.php
+msgid "3 days"
+msgstr "3 أيام"
+
+#: setup.php
+msgid "5 days"
+msgstr "5 أيام"
+
+#: setup.php
+msgid "7 days"
+msgstr "7 أيام"
+
+#: setup.php
+msgid "10 days"
+msgstr "10 أيام"
+
+#: setup.php
+msgid "15 days"
+msgstr "15 يومًا"
+
+#: setup.php
+msgid "20 days"
+msgstr "20 يومًا"
+
+#: setup.php
+msgid "30 days"
+msgstr "30 يومًا"
+
+#: setup.php
+msgid "How long to keep logs"
+msgstr "مدة الاحتفاظ بالسجلات"
+
+#: setup.php
+msgid "Enter the period after which older logs will be automatically deleted."
+msgstr "أدخل الفترة التي سيتم بعدها حذف السجلات الأقدم تلقائياً."
+
+#: setup.php
+msgid "Never"
+msgstr "أبدا"
+
+#: setup.php
+#, php-format
+msgid "%d hours"
+msgstr "%d ساعات"
+
+#: setup.php
+#, php-format
+msgid "%d days"
+msgstr "%d من الأيام"
+
+#: setup.php
+#, php-format
+msgid "%d year"
+msgstr "%d سنة"
+
+#: setup.php
+msgid "Maximum test duration in seconds"
+msgstr "الحد الأقصى لمدة الاختبار بالثواني"
+
+#: setup.php
+msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
+msgstr "القيمة الافتراضية للاختبارات التي لم يتم فيها تفعيل اختبار وقت التشغيل. إذا كان مفعلاً، يتم حساب الحد الأقصى للمدة كعتبة المدة + ثانيتين."
+
+#: setup.php
+msgid "HTTP/HTTPS Check Settings"
+msgstr "إعدادات فحص HTTP/HTTPS"
+
+#: setup.php
+msgid "User Agent"
+msgstr "وكيل المستخدم"
+
+#: setup.php
+msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
+msgstr "سلسلة User-Agent المرسلة مع فحوصات خدمة HTTP/HTTPS وغيرها من الفحوصات المستندة إلى cURL. تحظر بعض المواقع المتصفحات القديمة أو غير الشائعة، لذا يمكنك تعيين User-Agent حالي هنا. اتركه فارغًا لاستخدام القيمة الافتراضية المضمنة."
+

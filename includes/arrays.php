@@ -167,7 +167,7 @@ $snmp_auth_protocols = [
 	'SHA'    => __('SHA'),
 	'SHA224' => __('SHA-224'),
 	'SHA256' => __('SHA-256'),
-	'SHA392' => __('SHA-392'),
+	'SHA392' => __('SHA-392', 'servcheck'),
 	'SHA512' => __('SHA-512'),
 ];
 
@@ -791,7 +791,7 @@ $servcheck_credential_fields = [
 	'snmp_engine_id' => [
 		'method'        => 'textbox',
 		'friendly_name' => __('SNMP Engine ID (v3)'),
-		'description'   => __('Enter the SNMP v3 Engine Id or empty.'),
+		'description'   => __('Enter the SNMP v3 Engine Id or empty.', 'servcheck'),
 		'value'         => '|arg1:snmp_engine_id|',
 		'default'       => '',
 		'max_length'    => '64',
@@ -864,19 +864,19 @@ $servcheck_credential_fields = [
 ];
 
 $servcheck_help_credential = [
-	'userpass' => __('<b>Can be used for a lot of service checks:</b><br/>\
-		<i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/>\
-		<i>SMTP on port 587 - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/>\
-		<i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/>\
-		<i>LDAP, smb, smbs</i> - required<br/>\
-		<i>MQTT</i> - optional<br/>\
-		<i>SCP, SSH command</i> - you can use this method or private key method', 'servcheck'),
+	'userpass' => __('<b>Can be used for a lot of service checks:</b><br/>'
+		. '<i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/>'
+		. '<i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/>'
+		. '<i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username "anonymous" and email address as password<br/>'
+		. '<i>LDAP, smb, smbs</i> - required<br/>'
+		. '<i>MQTT</i> - optional<br/>'
+		. '<i>SCP, SSH command</i> - you can use this method or private key method', 'servcheck'),
 	'basic'    => __('Rest API - Basic HTTP auth. Username and password are required', 'servcheck'),
-	'apikey'   => __('Rest API - API key auth<br/>Auth is send in HTTP header, custom header or POST method. Credentials in URL is not supported.<br/>Insert API key name and value. Both values are required.\
-		For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue).\
-		For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue).\
-		For POST <i>api_key</i> is usually used.', 'servcheck'),
-	'oauth2'   => __('Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are send Json encoded.', 'servcheck'),
+	'apikey'   => __('Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. '
+		. 'For HTTP header the name <i>Bearer or apikey or ""</i> is usually used (Authorization: Bearer apivalue). '
+		. 'For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). '
+		. 'For POST <i>api_key</i> is usually used.', 'servcheck'),
+	'oauth2'   => __('Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded.', 'servcheck'),
 	'cookie'   => __('Rest API - Cookie based auth - both values are required. After login, cookie is returned', 'servcheck'),
 	'snmp'     => __('SNMP v1 or v2 - required, insert community name here', 'servcheck'),
 	'snmp3'    => __('SNMP v3 - The security level determines which parameters are required', 'servcheck'),
@@ -887,29 +887,29 @@ $servcheck_help_test = [
 	'web_http'     => __('It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth.', 'servcheck'),
 	'web_https'    => __('The same as HTTP plaintext but adds the ability to test certificates.', 'servcheck'),
 	'mail_smtp'    => __('It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response.', 'servcheck'),
-	'mail_smtptls' => __('Unencrypted + STARTTL. It is also possible to test the validity of the certificate. Without username and password, \
-		you will see server login banner and ehlo response. With credential, login will be performed', 'servcheck'),
-	'mail_smtps'   => __('Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password\
-		AUTH LOGIN will be tested.', 'servcheck'),
-	'mail_imap'    => __('Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. \
-		With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method.', 'servcheck'),
-	'mail_imaptls' => __('The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS.', 'servcheck'),
+	'mail_smtptls' => __('Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, '
+		. 'you will see server login banner and ehlo response. With credential, login will be performed', 'servcheck'),
+	'mail_smtps'   => __('Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password '
+		. 'AUTH LOGIN will be tested.', 'servcheck'),
+	'mail_imap'    => __('Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. '
+		. 'With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method.', 'servcheck'),
+	'mail_imaptls' => __('The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS.', 'servcheck'),
 	'mail_imaps'   => __('Encrypted IMAP, you can try login and test certificate and user login', 'servcheck'),
-	'mail_pop3'    => __('Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. \
-		With credential login will be tested and try to read list of messages', 'servcheck'),
-	'mail_pop3tls' => __('The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS.', 'servcheck'),
+	'mail_pop3'    => __('Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. '
+		. 'With credential login will be tested and try to read list of messages', 'servcheck'),
+	'mail_pop3tls' => __('The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS.', 'servcheck'),
 	'mail_pop3s'   => __('Encrypted POP3, you can try login and test certificate and user login.', 'servcheck'),
 	'dns_dns'      => __('Try to resolve DNS record on specified DNS server', 'servcheck'),
 	'dns_doh'      => __('Try DNS over HTTPS.', 'servcheck'),
 	'ldap_ldap'    => __('All parameters are required. Perform unencrypted LDAP login and search', 'servcheck'),
 	'ldap_ldaps'   => __('All parameters are required. Perform encrypted LDAP login and search', 'servcheck'),
-	'ftp_ftp'      => __('Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content \
-		of the file is returned.', 'servcheck'),
+	'ftp_ftp'      => __('Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content '
+		. 'of the file is returned.', 'servcheck'),
 	'ftp_tftp'     => __('Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned.', 'servcheck'),
 	'ftp_scp'      => __('Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt).', 'servcheck'),
 	'smb_smb'      => __('Try SMB protocol, username and password are required. Try to login and download file.', 'servcheck'),
 	'smb_smbs'     => __('Try SMB protocol, username and password are required. Try to login and download file.', 'servcheck'),
-	'mqtt_mqtt'    => __('Connetct to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\"', 'servcheck'),
+	'mqtt_mqtt'    => __('Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase "Long duration alert"', 'servcheck'),
 	'rest_basic'   => __('REST API test with basic HTTP auth. Prepare credential first.', 'servcheck'),
 	'rest_apikey'  => __('REST API test with API key auth. Prepare credential first.', 'servcheck'),
 	'rest_oauth2'  => __('REST API test with Oauth2. Prepare credential first.', 'servcheck'),

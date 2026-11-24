@@ -340,6 +340,23 @@ if (!function_exists('__esc')) {
 	}
 }
 
+if (!function_exists('__n')) {
+	function __n($singular, $plural, $number, $domain = '') {
+		return $number == 1 ? $singular : $plural;
+	}
+}
+
+if (!function_exists('__esc_n')) {
+	function __esc_n($singular, $plural, $number, $domain = '') {
+		return htmlspecialchars($number == 1 ? $singular : $plural, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+	}
+}
+
+if (!function_exists('input_validate_input_number')) {
+	function input_validate_input_number($value) {
+	}
+}
+
 if (!function_exists('cacti_log')) {
 	function cacti_log($message, $also_print = false, $log_type = '', $level = 0) {
 		$args = func_get_args();
@@ -395,6 +412,26 @@ if (!function_exists('html_start_box')) {
 
 if (!function_exists('html_end_box')) {
 	function html_end_box($trailing_br = true, $resizable = false) {
+	}
+}
+
+if (!function_exists('top_header')) {
+	function top_header() {
+	}
+}
+
+if (!function_exists('bottom_footer')) {
+	function bottom_footer() {
+	}
+}
+
+if (!function_exists('form_start')) {
+	function form_start($action, $id = '', $enctype = false) {
+	}
+}
+
+if (!function_exists('form_end')) {
+	function form_end($render_magic = true) {
 	}
 }
 

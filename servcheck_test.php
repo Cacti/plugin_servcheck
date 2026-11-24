@@ -198,105 +198,10 @@ function form_actions(): void {
 		exit;
 	}
 
-	// setup some variables
-	$item_list   = '';
-	$items_array = [];
-	$save_html   = '';
-
-	// loop through each of the graphs selected on the previous page and get more info about them
-	foreach ($_POST as $var => $val) {
-		if (preg_match('/^chk_([0-9]+)$/', $var, $matches)) {
-			// ================= input validation =================
-			input_validate_input_number($matches[1]);
-			// ====================================================
-
-			$item_list .= '<li>' . db_fetch_cell_prepared('SELECT name FROM plugin_servcheck_test WHERE id = ?', [$matches[1]]) . '</li>';
-			$items_array[] = $matches[1];
-		}
-	}
-
-	top_header();
-
-	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
-
-	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', false, 3, 'center', '');
-
-	if (cacti_sizeof($items_array) > 0) {
-		if (get_filter_request_var('drp_action') == 1) { // delete
-			print "	<tr>
-					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', cacti_sizeof($items_array)) . "</p>
-						<div class='itemlist'><ul>$item_list</ul></div>
-					</td>
-				</tr>";
-
-			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete item', 'Delete items', cacti_sizeof($items_array)) . "'>";
-		} elseif (get_filter_request_var('drp_action') == 2) { // disable
-			print "	<tr>
-					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to disable the following items.', 'Click \'Continue\' to disable following items.', cacti_sizeof($items_array)) . "</p>
-						<div class='itemlist'><ul>$item_list</ul></div>
-					</td>
-				</tr>";
-
-			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Disable item', 'Disable items', cacti_sizeof($items_array)) . "'>";
-		} elseif (get_filter_request_var('drp_action') == 3) { // enable
-			print "	<tr>
-					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to enable the following items.', 'Click \'Continue\' to enable following items.', cacti_sizeof($items_array)) . "</p>
-						<div class='itemlist'><ul>$item_list</ul></div>
-					</td>
-				</tr>";
-
-			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Enable item', 'Enable items', cacti_sizeof($items_array)) . "'>";
-		} elseif (get_filter_request_var('drp_action') == 4) { // duplicate
-			print "	<tr>
-					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to duplicate the following items.', 'Click \'Continue\' to duplicate following items.', cacti_sizeof($items_array)) . "</p>
-						<div class='itemlist'><ul>$item_list</ul></div>
-					</td>
-				</tr>";
-
-			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate item', 'Duplicate items', cacti_sizeof($items_array)) . "'>";
-		} elseif (get_filter_request_var('drp_action') == 5) { // clear statistics
-			print "	<tr>
-					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to clear statistics of following items.', 'Click \'Continue\' to clear statistics of following items.', cacti_sizeof($items_array)) . "</p>
-						<div class='itemlist'><ul>$item_list</ul></div>
-					</td>
-				</tr>";
-
-			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate item', 'Duplicate items', cacti_sizeof($items_array)) . "'>";
-		} elseif (get_filter_request_var('drp_action') == 6) { // clear log
-			print "	<tr>
-					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to clear log of following items.', 'Click \'Continue\' to clear log of following items.', cacti_sizeof($items_array)) . "</p>
-						<div class='itemlist'><ul>$item_list</ul></div>
-					</td>
-				</tr>";
-
-			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate item', 'Duplicate items', cacti_sizeof($items_array)) . "'>";
-		}
-	} else {
-		raise_message(40);
+	if (!servcheck_handle_action_confirm('test', $servcheck_actions_menu, get_filter_request_var('drp_action'), $_POST)) {
 		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
 	}
-
-	print "<tr>
-		<td class='saveRow'>
-			<input type='hidden' name='action' value='actions'>
-			<input type='hidden' name='selected_items' value='" . serialize($items_array) . "'>
-			<input type='hidden' name='drp_action' value='" . get_request_var('drp_action') . "'>
-			$save_html
-		</td>
-	</tr>";
-
-	html_end_box();
-
-	form_end();
-
-	bottom_footer();
 }
 
 /**
@@ -556,7 +461,7 @@ function servcheck_data_edit(): void {
 
 		$header_label = __('Test [edit: %s]', $data['name'] ?? '');
 	} else {
-		$header_label = __('Test [new]');
+		$header_label = __('Test [new]', 'servcheck');
 	}
 
 	if (!api_plugin_installed('thold')) {
@@ -1096,7 +1001,7 @@ function servcheck_show_graph(): void {
 		[$id]);
 
 	if ($count < 5) {
-		print __('Insufficient data, wait a few poller cycles');
+		print __('Insufficient data, wait a few poller cycles', 'servcheck');
 
 		return;
 	}

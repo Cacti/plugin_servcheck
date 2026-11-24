@@ -322,8 +322,8 @@ msgstr ""
 msgid "Unable to Connect"
 msgstr ""
 
-#: includes/arrays.php servcheck_ca.php servcheck_credential.php
-#: servcheck_proxy.php servcheck_test.php
+#: includes/arrays.php includes/functions.php servcheck_ca.php
+#: servcheck_proxy.php
 msgid "Continue"
 msgstr ""
 
@@ -1036,14 +1036,7 @@ msgid "Token value"
 msgstr ""
 
 #: includes/arrays.php
-msgid ""
-"<b>Can be used for a lot of service checks:</b><br/>\\\n"
-"\t\t<i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/>\\\n"
-"\t\t<i>SMTP on port 587 - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/>\\\n"
-"\t\t<i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \\\"anonymous\\\" and email address as password<br/>\\\n"
-"\t\t<i>LDAP, smb, smbs</i> - required<br/>\\\n"
-"\t\t<i>MQTT</i> - optional<br/>\\\n"
-"\t\t<i>SCP, SSH command</i> - you can use this method or private key method"
+msgid "<b>Can be used for a lot of service checks:</b><br/><i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/><i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/><i>LDAP, smb, smbs</i> - required<br/><i>MQTT</i> - optional<br/><i>SCP, SSH command</i> - you can use this method or private key method"
 msgstr ""
 
 #: includes/arrays.php
@@ -1051,15 +1044,11 @@ msgid "Rest API - Basic HTTP auth. Username and password are required"
 msgstr ""
 
 #: includes/arrays.php
-msgid ""
-"Rest API - API key auth<br/>Auth is send in HTTP header, custom header or POST method. Credentials in URL is not supported.<br/>Insert API key name and value. Both values are required.\\\n"
-"\t\tFor HTTP header the name <i>Bearer or apikey or \\\"\\\"</i> is usually used (Authorization: Bearer apivalue).\\\n"
-"\t\tFor custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue).\\\n"
-"\t\tFor POST <i>api_key</i> is usually used."
+msgid "Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue). For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). For POST <i>api_key</i> is usually used."
 msgstr ""
 
 #: includes/arrays.php
-msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are send Json encoded."
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded."
 msgstr ""
 
 #: includes/arrays.php
@@ -1091,25 +1080,19 @@ msgid "It only checks whether the SMTP server is responding. No authentication. 
 msgstr ""
 
 #: includes/arrays.php
-msgid ""
-"Unencrypted + STARTTL. It is also possible to test the validity of the certificate. Without username and password, \\\n"
-"\t\tyou will see server login banner and ehlo response. With credential, login will be performed"
+msgid "Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, you will see server login banner and ehlo response. With credential, login will be performed"
 msgstr ""
 
 #: includes/arrays.php
-msgid ""
-"Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password\\\n"
-"\t\tAUTH LOGIN will be tested."
+msgid "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password AUTH LOGIN will be tested."
 msgstr ""
 
 #: includes/arrays.php
-msgid ""
-"Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. \\\n"
-"\t\tWith credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgid "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
 msgstr ""
 
 #: includes/arrays.php
-msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS."
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
 msgstr ""
 
 #: includes/arrays.php
@@ -1117,13 +1100,11 @@ msgid "Encrypted IMAP, you can try login and test certificate and user login"
 msgstr ""
 
 #: includes/arrays.php
-msgid ""
-"Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. \\\n"
-"\t\tWith credential login will be tested and try to read list of messages"
+msgid "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages"
 msgstr ""
 
 #: includes/arrays.php
-msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS."
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
 msgstr ""
 
 #: includes/arrays.php
@@ -1147,9 +1128,7 @@ msgid "All parameters are required. Perform encrypted LDAP login and search"
 msgstr ""
 
 #: includes/arrays.php
-msgid ""
-"Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content \\\n"
-"\t\tof the file is returned."
+msgid "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content of the file is returned."
 msgstr ""
 
 #: includes/arrays.php
@@ -1165,7 +1144,7 @@ msgid "Try SMB protocol, username and password are required. Try to login and do
 msgstr ""
 
 #: includes/arrays.php
-msgid "Connetct to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \\\"Long duration alert\\\""
+msgid "Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\""
 msgstr ""
 
 #: includes/arrays.php
@@ -1568,6 +1547,10 @@ msgstr ""
 msgid "No data"
 msgstr ""
 
+#: includes/functions.php servcheck_ca.php servcheck_proxy.php
+msgid "Cancel"
+msgstr ""
+
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Delete"
@@ -1575,15 +1558,10 @@ msgstr ""
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
-msgid "Click 'Continue' to delete the following items."
-msgid_plural "Click 'Continue' to delete following items."
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
 msgstr[0] ""
 msgstr[1] ""
-
-#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
-#: servcheck_test.php
-msgid "Cancel"
-msgstr ""
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
@@ -1653,13 +1631,13 @@ msgstr ""
 
 #: servcheck_credential.php
 msgid "Click 'Continue' to Duplicate the following Credential."
-msgid_plural "Click 'Continue' to Duplicate following Credential."
+msgid_plural "Click 'Continue' to Duplicate the following Credentials."
 msgstr[0] ""
 msgstr[1] ""
 
 #: servcheck_credential.php
 msgid "Duplicate Credential"
-msgid_plural "Duplicate Credential"
+msgid_plural "Duplicate Credentials"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -1730,8 +1708,8 @@ msgid "Clear log"
 msgstr ""
 
 #: servcheck_test.php
-msgid "Click 'Continue' to disable the following items."
-msgid_plural "Click 'Continue' to disable following items."
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -1742,8 +1720,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: servcheck_test.php
-msgid "Click 'Continue' to enable the following items."
-msgid_plural "Click 'Continue' to enable following items."
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -1754,8 +1732,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: servcheck_test.php
-msgid "Click 'Continue' to duplicate the following items."
-msgid_plural "Click 'Continue' to duplicate following items."
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -1766,14 +1744,14 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: servcheck_test.php
-msgid "Click 'Continue' to clear statistics of following items."
-msgid_plural "Click 'Continue' to clear statistics of following items."
+msgid "Click 'Continue' to clear statistics of the following item."
+msgid_plural "Click 'Continue' to clear statistics of the following items."
 msgstr[0] ""
 msgstr[1] ""
 
 #: servcheck_test.php
-msgid "Click 'Continue' to clear log of following items."
-msgid_plural "Click 'Continue' to clear log of following items."
+msgid "Click 'Continue' to clear log of the following item."
+msgid_plural "Click 'Continue' to clear log of the following items."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -2103,6 +2081,46 @@ msgstr ""
 
 #: setup.php
 msgid "90 days in advance"
+msgstr ""
+
+#: setup.php
+msgid "Certificate expiry notification email interval"
+msgstr ""
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday"
+msgstr ""
+
+#: setup.php
+msgid "1 day"
+msgstr ""
+
+#: setup.php
+msgid "3 days"
+msgstr ""
+
+#: setup.php
+msgid "5 days"
+msgstr ""
+
+#: setup.php
+msgid "7 days"
+msgstr ""
+
+#: setup.php
+msgid "10 days"
+msgstr ""
+
+#: setup.php
+msgid "15 days"
+msgstr ""
+
+#: setup.php
+msgid "20 days"
+msgstr ""
+
+#: setup.php
+msgid "30 days"
 msgstr ""
 
 #: setup.php

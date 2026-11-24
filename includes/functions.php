@@ -596,3 +596,166 @@ function servcheck_prepare_test(array &$test, array &$results, &$cred, &$credent
 
 	return true;
 }
+
+/**
+ * Render the bulk-action confirmation row and return the submit/cancel button markup.
+ *
+ * @param string $prompt    Translated confirmation prompt.
+ * @param string $title     Translated and HTML-escaped Continue button title.
+ * @param string $item_list Pre-rendered list items (<li>...</li>).
+ *
+ * @return string Save-row button HTML.
+ */
+function servcheck_render_action_confirm(string $prompt, string $title, string $item_list): string {
+	print "	<tr>
+			<td class='topBoxAlt'>
+				<p>" . $prompt . "</p>
+				<div class='itemlist'><ul>$item_list</ul></div>
+			</td>
+		</tr>";
+
+	return "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . $title . "'>";
+}
+
+/**
+ * Render the bulk-action confirmation page for a servcheck admin view.
+ *
+ * @param array      $actions_menu Map of drp_action IDs to action labels.
+ * @param int|string $action       Selected drp_action identifier.
+ * @param array      $items_array  Validated selected item IDs.
+ * @param string     $item_list    Pre-rendered list items (<li>...</li>).
+ * @param array      $confirm_map  Map of drp_action IDs to [prompt, title] pairs.
+ *
+ * @return bool True when the confirmation form was rendered, false when no items were selected.
+ */
+function servcheck_render_action_form(array $actions_menu, $action, array $items_array, string $item_list, array $confirm_map): bool {
+	$self = htmlspecialchars(basename($_SERVER['PHP_SELF'] ?? ''));
+
+	top_header();
+
+	form_start($self);
+
+	html_start_box($actions_menu[$action] ?? '', '60%', false, 3, 'center', '');
+
+	if (!cacti_sizeof($items_array)) {
+		raise_message(40);
+
+		return false;
+	}
+
+	$save_html = '';
+
+	if (isset($confirm_map[$action])) {
+		$save_html = servcheck_render_action_confirm($confirm_map[$action][0], $confirm_map[$action][1], $item_list);
+	}
+
+	print "<tr>
+		<td class='saveRow'>
+			<input type='hidden' name='action' value='actions'>
+			<input type='hidden' name='selected_items' value='" . serialize($items_array) . "'>
+			<input type='hidden' name='drp_action' value='" . html_escape((string) $action) . "'>
+			$save_html
+		</td>
+	</tr>";
+
+	html_end_box();
+
+	form_end();
+
+	bottom_footer();
+
+	return true;
+}
+
+/**
+ * Collect selected chk_<id> items from POST and build their confirmation list markup.
+ *
+ * @param string $entity Admin entity key ('ca', 'proxy', 'credential', 'test').
+ * @param array  $post   POST input map.
+ *
+ * @return array Pair of rendered <li> HTML and validated item IDs.
+ */
+function servcheck_collect_selected_items(string $entity, array $post): array {
+	$queries = [
+		'ca'         => ['SELECT name FROM plugin_servcheck_ca WHERE id = ?', false],
+		'proxy'      => ['SELECT name FROM plugin_servcheck_proxy WHERE id = ?', true],
+		'credential' => ['SELECT name FROM plugin_servcheck_credential WHERE id = ?', false],
+		'test'       => ['SELECT name FROM plugin_servcheck_test WHERE id = ?', false],
+	];
+
+	$query       = $queries[$entity][0];
+	$escape_name = $queries[$entity][1];
+	$item_list   = '';
+	$items_array = [];
+
+	foreach ($post as $var => $val) {
+		if (preg_match('/^chk_([0-9]+)$/', (string) $var, $matches)) {
+			input_validate_input_number($matches[1]);
+			$name = (string) db_fetch_cell_prepared($query, [$matches[1]]);
+
+			if ($escape_name) {
+				$name = html_escape($name);
+			}
+
+			$item_list    .= '<li>' . $name . '</li>';
+			$items_array[] = $matches[1];
+		}
+	}
+
+	return [$item_list, $items_array];
+}
+
+/**
+ * Return the bulk-action confirmation prompt/title map for a servcheck entity.
+ *
+ * @param string $entity Admin entity key ('ca', 'proxy', 'credential', 'test').
+ * @param int    $count  Number of selected items.
+ *
+ * @return array Map of drp_action ID to [prompt, title].
+ */
+function servcheck_action_confirm_defs(string $entity, int $count): array {
+	$delete = [
+		__n('Click \'Continue\' to delete the following item.', 'Click \'Continue\' to delete the following items.', $count, 'servcheck'),
+		__esc_n('Delete item', 'Delete items', $count, 'servcheck'),
+	];
+
+	if ($entity === 'credential') {
+		return [
+			1 => $delete,
+			2 => [
+				__n('Click \'Continue\' to Duplicate the following Credential.', 'Click \'Continue\' to Duplicate the following Credentials.', $count, 'servcheck'),
+				__esc_n('Duplicate Credential', 'Duplicate Credentials', $count, 'servcheck'),
+			],
+		];
+	}
+
+	if ($entity === 'test') {
+		return [
+			1 => $delete,
+			2 => [__n('Click \'Continue\' to disable the following item.', 'Click \'Continue\' to disable the following items.', $count, 'servcheck'), __esc_n('Disable item', 'Disable items', $count, 'servcheck')],
+			3 => [__n('Click \'Continue\' to enable the following item.', 'Click \'Continue\' to enable the following items.', $count, 'servcheck'), __esc_n('Enable item', 'Enable items', $count, 'servcheck')],
+			4 => [__n('Click \'Continue\' to duplicate the following item.', 'Click \'Continue\' to duplicate the following items.', $count, 'servcheck'), __esc_n('Duplicate item', 'Duplicate items', $count, 'servcheck')],
+			5 => [__n('Click \'Continue\' to clear statistics of the following item.', 'Click \'Continue\' to clear statistics of the following items.', $count, 'servcheck'), __esc('Clear statistics', 'servcheck')],
+			6 => [__n('Click \'Continue\' to clear log of the following item.', 'Click \'Continue\' to clear log of the following items.', $count, 'servcheck'), __esc('Clear log', 'servcheck')],
+		];
+	}
+
+	return [1 => $delete];
+}
+
+/**
+ * Collect selected items and render the bulk-action confirmation page for an entity.
+ *
+ * @param string     $entity       Admin entity key ('ca', 'proxy', 'credential', 'test').
+ * @param array      $actions_menu Map of drp_action IDs to action labels.
+ * @param int|string $action       Selected drp_action identifier.
+ * @param array      $post         POST input map.
+ *
+ * @return bool True when rendered, false when no items were selected.
+ */
+function servcheck_handle_action_confirm(string $entity, array $actions_menu, $action, array $post): bool {
+	[$item_list, $items_array] = servcheck_collect_selected_items($entity, $post);
+	$confirm_map               = servcheck_action_confirm_defs($entity, cacti_sizeof($items_array));
+
+	return servcheck_render_action_form($actions_menu, $action, $items_array, $item_list, $confirm_map);
+}

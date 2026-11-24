@@ -126,14 +126,8 @@ function form_actions(): void {
 
 	if (cacti_sizeof($items_array) > 0) {
 		if (get_filter_request_var('drp_action') == 1) {
-			print "	<tr>
-					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to delete the following item.', 'Click \'Continue\' to delete the following items.', cacti_sizeof($items_array), 'servcheck') . "</p>
-						<div class='itemlist'><ul>$item_list</ul></div>
-					</td>
-				</tr>";
-
-			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete item', 'Delete items', cacti_sizeof($items_array), 'servcheck') . "'>";
+			$n         = cacti_sizeof($items_array);
+			$save_html = servcheck_render_action_confirm(__n('Click \'Continue\' to delete the following item.', 'Click \'Continue\' to delete the following items.', $n, 'servcheck'), __esc_n('Delete item', 'Delete items', $n, 'servcheck'), $item_list);
 		}
 	} else {
 		raise_message(40);

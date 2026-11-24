@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2024-04-20 17:21+0000\n"
-"Last-Translator: Anonymous <anonymous@cacti.net>\n"
-"Language-Team: Portuguese (Portugal) <http://translate.cacti.net/projects/cacti/servcheck/pt_PT/>\n"
+"PO-Revision-Date: 2026-11-24 09:12+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Portuguese (Portugal) <https://translate.cacti.net/projects/"
+"cacti/servcheck/pt_PT/>\n"
 "Language: pt-PT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.8.1\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: includes/arrays.php
 #, php-format
@@ -29,9 +30,9 @@ msgid "%d Poller runs"
 msgstr "%d Poller corre"
 
 #: includes/arrays.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Seconds"
-msgstr "% d segundos"
+msgstr "%d segundos"
 
 #: includes/arrays.php
 msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"

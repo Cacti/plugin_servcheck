@@ -44,3 +44,32 @@ it('renders bulk action confirmation markup via servcheck_render_action_confirm'
 	expect($buttons)->toContain("class='cactiReturnTo'");
 	expect($buttons)->toContain("title='Duplicate Credentials'");
 });
+
+it('renders bulk action confirmation form and handles empty selection via servcheck_render_action_form', function () {
+	servcheck_test_load(__DIR__ . '/../../includes/functions.php');
+
+	$_SERVER['PHP_SELF'] = '/plugins/servcheck/servcheck_ca.php';
+
+	ob_start();
+	$rendered = servcheck_render_action_form(
+		[1 => 'Delete'],
+		1,
+		[42],
+		'<li>CA One</li>',
+		[1 => ['Confirm delete.', 'Delete item']]
+	);
+	$html = ob_get_clean();
+
+	expect($rendered)->toBeTrue();
+	expect($html)->toContain('<p>Confirm delete.</p>');
+	expect($html)->toContain('<ul><li>CA One</li></ul>');
+	expect($html)->toContain("name='selected_items' value='" . serialize([42]) . "'");
+	expect($html)->toContain("name='drp_action' value='1'");
+	expect($html)->toContain("title='Delete item'");
+
+	ob_start();
+	$empty = servcheck_render_action_form([1 => 'Delete'], 1, [], '', [1 => ['Confirm delete.', 'Delete item']]);
+	ob_end_clean();
+
+	expect($empty)->toBeFalse();
+});

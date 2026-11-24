@@ -104,7 +104,6 @@ function form_actions(): void {
 	// setup some variables
 	$item_list   = '';
 	$items_array = [];
-	$save_html   = '';
 
 	// loop through each of the graphs selected on the previous page and get more info about them
 	foreach ($_POST as $var => $val) {
@@ -118,37 +117,14 @@ function form_actions(): void {
 		}
 	}
 
-	top_header();
+	$n = cacti_sizeof($items_array);
 
-	form_start(htmlspecialchars(basename($_SERVER['PHP_SELF'])));
-
-	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', false, 3, 'center', '');
-
-	if (cacti_sizeof($items_array) > 0) {
-		if (get_filter_request_var('drp_action') == 1) {
-			$n         = cacti_sizeof($items_array);
-			$save_html = servcheck_render_action_confirm(__n('Click \'Continue\' to delete the following item.', 'Click \'Continue\' to delete the following items.', $n, 'servcheck'), __esc_n('Delete item', 'Delete items', $n, 'servcheck'), $item_list);
-		}
-	} else {
-		raise_message(40);
+	if (!servcheck_render_action_form($servcheck_actions_menu, get_filter_request_var('drp_action'), $items_array, $item_list, [
+		1 => [__n('Click \'Continue\' to delete the following item.', 'Click \'Continue\' to delete the following items.', $n, 'servcheck'), __esc_n('Delete item', 'Delete items', $n, 'servcheck')],
+	])) {
 		header('Location: ' . htmlspecialchars(basename($_SERVER['PHP_SELF'])) . '?header=false');
 		exit;
 	}
-
-	print "<tr>
-		<td class='saveRow'>
-			<input type='hidden' name='action' value='actions'>
-			<input type='hidden' name='selected_items' value='" . serialize($items_array) . "'>
-			<input type='hidden' name='drp_action' value='" . get_request_var('drp_action') . "'>
-			$save_html
-		</td>
-	</tr>";
-
-	html_end_box();
-
-	form_end();
-
-	bottom_footer();
 }
 
 /**

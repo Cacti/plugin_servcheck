@@ -398,6 +398,26 @@ if (!function_exists('html_end_box')) {
 	}
 }
 
+if (!function_exists('top_header')) {
+	function top_header() {
+	}
+}
+
+if (!function_exists('bottom_footer')) {
+	function bottom_footer() {
+	}
+}
+
+if (!function_exists('form_start')) {
+	function form_start($action, $id = '', $enctype = false) {
+	}
+}
+
+if (!function_exists('form_end')) {
+	function form_end($render_magic = true) {
+	}
+}
+
 if (!function_exists('is_error_message')) {
 	function is_error_message() {
 		return false;

@@ -616,3 +616,53 @@ function servcheck_render_action_confirm(string $prompt, string $title, string $
 
 	return "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . $title . "'>";
 }
+
+/**
+ * Render the bulk-action confirmation page for a servcheck admin view.
+ *
+ * @param array      $actions_menu Map of drp_action IDs to action labels.
+ * @param int|string $action       Selected drp_action identifier.
+ * @param array      $items_array  Validated selected item IDs.
+ * @param string     $item_list    Pre-rendered list items (<li>...</li>).
+ * @param array      $confirm_map  Map of drp_action IDs to [prompt, title] pairs.
+ *
+ * @return bool True when the confirmation form was rendered, false when no items were selected.
+ */
+function servcheck_render_action_form(array $actions_menu, $action, array $items_array, string $item_list, array $confirm_map): bool {
+	$self = htmlspecialchars(basename($_SERVER['PHP_SELF'] ?? ''));
+
+	top_header();
+
+	form_start($self);
+
+	html_start_box($actions_menu[$action] ?? '', '60%', false, 3, 'center', '');
+
+	if (!cacti_sizeof($items_array)) {
+		raise_message(40);
+
+		return false;
+	}
+
+	$save_html = '';
+
+	if (isset($confirm_map[$action])) {
+		$save_html = servcheck_render_action_confirm($confirm_map[$action][0], $confirm_map[$action][1], $item_list);
+	}
+
+	print "<tr>
+		<td class='saveRow'>
+			<input type='hidden' name='action' value='actions'>
+			<input type='hidden' name='selected_items' value='" . serialize($items_array) . "'>
+			<input type='hidden' name='drp_action' value='" . html_escape((string) $action) . "'>
+			$save_html
+		</td>
+	</tr>";
+
+	html_end_box();
+
+	form_end();
+
+	bottom_footer();
+
+	return true;
+}

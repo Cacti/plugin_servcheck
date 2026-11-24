@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2024-04-20 17:20+0000\n"
-"Last-Translator: Anonymous <anonymous@cacti.net>\n"
-"Language-Team: Hebrew (Israel) <http://translate.cacti.net/projects/cacti/servcheck/he_IL/>\n"
+"PO-Revision-Date: 2026-11-24 09:12+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Hebrew (Israel) <https://translate.cacti.net/projects/cacti/"
+"servcheck/he_IL/>\n"
 "Language: he-IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.8.1\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
+"n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: includes/arrays.php
 #, php-format
@@ -195,7 +197,7 @@ msgstr "אימות"
 
 #: includes/arrays.php
 msgid "Bad Gateway"
-msgstr "כניסה  (gateway) לא תקינה"
+msgstr "כניסה (gateway) לא תקינה"
 
 #: includes/arrays.php
 msgid "Bad Request"
@@ -2204,7 +2206,7 @@ msgstr ""
 #: setup.php
 #, php-format
 msgid "%d Processes"
-msgstr ""
+msgstr "%d תהליכים"
 
 #: setup.php
 #, php-format
@@ -2212,14 +2214,14 @@ msgid "%d days"
 msgstr ""
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d hours"
-msgstr "6 השעות האחרונות"
+msgstr "%d שעות"
 
 #: setup.php
 #, php-format
 msgid "%d year"
-msgstr ""
+msgstr "%d שנה"
 
 #: setup.php
 #, fuzzy

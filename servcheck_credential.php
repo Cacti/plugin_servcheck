@@ -147,23 +147,28 @@ function form_actions(): void {
 	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', false, 3, 'center', '');
 
 	if (cacti_sizeof($items_array) > 0) {
-		if (get_filter_request_var('drp_action') == 1) { // delete
+		$item_count = cacti_sizeof($items_array);
+		$action_prompts = [
+			1 => [
+				'prompt' => __n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', $item_count),
+				'title'  => __esc_n('Delete item', 'Delete items', $item_count),
+			],
+			2 => [
+				'prompt' => __n('Click \'Continue\' to Duplicate the following Credential.', 'Click \'Continue\' to Duplicate following Credential.', $item_count),
+				'title'  => __esc_n('Duplicate Credential', 'Duplicate Credentials', $item_count),
+			],
+		];
+
+		$drp_action = get_filter_request_var('drp_action');
+		if (isset($action_prompts[$drp_action])) {
 			print "	<tr>
 					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', cacti_sizeof($items_array)) . "</p>
+						<p>" . $action_prompts[$drp_action]['prompt'] . "</p>
 						<div class='itemlist'><ul>$item_list</ul></div>
 					</td>
 				</tr>";
 
-			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Delete item', 'Delete items', cacti_sizeof($items_array)) . "'>";
-		} elseif (get_filter_request_var('drp_action') == 2) { // duplicate
-			print "<tr>
-				<td class='topBoxAlt'>
-					<p>" . __n('Click \'Continue\' to Duplicate the following Credential.', 'Click \'Continue\' to Duplicate following Credential.', cacti_sizeof($items_array)) . "</p><div class='itemlist'><ul>$item_list</ul></div>
-				</td>
-			</tr>";
-
-			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate Credential', 'Duplicate Credentials', cacti_sizeof($items_array)) . "'>";
+			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . $action_prompts[$drp_action]['title'] . "'>";
 		}
 	} else {
 		raise_message(40);

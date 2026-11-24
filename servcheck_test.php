@@ -261,7 +261,7 @@ function form_actions(): void {
 		} elseif (get_filter_request_var('drp_action') == 5) { // clear statistics
 			print "	<tr>
 					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to clear statistics of following items.', 'Click \'Continue\' to clear statistics of following items.', cacti_sizeof($items_array)) . "</p>
+						<p>" . __n('Click \'Continue\' to clear statistics of the following item.', 'Click \'Continue\' to clear statistics of the following items.', cacti_sizeof($items_array)) . "</p>
 						<div class='itemlist'><ul>$item_list</ul></div>
 					</td>
 				</tr>";
@@ -270,7 +270,7 @@ function form_actions(): void {
 		} elseif (get_filter_request_var('drp_action') == 6) { // clear log
 			print "	<tr>
 					<td class='topBoxAlt'>
-						<p>" . __n('Click \'Continue\' to clear log of following items.', 'Click \'Continue\' to clear log of following items.', cacti_sizeof($items_array)) . "</p>
+						<p>" . __n('Click \'Continue\' to clear log of the following item.', 'Click \'Continue\' to clear log of the following items.', cacti_sizeof($items_array)) . "</p>
 						<div class='itemlist'><ul>$item_list</ul></div>
 					</td>
 				</tr>";

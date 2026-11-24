@@ -163,7 +163,7 @@ function form_actions(): void {
 				</td>
 			</tr>";
 
-			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate Credential', 'Duplicate Credential', cacti_sizeof($items_array)) . "'>";
+			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . __esc_n('Duplicate Credential', 'Duplicate Credentials', cacti_sizeof($items_array)) . "'>";
 		}
 	} else {
 		raise_message(40);

@@ -5,6 +5,7 @@ installation guidance and source-checked behavior.
 
 --- develop ---
 
+* issue#146: Clean up multiline backslash escapes, unclosed `<i>` tag, typos, and identical plural forms in `includes/arrays.php`, `servcheck_credential.php`, and `servcheck_test.php`, and regenerate `locales/po/cacti.pot` to include the certificate-expiry interval strings from `setup.php`
 * dev: Run the CI poller with the shared runner group so RRD files and structured directories pass permission verification
 * feature: Add an option to set the interval of email notification instead of once daily, however, send the email notification everyday if the certificate expiry date is passed
 * feature: Add a Status column to the Tests list (right after Name) that shows each service check's current state as a colour-coded pill, reusing the status legend's solid colours so the badge stays legible on top of the row tint on every theme

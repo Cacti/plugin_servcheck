@@ -596,3 +596,23 @@ function servcheck_prepare_test(array &$test, array &$results, &$cred, &$credent
 
 	return true;
 }
+
+/**
+ * Render the bulk-action confirmation row and return the submit/cancel button markup.
+ *
+ * @param string $prompt    Translated confirmation prompt.
+ * @param string $title     Translated and HTML-escaped Continue button title.
+ * @param string $item_list Pre-rendered list items (<li>...</li>).
+ *
+ * @return string Save-row button HTML.
+ */
+function servcheck_render_action_confirm(string $prompt, string $title, string $item_list): string {
+	print "	<tr>
+			<td class='topBoxAlt'>
+				<p>" . $prompt . "</p>
+				<div class='itemlist'><ul>$item_list</ul></div>
+			</td>
+		</tr>";
+
+	return "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . $title . "'>";
+}

@@ -223,43 +223,55 @@ function form_actions(): void {
 
 	if (cacti_sizeof($items_array) > 0) {
 		$item_count = cacti_sizeof($items_array);
-		$action_prompts = [
-			1 => [
-				'prompt' => __n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', $item_count),
-				'title'  => __esc_n('Delete item', 'Delete items', $item_count),
-			],
-			2 => [
-				'prompt' => __n('Click \'Continue\' to disable the following items.', 'Click \'Continue\' to disable following items.', $item_count),
-				'title'  => __esc_n('Disable item', 'Disable items', $item_count),
-			],
-			3 => [
-				'prompt' => __n('Click \'Continue\' to enable the following items.', 'Click \'Continue\' to enable following items.', $item_count),
-				'title'  => __esc_n('Enable item', 'Enable items', $item_count),
-			],
-			4 => [
-				'prompt' => __n('Click \'Continue\' to duplicate the following items.', 'Click \'Continue\' to duplicate following items.', $item_count),
-				'title'  => __esc_n('Duplicate item', 'Duplicate items', $item_count),
-			],
-			5 => [
-				'prompt' => __n('Click \'Continue\' to clear statistics of the following item.', 'Click \'Continue\' to clear statistics of the following items.', $item_count),
-				'title'  => __esc_n('Duplicate item', 'Duplicate items', $item_count),
-			],
-			6 => [
-				'prompt' => __n('Click \'Continue\' to clear log of the following item.', 'Click \'Continue\' to clear log of the following items.', $item_count),
-				'title'  => __esc_n('Duplicate item', 'Duplicate items', $item_count),
-			],
-		];
+		switch (get_filter_request_var('drp_action')) {
+			case 1: // delete
+				$save_html = servcheck_render_action_confirm(
+					__n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', $item_count),
+					__esc_n('Delete item', 'Delete items', $item_count),
+					$item_list
+				);
 
-		$drp_action = get_filter_request_var('drp_action');
-		if (isset($action_prompts[$drp_action])) {
-			print "	<tr>
-					<td class='topBoxAlt'>
-						<p>" . $action_prompts[$drp_action]['prompt'] . "</p>
-						<div class='itemlist'><ul>$item_list</ul></div>
-					</td>
-				</tr>";
+				break;
+			case 2: // disable
+				$save_html = servcheck_render_action_confirm(
+					__n('Click \'Continue\' to disable the following items.', 'Click \'Continue\' to disable following items.', $item_count),
+					__esc_n('Disable item', 'Disable items', $item_count),
+					$item_list
+				);
 
-			$save_html = "<input class='cactiReturnTo' type='button' value='" . __esc('Cancel') . "'>&nbsp;<input type='submit' value='" . __esc('Continue') . "' title='" . $action_prompts[$drp_action]['title'] . "'>";
+				break;
+			case 3: // enable
+				$save_html = servcheck_render_action_confirm(
+					__n('Click \'Continue\' to enable the following items.', 'Click \'Continue\' to enable following items.', $item_count),
+					__esc_n('Enable item', 'Enable items', $item_count),
+					$item_list
+				);
+
+				break;
+			case 4: // duplicate
+				$save_html = servcheck_render_action_confirm(
+					__n('Click \'Continue\' to duplicate the following items.', 'Click \'Continue\' to duplicate following items.', $item_count),
+					__esc_n('Duplicate item', 'Duplicate items', $item_count),
+					$item_list
+				);
+
+				break;
+			case 5: // clear statistics
+				$save_html = servcheck_render_action_confirm(
+					__n('Click \'Continue\' to clear statistics of the following item.', 'Click \'Continue\' to clear statistics of the following items.', $item_count),
+					__esc_n('Duplicate item', 'Duplicate items', $item_count),
+					$item_list
+				);
+
+				break;
+			case 6: // clear log
+				$save_html = servcheck_render_action_confirm(
+					__n('Click \'Continue\' to clear log of the following item.', 'Click \'Continue\' to clear log of the following items.', $item_count),
+					__esc_n('Duplicate item', 'Duplicate items', $item_count),
+					$item_list
+				);
+
+				break;
 		}
 	} else {
 		raise_message(40);

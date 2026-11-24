@@ -31,3 +31,16 @@ it('loads servcheck help arrays without raw backslash continuations or unclosed 
 	expect($testHelp['mail_smtptls'])->toContain('STARTTLS.');
 	expect($testHelp['mqtt_mqtt'])->toContain('Connect to MQTT server');
 });
+
+it('renders bulk action confirmation markup via servcheck_render_action_confirm', function () {
+	servcheck_test_load(__DIR__ . '/../../includes/functions.php');
+
+	ob_start();
+	$buttons = servcheck_render_action_confirm('Confirm action.', 'Duplicate Credentials', '<li>Cred A</li>');
+	$row     = ob_get_clean();
+
+	expect($row)->toContain('<p>Confirm action.</p>');
+	expect($row)->toContain('<ul><li>Cred A</li></ul>');
+	expect($buttons)->toContain("class='cactiReturnTo'");
+	expect($buttons)->toContain("title='Duplicate Credentials'");
+});

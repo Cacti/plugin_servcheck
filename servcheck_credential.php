@@ -147,19 +147,11 @@ function form_actions(): void {
 	html_start_box($servcheck_actions_menu[get_filter_request_var('drp_action')], '60%', false, 3, 'center', '');
 
 	if (cacti_sizeof($items_array) > 0) {
-		$item_count = cacti_sizeof($items_array);
+		$n = cacti_sizeof($items_array);
 		if (get_filter_request_var('drp_action') == 1) { // delete
-			$save_html = servcheck_render_action_confirm(
-				__n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', $item_count),
-				__esc_n('Delete item', 'Delete items', $item_count),
-				$item_list
-			);
+			$save_html = servcheck_render_action_confirm(__n('Click \'Continue\' to delete the following items.', 'Click \'Continue\' to delete following items.', $n), __esc_n('Delete item', 'Delete items', $n), $item_list);
 		} elseif (get_filter_request_var('drp_action') == 2) { // duplicate
-			$save_html = servcheck_render_action_confirm(
-				__n('Click \'Continue\' to Duplicate the following Credential.', 'Click \'Continue\' to Duplicate following Credential.', $item_count),
-				__esc_n('Duplicate Credential', 'Duplicate Credentials', $item_count),
-				$item_list
-			);
+			$save_html = servcheck_render_action_confirm(__n('Click \'Continue\' to Duplicate the following Credential.', 'Click \'Continue\' to Duplicate following Credential.', $n), __esc_n('Duplicate Credential', 'Duplicate Credentials', $n), $item_list);
 		}
 	} else {
 		raise_message(40);

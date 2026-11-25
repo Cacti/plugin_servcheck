@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"PO-Revision-Date: 2026-11-26 05:54+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Russian <https://translate.cacti.net/projects/cacti/servcheck/"
 "ru/>\n"
@@ -2126,7 +2126,7 @@ msgstr "История проверок сервисов"
 
 #: servcheck_test.php
 msgid "State"
-msgstr "Область"
+msgstr "Состояние"
 
 #: servcheck_test.php
 msgid "Stats (OK/problem)"

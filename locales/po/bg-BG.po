@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"PO-Revision-Date: 2026-11-26 05:54+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Bulgarian <https://translate.cacti.net/projects/cacti/"
 "servcheck/bg/>\n"
@@ -1202,7 +1202,7 @@ msgstr "SNMP парола (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Passphrase (v3)"
-msgstr "Декларация за поверителност на SNMP (v3)"
+msgstr "Паролна фраза за поверителност на SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Protocol (v3)"
@@ -1877,7 +1877,7 @@ msgstr "Управление на прокси в ServCheck"
 
 #: servcheck_restapi.php servcheck_test.php
 msgid "Any"
-msgstr "Всички"
+msgstr "Всеки"
 
 #: servcheck_restapi.php
 #, fuzzy
@@ -2101,7 +2101,7 @@ msgstr "Изчистване на събитията"
 
 #: servcheck_test.php
 msgid "Refresh"
-msgstr "Обновяване"
+msgstr "Опресняване"
 
 #: servcheck_test.php
 msgid "Result"

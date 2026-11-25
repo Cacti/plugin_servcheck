@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"PO-Revision-Date: 2026-11-26 05:54+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Turkish <https://translate.cacti.net/projects/cacti/servcheck/"
 "tr/>\n"
@@ -2049,7 +2049,7 @@ msgstr[1] "Öğeleri etkinleştir"
 
 #: servcheck_test.php
 msgid "Entries"
-msgstr "Kayıtlar"
+msgstr "Girdiler"
 
 #: servcheck_test.php
 #, php-format
@@ -2070,7 +2070,7 @@ msgstr "Testin son döndürülen verileri"
 
 #: servcheck_test.php
 msgid "Logs"
-msgstr "Kayıtlar"
+msgstr "Günlükler"
 
 #: servcheck_test.php
 msgid "N/A (N/A)"
@@ -2281,7 +2281,7 @@ msgstr ""
 
 #: setup.php
 msgid "Management"
-msgstr "Kullanıcı Yonetimi"
+msgstr "Yönetim"
 
 #: setup.php
 msgid "Maximum test duration in seconds"

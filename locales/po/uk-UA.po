@@ -1,0 +1,2183 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-11-02 13:51-0500\n"
+"PO-Revision-Date: 2026-11-25 06:55+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Ukrainian\n"
+"Language: uk-UA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: includes/arrays.php servcheck_test.php
+msgid "Tests"
+msgstr "Тести"
+
+#: includes/arrays.php
+msgid "CA certificates"
+msgstr "Сертифікати CA"
+
+#: includes/arrays.php servcheck_proxy.php
+msgid "Proxies"
+msgstr "Проксі-сервери"
+
+#: includes/arrays.php setup.php
+msgid "Credential"
+msgstr "Облікові дані"
+
+#: includes/arrays.php
+msgid "Curl return codes"
+msgstr "Коди повернення Curl"
+
+#: includes/arrays.php
+msgid "Error"
+msgstr "Помилка"
+
+#: includes/arrays.php
+msgid "Long duration"
+msgstr "Велика тривалість"
+
+#: includes/arrays.php
+msgid "Warning"
+msgstr "Застереження"
+
+#: includes/arrays.php
+msgid "Failing"
+msgstr "Збій"
+
+#: includes/arrays.php
+msgid "Ok"
+msgstr "Ок"
+
+#: includes/arrays.php setup.php
+msgid "Disabled"
+msgstr "Вимкнен"
+
+#: includes/arrays.php
+msgid "HTTP plaintext, default port 80"
+msgstr "Незашифрований HTTP, порт за замовчуванням 80"
+
+#: includes/arrays.php
+msgid "HTTP encrypted (HTTPS), default port 443"
+msgstr "Шифрований HTTP (HTTPS), порт за замовчуванням 443"
+
+#: includes/arrays.php
+msgid "SMTP plaintext, default port 25 (or 587 for submission)"
+msgstr "Відкритий SMTP, типовий порт 25 (або 587 для надсилання)"
+
+#: includes/arrays.php
+msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
+msgstr "SMTP із STARTTLS, типовий порт 25 (або 587 для надсилання)"
+
+#: includes/arrays.php
+msgid "SMTP encrypted (SMTPS), default port 465"
+msgstr "Шифрований SMTP (SMTPS), типовий порт 465"
+
+#: includes/arrays.php
+msgid "IMAP plaintext, default port 143"
+msgstr "Нешифрований IMAP, порт за замовчуванням 143"
+
+#: includes/arrays.php
+msgid "IMAP with STARTTLS, default port 143"
+msgstr "IMAP із STARTTLS, порт за замовчуванням 143"
+
+#: includes/arrays.php
+msgid "IMAP encrypted (IMAPS), default port 993"
+msgstr "Шифрований IMAP (IMAPS), порт за замовчуванням 993"
+
+#: includes/arrays.php
+msgid "POP3 plaintext, default port 110"
+msgstr "POP3 без шифрування, типовий порт 110"
+
+#: includes/arrays.php
+msgid "POP3 with STARTTLS, default port 110"
+msgstr "POP3 зі STARTTLS, типовий порт 110"
+
+#: includes/arrays.php
+msgid "POP3 encrypted (POP3S), default port 995"
+msgstr "POP3 із шифруванням (POP3S), типовий порт 995"
+
+#: includes/arrays.php
+msgid "DNS plaintext, default port 53"
+msgstr "Звичайний DNS (plaintext), типовий порт 53"
+
+#: includes/arrays.php
+msgid "DNS over HTTPS, default port 443"
+msgstr "DNS over HTTPS, типовий порт 443"
+
+#: includes/arrays.php
+msgid "LDAP plaintext, default port 389"
+msgstr "Нешифрований LDAP, порт за замовчуванням 389"
+
+#: includes/arrays.php
+msgid "LDAP encrypted (LDAPS), default port 636"
+msgstr "Шифрований LDAP (LDAPS), порт за замовчуванням 636"
+
+#: includes/arrays.php
+msgid "FTP plaintext, default port 21"
+msgstr "Незашифрований FTP, типовий порт 21"
+
+#: includes/arrays.php
+msgid "TFTP protocol - download file, default port 69"
+msgstr "Протокол TFTP — завантаження файлу, типовий порт 69"
+
+#: includes/arrays.php
+msgid "SCP download file, default port 22"
+msgstr "Завантаження файлу через SCP, типовий порт 22"
+
+#: includes/arrays.php
+msgid "SMB plaintext download file, default port 445"
+msgstr "Завантаження файлу через відкритий SMB, типовий порт 445"
+
+#: includes/arrays.php
+msgid "SMB encrypted (SMBS) download file, default port 445"
+msgstr "Завантаження файлу через шифрований SMB (SMBS), типовий порт 445"
+
+#: includes/arrays.php
+msgid "MQTT plaintext, default port 1883"
+msgstr "MQTT без шифрування, типовий порт 1883"
+
+#: includes/arrays.php
+msgid "Rest API with Basic HTTP auth"
+msgstr "REST API з базовою HTTP-автентифікацією"
+
+#: includes/arrays.php
+msgid "Rest API with API key auth"
+msgstr "REST API з автентифікацією за API-ключем"
+
+#: includes/arrays.php
+msgid "Rest API with OAuth2/Bearer token auth"
+msgstr "REST API з автентифікацією за токеном OAuth2/Bearer"
+
+#: includes/arrays.php
+msgid "Rest API with Cookie based auth"
+msgstr "REST API з автентифікацією на основі Cookie"
+
+#: includes/arrays.php
+msgid "SNMP get"
+msgstr "SNMP get"
+
+#: includes/arrays.php
+msgid "SNMP walk"
+msgstr "SNMP walk"
+
+#: includes/arrays.php
+msgid "SSH command on remote system"
+msgstr "Команда SSH на віддаленій системі"
+
+#: includes/arrays.php
+msgid "SFTP protocol - directory listing, default port 22"
+msgstr "Протокол SFTP — перелік вмісту каталогу, типовий порт 22"
+
+#: includes/arrays.php
+msgid "Username and password"
+msgstr "Ім'я користувача та пароль"
+
+#: includes/arrays.php
+msgid "Rest API - Basic HTTP auth"
+msgstr "REST API — Базова HTTP-автентифікація"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth"
+msgstr "REST API — Автентифікація за API-ключем"
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth"
+msgstr "REST API — Автентифікація за токеном OAuth2/Bearer"
+
+#: includes/arrays.php
+msgid "Rest API - Cookie based auth"
+msgstr "REST API — Автентифікація на основі Cookie"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2"
+msgstr "SNMP v1 або v2"
+
+#: includes/arrays.php
+msgid "SNMP v3"
+msgstr "SNMP v3"
+
+#: includes/arrays.php
+msgid "SSH private key - Cacti 1.2.31+"
+msgstr "Приватний ключ SSH — Cacti 1.2.31+"
+
+#: includes/arrays.php
+msgid "Last hour"
+msgstr "Остання година"
+
+#: includes/arrays.php
+msgid "Last 6 hours"
+msgstr "Останні 6 годин"
+
+#: includes/arrays.php
+msgid "Last day"
+msgstr "Останній день"
+
+#: includes/arrays.php
+msgid "Last week"
+msgstr "Останній тиждень"
+
+#: includes/arrays.php
+msgid "String found"
+msgstr "Рядок знайдено"
+
+#: includes/arrays.php
+msgid "String not found"
+msgstr "Рядок не знайдено"
+
+#: includes/arrays.php
+msgid "Failed string found"
+msgstr "Знайдено рядок помилки"
+
+#: includes/arrays.php
+msgid "Failed string not found"
+msgstr "Рядок помилки не знайдено"
+
+#: includes/arrays.php
+msgid "Maint string found"
+msgstr "Знайдено рядок Maint"
+
+#: includes/arrays.php servcheck_test.php
+msgid "Not tested yet"
+msgstr "Ще не перевірено"
+
+#: includes/arrays.php
+msgid "Search not performed"
+msgstr "Пошук не виконано"
+
+#: includes/arrays.php
+msgid "OK"
+msgstr "OK"
+
+#: includes/arrays.php
+msgid "Error/failed"
+msgstr "Помилка/збій"
+
+#: includes/arrays.php
+msgid "[None]"
+msgstr "[Немає]"
+
+#: includes/arrays.php
+msgid "MD5"
+msgstr "MD5"
+
+#: includes/arrays.php
+msgid "SHA"
+msgstr "SHA"
+
+#: includes/arrays.php
+msgid "SHA-224"
+msgstr "SHA-224"
+
+#: includes/arrays.php
+msgid "SHA-256"
+msgstr "SHA-256"
+
+#: includes/arrays.php
+msgid "SHA-392"
+msgstr "SHA-392"
+
+#: includes/arrays.php
+msgid "SHA-512"
+msgstr "SHA-512"
+
+#: includes/arrays.php
+msgid "DES"
+msgstr "DES"
+
+#: includes/arrays.php
+msgid "AES"
+msgstr "AES"
+
+#: includes/arrays.php
+msgid "AES-128"
+msgstr "AES-128"
+
+#: includes/arrays.php
+msgid "AES-192"
+msgstr "AES-192"
+
+#: includes/arrays.php
+msgid "AES-192-C"
+msgstr "AES-192-C"
+
+#: includes/arrays.php
+msgid "AES-256"
+msgstr "AES-256"
+
+#: includes/arrays.php
+msgid "AES-256-C"
+msgstr "AES-256-C"
+
+#: includes/arrays.php
+msgid "Unable to Connect"
+msgstr "Не вдалося підключитися"
+
+#: includes/arrays.php includes/functions.php servcheck_ca.php
+#: servcheck_proxy.php
+msgid "Continue"
+msgstr "Продовжити"
+
+#: includes/arrays.php
+msgid "Switching Protocols"
+msgstr "Перемикання протоколів"
+
+#: includes/arrays.php
+msgid "Created"
+msgstr "Створено"
+
+#: includes/arrays.php
+msgid "Accepted"
+msgstr "Прийнято"
+
+#: includes/arrays.php
+msgid "Non-Authoritative Information"
+msgstr "Неавторитетна інформація"
+
+#: includes/arrays.php
+msgid "No Content"
+msgstr "Немає вмісту"
+
+#: includes/arrays.php
+msgid "Reset Content"
+msgstr "Скинути вміст"
+
+#: includes/arrays.php
+msgid "Partial Content"
+msgstr "Частковий вміст"
+
+#: includes/arrays.php
+msgid "Multiple Choices"
+msgstr "Кілька варіантів вибору"
+
+#: includes/arrays.php
+msgid "Moved Permanently"
+msgstr "Переміщено назавжди"
+
+#: includes/arrays.php
+msgid "Found"
+msgstr "знайдено"
+
+#: includes/arrays.php
+msgid "See Other"
+msgstr "Див. інше"
+
+#: includes/arrays.php
+msgid "Not Modified"
+msgstr "Не змінено"
+
+#: includes/arrays.php
+msgid "Use Proxy"
+msgstr "Використовувати проксі"
+
+#: includes/arrays.php
+msgid "(Unused)"
+msgstr "(Не використовується)"
+
+#: includes/arrays.php
+msgid "Temporary Redirect"
+msgstr "Тимчасове перенаправлення"
+
+#: includes/arrays.php
+msgid "Bad Request"
+msgstr "Некоректний запит"
+
+#: includes/arrays.php
+msgid "Unauthorized"
+msgstr "Не авторизовано"
+
+#: includes/arrays.php
+msgid "Payment Required"
+msgstr "Необхідна оплата"
+
+#: includes/arrays.php
+msgid "Forbidden"
+msgstr "Заборонено"
+
+#: includes/arrays.php
+msgid "Not Found"
+msgstr "Не знайдено"
+
+#: includes/arrays.php
+msgid "Method Not Allowed"
+msgstr "Метод не дозволено"
+
+#: includes/arrays.php
+msgid "Not Acceptable"
+msgstr "Неприйнятно"
+
+#: includes/arrays.php
+msgid "Proxy Authentication Required"
+msgstr "Потрібна автентифікація проксі"
+
+#: includes/arrays.php
+msgid "Request Timeout"
+msgstr "Час очікування запиту вичерпано"
+
+#: includes/arrays.php
+msgid "Conflict"
+msgstr "Конфлікт"
+
+#: includes/arrays.php
+msgid "Gone"
+msgstr "Видалено"
+
+#: includes/arrays.php
+msgid "Length Required"
+msgstr "Потрібно вказати довжину"
+
+#: includes/arrays.php
+msgid "Precondition Failed"
+msgstr "Попередню умову не виконано"
+
+#: includes/arrays.php
+msgid "Request Entity Too Large"
+msgstr "Об'єкт запиту надто великий"
+
+#: includes/arrays.php
+msgid "Request-URI Too Long"
+msgstr "URI запиту надто довгий"
+
+#: includes/arrays.php
+msgid "Unsupported Media Type"
+msgstr "Непідтримуваний тип медіаданих"
+
+#: includes/arrays.php
+msgid "Requested Range Not Satisfiable"
+msgstr "Запитаний діапазон недосяжний"
+
+#: includes/arrays.php
+msgid "Expectation Failed"
+msgstr "Очікування не виконано"
+
+#: includes/arrays.php
+msgid "Internal Server Error"
+msgstr "Внутрішня помилка сервера"
+
+#: includes/arrays.php
+msgid "Not Implemented"
+msgstr "Не реалізовано"
+
+#: includes/arrays.php
+msgid "Bad Gateway"
+msgstr "Некоректний шлюз"
+
+#: includes/arrays.php
+msgid "Service Unavailable"
+msgstr "Сервіс недоступний"
+
+#: includes/arrays.php
+msgid "Gateway Timeout"
+msgstr "Час очікування шлюзу вичерпано"
+
+#: includes/arrays.php
+msgid "HTTP Version Not Supported"
+msgstr "Версія HTTP не підтримується"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Poller run"
+msgstr "%d запуск опитувача"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Poller runs"
+msgstr "%d запусків опитувача"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Seconds"
+msgstr "%d секунд"
+
+#: includes/arrays.php
+msgid "Auth in HTTP headers"
+msgstr "Автентифікація в заголовках HTTP"
+
+#: includes/arrays.php
+msgid "Custom HTTP header"
+msgstr "Власний HTTP-заголовок"
+
+#: includes/arrays.php
+msgid "POST method, form-urlencoded"
+msgstr "Метод POST, form-urlencoded"
+
+#: includes/arrays.php
+msgid "POST method, JSON encoded"
+msgstr "Метод POST, кодування JSON"
+
+#: includes/arrays.php
+msgid "JSON encoded"
+msgstr "Закодовано в JSON"
+
+#: includes/arrays.php
+msgid "Form urlencoded"
+msgstr "Форма URL-кодування (urlencoded)"
+
+#: includes/arrays.php servcheck_ca.php servcheck_credential.php
+#: servcheck_proxy.php servcheck_test.php
+msgid "Name"
+msgstr "Ім'я"
+
+#: includes/arrays.php
+msgid "A Useful Name for this CA chain."
+msgstr "Зручна назва для цього ланцюжка CA."
+
+#: includes/arrays.php
+msgid "New CA"
+msgstr "Новий CA"
+
+#: includes/arrays.php
+msgid "CA Chain"
+msgstr "Ланцюжок CA"
+
+#: includes/arrays.php
+msgid "CA and intermediate certs, PEM encoded"
+msgstr "Сертифікати CA та проміжні сертифікати у форматі PEM"
+
+#: includes/arrays.php
+msgid "A Useful Name for this Proxy."
+msgstr "Зручна назва для цього проксі-сервера."
+
+#: includes/arrays.php
+msgid "New Proxy"
+msgstr "Новий проксі"
+
+#: includes/arrays.php servcheck_proxy.php
+msgid "Hostname"
+msgstr "Ім'я хоста"
+
+#: includes/arrays.php
+msgid "The Proxy Hostname."
+msgstr "Ім'я вузла проксі-сервера."
+
+#: includes/arrays.php
+msgid "HTTP Port"
+msgstr "Порт HTTP"
+
+#: includes/arrays.php
+msgid "The HTTP Proxy Port."
+msgstr "Порт HTTP-проксі."
+
+#: includes/arrays.php
+msgid "HTTPS Port"
+msgstr "Порт HTTPS"
+
+#: includes/arrays.php
+msgid "The HTTPS Proxy Port."
+msgstr "Порт HTTPS-проксі."
+
+#: includes/arrays.php
+msgid "Select correct credential or left empty."
+msgstr "Виберіть правильні облікові дані або залиште порожнім."
+
+#: includes/arrays.php servcheck_test.php
+msgid "None"
+msgstr "Немає"
+
+#: includes/arrays.php
+msgid "General Settings"
+msgstr "Загальні налаштування"
+
+#: includes/arrays.php
+msgid "Service Check Name"
+msgstr "Назва перевірки сервісу"
+
+#: includes/arrays.php
+msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
+msgstr "Назва, що відображається для цієї перевірки сервісу та включається до всіх сповіщень про тривогу."
+
+#: includes/arrays.php
+msgid "How many attempts"
+msgstr "Скільки спроб"
+
+#: includes/arrays.php
+msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
+msgstr "Cacti намагається виконати кожен тест кілька разів. Перша успішна спроба завершує тестування та фіксує успіх. Якщо жодна зі спроб не була успішною, тест припиняється і фіксується збій. Велике значення збільшує тривалість тестування."
+
+#: includes/arrays.php
+msgid "Enable test"
+msgstr "Увімкнути перевірку"
+
+#: includes/arrays.php
+msgid "Uncheck this box to disable this test from being checked."
+msgstr "Зніміть цей прапорець, щоб вимкнути перевірку цього тесту."
+
+#: includes/arrays.php
+msgid "Enable run script for this test"
+msgstr "Увімкнути запуск скрипту для цієї перевірки"
+
+#: includes/arrays.php
+msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
+msgstr "Якщо глобальну функцію виконання команд увімкнено, тут можна вказати, чи слід запускати скрипт для цієї перевірки."
+
+#: includes/arrays.php
+msgid "Poller"
+msgstr "Опитувач"
+
+#: includes/arrays.php
+msgid "Poller on which the test will run"
+msgstr "Опитувач, на якому виконуватиметься перевірка"
+
+#: includes/arrays.php
+msgid "Type of service"
+msgstr "Тип сервісу"
+
+#: includes/arrays.php
+msgid "What type of service?"
+msgstr "Який тип сервісу?"
+
+#: includes/arrays.php
+msgid "IP Address or DNS name of server"
+msgstr "IP-адреса або DNS-ім'я сервера"
+
+#: includes/arrays.php
+msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
+msgstr "Ви можете вказати інший порт (example.com:5000), інакше використовуватиметься порт за замовчуванням. Для числової адреси IPv6 використовуйте формат [ip:ad:dr:es:fo:rma:at]. Для DOH (DNS over HTTPS) вкажіть тут ім'я сервера (наприклад, 10.10.10.10, cloudflare-dns.com, ..)"
+
+#: includes/arrays.php
+msgid "Resolve DNS to Address"
+msgstr "Перетворювати DNS-ім'я в IP-адресу"
+
+#: includes/arrays.php
+msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
+msgstr "Введіть IP-адресу, на яку примусово розв'язуватиметься DNS-ім'я. Якщо залишити порожнім, використовуватиметься звичайне DNS-розв'язання."
+
+#: includes/arrays.php
+msgid "Service settings"
+msgstr "Налаштування сервісу"
+
+#: includes/arrays.php
+msgid "Select correct credential"
+msgstr "Виберіть правильні облікові дані"
+
+#: includes/arrays.php
+msgid "SNMP OID"
+msgstr "SNMP OID"
+
+#: includes/arrays.php
+msgid "Insert SNMP OID"
+msgstr "Введіть SNMP OID"
+
+#: includes/arrays.php
+msgid "SSH command"
+msgstr "Команда SSH"
+
+#: includes/arrays.php
+msgid "Insert SSH command with full path, result of command will be returned"
+msgstr "Введіть команду SSH із повним шляхом; буде повернуто результат виконання команди"
+
+#: includes/arrays.php
+msgid "Your own CA and intermediate certs"
+msgstr "Ваші власні сертифікати ЦС (CA) та проміжні сертифікати"
+
+#: includes/arrays.php
+msgid "LDAP Search"
+msgstr "Пошук LDAP"
+
+#: includes/arrays.php
+msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
+msgstr "Фільтр пошуку LDAP, наприклад ,OU=anygroup,DC=example,DC=com"
+
+#: includes/arrays.php
+msgid "DNS Name for Query"
+msgstr "DNS-ім'я для запиту"
+
+#: includes/arrays.php
+msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
+msgstr "DNS-ім'я для запиту. Для DOH (DNS over HTTPS) використовуйте /resolve?name=example.com або /dns-query?name=example.com&type=A. Для звичайного DNS буде повернуто записи A та AAAA"
+
+#: includes/arrays.php
+msgid "Path Part of URL"
+msgstr "Частина шляху в URL"
+
+#: includes/arrays.php
+msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
+msgstr "Для вебсервісу введіть принаймні \"/\" або щось на кшталт \"/any/path/\"."
+
+#: includes/arrays.php
+msgid "Requires Authentication"
+msgstr "Потрібна автентифікація"
+
+#: includes/arrays.php
+msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
+msgstr "Позначте цей прапорець, якщо сайт зазвичай повертає помилку 401, оскільки вимагає ім'я користувача та пароль."
+
+#: includes/arrays.php
+msgid "Proxy Server"
+msgstr "Проксі-сервер"
+
+#: includes/arrays.php
+msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
+msgstr "Якщо ця перевірка з'єднання потребує проксі-сервера, виберіть його тут. Інакше виберіть «Немає»."
+
+#: includes/arrays.php
+msgid "Check Certificate"
+msgstr "Перевіряти сертифікат"
+
+#: includes/arrays.php
+msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
+msgstr "Якщо використовується SSL, встановіть цей прапорець, щоб перевіряти дійсність сертифіката. Увімкнено за замовчуванням; вимкніть, якщо сайт використовує самопідписаний сертифікат."
+
+#: includes/arrays.php
+msgid "Check and notify Certificate expiration"
+msgstr "Перевіряти та сповіщати про закінчення терміну дії сертифіката"
+
+#: includes/arrays.php
+msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
+msgstr "Якщо використовується SSL, встановіть цей прапорець, щоб перевіряти строк дії сертифіката. У налаштуваннях можна вказати, за скільки днів до закінчення строку дії надсилати сповіщення."
+
+#: includes/arrays.php
+msgid "Parameters"
+msgstr "Параметри"
+
+#: includes/arrays.php
+msgid "How Often to Test"
+msgstr "Як часто виконувати перевірку"
+
+#: includes/arrays.php
+msgid "Test every xth poller run"
+msgstr "Перевіряти кожен x-й запуск опитувача"
+
+#: includes/arrays.php
+msgid "Trigger"
+msgstr "Тригер"
+
+#: includes/arrays.php
+msgid "How many times the service must be DOWN before an alert email is triggered."
+msgstr "Скільки разів служба має бути НЕДОСТУПНОЮ перед надсиланням тривожного електронного листа."
+
+#: includes/arrays.php
+msgid "Long duration alert"
+msgstr "Сповіщення про велику тривалість"
+
+#: includes/arrays.php
+msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
+msgstr "Якщо час перевірки перевищує це значення кілька разів поспіль, надіслати сповіщення. Пов'язано зі змінною «Кількість перевищень тривалості» (Duration count). Перевірка успадковує максимальний час виконання з налаштувань. Якщо тут задано більше значення, максимальний час виконання становитиме це значення + 2 секунди."
+
+#: includes/arrays.php
+msgid "Number of duration violations in a row"
+msgstr "Кількість порушень тривалості поспіль"
+
+#: includes/arrays.php
+msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
+msgstr "Скільки разів поспіль має бути перевищено поріг тривалості, щоб було надіслано сповіщення"
+
+#: includes/arrays.php
+msgid "Verification Strings"
+msgstr "Рядки перевірки"
+
+#: includes/arrays.php
+msgid "Response Search String"
+msgstr "Рядок пошуку у відповіді"
+
+#: includes/arrays.php
+msgid "This is the string to search for in the response for a live and working service."
+msgstr "Це рядок для пошуку у відповіді, що свідчить про активність і працездатність сервісу."
+
+#: includes/arrays.php
+msgid "Response Search String - Maintenance"
+msgstr "Рядок пошуку у відповіді — Обслуговування"
+
+#: includes/arrays.php
+msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
+msgstr "Це рядок для пошуку на сторінці обслуговування. Перевірка сервісу шукатиме цей рядок, якщо не знайдено наведений вище рядок. Якщо його знайдено, це означає, що сервіс перебуває на технічному обслуговуванні."
+
+#: includes/arrays.php
+msgid "Response Search String - Failed"
+msgstr "Рядок пошуку у відповіді — Помилка"
+
+#: includes/arrays.php
+msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
+msgstr "Це рядок для пошуку відомої помилки у відповіді сервісу. Перевірка сервісу надсилатиме сповіщення лише в разі виявлення цього рядка, ігноруючи будь-які проблеми з часом очікування та наведені вище рядки пошуку."
+
+#: includes/arrays.php
+msgid "Notification Settings"
+msgstr "Настройки сповіщення"
+
+#: includes/arrays.php
+msgid "Email notification"
+msgstr "Сповіщення електронною поштою"
+
+#: includes/arrays.php
+msgid "If enabled email notification about state, duration and search result will be send"
+msgstr "Якщо ввімкнено, надсилатиметься сповіщення електронною поштою про стан, тривалість і результат пошуку"
+
+#: includes/arrays.php
+msgid "Notify Format"
+msgstr "Формат сповіщень"
+
+#: includes/arrays.php
+msgid "This is the format to use when sending the notification email"
+msgstr "Це формат, який використовуватиметься під час надсилання листа сповіщення"
+
+#: includes/arrays.php
+msgid "Notification List"
+msgstr "Список сповіщень"
+
+#: includes/arrays.php
+msgid "Use this Notification List for those to be notified when this service goes down."
+msgstr "Використовувати цей список сповіщень для тих, кого потрібно сповістити, коли ця служба стане недоступною."
+
+#: includes/arrays.php
+msgid "Notify Accounts"
+msgstr "Облікові записи для сповіщень"
+
+#: includes/arrays.php
+msgid "This is a listing of accounts that will be notified when this service goes down."
+msgstr "Це перелік облікових записів, які отримають сповіщення, коли цей сервіс стане недоступним."
+
+#: includes/arrays.php
+msgid "Extra Alert Emails"
+msgstr "Додаткові адреси для сповіщень"
+
+#: includes/arrays.php
+msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
+msgstr "Тут можна вказати додаткові адреси електронної пошти для отримання сповіщень для цієї перевірки (через кому)"
+
+#: includes/arrays.php
+msgid "Notes"
+msgstr "Нотатки"
+
+#: includes/arrays.php
+msgid "Notes sent in email"
+msgstr "Примітки, надіслані електронною поштою"
+
+#: includes/arrays.php
+msgid "External ID"
+msgstr "Зовнішній ID"
+
+#: includes/arrays.php
+msgid "Enter an External ID for this test."
+msgstr "Введіть зовнішній ідентифікатор для цієї перевірки."
+
+#: includes/arrays.php
+msgid "Help"
+msgstr "Допомога"
+
+#: includes/arrays.php
+msgid "Credential Name"
+msgstr "Назва облікових даних"
+
+#: includes/arrays.php
+msgid "The name that is displayed for this Credential."
+msgstr "Назва, що відображається для цих облікових даних."
+
+#: includes/arrays.php
+msgid "Credential type"
+msgstr "Тип облікових даних"
+
+#: includes/arrays.php
+msgid "Select correct Credential type."
+msgstr "Виберіть правильний тип облікових даних."
+
+#: includes/arrays.php
+msgid "Options"
+msgstr "Параметри"
+
+#: includes/arrays.php
+msgid "Set according to your REST API server"
+msgstr "Налаштувати відповідно до вашого сервера REST API"
+
+#: includes/arrays.php
+msgid "Username"
+msgstr "Ім'я користувача"
+
+#: includes/arrays.php
+msgid "Password"
+msgstr "Пароль"
+
+#: includes/arrays.php
+msgid "For anonymous FTP insert email address"
+msgstr "Для анонімного FTP введіть адресу електронної пошти"
+
+#: includes/arrays.php
+msgid "Login URL"
+msgstr "URL входу"
+
+#: includes/arrays.php
+msgid "URL which is used to log in or get the token."
+msgstr "URL, що використовується для входу або отримання токена."
+
+#: includes/arrays.php
+msgid "Data URL"
+msgstr "URL даних"
+
+#: includes/arrays.php
+msgid "URL to retrieve data. Insert with http:// or https://"
+msgstr "URL для отримання даних. Введіть з http:// або https://"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2 community"
+msgstr "Спільнота (community) SNMP v1 або v2"
+
+#: includes/arrays.php
+msgid "SNMP community string for SNMP v1 or v2(c)"
+msgstr "Рядок спільноти (community) SNMP для SNMP v1 або v2(c)"
+
+#: includes/arrays.php
+msgid "SNMP Security Level"
+msgstr "Рівень безпеки SNMP"
+
+#: includes/arrays.php
+msgid "SNMP v3 Security Level to use when querying the device."
+msgstr "Рівень безпеки SNMP v3 для використання під час запиту пристрою."
+
+#: includes/arrays.php
+msgid "SNMP Auth Protocol (v3)"
+msgstr "Протокол автентифікації SNMP (версія 3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Authorization Protocol."
+msgstr "Виберіть протокол авторизації SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Username (v3)"
+msgstr "Ім'я користувача SNMP (v3)"
+
+#: includes/arrays.php
+msgid "SNMP v3 username for this device."
+msgstr "Ім’я користувача SNMP v3 для цього пристрою."
+
+#: includes/arrays.php
+msgid "SNMP Password (v3)"
+msgstr "Пароль SNMP (v3)"
+
+#: includes/arrays.php
+msgid "SNMP v3 password for this device."
+msgstr "Пароль SNMP v3 для цього пристрою."
+
+#: includes/arrays.php
+msgid "SNMP Privacy Protocol (v3)"
+msgstr "Протокол конфіденційності SNMP (версія 3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Privacy Protocol."
+msgstr "Виберіть протокол конфіденційності SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Privacy Passphrase (v3)"
+msgstr "Пароль конфіденційності SNMP (версія 3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Privacy Passphrase."
+msgstr "Виберіть парольну фразу конфіденційності SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Context (v3)"
+msgstr "Контекст SNMP (версія 3)"
+
+#: includes/arrays.php
+msgid "Enter the SNMP Context to use for this device."
+msgstr "Введіть контекст SNMP для цього пристрою."
+
+#: includes/arrays.php
+msgid "SNMP Engine ID (v3)"
+msgstr "Ідентифікатор механізму SNMP (версія 3)"
+
+#: includes/arrays.php
+msgid "Enter the SNMP v3 Engine Id or empty."
+msgstr "Введіть ідентифікатор двигуна (Engine ID) SNMP v3 або залиште порожнім."
+
+#: includes/arrays.php
+msgid "SSH user"
+msgstr "Користувач SSH"
+
+#: includes/arrays.php
+msgid "Insert username here"
+msgstr "Введіть ім'я користувача тут"
+
+#: includes/arrays.php
+msgid "SSH private key"
+msgstr "Приватний ключ SSH"
+
+#: includes/arrays.php
+msgid "SSH private key "
+msgstr "Приватний ключ SSH "
+
+#: includes/arrays.php
+msgid "SSH private key passphrase"
+msgstr "Парольна фраза закритого ключа SSH"
+
+#: includes/arrays.php
+msgid "If your key is password protected, insert password here"
+msgstr "Якщо ваш ключ захищено паролем, введіть пароль тут"
+
+#: includes/arrays.php
+msgid "Client ID"
+msgstr "ID клієнта"
+
+#: includes/arrays.php
+msgid "Oauth Client ID"
+msgstr "ID клієнта OAuth"
+
+#: includes/arrays.php
+msgid "Client secret"
+msgstr "Секрет клієнта"
+
+#: includes/arrays.php
+msgid "OAuth Client secret"
+msgstr "Секрет клієнта OAuth"
+
+#: includes/arrays.php
+msgid "Token name"
+msgstr "Назва токена"
+
+#: includes/arrays.php
+msgid "Token value"
+msgstr "Значення токена"
+
+#: includes/arrays.php
+msgid "<b>Can be used for a lot of service checks:</b><br/><i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/><i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/><i>LDAP, smb, smbs</i> - required<br/><i>MQTT</i> - optional<br/><i>SCP, SSH command</i> - you can use this method or private key method"
+msgstr "<b>Може використовуватися для багатьох перевірок служб:</b><br/><i>Http/https</i> — необов'язково, якщо задано, використовується базова автентифікація HTTP<br/><i>SMTP на порту 587</i> — необов'язково. Без імені користувача/пароля перевіряється лише відповідь сервера. З іменем користувача та паролем також виконується вхід<br/><i>Imap, imaps, pop3, pop3s, ftp</i> — необов'язково. Для анонімного ftp використовуйте ім'я користувача \"anonymous\" і адресу електронної пошти як пароль<br/><i>LDAP, smb, smbs</i> — обов'язково<br/><i>MQTT</i> — необов'язково<br/><i>Команда SCP, SSH</i> — ви можете використовувати цей метод або метод приватного ключа"
+
+#: includes/arrays.php
+msgid "Rest API - Basic HTTP auth. Username and password are required"
+msgstr "REST API — Базова HTTP-автентифікація. Ім'я користувача та пароль обов'язкові"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue). For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). For POST <i>api_key</i> is usually used."
+msgstr "REST API — Автентифікація за API-ключем<br/>Дані автентифікації передаються у заголовку HTTP, власному заголовку або методом POST. Облікові дані в URL не підтримуються.<br/>Введіть назву та значення API-ключа. Обидва значення обов'язкові. Для заголовка HTTP зазвичай використовується назва <i>Bearer або apikey чи \"\"</i> (Authorization: Bearer apivalue). Для власного заголовка зазвичай використовується <i>X-API-Key</i> (X-Api-Key: keyvalue). Для POST зазвичай використовується <i>api_key</i>."
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded."
+msgstr "REST API — Автентифікація за токеном OAuth2/Bearer<br/>Ви можете отримати ключ/токен із сервера та вставити його тут або скористатися процесом автентифікації з обліковими даними. Ім'я користувача та пароль надсилаються у форматі JSON."
+
+#: includes/arrays.php
+msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
+msgstr "REST API — Автентифікація на основі Cookie — потрібні обидва значення. Після входу повертається файл cookie"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2 - required, insert community name here"
+msgstr "SNMP v1 або v2 — обов'язково, введіть тут назву спільноти (community)"
+
+#: includes/arrays.php
+msgid "SNMP v3 - The security level determines which parameters are required"
+msgstr "SNMP v3 — рівень безпеки визначає, які параметри є обов'язковими"
+
+#: includes/arrays.php
+msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
+msgstr "Приватний ключ SSH — може використовуватися для перевірки SCP або команди SSH. Ці перевірки також можуть використовувати ім'я користувача та пароль"
+
+#: includes/arrays.php
+msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
+msgstr "Перевіряє лише, чи відповідає вебсервер. Якщо вказано облікові дані (ім'я користувача/пароль), буде виконано спробу базової HTTP-автентифікації."
+
+#: includes/arrays.php
+msgid "The same as HTTP plaintext but adds the ability to test certificates."
+msgstr "Те саме, що й незашифрований HTTP, але з можливістю перевірки сертифікатів."
+
+#: includes/arrays.php
+msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
+msgstr "Перевіряє лише, чи відповідає SMTP-сервер. Без автентифікації. Ви побачите вітальний банер сервера та відповідь EHLO."
+
+#: includes/arrays.php
+msgid "Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, you will see server login banner and ehlo response. With credential, login will be performed"
+msgstr "Нешифроване з'єднання + STARTTLS. Також можливо перевірити дійсність сертифіката. Без імені користувача та пароля ви побачите привітальний банер сервера та відповідь ehlo. З обліковими даними буде виконано вхід"
+
+#: includes/arrays.php
+msgid "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password AUTH LOGIN will be tested."
+msgstr "Шифроване з'єднання на стандартному порту 465. Також можна перевірити дійсність сертифіката. За наявності імені користувача й пароля буде перевірено AUTH LOGIN."
+
+#: includes/arrays.php
+msgid "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgstr "Нешифроване IMAP-з'єднання. Без облікових даних буде перевірено лише підключення. Ви побачите тільки банер входу. З обліковими даними буде перевірено вхід і виконано спробу прочитати список повідомлень. Можна використовувати метод AUTHENTICATE PLAIN або AUTHENTICATE LOGIN."
+
+#: includes/arrays.php
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Те саме, що й незашифрований IMAP, але після входу використовується STARTTLS. Також можна перевірити дійсність сертифіката після STARTTLS."
+
+#: includes/arrays.php
+msgid "Encrypted IMAP, you can try login and test certificate and user login"
+msgstr "Шифрований IMAP; ви можете виконати вхід і перевірити сертифікат та облікові дані користувача"
+
+#: includes/arrays.php
+msgid "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages"
+msgstr "Нешифроване POP3-з'єднання. Без облікових даних буде перевірено лише підключення. Ви побачите тільки банер входу. З обліковими даними буде перевірено вхід і виконано спробу прочитати список повідомлень"
+
+#: includes/arrays.php
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Те саме, що й незашифрований POP3, але після входу використовується STARTTLS. Також можна перевірити дійсність сертифіката після STARTTLS."
+
+#: includes/arrays.php
+msgid "Encrypted POP3, you can try login and test certificate and user login."
+msgstr "Шифрований POP3; ви можете виконати вхід і перевірити сертифікат та облікові дані користувача."
+
+#: includes/arrays.php
+msgid "Try to resolve DNS record on specified DNS server"
+msgstr "Спробувати розв'язати DNS-запис на вказаному DNS-сервері"
+
+#: includes/arrays.php
+msgid "Try DNS over HTTPS."
+msgstr "Спробувати DNS через HTTPS."
+
+#: includes/arrays.php
+msgid "All parameters are required. Perform unencrypted LDAP login and search"
+msgstr "Усі параметри обов'язкові. Виконати незашифрований вхід і пошук у LDAP"
+
+#: includes/arrays.php
+msgid "All parameters are required. Perform encrypted LDAP login and search"
+msgstr "Усі параметри обов'язкові. Виконати зашифрований вхід і пошук у LDAP"
+
+#: includes/arrays.php
+msgid "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content of the file is returned."
+msgstr "Нешифроване FTP-з'єднання, вхід та спроба завантажити файл, вказаний у шляху (/path/to/file.txt). Для анонімного з'єднання використовуйте логін *anonymous* та адресу електронної пошти як пароль. Повертається вміст файлу."
+
+#: includes/arrays.php
+msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
+msgstr "Спробувати завантажити файл, вказаний у шляху (/path/to/file.txt), із TFTP-сервера. Повертається вміст файлу."
+
+#: includes/arrays.php
+msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
+msgstr "Шифроване з'єднання SCP; увійти та спробувати завантажити файл, вказаний у шляху (/path/to/file.txt)."
+
+#: includes/arrays.php
+msgid "Try SMB protocol, username and password are required. Try to login and download file."
+msgstr "Спробувати протокол SMB; потрібні ім'я користувача та пароль. Спроба входу та завантаження файлу."
+
+#: includes/arrays.php
+msgid "Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\""
+msgstr "Підключитися до сервера MQTT та прослуховувати будь-які повідомлення. Ви можете вказати тему в полі «Шлях» (bedroom/temp), або залишити порожнім для будь-якої теми. Для цього тесту рекомендується збільшити «Сповіщення про тривале виконання»"
+
+#: includes/arrays.php
+msgid "REST API test with basic HTTP auth. Prepare credential first."
+msgstr "Перевірка REST API з базовою HTTP-автентифікацією. Спочатку підготуйте облікові дані."
+
+#: includes/arrays.php
+msgid "REST API test with API key auth. Prepare credential first."
+msgstr "Перевірка REST API з автентифікацією за API-ключем. Спочатку підготуйте облікові дані."
+
+#: includes/arrays.php
+msgid "REST API test with Oauth2. Prepare credential first."
+msgstr "Перевірка REST API з OAuth2. Спочатку підготуйте облікові дані."
+
+#: includes/arrays.php
+msgid "REST API test with cookie auth. Prepare credential first."
+msgstr "Перевірка REST API з автентифікацією через cookie. Спочатку підготуйте облікові дані."
+
+#: includes/arrays.php
+msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
+msgstr "Спробувати метод SNMP get. Повертається результат для вказаного OID. Потрібні облікові дані: спочатку необхідно підготувати облікові дані SNMP v.1, 2 або v3."
+
+#: includes/arrays.php
+msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
+msgstr "Спробувати метод SNMP walk. Повертається результат для вказаного OID. Потрібні облікові дані: спочатку необхідно підготувати облікові дані SNMP v.1, 2 або v3."
+
+#: includes/arrays.php
+msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
+msgstr "Використовувати SSH та підключатися до віддаленого хоста. Після входу виконати вказану команду та повернути вивід. Можливе використання імені користувача та пароля або приватного ключа."
+
+#: includes/arrays.php
+msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
+msgstr "Протокол SFTP на порту 22, потрібні ім'я користувача, пароль і шлях. Спроба отримати перелік каталогу за вказаним шляхом."
+
+#: includes/arrays.php
+msgid "All fine. Proceed as usual."
+msgstr "Усе гаразд. Продовжуйте у звичайному режимі."
+
+#: includes/arrays.php
+msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
+msgstr "URL-адреса, яку ви передали до libcurl, використовує протокол, що не підтримується цією бібліотекою libcurl. Підтримка може бути параметром часу компіляції, який не було використано, або це помилка в назві протоколу, або протокол, для якого в libcurl немає реалізації."
+
+#: includes/arrays.php
+msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
+msgstr "Помилка коду ранньої ініціалізації. Ймовірно, це внутрішня помилка або проблема з ресурсами, через яку під час ініціалізації не вдалося виконати базову операцію."
+
+#: includes/arrays.php
+msgid "The URL was not properly formatted."
+msgstr "URL має некоректний формат."
+
+#: includes/arrays.php
+msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
+msgstr "Запитану функцію, протокол або параметр не знайдено у вбудованих можливостях цієї libcurl через параметри збирання. Це означає, що функцію або параметр не було ввімкнено чи було явно вимкнено під час збирання libcurl, і для її роботи потрібно перезібрати libcurl."
+
+#: includes/arrays.php
+msgid "Could not resolve proxy. The given proxy host could not be resolved."
+msgstr "Не вдалося розпізнати проксі. Вказаний проксі-вузол не розпізнано."
+
+#: includes/arrays.php
+msgid "Could not resolve host. The given remote host was not resolved."
+msgstr "Не вдалося розпізнати вузол. Вказаний віддалений вузол не розпізнано."
+
+#: includes/arrays.php
+msgid "Failed to connect() to host or proxy."
+msgstr "Помилка connect() до хоста або проксі-сервера."
+
+#: includes/arrays.php
+msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
+msgstr "Сервер надіслав дані, які libcurl не зміг розібрати. До версії 7.51.0 цей код помилки був відомий як CURLE_FTP_WEIRD_SERVER_REPLY."
+
+#: includes/arrays.php
+msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
+msgstr "Нам було відмовлено у доступі до ресурсу, вказаного в URL. Для FTP це трапляється під час спроби перейти до віддаленого каталогу."
+
+#: includes/arrays.php
+msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
+msgstr "Під час очікування зворотного підключення від сервера в активному сеансі FTP через керуюче з'єднання було надіслано код помилки або подібне повідомлення."
+
+#: includes/arrays.php
+msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
+msgstr "Після надсилання пароля FTP на сервер libcurl очікує належної відповіді. Цей код помилки означає, що повернуто неочікуваний код."
+
+#: includes/arrays.php
+msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
+msgstr "Під час активного сеансу FTP під час очікування підключення сервера минув час очікування CURLOPT_ACCEPTTIMEOUT_MS (або внутрішнє типове значення)."
+
+#: includes/arrays.php
+msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
+msgstr "Libcurl не вдалося отримати коректну відповідь від сервера на команду PASV або EPSV. Сервер працює некоректно."
+
+#: includes/arrays.php
+msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
+msgstr "FTP-сервери повертають рядок 227 у відповідь на команду PASV. Якщо libcurl не вдається розібрати цей рядок, повертається цей код."
+
+#: includes/arrays.php
+msgid "An internal failure to lookup the host used for the new connection."
+msgstr "Внутрішній збій під час пошуку вузла, що використовується для нового з'єднання."
+
+#: includes/arrays.php
+msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr "Виявлено проблему на рівні фреймування HTTP2. Це загальна помилка, яка може бути спричинена однією з кількох проблем; подробиці див. у буфері помилок."
+
+#: includes/arrays.php
+msgid "Received an error when trying to set the transfer mode to binary or ASCII."
+msgstr "Отримано помилку під час спроби встановити двійковий режим передачі або режим ASCII."
+
+#: includes/arrays.php
+msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
+msgstr "Передавання файлу було меншим або більшим, ніж очікувалося. Це трапляється, коли сервер спочатку повідомляє очікуваний розмір передавання, а потім надсилає дані, що не відповідають раніше вказаному розміру."
+
+#: includes/arrays.php
+msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
+msgstr "Це була або некоректна відповідь на команду 'RETR', або завершення передавання нульової кількості байтів."
+
+#: includes/arrays.php
+msgid "Obsolete Error"
+msgstr "Застаріла помилка"
+
+#: includes/arrays.php
+msgid "Not used in modern versions."
+msgstr "Не використовується в сучасних версіях."
+
+#: includes/arrays.php
+msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
+msgstr "Під час надсилання користувацьких команд \"QUOTE\" на віддалений сервер одна з команд повернула код помилки 400 або вище (для FTP) чи іншим чином вказала на невдале виконання команди."
+
+#: includes/arrays.php
+msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
+msgstr "Повертається, якщо CURLOPT_FAILONERROR встановлено у true, а HTTP-сервер повертає код помилки >= 400."
+
+#: includes/arrays.php
+msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
+msgstr "Виникла помилка під час запису отриманих даних у локальний файл, або функція зворотного виклику запису повернула помилку бібліотеці libcurl."
+
+#: includes/arrays.php
+msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
+msgstr "Не вдалося розпочати вивантаження. Для FTP сервер зазвичай відхилив команду STOR. Буфер помилок зазвичай містить пояснення сервера."
+
+#: includes/arrays.php
+msgid "There was a problem reading a local file or an error returned by the read callback."
+msgstr "Виникла проблема під час читання локального файлу або функція зворотного виклику читання повернула помилку."
+
+#: includes/arrays.php
+msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
+msgstr "Запит на виділення пам'яті не вдався. Це серйозний збій, який свідчить про критичну несправність системи."
+
+#: includes/arrays.php
+msgid "Operation timeout. The specified time-out period was reached according to the conditions."
+msgstr "Час очікування операції вичерпано. Досягнуто вказаного періоду очікування відповідно до умов."
+
+#: includes/arrays.php
+msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
+msgstr "Команда FTP PORT повернула помилку. Зазвичай це трапляється, якщо для libcurl вказано невідповідну адресу. Див. CURLOPT_FTPPORT."
+
+#: includes/arrays.php
+msgid "The FTP REST command returned error. This should never happen if the server is sane."
+msgstr "Команда FTP REST повернула помилку. За коректної роботи сервера цього не повинно ставатися."
+
+#: includes/arrays.php
+msgid "The server does not support or accept range requests."
+msgstr "Сервер не підтримує або не приймає запити діапазонів (range requests)."
+
+#: includes/arrays.php
+msgid "This is an odd error that mainly occurs due to internal confusion."
+msgstr "Це незвичайна помилка, яка переважно виникає через внутрішній збій узгодженості."
+
+#: includes/arrays.php
+msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
+msgstr "Виникла проблема під час узгодження SSL/TLS. Перегляньте повідомлення в буфері помилок, щоб точніше визначити проблему. Причиною можуть бути сертифікати (формати файлів, шляхи, права доступу), паролі тощо."
+
+#: includes/arrays.php
+msgid "The download could not be resumed because the specified offset was out of the file boundary."
+msgstr "Не вдалося відновити завантаження, оскільки вказане зміщення виходить за межі файлу."
+
+#: includes/arrays.php
+msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
+msgstr "Не вдалося відкрити файл, вказаний через FILE://. Найімовірніше, шлях не вказує на наявний файл. Чи перевірили ви права доступу до файлу?"
+
+#: includes/arrays.php
+msgid "LDAP cannot bind. LDAP bind operation failed."
+msgstr "Не вдалося виконати прив'язку LDAP. Помилка операції LDAP bind."
+
+#: includes/arrays.php
+msgid "LDAP search failed."
+msgstr "Помилка пошуку LDAP."
+
+#: includes/arrays.php
+msgid "Function not found. A required zlib function was not found."
+msgstr "Функцію не знайдено. Не знайдено необхідну функцію zlib."
+
+#: includes/arrays.php
+msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
+msgstr "Перервано функцією зворотного виклику. Функція зворотного виклику повернула \"abort\" до libcurl."
+
+#: includes/arrays.php
+msgid "A function was called with a bad parameter."
+msgstr "Функцію викликано з некоректним параметром."
+
+#: includes/arrays.php
+msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
+msgstr "Помилка інтерфейсу. Не вдалося використати вказаний вихідний інтерфейс. Задайте інтерфейс для вихідної IP-адреси з'єднань за допомогою URLOPT_INTERFACE."
+
+#: includes/arrays.php
+msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
+msgstr "Забагато перенаправлень. Під час переходу за перенаправленнями libcurl досягла максимальної кількості. Задайте обмеження за допомогою CURLOPT_MAXREDIRS."
+
+#: includes/arrays.php
+msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
+msgstr "Параметр, переданий до libcurl, не розпізнано або він невідомий. Зверніться до відповідної документації. Найімовірніше, це проблема у програмі, яка використовує libcurl. Буфер помилок може містити точнішу інформацію про те, якого саме параметра це стосується."
+
+#: includes/arrays.php
+msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
+msgstr "Параметр, переданий до setopt, має неправильний формат. Докладніше про параметр див. у повідомленні про помилку."
+
+#: includes/arrays.php
+msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
+msgstr "Сервер не повернув жодних даних, і за таких обставин порожня відповідь вважається помилкою."
+
+#: includes/arrays.php
+msgid "The specified crypto engine was not found."
+msgstr "Вказаний криптографічний рушій не знайдено."
+
+#: includes/arrays.php
+msgid "Failed setting the selected SSL crypto engine as default."
+msgstr "Не вдалося встановити вибраний криптографічний рушій SSL як типовий."
+
+#: includes/arrays.php
+msgid "Failed sending network data."
+msgstr "Помилка надсилання мережевих даних."
+
+#: includes/arrays.php
+msgid "Failure with receiving network data."
+msgstr "Помилка отримання мережевих даних."
+
+#: includes/arrays.php
+msgid "problem with the local client certificate."
+msgstr "проблема з локальним сертифікатом клієнта."
+
+#: includes/arrays.php
+msgid "Could not use specified cipher."
+msgstr "Не вдалося використати вказаний шифр."
+
+#: includes/arrays.php
+msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
+msgstr "SSL-сертифікат або SSH-відбиток віддаленого сервера визнано недійсним. Починаючи з версії 7.62.0 цей код помилки об'єднано з CURLE_SSL_CACERT. Попереднє значення було 51."
+
+#: includes/arrays.php
+msgid "Unrecognized transfer encoding."
+msgstr "Нерозпізнане кодування передачі."
+
+#: includes/arrays.php
+msgid "Maximum file size exceeded."
+msgstr "Перевищено максимальний розмір файлу."
+
+#: includes/arrays.php
+msgid "Requested FTP SSL level failed."
+msgstr "Помилка запитаного рівня FTP SSL."
+
+#: includes/arrays.php
+msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
+msgstr "Під час операції надсилання curl мав перемотати дані для повторної передачі, але операція перемотування не вдалася."
+
+#: includes/arrays.php
+msgid "Initiating the SSL Engine failed."
+msgstr "Не вдалося ініціалізувати механізм SSL."
+
+#: includes/arrays.php
+msgid "The remote server denied curl to login (Added in 7.13.1)"
+msgstr "Віддалений сервер відмовив curl у вході (додано у 7.13.1)"
+
+#: includes/arrays.php
+msgid "File not found on TFTP server."
+msgstr "Файл не знайдено на TFTP-сервері."
+
+#: includes/arrays.php
+msgid "Permission problem on TFTP server."
+msgstr "Проблема з правами доступу на TFTP-сервері."
+
+#: includes/arrays.php
+msgid "Out of disk space on the server."
+msgstr "На сервері закінчився вільний дисковий простір."
+
+#: includes/arrays.php
+msgid "Illegal TFTP operation."
+msgstr "Неприпустима операція TFTP."
+
+#: includes/arrays.php
+msgid "Unknown TFTP transfer ID."
+msgstr "Невідомий ідентифікатор передачі TFTP."
+
+#: includes/arrays.php
+msgid "File already exists and is not overwritten."
+msgstr "Файл уже існує і не перезаписується."
+
+#: includes/arrays.php
+msgid "This error should never be returned by a properly functioning TFTP server."
+msgstr "Ця помилка ніколи не повинна повертатися справно працюючим TFTP-сервером."
+
+#: includes/arrays.php
+msgid "Problem with reading the SSL CA cert (path? access rights?)"
+msgstr "Проблема з читанням сертифіката SSL CA (шлях? права доступу?)"
+
+#: includes/arrays.php
+msgid "The resource referenced in the URL does not exist."
+msgstr "Ресурс, на який посилається URL, не існує."
+
+#: includes/arrays.php
+msgid "An unspecified error occurred during the SSH session."
+msgstr "Під час SSH-сеансу виникла невизначена помилка."
+
+#: includes/arrays.php
+msgid "Failed to shut down the SSL connection."
+msgstr "Не вдалося коректно завершити SSL-з'єднання."
+
+#: includes/arrays.php
+msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
+msgstr "Сокет не готовий до надсилання/отримання даних; зачекайте, доки він буде готовий, і повторіть спробу. Цей код повернення повертається лише функціями curl_easy_recv та curl_easy_send (додано у 7.18.2)"
+
+#: includes/arrays.php
+msgid "Failed to load CRL file (Added in 7.19.0)"
+msgstr "Не вдалося завантажити файл CRL (додано у 7.19.0)"
+
+#: includes/arrays.php
+msgid "Issuer check failed (Added in 7.19.0)"
+msgstr "Помилка перевірки видавця (додано у 7.19.0)"
+
+#: includes/arrays.php
+msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
+msgstr "FTP-сервер зовсім не розпізнає команду PRET або не підтримує переданий аргумент. Будьте обережні при використанні CURLOPT_CUSTOMREQUEST: нестандартна команда LIST також надсилається з командою PRET перед PASV. (Додано у 7.20.0)"
+
+#: includes/arrays.php
+msgid "Mismatch of RTSP CSeq numbers."
+msgstr "Невідповідність номерів RTSP CSeq."
+
+#: includes/arrays.php
+msgid "Mismatch of RTSP Session Identifiers."
+msgstr "Невідповідність ідентифікаторів сеансу RTSP."
+
+#: includes/arrays.php
+msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
+msgstr "Не вдалося розібрати список файлів FTP (під час завантаження за шаблоном FTP)."
+
+#: includes/arrays.php
+msgid "Chunk callback reported error."
+msgstr "Зворотний виклик обробки фрагмента повідомив про помилку."
+
+#: includes/arrays.php
+msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
+msgstr "(Лише для внутрішнього використання, ніколи не повертається libcurl) Немає доступного з'єднання, сеанс поставлено в чергу. (додано у 7.30.0)"
+
+#: includes/arrays.php
+msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
+msgstr "Не вдалося зіставити закріплений ключ, указаний у CURLOPT_PINNEDPUBLICKEY."
+
+#: includes/arrays.php
+msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
+msgstr "Статус повернув помилку під час перевірки з CURLOPT_SSL_VERIFYSTATUS."
+
+#: includes/arrays.php
+msgid "Stream error in the HTTP/2 framing layer."
+msgstr "Помилка потоку на рівні фреймів HTTP/2."
+
+#: includes/arrays.php
+msgid "An API function was called from inside a callback."
+msgstr "Функцію API було викликано зсередини функції зворотного виклику."
+
+#: includes/arrays.php
+msgid "An authentication function returned an error."
+msgstr "Функція автентифікації повернула помилку."
+
+#: includes/arrays.php
+msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr "Виявлено проблему на рівні HTTP/3. Це загальна помилка, яка може бути спричинена однією з кількох проблем; подробиці див. у буфері помилок."
+
+#: includes/arrays.php
+msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
+msgstr "Помилка з'єднання QUIC. Ця помилка може бути спричинена помилкою бібліотеки SSL. QUIC — це протокол, що використовується для передачі HTTP/3."
+
+#: includes/arrays.php
+msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
+msgstr "Помилка узгодження проксі. CURLINFO_PROXY_ERROR надає додаткові відомості про конкретну проблему."
+
+#: includes/arrays.php
+msgid "SSL Client Certificate required."
+msgstr "Потрібен клієнтський сертифікат SSL."
+
+#: includes/arrays.php
+msgid "An internal call to poll() or select() returned error that is not recoverable."
+msgstr "Внутрішній виклик poll() або select() повернув невиправну помилку."
+
+#: includes/functions.php
+msgid "Log History"
+msgstr "Історія журналу"
+
+#: includes/functions.php
+msgid "Graphs"
+msgstr "Графіки"
+
+#: includes/functions.php
+msgid "No data"
+msgstr "Немає даних"
+
+#: includes/functions.php servcheck_ca.php servcheck_proxy.php
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Delete"
+msgstr "Видалити"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
+msgstr[0] "Натисніть 'Продовжити', щоб видалити наступний елемент."
+msgstr[1] "Натисніть 'Продовжити', щоб видалити наступні елементи."
+msgstr[2] "Натисніть 'Продовжити', щоб видалити наступні елементи."
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Delete item"
+msgid_plural "Delete items"
+msgstr[0] "Видалити елемент"
+msgstr[1] "Видалити елементи"
+msgstr[2] "Видалити елементи"
+
+#: servcheck_ca.php
+#, php-format
+msgid "CA [edit: %s]"
+msgstr "CA [редагування: %s]"
+
+#: servcheck_ca.php
+msgid "CA [new]"
+msgstr "CA [новий]"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+msgid "Used"
+msgstr "Використано"
+
+#: servcheck_ca.php
+msgid "CAs"
+msgstr "Центри сертифікації (CA)"
+
+#: servcheck_ca.php
+msgid "No Certificates Found"
+msgstr "Сертифікатів не знайдено"
+
+#: servcheck_ca.php
+msgid "Servcheck CA Management"
+msgstr "Керування CA Servcheck"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Search"
+msgstr "Пошук"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Default"
+msgstr "За замовчуванням"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Go"
+msgstr "Перейти"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Set/Refresh Filters"
+msgstr "Встановити/оновити фільтри"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Clear"
+msgstr "Очистити"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Clear Filters"
+msgstr "Очистити фільтри"
+
+#: servcheck_credential.php servcheck_test.php
+msgid "Duplicate"
+msgstr "Дублювати"
+
+#: servcheck_credential.php
+msgid "Click 'Continue' to Duplicate the following Credential."
+msgid_plural "Click 'Continue' to Duplicate the following Credentials."
+msgstr[0] "Натисніть 'Продовжити', щоб дублювати наступний запис облікових даних."
+msgstr[1] "Натисніть 'Продовжити', щоб дублювати наступні записи облікових даних."
+msgstr[2] "Натисніть 'Продовжити', щоб дублювати наступні записи облікових даних."
+
+#: servcheck_credential.php
+msgid "Duplicate Credential"
+msgid_plural "Duplicate Credentials"
+msgstr[0] "Дублювати запис облікових даних"
+msgstr[1] "Дублювати записи облікових даних"
+msgstr[2] "Дублювати записи облікових даних"
+
+#: servcheck_credential.php
+#, php-format
+msgid "Credential [edit: %s]"
+msgstr "Облікові дані [редагування: %s]"
+
+#: servcheck_credential.php
+msgid "Credential [new]"
+msgstr "Облікові дані [нові]"
+
+#: servcheck_credential.php
+msgid "Type"
+msgstr "Тип"
+
+#: servcheck_credential.php
+msgid "Credentials"
+msgstr "Облікові дані"
+
+#: servcheck_credential.php
+msgid "No Credentials Found"
+msgstr "Облікових даних не знайдено"
+
+#: servcheck_credential.php
+msgid "Servcheck Credential Management"
+msgstr "Керування обліковими даними Servcheck"
+
+#: servcheck_curl_code.php
+msgid "No error codes"
+msgstr "Немає кодів помилок"
+
+#: servcheck_proxy.php
+#, php-format
+msgid "Proxy [edit: %s]"
+msgstr "Проксі [редагування: %s]"
+
+#: servcheck_proxy.php
+msgid "Proxy [new]"
+msgstr "Проксі [новий]"
+
+#: servcheck_proxy.php
+msgid "Ports (http/https)"
+msgstr "Порти (http/https)"
+
+#: servcheck_proxy.php
+msgid "No Proxies Found"
+msgstr "Проксі не знайдено"
+
+#: servcheck_proxy.php
+msgid "Servcheck Proxy Management"
+msgstr "Керування проксі Servcheck"
+
+#: servcheck_test.php
+msgid "Disable"
+msgstr "Вимкнути"
+
+#: servcheck_test.php
+msgid "Enable"
+msgstr "Увімкнути"
+
+#: servcheck_test.php
+msgid "Clear statistics"
+msgstr "Очистити статистику"
+
+#: servcheck_test.php
+msgid "Clear log"
+msgstr "Очистити журнал"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
+msgstr[0] "Натисніть 'Продовжити', щоб вимкнути наступний елемент."
+msgstr[1] "Натисніть 'Продовжити', щоб вимкнути наступні елементи."
+msgstr[2] "Натисніть 'Продовжити', щоб вимкнути наступні елементи."
+
+#: servcheck_test.php
+msgid "Disable item"
+msgid_plural "Disable items"
+msgstr[0] "Вимкнути елемент"
+msgstr[1] "Вимкнути елементи"
+msgstr[2] "Вимкнути елементи"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
+msgstr[0] "Натисніть 'Продовжити', щоб увімкнути наступний елемент."
+msgstr[1] "Натисніть 'Продовжити', щоб увімкнути наступні елементи."
+msgstr[2] "Натисніть 'Продовжити', щоб увімкнути наступні елементи."
+
+#: servcheck_test.php
+msgid "Enable item"
+msgid_plural "Enable items"
+msgstr[0] "Увімкнути елемент"
+msgstr[1] "Увімкнути елементи"
+msgstr[2] "Увімкнути елементи"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
+msgstr[0] "Натисніть 'Продовжити', щоб дублювати наступний елемент."
+msgstr[1] "Натисніть 'Продовжити', щоб дублювати наступні елементи."
+msgstr[2] "Натисніть 'Продовжити', щоб дублювати наступні елементи."
+
+#: servcheck_test.php
+msgid "Duplicate item"
+msgid_plural "Duplicate items"
+msgstr[0] "Дублювати елемент"
+msgstr[1] "Дублювати елементи"
+msgstr[2] "Дублювати елементи"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear statistics of the following item."
+msgid_plural "Click 'Continue' to clear statistics of the following items."
+msgstr[0] "Натисніть 'Продовжити', щоб очистити статистику наступного елемента."
+msgstr[1] "Натисніть 'Продовжити', щоб очистити статистику наступних елементів."
+msgstr[2] "Натисніть 'Продовжити', щоб очистити статистику наступних елементів."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear log of the following item."
+msgid_plural "Click 'Continue' to clear log of the following items."
+msgstr[0] "Натисніть 'Продовжити', щоб очистити журнал наступного елемента."
+msgstr[1] "Натисніть 'Продовжити', щоб очистити журнал наступних елементів."
+msgstr[2] "Натисніть 'Продовжити', щоб очистити журнал наступних елементів."
+
+#: servcheck_test.php
+#, php-format
+msgid "The Service Check history was purged for %s"
+msgstr "Історію перевірок сервісу очищено для %s"
+
+#: servcheck_test.php
+#, php-format
+msgid "Test [edit: %s]"
+msgstr "Тест [редагування: %s]"
+
+#: servcheck_test.php
+msgid "Test [new]"
+msgstr "Тест [новий]"
+
+#: servcheck_test.php
+msgid "No Users Selected"
+msgstr "Користувачів не вибрано"
+
+#: servcheck_test.php
+msgid "Users Selected"
+msgstr "Вибрано користувачів"
+
+#: servcheck_test.php
+msgid "All Users Selected"
+msgstr "Вибрано всіх користувачів"
+
+#: servcheck_test.php
+msgid "All"
+msgstr "Всі"
+
+#: servcheck_test.php
+msgid "Date"
+msgstr "Дата"
+
+#: servcheck_test.php
+msgid "Attempt"
+msgstr "Спроба"
+
+#: servcheck_test.php
+msgid "Result"
+msgstr "Результат"
+
+#: servcheck_test.php
+msgid "Search result"
+msgstr "Результат пошуку"
+
+#: servcheck_test.php
+msgid "Duration"
+msgstr "Тривалість"
+
+#: servcheck_test.php
+msgid "Certificate"
+msgstr "Сертифікат"
+
+#: servcheck_test.php
+msgid "Curl"
+msgstr "Curl"
+
+#: servcheck_test.php
+msgid "Ret. data size"
+msgstr "Розмір отрим. даних"
+
+#: servcheck_test.php
+msgid "CPU u/CPU s/Memory"
+msgstr "ЦП u/ЦП s/Пам'ять"
+
+#: servcheck_test.php
+msgid "Logs"
+msgstr "Логи"
+
+#: servcheck_test.php
+msgid "days"
+msgstr "днів"
+
+#: servcheck_test.php
+#, php-format
+msgid "Expired %s days ago"
+msgstr "Термін дії минув %s дн. тому"
+
+#: servcheck_test.php
+msgid "Insufficient data, wait a few poller cycles"
+msgstr "Недостатньо даних, зачекайте кілька циклів опитувача"
+
+#: servcheck_test.php
+msgid "Actions"
+msgstr "Дії"
+
+#: servcheck_test.php
+msgid "Status"
+msgstr "Статус"
+
+#: servcheck_test.php
+msgid "Last Check (attempt)"
+msgstr "Остання перевірка (спроба)"
+
+#: servcheck_test.php
+msgid "Stats (OK/problem)"
+msgstr "Статистика (OK/проблема)"
+
+#: servcheck_test.php
+msgid "Triggered"
+msgstr "Спрацювало"
+
+#: servcheck_test.php
+msgid "Edit Service Check"
+msgstr "Редагувати перевірку сервісу"
+
+#: servcheck_test.php
+msgid "Enable Service Check"
+msgstr "Увімкнути перевірку сервісу"
+
+#: servcheck_test.php
+msgid "Disable Service Check"
+msgstr "Вимкнути перевірку сервісу"
+
+#: servcheck_test.php
+msgid "View Service Check History"
+msgstr "Перегляд історії перевірок сервісів"
+
+#: servcheck_test.php
+msgid "View Last returned data"
+msgstr "Переглянути останні повернуті дані"
+
+#: servcheck_test.php
+msgid "View Graph"
+msgstr "Переглянути графік"
+
+#: servcheck_test.php
+msgid "N/A (N/A)"
+msgstr "Н/Д (Н/Д)"
+
+#: servcheck_test.php
+msgid "No"
+msgstr "Ні"
+
+#: servcheck_test.php
+msgid "Yes"
+msgstr "Так"
+
+#: servcheck_test.php
+msgid "No Service Checks Found"
+msgstr "Перевірок сервісів не знайдено"
+
+#: servcheck_test.php
+msgid "Last returned data of test"
+msgstr "Останні повернуті дані тесту"
+
+#: servcheck_test.php
+msgid "Servcheck Test Management"
+msgstr "Керування тестами Servcheck"
+
+#: servcheck_test.php
+msgid "State"
+msgstr "Область"
+
+#: servcheck_test.php
+msgid "Any"
+msgstr "Будь-який"
+
+#: servcheck_test.php
+msgid "Refresh"
+msgstr "Оновити"
+
+#: servcheck_test.php
+msgid "Checks"
+msgstr "Перевірки"
+
+#: servcheck_test.php
+msgid "Service Check History"
+msgstr "Історія перевірок сервісів"
+
+#: servcheck_test.php
+msgid "Date Search"
+msgstr "Пошук за датою"
+
+#: servcheck_test.php
+msgid "Entries"
+msgstr "Записи"
+
+#: servcheck_test.php
+msgid "Purge Events"
+msgstr "Очистити події"
+
+#: setup.php
+msgid "Service Check Admin"
+msgstr "Адміністрування перевірок сервісів"
+
+#: setup.php
+msgid "Management"
+msgstr "Управління"
+
+#: setup.php
+msgid "Service Checker"
+msgstr "Перевірка сервісів"
+
+#: setup.php
+msgid "Service Checks"
+msgstr "Перевірки сервісів"
+
+#: setup.php
+msgid "Service Check Edit"
+msgstr "Редагування перевірки сервісу"
+
+#: setup.php
+msgid "Service Check Save"
+msgstr "Збереження перевірки сервісу"
+
+#: setup.php
+msgid "Credential Edit"
+msgstr "Редагування облікових даних"
+
+#: setup.php
+msgid "Credential Save"
+msgstr "Збереження облікових даних"
+
+#: setup.php
+msgid "Web Proxy"
+msgstr "Веб-проксі"
+
+#: setup.php
+msgid "Web Proxy Edit"
+msgstr "Редагування веб-проксі"
+
+#: setup.php
+msgid "Save Web Proxy"
+msgstr "Зберегти вебпроксі"
+
+#: setup.php
+msgid "CA"
+msgstr "Центр сертифікації (CA)"
+
+#: setup.php
+msgid "CA Edit"
+msgstr "Редагування CA"
+
+#: setup.php
+msgid "Save CA"
+msgstr "Зберегти CA"
+
+#: setup.php
+msgid "Servcheck"
+msgstr "Servcheck"
+
+#: setup.php
+msgid "Notification Preferences"
+msgstr "Параметри сповіщень"
+
+#: setup.php
+msgid "Send Email separately for each address"
+msgstr "Надсилати email окремо на кожну адресу"
+
+#: setup.php
+msgid "If checked, this will cause all Emails to be sent separately for each address."
+msgstr "Якщо позначено, усі електронні листи надсилатимуться окремо на кожну адресу."
+
+#: setup.php
+msgid "Stop sending all notification"
+msgstr "Припинити надсилання всіх сповіщень"
+
+#: setup.php
+msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
+msgstr "Якщо позначено, ServCheck не надсилатиме жодних електронних листів. Ви також можете вимкнути сповіщення лише для окремих перевірок"
+
+#: setup.php
+msgid "Enable Command Execution"
+msgstr "Увімкнути виконання команд"
+
+#: setup.php
+msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
+msgstr "Позначення цього прапорця увімкне можливість запуску команд під час подій Servcheck. Ви можете ввімкнути або вимкнути це для кожного тесту."
+
+#: setup.php
+msgid "Status Change Command"
+msgstr "Команда при зміні статусу"
+
+#: setup.php
+msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+msgstr "Коли базова перевірка, перевірка пошуку або перевірка терміну дії сертифіката повертає інший результат, виконати таку команду... Ця команда НЕ повинна містити аргументів командного рядка... Проте такі змінні можна отримати з середовища скрипту:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+
+#: setup.php
+msgid "Concurrent Check Processes"
+msgstr "Одночасні процеси перевірки"
+
+#: setup.php
+msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
+msgstr "Кількість процесів перевірки сервісів, що запускаються одночасно. Не рекомендується збільшувати це значення більше ніж у 2 рази від кількості ядер."
+
+#: setup.php
+msgid "1 Process"
+msgstr "1 Процес"
+
+#: setup.php
+#, php-format
+msgid "%d Processes"
+msgstr "%d Процеси"
+
+#: setup.php
+msgid "Certificate expiry date advanced notification email"
+msgstr "Електронний лист із завчасним сповіщенням про закінчення терміну дії сертифіката"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
+msgstr "Якщо перевірку закінчення строку дії сертифіката SSL/TLS увімкнено, вкажіть, за скільки днів до дати закінчення дії сертифіката система надішле попереднє сповіщення"
+
+#: setup.php
+msgid "3 days in advance"
+msgstr "За 3 дні"
+
+#: setup.php
+msgid "1 week in advance"
+msgstr "За 1 тиждень"
+
+#: setup.php
+msgid "3 weeks in advance"
+msgstr "За 3 тижні"
+
+#: setup.php
+msgid "30 days in advance"
+msgstr "За 30 днів"
+
+#: setup.php
+msgid "60 days in advance"
+msgstr "За 60 днів"
+
+#: setup.php
+msgid "90 days in advance"
+msgstr "За 90 днів наперед"
+
+#: setup.php
+msgid "Certificate expiry notification email interval"
+msgstr "Інтервал надсилання сповіщень про закінчення терміну дії сертифіката"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday"
+msgstr "Якщо перевірку закінчення строку дії сертифіката SSL/TLS увімкнено, вкажіть інтервал (у днях) для надсилання сповіщень електронною поштою; однак після настання дати закінчення дії сповіщення надсилатиметься щодня"
+
+#: setup.php
+msgid "1 day"
+msgstr "1 день"
+
+#: setup.php
+msgid "3 days"
+msgstr "3 дні"
+
+#: setup.php
+msgid "5 days"
+msgstr "5 днів"
+
+#: setup.php
+msgid "7 days"
+msgstr "7 днів"
+
+#: setup.php
+msgid "10 days"
+msgstr "10 днів"
+
+#: setup.php
+msgid "15 days"
+msgstr "15 днів"
+
+#: setup.php
+msgid "20 days"
+msgstr "20 днів"
+
+#: setup.php
+msgid "30 days"
+msgstr "30 днів"
+
+#: setup.php
+msgid "How long to keep logs"
+msgstr "Як довго зберігати журнали"
+
+#: setup.php
+msgid "Enter the period after which older logs will be automatically deleted."
+msgstr "Введіть період, після якого старі журнали будуть автоматично видалятися."
+
+#: setup.php
+msgid "Never"
+msgstr "Ніколи"
+
+#: setup.php
+#, php-format
+msgid "%d hours"
+msgstr "%d Годин"
+
+#: setup.php
+#, php-format
+msgid "%d days"
+msgstr "%d днів"
+
+#: setup.php
+#, php-format
+msgid "%d year"
+msgstr "%d рік"
+
+#: setup.php
+msgid "Maximum test duration in seconds"
+msgstr "Максимальна тривалість перевірки в секундах"
+
+#: setup.php
+msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
+msgstr "Значення за замовчуванням для перевірок, де тестування часу виконання не ввімкнено. Якщо ввімкнено, максимальна тривалість обчислюється як поріг тривалості + 2 секунди."
+
+#: setup.php
+msgid "HTTP/HTTPS Check Settings"
+msgstr "Налаштування перевірки HTTP/HTTPS"
+
+#: setup.php
+msgid "User Agent"
+msgstr "User Agent"
+
+#: setup.php
+msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
+msgstr "Рядок User-Agent, який надсилається під час перевірок сервісів HTTP/HTTPS та інших перевірок на основі cURL. Деякі сайти блокують застарілі або рідкісні браузери, тому тут можна вказати актуальний User-Agent. Залиште порожнім, щоб використовувати вбудоване значення за замовчуванням."
+

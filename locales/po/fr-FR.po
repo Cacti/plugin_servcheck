@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"PO-Revision-Date: 2026-11-26 05:54+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: French <https://translate.cacti.net/projects/cacti/servcheck/"
 "fr/>\n"
@@ -975,7 +975,7 @@ msgstr "Problème de lecture du certificat de l’autorité de certification SSL
 
 #: includes/arrays.php servcheck_proxy.php
 msgid "Proxies"
-msgstr "Proxies"
+msgstr "Serveurs proxy"
 
 #: includes/arrays.php
 msgid "Proxy Authentication Required"
@@ -1203,7 +1203,7 @@ msgstr "Mot de passe SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Passphrase (v3)"
-msgstr "Mot de passe SNMP (v3)"
+msgstr "Phrase secrète de confidentialité SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Protocol (v3)"
@@ -2079,7 +2079,7 @@ msgstr "Dernières données de test retournées"
 
 #: servcheck_test.php
 msgid "Logs"
-msgstr "Logs"
+msgstr "Journaux"
 
 #: servcheck_test.php
 msgid "N/A (N/A)"
@@ -2111,7 +2111,7 @@ msgstr "Résultat"
 
 #: servcheck_test.php
 msgid "Ret. data size"
-msgstr "Taille données ret."
+msgstr "Taille des données retournées"
 
 #: servcheck_test.php
 msgid "Search result"

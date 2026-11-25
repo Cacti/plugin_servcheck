@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"PO-Revision-Date: 2026-11-26 05:54+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Georgian <https://translate.cacti.net/projects/cacti/"
 "servcheck/ka/>\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "A Useful Name for this Proxy."
-msgstr ""
+msgstr "ამ პროქსისთვის გამოსადეგი სახელი."
 
 #: includes/arrays.php
 msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
@@ -230,18 +230,20 @@ msgstr ""
 #: includes/arrays.php
 msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
 msgstr ""
+"მონიშნეთ ეს ველი, თუ საიტი ჩვეულებრივ აბრუნებს 401 შეცდომას, რადგან "
+"მომხმარებლის სახელსა და პაროლს ითხოვს."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Authorization Protocol."
-msgstr ""
+msgstr "აირჩიეთ SNMPv3 ავტორიზაციის პროტოკოლი."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Passphrase."
-msgstr ""
+msgstr "აირჩიეთ SNMPv3 კონფიდენციალურობის საიდუმლო ფრაზა."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Protocol."
-msgstr ""
+msgstr "აირჩიეთ SNMPv3 კონფიდენციალურობის პროტოკოლი."
 
 #: includes/arrays.php
 msgid "Chunk callback reported error."
@@ -286,7 +288,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Created"
-msgstr "შეიქმნა"
+msgstr "შექმნილია"
 
 #: includes/arrays.php setup.php
 msgid "Credential"
@@ -470,7 +472,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Failing"
-msgstr ""
+msgstr "წარუმატებელი"
 
 #: includes/arrays.php
 msgid "Failure with receiving network data."
@@ -595,6 +597,8 @@ msgstr ""
 #: includes/arrays.php
 msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
 msgstr ""
+"თუ ამ კავშირს პროქსი სჭირდება, აირჩიეთ აქ. წინააღმდეგ შემთხვევაში აირჩიეთ "
+"'არცერთი'."
 
 #: includes/arrays.php
 msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
@@ -603,6 +607,9 @@ msgstr ""
 #: includes/arrays.php
 msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
 msgstr ""
+"SSL-ის გამოყენებისას მონიშნეთ ეს ველი, თუ გსურთ სერტიფიკატის ვალიდაცია. "
+"ნაგულისხმევად ჩართულია; გამორთეთ, თუ საიტი თვითხელმოწერილ სერტიფიკატს "
+"იყენებს."
 
 #: includes/arrays.php
 msgid "If your key is password protected, insert password here"
@@ -839,7 +846,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "OK"
-msgstr "დიახ"
+msgstr "კარგი"
 
 #: includes/arrays.php
 msgid "Oauth Client ID"
@@ -851,7 +858,7 @@ msgstr "მოძველებული შეცდომა"
 
 #: includes/arrays.php
 msgid "Ok"
-msgstr "დიახ"
+msgstr "კარგი"
 
 #: includes/arrays.php
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
@@ -1003,7 +1010,7 @@ msgstr "პასუხის ძებნის სტრიქონი"
 
 #: includes/arrays.php
 msgid "Response Search String - Failed"
-msgstr ""
+msgstr "პასუხში საძიებო სტრიქონი - წარუმატებელი"
 
 #: includes/arrays.php
 msgid "Response Search String - Maintenance"
@@ -1123,7 +1130,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "SNMP Auth Protocol (v3)"
-msgstr ""
+msgstr "SNMP ავთენტიფიკაციის პროტოკოლი (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Context (v3)"
@@ -1131,7 +1138,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "SNMP Engine ID (v3)"
-msgstr ""
+msgstr "SNMP ძრავის ID (v3)"
 
 #: includes/arrays.php
 msgid "SNMP OID"
@@ -1144,11 +1151,11 @@ msgstr "პაროლი"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Passphrase (v3)"
-msgstr ""
+msgstr "SNMP კონფიდენციალურობის საიდუმლო ფრაზა (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Protocol (v3)"
-msgstr ""
+msgstr "SNMP კონფიდენციალურობის პროტოკოლი (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Security Level"
@@ -1193,11 +1200,11 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "SNMP v3 password for this device."
-msgstr ""
+msgstr "SNMP v3 პაროლი ამ მოწყობილობისთვის."
 
 #: includes/arrays.php
 msgid "SNMP v3 username for this device."
-msgstr ""
+msgstr "SNMP v3 მომხმარებლის სახელი ამ მოწყობილობისთვის."
 
 #: includes/arrays.php
 msgid "SNMP walk"
@@ -1362,6 +1369,8 @@ msgstr ""
 #: includes/arrays.php
 msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
 msgstr ""
+"სახელი, რომელიც გამოჩნდება ამ სერვისის შემოწმებისთვის და ჩაირთვება განგაშის "
+"ყველა შეტყობინებაში."
 
 #: includes/arrays.php
 msgid "The remote server denied curl to login (Added in 7.13.1)"
@@ -1421,7 +1430,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "This is the format to use when sending the notification email"
-msgstr ""
+msgstr "ეს არის ფორმატი, რომელიც გამოიყენება შეტყობინების ელფოსტის გაგზავნისას"
 
 #: includes/arrays.php
 msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
@@ -2051,7 +2060,7 @@ msgstr "CA [ახალი]"
 #: servcheck_test.php
 #, php-format
 msgid "The Service Check history was purged for %s"
-msgstr ""
+msgstr "სერვისის შემოწმების ისტორია გასუფთავდა %s-სთვის"
 
 #: servcheck_test.php
 msgid "Triggered"
@@ -2099,7 +2108,7 @@ msgstr "%d საათი"
 #: setup.php
 #, php-format
 msgid "%d year"
-msgstr ""
+msgstr "%d წელი"
 
 #: setup.php
 #, fuzzy
@@ -2160,7 +2169,7 @@ msgstr ""
 
 #: setup.php
 msgid "Enable Command Execution"
-msgstr ""
+msgstr "ბრძანებების შესრულების ჩართვა"
 
 #: setup.php
 msgid "Enter the period after which older logs will be automatically deleted."
@@ -2185,6 +2194,7 @@ msgstr ""
 #: setup.php
 msgid "If checked, this will cause all Emails to be sent separately for each address."
 msgstr ""
+"თუ მონიშნულია, ყველა ელფოსტა გაიგზავნება ცალ-ცალკე თითოეული მისამართისთვის."
 
 #: setup.php
 msgid "Management"
@@ -2222,7 +2232,7 @@ msgstr "ვებ-პროქსის შენახვა"
 
 #: setup.php
 msgid "Send Email separately for each address"
-msgstr ""
+msgstr "ელფოსტის ცალ-ცალკე გაგზავნა თითოეული მისამართისთვის"
 
 #: setup.php
 msgid "Servcheck"

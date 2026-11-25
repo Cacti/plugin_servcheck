@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"PO-Revision-Date: 2026-11-26 05:54+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Spanish <https://translate.cacti.net/projects/cacti/servcheck/"
 "es/>\n"
@@ -2078,7 +2078,7 @@ msgstr "Últimos datos devueltos de la prueba"
 
 #: servcheck_test.php
 msgid "Logs"
-msgstr "Logs"
+msgstr "Registros"
 
 #: servcheck_test.php
 msgid "N/A (N/A)"
@@ -2102,7 +2102,7 @@ msgstr "Purgar eventos"
 
 #: servcheck_test.php
 msgid "Refresh"
-msgstr "Actualizar"
+msgstr "Refrescar"
 
 #: servcheck_test.php
 msgid "Result"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"PO-Revision-Date: 2026-11-26 05:54+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Dutch <https://translate.cacti.net/projects/cacti/servcheck/"
 "nl/>\n"
@@ -277,7 +277,7 @@ msgstr ""
 #: includes/arrays.php servcheck_ca.php servcheck_credential.php
 #: servcheck_proxy.php servcheck_restapi.php servcheck_test.php
 msgid "Continue"
-msgstr "Volgende"
+msgstr "Doorgaan"
 
 #: includes/arrays.php
 msgid "Cookie based auth"
@@ -1882,7 +1882,7 @@ msgstr "ServCheck-proxybeheer"
 
 #: servcheck_restapi.php servcheck_test.php
 msgid "Any"
-msgstr "Alle"
+msgstr "Elke"
 
 #: servcheck_restapi.php
 #, fuzzy
@@ -1960,7 +1960,7 @@ msgstr "Certificaat"
 
 #: servcheck_test.php
 msgid "Checks"
-msgstr "Checks"
+msgstr "Controles"
 
 #: servcheck_test.php
 msgid "Clear log"
@@ -2082,7 +2082,7 @@ msgstr "Laatst geretourneerde testgegevens"
 
 #: servcheck_test.php
 msgid "Logs"
-msgstr "Logs"
+msgstr "Logboeken"
 
 #: servcheck_test.php
 msgid "N/A (N/A)"

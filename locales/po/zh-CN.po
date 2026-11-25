@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: webseer on cacti 1.1.34\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2024-06-23 04:09+0000\n"
-"Last-Translator: tql <fttx31@126.com>\n"
-"Language-Team: Chinese (Simplified) <http://translate.cacti.net/projects/cacti/servcheck/zh_Hans/>\n"
+"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Chinese (Simplified Han script) <https://translate.cacti.net/"
+"projects/cacti/servcheck/zh_Hans/>\n"
 "Language: zh-CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.8.1\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: includes/arrays.php
 #, php-format
@@ -31,7 +32,7 @@ msgstr "%d Poller 运行"
 #: includes/arrays.php
 #, php-format
 msgid "%d Seconds"
-msgstr "%d 秒"
+msgstr "%d秒"
 
 #: includes/arrays.php
 msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
@@ -53,14 +54,12 @@ msgid ""
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "A Useful Name for this CA chain."
-msgstr "此代理的有用名称。"
+msgstr "此 CA 链的实用名称。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "A Useful Name for this Proxy."
-msgstr "此代理的有用名称。"
+msgstr "此代理的实用名称。"
 
 #: includes/arrays.php
 msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
@@ -96,27 +95,27 @@ msgstr "由于构建时的决定，在此 libcurl 中找不到内置的请求的
 
 #: includes/arrays.php
 msgid "AES"
-msgstr ""
+msgstr "AES"
 
 #: includes/arrays.php
 msgid "AES-128"
-msgstr ""
+msgstr "AES-128"
 
 #: includes/arrays.php
 msgid "AES-192"
-msgstr ""
+msgstr "AES-192"
 
 #: includes/arrays.php
 msgid "AES-192-C"
-msgstr ""
+msgstr "AES-192"
 
 #: includes/arrays.php
 msgid "AES-256"
-msgstr ""
+msgstr "AES-256"
 
 #: includes/arrays.php
 msgid "AES-256-C"
-msgstr ""
+msgstr "AES-256"
 
 #: includes/arrays.php
 msgid "API key auth"
@@ -140,11 +139,11 @@ msgstr "都很好。照常进行。"
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform encrypted LDAP login and search"
-msgstr ""
+msgstr "所有参数均为必填项。执行加密 LDAP 登录与搜索"
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform unencrypted LDAP login and search"
-msgstr ""
+msgstr "所有参数均为必填项。执行未加密 LDAP 登录与搜索"
 
 #: includes/arrays.php
 msgid "An API function was called from inside a callback."
@@ -186,7 +185,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Auth in HTTP headers"
-msgstr ""
+msgstr "HTTP 请求头认证"
 
 #: includes/arrays.php
 #, fuzzy
@@ -214,22 +213,22 @@ msgid "CA and intermediate certs, PEM encoded"
 msgstr "CA 和中间证书，PEM 编码"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "CA certificates"
-msgstr "检查证书"
+msgstr "CA 证书"
 
 #: includes/arrays.php
 msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
-msgstr ""
+msgstr "Cacti "
+"会尝试多次运行每项测试。首次成功即结束测试并记录成功结果。如果所有尝试均未成"
+"功，则终止测试并记录失败。数值过大将导致测试耗时过长。"
 
 #: includes/arrays.php
 msgid "Check Certificate"
 msgstr "检查证书"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check and notify Certificate expiration"
-msgstr "检查证书"
+msgstr "检查并通知证书过期"
 
 #: includes/arrays.php
 msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
@@ -237,15 +236,15 @@ msgstr "如果网站通常会返回401错误，请选中此框，因为它需要
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Authorization Protocol."
-msgstr ""
+msgstr "选择SNMPv3 的授权协议。"
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Passphrase."
-msgstr ""
+msgstr "选择SNMPv3 的私有密码。"
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Protocol."
-msgstr ""
+msgstr "选择SNMPv3 的隐私协议。"
 
 #: includes/arrays.php
 msgid "Chunk callback reported error."
@@ -253,11 +252,11 @@ msgstr "块回调报告错误。"
 
 #: includes/arrays.php
 msgid "Client ID"
-msgstr ""
+msgstr "客户端 ID"
 
 #: includes/arrays.php
 msgid "Client secret"
-msgstr ""
+msgstr "客户端密钥"
 
 #: includes/arrays.php
 msgid "Conflict"
@@ -294,15 +293,15 @@ msgstr "创建"
 
 #: includes/arrays.php setup.php
 msgid "Credential"
-msgstr ""
+msgstr "凭据"
 
 #: includes/arrays.php
 msgid "Credential Name"
-msgstr ""
+msgstr "凭据名称"
 
 #: includes/arrays.php
 msgid "Credential type"
-msgstr ""
+msgstr "凭据类型"
 
 #: includes/arrays.php
 msgid "Curl return codes"
@@ -310,12 +309,11 @@ msgstr "Curl 返回代码"
 
 #: includes/arrays.php
 msgid "Custom HTTP header"
-msgstr ""
+msgstr "自定义 HTTP 请求头"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DES"
-msgstr "DNS"
+msgstr "DES"
 
 #: includes/arrays.php
 msgid "DNS Name for Query"
@@ -324,20 +322,21 @@ msgstr "查询的 DNS 名称"
 #: includes/arrays.php
 msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
 msgstr ""
+"用于查询的 DNS 名称。对于 DOH（DNS over HTTPS），请使用 /"
+"resolve?name=example.com 或 /dns-query?name=example.com&type=A。对于明文 "
+"DNS，将返回 A 和 AAAA 记录"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DNS over HTTPS, default port 443"
-msgstr "HTTP 加密 （HTTPS），默认端口 443"
+msgstr "DNS over HTTPS，默认端口 443"
 
 #: includes/arrays.php
 msgid "DNS plaintext, default port 53"
 msgstr "DNS 明文，默认端口 53"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Data URL"
-msgstr "重复"
+msgstr "数据 URL"
 
 #: includes/arrays.php
 msgid ""
@@ -352,7 +351,7 @@ msgstr ""
 
 #: includes/arrays.php setup.php
 msgid "Disabled"
-msgstr "已禁用"
+msgstr "禁用"
 
 #: includes/arrays.php
 msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
@@ -363,30 +362,28 @@ msgid "Early initialization code failed. This is likely to be an internal error 
 msgstr "早期初始化代码失败。这可能是内部错误或问题，或者是资源问题，其中在初始化时无法完成一些基本的事情。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Email notification"
-msgstr "通知列表"
+msgstr "电子邮件通知"
 
 #: includes/arrays.php
 msgid "Enable run script for this test"
-msgstr ""
+msgstr "为此测试启用运行脚本"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enable test"
-msgstr "启用网站"
+msgstr "启用测试"
 
 #: includes/arrays.php
 msgid "Encrypted IMAP, you can try login and test certificate and user login"
-msgstr ""
+msgstr "加密的 IMAP，您可以尝试登录并测试证书和用户登录"
 
 #: includes/arrays.php
 msgid "Encrypted POP3, you can try login and test certificate and user login."
-msgstr ""
+msgstr "加密的 POP3，您可以尝试登录并测试证书和用户登录。"
 
 #: includes/arrays.php
 msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
-msgstr ""
+msgstr "加密的 SCP 连接，登录并尝试下载路径中指定的文件（/path/to/file.txt）。"
 
 #: includes/arrays.php
 msgid ""
@@ -395,22 +392,20 @@ msgid ""
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an External ID for this test."
-msgstr "创建阈值模板。"
+msgstr "输入此测试的外部 ID。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
-msgstr "输入要连接的IP地址。 留空将使用DNS解析。"
+msgstr "输入要强制解析 DNS 名称的 IP 地址。留空则改用 DNS 解析。"
 
 #: includes/arrays.php
 msgid "Enter the SNMP Context to use for this device."
-msgstr ""
+msgstr "请为设备输入SNMP 的相关信息。"
 
 #: includes/arrays.php
 msgid "Enter the SNMP v3 Engine Id or empty."
-msgstr ""
+msgstr "输入 SNMP v3 引擎 ID 或留空。"
 
 #: includes/arrays.php
 msgid "Error"
@@ -418,7 +413,7 @@ msgstr "错误"
 
 #: includes/arrays.php
 msgid "Error/failed"
-msgstr ""
+msgstr "错误/失败"
 
 #: includes/arrays.php
 msgid "Expectation Failed"
@@ -457,9 +452,8 @@ msgid "Failed string found"
 msgstr "找到失败的字符串"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Failed string not found"
-msgstr "未找到失败的 strint"
+msgstr "未找到失败字符串"
 
 #: includes/arrays.php
 msgid "Failed to connect() to host or proxy."
@@ -479,7 +473,7 @@ msgstr "无法关闭 SSL 连接。"
 
 #: includes/arrays.php
 msgid "Failing"
-msgstr ""
+msgstr "失败"
 
 #: includes/arrays.php
 msgid "Failure with receiving network data."
@@ -494,14 +488,12 @@ msgid "File not found on TFTP server."
 msgstr "在TFTP服务器上找不到文件。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For anonymous FTP insert email address"
-msgstr "对于匿名 ftp，请在此处插入电子邮件地址。"
+msgstr "对于匿名 FTP，请输入电子邮件地址"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
-msgstr "对于 Web 服务，至少插入“/”或类似“/any/path/”的内容。对于 FTP，列表必须以 char “/” 结尾。对于 TFTP/SCP/SMB 下载测试，请插入 /path/file"
+msgstr "对于 Web 服务，请至少输入“/”或类似“/any/path/”的路径。"
 
 #: includes/arrays.php
 msgid "Forbidden"
@@ -509,7 +501,7 @@ msgstr "禁止"
 
 #: includes/arrays.php
 msgid "Form urlencoded"
-msgstr ""
+msgstr "表单 URL 编码（urlencoded）"
 
 #: includes/arrays.php
 msgid "Found"
@@ -525,7 +517,7 @@ msgstr "网关超时"
 
 #: includes/arrays.php
 msgid "General Settings"
-msgstr "常规设置"
+msgstr "通用设置"
 
 #: includes/arrays.php
 msgid "Gone"
@@ -553,7 +545,7 @@ msgstr "HTTPs 端口"
 
 #: includes/arrays.php
 msgid "Help"
-msgstr ""
+msgstr "帮助"
 
 #: includes/arrays.php servcheck_proxy.php
 msgid "Hostname"
@@ -565,15 +557,15 @@ msgstr "多久测试一次"
 
 #: includes/arrays.php
 msgid "How many attempts"
-msgstr ""
+msgstr "尝试次数"
 
 #: includes/arrays.php
 msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
-msgstr ""
+msgstr "连续超过耗时触发阈值多少次后发送通知"
 
 #: includes/arrays.php
 msgid "How many times the service must be DOWN before an alert email is triggered."
-msgstr ""
+msgstr "服务必须连续宕机多少次才会触发告警邮件。"
 
 #: includes/arrays.php
 msgid "IMAP encrypted (IMAPS), default port 993"
@@ -588,39 +580,41 @@ msgid "IMAP with STARTTLS, default port 143"
 msgstr "使用 STARTTLS 的 IMAP，默认端口 143"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "IP Address or DNS name of server"
-msgstr "IP地址连接到此服务器"
+msgstr "服务器的 IP 地址或 DNS 名称"
 
 #: includes/arrays.php
 msgid "If enabled email notification about state, duration and search result will be send"
-msgstr ""
+msgstr "如果启用，将发送有关状态、持续时间和搜索结果的电子邮件通知"
 
 #: includes/arrays.php
 msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
-msgstr ""
+msgstr "如果全局命令执行功能已启用，您可以在此处设置是否针对此测试运行脚本。"
 
 #: includes/arrays.php
 msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
 msgstr ""
+"如果测试时间连续多次大于此值，则发送通知。与“持续时间计数”变量相关。测试会从"
+"设置中继承最大运行时间；如果此处设置了更高的值，则最大运行时间为该值 + 2 秒。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
-msgstr "如果此连接文本需要代理，请在此处选择它。否则，选择“无”。"
+msgstr "如果此连接文本需要代理，请在此处选择。否则请选择“无”。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
-msgstr "如果使用SSL，如果要验证证书，请选中此框。 如果您的网站使用自签名证书，则默认开启。"
+msgstr "如果使用 "
+"SSL，且希望检查证书过期时间，请勾选此复选框。您可以在设置中配置在过期前多少天"
+"发送通知。"
 
 #: includes/arrays.php
 msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
-msgstr "如果使用SSL，如果要验证证书，请选中此框。 如果您的网站使用自签名证书，则默认开启。"
+msgstr "如果使用 SSL "
+"且希望验证证书，请勾选此框。默认开启，如果站点使用自签名证书，请关闭此项。"
 
 #: includes/arrays.php
 msgid "If your key is password protected, insert password here"
-msgstr ""
+msgstr "如果您的密钥受密码保护，请在此输入密码"
 
 #: includes/arrays.php
 msgid "Illegal TFTP operation."
@@ -632,15 +626,15 @@ msgstr "启动 SSL 引擎失败。"
 
 #: includes/arrays.php
 msgid "Insert SNMP OID"
-msgstr ""
+msgstr "输入 SNMP OID"
 
 #: includes/arrays.php
 msgid "Insert SSH command with full path, result of command will be returned"
-msgstr ""
+msgstr "输入带完整路径的 SSH 命令，将返回命令结果"
 
 #: includes/arrays.php
 msgid "Insert username here"
-msgstr ""
+msgstr "在此输入用户名"
 
 #: includes/arrays.php
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
@@ -656,20 +650,21 @@ msgstr "颁发者检查失败（7.19.0 中添加）"
 
 #: includes/arrays.php
 msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
-msgstr ""
+msgstr "仅检查 SMTP 服务器是否有响应，不进行身份验证。您将看到服务器登录横幅和 ehlo "
+"响应。"
 
 #: includes/arrays.php
 msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
-msgstr ""
+msgstr "仅检查 Web 服务器是否有响应。如果使用用户名/密码凭据，将尝试 Basic HTTP "
+"认证。"
 
 #: includes/arrays.php
 msgid "JSON encoded"
-msgstr ""
+msgstr "JSON 编码"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "LDAP Search"
-msgstr "搜索"
+msgstr "LDAP 搜索"
 
 #: includes/arrays.php
 msgid "LDAP cannot bind. LDAP bind operation failed."
@@ -684,9 +679,8 @@ msgid "LDAP plaintext, default port 389"
 msgstr "LDAP 明文，默认端口 389"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "LDAP search failed."
-msgstr "搜索"
+msgstr "LDAP 搜索失败。"
 
 #: includes/arrays.php
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
@@ -698,16 +692,15 @@ msgstr "最近 6 小时"
 
 #: includes/arrays.php
 msgid "Last day"
-msgstr "昨天"
+msgstr "过去 1 天"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Last hour"
 msgstr "过去 1 小时"
 
 #: includes/arrays.php
 msgid "Last week"
-msgstr "上周"
+msgstr "过去 1 周"
 
 #: includes/arrays.php
 msgid "Length Required"
@@ -719,25 +712,23 @@ msgstr "Libcurl 未能从服务器获得合理的结果作为对 PASV 或 EPSV �
 
 #: includes/arrays.php
 msgid "Login URL"
-msgstr ""
+msgstr "登录 URL"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Long duration"
-msgstr "位置"
+msgstr "持续时间过长"
 
 #: includes/arrays.php
 msgid "Long duration alert"
-msgstr ""
+msgstr "长时间告警"
 
 #: includes/arrays.php
 msgid "MD5"
-msgstr ""
+msgstr "MD5"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "MQTT plaintext, default port 1883"
-msgstr "HTTP 明文，默认端口 80"
+msgstr "MQTT 明文，默认端口 1883"
 
 #: includes/arrays.php
 msgid "Maint string found"
@@ -765,7 +756,7 @@ msgstr "301永久移动"
 
 #: includes/arrays.php
 msgid "Multiple Choices"
-msgstr "多重选择？"
+msgstr "多重选择"
 
 #: includes/arrays.php servcheck_ca.php servcheck_credential.php
 #: servcheck_proxy.php servcheck_restapi.php servcheck_test.php
@@ -777,9 +768,8 @@ msgid "New CA"
 msgstr "新 CA"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "New Proxy"
-msgstr "新代理"
+msgstr "新建代理"
 
 #: includes/arrays.php
 msgid "No Content"
@@ -795,7 +785,7 @@ msgstr "无"
 
 #: includes/arrays.php
 msgid "Not Acceptable"
-msgstr "可接受"
+msgstr "不可接受"
 
 #: includes/arrays.php
 msgid "Not Found"
@@ -807,7 +797,7 @@ msgstr "没有执行"
 
 #: includes/arrays.php
 msgid "Not Modified"
-msgstr "修改于"
+msgstr "未修改"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Not tested yet"
@@ -838,22 +828,20 @@ msgid "Notification Settings"
 msgstr "通知设置"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notify Accounts"
-msgstr "通知帐户"
+msgstr "通知账户"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notify Format"
-msgstr "通知帐户"
+msgstr "通知格式"
 
 #: includes/arrays.php
 msgid "Number of duration violations in a row"
-msgstr ""
+msgstr "连续时长超限次数"
 
 #: includes/arrays.php
 msgid "OAuth Client secret"
-msgstr ""
+msgstr "OAuth 客户端密钥"
 
 #: includes/arrays.php
 msgid "OAuth2/Bearer token auth"
@@ -865,7 +853,7 @@ msgstr "确定"
 
 #: includes/arrays.php
 msgid "Oauth Client ID"
-msgstr ""
+msgstr "OAuth 客户端 ID"
 
 #: includes/arrays.php
 msgid "Obsolete Error"
@@ -873,16 +861,15 @@ msgstr "过时错误"
 
 #: includes/arrays.php
 msgid "Ok"
-msgstr ""
+msgstr "确定"
 
 #: includes/arrays.php
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
 msgstr "操作超时。根据条件达到了指定的超时期限。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Options"
-msgstr "操作"
+msgstr "选项"
 
 #: includes/arrays.php
 msgid "Out of disk space on the server."
@@ -902,15 +889,15 @@ msgstr "具有 STARTTLS 的 POP3，默认端口 110"
 
 #: includes/arrays.php
 msgid "POST method, JSON encoded"
-msgstr ""
+msgstr "POST 方法，JSON 编码"
 
 #: includes/arrays.php
 msgid "POST method, form-urlencoded"
-msgstr ""
+msgstr "POST 方法，form-urlencoded 编码"
 
 #: includes/arrays.php
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: includes/arrays.php
 msgid "Partial Content"
@@ -950,7 +937,7 @@ msgstr "读取 SSL CA 证书时出现问题（路径？访问权限？）"
 
 #: includes/arrays.php servcheck_proxy.php
 msgid "Proxies"
-msgstr "代表权"
+msgstr "代理"
 
 #: includes/arrays.php
 msgid "Proxy Authentication Required"
@@ -970,19 +957,19 @@ msgstr "QUIC 连接错误。此错误可能是由 SSL 库错误引起的。QUIC 
 
 #: includes/arrays.php
 msgid "REST API test with API key auth. Prepare credential first."
-msgstr ""
+msgstr "使用 API 密钥认证的 REST API 测试。请先准备凭据。"
 
 #: includes/arrays.php
 msgid "REST API test with Oauth2. Prepare credential first."
-msgstr ""
+msgstr "使用 OAuth2 认证的 REST API 测试。请先准备凭据。"
 
 #: includes/arrays.php
 msgid "REST API test with basic HTTP auth. Prepare credential first."
-msgstr ""
+msgstr "使用基本 HTTP 认证的 REST API 测试。请先准备凭据。"
 
 #: includes/arrays.php
 msgid "REST API test with cookie auth. Prepare credential first."
-msgstr ""
+msgstr "使用 Cookie 认证的 REST API 测试。请先准备凭据。"
 
 #: includes/arrays.php
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
@@ -1018,7 +1005,7 @@ msgstr "重置内容"
 
 #: includes/arrays.php
 msgid "Resolve DNS to Address"
-msgstr ""
+msgstr "将 DNS 解析为地址"
 
 #: includes/arrays.php
 msgid "Response Search String"
@@ -1029,13 +1016,12 @@ msgid "Response Search String - Failed"
 msgstr "响应搜索字符串 - 失败"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String - Maintenance"
-msgstr "响应搜索字符串 - 维护页面"
+msgstr "响应搜索字符串 - 维护"
 
 #: includes/arrays.php
 msgid "Rest API - API key auth"
-msgstr ""
+msgstr "REST API - API 密钥认证"
 
 #: includes/arrays.php
 msgid ""
@@ -1047,23 +1033,23 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth"
-msgstr ""
+msgstr "REST API - 基本 HTTP 认证"
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth. Username and password are required"
-msgstr ""
+msgstr "REST API - 基本 HTTP 认证。需要用户名和密码"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth"
-msgstr ""
+msgstr "REST API - 基于 Cookie 的认证"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
-msgstr ""
+msgstr "REST API - 基于 Cookie 的认证 - 两个值均为必填。登录后将返回 Cookie"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth"
-msgstr ""
+msgstr "REST API - OAuth2/Bearer 令牌认证"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are send Json encoded."
@@ -1079,52 +1065,51 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Rest API with API key auth"
-msgstr ""
+msgstr "使用 API 密钥认证的 REST API"
 
 #: includes/arrays.php
 msgid "Rest API with Basic HTTP auth"
-msgstr ""
+msgstr "使用基本 HTTP 认证的 REST API"
 
 #: includes/arrays.php
 msgid "Rest API with Cookie based auth"
-msgstr ""
+msgstr "使用基于 Cookie 认证的 REST API"
 
 #: includes/arrays.php
 msgid "Rest API with OAuth2/Bearer token auth"
-msgstr ""
+msgstr "使用 OAuth2/Bearer 令牌认证的 REST API"
 
 #: includes/arrays.php
 msgid "SCP download file, default port 22"
 msgstr "SCP 下载文件，默认端口 22"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SFTP protocol - directory listing, default port 22"
-msgstr "TFTP 协议 - 下载文件，默认端口 69"
+msgstr "SFTP 协议 - 目录列表，默认端口 22"
 
 #: includes/arrays.php
 msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
-msgstr ""
+msgstr "端口 22 上的 SFTP 协议，需要用户名、密码和路径。尝试对路径执行目录列表。"
 
 #: includes/arrays.php
 msgid "SHA"
-msgstr ""
+msgstr "SHA"
 
 #: includes/arrays.php
 msgid "SHA-224"
-msgstr ""
+msgstr "SHA-224"
 
 #: includes/arrays.php
 msgid "SHA-256"
-msgstr ""
+msgstr "SHA-256"
 
 #: includes/arrays.php
 msgid "SHA-392"
-msgstr ""
+msgstr "SHA-392"
 
 #: includes/arrays.php
 msgid "SHA-512"
-msgstr ""
+msgstr "SHA-512"
 
 #: includes/arrays.php
 msgid "SMB encrypted (SMBS) download file, default port 445"
@@ -1143,123 +1128,120 @@ msgid "SMTP plaintext, default port 25 (or 587 for submission)"
 msgstr "SMTP 明文，默认端口 25（或 587 用于提交）"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
-msgstr "带有 STARTTLS 的 SMTP，默认端口 25（或 587 用于提交）"
+msgstr "使用 STARTTLS 的 SMTP，默认端口 25（或用于邮件提交的 587）"
 
 #: includes/arrays.php
 msgid "SNMP Auth Protocol (v3)"
-msgstr ""
+msgstr "SNMP 认证协议 (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Context (v3)"
-msgstr ""
+msgstr "SNMP 上下文(v3)"
 
 #: includes/arrays.php
 msgid "SNMP Engine ID (v3)"
-msgstr ""
+msgstr "SNMP 引擎ID (v3)"
 
 #: includes/arrays.php
 msgid "SNMP OID"
-msgstr ""
+msgstr "SNMP OID"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Password (v3)"
-msgstr "密码"
+msgstr "SNMP 密码 (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Passphrase (v3)"
-msgstr ""
+msgstr "SNMP 私有密码 (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Protocol (v3)"
-msgstr ""
+msgstr "SNMP 私有协议 (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Security Level"
-msgstr ""
+msgstr "SNMP 安全级别"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Username (v3)"
-msgstr "用户名"
+msgstr "SNMP 用户名 (v3)"
 
 #: includes/arrays.php
 msgid "SNMP community string for SNMP v1 or v2(c)"
-msgstr ""
+msgstr "用于 SNMP v1 或 v2(c) 的 SNMP 团体字"
 
 #: includes/arrays.php
 msgid "SNMP get"
-msgstr ""
+msgstr "SNMP get"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2"
-msgstr ""
+msgstr "SNMP v1 或 v2"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 - required, insert community name here"
-msgstr ""
+msgstr "SNMP v1 或 v2 - 必填，请在此处输入团体字名称"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 community"
-msgstr ""
+msgstr "SNMP v1 或 v2 团体字"
 
 #: includes/arrays.php
 msgid "SNMP v3"
-msgstr ""
+msgstr "SNMP v3"
 
 #: includes/arrays.php
 msgid "SNMP v3 - The security level determines which parameters are required"
-msgstr ""
+msgstr "SNMP v3 - 安全级别决定需要哪些参数"
 
 #: includes/arrays.php
 msgid "SNMP v3 Security Level to use when querying the device."
-msgstr ""
+msgstr "查询设备时使用的SNMPv3 安全级别。"
 
 #: includes/arrays.php
 msgid "SNMP v3 password for this device."
-msgstr ""
+msgstr "设备的SNMPv3 密码。"
 
 #: includes/arrays.php
 msgid "SNMP v3 username for this device."
-msgstr ""
+msgstr "设备的SNMPv3 用户名。"
 
 #: includes/arrays.php
 msgid "SNMP walk"
-msgstr ""
+msgstr "SNMP walk"
 
 #: includes/arrays.php
 msgid "SSH command"
-msgstr ""
+msgstr "SSH 命令"
 
 #: includes/arrays.php
 msgid "SSH command on remote system"
-msgstr ""
+msgstr "在远程系统上执行 SSH 命令"
 
 #: includes/arrays.php
 msgid "SSH private key"
-msgstr ""
+msgstr "SSH 私钥"
 
 #: includes/arrays.php
 msgid "SSH private key "
-msgstr ""
+msgstr "SSH 私钥 "
 
 #: includes/arrays.php
 msgid "SSH private key - Cacti 1.2.31+"
-msgstr ""
+msgstr "SSH 私钥 - Cacti 1.2.31+"
 
 #: includes/arrays.php
 msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
-msgstr ""
+msgstr "SSH 私钥 - 可用于 SCP 或 SSH 命令测试。这些测试也可以使用用户名/密码"
 
 #: includes/arrays.php
 msgid "SSH private key passphrase"
-msgstr ""
+msgstr "SSH 私钥密码短语"
 
 #: includes/arrays.php
 msgid "SSH user"
-msgstr ""
+msgstr "SSH 用户"
 
 #: includes/arrays.php
 msgid "SSL Client Certificate required."
@@ -1275,15 +1257,15 @@ msgstr "查看其他"
 
 #: includes/arrays.php
 msgid "Select correct Credential type."
-msgstr ""
+msgstr "请选择正确的凭据类型。"
 
 #: includes/arrays.php
 msgid "Select correct credential"
-msgstr ""
+msgstr "选择正确的凭据"
 
 #: includes/arrays.php
 msgid "Select correct credential or left empty."
-msgstr ""
+msgstr "选择正确的凭据或留空。"
 
 #: includes/arrays.php
 msgid "Service Check Name"
@@ -1299,7 +1281,7 @@ msgstr "服务设置"
 
 #: includes/arrays.php
 msgid "Set according to your REST API server"
-msgstr ""
+msgstr "根据您的 REST API 服务器进行设置"
 
 #: includes/arrays.php
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
@@ -1335,7 +1317,7 @@ msgstr "307临时重定向"
 
 #: includes/arrays.php
 msgid "Test every xth poller run"
-msgstr ""
+msgstr "每 x 次轮询器运行时测试一次"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Tests"
@@ -1354,17 +1336,14 @@ msgid "The FTP server does not understand the PRET command at all or does not su
 msgstr "FTP 服务器根本不理解 PRET 命令或不支持给定的参数。使用CURLOPT_CUSTOMREQUEST时要小心，在 PASV 之前还会发送自定义 LIST 命令和 PRET 命令。（在 7.20.0 中添加）"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The HTTP Proxy Port."
-msgstr "HTTP代理端口。"
+msgstr "HTTP 代理端口。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The HTTPS Proxy Port."
-msgstr "HTTPS代理端口。"
+msgstr "HTTPS 代理端口。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The Proxy Hostname."
 msgstr "代理主机名。"
 
@@ -1381,9 +1360,8 @@ msgid "The download could not be resumed because the specified offset was out of
 msgstr "无法恢复下载，因为指定的偏移量超出了文件边界。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The name that is displayed for this Credential."
-msgstr "为此服务检查显示的名称，并且包含在任何警报通知中。"
+msgstr "为此凭据显示的名称。"
 
 #: includes/arrays.php
 msgid "The name that is displayed for this Rest API."
@@ -1407,7 +1385,7 @@ msgstr "URL 中引用的资源不存在。"
 
 #: includes/arrays.php
 msgid "The same as HTTP plaintext but adds the ability to test certificates."
-msgstr ""
+msgstr "与 HTTP 明文模式相同，但增加了测试证书的功能。"
 
 #: includes/arrays.php
 msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS."
@@ -1438,9 +1416,8 @@ msgid "This error should never be returned by a properly functioning TFTP server
 msgstr "正常运行的 TFTP 服务器绝不应返回此错误。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is a listing of accounts that will be notified when this service goes down."
-msgstr "这是本网站出现故障时将通知的帐户列表。"
+msgstr "这是当此服务宕机时将收到通知的帐户列表。"
 
 #: includes/arrays.php
 msgid "This is an odd error that mainly occurs due to internal confusion."
@@ -1451,24 +1428,22 @@ msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server r
 msgstr "如果CURLOPT_FAILONERROR设置为 true，并且 HTTP 服务器返回 >= 400 的错误代码，则返回此值。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the format to use when sending the notification email"
 msgstr "这是发送通知电子邮件时使用的格式"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
-msgstr "这是在Web Service响应中搜索已知失败的字符串。 如果找到该字符串，服务检查将只会发出警报，忽略任何超时问题和上述搜索字符串。"
+msgstr "这是在服务响应中搜索已知故障的字符串。如果找到此字符串，服务检查将仅触发警报"
+"，并忽略任何超时问题和上述搜索字符串。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for in the response for a live and working service."
-msgstr "这是要在实时和正常运行的Web Service的URL响应中搜索的字符串。"
+msgstr "这是在运行正常的服务响应中搜索的字符串。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
-msgstr "是在维护页面上搜索的字符串。 如果上述字符串未找到，服务检查将检查此字符串。 如果找到了，这意味着Web服务正在维护中。"
+msgstr "这是在维护页面上搜索的字符串。如果未找到上述字符串，服务检查将检查此字符串。"
+"如果找到，则表示该服务正在维护中。"
 
 #: includes/arrays.php
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
@@ -1476,11 +1451,11 @@ msgstr "这要么是对“RETR”命令的奇怪回复，要么是零字节传�
 
 #: includes/arrays.php
 msgid "Token name"
-msgstr ""
+msgstr "令牌名称"
 
 #: includes/arrays.php
 msgid "Token value"
-msgstr ""
+msgstr "令牌值"
 
 #: includes/arrays.php
 msgid "Token/API Key name"
@@ -1496,40 +1471,42 @@ msgstr "触发"
 
 #: includes/arrays.php
 msgid "Try DNS over HTTPS."
-msgstr ""
+msgstr "尝试基于 HTTPS 的 DNS (DoH)。"
 
 #: includes/arrays.php
 msgid "Try SMB protocol, username and password are required. Try to login and download file."
-msgstr ""
+msgstr "尝试 SMB 协议，需要用户名和密码。将尝试登录并下载文件。"
 
 #: includes/arrays.php
 msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
-msgstr ""
+msgstr "尝试 SNMP get 方法。返回指定 OID 的输出。需要凭据，您必须先准备好 SNMP v1、"
+"v2 或 v3 凭据。"
 
 #: includes/arrays.php
 msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
-msgstr ""
+msgstr "尝试 SNMP walk 方法。返回指定 OID 的输出。需要凭据，您必须先准备好 SNMP v1、"
+"v2 或 v3 凭据。"
 
 #: includes/arrays.php
 msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
-msgstr ""
+msgstr "尝试从 TFTP 服务器下载路径中指定的文件 (/path/to/"
+"file.txt)。将返回该文件的内容。"
 
 #: includes/arrays.php
 msgid "Try to resolve DNS record on specified DNS server"
-msgstr ""
+msgstr "尝试在指定的 DNS 服务器上解析 DNS 记录"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Type of service"
 msgstr "服务类型"
 
 #: includes/arrays.php
 msgid "URL to retrieve data. Insert with http:// or https://"
-msgstr ""
+msgstr "用于获取数据的 URL。请包含 http:// 或 https://"
 
 #: includes/arrays.php
 msgid "URL which is used to log in or get the token."
-msgstr ""
+msgstr "用于登录或获取令牌的 URL。"
 
 #: includes/arrays.php
 msgid "Unable to Connect"
@@ -1544,9 +1521,8 @@ msgid "Unauthorized"
 msgstr "未授权"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Uncheck this box to disable this test from being checked."
-msgstr "取消选中此框可禁用此网址进行检查。"
+msgstr "取消勾选此复选框可禁用对此测试的检查。"
 
 #: includes/arrays.php
 msgid ""
@@ -1590,12 +1566,12 @@ msgstr "使用代理"
 
 #: includes/arrays.php
 msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
-msgstr ""
+msgstr "使用 ssh "
+"连接到远程主机。登录后运行指定的命令并返回输出。支持使用用户名和密码或私钥。"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Use this Notification List for those to be notified when this service goes down."
-msgstr "这是本网站出现故障时将通知的帐户列表。"
+msgstr "当此服务宕机时，使用此通知列表通知相关人员。"
 
 #: includes/arrays.php
 msgid "Username"
@@ -1603,16 +1579,15 @@ msgstr "用户名"
 
 #: includes/arrays.php
 msgid "Username and password"
-msgstr ""
+msgstr "用户名和密码"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Verification Strings"
 msgstr "验证字符串"
 
 #: includes/arrays.php
 msgid "Warning"
-msgstr ""
+msgstr "警告"
 
 #: includes/arrays.php
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
@@ -1641,47 +1616,46 @@ msgstr ""
 #: includes/arrays.php
 msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
 msgstr ""
+"您可以指定其他端口 (example.com:5000)，否则将使用默认端口。对于 IPv6 "
+"数字地址，请使用 [ip:ad:dr:es:fo:rma:at]。对于 DOH (DNS over "
+"HTTPS)，请在此处填写服务器名称（例如 10.10.10.10、cloudflare-dns.com 等）"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
-msgstr "您可以在此指定额外的电子邮件以接收此URL的警报（以逗号分隔）"
+msgstr "您可以在此指定接收此测试警报的额外电子邮件地址（以逗号分隔）"
 
 #: includes/arrays.php
 msgid "Your own CA and intermediate certs"
 msgstr "您自己的 CA 和中间证书"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "[None]"
-msgstr "无"
+msgstr "[None]"
 
 #: includes/arrays.php
 msgid "problem with the local client certificate."
 msgstr "本地客户端证书问题。"
 
 #: includes/functions.php
-#, fuzzy
 msgid "Graphs"
 msgstr "图形"
 
 #: includes/functions.php
 msgid "Log History"
-msgstr "历史记录"
+msgstr "日志历史"
 
 #: includes/functions.php
 msgid "No data"
 msgstr "没有数据"
 
 #: servcheck_ca.php
-#, fuzzy, php-format
+#, php-format
 msgid "CA [edit: %s]"
-msgstr "查询[编辑：%s]"
+msgstr "CA [编辑：%s]"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "CA [new]"
-msgstr "查询[新建]"
+msgstr "CA [新建]"
 
 #: servcheck_ca.php
 msgid "CAs"
@@ -1700,7 +1674,7 @@ msgstr "清除"
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Clear Filters"
-msgstr ""
+msgstr "清除过滤器"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
@@ -1721,10 +1695,9 @@ msgstr "删除"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
-#, fuzzy
 msgid "Delete item"
 msgid_plural "Delete items"
-msgstr[0] "WebSeer服务器"
+msgstr[0] "删除项目"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1732,9 +1705,8 @@ msgid "Go"
 msgstr "Go"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "No Certificates Found"
-msgstr "找不到服务器"
+msgstr "未找到证书"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1742,18 +1714,17 @@ msgid "Search"
 msgstr "搜索"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "Servcheck CA Management"
-msgstr "Webseer服务器管理"
+msgstr "ServCheck CA 管理"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Set/Refresh Filters"
-msgstr ""
+msgstr "设置/刷新过滤器"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 msgid "Used"
-msgstr "已使用"
+msgstr "已用"
 
 #: servcheck_credential.php
 #, fuzzy
@@ -1762,17 +1733,17 @@ msgid_plural "Click 'Continue' to Duplicate following Credential."
 msgstr[0] "单击“继续”以删除以下代理。"
 
 #: servcheck_credential.php
-#, fuzzy, php-format
+#, php-format
 msgid "Credential [edit: %s]"
-msgstr "查询[编辑：%s]"
+msgstr "凭据 [编辑：%s]"
 
 #: servcheck_credential.php
 msgid "Credential [new]"
-msgstr ""
+msgstr "凭据 [新建]"
 
 #: servcheck_credential.php
 msgid "Credentials"
-msgstr ""
+msgstr "凭据"
 
 #: servcheck_credential.php servcheck_restapi.php servcheck_test.php
 msgid "Duplicate"
@@ -1785,51 +1756,45 @@ msgid_plural "Duplicate Credential"
 msgstr[0] "重复"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "No Credentials Found"
-msgstr "找不到服务器"
+msgstr "未找到凭据"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Servcheck Credential Management"
-msgstr "Webseer服务器管理"
+msgstr "ServCheck 凭据管理"
 
 #: servcheck_credential.php servcheck_restapi.php
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: servcheck_curl_code.php
 msgid "No error codes"
 msgstr "无错误代码"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "No Proxies Found"
-msgstr "找不到服务器"
+msgstr "未找到代理"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Ports (http/https)"
-msgstr "端口（http / https）"
+msgstr "端口（http/https）"
 
 #: servcheck_proxy.php
-#, fuzzy, php-format
+#, php-format
 msgid "Proxy [edit: %s]"
-msgstr "查询[编辑：%s]"
+msgstr "代理 [编辑：%s]"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Proxy [new]"
-msgstr "查询[新建]"
+msgstr "代理 [新建]"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Servcheck Proxy Management"
-msgstr "Webseer服务器管理"
+msgstr "ServCheck 代理管理"
 
 #: servcheck_restapi.php servcheck_test.php
 msgid "Any"
-msgstr "所有"
+msgstr "任何"
 
 #: servcheck_restapi.php
 #, fuzzy
@@ -1890,29 +1855,27 @@ msgstr "所有用户选择"
 
 #: servcheck_test.php
 msgid "Attempt"
-msgstr ""
+msgstr "尝试"
 
 #: servcheck_test.php
 msgid "CPU u/CPU s/Memory"
-msgstr ""
+msgstr "用户态 CPU/系统态 CPU/内存"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Certificate"
-msgstr "检查证书"
+msgstr "证书"
 
 #: servcheck_test.php
 msgid "Checks"
 msgstr "检查"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Clear log"
-msgstr "清除"
+msgstr "清除日志"
 
 #: servcheck_test.php
 msgid "Clear statistics"
-msgstr ""
+msgstr "清除统计信息"
 
 #: servcheck_test.php
 #, fuzzy
@@ -1946,47 +1909,41 @@ msgstr[0] "单击“继续”以删除以下代理。"
 
 #: servcheck_test.php
 msgid "Curl"
-msgstr ""
+msgstr "Curl"
 
 #: servcheck_test.php
 msgid "Date"
 msgstr "日期"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Date Search"
-msgstr "搜索"
+msgstr "日期搜索"
 
 #: servcheck_test.php
 msgid "Disable"
 msgstr "禁用"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable Service Check"
-msgstr "启用服务检查"
+msgstr "禁用服务检查"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable item"
 msgid_plural "Disable items"
-msgstr[0] "禁用网站"
+msgstr[0] "禁用项目"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duplicate item"
 msgid_plural "Duplicate items"
-msgstr[0] "重复"
+msgstr[0] "复制项目"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duration"
-msgstr "位置"
+msgstr "期间"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Edit Service Check"
-msgstr "启用服务检查"
+msgstr "编辑服务检查"
 
 #: servcheck_test.php
 msgid "Enable"
@@ -1997,10 +1954,9 @@ msgid "Enable Service Check"
 msgstr "启用服务检查"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable item"
 msgid_plural "Enable items"
-msgstr[0] "启用网站"
+msgstr[0] "启用项目"
 
 #: servcheck_test.php
 msgid "Entries"
@@ -2009,16 +1965,15 @@ msgstr "条目"
 #: servcheck_test.php
 #, php-format
 msgid "Expired %s days ago"
-msgstr ""
+msgstr "已过期 %s 天"
 
 #: servcheck_test.php
 msgid "Insufficient data, wait a few poller cycles"
-msgstr ""
+msgstr "数据不足，请等待几个轮询器周期"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Last Check (attempt)"
-msgstr "上次检查"
+msgstr "上次检查（尝试）"
 
 #: servcheck_test.php
 msgid "Last returned data of test"
@@ -2026,20 +1981,19 @@ msgstr "上次返回的测试数据"
 
 #: servcheck_test.php
 msgid "Logs"
-msgstr ""
+msgstr "日志"
 
 #: servcheck_test.php
 msgid "N/A (N/A)"
-msgstr ""
+msgstr "不适用 (不适用)"
 
 #: servcheck_test.php
 msgid "No"
 msgstr "否"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Service Checks Found"
-msgstr "找不到服务器"
+msgstr "未找到服务检查"
 
 #: servcheck_test.php
 msgid "No Users Selected"
@@ -2047,7 +2001,7 @@ msgstr "没有用户选择"
 
 #: servcheck_test.php
 msgid "Purge Events"
-msgstr "清除事件"
+msgstr "清空事件"
 
 #: servcheck_test.php
 msgid "Refresh"
@@ -2059,21 +2013,19 @@ msgstr "结果"
 
 #: servcheck_test.php
 msgid "Ret. data size"
-msgstr ""
+msgstr "返回数据大小"
 
 #: servcheck_test.php
 msgid "Search result"
 msgstr "搜索结果"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Servcheck Test Management"
-msgstr "Webseer服务器管理"
+msgstr "ServCheck 测试管理"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Service Check History"
-msgstr "Web服务检查"
+msgstr "服务检查历史"
 
 #: servcheck_test.php
 msgid "State"
@@ -2084,24 +2036,22 @@ msgid "Stats (OK/problem)"
 msgstr "统计信息（正常/问题）"
 
 #: servcheck_test.php
-#, fuzzy, php-format
+#, php-format
 msgid "Test [edit: %s]"
-msgstr "查询[编辑：%s]"
+msgstr "测试 [编辑：%s]"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Test [new]"
-msgstr "查询[新建]"
+msgstr "测试 [新建]"
 
 #: servcheck_test.php
 #, php-format
 msgid "The Service Check history was purged for %s"
-msgstr "服务检查历史记录已清除%s"
+msgstr "已清空 %s 的服务检查历史记录"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Triggered"
-msgstr "触发"
+msgstr "已触发"
 
 #: servcheck_test.php
 msgid "Users Selected"
@@ -2116,9 +2066,8 @@ msgid "View Last returned data"
 msgstr "查看上次返回的数据"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "View Service Check History"
-msgstr "Web服务检查"
+msgstr "查看服务检查历史记录"
 
 #: servcheck_test.php
 msgid "Yes"
@@ -2126,56 +2075,55 @@ msgstr "是"
 
 #: servcheck_test.php
 msgid "days"
-msgstr ""
+msgstr "天"
 
 #: setup.php
 #, php-format
 msgid "%d Processes"
-msgstr ""
+msgstr "%d进程"
 
 #: setup.php
 #, php-format
 msgid "%d days"
-msgstr ""
+msgstr "%d 天"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d hours"
-msgstr "最近 6 小时"
+msgstr "%d 时"
 
 #: setup.php
 #, php-format
 msgid "%d year"
-msgstr ""
+msgstr "%d 年"
 
 #: setup.php
-#, fuzzy
 msgid "1 Process"
-msgstr "WebSeer服务器"
+msgstr "1流程"
 
 #: setup.php
 msgid "1 week in advance"
-msgstr ""
+msgstr "提前 1 周"
 
 #: setup.php
 msgid "3 days in advance"
-msgstr ""
+msgstr "提前 3 天"
 
 #: setup.php
 msgid "3 weeks in advance"
-msgstr ""
+msgstr "提前 3 周"
 
 #: setup.php
 msgid "30 days in advance"
-msgstr ""
+msgstr "提前 30 天"
 
 #: setup.php
 msgid "60 days in advance"
-msgstr ""
+msgstr "提前 60 天"
 
 #: setup.php
 msgid "90 days in advance"
-msgstr ""
+msgstr "提前 90 天"
 
 #: setup.php
 msgid "CA"
@@ -2187,51 +2135,53 @@ msgstr "CA 编辑"
 
 #: setup.php
 msgid "Certificate expiry date advanced notification email"
-msgstr ""
+msgstr "证书到期提前通知邮件"
 
 #: setup.php
 msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
-msgstr ""
+msgstr "勾选此项将启用在 Servcheck "
+"事件发生时运行命令的功能。您可以为每项测试单独启用或禁用此功能。"
 
 #: setup.php
 msgid "Concurrent Check Processes"
-msgstr ""
+msgstr "并发检查进程数"
 
 #: setup.php
 msgid "Credential Edit"
-msgstr ""
+msgstr "编辑凭据"
 
 #: setup.php
 msgid "Credential Save"
-msgstr ""
+msgstr "保存凭据"
 
 #: setup.php
 msgid "Enable Command Execution"
-msgstr ""
+msgstr "启用命令执行"
 
 #: setup.php
 msgid "Enter the period after which older logs will be automatically deleted."
-msgstr ""
+msgstr "输入自动删除旧日志的时间周期。"
 
 #: setup.php
 msgid "HTTP/HTTPS Check Settings"
-msgstr ""
+msgstr "HTTP/HTTPS 检查设置"
 
 #: setup.php
 msgid "How long to keep logs"
-msgstr ""
+msgstr "日志保留时长"
 
 #: setup.php
 msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
-msgstr ""
+msgstr "如果启用了 SSL/TLS "
+"服务证书过期检查，请设置系统在证书过期日期前提前多少天发送通知"
 
 #: setup.php
 msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
-msgstr ""
+msgstr "如果选中，ServCheck 将不会发送任何电子邮件。您也可以仅对特定测试禁用通知"
 
 #: setup.php
 msgid "If checked, this will cause all Emails to be sent separately for each address."
-msgstr ""
+msgstr "如果选中，将为每个地址单独发送所有电子邮件。"
 
 #: setup.php
 msgid "Management"
@@ -2239,16 +2189,15 @@ msgstr "管理"
 
 #: setup.php
 msgid "Maximum test duration in seconds"
-msgstr ""
+msgstr "最大测试持续时间（秒）"
 
 #: setup.php
 msgid "Never"
-msgstr ""
+msgstr "从不"
 
 #: setup.php
-#, fuzzy
 msgid "Notification Preferences"
-msgstr "通知设置"
+msgstr "通知首选项"
 
 #: setup.php
 #, fuzzy
@@ -2264,37 +2213,32 @@ msgid "Save CA"
 msgstr "保存 CA"
 
 #: setup.php
-#, fuzzy
 msgid "Save Web Proxy"
-msgstr "新代理"
+msgstr "保存 Web 代理"
 
 #: setup.php
 msgid "Send Email separately for each address"
-msgstr ""
+msgstr "为每个地址单独发送电子邮件"
 
 #: setup.php
-#, fuzzy
 msgid "Servcheck"
-msgstr "服务检查"
+msgstr "ServCheck"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Admin"
-msgstr "Web服务检查管理员"
+msgstr "服务检查管理"
 
 #: setup.php
 msgid "Service Check Edit"
 msgstr "服务检查编辑"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Save"
-msgstr "服务检查名称"
+msgstr "保存服务检查"
 
 #: setup.php
-#, fuzzy
 msgid "Service Checker"
-msgstr "服务检查名称"
+msgstr "服务检查器"
 
 #: setup.php
 msgid "Service Checks"
@@ -2302,42 +2246,49 @@ msgstr "服务检查"
 
 #: setup.php
 msgid "Status Change Command"
-msgstr ""
+msgstr "状态变更命令"
 
 #: setup.php
 msgid "Stop sending all notification"
-msgstr ""
+msgstr "停止发送所有通知"
 
 #: setup.php
 msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
 msgstr ""
+"随 HTTP/HTTPS 及其他基于 cURL 的服务检查发送的 User-Agent "
+"字符串。部分站点会拦截旧版或不常见的浏览器，因此可在此设置最新的 User-"
+"Agent。留空则使用内置默认值。"
 
 #: setup.php
 msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
-msgstr ""
+msgstr "未启用运行时测试时的默认测试值。如果启用，最大持续时间将按持续时间阈值 + 2 "
+"秒计算。"
 
 #: setup.php
 msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
-msgstr ""
+msgstr "并发运行的服务检查进程数。不建议将该数值增加到超过 CPU 核心数的 2 倍。"
 
 #: setup.php
-#, fuzzy
 msgid "User Agent"
-msgstr "用户名"
+msgstr "用户代理 (User Agent)"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy"
-msgstr "WebSeer服务器"
+msgstr "Web 代理"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy Edit"
-msgstr "代表权"
+msgstr "编辑 Web 代理"
 
 #: setup.php
 msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
 msgstr ""
+"当基本测试、搜索测试或证书过期测试返回不同结果时，运行以下命令... "
+"此命令不得包含命令行参数... "
+"不过，可以从脚本的环境变量中获取以下变量：<br>&#060SERVCHECK_TEST_NAME&#062 "
+"&#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 "
+"&#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 "
+"&#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
 
 #~ msgid "%d Minute"
 #~ msgstr "%d 分钟"

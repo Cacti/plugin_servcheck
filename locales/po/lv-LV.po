@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: Cacti 1.2.16\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2024-10-17 16:23+0000\n"
-"Last-Translator: Coool (github.com/Coool) <coool@mail.lv>\n"
-"Language-Team: Latvian <http://translate.cacti.net/projects/cacti/servcheck/lv/>\n"
+"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Latvian <https://translate.cacti.net/projects/cacti/servcheck/"
+"lv/>\n"
 "Language: lv-LV\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= 19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\n"
-"X-Generator: Weblate 4.8.1\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= "
+"19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: includes/arrays.php
 #, php-format
@@ -94,7 +96,7 @@ msgstr "Pieprasītā funkcija, protokols vai opcija netika atrasta iebūvēta š
 
 #: includes/arrays.php
 msgid "AES"
-msgstr ""
+msgstr "AES"
 
 #: includes/arrays.php
 msgid "AES-128"
@@ -396,9 +398,10 @@ msgid "Enter an External ID for this test."
 msgstr "Ievadiet mūžīgo ID šai Thold veidnei."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
-msgstr "Ievadiet IP adresi, ar kuru veidot savienojumu.  Atstājot tukšu, tiks izmantots DNS vaicājuma lēmums ."
+msgstr ""
+"Ievadiet IP adresi, uz kuru piespiedu kārtā atrisināt DNS nosaukumu. "
+"Atstājot tukšu, tā vietā tiks izmantota DNS atrisināšana."
 
 #: includes/arrays.php
 msgid "Enter the SNMP Context to use for this device."
@@ -521,7 +524,7 @@ msgstr "Vārtejas noildze"
 
 #: includes/arrays.php
 msgid "General Settings"
-msgstr "Pamatiestatījumi"
+msgstr "Vispārīgie iestatījumi"
 
 #: includes/arrays.php
 msgid "Gone"
@@ -782,7 +785,7 @@ msgstr "Neautoritatīva informācija"
 
 #: includes/arrays.php servcheck_test.php
 msgid "None"
-msgstr "Neviena"
+msgstr "Neviens"
 
 #: includes/arrays.php
 msgid "Not Acceptable"
@@ -1813,7 +1816,7 @@ msgstr "Servcheck starpniekservera pārvaldība"
 
 #: servcheck_restapi.php servcheck_test.php
 msgid "Any"
-msgstr "Jebkuru"
+msgstr "Jebkurš"
 
 #: servcheck_restapi.php
 #, fuzzy

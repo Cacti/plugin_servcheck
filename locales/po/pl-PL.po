@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"PO-Revision-Date: 2026-11-26 05:54+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Polish <https://translate.cacti.net/projects/cacti/servcheck/"
 "pl/>\n"
@@ -857,7 +857,7 @@ msgstr "Nic nie zostało zwrócone z serwera, a w tych okolicznościach uzyskani
 
 #: includes/arrays.php
 msgid "Notification List"
-msgstr "Powiadomienia"
+msgstr "Lista powiadomień"
 
 #: includes/arrays.php
 msgid "Notification Settings"
@@ -1200,7 +1200,7 @@ msgstr "Hasło SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Passphrase (v3)"
-msgstr "Paszport prywatności SNMP (v3)"
+msgstr "Hasło prywatności SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Protocol (v3)"

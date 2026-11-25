@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"PO-Revision-Date: 2026-11-26 05:54+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Hebrew (Israel) <https://translate.cacti.net/projects/cacti/"
 "servcheck/he_IL/>\n"
@@ -355,7 +355,7 @@ msgstr ""
 
 #: includes/arrays.php setup.php
 msgid "Disabled"
-msgstr "לא זמין"
+msgstr "מושבת"
 
 #: includes/arrays.php
 msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
@@ -707,7 +707,7 @@ msgstr "6 השעות האחרונות"
 
 #: includes/arrays.php
 msgid "Last day"
-msgstr "סוף היום"
+msgstr "יום אחרון"
 
 #: includes/arrays.php
 msgid "Last hour"
@@ -1837,7 +1837,7 @@ msgstr "ניהול שרתי פרוקסי של ServCheck"
 
 #: servcheck_restapi.php servcheck_test.php
 msgid "Any"
-msgstr "הכל"
+msgstr "כלשהו"
 
 #: servcheck_restapi.php
 #, fuzzy

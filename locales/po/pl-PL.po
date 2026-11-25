@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2024-04-20 17:21+0000\n"
-"Last-Translator: Anonymous <anonymous@cacti.net>\n"
-"Language-Team: Polish <http://translate.cacti.net/projects/cacti/servcheck/pl/>\n"
+"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Polish <https://translate.cacti.net/projects/cacti/servcheck/"
+"pl/>\n"
 "Language: pl-PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.8.1\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: includes/arrays.php
 #, php-format
@@ -31,7 +33,7 @@ msgstr "%d Poller biegnie"
 #: includes/arrays.php
 #, php-format
 msgid "%d Seconds"
-msgstr "%d Sekund"
+msgstr "%d sek"
 
 #: includes/arrays.php
 msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
@@ -53,14 +55,12 @@ msgid ""
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "A Useful Name for this CA chain."
-msgstr "Przydatna nazwa dla tego proxy."
+msgstr "Przydatna nazwa dla tego łańcucha CA."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "A Useful Name for this Proxy."
-msgstr "Przydatna nazwa dla tego proxy."
+msgstr "Przydatna nazwa dla tego serwera proxy."
 
 #: includes/arrays.php
 msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
@@ -96,27 +96,27 @@ msgstr "Żądana funkcja, protokół lub opcja nie została znaleziona wbudowana
 
 #: includes/arrays.php
 msgid "AES"
-msgstr ""
+msgstr "AES"
 
 #: includes/arrays.php
 msgid "AES-128"
-msgstr ""
+msgstr "AES-128"
 
 #: includes/arrays.php
 msgid "AES-192"
-msgstr ""
+msgstr "AES-192"
 
 #: includes/arrays.php
 msgid "AES-192-C"
-msgstr ""
+msgstr "AES-192"
 
 #: includes/arrays.php
 msgid "AES-256"
-msgstr ""
+msgstr "AES-256"
 
 #: includes/arrays.php
 msgid "AES-256-C"
-msgstr ""
+msgstr "AES-256"
 
 #: includes/arrays.php
 msgid "API key auth"
@@ -141,10 +141,14 @@ msgstr "Wszystko w porządku. Postępuj jak zwykle."
 #: includes/arrays.php
 msgid "All parameters are required. Perform encrypted LDAP login and search"
 msgstr ""
+"Wszystkie parametry są wymagane. Wykonaj szyfrowane logowanie i wyszukiwanie "
+"LDAP"
 
 #: includes/arrays.php
 msgid "All parameters are required. Perform unencrypted LDAP login and search"
 msgstr ""
+"Wszystkie parametry są wymagane. Wykonaj nieszyfrowane logowanie i "
+"wyszukiwanie LDAP"
 
 #: includes/arrays.php
 msgid "An API function was called from inside a callback."
@@ -186,7 +190,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Auth in HTTP headers"
-msgstr ""
+msgstr "Uwierzytelnianie w nagłówkach HTTP"
 
 #: includes/arrays.php
 #, fuzzy
@@ -214,40 +218,42 @@ msgid "CA and intermediate certs, PEM encoded"
 msgstr "Certyfikaty CA i pośrednie, zakodowane w formacie PEM"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "CA certificates"
-msgstr "Sprawdź certyfikat"
+msgstr "Certyfikaty CA"
 
 #: includes/arrays.php
 msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
 msgstr ""
+"Cacti próbuje uruchomić każdy test wielokrotnie. Pierwsza udana próba kończy "
+"testowanie i rejestruje sukces. Jeśli żadna z prób nie powiedzie się, test "
+"jest przerywany i rejestrowane jest niepowodzenie. Duża liczba wydłuża czas "
+"trwania testu."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check Certificate"
 msgstr "Sprawdź certyfikat"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check and notify Certificate expiration"
-msgstr "Sprawdź certyfikat"
+msgstr "Sprawdzaj i powiadamiaj o wygaśnięciu certyfikatu"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
-msgstr "Zaznacz to pole wyboru, jeśli strona zwraca błąd 401, ponieważ wymaga podania nazwy użytkownika i hasła."
+msgstr ""
+"Zaznacz to pole, jeśli witryna standardowo zwraca błąd 401, ponieważ wymaga "
+"podania nazwy użytkownika i hasła."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Authorization Protocol."
-msgstr ""
+msgstr "Wybierz protokół autoryzacji SNMPv3."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Passphrase."
-msgstr ""
+msgstr "Wybierz hasło SNMPv3 Privacy Passphrase."
 
 #: includes/arrays.php
 msgid "Choose the SNMPv3 Privacy Protocol."
-msgstr ""
+msgstr "Wybierz protokół SNMPv3 Privacy Protocol."
 
 #: includes/arrays.php
 msgid "Chunk callback reported error."
@@ -255,11 +261,11 @@ msgstr "Zgłoszono błąd wywołania zwrotnego fragmentu."
 
 #: includes/arrays.php
 msgid "Client ID"
-msgstr ""
+msgstr "ID klienta"
 
 #: includes/arrays.php
 msgid "Client secret"
-msgstr ""
+msgstr "Sekret klienta"
 
 #: includes/arrays.php
 msgid "Conflict"
@@ -292,19 +298,19 @@ msgstr "Nie można użyć określonego szyfru."
 
 #: includes/arrays.php
 msgid "Created"
-msgstr "Utworzony"
+msgstr "utworzono"
 
 #: includes/arrays.php setup.php
 msgid "Credential"
-msgstr ""
+msgstr "Poświadczenie"
 
 #: includes/arrays.php
 msgid "Credential Name"
-msgstr ""
+msgstr "Nazwa poświadczenia"
 
 #: includes/arrays.php
 msgid "Credential type"
-msgstr ""
+msgstr "Typ poświadczenia"
 
 #: includes/arrays.php
 msgid "Curl return codes"
@@ -312,12 +318,11 @@ msgstr "Kody powrotne curl"
 
 #: includes/arrays.php
 msgid "Custom HTTP header"
-msgstr ""
+msgstr "Niestandardowy nagłówek HTTP"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DES"
-msgstr "DNS"
+msgstr "DES"
 
 #: includes/arrays.php
 msgid "DNS Name for Query"
@@ -326,20 +331,21 @@ msgstr "Nazwa DNS dla zapytania"
 #: includes/arrays.php
 msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
 msgstr ""
+"Nazwa DNS do odpytywania. Dla DOH (DNS over HTTPS) użyj /"
+"resolve?name=example.com lub /dns-query?name=example.com&type=A. Dla "
+"zwykłego DNS zostaną zwrócone rekordy A i AAAA"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DNS over HTTPS, default port 443"
-msgstr "Szyfrowanie HTTP (HTTPS), domyślny port 443"
+msgstr "DNS over HTTPS, domyślny port 443"
 
 #: includes/arrays.php
 msgid "DNS plaintext, default port 53"
 msgstr "Zwykły tekst DNS, domyślny port 53"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Data URL"
-msgstr "Duplikuj"
+msgstr "Adres URL danych"
 
 #: includes/arrays.php
 msgid ""
@@ -365,30 +371,34 @@ msgid "Early initialization code failed. This is likely to be an internal error 
 msgstr "Kod wczesnej inicjalizacji nie powiódł się. Prawdopodobnie jest to błąd wewnętrzny lub problem albo problem z zasobami, w którym coś fundamentalnego nie może zostać wykonane w czasie inicjowania."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Email notification"
-msgstr "Ustawienia powiadomień"
+msgstr "Powiadomienie e-mail"
 
 #: includes/arrays.php
 msgid "Enable run script for this test"
-msgstr ""
+msgstr "Włącz uruchamianie skryptu dla tego testu"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enable test"
-msgstr "Włącz serwer"
+msgstr "Włącz test"
 
 #: includes/arrays.php
 msgid "Encrypted IMAP, you can try login and test certificate and user login"
 msgstr ""
+"Szyfrowany protokół IMAP, można przetestować logowanie, certyfikat oraz "
+"login użytkownika"
 
 #: includes/arrays.php
 msgid "Encrypted POP3, you can try login and test certificate and user login."
 msgstr ""
+"Szyfrowany protokół POP3, można przetestować logowanie, certyfikat oraz "
+"login użytkownika."
 
 #: includes/arrays.php
 msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
 msgstr ""
+"Szyfrowane połączenie SCP, zaloguj się i spróbuj pobrać plik określony w "
+"ścieżce (/path/to/file.txt)."
 
 #: includes/arrays.php
 msgid ""
@@ -397,22 +407,22 @@ msgid ""
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an External ID for this test."
-msgstr "Wprowadź Wieczny Identyfikator dla tego szablonu Thold."
+msgstr "Wprowadź zewnętrzny identyfikator (External ID) dla tego testu."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
-msgstr "Wprowadź adres IP, z którym chcesz się połączyć.  Pozostawienie pustego pola spowoduje użycie rozdzielczości DNS."
+msgstr ""
+"Wprowadź adres IP, na który nazwa DNS ma być rozwiązywana. Pozostawienie "
+"pustego pola spowoduje użycie standardowego rozwiązywania DNS."
 
 #: includes/arrays.php
 msgid "Enter the SNMP Context to use for this device."
-msgstr ""
+msgstr "Wprowadź kontekst SNMP, który ma być używany dla tego urządzenia."
 
 #: includes/arrays.php
 msgid "Enter the SNMP v3 Engine Id or empty."
-msgstr ""
+msgstr "Wprowadź identyfikator silnika (Engine ID) SNMP v3 lub pozostaw puste."
 
 #: includes/arrays.php
 msgid "Error"
@@ -420,7 +430,7 @@ msgstr "Błąd"
 
 #: includes/arrays.php
 msgid "Error/failed"
-msgstr ""
+msgstr "Błąd/niepowodzenie"
 
 #: includes/arrays.php
 msgid "Expectation Failed"
@@ -431,9 +441,8 @@ msgid "External ID"
 msgstr "Zewnętrzne ID"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Extra Alert Emails"
-msgstr "Dodatkowe wiadomości e-mail z ostrzeżeniami"
+msgstr "Dodatkowe adresy e-mail dla alertów"
 
 #: includes/arrays.php
 msgid "FTP plaintext, default port 21"
@@ -460,9 +469,8 @@ msgid "Failed string found"
 msgstr "Znaleziono ciąg, który nie powiódł się"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Failed string not found"
-msgstr "Nie znaleziono nieudanego strint"
+msgstr "Nie znaleziono ciągu błędu"
 
 #: includes/arrays.php
 msgid "Failed to connect() to host or proxy."
@@ -482,7 +490,7 @@ msgstr "Nie można zamknąć połączenia SSL."
 
 #: includes/arrays.php
 msgid "Failing"
-msgstr ""
+msgstr "Z błędami"
 
 #: includes/arrays.php
 msgid "Failure with receiving network data."
@@ -497,14 +505,13 @@ msgid "File not found on TFTP server."
 msgstr "Nie znaleziono pliku na serwerze TFTP."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For anonymous FTP insert email address"
-msgstr "W przypadku anonimowego ftp wstaw tutaj adres e-mail."
+msgstr "Dla anonimowego FTP wpisz adres e-mail"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
-msgstr "W przypadku usługi internetowej wstaw co najmniej \"/\" lub coś w rodzaju \"/any/path/\". W przypadku FTP lista musi kończyć się znakiem \"/\". W przypadku pobierz TFTP/SCP/SMB wstaw testowy /path/file"
+msgstr ""
+"Dla usługi WWW wpisz co najmniej \"/\" lub ścieżkę w rodzaju \"/any/path/\"."
 
 #: includes/arrays.php
 msgid "Forbidden"
@@ -512,7 +519,7 @@ msgstr "Zabronione"
 
 #: includes/arrays.php
 msgid "Form urlencoded"
-msgstr ""
+msgstr "Formularz zakodowany w URL (urlencoded)"
 
 #: includes/arrays.php
 msgid "Found"
@@ -523,9 +530,8 @@ msgid "Function not found. A required zlib function was not found."
 msgstr "Nie znaleziono funkcji. Nie znaleziono wymaganej funkcji zlib."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Gateway Timeout"
-msgstr "Upłynął limit czasu"
+msgstr "Przekroczono limit czasu bramy"
 
 #: includes/arrays.php
 msgid "General Settings"
@@ -536,9 +542,8 @@ msgid "Gone"
 msgstr "Stracony"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "HTTP Port"
-msgstr "Kod HTTP"
+msgstr "Port HTTP"
 
 #: includes/arrays.php
 msgid "HTTP Version Not Supported"
@@ -553,13 +558,12 @@ msgid "HTTP plaintext, default port 80"
 msgstr "Zwykły tekst HTTP, domyślny port 80"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "HTTPS Port"
-msgstr "Kod HTTP"
+msgstr "Port HTTPS"
 
 #: includes/arrays.php
 msgid "Help"
-msgstr ""
+msgstr "Pomoc"
 
 #: includes/arrays.php servcheck_proxy.php
 msgid "Hostname"
@@ -571,15 +575,19 @@ msgstr "Jak często testować"
 
 #: includes/arrays.php
 msgid "How many attempts"
-msgstr ""
+msgstr "Ile prób"
 
 #: includes/arrays.php
 msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
 msgstr ""
+"Ile razy z rzędu musi zostać przekroczony próg czasu trwania, aby wysłać "
+"powiadomienie"
 
 #: includes/arrays.php
 msgid "How many times the service must be DOWN before an alert email is triggered."
 msgstr ""
+"Ile razy usługa musi być NIEAKTYWNA, zanim zostanie wysłana wiadomość e-mail "
+"z alertem."
 
 #: includes/arrays.php
 msgid "IMAP encrypted (IMAPS), default port 993"
@@ -594,40 +602,52 @@ msgid "IMAP with STARTTLS, default port 143"
 msgstr "IMAP z STARTTLS, domyślny port 143"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "IP Address or DNS name of server"
-msgstr "Adres IP do połączenia z tym serwerem"
+msgstr "Adres IP lub nazwa DNS serwera"
 
 #: includes/arrays.php
 msgid "If enabled email notification about state, duration and search result will be send"
 msgstr ""
+"Po włączeniu zostaną wysłane powiadomienia e-mail o stanie, czasie trwania i "
+"wyniku wyszukiwania"
 
 #: includes/arrays.php
 msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
 msgstr ""
+"Jeśli globalna funkcja wykonywania poleceń jest włączona, możesz tutaj "
+"ustawić, czy skrypt ma być uruchamiany dla tego testu."
 
 #: includes/arrays.php
 msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
 msgstr ""
+"Jeśli czas testu przekroczy tę wartość określoną liczbę razy z rzędu, wyślij "
+"powiadomienie. Powiązane ze zmienną Licznik czasu trwania. Test dziedziczy "
+"maksymalny czas wykonania z ustawień. Jeśli ustawiono tu wyższą wartość, "
+"maksymalny czas wykonania wynosi ta wartość + 2 sekundy."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
-msgstr "Jeśli ten tekst połączenia wymaga serwera proxy, wybierz go tutaj. W przeciwnym razie wybierz „Brak”."
+msgstr ""
+"Jeśli ten tekst połączenia wymaga serwera proxy, wybierz go tutaj. W "
+"przeciwnym razie wybierz 'Brak'."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
-msgstr "Jeśli używasz SSL, zaznacz to pole, jeśli chcesz walidować certyfikat. Domyślnie włączone, wyłącz, jeśli witryna używa podpisanego przez siebie certyfikatu."
+msgstr ""
+"Jeśli używasz SSL, zaznacz to pole, aby sprawdzać datę wygaśnięcia "
+"certyfikatu. W ustawieniach możesz określić, na ile dni przed wygaśnięciem "
+"wysłać powiadomienie."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
-msgstr "Jeśli używasz SSL, zaznacz to pole, jeśli chcesz walidować certyfikat. Domyślnie włączone, wyłącz, jeśli witryna używa podpisanego przez siebie certyfikatu."
+msgstr ""
+"Jeśli używasz SSL, zaznacz to pole, aby weryfikować certyfikat. Domyślnie "
+"włączone; wyłącz, jeśli witryna używa certyfikatu z podpisem własnym (self-"
+"signed)."
 
 #: includes/arrays.php
 msgid "If your key is password protected, insert password here"
-msgstr ""
+msgstr "Jeśli Twój klucz jest chroniony hasłem, wpisz hasło tutaj"
 
 #: includes/arrays.php
 msgid "Illegal TFTP operation."
@@ -639,15 +659,16 @@ msgstr "Inicjowanie aparatu SSL nie powiodło się."
 
 #: includes/arrays.php
 msgid "Insert SNMP OID"
-msgstr ""
+msgstr "Wprowadź OID SNMP"
 
 #: includes/arrays.php
 msgid "Insert SSH command with full path, result of command will be returned"
 msgstr ""
+"Wprowadź polecenie SSH z pełną ścieżką; wynik polecenia zostanie zwrócony"
 
 #: includes/arrays.php
 msgid "Insert username here"
-msgstr ""
+msgstr "Wpisz tutaj nazwę użytkownika"
 
 #: includes/arrays.php
 msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
@@ -664,19 +685,22 @@ msgstr "Sprawdzanie wystawcy nie powiodło się (dodano w wersji 7.19.0)"
 #: includes/arrays.php
 msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
 msgstr ""
+"Sprawdza jedynie, czy serwer SMTP odpowiada. Bez uwierzytelniania. Zobaczysz "
+"baner logowania serwera i odpowiedź ehlo."
 
 #: includes/arrays.php
 msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
 msgstr ""
+"Sprawdza jedynie, czy serwer WWW odpowiada. Jeśli użyto poświadczeń nazwy uż"
+"ytkownika/hasła, spróbuje uwierzytelniania Basic HTTP."
 
 #: includes/arrays.php
 msgid "JSON encoded"
-msgstr ""
+msgstr "Kodowanie JSON"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "LDAP Search"
-msgstr "Szukaj"
+msgstr "Wyszukiwanie LDAP"
 
 #: includes/arrays.php
 msgid "LDAP cannot bind. LDAP bind operation failed."
@@ -691,9 +715,8 @@ msgid "LDAP plaintext, default port 389"
 msgstr "Zwykły tekst LDAP, domyślny port 389"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "LDAP search failed."
-msgstr "Szukaj"
+msgstr "Wyszukiwanie LDAP nie powiodło się."
 
 #: includes/arrays.php
 msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
@@ -705,16 +728,15 @@ msgstr "Ostatnie 6 godzin"
 
 #: includes/arrays.php
 msgid "Last day"
-msgstr "Poprzedni dzień"
+msgstr "Ostatni dzień"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Last hour"
 msgstr "w ostatniej godzinie"
 
 #: includes/arrays.php
 msgid "Last week"
-msgstr "Ostatni tydzień"
+msgstr "W zeszłym tygodniu"
 
 #: includes/arrays.php
 msgid "Length Required"
@@ -726,25 +748,23 @@ msgstr "Libcurl nie zdołał uzyskać sensownego wyniku z serwera w odpowiedzi n
 
 #: includes/arrays.php
 msgid "Login URL"
-msgstr ""
+msgstr "URL logowania"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Long duration"
-msgstr "Lokalizacja"
+msgstr "Długi czas trwania"
 
 #: includes/arrays.php
 msgid "Long duration alert"
-msgstr ""
+msgstr "Alert długiego czasu trwania"
 
 #: includes/arrays.php
 msgid "MD5"
-msgstr ""
+msgstr "MD5"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "MQTT plaintext, default port 1883"
-msgstr "Zwykły tekst HTTP, domyślny port 80"
+msgstr "Zwykły tekst MQTT, domyślny port 1883"
 
 #: includes/arrays.php
 msgid "Maint string found"
@@ -784,9 +804,8 @@ msgid "New CA"
 msgstr "Nowy urząd certyfikacji"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "New Proxy"
-msgstr "Nowy serwer proxy"
+msgstr "Nowe proxy"
 
 #: includes/arrays.php
 msgid "No Content"
@@ -813,9 +832,8 @@ msgid "Not Implemented"
 msgstr "Nie zaimplementowano"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Not Modified"
-msgstr "Ostatnio zmodyfikowany"
+msgstr "Niezmodyfikowany"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Not tested yet"
@@ -838,31 +856,28 @@ msgid "Nothing was returned from the server, and under the circumstances, gettin
 msgstr "Nic nie zostało zwrócone z serwera, a w tych okolicznościach uzyskanie niczego jest uważane za błąd."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notification List"
-msgstr "Ustawienia powiadomień"
+msgstr "Powiadomienia"
 
 #: includes/arrays.php
 msgid "Notification Settings"
 msgstr "Ustawienia powiadomień"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notify Accounts"
-msgstr "Powiadamianie o rachunkach"
+msgstr "Konta do powiadomień"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Notify Format"
-msgstr "Powiadamianie o rachunkach"
+msgstr "Format powiadomień"
 
 #: includes/arrays.php
 msgid "Number of duration violations in a row"
-msgstr ""
+msgstr "Liczba naruszeń czasu trwania z rzędu"
 
 #: includes/arrays.php
 msgid "OAuth Client secret"
-msgstr ""
+msgstr "Sekret klienta OAuth"
 
 #: includes/arrays.php
 msgid "OAuth2/Bearer token auth"
@@ -874,7 +889,7 @@ msgstr "OK"
 
 #: includes/arrays.php
 msgid "Oauth Client ID"
-msgstr ""
+msgstr "ID klienta OAuth"
 
 #: includes/arrays.php
 msgid "Obsolete Error"
@@ -882,16 +897,15 @@ msgstr "Przestarzały błąd"
 
 #: includes/arrays.php
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: includes/arrays.php
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
 msgstr "Limit czasu operacji. Określony limit czasu został osiągnięty zgodnie z warunkami."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Options"
-msgstr "Akcje"
+msgstr "Opcje"
 
 #: includes/arrays.php
 msgid "Out of disk space on the server."
@@ -911,15 +925,15 @@ msgstr "POP3 z STARTTLS, domyślny port 110"
 
 #: includes/arrays.php
 msgid "POST method, JSON encoded"
-msgstr ""
+msgstr "Metoda POST, kodowanie JSON"
 
 #: includes/arrays.php
 msgid "POST method, form-urlencoded"
-msgstr ""
+msgstr "Metoda POST, form-urlencoded"
 
 #: includes/arrays.php
 msgid "Parameters"
-msgstr ""
+msgstr "Parametry"
 
 #: includes/arrays.php
 msgid "Partial Content"
@@ -942,9 +956,8 @@ msgid "Permission problem on TFTP server."
 msgstr "Problem z uprawnieniami na serwerze TFTP."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Poller"
-msgstr "Pamięć podręczna zasobów Pollera wyczyszczona. Główny kolektor danych zostanie odbudowany przy następnym starcie, a potem nastąpi zdalne zbieranie danych."
+msgstr "Poller"
 
 #: includes/arrays.php
 msgid "Poller on which the test will run"
@@ -959,19 +972,16 @@ msgid "Problem with reading the SSL CA cert (path? access rights?)"
 msgstr "Problem z odczytem certyfikatu SSL CA (ścieżka? prawa dostępu?)"
 
 #: includes/arrays.php servcheck_proxy.php
-#, fuzzy
 msgid "Proxies"
-msgstr "Proxy"
+msgstr "Serwery proxy"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Proxy Authentication Required"
-msgstr "Wymaga uwierzytelnienia"
+msgstr "Wymagane uwierzytelnianie proxy"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Proxy Server"
-msgstr "Serwer główny"
+msgstr "Serwer proxy"
 
 #: includes/arrays.php
 msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
@@ -984,18 +994,24 @@ msgstr "Błąd połączenia QUIC. Ten błąd może być spowodowany błędem bib
 #: includes/arrays.php
 msgid "REST API test with API key auth. Prepare credential first."
 msgstr ""
+"Test REST API z uwierzytelnianiem kluczem API. Najpierw przygotuj "
+"poświadczenia."
 
 #: includes/arrays.php
 msgid "REST API test with Oauth2. Prepare credential first."
-msgstr ""
+msgstr "Test REST API z OAuth2. Najpierw przygotuj poświadczenia."
 
 #: includes/arrays.php
 msgid "REST API test with basic HTTP auth. Prepare credential first."
 msgstr ""
+"Test REST API z podstawowym uwierzytelnianiem HTTP. Najpierw przygotuj "
+"poświadczenia."
 
 #: includes/arrays.php
 msgid "REST API test with cookie auth. Prepare credential first."
 msgstr ""
+"Test REST API z uwierzytelnianiem za pomocą plików cookie. Najpierw "
+"przygotuj poświadczenia."
 
 #: includes/arrays.php
 msgid "Received an error when trying to set the transfer mode to binary or ASCII."
@@ -1006,9 +1022,8 @@ msgid "Request Entity Too Large"
 msgstr "Jednostka żądania jest zbyt duża"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Request Timeout"
-msgstr "Upłynął limit czasu"
+msgstr "Limit czasu żądania"
 
 #: includes/arrays.php
 msgid "Request-URI Too Long"
@@ -1023,7 +1038,6 @@ msgid "Requested Range Not Satisfiable"
 msgstr "Żądany zakres nie spełnia"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Requires Authentication"
 msgstr "Wymaga uwierzytelnienia"
 
@@ -1033,26 +1047,23 @@ msgstr "Resetowanie zawartości"
 
 #: includes/arrays.php
 msgid "Resolve DNS to Address"
-msgstr ""
+msgstr "Rozwiąż nazwę DNS na adres"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String"
-msgstr "String wyszukiwania odpowiedzi"
+msgstr "Wyszukiwany ciąg w odpowiedzi"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String - Failed"
-msgstr "String wyszukiwania odpowiedzi - nieudany"
+msgstr "Wyszukiwany ciąg w odpowiedzi - niepowodzenie"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Response Search String - Maintenance"
-msgstr "String wyszukiwania odpowiedzi - strona konserwacji"
+msgstr "Wyszukiwany ciąg w odpowiedzi - konserwacja"
 
 #: includes/arrays.php
 msgid "Rest API - API key auth"
-msgstr ""
+msgstr "REST API - uwierzytelnianie kluczem API"
 
 #: includes/arrays.php
 msgid ""
@@ -1064,23 +1075,26 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth"
-msgstr ""
+msgstr "REST API - uwierzytelnianie Basic HTTP"
 
 #: includes/arrays.php
 msgid "Rest API - Basic HTTP auth. Username and password are required"
 msgstr ""
+"REST API - uwierzytelnianie Basic HTTP. Wymagane są nazwa użytkownika i hasło"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth"
-msgstr ""
+msgstr "REST API - uwierzytelnianie oparte na plikach cookie"
 
 #: includes/arrays.php
 msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
 msgstr ""
+"REST API - uwierzytelnianie oparte na plikach cookie - obie wartości są "
+"wymagane. Po zalogowaniu zwracany jest plik cookie"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth"
-msgstr ""
+msgstr "REST API - uwierzytelnianie tokenem OAuth2/Bearer"
 
 #: includes/arrays.php
 msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are send Json encoded."
@@ -1096,52 +1110,53 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Rest API with API key auth"
-msgstr ""
+msgstr "REST API z uwierzytelnianiem kluczem API"
 
 #: includes/arrays.php
 msgid "Rest API with Basic HTTP auth"
-msgstr ""
+msgstr "REST API z uwierzytelnianiem Basic HTTP"
 
 #: includes/arrays.php
 msgid "Rest API with Cookie based auth"
-msgstr ""
+msgstr "REST API z uwierzytelnianiem opartym na plikach cookie"
 
 #: includes/arrays.php
 msgid "Rest API with OAuth2/Bearer token auth"
-msgstr ""
+msgstr "REST API z uwierzytelnianiem tokenem OAuth2/Bearer"
 
 #: includes/arrays.php
 msgid "SCP download file, default port 22"
 msgstr "Plik pobierania SCP, domyślny port 22"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SFTP protocol - directory listing, default port 22"
-msgstr "Protokół TFTP - pobieranie pliku, domyślny port 69"
+msgstr "Protokół SFTP - listowanie katalogu, domyślny port 22"
 
 #: includes/arrays.php
 msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
 msgstr ""
+"Protokół SFTP na porcie 22; wymagane są nazwa użytkownika, hasło oraz "
+"ścieżka. Próbuje wylistować zawartość katalogu w podanej ścieżce."
 
 #: includes/arrays.php
 msgid "SHA"
-msgstr ""
+msgstr "SHA"
 
 #: includes/arrays.php
 msgid "SHA-224"
-msgstr ""
+msgstr "SHA-224"
 
 #: includes/arrays.php
 msgid "SHA-256"
-msgstr ""
+msgstr "SHA-256"
 
 #: includes/arrays.php
 msgid "SHA-392"
-msgstr ""
+msgstr "SHA-392"
 
 #: includes/arrays.php
 msgid "SHA-512"
-msgstr ""
+msgstr "SHA-512"
 
 #: includes/arrays.php
 msgid "SMB encrypted (SMBS) download file, default port 445"
@@ -1160,123 +1175,124 @@ msgid "SMTP plaintext, default port 25 (or 587 for submission)"
 msgstr "Zwykły tekst SMTP, domyślny port 25 (lub 587 do przesyłania)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
-msgstr "SMTP z STARTTLS, domyślny port 25 (lub 587 do przesyłania)"
+msgstr "SMTP z STARTTLS, domyślny port 25 (lub 587 dla przesyłania poczty)"
 
 #: includes/arrays.php
 msgid "SNMP Auth Protocol (v3)"
-msgstr ""
+msgstr "SNMP Auth Protocol (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Context (v3)"
-msgstr ""
+msgstr "Kontekst SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Engine ID (v3)"
-msgstr ""
+msgstr "SNMP Engine ID (v3)"
 
 #: includes/arrays.php
 msgid "SNMP OID"
-msgstr ""
+msgstr "SNMP OID"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Password (v3)"
-msgstr "Hasło"
+msgstr "Hasło SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Passphrase (v3)"
-msgstr ""
+msgstr "Paszport prywatności SNMP (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Privacy Protocol (v3)"
-msgstr ""
+msgstr "Protokół SNMP o ochronie prywatności (v3)"
 
 #: includes/arrays.php
 msgid "SNMP Security Level"
-msgstr ""
+msgstr "Poziom bezpieczeństwa SNMP"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Username (v3)"
-msgstr "Nazwa użytkownika"
+msgstr "SNMP Nazwa użytkownika (v3)"
 
 #: includes/arrays.php
 msgid "SNMP community string for SNMP v1 or v2(c)"
-msgstr ""
+msgstr "Ciąg społeczności (community) SNMP dla SNMP v1 lub v2(c)"
 
 #: includes/arrays.php
 msgid "SNMP get"
-msgstr ""
+msgstr "SNMP get"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2"
-msgstr ""
+msgstr "SNMP v1 lub v2"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 - required, insert community name here"
-msgstr ""
+msgstr "SNMP v1 lub v2 - wymagane, wpisz tutaj nazwę społeczności (community)"
 
 #: includes/arrays.php
 msgid "SNMP v1 or v2 community"
-msgstr ""
+msgstr "Społeczność (community) SNMP v1 lub v2"
 
 #: includes/arrays.php
 msgid "SNMP v3"
-msgstr ""
+msgstr "SNMP v3"
 
 #: includes/arrays.php
 msgid "SNMP v3 - The security level determines which parameters are required"
-msgstr ""
+msgstr "SNMP v3 - poziom zabezpieczeń określa, które parametry są wymagane"
 
 #: includes/arrays.php
 msgid "SNMP v3 Security Level to use when querying the device."
 msgstr ""
+"SNMP v3 Poziom bezpieczeństwa, który należy stosować przy wyszukiwaniu "
+"urządzenia."
 
 #: includes/arrays.php
 msgid "SNMP v3 password for this device."
-msgstr ""
+msgstr "Hasło SNMP v3 dla tego urządzenia."
 
 #: includes/arrays.php
 msgid "SNMP v3 username for this device."
-msgstr ""
+msgstr "SNMP v3 nazwa użytkownika dla tego urządzenia."
 
 #: includes/arrays.php
 msgid "SNMP walk"
-msgstr ""
+msgstr "SNMP walk"
 
 #: includes/arrays.php
 msgid "SSH command"
-msgstr ""
+msgstr "Polecenie SSH"
 
 #: includes/arrays.php
 msgid "SSH command on remote system"
-msgstr ""
+msgstr "Polecenie SSH w systemie zdalnym"
 
 #: includes/arrays.php
 msgid "SSH private key"
-msgstr ""
+msgstr "Klucz prywatny SSH"
 
 #: includes/arrays.php
 msgid "SSH private key "
-msgstr ""
+msgstr "Klucz prywatny SSH "
 
 #: includes/arrays.php
 msgid "SSH private key - Cacti 1.2.31+"
-msgstr ""
+msgstr "Klucz prywatny SSH - Cacti 1.2.31+"
 
 #: includes/arrays.php
 msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
 msgstr ""
+"Klucz prywatny SSH - może być używany do testu SCP lub polecenia SSH. Te "
+"testy mogą również korzystać z nazwy użytkownika i hasła"
 
 #: includes/arrays.php
 msgid "SSH private key passphrase"
-msgstr ""
+msgstr "Hasło klucza prywatnego SSH"
 
 #: includes/arrays.php
 msgid "SSH user"
-msgstr ""
+msgstr "Użytkownik SSH"
 
 #: includes/arrays.php
 msgid "SSL Client Certificate required."
@@ -1292,18 +1308,17 @@ msgstr "Zobacz inne"
 
 #: includes/arrays.php
 msgid "Select correct Credential type."
-msgstr ""
+msgstr "Wybierz prawidłowy typ poświadczeń."
 
 #: includes/arrays.php
 msgid "Select correct credential"
-msgstr ""
+msgstr "Wybierz prawidłowe poświadczenia"
 
 #: includes/arrays.php
 msgid "Select correct credential or left empty."
-msgstr ""
+msgstr "Wybierz prawidłowe poświadczenia lub pozostaw puste."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Service Check Name"
 msgstr "Nazwa kontroli usługi"
 
@@ -1317,7 +1332,7 @@ msgstr "Ustawienia usługi"
 
 #: includes/arrays.php
 msgid "Set according to your REST API server"
-msgstr ""
+msgstr "Ustaw zgodnie z serwerem REST API"
 
 #: includes/arrays.php
 msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
@@ -1348,13 +1363,12 @@ msgid "TFTP protocol - download file, default port 69"
 msgstr "Protokół TFTP - pobieranie pliku, domyślny port 69"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Temporary Redirect"
-msgstr "Przekierowanie"
+msgstr "Tymczasowe przekierowanie"
 
 #: includes/arrays.php
 msgid "Test every xth poller run"
-msgstr ""
+msgstr "Testuj co x-te uruchomienie pollera"
 
 #: includes/arrays.php servcheck_test.php
 msgid "Tests"
@@ -1373,17 +1387,14 @@ msgid "The FTP server does not understand the PRET command at all or does not su
 msgstr "Serwer FTP w ogóle nie rozumie polecenia PRET lub nie obsługuje podanego argumentu. Należy zachować ostrożność podczas korzystania z CURLOPT_CUSTOMREQUEST, niestandardowa komenda LIST jest wysyłana wraz z komendą PRET również przed poleceniem PASV. (Dodano w wersji 7.20.0)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The HTTP Proxy Port."
 msgstr "Port proxy HTTP."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The HTTPS Proxy Port."
 msgstr "Port proxy HTTPS."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The Proxy Hostname."
 msgstr "Nazwa hosta proxy."
 
@@ -1400,18 +1411,18 @@ msgid "The download could not be resumed because the specified offset was out of
 msgstr "Nie można wznowić pobierania, ponieważ określone przesunięcie znajdowało się poza granicą pliku."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The name that is displayed for this Credential."
-msgstr "Nazwa, która jest wyświetlana dla tej funkcji Service Check i jest zawarta we wszystkich powiadomieniach Alert."
+msgstr "Nazwa wyświetlana dla tych poświadczeń."
 
 #: includes/arrays.php
 msgid "The name that is displayed for this Rest API."
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
-msgstr "Nazwa, która jest wyświetlana dla tej funkcji Service Check i jest zawarta we wszystkich powiadomieniach Alert."
+msgstr ""
+"Nazwa wyświetlana dla tego sprawdzenia usługi, dołączana do wszystkich "
+"powiadomień o alertach."
 
 #: includes/arrays.php
 msgid "The remote server denied curl to login (Added in 7.13.1)"
@@ -1427,7 +1438,7 @@ msgstr "Zasób, do którego odwołuje się adres URL, nie istnieje."
 
 #: includes/arrays.php
 msgid "The same as HTTP plaintext but adds the ability to test certificates."
-msgstr ""
+msgstr "Tak samo jak zwykły HTTP, ale dodaje możliwość testowania certyfikatów."
 
 #: includes/arrays.php
 msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTLS."
@@ -1458,9 +1469,9 @@ msgid "This error should never be returned by a properly functioning TFTP server
 msgstr "Ten błąd nigdy nie powinien być zwracany przez prawidłowo działający serwer TFTP."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is a listing of accounts that will be notified when this service goes down."
-msgstr "Jest to lista kont, które zostaną powiadomione, gdy strona ta zostanie opuszczona."
+msgstr ""
+"Lista kont, które zostaną powiadomione, gdy ta usługa przestanie działać."
 
 #: includes/arrays.php
 msgid "This is an odd error that mainly occurs due to internal confusion."
@@ -1471,24 +1482,29 @@ msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server r
 msgstr "Jest on zwracany, jeśli CURLOPT_FAILONERROR jest ustawiona na wartość true, a serwer HTTP zwraca kod błędu >= 400."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the format to use when sending the notification email"
-msgstr "Jest to format używany podczas wysyłania wiadomości e-mail z powiadomieniem"
+msgstr "Format używany podczas wysyłania wiadomości e-mail z powiadomieniem"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
-msgstr "Jest to łańcuch wyszukiwania znanej usterki w odpowiedzi Web Service.  Check serwisowy ostrzeże tylko wtedy, gdy łańcuch ten zostanie odnaleziony, ignorując wszelkie problemy związane z timeoutem oraz powyższe ciągi wyszukiwania."
+msgstr ""
+"Jest to ciąg znaków służący do wyszukiwania znanej awarii w odpowiedzi "
+"usługi. Sprawdzanie usługi wygeneruje alert tylko wtedy, gdy ten ciąg "
+"zostanie znaleziony, ignorując wszelkie problemy z przekroczeniem limitu "
+"czasu oraz powyższe ciągi wyszukiwania."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for in the response for a live and working service."
-msgstr "Jest to ciąg do wyszukania w odpowiedzi URL dla usługi internetowej na żywo i działającej."
+msgstr ""
+"Jest to ciąg znaków do wyszukania w odpowiedzi dla aktywnej i działającej "
+"usługi."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
-msgstr "Jest to łańcuch do wyszukania na stronie konserwacji.  Sprawdzenie serwisowe sprawdzi, czy łańcuch ten nie został odnaleziony.  Jeśli zostanie znaleziony, oznacza to, że serwis internetowy jest w trakcie konserwacji."
+msgstr ""
+"Jest to ciąg znaków do wyszukania na stronie konserwacji. Sprawdzanie usługi "
+"poszuka tego ciągu, jeśli powyższy ciąg nie zostanie znaleziony. Jeśli "
+"zostanie znaleziony, oznacza to, że usługa jest w trakcie konserwacji."
 
 #: includes/arrays.php
 msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
@@ -1496,11 +1512,11 @@ msgstr "Była to albo dziwna odpowiedź na polecenie 'RETR', albo zerowy transfe
 
 #: includes/arrays.php
 msgid "Token name"
-msgstr ""
+msgstr "Nazwa tokenu"
 
 #: includes/arrays.php
 msgid "Token value"
-msgstr ""
+msgstr "Wartość tokenu"
 
 #: includes/arrays.php
 msgid "Token/API Key name"
@@ -1516,27 +1532,37 @@ msgstr "Wyzwalacz"
 
 #: includes/arrays.php
 msgid "Try DNS over HTTPS."
-msgstr ""
+msgstr "Przetestuj DNS over HTTPS."
 
 #: includes/arrays.php
 msgid "Try SMB protocol, username and password are required. Try to login and download file."
 msgstr ""
+"Przetestuj protokół SMB – wymagane są nazwa użytkownika i hasło. Nastąpi "
+"próba zalogowania i pobrania pliku."
 
 #: includes/arrays.php
 msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
 msgstr ""
+"Przetestuj metodę SNMP get. Zwracany jest wynik dla określonego OID. "
+"Wymagane są dane uwierzytelniające – najpierw należy przygotować "
+"poświadczenia SNMP v.1, 2 lub v3."
 
 #: includes/arrays.php
 msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
 msgstr ""
+"Przetestuj metodę SNMP walk. Zwracany jest wynik dla określonego OID. "
+"Wymagane są dane uwierzytelniające – najpierw należy przygotować "
+"poświadczenia SNMP v.1, 2 lub v3."
 
 #: includes/arrays.php
 msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
 msgstr ""
+"Spróbuj pobrać plik określony w ścieżce (/path/to/file.txt) z serwera TFTP. "
+"Zwracana jest zawartość pliku."
 
 #: includes/arrays.php
 msgid "Try to resolve DNS record on specified DNS server"
-msgstr ""
+msgstr "Spróbuj rozpoznać rekord DNS na określonym serwerze DNS"
 
 #: includes/arrays.php
 msgid "Type of service"
@@ -1544,16 +1570,15 @@ msgstr "Rodzaj usługi"
 
 #: includes/arrays.php
 msgid "URL to retrieve data. Insert with http:// or https://"
-msgstr ""
+msgstr "Adres URL do pobrania danych. Podaj z http:// lub https://"
 
 #: includes/arrays.php
 msgid "URL which is used to log in or get the token."
-msgstr ""
+msgstr "Adres URL używany do logowania lub uzyskania tokenu."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Unable to Connect"
-msgstr "Włącz serwer"
+msgstr "Nie można połączyć"
 
 #: includes/arrays.php
 msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
@@ -1564,9 +1589,8 @@ msgid "Unauthorized"
 msgstr "Brak autoryzacji"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Uncheck this box to disable this test from being checked."
-msgstr "Usuń zaznaczenie tego pola, aby wyłączyć ten adres url z zaznaczenia."
+msgstr "Odznacz to pole, aby wyłączyć sprawdzanie tego testu."
 
 #: includes/arrays.php
 msgid ""
@@ -1605,18 +1629,21 @@ msgid "Unsupported Media Type"
 msgstr "Nieobsługiwany typ nośnika"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Use Proxy"
-msgstr "Nowy serwer proxy"
+msgstr "Użyj proxy"
 
 #: includes/arrays.php
 msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
 msgstr ""
+"Użyj SSH i połącz się ze zdalnym hostem. Po zalogowaniu uruchom określone "
+"polecenie i zwróć wynik. Możliwe jest użycie nazwy użytkownika i hasła lub "
+"klucza prywatnego."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Use this Notification List for those to be notified when this service goes down."
-msgstr "Jest to lista kont, które zostaną powiadomione, gdy strona ta zostanie opuszczona."
+msgstr ""
+"Użyj tej listy powiadomień dla osób, które mają zostać powiadomione, gdy ta "
+"usługa przestanie działać."
 
 #: includes/arrays.php
 msgid "Username"
@@ -1624,16 +1651,15 @@ msgstr "Nazwa użytkownika"
 
 #: includes/arrays.php
 msgid "Username and password"
-msgstr ""
+msgstr "Nazwa użytkownika i hasło"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Verification Strings"
 msgstr "Ciągi weryfikacyjne"
 
 #: includes/arrays.php
 msgid "Warning"
-msgstr ""
+msgstr "Ostrzeżenie"
 
 #: includes/arrays.php
 msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
@@ -1662,20 +1688,24 @@ msgstr ""
 #: includes/arrays.php
 msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
 msgstr ""
+"Możesz określić inny port (example.com:5000), w przeciwnym razie zostanie "
+"użyty domyślny. Dla numerycznego adresu IPv6 użyj formatu "
+"[ip:ad:dr:es:fo:rma:at]. Dla DOH (DNS over HTTPS) wpisz tutaj nazwę serwera ("
+"np. 10.10.10.10, cloudflare-dns.com, ...)"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
-msgstr "Możesz tutaj określić dodatkowe wiadomości e-mail, aby otrzymywać powiadomienia dla tego adresu URL (oddzielony przecinkiem)"
+msgstr ""
+"Tutaj możesz podać dodatkowe adresy e-mail do otrzymywania alertów dla tego "
+"testu (oddzielone przecinkami)"
 
 #: includes/arrays.php
 msgid "Your own CA and intermediate certs"
 msgstr "Własne certyfikaty CA i certyfikaty pośrednie"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "[None]"
-msgstr "Brak"
+msgstr "[Brak]"
 
 #: includes/arrays.php
 msgid "problem with the local client certificate."
@@ -1687,21 +1717,20 @@ msgstr "Wykresy"
 
 #: includes/functions.php
 msgid "Log History"
-msgstr "Historia logów"
+msgstr "Historia dziennika"
 
 #: includes/functions.php
 msgid "No data"
 msgstr "Brak danych"
 
 #: servcheck_ca.php
-#, fuzzy, php-format
+#, php-format
 msgid "CA [edit: %s]"
-msgstr "Zapytanie [edytuj: %s]"
+msgstr "CA [edytuj: %s]"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "CA [new]"
-msgstr "Pytanie [nowe]"
+msgstr "CA [nowy]"
 
 #: servcheck_ca.php
 msgid "CAs"
@@ -1720,7 +1749,7 @@ msgstr "Wyczyść"
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Clear Filters"
-msgstr ""
+msgstr "Wyczyść filtry"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
@@ -1743,12 +1772,11 @@ msgstr "Usuń"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
-#, fuzzy
 msgid "Delete item"
 msgid_plural "Delete items"
-msgstr[0] "Serwery WebSeer"
-msgstr[1] "Serwery WebSeer"
-msgstr[2] "Serwery WebSeer"
+msgstr[0] "Usuń element"
+msgstr[1] "Usuń elementy"
+msgstr[2] "Usuń elementy"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1756,9 +1784,8 @@ msgid "Go"
 msgstr "Idź"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "No Certificates Found"
-msgstr "Nie znaleziono serwerów"
+msgstr "Nie znaleziono certyfikatów"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1766,18 +1793,17 @@ msgid "Search"
 msgstr "Szukaj"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "Servcheck CA Management"
-msgstr "Zarządzanie serwerem Webseer"
+msgstr "Zarządzanie CA Servcheck"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
 msgid "Set/Refresh Filters"
-msgstr ""
+msgstr "Ustawianie/odświeżanie filtrów"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 msgid "Used"
-msgstr "Używane"
+msgstr "Użyte"
 
 #: servcheck_credential.php
 #, fuzzy
@@ -1788,17 +1814,17 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: servcheck_credential.php
-#, fuzzy, php-format
+#, php-format
 msgid "Credential [edit: %s]"
-msgstr "Zapytanie [edytuj: %s]"
+msgstr "Poświadczenie [edycja: %s]"
 
 #: servcheck_credential.php
 msgid "Credential [new]"
-msgstr ""
+msgstr "Poświadczenie [nowe]"
 
 #: servcheck_credential.php
 msgid "Credentials"
-msgstr ""
+msgstr "Poświadczenia"
 
 #: servcheck_credential.php servcheck_restapi.php servcheck_test.php
 msgid "Duplicate"
@@ -1813,47 +1839,41 @@ msgstr[1] "Duplikuj"
 msgstr[2] "Duplikuj"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "No Credentials Found"
-msgstr "Nie znaleziono serwerów"
+msgstr "Nie znaleziono poświadczeń"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Servcheck Credential Management"
-msgstr "Zarządzanie serwerem Webseer"
+msgstr "Zarządzanie poświadczeniami Servcheck"
 
 #: servcheck_credential.php servcheck_restapi.php
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: servcheck_curl_code.php
 msgid "No error codes"
 msgstr "Brak kodów błędów"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "No Proxies Found"
-msgstr "Nie znaleziono serwerów"
+msgstr "Nie znaleziono serwerów proxy"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Ports (http/https)"
-msgstr "Porty (http / https)"
+msgstr "Porty (http/https)"
 
 #: servcheck_proxy.php
-#, fuzzy, php-format
+#, php-format
 msgid "Proxy [edit: %s]"
-msgstr "Zapytanie [edytuj: %s]"
+msgstr "Proxy [edycja: %s]"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Proxy [new]"
-msgstr "Pytanie [nowe]"
+msgstr "Proxy [nowy]"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "Servcheck Proxy Management"
-msgstr "Zarządzanie serwerem Webseer"
+msgstr "Zarządzanie serwerami proxy Servcheck"
 
 #: servcheck_restapi.php servcheck_test.php
 msgid "Any"
@@ -1922,35 +1942,32 @@ msgid "All"
 msgstr "Wszystkie"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "All Users Selected"
-msgstr "Wszyscy wybrani użytkownicy"
+msgstr "Wybrano wszystkich użytkowników"
 
 #: servcheck_test.php
 msgid "Attempt"
-msgstr ""
+msgstr "Próba"
 
 #: servcheck_test.php
 msgid "CPU u/CPU s/Memory"
-msgstr ""
+msgstr "CPU u/CPU s/Pamięć"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Certificate"
-msgstr "Sprawdź certyfikat"
+msgstr "Certyfikat"
 
 #: servcheck_test.php
 msgid "Checks"
 msgstr "Sprawdza"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Clear log"
-msgstr "Wyczyść"
+msgstr "Wyczyść dziennik"
 
 #: servcheck_test.php
 msgid "Clear statistics"
-msgstr ""
+msgstr "Wyczyść statystyki"
 
 #: servcheck_test.php
 #, fuzzy
@@ -1994,68 +2011,60 @@ msgstr[2] ""
 
 #: servcheck_test.php
 msgid "Curl"
-msgstr ""
+msgstr "Curl"
 
 #: servcheck_test.php
 msgid "Date"
 msgstr "Data"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Date Search"
-msgstr "Szukaj"
+msgstr "Wyszukiwanie według daty"
 
 #: servcheck_test.php
 msgid "Disable"
 msgstr "Wyłącz"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable Service Check"
-msgstr "Włącz kontrolę serwisową"
+msgstr "Wyłącz sprawdzanie usługi"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable item"
 msgid_plural "Disable items"
-msgstr[0] "Wyłącz"
-msgstr[1] "Wyłącz"
-msgstr[2] "Wyłącz"
+msgstr[0] "Wyłącz element"
+msgstr[1] "Wyłącz elementy"
+msgstr[2] "Wyłącz elementy"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duplicate item"
 msgid_plural "Duplicate items"
-msgstr[0] "Duplikuj"
-msgstr[1] "Duplikuj"
-msgstr[2] "Duplikuj"
+msgstr[0] "Duplikuj element"
+msgstr[1] "Duplikuj elementy"
+msgstr[2] "Duplikuj elementy"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duration"
-msgstr "Lokalizacja"
+msgstr "Czas trwania"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Edit Service Check"
-msgstr "Włącz kontrolę serwisową"
+msgstr "Edytuj sprawdzanie usługi"
 
 #: servcheck_test.php
 msgid "Enable"
 msgstr "Włącz"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable Service Check"
-msgstr "Włącz kontrolę serwisową"
+msgstr "Włącz sprawdzanie usługi"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Enable item"
 msgid_plural "Enable items"
-msgstr[0] "Włącz serwer"
-msgstr[1] "Włącz serwer"
-msgstr[2] "Włącz serwer"
+msgstr[0] "Włącz element"
+msgstr[1] "Włącz elementy"
+msgstr[2] "Włącz elementy"
 
 #: servcheck_test.php
 msgid "Entries"
@@ -2064,16 +2073,15 @@ msgstr "Wpisy"
 #: servcheck_test.php
 #, php-format
 msgid "Expired %s days ago"
-msgstr ""
+msgstr "Wygasł %s dni temu"
 
 #: servcheck_test.php
 msgid "Insufficient data, wait a few poller cycles"
-msgstr ""
+msgstr "Niewystarczające dane, poczekaj kilka cykli Pollera"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Last Check (attempt)"
-msgstr "Ostatni sprawdzian"
+msgstr "Ostatnie sprawdzenie (próba)"
 
 #: servcheck_test.php
 msgid "Last returned data of test"
@@ -2081,29 +2089,27 @@ msgstr "Ostatnio zwrócone dane testu"
 
 #: servcheck_test.php
 msgid "Logs"
-msgstr ""
+msgstr "Logi"
 
 #: servcheck_test.php
 msgid "N/A (N/A)"
-msgstr ""
+msgstr "Nd. (Nd.)"
 
 #: servcheck_test.php
 msgid "No"
 msgstr "Nie"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Service Checks Found"
-msgstr "Nie znaleziono serwerów"
+msgstr "Nie znaleziono sprawdzeń usług"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Users Selected"
-msgstr "Brak wybranych użytkowników"
+msgstr "Nie wybrano użytkowników"
 
 #: servcheck_test.php
 msgid "Purge Events"
-msgstr "Zdarzenia czyszczenia"
+msgstr "Wyczyść zdarzenia"
 
 #: servcheck_test.php
 msgid "Refresh"
@@ -2115,21 +2121,19 @@ msgstr "Wynik"
 
 #: servcheck_test.php
 msgid "Ret. data size"
-msgstr ""
+msgstr "Rozmiar zwr. danych"
 
 #: servcheck_test.php
 msgid "Search result"
 msgstr "Wyniki wyszukiwania"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Servcheck Test Management"
-msgstr "Zarządzanie serwerem Webseer"
+msgstr "Zarządzanie testami Servcheck"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Service Check History"
-msgstr "Kontrole usług internetowych"
+msgstr "Historia kontroli usług"
 
 #: servcheck_test.php
 msgid "State"
@@ -2140,29 +2144,26 @@ msgid "Stats (OK/problem)"
 msgstr "Statystyki (OK/problem)"
 
 #: servcheck_test.php
-#, fuzzy, php-format
+#, php-format
 msgid "Test [edit: %s]"
-msgstr "Zapytanie [edytuj: %s]"
+msgstr "Test [edycja: %s]"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Test [new]"
-msgstr "Pytanie [nowe]"
+msgstr "Test [nowy]"
 
 #: servcheck_test.php
 #, php-format
 msgid "The Service Check history was purged for %s"
-msgstr "Historia kontroli serwisowej została wyczyszczona dla %s"
+msgstr "Historia testów usługi została wyczyszczona dla %s"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Triggered"
-msgstr "Wyzwolony"
+msgstr "Wyzwolone"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Users Selected"
-msgstr "Użytkownicy Wybrani użytkownicy"
+msgstr "Wybrani użytkownicy"
 
 #: servcheck_test.php
 msgid "View Graph"
@@ -2173,9 +2174,8 @@ msgid "View Last returned data"
 msgstr "Wyświetlanie ostatnio zwróconych danych"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "View Service Check History"
-msgstr "Kontrole usług internetowych"
+msgstr "Wyświetl historię kontroli usług"
 
 #: servcheck_test.php
 msgid "Yes"
@@ -2183,56 +2183,55 @@ msgstr "Tak"
 
 #: servcheck_test.php
 msgid "days"
-msgstr ""
+msgstr "dni"
 
 #: setup.php
 #, php-format
 msgid "%d Processes"
-msgstr ""
+msgstr "%d Procesy"
 
 #: setup.php
 #, php-format
 msgid "%d days"
-msgstr ""
+msgstr "%d dni"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d hours"
-msgstr "Ostatnie 6 godzin"
+msgstr "%d godz"
 
 #: setup.php
 #, php-format
 msgid "%d year"
-msgstr ""
+msgstr "%d rok"
 
 #: setup.php
-#, fuzzy
 msgid "1 Process"
-msgstr "Serwery WebSeer"
+msgstr "1 Proces"
 
 #: setup.php
 msgid "1 week in advance"
-msgstr ""
+msgstr "1 tydzień wcześniej"
 
 #: setup.php
 msgid "3 days in advance"
-msgstr ""
+msgstr "3 dni wcześniej"
 
 #: setup.php
 msgid "3 weeks in advance"
-msgstr ""
+msgstr "3 tygodnie wcześniej"
 
 #: setup.php
 msgid "30 days in advance"
-msgstr ""
+msgstr "30 dni wcześniej"
 
 #: setup.php
 msgid "60 days in advance"
-msgstr ""
+msgstr "60 dni wcześniej"
 
 #: setup.php
 msgid "90 days in advance"
-msgstr ""
+msgstr "90 dni wcześniej"
 
 #: setup.php
 msgid "CA"
@@ -2244,51 +2243,61 @@ msgstr "Edycja urzędu certyfikacji"
 
 #: setup.php
 msgid "Certificate expiry date advanced notification email"
-msgstr ""
+msgstr "E-mail z wyprzedzającym powiadomieniem o wygaśnięciu certyfikatu"
 
 #: setup.php
 msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
 msgstr ""
+"Zaznaczenie tego pola włączy możliwość uruchamiania poleceń dla zdarzeń "
+"ServCheck. Możesz ją włączyć lub wyłączyć dla każdego testu."
 
 #: setup.php
 msgid "Concurrent Check Processes"
-msgstr ""
+msgstr "Równoległe procesy sprawdzające"
 
 #: setup.php
 msgid "Credential Edit"
-msgstr ""
+msgstr "Edycja poświadczeń"
 
 #: setup.php
 msgid "Credential Save"
-msgstr ""
+msgstr "Zapisz poświadczenie"
 
 #: setup.php
 msgid "Enable Command Execution"
-msgstr ""
+msgstr "Włącz wykonywanie poleceń"
 
 #: setup.php
 msgid "Enter the period after which older logs will be automatically deleted."
-msgstr ""
+msgstr "Wprowadź okres, po którym starsze dzienniki będą automatycznie usuwane."
 
 #: setup.php
 msgid "HTTP/HTTPS Check Settings"
-msgstr ""
+msgstr "Ustawienia sprawdzania HTTP/HTTPS"
 
 #: setup.php
 msgid "How long to keep logs"
-msgstr ""
+msgstr "Jak długo przechowywać logi"
 
 #: setup.php
 msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
 msgstr ""
+"Jeśli sprawdzanie wygasania certyfikatu SSL/TLS usługi jest włączone, "
+"określ, na ile dni przed datą wygaśnięcia certyfikatu system ma wysłać "
+"powiadomienie z wyprzedzeniem"
 
 #: setup.php
 msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
 msgstr ""
+"Po zaznaczeniu tej opcji wtyczka servcheck nie będzie wysyłać żadnych "
+"wiadomości e-mail. Powiadomienia można także wyłączyć tylko dla wybranych "
+"testów"
 
 #: setup.php
 msgid "If checked, this will cause all Emails to be sent separately for each address."
 msgstr ""
+"Po zaznaczeniu tej opcji wszystkie wiadomości e-mail będą wysyłane osobno "
+"dla każdego adresu."
 
 #: setup.php
 msgid "Management"
@@ -2296,16 +2305,15 @@ msgstr "Zarządzanie"
 
 #: setup.php
 msgid "Maximum test duration in seconds"
-msgstr ""
+msgstr "Maksymalny czas trwania testu w sekundach"
 
 #: setup.php
 msgid "Never"
-msgstr ""
+msgstr "Nigdy"
 
 #: setup.php
-#, fuzzy
 msgid "Notification Preferences"
-msgstr "Ustawienia powiadomień"
+msgstr "Preferencje powiadomień"
 
 #: setup.php
 #, fuzzy
@@ -2321,82 +2329,88 @@ msgid "Save CA"
 msgstr "Zapisz urząd certyfikacji"
 
 #: setup.php
-#, fuzzy
 msgid "Save Web Proxy"
-msgstr "Nowy serwer proxy"
+msgstr "Zapisz serwer proxy WWW"
 
 #: setup.php
 msgid "Send Email separately for each address"
-msgstr ""
+msgstr "Wysyłaj wiadomość e-mail osobno dla każdego adresu"
 
 #: setup.php
-#, fuzzy
 msgid "Servcheck"
-msgstr "Kontrole usług internetowych"
+msgstr "ServCheck"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Admin"
-msgstr "Web Service Check Admin"
+msgstr "Administracja kontroli usług"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Edit"
-msgstr "Edycja kontroli serwisowej"
+msgstr "Edycja kontroli usługi"
 
 #: setup.php
-#, fuzzy
 msgid "Service Check Save"
-msgstr "Nazwa kontroli usługi"
+msgstr "Zapisz kontrolę usługi"
 
 #: setup.php
-#, fuzzy
 msgid "Service Checker"
-msgstr "Nazwa kontroli usługi"
+msgstr "Kontrola usług"
 
 #: setup.php
-#, fuzzy
 msgid "Service Checks"
-msgstr "Kontrole usług internetowych"
+msgstr "Sprawdzenia usług"
 
 #: setup.php
 msgid "Status Change Command"
-msgstr ""
+msgstr "Polecenie przy zmianie statusu"
 
 #: setup.php
 msgid "Stop sending all notification"
-msgstr ""
+msgstr "Zatrzymaj wysyłanie wszystkich powiadomień"
 
 #: setup.php
 msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
 msgstr ""
+"Ciąg User-Agent wysyłany podczas testów usług HTTP/HTTPS oraz innych "
+"opartych na cURL. Niektóre witryny blokują stare lub nietypowe przeglądarki, "
+"dlatego można tutaj ustawić aktualny User-Agent. Pozostaw puste, aby użyć "
+"wartości domyślnej."
 
 #: setup.php
 msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
 msgstr ""
+"Wartość domyślna dla testów, w których testowanie czasu wykonania nie jest "
+"włączone. Jeśli jest włączone, maks. czas trwania jest obliczany jako próg "
+"czasu trwania + 2 sekundy."
 
 #: setup.php
 msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
 msgstr ""
+"Liczba procesów testowania usług uruchamianych współbieżnie. Nie zaleca się "
+"zwiększania tej liczby do 2-krotności liczby rdzeni."
 
 #: setup.php
-#, fuzzy
 msgid "User Agent"
-msgstr "Nazwa użytkownika"
+msgstr "User Agent"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy"
-msgstr "Serwery WebSeer"
+msgstr "Serwer proxy WWW"
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy Edit"
-msgstr "Proxy"
+msgstr "Edycja serwera proxy WWW"
 
 #: setup.php
 msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
 msgstr ""
+"Gdy test podstawowy, wyszukiwania lub wygaśnięcia certyfikatu zwróci inny "
+"wynik, uruchom następujące polecenie... To polecenie NIE może zawierać "
+"argumentów wiersza poleceń... Ze środowiska skryptu można jednak pobrać "
+"następujące zmienne:<br>&#060SERVCHECK_TEST_NAME&#062 "
+"&#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 "
+"&#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 "
+"&#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
 
 #~ msgid "%d Minute"
 #~ msgstr "%d minuta"

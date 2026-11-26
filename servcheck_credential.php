@@ -463,7 +463,7 @@ function servcheck_data_edit(): void {
 			$data = [];
 		}
 
-		$header_label = __('Credential [edit: %s]', $data['name'] ?? '');
+		$header_label = __('Credential [edit: %s]', $data['name'] ?? '', 'servcheck');
 
 		$decrypted = servcheck_decrypt_credential($data['id'] ?? 0);
 

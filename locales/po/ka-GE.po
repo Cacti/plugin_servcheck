@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Georgian <https://translate.cacti.net/projects/cacti/"
 "servcheck/ka/>\n"
-"Language: ka\n"
+"Language: ka-GE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -311,9 +311,8 @@ msgid "Custom HTTP header"
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "DES"
-msgstr "DNS"
+msgstr ""
 
 #: includes/arrays.php
 msgid "DNS Name for Query"
@@ -359,9 +358,8 @@ msgid "Early initialization code failed. This is likely to be an internal error 
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Email notification"
-msgstr "გაფრთხილებების სია"
+msgstr ""
 
 #: includes/arrays.php
 msgid "Enable run script for this test"
@@ -450,9 +448,8 @@ msgid "Failed string found"
 msgstr "აღმოჩენილია ჩავარდნილი სტრიქონი"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Failed string not found"
-msgstr "ჩავარდნილი strint აღმოჩენილი არაა"
+msgstr ""
 
 #: includes/arrays.php
 msgid "Failed to connect() to host or proxy."
@@ -1145,9 +1142,8 @@ msgid "SNMP OID"
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Password (v3)"
-msgstr "პაროლი"
+msgstr ""
 
 #: includes/arrays.php
 msgid "SNMP Privacy Passphrase (v3)"
@@ -1162,9 +1158,8 @@ msgid "SNMP Security Level"
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "SNMP Username (v3)"
-msgstr "მომხმარებლის სახელი"
+msgstr ""
 
 #: includes/arrays.php
 msgid "SNMP community string for SNMP v1 or v2(c)"
@@ -1621,9 +1616,8 @@ msgid "Your own CA and intermediate certs"
 msgstr ""
 
 #: includes/arrays.php
-#, fuzzy
 msgid "[None]"
-msgstr "არცერთი"
+msgstr ""
 
 #: includes/arrays.php
 msgid "problem with the local client certificate."
@@ -1688,11 +1682,10 @@ msgstr "წაშლა"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
-#, fuzzy
 msgid "Delete item"
 msgid_plural "Delete items"
-msgstr[0] "ტესტის წაშლა"
-msgstr[1] "ტესტების წაშლა"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1700,9 +1693,8 @@ msgid "Go"
 msgstr "მიდი"
 
 #: servcheck_ca.php
-#, fuzzy
 msgid "No Certificates Found"
-msgstr "სერვერები აღმოჩენილი არაა"
+msgstr ""
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_restapi.php servcheck_test.php
@@ -1729,9 +1721,9 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: servcheck_credential.php
-#, fuzzy, php-format
+#, php-format
 msgid "Credential [edit: %s]"
-msgstr "CA [ჩასწორება: %s]"
+msgstr ""
 
 #: servcheck_credential.php
 msgid "Credential [new]"
@@ -1746,21 +1738,18 @@ msgid "Duplicate"
 msgstr "დუბლირება"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Duplicate Credential"
 msgid_plural "Duplicate Credential"
-msgstr[0] "ტესტის დუბლირება"
-msgstr[1] "ტესტების დუბლირება"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "No Credentials Found"
-msgstr "შემოწმებები აღმოჩენილი არაა"
+msgstr ""
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Servcheck Credential Management"
-msgstr "სერვისის შემოწმების CA-ის მართვა"
+msgstr ""
 
 #: servcheck_credential.php servcheck_restapi.php
 msgid "Type"
@@ -1771,9 +1760,8 @@ msgid "No error codes"
 msgstr "შეცდომის კოდების გარეშე"
 
 #: servcheck_proxy.php
-#, fuzzy
 msgid "No Proxies Found"
-msgstr "სერვერები აღმოჩენილი არაა"
+msgstr ""
 
 #: servcheck_proxy.php
 msgid "Ports (http/https)"
@@ -1809,18 +1797,16 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: servcheck_restapi.php
-#, fuzzy
 msgid "Delete Rest API"
 msgid_plural "Delete Rest API"
-msgstr[0] "ტესტის წაშლა"
-msgstr[1] "ტესტების წაშლა"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_restapi.php
-#, fuzzy
 msgid "Duplicate Rest API"
 msgid_plural "Duplicate Rest API"
-msgstr[0] "ტესტის დუბლირება"
-msgstr[1] "ტესტების დუბლირება"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_restapi.php
 #, php-format
@@ -1864,18 +1850,16 @@ msgid "CPU u/CPU s/Memory"
 msgstr ""
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Certificate"
-msgstr "CA სერტიფიკატები"
+msgstr ""
 
 #: servcheck_test.php
 msgid "Checks"
 msgstr "შემოწმებები"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Clear log"
-msgstr "გასუფთავება"
+msgstr ""
 
 #: servcheck_test.php
 msgid "Clear statistics"
@@ -1932,18 +1916,16 @@ msgid "Disable Service Check"
 msgstr "სერვისის შემოწმების გამორთვა"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Disable item"
 msgid_plural "Disable items"
-msgstr[0] "ტესტის გამორთვა"
-msgstr[1] "ტესტების გამორთვა"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duplicate item"
 msgid_plural "Duplicate items"
-msgstr[0] "ტესტის დუბლირება"
-msgstr[1] "ტესტების დუბლირება"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_test.php
 msgid "Duration"
@@ -1981,9 +1963,8 @@ msgid "Insufficient data, wait a few poller cycles"
 msgstr ""
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Last Check (attempt)"
-msgstr "ბოლო შემოწმება"
+msgstr ""
 
 #: servcheck_test.php
 msgid "Last returned data of test"
@@ -2002,9 +1983,8 @@ msgid "No"
 msgstr "არა"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "No Service Checks Found"
-msgstr "სერვერები აღმოჩენილი არაა"
+msgstr ""
 
 #: servcheck_test.php
 msgid "No Users Selected"
@@ -2031,9 +2011,8 @@ msgid "Search result"
 msgstr "ძებნის შედეგი"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Servcheck Test Management"
-msgstr "სერვისის შემოწმების CA-ის მართვა"
+msgstr ""
 
 #: servcheck_test.php
 msgid "Service Check History"
@@ -2048,14 +2027,13 @@ msgid "Stats (OK/problem)"
 msgstr "შტატისტიკა (კარგადაა/პრობლემა)"
 
 #: servcheck_test.php
-#, fuzzy, php-format
+#, php-format
 msgid "Test [edit: %s]"
-msgstr "CA [ჩასწორება: %s]"
+msgstr ""
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Test [new]"
-msgstr "CA [ახალი]"
+msgstr ""
 
 #: servcheck_test.php
 #, php-format
@@ -2111,9 +2089,8 @@ msgid "%d year"
 msgstr "%d წელი"
 
 #: setup.php
-#, fuzzy
 msgid "1 Process"
-msgstr "ვებპროქსიები"
+msgstr ""
 
 #: setup.php
 msgid "1 week in advance"
@@ -2209,14 +2186,12 @@ msgid "Never"
 msgstr ""
 
 #: setup.php
-#, fuzzy
 msgid "Notification Preferences"
-msgstr "გაფრთხილებების მორგება"
+msgstr ""
 
 #: setup.php
-#, fuzzy
 msgid "Rest API Edit"
-msgstr "CA-ის ჩასწორება"
+msgstr ""
 
 #: setup.php
 msgid "Rest API Save"
@@ -2279,19 +2254,16 @@ msgid "The number of service check processes to run concurrently.  Increasing th
 msgstr ""
 
 #: setup.php
-#, fuzzy
 msgid "User Agent"
-msgstr "მომხმარებლის სახელი"
+msgstr ""
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy"
-msgstr "ვებპროქსიები"
+msgstr ""
 
 #: setup.php
-#, fuzzy
 msgid "Web Proxy Edit"
-msgstr "ვების პროქსის ჩასწორება"
+msgstr ""
 
 #: setup.php
 msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"

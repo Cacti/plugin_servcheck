@@ -178,7 +178,7 @@ function servcheck_data_edit(): void {
 			$data = [];
 		}
 
-		$header_label = __('CA [edit: %s]', $data['name'] ?? '');
+		$header_label = __('CA [edit: %s]', $data['name'] ?? '', 'servcheck');
 	} else {
 		$header_label = __('CA [new]', 'servcheck');
 	}

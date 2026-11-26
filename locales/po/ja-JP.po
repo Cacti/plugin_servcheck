@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"PO-Revision-Date: 2026-11-26 05:54+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Japanese <https://translate.cacti.net/projects/cacti/"
 "servcheck/ja/>\n"
@@ -1586,7 +1586,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Unknown TFTP transfer ID."
-msgstr "不明な TFTP 転送の ID"
+msgstr "不明な TFTP 転送 ID です。"
 
 #: includes/arrays.php
 msgid "Unrecognized transfer encoding."
@@ -1658,7 +1658,7 @@ msgstr ""
 "(example.com:5000)。指定しない場合はデフォルトが使用されます。IPv6 "
 "数値アドレスには [ip:ad:dr:es:fo:rma:at] を使用してください。DOH (DNS over "
 "HTTPS) の場合は、ここにサーバー名を入力してください (例: 10.10.10.10"
-"、cloudflare-dns.com など)。"
+"、cloudflare-dns.com など)"
 
 #: includes/arrays.php
 msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"

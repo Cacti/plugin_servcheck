@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-26 05:54+0000\n"
+"PO-Revision-Date: 2026-11-26 10:48+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Japanese <https://translate.cacti.net/projects/cacti/"
 "servcheck/ja/>\n"
@@ -940,7 +940,7 @@ msgstr "TFTP サーバー上のアクセス許可の問題。"
 
 #: includes/arrays.php
 msgid "Poller"
-msgstr "Poller"
+msgstr "ポーラー"
 
 #: includes/arrays.php
 msgid "Poller on which the test will run"

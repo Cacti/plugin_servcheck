@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-26 05:54+0000\n"
+"PO-Revision-Date: 2026-11-26 10:48+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Turkish <https://translate.cacti.net/projects/cacti/servcheck/"
 "tr/>\n"
@@ -954,7 +954,7 @@ msgstr "TFTP sunucusunda izin sorunu."
 
 #: includes/arrays.php
 msgid "Poller"
-msgstr "Poller"
+msgstr "Yoklayıcı"
 
 #: includes/arrays.php
 msgid "Poller on which the test will run"
@@ -2230,8 +2230,8 @@ msgstr "Sertifika son kullanma tarihi erken bildirim e-postası"
 msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
 msgstr ""
 "Bu kutuyu işaretlemek, Servcheck olaylarında komut çalıştırma özelliğini "
-"etkinleştirir. Bunu her test için ayrı ayrı etkinleştirebilir veya devre "
-"dışı bırakabilirsiniz."
+"etkinleştirir. Bunu her test için etkinleştirebilir veya devre dışı "
+"bırakabilirsiniz."
 
 #: setup.php
 msgid "Concurrent Check Processes"
@@ -2276,7 +2276,7 @@ msgstr ""
 #: setup.php
 msgid "If checked, this will cause all Emails to be sent separately for each address."
 msgstr ""
-"İşaretlenirse, bu tüm E-postaların her adres için ayrı ayrı gönderilmesine "
+"İşaretlenirse, bu tüm E-postaların her adres için ayrı olarak gönderilmesine "
 "neden olur."
 
 #: setup.php
@@ -2384,7 +2384,7 @@ msgstr "Web Proxy Düzenleme"
 msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
 msgstr ""
 "Temel, arama veya sertifika geçerlilik testi farklı bir sonuç döndürdüğünde "
-"aşağıdaki komutu çalıştırın... Bu komut komut satırı argümanları "
+"aşağıdaki komutu çalıştırın... Bu komut herhangi bir komut satırı argümanı "
 "İÇERMEMELİDİR... Ancak aşağıdaki değişkenler betik ortamından "
 "alınabilir:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 "
 "&#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 "

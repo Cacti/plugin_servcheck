@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"PO-Revision-Date: 2026-11-26 10:48+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Hindi <https://translate.cacti.net/projects/cacti/servcheck/"
 "hi/>\n"
@@ -1505,7 +1505,9 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
-msgstr "बहुत सारे रीडायरेक्ट। रीडायरेक्ट का पालन करते समय, libcurl अधिकतम राशि हिट करता है। CURLOPT_MAXREDIRS के साथ अपनी सीमा निर्धारित करें।"
+msgstr ""
+"बहुत अधिक रीडायरेक्ट। इनका अनुसरण करते समय, libcurl अधिकतम सीमा तक पहुँच गया। "
+"CURLOPT_MAXREDIRS के साथ अपनी सीमा निर्धारित करें।"
 
 #: includes/arrays.php
 msgid "Trigger"

@@ -329,7 +329,7 @@ if (!function_exists('html_escape')) {
 }
 
 if (!function_exists('__')) {
-	function __($text, $domain = '') {
+	function __($text, ...$args) {
 		return $text;
 	}
 }

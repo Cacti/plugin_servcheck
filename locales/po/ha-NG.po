@@ -1,0 +1,2171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-11-02 13:51-0500\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Hausa\n"
+"Language: ha-NG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: includes/arrays.php servcheck_test.php
+msgid "Tests"
+msgstr "Gwaje-gwaje"
+
+#: includes/arrays.php
+msgid "CA certificates"
+msgstr "Takaddun shaidar CA"
+
+#: includes/arrays.php servcheck_proxy.php
+msgid "Proxies"
+msgstr "Wakilan Proxy"
+
+#: includes/arrays.php setup.php
+msgid "Credential"
+msgstr "Shaidar Shiga"
+
+#: includes/arrays.php
+msgid "Curl return codes"
+msgstr "Lambobin dawowar Curl"
+
+#: includes/arrays.php
+msgid "Error"
+msgstr "Kuskure"
+
+#: includes/arrays.php
+msgid "Long duration"
+msgstr "Tsawon lokaci mai tsawo"
+
+#: includes/arrays.php
+msgid "Warning"
+msgstr "Gargaɗi"
+
+#: includes/arrays.php
+msgid "Failing"
+msgstr "Yana kasawa"
+
+#: includes/arrays.php
+msgid "Ok"
+msgstr "To"
+
+#: includes/arrays.php setup.php
+msgid "Disabled"
+msgstr "An kashe"
+
+#: includes/arrays.php
+msgid "HTTP plaintext, default port 80"
+msgstr "HTTP rubutu kai tsaye, tsohuwar tasha 80"
+
+#: includes/arrays.php
+msgid "HTTP encrypted (HTTPS), default port 443"
+msgstr "HTTP mai rufaffen tsaro (HTTPS), tsohuwar tasha 443"
+
+#: includes/arrays.php
+msgid "SMTP plaintext, default port 25 (or 587 for submission)"
+msgstr "SMTP a rubutu bayyananne, tsohuwar tasha 25 (ko 587 don aikawa)"
+
+#: includes/arrays.php
+msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
+msgstr "SMTP tare da STARTTLS, tsohuwar tasha 25 (ko 587 don aikawa)"
+
+#: includes/arrays.php
+msgid "SMTP encrypted (SMTPS), default port 465"
+msgstr "SMTP mai rufaffen sirri (SMTPS), tsohuwar tasha 465"
+
+#: includes/arrays.php
+msgid "IMAP plaintext, default port 143"
+msgstr "IMAP marar ɓoye bayanai, tashar asali 143"
+
+#: includes/arrays.php
+msgid "IMAP with STARTTLS, default port 143"
+msgstr "IMAP tare da STARTTLS, tashar asali 143"
+
+#: includes/arrays.php
+msgid "IMAP encrypted (IMAPS), default port 993"
+msgstr "IMAP mai ɓoye bayanai (IMAPS), tashar asali 993"
+
+#: includes/arrays.php
+msgid "POP3 plaintext, default port 110"
+msgstr "POP3 rubutu kai tsaye, tasha ta asali 110"
+
+#: includes/arrays.php
+msgid "POP3 with STARTTLS, default port 110"
+msgstr "POP3 tare da STARTTLS, tasha ta asali 110"
+
+#: includes/arrays.php
+msgid "POP3 encrypted (POP3S), default port 995"
+msgstr "POP3 mai rufaffen tsaro (POP3S), tasha ta asali 995"
+
+#: includes/arrays.php
+msgid "DNS plaintext, default port 53"
+msgstr "DNS rubutu na fili, tsohuwar tasha 53"
+
+#: includes/arrays.php
+msgid "DNS over HTTPS, default port 443"
+msgstr "DNS ta kan HTTPS, tsohuwar tasha 443"
+
+#: includes/arrays.php
+msgid "LDAP plaintext, default port 389"
+msgstr "LDAP rubutu kai tsaye, tashar tsoho 389"
+
+#: includes/arrays.php
+msgid "LDAP encrypted (LDAPS), default port 636"
+msgstr "LDAP mai rufaffen tsaro (LDAPS), tashar tsoho 636"
+
+#: includes/arrays.php
+msgid "FTP plaintext, default port 21"
+msgstr "FTP rubutu zalla, tsohuwar tasha 21"
+
+#: includes/arrays.php
+msgid "TFTP protocol - download file, default port 69"
+msgstr "Ka'idar TFTP - sauke fayil, tasha ta asali 69"
+
+#: includes/arrays.php
+msgid "SCP download file, default port 22"
+msgstr "Sauke fayil na SCP, tsohuwar tasha 22"
+
+#: includes/arrays.php
+msgid "SMB plaintext download file, default port 445"
+msgstr "Sauke fayil na SMB a rubutu bayyananne, tsohuwar tasha 445"
+
+#: includes/arrays.php
+msgid "SMB encrypted (SMBS) download file, default port 445"
+msgstr "Sauke fayil na SMB mai rufaffen sirri (SMBS), tsohuwar tasha 445"
+
+#: includes/arrays.php
+msgid "MQTT plaintext, default port 1883"
+msgstr "Rubutun MQTT na yau da kullun, tsohuwar tasha 1883"
+
+#: includes/arrays.php
+msgid "Rest API with Basic HTTP auth"
+msgstr "Rest API tare da tantancewar HTTP ta asali"
+
+#: includes/arrays.php
+msgid "Rest API with API key auth"
+msgstr "Rest API tare da tantancewar maɓallin API"
+
+#: includes/arrays.php
+msgid "Rest API with OAuth2/Bearer token auth"
+msgstr "Rest API tare da tantancewar alamar OAuth2/Bearer"
+
+#: includes/arrays.php
+msgid "Rest API with Cookie based auth"
+msgstr "Rest API tare da tantancewa mai dogaro da Cookie"
+
+#: includes/arrays.php
+msgid "SNMP get"
+msgstr "Sami na SNMP"
+
+#: includes/arrays.php
+msgid "SNMP walk"
+msgstr "zagayen SNMP"
+
+#: includes/arrays.php
+msgid "SSH command on remote system"
+msgstr "Umarnin SSH akan tsari na nesa"
+
+#: includes/arrays.php
+msgid "SFTP protocol - directory listing, default port 22"
+msgstr "Ka'idar SFTP - jerin kundin fayiloli, tsohuwar tasha 22"
+
+#: includes/arrays.php
+msgid "Username and password"
+msgstr "Sunan mai amfani da kalmar sirri"
+
+#: includes/arrays.php
+msgid "Rest API - Basic HTTP auth"
+msgstr "Rest API - Tantancewar HTTP ta asali"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth"
+msgstr "Rest API - Tantancewar maɓallin API"
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth"
+msgstr "Rest API - Tantancewar alamar OAuth2/Bearer"
+
+#: includes/arrays.php
+msgid "Rest API - Cookie based auth"
+msgstr "Rest API - Tantancewa mai dogaro da Cookie"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2"
+msgstr "SNMP v1 ko v2"
+
+#: includes/arrays.php
+msgid "SNMP v3"
+msgstr "SNMP v3"
+
+#: includes/arrays.php
+msgid "SSH private key - Cacti 1.2.31+"
+msgstr "Maɓallin sirri na SSH - Cacti 1.2.31+"
+
+#: includes/arrays.php
+msgid "Last hour"
+msgstr "Sa'ar da ta gabata"
+
+#: includes/arrays.php
+msgid "Last 6 hours"
+msgstr "Awanni 6 na ƙarshe"
+
+#: includes/arrays.php
+msgid "Last day"
+msgstr "Ranar da ta gabata"
+
+#: includes/arrays.php
+msgid "Last week"
+msgstr "Makon da ya gabata"
+
+#: includes/arrays.php
+msgid "String found"
+msgstr "An sami rubutu"
+
+#: includes/arrays.php
+msgid "String not found"
+msgstr "Ba a sami rubutu ba"
+
+#: includes/arrays.php
+msgid "Failed string found"
+msgstr "An sami rubutun gazawa"
+
+#: includes/arrays.php
+msgid "Failed string not found"
+msgstr "Ba a sami rubutun gazawa ba"
+
+#: includes/arrays.php
+msgid "Maint string found"
+msgstr "An samo jimlar Maint"
+
+#: includes/arrays.php servcheck_test.php
+msgid "Not tested yet"
+msgstr "Ba a gwada ba tukuna"
+
+#: includes/arrays.php
+msgid "Search not performed"
+msgstr "Ba a yi bincike ba"
+
+#: includes/arrays.php
+msgid "OK"
+msgstr "To"
+
+#: includes/arrays.php
+msgid "Error/failed"
+msgstr "Kuskure/ya gaza"
+
+#: includes/arrays.php
+msgid "[None]"
+msgstr "[Babu]"
+
+#: includes/arrays.php
+msgid "MD5"
+msgstr "MD5"
+
+#: includes/arrays.php
+msgid "SHA"
+msgstr "SHA"
+
+#: includes/arrays.php
+msgid "SHA-224"
+msgstr "SHA-224"
+
+#: includes/arrays.php
+msgid "SHA-256"
+msgstr "SHA-256"
+
+#: includes/arrays.php
+msgid "SHA-392"
+msgstr "SHA-392"
+
+#: includes/arrays.php
+msgid "SHA-512"
+msgstr "SHA-512"
+
+#: includes/arrays.php
+msgid "DES"
+msgstr "DES"
+
+#: includes/arrays.php
+msgid "AES"
+msgstr "AES"
+
+#: includes/arrays.php
+msgid "AES-128"
+msgstr "AES-128"
+
+#: includes/arrays.php
+msgid "AES-192"
+msgstr "AES-192"
+
+#: includes/arrays.php
+msgid "AES-192-C"
+msgstr "AES-192-C"
+
+#: includes/arrays.php
+msgid "AES-256"
+msgstr "AES-256"
+
+#: includes/arrays.php
+msgid "AES-256-C"
+msgstr "AES-256-C"
+
+#: includes/arrays.php
+msgid "Unable to Connect"
+msgstr "An Kasa Haɗawa"
+
+#: includes/arrays.php includes/functions.php servcheck_ca.php
+#: servcheck_proxy.php
+msgid "Continue"
+msgstr "Ci gaba"
+
+#: includes/arrays.php
+msgid "Switching Protocols"
+msgstr "Ka'idojin Switching"
+
+#: includes/arrays.php
+msgid "Created"
+msgstr "An Ƙirƙira"
+
+#: includes/arrays.php
+msgid "Accepted"
+msgstr "An karɓa"
+
+#: includes/arrays.php
+msgid "Non-Authoritative Information"
+msgstr "Bayanai Marasa Iko"
+
+#: includes/arrays.php
+msgid "No Content"
+msgstr "Babu Abun Ciki"
+
+#: includes/arrays.php
+msgid "Reset Content"
+msgstr "Sake Saita Abun Ciki"
+
+#: includes/arrays.php
+msgid "Partial Content"
+msgstr "Sashen Abun Ciki"
+
+#: includes/arrays.php
+msgid "Multiple Choices"
+msgstr "Zaɓuɓɓuka Masu Yawa"
+
+#: includes/arrays.php
+msgid "Moved Permanently"
+msgstr "An Matsar Dindindin"
+
+#: includes/arrays.php
+msgid "Found"
+msgstr "An Samu"
+
+#: includes/arrays.php
+msgid "See Other"
+msgstr "Duba Wani"
+
+#: includes/arrays.php
+msgid "Not Modified"
+msgstr "Ba A Sauya Ba"
+
+#: includes/arrays.php
+msgid "Use Proxy"
+msgstr "Yi amfani da Proxy"
+
+#: includes/arrays.php
+msgid "(Unused)"
+msgstr "(Ba a yi amfani da shi ba)"
+
+#: includes/arrays.php
+msgid "Temporary Redirect"
+msgstr "Karkatarwa ta Wucin Gadi"
+
+#: includes/arrays.php
+msgid "Bad Request"
+msgstr "Buƙata Mara Kyau"
+
+#: includes/arrays.php
+msgid "Unauthorized"
+msgstr "Ba a ba da izini ba"
+
+#: includes/arrays.php
+msgid "Payment Required"
+msgstr "Ana Buƙatar Biyan Kuɗi"
+
+#: includes/arrays.php
+msgid "Forbidden"
+msgstr "An hana"
+
+#: includes/arrays.php
+msgid "Not Found"
+msgstr "Ba a Samu Ba"
+
+#: includes/arrays.php
+msgid "Method Not Allowed"
+msgstr "Ba a Yarda da Hanya ba"
+
+#: includes/arrays.php
+msgid "Not Acceptable"
+msgstr "Ba Mai Karɓuwa Ba"
+
+#: includes/arrays.php
+msgid "Proxy Authentication Required"
+msgstr "Ana Buƙatar Tabbatar da Proxy"
+
+#: includes/arrays.php
+msgid "Request Timeout"
+msgstr "Lokacin Buƙata Ya Ƙare"
+
+#: includes/arrays.php
+msgid "Conflict"
+msgstr "Saɓani"
+
+#: includes/arrays.php
+msgid "Gone"
+msgstr "Ya ɓace"
+
+#: includes/arrays.php
+msgid "Length Required"
+msgstr "Ana Buƙatar Tsawo"
+
+#: includes/arrays.php
+msgid "Precondition Failed"
+msgstr "Sharaɗin Farko Ya Kasa"
+
+#: includes/arrays.php
+msgid "Request Entity Too Large"
+msgstr "Abun Buƙata Ya Yi Girma Da Yawa"
+
+#: includes/arrays.php
+msgid "Request-URI Too Long"
+msgstr "Request-URI Ya Yi Tsawo Da Yawa"
+
+#: includes/arrays.php
+msgid "Unsupported Media Type"
+msgstr "Nau'in Media da Ba a Tallafa Masa Ba"
+
+#: includes/arrays.php
+msgid "Requested Range Not Satisfiable"
+msgstr "Kewayon Da Aka Buƙata Ba Zai Yiwu Ba"
+
+#: includes/arrays.php
+msgid "Expectation Failed"
+msgstr "Abinda Aka Zata Ya Gaza"
+
+#: includes/arrays.php
+msgid "Internal Server Error"
+msgstr "Kuskuren Sabar Ciki"
+
+#: includes/arrays.php
+msgid "Not Implemented"
+msgstr "Ba A Aiwatar Ba"
+
+#: includes/arrays.php
+msgid "Bad Gateway"
+msgstr "Ƙofar Haɗi Mara Kyau"
+
+#: includes/arrays.php
+msgid "Service Unavailable"
+msgstr "Sabis Ba Ya Samu"
+
+#: includes/arrays.php
+msgid "Gateway Timeout"
+msgstr "Ƙarewar Lokacin Gateway"
+
+#: includes/arrays.php
+msgid "HTTP Version Not Supported"
+msgstr "Ba a Goyon Bayan Sigar HTTP"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Poller run"
+msgstr "%d Aikin Mai Tattara Bayanai"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Poller runs"
+msgstr "%d Ayyukan Mai Tattara Bayanai"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Seconds"
+msgstr "Daƙiƙa %d"
+
+#: includes/arrays.php
+msgid "Auth in HTTP headers"
+msgstr "Tabbatarwa a cikin kanun HTTP"
+
+#: includes/arrays.php
+msgid "Custom HTTP header"
+msgstr "Kan HTTP na musamman"
+
+#: includes/arrays.php
+msgid "POST method, form-urlencoded"
+msgstr "Hanyar POST, tsarin form-urlencoded"
+
+#: includes/arrays.php
+msgid "POST method, JSON encoded"
+msgstr "Hanyar POST, an tsara da JSON"
+
+#: includes/arrays.php
+msgid "JSON encoded"
+msgstr "An tsara a JSON"
+
+#: includes/arrays.php
+msgid "Form urlencoded"
+msgstr "Fom mai tsarin urlencoded"
+
+#: includes/arrays.php servcheck_ca.php servcheck_credential.php
+#: servcheck_proxy.php servcheck_test.php
+msgid "Name"
+msgstr "Suna"
+
+#: includes/arrays.php
+msgid "A Useful Name for this CA chain."
+msgstr "Suna mai amfani don wannan sarkar CA."
+
+#: includes/arrays.php
+msgid "New CA"
+msgstr "Sabon CA"
+
+#: includes/arrays.php
+msgid "CA Chain"
+msgstr "Sarkar CA"
+
+#: includes/arrays.php
+msgid "CA and intermediate certs, PEM encoded"
+msgstr "Takaddun shaidar CA da na tsaka-tsaki, masu rufin PEM"
+
+#: includes/arrays.php
+msgid "A Useful Name for this Proxy."
+msgstr "Suna mai amfani don wannan Proxy."
+
+#: includes/arrays.php
+msgid "New Proxy"
+msgstr "Sabon Proxy"
+
+#: includes/arrays.php servcheck_proxy.php
+msgid "Hostname"
+msgstr "Sunan Mai Masauki"
+
+#: includes/arrays.php
+msgid "The Proxy Hostname."
+msgstr "Sunan Mai Masauki na Proxy."
+
+#: includes/arrays.php
+msgid "HTTP Port"
+msgstr "Tashar HTTP"
+
+#: includes/arrays.php
+msgid "The HTTP Proxy Port."
+msgstr "Tashar Wakili (Proxy) ta HTTP."
+
+#: includes/arrays.php
+msgid "HTTPS Port"
+msgstr "Tashar HTTPS"
+
+#: includes/arrays.php
+msgid "The HTTPS Proxy Port."
+msgstr "Tashar Wakili (Proxy) ta HTTPS."
+
+#: includes/arrays.php
+msgid "Select correct credential or left empty."
+msgstr "Zaɓi shaidar shiga daidai ko bar shi fanko."
+
+#: includes/arrays.php servcheck_test.php
+msgid "None"
+msgstr "Babu"
+
+#: includes/arrays.php
+msgid "General Settings"
+msgstr "Saitunan Gabaɗaya"
+
+#: includes/arrays.php
+msgid "Service Check Name"
+msgstr "Sunan Binciken Sabis"
+
+#: includes/arrays.php
+msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
+msgstr "Sunan da ake nunawa don wannan Duba Sabis, kuma ana haɗa shi a cikin duk sanarwar Faɗakarwa."
+
+#: includes/arrays.php
+msgid "How many attempts"
+msgstr "Yawan ƙoƙari nawa"
+
+#: includes/arrays.php
+msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
+msgstr "Cacti yana ƙoƙarin gudanar da kowane gwaji sau da yawa. Yunƙuri na farko da ya yi nasara yana kawo ƙarshen gwajin kuma yana rubuta nasarar. Idan babu ko ɗaya daga cikin yunƙurin da ya yi nasara, za a dakatar da gwajin kuma a rubuta gazawa. Babban adadi yana haifar da tsawon lokacin gwajin rajista."
+
+#: includes/arrays.php
+msgid "Enable test"
+msgstr "Kunna gwaji"
+
+#: includes/arrays.php
+msgid "Uncheck this box to disable this test from being checked."
+msgstr "Cire alama a wannan akwatin don hana duba wannan gwajin."
+
+#: includes/arrays.php
+msgid "Enable run script for this test"
+msgstr "Kunna gudanar da rubutun umarni don wannan gwaji"
+
+#: includes/arrays.php
+msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
+msgstr "Idan an kunna aikin Gudanar da Umarni na gaba ɗaya, za ka iya saita a nan ko ya kamata a gudanar da rubutun shirin don wannan gwajin ko a'a."
+
+#: includes/arrays.php
+msgid "Poller"
+msgstr "Mai Tattara Bayanai"
+
+#: includes/arrays.php
+msgid "Poller on which the test will run"
+msgstr "Mai Tattara Bayanai da gwajin zai gudana a kansa"
+
+#: includes/arrays.php
+msgid "Type of service"
+msgstr "Nau'in sabis"
+
+#: includes/arrays.php
+msgid "What type of service?"
+msgstr "Wane irin sabis ne?"
+
+#: includes/arrays.php
+msgid "IP Address or DNS name of server"
+msgstr "Adireshin IP ko sunan DNS na sabar"
+
+#: includes/arrays.php
+msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
+msgstr "Za ka iya ƙayyade wata tashar sadarwa (example.com:5000) in ba haka ba za a yi amfani da ta asali. Don adireshin lambobi na IPv6 yi amfani da [ip:ad:dr:es:fo:rma:at]. Don DOH (DNS over HTTPS) yi amfani da sunan uwar garke a nan (misali 10.10.10.10, cloudflare-dns.com, ..)"
+
+#: includes/arrays.php
+msgid "Resolve DNS to Address"
+msgstr "Fassara DNS zuwa Adireshi"
+
+#: includes/arrays.php
+msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
+msgstr "Shigar da Adireshin IP don tilasta sunan DNS ya warware zuwa gare shi. Barin shi fanko zai yi amfani da Warwarewar DNS a madadin haka."
+
+#: includes/arrays.php
+msgid "Service settings"
+msgstr "Saitunan sabis"
+
+#: includes/arrays.php
+msgid "Select correct credential"
+msgstr "Zaɓi shaidar shiga daidai"
+
+#: includes/arrays.php
+msgid "SNMP OID"
+msgstr "SNMP OID"
+
+#: includes/arrays.php
+msgid "Insert SNMP OID"
+msgstr "Shigar da SNMP OID"
+
+#: includes/arrays.php
+msgid "SSH command"
+msgstr "Umarnin SSH"
+
+#: includes/arrays.php
+msgid "Insert SSH command with full path, result of command will be returned"
+msgstr "Shigar da umarnin SSH tare da cikakkiyar hanya, za a dawo da sakamakon umarnin"
+
+#: includes/arrays.php
+msgid "Your own CA and intermediate certs"
+msgstr "Takardun shaidar CA naka da na tsaka-tsaki"
+
+#: includes/arrays.php
+msgid "LDAP Search"
+msgstr "Binciken LDAP"
+
+#: includes/arrays.php
+msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
+msgstr "Tacewar binciken LDAP, zai iya zama ,OU=anygroup,DC=example,DC=com"
+
+#: includes/arrays.php
+msgid "DNS Name for Query"
+msgstr "Sunan DNS don Tambaya"
+
+#: includes/arrays.php
+msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
+msgstr "Sunan DNS don yin tambaya. Don DOH (DNS ta kan HTTPS) yi amfani da /resolve?name=example.com ko /dns-query?name=example.com&type=A. Don rubutu na fili za a dawo da bayanan DNS A da AAAA"
+
+#: includes/arrays.php
+msgid "Path Part of URL"
+msgstr "Sashen Hanya na URL"
+
+#: includes/arrays.php
+msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
+msgstr "Don sabis na yanar gizo shigar da aƙalla \"/\" ko wani abu kamar \"/kowace/hanya/\"."
+
+#: includes/arrays.php
+msgid "Requires Authentication"
+msgstr "Yana Buƙatar Tantancewa"
+
+#: includes/arrays.php
+msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
+msgstr "Yi alama a wannan akwatin idan wurin yakan dawo da Kuskuren 401 saboda yana buƙatar sunan mai amfani da kalmar sirri."
+
+#: includes/arrays.php
+msgid "Proxy Server"
+msgstr "Sabar Wakili"
+
+#: includes/arrays.php
+msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
+msgstr "Idan wannan rubutun haɗi yana buƙatar proxy, zaɓe shi a nan. In ba haka ba zaɓi 'Babu'."
+
+#: includes/arrays.php
+msgid "Check Certificate"
+msgstr "Duba Takardar Shaida"
+
+#: includes/arrays.php
+msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
+msgstr "Idan ana amfani da SSL, zaɓi wannan akwati idan kana son tabbatar da ingancin takardar shaida. Yana kunne ta tsoho, kashe idan wurin yana amfani da takardar shaida da aka sa wa hannu da kai."
+
+#: includes/arrays.php
+msgid "Check and notify Certificate expiration"
+msgstr "Duba kuma ka sanar da ƙarewar Takardar Shaida"
+
+#: includes/arrays.php
+msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
+msgstr "Idan ana amfani da SSL, zaɓi wannan akwati idan kana son duba ƙarewar takardar shaida. Za ka iya saita a cikin saituna adadin kwanaki nawa kafin ƙarewa za a sanar.."
+
+#: includes/arrays.php
+msgid "Parameters"
+msgstr "Sigogi"
+
+#: includes/arrays.php
+msgid "How Often to Test"
+msgstr "Sau Nawa Za a Gwada"
+
+#: includes/arrays.php
+msgid "Test every xth poller run"
+msgstr "Gwada a kowane zagaye na x na Mai Tattara Bayanai"
+
+#: includes/arrays.php
+msgid "Trigger"
+msgstr "Mai Tada Aiki"
+
+#: includes/arrays.php
+msgid "How many times the service must be DOWN before an alert email is triggered."
+msgstr "Sau nawa dole ne sabis ɗin ya kasance A KASHE kafin a kunna imel na faɗakarwa."
+
+#: includes/arrays.php
+msgid "Long duration alert"
+msgstr "Faɗakarwar tsawon lokaci mai tsawo"
+
+#: includes/arrays.php
+msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
+msgstr "Idan lokacin gwajin ya fi wannan ƙimar yawa a jere, a aika sanarwa. Yana da alaƙa da adadin Tsawon Lokaci (Duration count). Gwajin yana gadon matsakaicin lokacin gudu daga saituna. Idan an saita ƙima mafi girma a nan, matsakaicin lokacin gudu shine wannan ƙima + daƙiƙa 2."
+
+#: includes/arrays.php
+msgid "Number of duration violations in a row"
+msgstr "Adadin keta tsawon lokaci a jere"
+
+#: includes/arrays.php
+msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
+msgstr "Sau nawa dole ne a wuce ƙayyadadden lokacin a jere kafin a aika da sanarwa"
+
+#: includes/arrays.php
+msgid "Verification Strings"
+msgstr "Jumlolin Tabbatarwa"
+
+#: includes/arrays.php
+msgid "Response Search String"
+msgstr "Kalmomin Binciken Amsa"
+
+#: includes/arrays.php
+msgid "This is the string to search for in the response for a live and working service."
+msgstr "Wannan ita ce jimlar da za a bincika a cikin amsa don sabis da ke raye kuma yana aiki."
+
+#: includes/arrays.php
+msgid "Response Search String - Maintenance"
+msgstr "Kalmomin Binciken Amsa - Kulawa"
+
+#: includes/arrays.php
+msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
+msgstr "Wannan ita ce jimlar da za a bincika a kan Kulawa . Binciken Sabis zai bincika wannan jimlar idan ba a sami jimlar da ke sama ba. Idan an same ta, yana nufin cewa sabis ɗin yana ƙarƙashin gyara."
+
+#: includes/arrays.php
+msgid "Response Search String - Failed"
+msgstr "Kalmomin Binciken Amsa - Ya Gaza"
+
+#: includes/arrays.php
+msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
+msgstr "Wannan ita ce jimlar da za a bincika don sanannen gazawa a cikin amsar sabis. Binciken Sabis zai yi faɗakarwa ne kawai idan an sami wannan jimlar, tare da yin watsi da duk wata matsalar ƙarewar lokaci da jimlolin bincike na sama."
+
+#: includes/arrays.php
+msgid "Notification Settings"
+msgstr "Saitunan Sanarwa"
+
+#: includes/arrays.php
+msgid "Email notification"
+msgstr "Sanarwar imel"
+
+#: includes/arrays.php
+msgid "If enabled email notification about state, duration and search result will be send"
+msgstr "Idan an kunna, za a aika sanarwar imel game da yanayi, tsawon lokaci da sakamakon bincike"
+
+#: includes/arrays.php
+msgid "Notify Format"
+msgstr "Tsarin Sanarwa"
+
+#: includes/arrays.php
+msgid "This is the format to use when sending the notification email"
+msgstr "Wannan shine tsarin da za a yi amfani da shi lokacin aika imel na sanarwa"
+
+#: includes/arrays.php
+msgid "Notification List"
+msgstr "Jerin Sanarwa"
+
+#: includes/arrays.php
+msgid "Use this Notification List for those to be notified when this service goes down."
+msgstr "Yi amfani da wannan Jerin Sanarwa don waɗanda za a sanar lokacin da wannan sabis ɗin ya tsaya."
+
+#: includes/arrays.php
+msgid "Notify Accounts"
+msgstr "Asusun Sanarwa"
+
+#: includes/arrays.php
+msgid "This is a listing of accounts that will be notified when this service goes down."
+msgstr "Wannan jerin asusun da za a sanar da su ne idan wannan sabis ɗin ya daina aiki."
+
+#: includes/arrays.php
+msgid "Extra Alert Emails"
+msgstr "Ƙarin Imel ɗin Faɗakarwa"
+
+#: includes/arrays.php
+msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
+msgstr "Za ka iya ƙayyade ƙarin Imel a nan don karɓar faɗakarwa ga wannan gwaji (a raba da waƙafi)"
+
+#: includes/arrays.php
+msgid "Notes"
+msgstr "Bayanai"
+
+#: includes/arrays.php
+msgid "Notes sent in email"
+msgstr "Bayanan da aka aika ta imel"
+
+#: includes/arrays.php
+msgid "External ID"
+msgstr "ID na Waje"
+
+#: includes/arrays.php
+msgid "Enter an External ID for this test."
+msgstr "Shigar da ID na Waje don wannan gwaji."
+
+#: includes/arrays.php
+msgid "Help"
+msgstr "Taimako"
+
+#: includes/arrays.php
+msgid "Credential Name"
+msgstr "Sunan Shaidar Shiga"
+
+#: includes/arrays.php
+msgid "The name that is displayed for this Credential."
+msgstr "Sunan da ake nunawa don wannan Takardar Shaida."
+
+#: includes/arrays.php
+msgid "Credential type"
+msgstr "Nau'in shaidar shiga"
+
+#: includes/arrays.php
+msgid "Select correct Credential type."
+msgstr "Zaɓi nau'in Shaidar shiga daidai."
+
+#: includes/arrays.php
+msgid "Options"
+msgstr "Zaɓuɓɓuka"
+
+#: includes/arrays.php
+msgid "Set according to your REST API server"
+msgstr "Saita bisa ga uwar garken REST API naka"
+
+#: includes/arrays.php
+msgid "Username"
+msgstr "Sunan mai amfani"
+
+#: includes/arrays.php
+msgid "Password"
+msgstr "Kalmar sirri"
+
+#: includes/arrays.php
+msgid "For anonymous FTP insert email address"
+msgstr "Don FTP marar suna shigar da adireshin imel"
+
+#: includes/arrays.php
+msgid "Login URL"
+msgstr "URL na Shiga"
+
+#: includes/arrays.php
+msgid "URL which is used to log in or get the token."
+msgstr "URL da ake amfani da shi don shiga ko samun alamar shiga (token)."
+
+#: includes/arrays.php
+msgid "Data URL"
+msgstr "URL na Bayanai"
+
+#: includes/arrays.php
+msgid "URL to retrieve data. Insert with http:// or https://"
+msgstr "URL don dawo da bayanai. Shigar tare da http:// ko https://"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2 community"
+msgstr "Al'ummar SNMP v1 ko v2"
+
+#: includes/arrays.php
+msgid "SNMP community string for SNMP v1 or v2(c)"
+msgstr "Kalmomin al'ummar SNMP don SNMP v1 ko v2(c)"
+
+#: includes/arrays.php
+msgid "SNMP Security Level"
+msgstr "Matakin Tsaro na SNMP"
+
+#: includes/arrays.php
+msgid "SNMP v3 Security Level to use when querying the device."
+msgstr "Matakin Tsaro na SNMP v3 da za a yi amfani da shi yayin neman bayani daga na'urar."
+
+#: includes/arrays.php
+msgid "SNMP Auth Protocol (v3)"
+msgstr "Ka'idar Tabbatarwa ta SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Authorization Protocol."
+msgstr "Zaɓi Ka'idar Ba da Izini ta SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Username (v3)"
+msgstr "Sunan Mai Amfani na SNMP (v3)"
+
+#: includes/arrays.php
+msgid "SNMP v3 username for this device."
+msgstr "Sunan mai amfani na SNMP v3 don wannan na'ura."
+
+#: includes/arrays.php
+msgid "SNMP Password (v3)"
+msgstr "Kalmar Sirri ta SNMP (v3)"
+
+#: includes/arrays.php
+msgid "SNMP v3 password for this device."
+msgstr "Kalmar sirri ta SNMP v3 don wannan na'ura."
+
+#: includes/arrays.php
+msgid "SNMP Privacy Protocol (v3)"
+msgstr "Ka'idar Sirri ta SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Privacy Protocol."
+msgstr "Zaɓi Ka'idar Sirri ta SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Privacy Passphrase (v3)"
+msgstr "Jimlar Sirri ta SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Privacy Passphrase."
+msgstr "Zaɓi Jimlar Sirri ta SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Context (v3)"
+msgstr "Yanayin SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Enter the SNMP Context to use for this device."
+msgstr "Shigar da Yanayin SNMP da za a yi amfani da shi don wannan na'ura."
+
+#: includes/arrays.php
+msgid "SNMP Engine ID (v3)"
+msgstr "Lambar Injin SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Enter the SNMP v3 Engine Id or empty."
+msgstr "Shigar da SNMP v3 Engine Id ko a bar shi fanko."
+
+#: includes/arrays.php
+msgid "SSH user"
+msgstr "Mai amfani na SSH"
+
+#: includes/arrays.php
+msgid "Insert username here"
+msgstr "Shigar da sunan mai amfani a nan"
+
+#: includes/arrays.php
+msgid "SSH private key"
+msgstr "Maɓallin sirri na SSH"
+
+#: includes/arrays.php
+msgid "SSH private key "
+msgstr "Maɓallin sirri na SSH "
+
+#: includes/arrays.php
+msgid "SSH private key passphrase"
+msgstr "Kalmar wucewa ta maɓallin sirri na SSH"
+
+#: includes/arrays.php
+msgid "If your key is password protected, insert password here"
+msgstr "Idan an kare mabuɗinka da kalmar sirri, shigar da kalmar sirri a nan"
+
+#: includes/arrays.php
+msgid "Client ID"
+msgstr "ID na Abokin Hulɗa"
+
+#: includes/arrays.php
+msgid "Oauth Client ID"
+msgstr "ID na Abokin Ciniki na Oauth"
+
+#: includes/arrays.php
+msgid "Client secret"
+msgstr "Sirrin abokin ciniki"
+
+#: includes/arrays.php
+msgid "OAuth Client secret"
+msgstr "Sirrin Abokin Ciniki na OAuth"
+
+#: includes/arrays.php
+msgid "Token name"
+msgstr "Sunan token"
+
+#: includes/arrays.php
+msgid "Token value"
+msgstr "Ƙimar token"
+
+#: includes/arrays.php
+msgid "<b>Can be used for a lot of service checks:</b><br/><i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/><i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/><i>LDAP, smb, smbs</i> - required<br/><i>MQTT</i> - optional<br/><i>SCP, SSH command</i> - you can use this method or private key method"
+msgstr "<b>Ana iya amfani da shi don binciken ayyuka da yawa:</b><br/><i>Http/https</i> - na zaɓi ne, idan an saita shi, a gwada tantancewar asali ta HTTP<br/><i>SMTP akan tashar 587</i> - na zaɓi ne. Idan babu sunan mai amfani/kalmar sirri, ana gwada martanin sabar ne kawai. Idan akwai sunan mai amfani da kalmar sirri, ana kuma yin shiga<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - na zaɓi ne. Don ftp na baƙo, a yi amfani da sunan mai amfani \"anonymous\" da adireshin imel a matsayin kalmar sirri<br/><i>LDAP, smb, smbs</i> - ana buƙata<br/><i>MQTT</i> - na zaɓi ne<br/><i>Umurnin SCP, SSH</i> - kuna iya amfani da wannan hanyar ko hanyar maɓallin sirri"
+
+#: includes/arrays.php
+msgid "Rest API - Basic HTTP auth. Username and password are required"
+msgstr "Rest API - Tantancewar HTTP ta asali. Ana buƙatar sunan mai amfani da kalmar sirri"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue). For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). For POST <i>api_key</i> is usually used."
+msgstr "Rest API - Tantancewar maɓallin API<br/>Ana aika tantancewa a cikin kan HTTP, keɓaɓɓen kai ko hanyar POST. Ba a tallafawa bayanan shiga a cikin URL.<br/>Shigar da sunan maɓallin API da ƙimarsa. Ana buƙatar duka ƙimomin biyu. Ga kan HTTP ana yawan amfani da sunan <i>Bearer ko apikey ko \"\"</i> (Authorization: Bearer apivalue). Ga keɓaɓɓen kai ana yawan amfani da <i>X-API-Key</i> (X-Api-Key: keyvalue). Ga POST ana yawan amfani da <i>api_key</i>."
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded."
+msgstr "Rest API - Tantancewar alamar OAuth2/Bearer<br/>Za ka iya samun maɓalli/alama daga uwar garke ka shigar da shi nan ko ka yi amfani da tsarin tantancewa tare da bayanan shiga. Ana aika sunan mai amfani da kalmar sirri a tsarin Json."
+
+#: includes/arrays.php
+msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
+msgstr "Rest API - Tantancewa mai dogaro da Cookie - ana buƙatar duka ƙimomin biyu. Bayan shiga, ana dawo da cookie"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2 - required, insert community name here"
+msgstr "SNMP v1 ko v2 - ana buƙata, shigar da sunan al'umma a nan"
+
+#: includes/arrays.php
+msgid "SNMP v3 - The security level determines which parameters are required"
+msgstr "SNMP v3 - Matsayin tsaro ne ke tantance waɗanne sigogi ake buƙata"
+
+#: includes/arrays.php
+msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
+msgstr "Maɓallin sirri na SSH - Ana iya amfani da shi don gwajin SCP ko umarnin SSH. Waɗannan gwaje-gwaje na iya amfani da sunan mai amfani/kalmar sirri su ma"
+
+#: includes/arrays.php
+msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
+msgstr "Yana duba ko uwar garken yanar gizo tana amsawa kawai. Idan aka yi amfani da bayanan shiga na sunan mai amfani/kalmar sirri, zai gwada Basic HTTP auth."
+
+#: includes/arrays.php
+msgid "The same as HTTP plaintext but adds the ability to test certificates."
+msgstr "Daidai yake da rubutun HTTP na fili amma yana ƙara ikon gwada takaddun shaida."
+
+#: includes/arrays.php
+msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
+msgstr "Yana duba ko uwar garken SMTP tana amsawa kawai. Babu tantancewa. Za ku ga allon shiga na uwar garken da martanin ehlo."
+
+#: includes/arrays.php
+msgid "Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, you will see server login banner and ehlo response. With credential, login will be performed"
+msgstr "Ba a ɓoye ba + STARTTLS. Haka kuma yana yiwuwa a gwada ingancin takardar shaidar. Ba tare da sunan mai amfani da kalmar sirri ba, za ku ga allon shiga na uwar garke da amsar ehlo. Tare da shaidar shiga, za a yi shiga"
+
+#: includes/arrays.php
+msgid "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password AUTH LOGIN will be tested."
+msgstr "Haɗi mai rufaffen tsaro a tashar jiragen ruwa ta asali 465. Hakanan yana yiwuwa a gwada ingancin takardar shaida. Tare da sunan mai amfani da kalmar sirri za a gwada AUTH LOGIN."
+
+#: includes/arrays.php
+msgid "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgstr "Haɗin IMAP wanda ba a ɓoye ba. Ba tare da shaidar shiga ba, za a gwada haɗin ne kawai. Za ku ga allon shiga kawai. Tare da shaidar shiga za a gwada shiga a kuma yi ƙoƙarin karanta jerin saƙonni. Za ku iya amfani da hanyar AUTHENTICATE PLAIN ko AUTHENTICATE LOGIN."
+
+#: includes/arrays.php
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Daidai yake da IMAP mara ɓoye amma bayan shiga ana amfani da STARTTLS. Hakanan yana yiwuwa a gwada ingancin takardar shaidar bayan STARTTLS."
+
+#: includes/arrays.php
+msgid "Encrypted IMAP, you can try login and test certificate and user login"
+msgstr "IMAP mai rufaffen tsaro, za ka iya gwada shiga kuma ka gwada takardar shaida da shigar mai amfani"
+
+#: includes/arrays.php
+msgid "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages"
+msgstr "Haɗin POP3 wanda ba a ɓoye ba. Ba tare da shaidar shiga ba, za a gwada haɗin ne kawai. Za ku ga allon shiga kawai. Tare da shaidar shiga za a gwada shiga a kuma yi ƙoƙarin karanta jerin saƙonni"
+
+#: includes/arrays.php
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Daidai yake da POP3 mara ɓoye amma bayan shiga ana amfani da STARTTLS. Hakanan yana yiwuwa a gwada ingancin takardar shaidar bayan STARTTLS."
+
+#: includes/arrays.php
+msgid "Encrypted POP3, you can try login and test certificate and user login."
+msgstr "POP3 mai rufaffen tsaro, za ka iya gwada shiga kuma ka gwada takardar shaida da shigar mai amfani."
+
+#: includes/arrays.php
+msgid "Try to resolve DNS record on specified DNS server"
+msgstr "Gwada warware bayanan DNS a kan sabar DNS da aka ƙayyade"
+
+#: includes/arrays.php
+msgid "Try DNS over HTTPS."
+msgstr "Gwada DNS ta hanyar HTTPS."
+
+#: includes/arrays.php
+msgid "All parameters are required. Perform unencrypted LDAP login and search"
+msgstr "Ana buƙatar duk sigogi. Yi shigar LDAP mara rufaffen tsaro da bincike"
+
+#: includes/arrays.php
+msgid "All parameters are required. Perform encrypted LDAP login and search"
+msgstr "Ana buƙatar duk sigogi. Yi shigar LDAP mai rufaffen tsaro da bincike"
+
+#: includes/arrays.php
+msgid "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content of the file is returned."
+msgstr "Haɗin FTP wanda ba a ɓoye ba, shiga sannan ka yi ƙoƙarin sauke fayil ɗin da aka ƙayyade a hanya (/path/to/file.txt). Don haɗin ɓoyayye yi amfani da sunan shiga *anonymous* da adireshin imel a matsayin kalmar sirri. Za a dawo da abin da ke cikin fayil ɗin."
+
+#: includes/arrays.php
+msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
+msgstr "Gwada sauke fayil ɗin da aka ƙayyade a hanya (/path/to/file.txt) daga sabar TFTP. Ana dawo da abin da ke cikin fayil ɗin."
+
+#: includes/arrays.php
+msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
+msgstr "Haɗin SCP mai rufaffen tsaro, shiga kuma ka gwada sauke fayil ɗin da aka ƙayyade a hanya (/path/to/file.txt)."
+
+#: includes/arrays.php
+msgid "Try SMB protocol, username and password are required. Try to login and download file."
+msgstr "Gwada ƙa'idar SMB, ana buƙatar sunan mai amfani da kalmar sirri. Gwada shiga kuma ka sauke fayil."
+
+#: includes/arrays.php
+msgid "Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\""
+msgstr "Haɗa zuwa uwar garken MQTT ka saurari kowane saƙo. Za ka iya ƙayyade maudu'i a cikin Hanya (bedroom/temp), a bar shi fanko don kowane maudu'i. Don wannan gwajin ana ba da shawarar ƙara \"Faɗakarwar dogon lokaci\""
+
+#: includes/arrays.php
+msgid "REST API test with basic HTTP auth. Prepare credential first."
+msgstr "Gwajin REST API tare da tantancewar HTTP ta asali. Shirya bayanan shiga tukuna."
+
+#: includes/arrays.php
+msgid "REST API test with API key auth. Prepare credential first."
+msgstr "Gwajin REST API tare da tantancewar maɓallin API. Shirya bayanan shiga tukuna."
+
+#: includes/arrays.php
+msgid "REST API test with Oauth2. Prepare credential first."
+msgstr "Gwajin REST API tare da Oauth2. Shirya bayanan shiga tukuna."
+
+#: includes/arrays.php
+msgid "REST API test with cookie auth. Prepare credential first."
+msgstr "Gwajin REST API tare da tantancewar kuki. Shirya bayanan shiga tukuna."
+
+#: includes/arrays.php
+msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
+msgstr "Gwada hanyar SNMP get. Ana dawo da sakamako don OID da aka ƙayyade. Ana buƙatar shaidar shiga, dole ne ka shirya shaidar SNMP v.1,2 ko v3 da farko."
+
+#: includes/arrays.php
+msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
+msgstr "Gwada hanyar SNMP walk. Ana dawo da sakamako don OID da aka ƙayyade. Ana buƙatar shaidar shiga, dole ne ka shirya shaidar SNMP v.1,2 ko v3 da farko."
+
+#: includes/arrays.php
+msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
+msgstr "Yi amfani da ssh ka haɗa da mai masauki na nesa. Bayan shiga, gudanar da umarnin da aka ƙayyade kuma mayar da sakamako. Ana iya amfani da sunan mai amfani da kalmar sirri ko maɓallin sirri."
+
+#: includes/arrays.php
+msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
+msgstr "Ka'idar SFTP akan tasha 22, ana buƙatar sunan mai amfani da kalmar sirri da hanya. Gwada yin jerin kundin fayiloli na hanyar."
+
+#: includes/arrays.php
+msgid "All fine. Proceed as usual."
+msgstr "Komai lafiya. Ci gaba kamar yadda aka saba."
+
+#: includes/arrays.php
+msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
+msgstr "URL ɗin da ka tura zuwa libcurl yana amfani da ka'idar da wannan libcurl ba ta tallafawa. Tallafin zai iya zama zaɓi na lokacin haɗawa da ba ka yi amfani da shi ba, ko kuskuren rubutun ka'idar ko kuma ka'idar da libcurl ba ta da lambar ta."
+
+#: includes/arrays.php
+msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
+msgstr "Lambar farawa ta farko ta kasa. Wannan na iya zama kuskure ko matsala ta ciki, ko matsalar albarkatun tsari inda ba a iya yin wani muhimmin abu a lokacin farawa ba."
+
+#: includes/arrays.php
+msgid "The URL was not properly formatted."
+msgstr "Ba a tsara URL ɗin yadda ya kamata ba."
+
+#: includes/arrays.php
+msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
+msgstr "Ba a sami siffa, ƙa'ida ko zaɓin da aka buƙata a ciki a wannan libcurl ba saboda shawarar da aka yanke lokacin ginawa. Wannan yana nufin cewa ba a kunna siffa ko zaɓi ba ko kuma an kashe shi da gangan lokacin da aka gina libcurl kuma don ya yi aiki dole ne a sami libcurl ɗin da aka sake ginawa."
+
+#: includes/arrays.php
+msgid "Could not resolve proxy. The given proxy host could not be resolved."
+msgstr "Ba a iya gano wakilin hanyar sadarwa (proxy) ba. Ba a gano mai masaukin proxy da aka bayar ba."
+
+#: includes/arrays.php
+msgid "Could not resolve host. The given remote host was not resolved."
+msgstr "Ba a iya gano mai masauki ba. Ba a gano mai masauki na nesa da aka bayar ba."
+
+#: includes/arrays.php
+msgid "Failed to connect() to host or proxy."
+msgstr "An kasa haɗa connect() zuwa mai masauki ko proxy."
+
+#: includes/arrays.php
+msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
+msgstr "Uwar garken ta aika da bayanan da libcurl ba ta iya tantancewa ba. Ana kiran wannan lambar kuskure da CURLE_FTP_WEIRD_SERVER_REPLY kafin 7.51.0."
+
+#: includes/arrays.php
+msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
+msgstr "An hana mu damar shiga albarkatun da aka bayar a cikin URL. Ga FTP, wannan yana faruwa yayin ƙoƙarin canzawa zuwa kundin adireshi na nesa."
+
+#: includes/arrays.php
+msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
+msgstr "Yayin jiran uwar garken ta sake haɗawa lokacin da ake amfani da zaman FTP mai aiki, an aika lambar kuskure ta hanyar haɗin sarrafawa ko makamancin haka."
+
+#: includes/arrays.php
+msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
+msgstr "Bayan an aika kalmar sirri ta FTP zuwa uwar garke, libcurl tana tsammanin amsa mai kyau. Wannan lambar kuskure tana nuna cewa an dawo da lamba da ba a yi tsammani ba."
+
+#: includes/arrays.php
+msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
+msgstr "A lokacin zaman FTP mai aiki yayin jiran uwar garken ta haɗu, wa'adin CURLOPT_ACCEPTTIMEOUT_MS (ko tsohon wa'adin ciki) ya ƙare."
+
+#: includes/arrays.php
+msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
+msgstr "Libcurl ya kasa samun sakamako mai ma'ana daga uwar garke a matsayin martani ga umarnin PASV ko EPSV. Uwar garken tana da matsala."
+
+#: includes/arrays.php
+msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
+msgstr "Sabobin FTP suna dawo da layin 227 a matsayin amsa ga umarnin PASV. Idan libcurl ya kasa fassara wannan layin, ana mayar da wannan lambar dawowa."
+
+#: includes/arrays.php
+msgid "An internal failure to lookup the host used for the new connection."
+msgstr "Kuskuren ciki wajen nemo mai masaukin da aka yi amfani da shi don sabon haɗin."
+
+#: includes/arrays.php
+msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr "An gano matsala a matakin tsara HTTP2. Wannan na gama-gari ne kuma yana iya zama ɗaya daga cikin matsaloli da dama, duba wurin ajiyar kuskure don ƙarin bayani."
+
+#: includes/arrays.php
+msgid "Received an error when trying to set the transfer mode to binary or ASCII."
+msgstr "An sami kuskure yayin ƙoƙarin saita yanayin aikawa zuwa binary ko ASCII."
+
+#: includes/arrays.php
+msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
+msgstr "Aika fayil ya kasance ƙanƙani ko babba fiye da yadda aka zata. Wannan yana faruwa ne lokacin da sabar ta fara ba da rahoton girman da ake tsammani, sannan ta aika bayanan da ba su yi daidai da girman da aka bayar a baya ba."
+
+#: includes/arrays.php
+msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
+msgstr "Wannan ko dai wata baƙuwar amsa ce ga umarnin 'RETR' ko kuma cikar jigilar baiti sifili."
+
+#: includes/arrays.php
+msgid "Obsolete Error"
+msgstr "Tsohon Kuskure"
+
+#: includes/arrays.php
+msgid "Not used in modern versions."
+msgstr "Ba a amfani da shi a sababbin sigogi."
+
+#: includes/arrays.php
+msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
+msgstr "Lokacin aikawa da umarnin \"QUOTE\" na musamman zuwa uwar garken nesa, ɗaya daga cikin umarnin ya dawo da lambar kuskure wadda ta kai 400 ko fiye (don FTP) ko kuma ta nuna rashin nasarar kammala umarnin."
+
+#: includes/arrays.php
+msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
+msgstr "Ana dawo da wannan idan an saita CURLOPT_FAILONERROR zuwa gaskiya kuma sabar HTTP ta dawo da lambar kuskure wadda ta kai >= 400."
+
+#: includes/arrays.php
+msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
+msgstr "Kuskure ya faru yayin rubuta bayanan da aka karɓa zuwa fayil na gida, ko kuma an dawo da kuskure zuwa libcurl daga aikin rubutu."
+
+#: includes/arrays.php
+msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
+msgstr "An kasa fara lodawa. Ga FTP, uwar garken yawanci yana hana umarnin STOR. Wurin adana kuskuren yawanci yana ɗauke da bayanin uwar garken game da wannan."
+
+#: includes/arrays.php
+msgid "There was a problem reading a local file or an error returned by the read callback."
+msgstr "An samu matsala wajen karanta fayil na gida ko kuma an dawo da kuskure ta hanyar kiran karatu (read callback)."
+
+#: includes/arrays.php
+msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
+msgstr "Buƙatar keɓe ƙwaƙwalwar ajiya (memory allocation) ta kasa. Wannan babbar matsala ce kuma abubuwa sun lalace sosai idan wannan ya taɓa faruwa."
+
+#: includes/arrays.php
+msgid "Operation timeout. The specified time-out period was reached according to the conditions."
+msgstr "Lokacin aiki ya ƙare. An kai ƙayyadadden lokacin ƙarewa bisa ga sharuɗɗan."
+
+#: includes/arrays.php
+msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
+msgstr "Umarnin FTP PORT ya dawo da kuskure. Wannan yawanci yana faruwa idan ba ka bayyana adireshi mai kyau sosai da libcurl zai yi amfani da shi ba. Duba CURLOPT_FTPPORT."
+
+#: includes/arrays.php
+msgid "The FTP REST command returned error. This should never happen if the server is sane."
+msgstr "Umarnin FTP REST ya dawo da kuskure. Bai kamata wannan ya taɓa faruwa ba idan sabar tana aiki lafiya."
+
+#: includes/arrays.php
+msgid "The server does not support or accept range requests."
+msgstr "Uwar garken ba ta goyon baya ko karɓar buƙatun iyaka (range requests) ba."
+
+#: includes/arrays.php
+msgid "This is an odd error that mainly occurs due to internal confusion."
+msgstr "Wannan kuskure ne mai ban mamaki wanda galibi ke faruwa saboda ruɗanin ciki."
+
+#: includes/arrays.php
+msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
+msgstr "Matsala ta faru a wani wuri a cikin haɗin SSL/TLS handshake. Lallai kana buƙatar duba wurin ajiyar kuskure (error buffer) kuma ka karanta saƙon da ke ciki domin yana nuna matsalar da kyau. Zai iya zama takaddun shaida (tsarin fayil, hanyoyi, izini), kalmomin sirri, da sauransu."
+
+#: includes/arrays.php
+msgid "The download could not be resumed because the specified offset was out of the file boundary."
+msgstr "Ba a iya ci gaba da saukarwa ba saboda matsugunin da aka ayyana ya wuce iyakar fayil ɗin."
+
+#: includes/arrays.php
+msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
+msgstr "Ba a iya buɗe fayil ɗin da aka bayar da FILE:// ba. Mai yiwuwa saboda hanyar fayil ɗin ba ta nuna fayil ɗin da ke akwai ba. Shin kun duba izinin fayil ɗin?"
+
+#: includes/arrays.php
+msgid "LDAP cannot bind. LDAP bind operation failed."
+msgstr "LDAP ba zai iya haɗawa ba. Aikin haɗa LDAP ya gaza."
+
+#: includes/arrays.php
+msgid "LDAP search failed."
+msgstr "Binciken LDAP ya gaza."
+
+#: includes/arrays.php
+msgid "Function not found. A required zlib function was not found."
+msgstr "Ba a sami aiki ba. Ba a sami wani aikin zlib da ake buƙata ba."
+
+#: includes/arrays.php
+msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
+msgstr "An soke ta hanyar kiran baya (callback). Kiran baya ya mayar da \"abort\" zuwa libcurl."
+
+#: includes/arrays.php
+msgid "A function was called with a bad parameter."
+msgstr "An kira wani aiki (function) tare da mummunan siga (parameter)."
+
+#: includes/arrays.php
+msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
+msgstr "Kuskuren mahaɗa. Ba a iya amfani da mahaɗar fita da aka ƙayyade ba. Saita wace mahaɗa za a yi amfani da ita don adireshin IP na tushen haɗin fita da URLOPT_INTERFACE."
+
+#: includes/arrays.php
+msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
+msgstr "Juyawa zuwa wani adireshin sun yi yawa. Yayin bin juyawa, libcurl ya kai iyakar adadi. Saita iyakarka da CURLOPT_MAXREDIRS."
+
+#: includes/arrays.php
+msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
+msgstr "Ba a gane/san zaɓin da aka aika zuwa libcurl ba. Duba takardun bayani da suka dace. Wannan mai yiwuwa matsala ce a cikin shirin da ke amfani da libcurl. Ma'adanar kuskure na iya ƙunsar takamaiman bayani game da ainihin zaɓin da abin ya shafa."
+
+#: includes/arrays.php
+msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
+msgstr "An tsara zaɓin da aka aika zuwa setopt ba daidai ba. Duba saƙon kuskure don ƙarin bayani game da ko wane zaɓi ne."
+
+#: includes/arrays.php
+msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
+msgstr "Ba a dawo da komai daga uwar garken ba, kuma a wannan yanayin, rashin samun komai ana ɗaukar sa a matsayin kuskure."
+
+#: includes/arrays.php
+msgid "The specified crypto engine was not found."
+msgstr "Ba a sami injin ɓoyewa (crypto engine) da aka ƙayyade ba."
+
+#: includes/arrays.php
+msgid "Failed setting the selected SSL crypto engine as default."
+msgstr "An kasa saita injin ɓoyewa na SSL da aka zaɓa a matsayin tsoho."
+
+#: includes/arrays.php
+msgid "Failed sending network data."
+msgstr "An kasa aika bayanan hanyar sadarwa."
+
+#: includes/arrays.php
+msgid "Failure with receiving network data."
+msgstr "An sami matsala wajen karɓar bayanan hanyar sadarwa."
+
+#: includes/arrays.php
+msgid "problem with the local client certificate."
+msgstr "matsala tare da takardar shaidar abokin ciniki na gida."
+
+#: includes/arrays.php
+msgid "Could not use specified cipher."
+msgstr "Ba a iya amfani da tsarin ɓoyewa da aka ƙayyade ba."
+
+#: includes/arrays.php
+msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
+msgstr "Takardar shaidar SSL ta uwar garken nesa ko sawun yatsan SSH an ga ba daidai ba ne. An haɗa wannan lambar kuskure tare da CURLE_SSL_CACERT tun daga 7.62.0. Darajarta ta baya ita ce 51."
+
+#: includes/arrays.php
+msgid "Unrecognized transfer encoding."
+msgstr "Tsarin tura bayanai da ba a gane shi ba."
+
+#: includes/arrays.php
+msgid "Maximum file size exceeded."
+msgstr "An wuce mafi girman girman fayil."
+
+#: includes/arrays.php
+msgid "Requested FTP SSL level failed."
+msgstr "Matakin FTP SSL da aka buƙata ya gaza."
+
+#: includes/arrays.php
+msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
+msgstr "Lokacin yin aikin aikawa curl ya buƙaci mayar da bayanan baya don sake aikawa, amma aikin mayar da bayanan baya ya gaza."
+
+#: includes/arrays.php
+msgid "Initiating the SSL Engine failed."
+msgstr "Fara injin SSL ya gaza."
+
+#: includes/arrays.php
+msgid "The remote server denied curl to login (Added in 7.13.1)"
+msgstr "Uwar garken nesa ta hana curl shiga (An ƙara a 7.13.1)"
+
+#: includes/arrays.php
+msgid "File not found on TFTP server."
+msgstr "Ba a sami fayil a kan uwar garken TFTP ba."
+
+#: includes/arrays.php
+msgid "Permission problem on TFTP server."
+msgstr "Matsalar izini akan sabar TFTP."
+
+#: includes/arrays.php
+msgid "Out of disk space on the server."
+msgstr "Sararin diski ya ƙare a kan saba."
+
+#: includes/arrays.php
+msgid "Illegal TFTP operation."
+msgstr "Aikin TFTP da bai dace ba."
+
+#: includes/arrays.php
+msgid "Unknown TFTP transfer ID."
+msgstr "ID na tura TFTP da ba a sani ba."
+
+#: includes/arrays.php
+msgid "File already exists and is not overwritten."
+msgstr "Fayil ɗin ya riga ya wanzu kuma ba a rubuta a kansa ba."
+
+#: includes/arrays.php
+msgid "This error should never be returned by a properly functioning TFTP server."
+msgstr "Bai kamata sabar TFTP da ke aiki yadda ya kamata ta taɓa dawo da wannan kuskuren ba."
+
+#: includes/arrays.php
+msgid "Problem with reading the SSL CA cert (path? access rights?)"
+msgstr "Matsala wajen karanta takardar shaidar SSL CA (hanya? haƙƙoƙin shiga?)"
+
+#: includes/arrays.php
+msgid "The resource referenced in the URL does not exist."
+msgstr "Abubuwan da aka yi nuni da su a cikin URL ba su wanzu ba."
+
+#: includes/arrays.php
+msgid "An unspecified error occurred during the SSH session."
+msgstr "Kuskuren da ba a tantance ba ya faru yayin zaman SSH."
+
+#: includes/arrays.php
+msgid "Failed to shut down the SSL connection."
+msgstr "An kasa rufe haɗin SSL."
+
+#: includes/arrays.php
+msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
+msgstr "Socket ba ta shirya don aikawa/karɓa ba, jira har sai ta shirya sannan ka sake gwadawa. Ana dawo da wannan lambar sakamako ne kawai daga curl_easy_recv da curl_easy_send (An ƙara a 7.18.2)"
+
+#: includes/arrays.php
+msgid "Failed to load CRL file (Added in 7.19.0)"
+msgstr "An kasa loda fayil ɗin CRL (An ƙara a 7.19.0)"
+
+#: includes/arrays.php
+msgid "Issuer check failed (Added in 7.19.0)"
+msgstr "Binciken mai bayarwa ya gaza (An ƙara a 7.19.0)"
+
+#: includes/arrays.php
+msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
+msgstr "Sabar FTP ba ta fahimtar umarnin PRET kwata-kwata ko ba ta goyon bayan hujjar da aka bayar. Yi hankali yayin amfani da CURLOPT_CUSTOMREQUEST, ana aika umarnin LIST na musamman tare da umarnin PRET kafin PASV shima. (An ƙara a 7.20.0)"
+
+#: includes/arrays.php
+msgid "Mismatch of RTSP CSeq numbers."
+msgstr "Rashin daidaiton lambobin RTSP CSeq."
+
+#: includes/arrays.php
+msgid "Mismatch of RTSP Session Identifiers."
+msgstr "Rashin daidaiton Masu Gano Zama na RTSP."
+
+#: includes/arrays.php
+msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
+msgstr "An kasa fassara jerin fayilolin FTP (yayin sauke fayiloli na wildcard na FTP)."
+
+#: includes/arrays.php
+msgid "Chunk callback reported error."
+msgstr "Kiran mayarwa na yanki ya ba da rahoton kuskure."
+
+#: includes/arrays.php
+msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
+msgstr "(Don amfanin ciki kawai, libcurl ba ya dawo da shi) Babu haɗin da ake da shi, an saka zaman a layi. (an ƙara a 7.30.0)"
+
+#: includes/arrays.php
+msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
+msgstr "An kasa daidaita maɓallin da aka manna wanda aka ƙayyade da CURLOPT_PINNEDPUBLICKEY."
+
+#: includes/arrays.php
+msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
+msgstr "Matsayin ya dawo da gazawa lokacin da aka tambaya da CURLOPT_SSL_VERIFYSTATUS."
+
+#: includes/arrays.php
+msgid "Stream error in the HTTP/2 framing layer."
+msgstr "Kuskuren rafi a ɓangaren tsarin HTTP/2."
+
+#: includes/arrays.php
+msgid "An API function was called from inside a callback."
+msgstr "An kira aikin API daga cikin aikin komowa (callback)."
+
+#: includes/arrays.php
+msgid "An authentication function returned an error."
+msgstr "Aikin tantancewa ya dawo da kuskure."
+
+#: includes/arrays.php
+msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr "An gano matsala a matakin HTTP/3. Wannan na gama-gari ne kuma yana iya zama ɗaya daga cikin matsaloli da dama, duba wurin ajiyar kuskure don ƙarin bayani."
+
+#: includes/arrays.php
+msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
+msgstr "Kuskuren haɗin QUIC. Wannan kuskuren na iya kasancewa saboda kuskuren ɗakin karatu na SSL. QUIC ita ce ka'idar da ake amfani da ita don musayar HTTP/3."
+
+#: includes/arrays.php
+msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
+msgstr "Kuskuren musafahar proxy. CURLINFO_PROXY_ERROR yana ba da ƙarin bayani kan takamaiman matsalar."
+
+#: includes/arrays.php
+msgid "SSL Client Certificate required."
+msgstr "Ana buƙatar Takardar Shaidar Abokin Ciniki ta SSL."
+
+#: includes/arrays.php
+msgid "An internal call to poll() or select() returned error that is not recoverable."
+msgstr "Kiran ciki zuwa poll() ko select() ya dawo da kuskuren da ba za a iya gyarawa ba."
+
+#: includes/functions.php
+msgid "Log History"
+msgstr "Tarihin Rajista"
+
+#: includes/functions.php
+msgid "Graphs"
+msgstr "Jadawalai"
+
+#: includes/functions.php
+msgid "No data"
+msgstr "Babu bayanai"
+
+#: includes/functions.php servcheck_ca.php servcheck_proxy.php
+msgid "Cancel"
+msgstr "Soke"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Delete"
+msgstr "Share"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
+msgstr[0] "Danna 'Ci gaba' don share abu mai zuwa."
+msgstr[1] "Danna 'Ci gaba' don share abubuwa masu zuwa."
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Delete item"
+msgid_plural "Delete items"
+msgstr[0] "Share abu"
+msgstr[1] "Share abubuwa"
+
+#: servcheck_ca.php
+#, php-format
+msgid "CA [edit: %s]"
+msgstr "CA [gyara: %s]"
+
+#: servcheck_ca.php
+msgid "CA [new]"
+msgstr "CA [sabo]"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+msgid "Used"
+msgstr "An yi amfani"
+
+#: servcheck_ca.php
+msgid "CAs"
+msgstr "CAs"
+
+#: servcheck_ca.php
+msgid "No Certificates Found"
+msgstr "Ba a Sami Takaddun Shaida ba"
+
+#: servcheck_ca.php
+msgid "Servcheck CA Management"
+msgstr "Gudanar da CA na Servcheck"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Search"
+msgstr "Bincika"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Default"
+msgstr "Na Asali"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Go"
+msgstr "Tafi"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Set/Refresh Filters"
+msgstr "Saita/Sabunta Matatu"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Clear"
+msgstr "Share"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Clear Filters"
+msgstr "Share Matatu"
+
+#: servcheck_credential.php servcheck_test.php
+msgid "Duplicate"
+msgstr "Maimaituwa"
+
+#: servcheck_credential.php
+msgid "Click 'Continue' to Duplicate the following Credential."
+msgid_plural "Click 'Continue' to Duplicate the following Credentials."
+msgstr[0] "Danna 'Ci gaba' don Kwafi Shaidar Shiga mai zuwa."
+msgstr[1] "Danna 'Ci gaba' don Kwafi Shaidun Shiga masu zuwa."
+
+#: servcheck_credential.php
+msgid "Duplicate Credential"
+msgid_plural "Duplicate Credentials"
+msgstr[0] "Kwafi Shaidar Shiga"
+msgstr[1] "Kwafi Shaidun Shiga"
+
+#: servcheck_credential.php
+#, php-format
+msgid "Credential [edit: %s]"
+msgstr "Shaidar Shiga [gyara: %s]"
+
+#: servcheck_credential.php
+msgid "Credential [new]"
+msgstr "Shaidar Shiga [sabo]"
+
+#: servcheck_credential.php
+msgid "Type"
+msgstr "Nau'i"
+
+#: servcheck_credential.php
+msgid "Credentials"
+msgstr "Shaidun Shiga"
+
+#: servcheck_credential.php
+msgid "No Credentials Found"
+msgstr "Ba a Sami Bayanan Shiga ba"
+
+#: servcheck_credential.php
+msgid "Servcheck Credential Management"
+msgstr "Gudanar da Shaidun Shiga na Servcheck"
+
+#: servcheck_curl_code.php
+msgid "No error codes"
+msgstr "Babu lambobin kuskure"
+
+#: servcheck_proxy.php
+#, php-format
+msgid "Proxy [edit: %s]"
+msgstr "Proxy [gyara: %s]"
+
+#: servcheck_proxy.php
+msgid "Proxy [new]"
+msgstr "Proxy [sabo]"
+
+#: servcheck_proxy.php
+msgid "Ports (http/https)"
+msgstr "Tashoshin haɗi (http/https)"
+
+#: servcheck_proxy.php
+msgid "No Proxies Found"
+msgstr "Ba a Samu Wakilan Sadarwa ba"
+
+#: servcheck_proxy.php
+msgid "Servcheck Proxy Management"
+msgstr "Gudanar da Proxy na Servcheck"
+
+#: servcheck_test.php
+msgid "Disable"
+msgstr "Kashe"
+
+#: servcheck_test.php
+msgid "Enable"
+msgstr "Kunna"
+
+#: servcheck_test.php
+msgid "Clear statistics"
+msgstr "Share ƙididdiga"
+
+#: servcheck_test.php
+msgid "Clear log"
+msgstr "Share rajista"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
+msgstr[0] "Danna 'Ci gaba' don kashe abu mai zuwa."
+msgstr[1] "Danna 'Ci gaba' don kashe abubuwa masu zuwa."
+
+#: servcheck_test.php
+msgid "Disable item"
+msgid_plural "Disable items"
+msgstr[0] "Kashe abu"
+msgstr[1] "Kashe abubuwa"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
+msgstr[0] "Danna 'Ci gaba' don kunna abu mai zuwa."
+msgstr[1] "Danna 'Ci gaba' don kunna abubuwa masu zuwa."
+
+#: servcheck_test.php
+msgid "Enable item"
+msgid_plural "Enable items"
+msgstr[0] "Kunna abu"
+msgstr[1] "Kunna abubuwa"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
+msgstr[0] "Danna 'Ci gaba' don kwafi abu mai zuwa."
+msgstr[1] "Danna 'Ci gaba' don kwafi abubuwa masu zuwa."
+
+#: servcheck_test.php
+msgid "Duplicate item"
+msgid_plural "Duplicate items"
+msgstr[0] "Kwafi abu"
+msgstr[1] "Kwafi abubuwa"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear statistics of the following item."
+msgid_plural "Click 'Continue' to clear statistics of the following items."
+msgstr[0] "Danna 'Ci gaba' don goge ƙididdigar abu mai zuwa."
+msgstr[1] "Danna 'Ci gaba' don goge ƙididdigar abubuwa masu zuwa."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear log of the following item."
+msgid_plural "Click 'Continue' to clear log of the following items."
+msgstr[0] "Danna 'Ci gaba' don goge rajistar abu mai zuwa."
+msgstr[1] "Danna 'Ci gaba' don goge rajistar abubuwa masu zuwa."
+
+#: servcheck_test.php
+#, php-format
+msgid "The Service Check history was purged for %s"
+msgstr "An goge tarihin Binciken Sabis don %s"
+
+#: servcheck_test.php
+#, php-format
+msgid "Test [edit: %s]"
+msgstr "Gwaji [gyara: %s]"
+
+#: servcheck_test.php
+msgid "Test [new]"
+msgstr "Gwaji [sabo]"
+
+#: servcheck_test.php
+msgid "No Users Selected"
+msgstr "Babu Masu Amfani da Aka Zaɓa"
+
+#: servcheck_test.php
+msgid "Users Selected"
+msgstr "Masu Amfani da aka Zaɓa"
+
+#: servcheck_test.php
+msgid "All Users Selected"
+msgstr "An Zaɓi Duk Masu Amfani"
+
+#: servcheck_test.php
+msgid "All"
+msgstr "Duka"
+
+#: servcheck_test.php
+msgid "Date"
+msgstr "Kwanan Wata"
+
+#: servcheck_test.php
+msgid "Attempt"
+msgstr "Yunƙuri"
+
+#: servcheck_test.php
+msgid "Result"
+msgstr "Sakamako"
+
+#: servcheck_test.php
+msgid "Search result"
+msgstr "Sakamakon bincike"
+
+#: servcheck_test.php
+msgid "Duration"
+msgstr "Tsawon Lokaci"
+
+#: servcheck_test.php
+msgid "Certificate"
+msgstr "Takardar Shaida"
+
+#: servcheck_test.php
+msgid "Curl"
+msgstr "Curl"
+
+#: servcheck_test.php
+msgid "Ret. data size"
+msgstr "Girman bayanan da aka riƙe"
+
+#: servcheck_test.php
+msgid "CPU u/CPU s/Memory"
+msgstr "CPU u/CPU s/Ƙwaƙwalwa"
+
+#: servcheck_test.php
+msgid "Logs"
+msgstr "Rajistan Ayyuka"
+
+#: servcheck_test.php
+msgid "days"
+msgstr "kwanaki"
+
+#: servcheck_test.php
+#, php-format
+msgid "Expired %s days ago"
+msgstr "Ya ƙare kwanaki %s da suka wuce"
+
+#: servcheck_test.php
+msgid "Insufficient data, wait a few poller cycles"
+msgstr "Bayanai ba su isa ba, jira zagayen Mai Tattara Bayanai kaɗan"
+
+#: servcheck_test.php
+msgid "Actions"
+msgstr "Ayyuka"
+
+#: servcheck_test.php
+msgid "Status"
+msgstr "Matsayi"
+
+#: servcheck_test.php
+msgid "Last Check (attempt)"
+msgstr "Bincike Na Ƙarshe (yunƙuri)"
+
+#: servcheck_test.php
+msgid "Stats (OK/problem)"
+msgstr "Ƙididdiga (Lafiya/Matsala)"
+
+#: servcheck_test.php
+msgid "Triggered"
+msgstr "An tada"
+
+#: servcheck_test.php
+msgid "Edit Service Check"
+msgstr "Gyara Binciken Sabis"
+
+#: servcheck_test.php
+msgid "Enable Service Check"
+msgstr "Kunna Binciken Sabis"
+
+#: servcheck_test.php
+msgid "Disable Service Check"
+msgstr "Kashe Binciken Sabis"
+
+#: servcheck_test.php
+msgid "View Service Check History"
+msgstr "Duba Tarihin Binciken Sabis"
+
+#: servcheck_test.php
+msgid "View Last returned data"
+msgstr "Duba Bayanan ƙarshe da aka dawo da su"
+
+#: servcheck_test.php
+msgid "View Graph"
+msgstr "Duba Jadawali"
+
+#: servcheck_test.php
+msgid "N/A (N/A)"
+msgstr "Babu (Babu)"
+
+#: servcheck_test.php
+msgid "No"
+msgstr "A'a"
+
+#: servcheck_test.php
+msgid "Yes"
+msgstr "Eh"
+
+#: servcheck_test.php
+msgid "No Service Checks Found"
+msgstr "Ba a Samu Binciken Sabis ba"
+
+#: servcheck_test.php
+msgid "Last returned data of test"
+msgstr "Bayanai na ƙarshe da gwaji ya dawo da su"
+
+#: servcheck_test.php
+msgid "Servcheck Test Management"
+msgstr "Gudanar da Gwaje-gwaje na Servcheck"
+
+#: servcheck_test.php
+msgid "State"
+msgstr "Jiha"
+
+#: servcheck_test.php
+msgid "Any"
+msgstr "Kowane"
+
+#: servcheck_test.php
+msgid "Refresh"
+msgstr "Sabunta"
+
+#: servcheck_test.php
+msgid "Checks"
+msgstr "Bincike-bincike"
+
+#: servcheck_test.php
+msgid "Service Check History"
+msgstr "Tarihin Binciken Sabis"
+
+#: servcheck_test.php
+msgid "Date Search"
+msgstr "Neman Kwanan Wata"
+
+#: servcheck_test.php
+msgid "Entries"
+msgstr "Shigarwa"
+
+#: servcheck_test.php
+msgid "Purge Events"
+msgstr "Share Abubuwan da Suka Faru"
+
+#: setup.php
+msgid "Service Check Admin"
+msgstr "Mai Gudanar da Binciken Sabis"
+
+#: setup.php
+msgid "Management"
+msgstr "Gudanarwa"
+
+#: setup.php
+msgid "Service Checker"
+msgstr "Mai Binciken Sabis"
+
+#: setup.php
+msgid "Service Checks"
+msgstr "Bincike-binciken Sabis"
+
+#: setup.php
+msgid "Service Check Edit"
+msgstr "Gyara Binciken Sabis"
+
+#: setup.php
+msgid "Service Check Save"
+msgstr "Ajiye Binciken Sabis"
+
+#: setup.php
+msgid "Credential Edit"
+msgstr "Gyaran Shaidar Shiga"
+
+#: setup.php
+msgid "Credential Save"
+msgstr "Ajiye Shaidar Shiga"
+
+#: setup.php
+msgid "Web Proxy"
+msgstr "Proxy na Yanar Gizo"
+
+#: setup.php
+msgid "Web Proxy Edit"
+msgstr "Gyara Proxy na Yanar Gizo"
+
+#: setup.php
+msgid "Save Web Proxy"
+msgstr "Ajiye Web Proxy"
+
+#: setup.php
+msgid "CA"
+msgstr "CA"
+
+#: setup.php
+msgid "CA Edit"
+msgstr "Gyara CA"
+
+#: setup.php
+msgid "Save CA"
+msgstr "Ajiye CA"
+
+#: setup.php
+msgid "Servcheck"
+msgstr "Servcheck"
+
+#: setup.php
+msgid "Notification Preferences"
+msgstr "Zaɓuɓɓukan Sanarwa"
+
+#: setup.php
+msgid "Send Email separately for each address"
+msgstr "Aika Imel daban-daban ga kowane adireshi"
+
+#: setup.php
+msgid "If checked, this will cause all Emails to be sent separately for each address."
+msgstr "Idan aka zaɓa, wannan zai sa a aika dukkan Imel daban-daban ga kowane adireshi."
+
+#: setup.php
+msgid "Stop sending all notification"
+msgstr "Dakatar da aika dukkan sanarwa"
+
+#: setup.php
+msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
+msgstr "Idan an zaɓa, servcheck ba zai aika kowane imel ba. Hakanan za ku iya kashe sanarwa ga takamaiman gwaje-gwaje kawai"
+
+#: setup.php
+msgid "Enable Command Execution"
+msgstr "Kunna Aiwatar da Umarni"
+
+#: setup.php
+msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
+msgstr "Yin alama a wannan akwatin zai kunna ikon gudanar da umarnai a lokutan abubuwan Servcheck. Za ka iya kunna shi ko kashe shi ga kowane gwaji."
+
+#: setup.php
+msgid "Status Change Command"
+msgstr "Umarnin Canza Matsayi"
+
+#: setup.php
+msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+msgstr "Lokacin da gwaji na asali ko na bincike ko na ƙarewar takardar shaida ya dawo da sakamako daban, gudanar da wannan umarnin... Wannan umarnin BAI KAMATA ya ƙunshi hujjojin layin umarni ba... Duk da haka, ana iya ɗaukar waɗannan masu canji daga muhallin rubutun:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+
+#: setup.php
+msgid "Concurrent Check Processes"
+msgstr "Tsare-tsaren Bincike na Lokaci Guda"
+
+#: setup.php
+msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
+msgstr "Adadin ayyukan duba sabis da za su gudu a lokaci guda. Ba a ba da shawarar ƙara wannan lamba zuwa ninki 2 na adadin cores ba."
+
+#: setup.php
+msgid "1 Process"
+msgstr "Aiki 1"
+
+#: setup.php
+#, php-format
+msgid "%d Processes"
+msgstr "Ayyuka %d"
+
+#: setup.php
+msgid "Certificate expiry date advanced notification email"
+msgstr "Imel na sanarwar gaba game da ranar ƙarewar takardar shaida"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
+msgstr "Idan an kunna ƙarewar takardar shaidar sabis na SSL/TLS, saita adadin kwanakin sanarwa kafin ranar ƙarewar takardar shaidar da tsarin zai aika sanarwa"
+
+#: setup.php
+msgid "3 days in advance"
+msgstr "Kwana 3 kafin lokaci"
+
+#: setup.php
+msgid "1 week in advance"
+msgstr "Mako 1 kafin lokaci"
+
+#: setup.php
+msgid "3 weeks in advance"
+msgstr "Makonni 3 kafin lokaci"
+
+#: setup.php
+msgid "30 days in advance"
+msgstr "Kwana 30 kafin lokaci"
+
+#: setup.php
+msgid "60 days in advance"
+msgstr "Kwana 60 kafin lokaci"
+
+#: setup.php
+msgid "90 days in advance"
+msgstr "Kwana 90 kafin lokaci"
+
+#: setup.php
+msgid "Certificate expiry notification email interval"
+msgstr "Tazarar lokacin imel na sanarwar ƙarewar takardar shaida"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday"
+msgstr "Idan an kunna ƙarewar takardar shaidar sabis na SSL/TLS, saita tazarar (kwanaki) don aika sanarwar imel, amma idan ranar ƙarewar ta wuce, za a riƙa aika sanarwar imel kullum"
+
+#: setup.php
+msgid "1 day"
+msgstr "Kwana 1"
+
+#: setup.php
+msgid "3 days"
+msgstr "Kwana 3"
+
+#: setup.php
+msgid "5 days"
+msgstr "Kwana 5"
+
+#: setup.php
+msgid "7 days"
+msgstr "Kwana 7"
+
+#: setup.php
+msgid "10 days"
+msgstr "Kwana 10"
+
+#: setup.php
+msgid "15 days"
+msgstr "Kwana 15"
+
+#: setup.php
+msgid "20 days"
+msgstr "Kwana 20"
+
+#: setup.php
+msgid "30 days"
+msgstr "Kwana 30"
+
+#: setup.php
+msgid "How long to keep logs"
+msgstr "Tsawon lokacin riƙe rajistoci"
+
+#: setup.php
+msgid "Enter the period after which older logs will be automatically deleted."
+msgstr "Shigar da lokacin da bayan sa za a share tsofaffin rajistoci ta atomatik."
+
+#: setup.php
+msgid "Never"
+msgstr "Ba a Taɓa Ba"
+
+#: setup.php
+#, php-format
+msgid "%d hours"
+msgstr "sa'o'i %d"
+
+#: setup.php
+#, php-format
+msgid "%d days"
+msgstr "kwanaki %d"
+
+#: setup.php
+#, php-format
+msgid "%d year"
+msgstr "shekara %d"
+
+#: setup.php
+msgid "Maximum test duration in seconds"
+msgstr "Mafi tsawon lokacin gwaji a daƙiƙa"
+
+#: setup.php
+msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
+msgstr "Tsohuwar ƙima don gwaje-gwajen da ba a kunna gwajin lokacin aiki ba. Idan an kunna, ana lissafa mafi tsawon lokaci a matsayin iyakar tsawon lokaci + daƙiƙa 2."
+
+#: setup.php
+msgid "HTTP/HTTPS Check Settings"
+msgstr "Saitunan Binciken HTTP/HTTPS"
+
+#: setup.php
+msgid "User Agent"
+msgstr "Wakilin Mai Amfani"
+
+#: setup.php
+msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
+msgstr "Jumlar User-Agent da ake aikawa tare da HTTP/HTTPS da sauran binciken sabis na cURL. Wasu shafuka suna toshe tsofaffi ko masu binciken gizo da ba a cika amfani da su ba, don haka za ka iya saita User-Agent na yanzu a nan. Bar shi fanko don amfani da tsoho na asali."
+

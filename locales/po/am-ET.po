@@ -1,0 +1,2171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-11-02 13:51-0500\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Amharic\n"
+"Language: am-ET\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: includes/arrays.php servcheck_test.php
+msgid "Tests"
+msgstr "ሙከራዎች"
+
+#: includes/arrays.php
+msgid "CA certificates"
+msgstr "የ CA የምስክር ወረቀቶች"
+
+#: includes/arrays.php servcheck_proxy.php
+msgid "Proxies"
+msgstr "ፕሮክሲዎች"
+
+#: includes/arrays.php setup.php
+msgid "Credential"
+msgstr "ማረጋገጫ"
+
+#: includes/arrays.php
+msgid "Curl return codes"
+msgstr "የCurl መመለሻ ኮዶች"
+
+#: includes/arrays.php
+msgid "Error"
+msgstr "ስህተት"
+
+#: includes/arrays.php
+msgid "Long duration"
+msgstr "ረጅም ቆይታ"
+
+#: includes/arrays.php
+msgid "Warning"
+msgstr "ማስጠንቀቂያ"
+
+#: includes/arrays.php
+msgid "Failing"
+msgstr "እየወደቀ ያለ"
+
+#: includes/arrays.php
+msgid "Ok"
+msgstr "እሺ"
+
+#: includes/arrays.php setup.php
+msgid "Disabled"
+msgstr "ተሰናክሏል"
+
+#: includes/arrays.php
+msgid "HTTP plaintext, default port 80"
+msgstr "ግልጽ ጽሑፍ HTTP፣ ነባሪ ወደብ 80"
+
+#: includes/arrays.php
+msgid "HTTP encrypted (HTTPS), default port 443"
+msgstr "የተመሰጠረ HTTP (HTTPS)፣ ነባሪ ወደብ 443"
+
+#: includes/arrays.php
+msgid "SMTP plaintext, default port 25 (or 587 for submission)"
+msgstr "ግልጽ ጽሑፍ SMTP፣ ነባሪ ወደብ 25 (ወይም 587 ለማስገቢያ)"
+
+#: includes/arrays.php
+msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
+msgstr "SMTP ከSTARTTLS ጋር፣ ነባሪ ወደብ 25 (ወይም 587 ለማስገቢያ)"
+
+#: includes/arrays.php
+msgid "SMTP encrypted (SMTPS), default port 465"
+msgstr "የተመሰጠረ SMTP (SMTPS)፣ ነባሪ ወደብ 465"
+
+#: includes/arrays.php
+msgid "IMAP plaintext, default port 143"
+msgstr "ያልተመሰጠረ IMAP፣ ነባሪ ወደብ 143"
+
+#: includes/arrays.php
+msgid "IMAP with STARTTLS, default port 143"
+msgstr "IMAP ከSTARTTLS ጋር፣ ነባሪ ወደብ 143"
+
+#: includes/arrays.php
+msgid "IMAP encrypted (IMAPS), default port 993"
+msgstr "የተመሰጠረ IMAP (IMAPS)፣ ነባሪ ወደብ 993"
+
+#: includes/arrays.php
+msgid "POP3 plaintext, default port 110"
+msgstr "ግልጽ ጽሑፍ POP3፣ ነባሪ ወደብ 110"
+
+#: includes/arrays.php
+msgid "POP3 with STARTTLS, default port 110"
+msgstr "POP3 ከSTARTTLS ጋር፣ ነባሪ ወደብ 110"
+
+#: includes/arrays.php
+msgid "POP3 encrypted (POP3S), default port 995"
+msgstr "የተመሰጠረ POP3 (POP3S)፣ ነባሪ ወደብ 995"
+
+#: includes/arrays.php
+msgid "DNS plaintext, default port 53"
+msgstr "DNS ግልጽ ጽሑፍ፣ ነባሪ ወደብ 53"
+
+#: includes/arrays.php
+msgid "DNS over HTTPS, default port 443"
+msgstr "DNS በHTTPS ላይ፣ ነባሪ ወደብ 443"
+
+#: includes/arrays.php
+msgid "LDAP plaintext, default port 389"
+msgstr "ያልተመሰጠረ LDAP፣ ነባሪ ወደብ 389"
+
+#: includes/arrays.php
+msgid "LDAP encrypted (LDAPS), default port 636"
+msgstr "የተመሰጠረ LDAP (LDAPS)፣ ነባሪ ወደብ 636"
+
+#: includes/arrays.php
+msgid "FTP plaintext, default port 21"
+msgstr "FTP ግልጽ ጽሑፍ፣ ነባሪ ወደብ 21"
+
+#: includes/arrays.php
+msgid "TFTP protocol - download file, default port 69"
+msgstr "TFTP ፕሮቶኮል - ፋይል ማውረድ፣ ነባሪ ወደብ 69"
+
+#: includes/arrays.php
+msgid "SCP download file, default port 22"
+msgstr "የSCP ፋይል ማውረጃ፣ ነባሪ ወደብ 22"
+
+#: includes/arrays.php
+msgid "SMB plaintext download file, default port 445"
+msgstr "ግልጽ ጽሑፍ SMB ፋይል ማውረጃ፣ ነባሪ ወደብ 445"
+
+#: includes/arrays.php
+msgid "SMB encrypted (SMBS) download file, default port 445"
+msgstr "የተመሰጠረ SMB (SMBS) ፋይል ማውረጃ፣ ነባሪ ወደብ 445"
+
+#: includes/arrays.php
+msgid "MQTT plaintext, default port 1883"
+msgstr "MQTT ግልጽ ጽሑፍ፣ ነባሪ ወደብ 1883"
+
+#: includes/arrays.php
+msgid "Rest API with Basic HTTP auth"
+msgstr "Rest API ከመሠረታዊ HTTP ማረጋገጫ ጋር"
+
+#: includes/arrays.php
+msgid "Rest API with API key auth"
+msgstr "Rest API ከAPI ቁልፍ ማረጋገጫ ጋር"
+
+#: includes/arrays.php
+msgid "Rest API with OAuth2/Bearer token auth"
+msgstr "Rest API ከOAuth2/Bearer ማስመሰያ ማረጋገጫ ጋር"
+
+#: includes/arrays.php
+msgid "Rest API with Cookie based auth"
+msgstr "Rest API ከኩኪ ላይ ከተመሠረተ ማረጋገጫ ጋር"
+
+#: includes/arrays.php
+msgid "SNMP get"
+msgstr "SNMP አግኝ (get)"
+
+#: includes/arrays.php
+msgid "SNMP walk"
+msgstr "የSNMP ቅኝት (walk)"
+
+#: includes/arrays.php
+msgid "SSH command on remote system"
+msgstr "በርቀት ሥርዓት ላይ የSSH ትዕዛዝ"
+
+#: includes/arrays.php
+msgid "SFTP protocol - directory listing, default port 22"
+msgstr "SFTP ፕሮቶኮል - የማውጫ ዝርዝር፣ ነባሪ ወደብ 22"
+
+#: includes/arrays.php
+msgid "Username and password"
+msgstr "የተጠቃሚ ስም እና የይለፍ ቃል"
+
+#: includes/arrays.php
+msgid "Rest API - Basic HTTP auth"
+msgstr "Rest API - መሠረታዊ HTTP ማረጋገጫ"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth"
+msgstr "Rest API - የAPI ቁልፍ ማረጋገጫ"
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth"
+msgstr "Rest API - የOAuth2/Bearer ማስመሰያ (token) ማረጋገጫ"
+
+#: includes/arrays.php
+msgid "Rest API - Cookie based auth"
+msgstr "Rest API - በኩኪ ላይ የተመሠረተ ማረጋገጫ"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2"
+msgstr "SNMP v1 ወይም v2"
+
+#: includes/arrays.php
+msgid "SNMP v3"
+msgstr "SNMP v3"
+
+#: includes/arrays.php
+msgid "SSH private key - Cacti 1.2.31+"
+msgstr "የSSH የግል ቁልፍ - Cacti 1.2.31+"
+
+#: includes/arrays.php
+msgid "Last hour"
+msgstr "ያለፈው ሰዓት"
+
+#: includes/arrays.php
+msgid "Last 6 hours"
+msgstr "ያለፉት 6 ሰዓታት"
+
+#: includes/arrays.php
+msgid "Last day"
+msgstr "ያለፈው ቀን"
+
+#: includes/arrays.php
+msgid "Last week"
+msgstr "ያለፈው ሳምንት"
+
+#: includes/arrays.php
+msgid "String found"
+msgstr "ሕብረቁምፊ ተገኝቷል"
+
+#: includes/arrays.php
+msgid "String not found"
+msgstr "ሕብረቁምፊ አልተገኘም"
+
+#: includes/arrays.php
+msgid "Failed string found"
+msgstr "ያልተሳካ ሕብረቁምፊ ተገኝቷል"
+
+#: includes/arrays.php
+msgid "Failed string not found"
+msgstr "ያልተሳካ ሕብረቁምፊ አልተገኘም"
+
+#: includes/arrays.php
+msgid "Maint string found"
+msgstr "የMaint ሕብረቁምፊ ተገኝቷል"
+
+#: includes/arrays.php servcheck_test.php
+msgid "Not tested yet"
+msgstr "ገና አልተሞከረም"
+
+#: includes/arrays.php
+msgid "Search not performed"
+msgstr "ፍለጋ አልተከናወነም"
+
+#: includes/arrays.php
+msgid "OK"
+msgstr "እሺ"
+
+#: includes/arrays.php
+msgid "Error/failed"
+msgstr "ስህተት/አልተሳካም"
+
+#: includes/arrays.php
+msgid "[None]"
+msgstr "[ምንም]"
+
+#: includes/arrays.php
+msgid "MD5"
+msgstr "MD5"
+
+#: includes/arrays.php
+msgid "SHA"
+msgstr "SHA"
+
+#: includes/arrays.php
+msgid "SHA-224"
+msgstr "SHA-224"
+
+#: includes/arrays.php
+msgid "SHA-256"
+msgstr "SHA-256"
+
+#: includes/arrays.php
+msgid "SHA-392"
+msgstr "SHA-392"
+
+#: includes/arrays.php
+msgid "SHA-512"
+msgstr "SHA-512"
+
+#: includes/arrays.php
+msgid "DES"
+msgstr "DES"
+
+#: includes/arrays.php
+msgid "AES"
+msgstr "AES"
+
+#: includes/arrays.php
+msgid "AES-128"
+msgstr "AES-128"
+
+#: includes/arrays.php
+msgid "AES-192"
+msgstr "AES-192"
+
+#: includes/arrays.php
+msgid "AES-192-C"
+msgstr "AES-192-C"
+
+#: includes/arrays.php
+msgid "AES-256"
+msgstr "AES-256"
+
+#: includes/arrays.php
+msgid "AES-256-C"
+msgstr "AES-256-C"
+
+#: includes/arrays.php
+msgid "Unable to Connect"
+msgstr "መገናኘት አልተቻለም"
+
+#: includes/arrays.php includes/functions.php servcheck_ca.php
+#: servcheck_proxy.php
+msgid "Continue"
+msgstr "ቀጥል"
+
+#: includes/arrays.php
+msgid "Switching Protocols"
+msgstr "የስዊቺንግ ፕሮቶኮሎች"
+
+#: includes/arrays.php
+msgid "Created"
+msgstr "ተፈጥሯል"
+
+#: includes/arrays.php
+msgid "Accepted"
+msgstr "ተቀባይነት አግኝቷል"
+
+#: includes/arrays.php
+msgid "Non-Authoritative Information"
+msgstr "ባለሥልጣን ያልሆነ መረጃ"
+
+#: includes/arrays.php
+msgid "No Content"
+msgstr "ምንም ይዘት የለም"
+
+#: includes/arrays.php
+msgid "Reset Content"
+msgstr "ይዘትን ዳግም አስጀምር"
+
+#: includes/arrays.php
+msgid "Partial Content"
+msgstr "ከፊል ይዘት"
+
+#: includes/arrays.php
+msgid "Multiple Choices"
+msgstr "በርካታ ምርጫዎች"
+
+#: includes/arrays.php
+msgid "Moved Permanently"
+msgstr "ለዘለቄታው ተዛውሯል"
+
+#: includes/arrays.php
+msgid "Found"
+msgstr "ተገኝቷል"
+
+#: includes/arrays.php
+msgid "See Other"
+msgstr "ሌላ ይመልከቱ"
+
+#: includes/arrays.php
+msgid "Not Modified"
+msgstr "አልተቀየረም"
+
+#: includes/arrays.php
+msgid "Use Proxy"
+msgstr "ፕሮክሲ ይጠቀሙ"
+
+#: includes/arrays.php
+msgid "(Unused)"
+msgstr "(ጥቅም ላይ ያልዋለ)"
+
+#: includes/arrays.php
+msgid "Temporary Redirect"
+msgstr "ጊዜያዊ ማዞሪያ"
+
+#: includes/arrays.php
+msgid "Bad Request"
+msgstr "መጥፎ ጥያቄ"
+
+#: includes/arrays.php
+msgid "Unauthorized"
+msgstr "ያልተፈቀደ"
+
+#: includes/arrays.php
+msgid "Payment Required"
+msgstr "ክፍያ ያስፈልጋል"
+
+#: includes/arrays.php
+msgid "Forbidden"
+msgstr "የተከለከለ"
+
+#: includes/arrays.php
+msgid "Not Found"
+msgstr "አልተገኘም"
+
+#: includes/arrays.php
+msgid "Method Not Allowed"
+msgstr "ዘዴው አልተፈቀደም"
+
+#: includes/arrays.php
+msgid "Not Acceptable"
+msgstr "ተቀባይነት የለውም"
+
+#: includes/arrays.php
+msgid "Proxy Authentication Required"
+msgstr "የፕሮክሲ ማረጋገጫ ያስፈልጋል"
+
+#: includes/arrays.php
+msgid "Request Timeout"
+msgstr "የጥያቄ ጊዜ አልቋል"
+
+#: includes/arrays.php
+msgid "Conflict"
+msgstr "ግጭት"
+
+#: includes/arrays.php
+msgid "Gone"
+msgstr "ጠፍቷል"
+
+#: includes/arrays.php
+msgid "Length Required"
+msgstr "ርዝመት ያስፈልጋል"
+
+#: includes/arrays.php
+msgid "Precondition Failed"
+msgstr "ቅድመ ሁኔታው አልተሳካም"
+
+#: includes/arrays.php
+msgid "Request Entity Too Large"
+msgstr "የጥያቄው አካል በጣም ትልቅ ነው"
+
+#: includes/arrays.php
+msgid "Request-URI Too Long"
+msgstr "ጥያቄ-URI በጣም ረጅም ነው"
+
+#: includes/arrays.php
+msgid "Unsupported Media Type"
+msgstr "የማይደገፍ የሚዲያ ዓይነት"
+
+#: includes/arrays.php
+msgid "Requested Range Not Satisfiable"
+msgstr "የተጠየቀው ክልል ሊሟላ አይችልም"
+
+#: includes/arrays.php
+msgid "Expectation Failed"
+msgstr "የተጠበቀው ሁኔታ አልተሳካም"
+
+#: includes/arrays.php
+msgid "Internal Server Error"
+msgstr "የውስጥ አገልጋይ ስህተት"
+
+#: includes/arrays.php
+msgid "Not Implemented"
+msgstr "አልተተገበረም"
+
+#: includes/arrays.php
+msgid "Bad Gateway"
+msgstr "መጥፎ መግቢያ"
+
+#: includes/arrays.php
+msgid "Service Unavailable"
+msgstr "አገልግሎት አይገኝም"
+
+#: includes/arrays.php
+msgid "Gateway Timeout"
+msgstr "የመግቢያ በር የጊዜ ማብቂያ"
+
+#: includes/arrays.php
+msgid "HTTP Version Not Supported"
+msgstr "የHTTP ስሪት አይደገፍም"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Poller run"
+msgstr "%d የፖለር ሩጫ"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Poller runs"
+msgstr "%d የፖለር ሩጫዎች"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Seconds"
+msgstr "%d ሰከንዶች"
+
+#: includes/arrays.php
+msgid "Auth in HTTP headers"
+msgstr "በHTTP ራስጌዎች ውስጥ ያለ ማረጋገጫ"
+
+#: includes/arrays.php
+msgid "Custom HTTP header"
+msgstr "ብጁ HTTP ራስጌ"
+
+#: includes/arrays.php
+msgid "POST method, form-urlencoded"
+msgstr "የPOST ዘዴ፣ form-urlencoded"
+
+#: includes/arrays.php
+msgid "POST method, JSON encoded"
+msgstr "የPOST ዘዴ፣ በJSON የተቀመረ"
+
+#: includes/arrays.php
+msgid "JSON encoded"
+msgstr "በJSON ኢንኮድ የተደረገ"
+
+#: includes/arrays.php
+msgid "Form urlencoded"
+msgstr "በURL የተመሰጠረ ቅጽ"
+
+#: includes/arrays.php servcheck_ca.php servcheck_credential.php
+#: servcheck_proxy.php servcheck_test.php
+msgid "Name"
+msgstr "ስም"
+
+#: includes/arrays.php
+msgid "A Useful Name for this CA chain."
+msgstr "ለዚህ CA ሰንሰለት ጠቃሚ ስም።"
+
+#: includes/arrays.php
+msgid "New CA"
+msgstr "አዲስ CA"
+
+#: includes/arrays.php
+msgid "CA Chain"
+msgstr "የ CA ሰንሰለት"
+
+#: includes/arrays.php
+msgid "CA and intermediate certs, PEM encoded"
+msgstr "CA እና መካከለኛ የምስክር ወረቀቶች፣ በ PEM ኢንኮድ የተደረጉ"
+
+#: includes/arrays.php
+msgid "A Useful Name for this Proxy."
+msgstr "ለዚህ Proxy ጠቃሚ ስም።"
+
+#: includes/arrays.php
+msgid "New Proxy"
+msgstr "አዲስ ፕሮክሲ"
+
+#: includes/arrays.php servcheck_proxy.php
+msgid "Hostname"
+msgstr "የአስተናጋጅ ስም"
+
+#: includes/arrays.php
+msgid "The Proxy Hostname."
+msgstr "የተኪ (Proxy) አስተናጋጅ ስም።"
+
+#: includes/arrays.php
+msgid "HTTP Port"
+msgstr "የHTTP ወደብ"
+
+#: includes/arrays.php
+msgid "The HTTP Proxy Port."
+msgstr "የHTTP ተኪ ወደብ።"
+
+#: includes/arrays.php
+msgid "HTTPS Port"
+msgstr "የHTTPS ወደብ"
+
+#: includes/arrays.php
+msgid "The HTTPS Proxy Port."
+msgstr "የHTTPS ተኪ ወደብ።"
+
+#: includes/arrays.php
+msgid "Select correct credential or left empty."
+msgstr "ትክክለኛውን ማረጋገጫ ይምረጡ ወይም ባዶ ይተዉት።"
+
+#: includes/arrays.php servcheck_test.php
+msgid "None"
+msgstr "ምንም"
+
+#: includes/arrays.php
+msgid "General Settings"
+msgstr "አጠቃላይ ቅንብሮች"
+
+#: includes/arrays.php
+msgid "Service Check Name"
+msgstr "የአገልግሎት ፍተሻ ስም"
+
+#: includes/arrays.php
+msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
+msgstr "ለዚህ የአገልግሎት ፍተሻ የሚታየው እና በማንኛውም የማንቂያ ማሳወቂያዎች ውስጥ የሚካተተው ስም።"
+
+#: includes/arrays.php
+msgid "How many attempts"
+msgstr "ስንት ሙከራዎች"
+
+#: includes/arrays.php
+msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
+msgstr "Cacti እያንዳንዱን ሙከራ ብዙ ጊዜ ለማስኬድ ይሞክራል። የመጀመሪያው የተሳካ ሙከራ ሙከራውን ያበቃል እና ስኬቱን ይመዘግባል። ከሙከራዎቹ ውስጥ አንዱም ካልተሳካ፣ ሙከራው ይቋረጣል እና ውድቀት ይመዘገባል። ከፍተኛ ቁጥር የሙከራ ቆይታን ያረዝማል።"
+
+#: includes/arrays.php
+msgid "Enable test"
+msgstr "ሙከራ አንቃ"
+
+#: includes/arrays.php
+msgid "Uncheck this box to disable this test from being checked."
+msgstr "ይህ ሙከራ እንዳይረጋገጥ ለማሰናከል የዚህን ሳጥን ምልክት ያንሱ።"
+
+#: includes/arrays.php
+msgid "Enable run script for this test"
+msgstr "ለዚህ ሙከራ ስክሪፕት ማስኬድን አንቃ"
+
+#: includes/arrays.php
+msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
+msgstr "ዓለም አቀፋዊ የትዕዛዝ ማስፈጸሚያ ተግባር ከነቃ፣ ስክሪፕቱ ለዚህ ሙከራ መሄድ እንዳለበት ወይም እንደሌለበት እዚህ ማቀናበር ይችላሉ።"
+
+#: includes/arrays.php
+msgid "Poller"
+msgstr "ፖለር"
+
+#: includes/arrays.php
+msgid "Poller on which the test will run"
+msgstr "ሙከራው የሚካሄድበት ፖለር"
+
+#: includes/arrays.php
+msgid "Type of service"
+msgstr "የአገልግሎት ዓይነት"
+
+#: includes/arrays.php
+msgid "What type of service?"
+msgstr "ምን ዓይነት አገልግሎት?"
+
+#: includes/arrays.php
+msgid "IP Address or DNS name of server"
+msgstr "የአገልጋዩ IP አድራሻ ወይም DNS ስም"
+
+#: includes/arrays.php
+msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
+msgstr "ሌላ ወደብ (example.com:5000) መግለጽ ይችላሉ፣ ያለበለዚያ ነባሪው ጥቅም ላይ ይውላል። ለIPv6 ቁጥራዊ አድራሻ [ip:ad:dr:es:fo:rma:at] ይጠቀሙ። ለDOH (DNS over HTTPS) እዚህ የአገልጋዩን ስም ይጠቀሙ (ለምሳሌ 10.10.10.10, cloudflare-dns.com, ..)"
+
+#: includes/arrays.php
+msgid "Resolve DNS to Address"
+msgstr "DNS ወደ አድራሻ ፍታ"
+
+#: includes/arrays.php
+msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
+msgstr "የDNS ስም እንዲፈታበት የሚያስገድድ IP አድራሻ ያስገቡ። ባዶ መተው በምትኩ DNS አፈታትን ይጠቀማል።"
+
+#: includes/arrays.php
+msgid "Service settings"
+msgstr "የአገልግሎት ቅንብሮች"
+
+#: includes/arrays.php
+msgid "Select correct credential"
+msgstr "ትክክለኛውን ማረጋገጫ ይምረጡ"
+
+#: includes/arrays.php
+msgid "SNMP OID"
+msgstr "SNMP OID"
+
+#: includes/arrays.php
+msgid "Insert SNMP OID"
+msgstr "SNMP OID ያስገቡ"
+
+#: includes/arrays.php
+msgid "SSH command"
+msgstr "የSSH ትዕዛዝ"
+
+#: includes/arrays.php
+msgid "Insert SSH command with full path, result of command will be returned"
+msgstr "የSSH ትዕዛዝን ከሙሉ መንገዱ ጋር ያስገቡ፤ የትዕዛዙ ውጤት ይመለሳል"
+
+#: includes/arrays.php
+msgid "Your own CA and intermediate certs"
+msgstr "የራስዎ CA እና መካከለኛ የምስክር ወረቀቶች"
+
+#: includes/arrays.php
+msgid "LDAP Search"
+msgstr "የLDAP ፍለጋ"
+
+#: includes/arrays.php
+msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
+msgstr "የLDAP ፍለጋ ማጣሪያ፣ ለምሳሌ ,OU=anygroup,DC=example,DC=com ሊሆን ይችላል"
+
+#: includes/arrays.php
+msgid "DNS Name for Query"
+msgstr "ለጥያቄ የDNS ስም"
+
+#: includes/arrays.php
+msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
+msgstr "ለመጠየቅ የDNS ስም። ለDOH (DNS በHTTPS ላይ) /resolve?name=example.com ወይም /dns-query?name=example.com&type=A ይጠቀሙ። ለግልጽ ጽሑፍ DNS፣ የA እና AAAA መዝገቦች ይመለሳሉ"
+
+#: includes/arrays.php
+msgid "Path Part of URL"
+msgstr "የURL መንገድ ክፍል"
+
+#: includes/arrays.php
+msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
+msgstr "ለድር አገልግሎት ቢያንስ \"/\" ወይም እንደ \"/any/path/\" ያለ ነገር ያስገቡ።"
+
+#: includes/arrays.php
+msgid "Requires Authentication"
+msgstr "ማረጋገጫ ያስፈልገዋል"
+
+#: includes/arrays.php
+msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
+msgstr "ጣቢያው የተጠቃሚ ስም እና የይለፍ ቃል ስለሚጠይቅ በተለምዶ 401 ስህተት የሚመልስ ከሆነ ይህን ሳጥን ይምረጡ።"
+
+#: includes/arrays.php
+msgid "Proxy Server"
+msgstr "ተኪ አገልጋይ"
+
+#: includes/arrays.php
+msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
+msgstr "ይህ የግንኙነት ጽሑፍ ፕሮክሲ የሚፈልግ ከሆነ፣ እዚህ ይምረጡት። አለበለዚያ 'None' ይምረጡ።"
+
+#: includes/arrays.php
+msgid "Check Certificate"
+msgstr "የምስክር ወረቀት አረጋግጥ"
+
+#: includes/arrays.php
+msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
+msgstr "SSLን የሚጠቀሙ ከሆነ፣ የምስክር ወረቀቱን ማረጋገጥ ከፈለጉ ይህን ሳጥን ይምረጡ። በነባሪ በርቷል፣ ጣቢያው በራሱ የተፈረመ የምስክር ወረቀት የሚጠቀም ከሆነ ያጥፉት።"
+
+#: includes/arrays.php
+msgid "Check and notify Certificate expiration"
+msgstr "የምስክር ወረቀት ማብቂያን አረጋግጥ እና አሳውቅ"
+
+#: includes/arrays.php
+msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
+msgstr "SSLን የሚጠቀሙ ከሆነ፣ የምስክር ወረቀቱን የማብቂያ ጊዜ መፈተሽ ከፈለጉ ይህን ሳጥን ይምረጡ። ከማብቃቱ ስንት ቀናት በፊት ማሳወቅ እንዳለበት በቅንብሮች ውስጥ ማቀናበር ይችላሉ.."
+
+#: includes/arrays.php
+msgid "Parameters"
+msgstr "መለኪያዎች"
+
+#: includes/arrays.php
+msgid "How Often to Test"
+msgstr "በየስንት ጊዜው መሞከር እንዳለበት"
+
+#: includes/arrays.php
+msgid "Test every xth poller run"
+msgstr "በእያንዳንዱ x-ኛ የፖለር አሂድ ሞክር"
+
+#: includes/arrays.php
+msgid "Trigger"
+msgstr "ቀስቃሽ"
+
+#: includes/arrays.php
+msgid "How many times the service must be DOWN before an alert email is triggered."
+msgstr "የማንቂያ ኢሜይል ከመቀስቀሱ በፊት አገልግሎቱ ስንት ጊዜ መውረድ (DOWN) አለበት።"
+
+#: includes/arrays.php
+msgid "Long duration alert"
+msgstr "የረጅም ቆይታ ማንቂያ"
+
+#: includes/arrays.php
+msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
+msgstr "የሙከራው ጊዜ በተከታታይ ለበርካታ ጊዜያት ከዚህ እሴት የሚበልጥ ከሆነ፣ ማሳወቂያ ይላኩ። ከተለዋዋጭ የቆይታ ጊዜ ብዛት ጋር የተያያዘ ነው። ሙከራው ከፍተኛውን የስራ ጊዜ ከቅንብሮች ይወርሳል። እዚህ ከፍ ያለ እሴት ከተቀናበረ፣ ከፍተኛው የስራ ጊዜ ይህ እሴት + 2 ሰከንዶች ነው።"
+
+#: includes/arrays.php
+msgid "Number of duration violations in a row"
+msgstr "በተከታታይ የተከሰቱ የቆይታ ጊዜ ጥሰቶች ብዛት"
+
+#: includes/arrays.php
+msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
+msgstr "ማሳወቂያ እንዲላክ የቆይታ ጊዜ ቀስቃሹ በተከታታይ ስንት ጊዜ መታለፍ አለበት"
+
+#: includes/arrays.php
+msgid "Verification Strings"
+msgstr "የማረጋገጫ ሕብረቁምፊዎች"
+
+#: includes/arrays.php
+msgid "Response Search String"
+msgstr "የምላሽ ፍለጋ ሕብረቁምፊ"
+
+#: includes/arrays.php
+msgid "This is the string to search for in the response for a live and working service."
+msgstr "ይህ ቀጥታ እና በመሥራት ላይ ላለ አገልግሎት በምላሹ ውስጥ የሚፈለግ ሕብረቁምፊ ነው።"
+
+#: includes/arrays.php
+msgid "Response Search String - Maintenance"
+msgstr "የምላሽ ፍለጋ ሕብረቁምፊ - ጥገና"
+
+#: includes/arrays.php
+msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
+msgstr "ይህ በጥገና ላይ የሚፈለግ ሕብረቁምፊ ነው። ከላይ ያለው ሕብረቁምፊ ካልተገኘ የአገልግሎት ፍተሻው ይህን ሕብረቁምፊ ይፈትሻል። ከተገኘ አገልግሎቱ በጥገና ላይ ነው ማለት ነው።"
+
+#: includes/arrays.php
+msgid "Response Search String - Failed"
+msgstr "የምላሽ ፍለጋ ሕብረቁምፊ - አልተሳካም"
+
+#: includes/arrays.php
+msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
+msgstr "ይህ በአገልግሎት ምላሽ ውስጥ የታወቀ ውድቀትን ለመፈለግ የሚያገለግል ሕብረቁምፊ ነው። የአገልግሎት ፍተሻው የጊዜ ማለፊያ ችግሮችን እና ከላይ ያሉትን የፍለጋ ሕብረቁምፊዎች ችላ በማለት ይህ ሕብረቁምፊ ከተገኘ ብቻ ያሳውቃል።"
+
+#: includes/arrays.php
+msgid "Notification Settings"
+msgstr "የማሳወቂያ ቅንብሮች"
+
+#: includes/arrays.php
+msgid "Email notification"
+msgstr "የኢሜይል ማሳወቂያ"
+
+#: includes/arrays.php
+msgid "If enabled email notification about state, duration and search result will be send"
+msgstr "ከነቃ ስለ ሁኔታ፣ የቆይታ ጊዜ እና የፍለጋ ውጤት የኢሜይል ማሳወቂያ ይላካል"
+
+#: includes/arrays.php
+msgid "Notify Format"
+msgstr "የማሳወቂያ ቅርጸት"
+
+#: includes/arrays.php
+msgid "This is the format to use when sending the notification email"
+msgstr "ይህ የማሳወቂያ ኢሜይሉን በሚልኩበት ጊዜ የሚጠቀሙበት ቅርጸት ነው"
+
+#: includes/arrays.php
+msgid "Notification List"
+msgstr "የማሳወቂያ ዝርዝር"
+
+#: includes/arrays.php
+msgid "Use this Notification List for those to be notified when this service goes down."
+msgstr "ይህ አገልግሎት ሲቆም ማሳወቂያ ለሚደርሳቸው ሰዎች ይህን የማሳወቂያ ዝርዝር ይጠቀሙ።"
+
+#: includes/arrays.php
+msgid "Notify Accounts"
+msgstr "መለያዎችን አሳውቅ"
+
+#: includes/arrays.php
+msgid "This is a listing of accounts that will be notified when this service goes down."
+msgstr "ይህ አገልግሎት ሲቋረጥ ማሳወቂያ የሚደርሳቸው መለያዎች ዝርዝር ነው።"
+
+#: includes/arrays.php
+msgid "Extra Alert Emails"
+msgstr "ተጨማሪ የማንቂያ ኢሜይሎች"
+
+#: includes/arrays.php
+msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
+msgstr "ለዚህ ሙከራ ማንቂያዎችን የሚቀበሉ ተጨማሪ ኢሜይሎችን እዚህ መግለጽ ይችላሉ (በኮማ የተለዩ)"
+
+#: includes/arrays.php
+msgid "Notes"
+msgstr "ማስታወሻዎች"
+
+#: includes/arrays.php
+msgid "Notes sent in email"
+msgstr "በኢሜይል የተላኩ ማስታወሻዎች"
+
+#: includes/arrays.php
+msgid "External ID"
+msgstr "ውጫዊ መለያ (ID)"
+
+#: includes/arrays.php
+msgid "Enter an External ID for this test."
+msgstr "ለዚህ ሙከራ ውጫዊ መታወቂያ (External ID) ያስገቡ።"
+
+#: includes/arrays.php
+msgid "Help"
+msgstr "እገዛ"
+
+#: includes/arrays.php
+msgid "Credential Name"
+msgstr "የማረጋገጫ ስም"
+
+#: includes/arrays.php
+msgid "The name that is displayed for this Credential."
+msgstr "ለዚህ የማረጋገጫ መረጃ የሚታየው ስም።"
+
+#: includes/arrays.php
+msgid "Credential type"
+msgstr "የማረጋገጫ ዓይነት"
+
+#: includes/arrays.php
+msgid "Select correct Credential type."
+msgstr "ትክክለኛውን የማረጋገጫ አይነት ይምረጡ።"
+
+#: includes/arrays.php
+msgid "Options"
+msgstr "አማራጮች"
+
+#: includes/arrays.php
+msgid "Set according to your REST API server"
+msgstr "እንደ REST API አገልጋይዎ ያዘጋጁ"
+
+#: includes/arrays.php
+msgid "Username"
+msgstr "የተጠቃሚ ስም"
+
+#: includes/arrays.php
+msgid "Password"
+msgstr "የይለፍ ቃል"
+
+#: includes/arrays.php
+msgid "For anonymous FTP insert email address"
+msgstr "ስም-አልባ ለሆነ FTP የኢሜይል አድራሻ ያስገቡ"
+
+#: includes/arrays.php
+msgid "Login URL"
+msgstr "የመግቢያ URL"
+
+#: includes/arrays.php
+msgid "URL which is used to log in or get the token."
+msgstr "ለመግባት ወይም ቶከን ለማግኘት የሚያገለግል URL።"
+
+#: includes/arrays.php
+msgid "Data URL"
+msgstr "የውሂብ URL"
+
+#: includes/arrays.php
+msgid "URL to retrieve data. Insert with http:// or https://"
+msgstr "ውሂብ ለማግኘት የሚያገለግል URL። ከhttp:// ወይም https:// ጋር ያስገቡ"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2 community"
+msgstr "የSNMP v1 ወይም v2 ማህበረሰብ"
+
+#: includes/arrays.php
+msgid "SNMP community string for SNMP v1 or v2(c)"
+msgstr "ለSNMP v1 ወይም v2(c) የSNMP ማህበረሰብ ሕብረቁምፊ"
+
+#: includes/arrays.php
+msgid "SNMP Security Level"
+msgstr "የSNMP ደህንነት ደረጃ"
+
+#: includes/arrays.php
+msgid "SNMP v3 Security Level to use when querying the device."
+msgstr "መሣሪያውን ሲጠይቁ የሚጠቀሙበት የSNMP v3 ደህንነት ደረጃ."
+
+#: includes/arrays.php
+msgid "SNMP Auth Protocol (v3)"
+msgstr "የSNMP ማረጋገጫ ፕሮቶኮል (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Authorization Protocol."
+msgstr "የSNMPv3 ፈቃድ መስጫ ፕሮቶኮልን ይምረጡ."
+
+#: includes/arrays.php
+msgid "SNMP Username (v3)"
+msgstr "የSNMP የተጠቃሚ ስም (v3)"
+
+#: includes/arrays.php
+msgid "SNMP v3 username for this device."
+msgstr "ለዚህ መሣሪያ የSNMP v3 የተጠቃሚ ስም."
+
+#: includes/arrays.php
+msgid "SNMP Password (v3)"
+msgstr "የSNMP የይለፍ ቃል (v3)"
+
+#: includes/arrays.php
+msgid "SNMP v3 password for this device."
+msgstr "ለዚህ መሣሪያ የSNMP v3 የይለፍ ቃል."
+
+#: includes/arrays.php
+msgid "SNMP Privacy Protocol (v3)"
+msgstr "የSNMP ግላዊነት ፕሮቶኮል (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Privacy Protocol."
+msgstr "የSNMPv3 ግላዊነት ፕሮቶኮልን ይምረጡ."
+
+#: includes/arrays.php
+msgid "SNMP Privacy Passphrase (v3)"
+msgstr "የSNMP ግላዊነት የይለፍ ሐረግ (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Privacy Passphrase."
+msgstr "የSNMPv3 ግላዊነት የይለፍ ሐረግን ይምረጡ."
+
+#: includes/arrays.php
+msgid "SNMP Context (v3)"
+msgstr "የSNMP አውድ (v3)"
+
+#: includes/arrays.php
+msgid "Enter the SNMP Context to use for this device."
+msgstr "ለዚህ መሣሪያ የሚጠቀሙበትን የSNMP አውድ ያስገቡ."
+
+#: includes/arrays.php
+msgid "SNMP Engine ID (v3)"
+msgstr "የSNMP ሞተር መታወቂያ (v3)"
+
+#: includes/arrays.php
+msgid "Enter the SNMP v3 Engine Id or empty."
+msgstr "የSNMP v3 Engine Id ያስገቡ ወይም ባዶ ይተዉት።"
+
+#: includes/arrays.php
+msgid "SSH user"
+msgstr "የSSH ተጠቃሚ"
+
+#: includes/arrays.php
+msgid "Insert username here"
+msgstr "የተጠቃሚ ስም እዚህ ያስገቡ"
+
+#: includes/arrays.php
+msgid "SSH private key"
+msgstr "የSSH የግል ቁልፍ"
+
+#: includes/arrays.php
+msgid "SSH private key "
+msgstr "የSSH የግል ቁልፍ "
+
+#: includes/arrays.php
+msgid "SSH private key passphrase"
+msgstr "የSSH የግል ቁልፍ የይለፍ ሐረግ"
+
+#: includes/arrays.php
+msgid "If your key is password protected, insert password here"
+msgstr "ቁልፍዎ በይለፍ ቃል የተጠበቀ ከሆነ፣ የይለፍ ቃል እዚህ ያስገቡ"
+
+#: includes/arrays.php
+msgid "Client ID"
+msgstr "የደንበኛ መለያ (Client ID)"
+
+#: includes/arrays.php
+msgid "Oauth Client ID"
+msgstr "የ OAuth ደንበኛ መታወቂያ"
+
+#: includes/arrays.php
+msgid "Client secret"
+msgstr "የደንበኛ ሚስጥር"
+
+#: includes/arrays.php
+msgid "OAuth Client secret"
+msgstr "የ OAuth ደንበኛ ሚስጥር"
+
+#: includes/arrays.php
+msgid "Token name"
+msgstr "የቶከን ስም"
+
+#: includes/arrays.php
+msgid "Token value"
+msgstr "የቶከን እሴት"
+
+#: includes/arrays.php
+msgid "<b>Can be used for a lot of service checks:</b><br/><i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/><i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/><i>LDAP, smb, smbs</i> - required<br/><i>MQTT</i> - optional<br/><i>SCP, SSH command</i> - you can use this method or private key method"
+msgstr "<b>ለብዙ የአገልግሎት ፍተሻዎች ጥቅም ላይ ሊውል ይችላል፦</b><br/><i>Http/https</i> - አማራጭ፣ ሲዋቀር መሰረታዊ የHTTP ማረጋገጫን ይሞክሩ<br/><i>SMTP በወደብ 587</i> - አማራጭ። የተጠቃሚ ስም/የይለፍ ቃል ከሌለ የአገልጋዩ ምላሽ ብቻ ይሞከራል። የተጠቃሚ ስም እና የይለፍ ቃል ካለ መግባትም ይከናወናል<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - አማራጭ። ስም-አልባ ftp ለመጠቀም \"anonymous\" እንደ የተጠቃሚ ስም እና የኢሜይል አድራሻን እንደ የይለፍ ቃል ይጠቀሙ<br/><i>LDAP, smb, smbs</i> - አስፈላጊ<br/><i>MQTT</i> - አማራጭ<br/><i>SCP, SSH ትዕዛዝ</i> - ይህን ዘዴ ወይም የግል ቁልፍ ዘዴ መጠቀም ይችላሉ"
+
+#: includes/arrays.php
+msgid "Rest API - Basic HTTP auth. Username and password are required"
+msgstr "Rest API - መሠረታዊ HTTP ማረጋገጫ። የተጠቃሚ ስም እና የይለፍ ቃል ያስፈልጋሉ"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue). For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). For POST <i>api_key</i> is usually used."
+msgstr "Rest API - የAPI ቁልፍ ማረጋገጫ<br/>ማረጋገጫው በHTTP ራስጌ፣ በብጁ ራስጌ ወይም በPOST ዘዴ ይላካል። በURL ውስጥ ያሉ ምስክርነቶች አይደገፉም።<br/>የAPI ቁልፍ ስም እና እሴት ያስገቡ። ሁለቱም እሴቶች ያስፈልጋሉ። ለHTTP ራስጌ ብዙውን ጊዜ <i>Bearer ወይም apikey ወይም \"\"</i> የሚል ስም ጥቅም ላይ ይውላል (Authorization: Bearer apivalue)። ለብጁ ራስጌ ብዙውን ጊዜ <i>X-API-Key</i> ጥቅም ላይ ይውላል (X-Api-Key: keyvalue)። ለPOST ብዙውን ጊዜ <i>api_key</i> ጥቅም ላይ ይውላል።"
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded."
+msgstr "Rest API - የOAuth2/Bearer ማስመሰያ (token) ማረጋገጫ<br/>ቁልፍ/ማስመሰያ ከአገልጋዩ አግኝተው እዚህ ማስገባት ወይም ከምስክርነቶች ጋር የማረጋገጫ ፍሰትን መጠቀም ይችላሉ። የተጠቃሚ ስም እና የይለፍ ቃል በJson ኢንኮድ ተደርገው ይላካሉ።"
+
+#: includes/arrays.php
+msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
+msgstr "Rest API - በኩኪ ላይ የተመሠረተ ማረጋገጫ - ሁለቱም እሴቶች ያስፈልጋሉ። ከገቡ በኋላ ኩኪ ይመለሳል"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2 - required, insert community name here"
+msgstr "SNMP v1 ወይም v2 - ያስፈልጋል፣ የማህበረሰብ ስም እዚህ ያስገቡ"
+
+#: includes/arrays.php
+msgid "SNMP v3 - The security level determines which parameters are required"
+msgstr "SNMP v3 - የደህንነት ደረጃው የትኞቹ መለኪያዎች እንደሚያስፈልጉ ይወስናል"
+
+#: includes/arrays.php
+msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
+msgstr "የSSH የግል ቁልፍ - ለSCP ወይም ለSSH ትዕዛዝ ሙከራ ሊያገለግል ይችላል። እነዚህ ሙከራዎች የተጠቃሚ ስም/የይለፍ ቃልንም ሊጠቀሙ ይችላሉ"
+
+#: includes/arrays.php
+msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
+msgstr "የድር አገልጋዩ ምላሽ እየሰጠ መሆኑን ብቻ ይፈትሻል። የተጠቃሚ ስም/የይለፍ ቃል ማረጋገጫ ጥቅም ላይ ከዋለ፣ Basic HTTP ማረጋገጫን ይሞክራል።"
+
+#: includes/arrays.php
+msgid "The same as HTTP plaintext but adds the ability to test certificates."
+msgstr "ከHTTP ግልጽ ጽሑፍ (plaintext) ጋር ተመሳሳይ ሆኖ ሰርተፊኬቶችን የመሞከር ችሎታን ይጨምራል።"
+
+#: includes/arrays.php
+msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
+msgstr "የSMTP አገልጋዩ ምላሽ እየሰጠ መሆኑን ብቻ ይፈትሻል። ማረጋገጫ የለም። የአገልጋዩን የመግቢያ ባነር እና የehlo ምላሽ ያያሉ።"
+
+#: includes/arrays.php
+msgid "Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, you will see server login banner and ehlo response. With credential, login will be performed"
+msgstr "ያልተመሰጠረ + STARTTLS። የሰርተፊኬቱን ትክክለኛነት መሞከርም ይቻላል። ያለ የተጠቃሚ ስም እና የይለፍ ቃል የአገልጋዩን የመግቢያ ባነር እና የehlo ምላሽ ያያሉ። በማረጋገጫ መረጃ ደግሞ መግባት ይከናወናል"
+
+#: includes/arrays.php
+msgid "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password AUTH LOGIN will be tested."
+msgstr "በነባሪ ወደብ 465 ላይ የተመሰጠረ ግንኙነት። የምስክር ወረቀቱን ትክክለኛነት መፈተሽም ይቻላል። በተጠቃሚ ስም እና በይለፍ ቃል AUTH LOGIN ይፈተሻል።"
+
+#: includes/arrays.php
+msgid "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgstr "ያልተመሰጠረ የIMAP ግንኙነት። ያለ ማረጋገጫ መረጃ ግንኙነቱ ብቻ ይሞከራል። የመግቢያ ባነር ብቻ ያያሉ። በማረጋገጫ መረጃ መግባት ይሞከራል እንዲሁም የመልዕክቶችን ዝርዝር ለማንበብ ይሞክራል። የAUTHENTICATE PLAIN ወይም AUTHENTICATE LOGIN ዘዴን መጠቀም ይችላሉ።"
+
+#: includes/arrays.php
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "ካልተመሰጠረ IMAP ጋር ተመሳሳይ ነው ነገር ግን ከገቡ በኋላ STARTTLS ጥቅም ላይ ይውላል። ከSTARTTLS በኋላ የሰርተፊኬቱን ትክክለኛነት መሞከርም ይቻላል።"
+
+#: includes/arrays.php
+msgid "Encrypted IMAP, you can try login and test certificate and user login"
+msgstr "የተመሰጠረ IMAP፤ መግባትን መሞከር እንዲሁም የምስክር ወረቀትን እና የተጠቃሚ መግቢያን መፈተሽ ይችላሉ"
+
+#: includes/arrays.php
+msgid "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages"
+msgstr "ያልተመሰጠረ የPOP3 ግንኙነት። ያለ ማረጋገጫ መረጃ ግንኙነቱ ብቻ ይሞከራል። የመግቢያ ባነር ብቻ ያያሉ። በማረጋገጫ መረጃ መግባት ይሞከራል እንዲሁም የመልዕክቶችን ዝርዝር ለማንበብ ይሞክራል"
+
+#: includes/arrays.php
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "ካልተመሰጠረ POP3 ጋር ተመሳሳይ ነው ነገር ግን ከገቡ በኋላ STARTTLS ጥቅም ላይ ይውላል። ከSTARTTLS በኋላ የሰርተፊኬቱን ትክክለኛነት መሞከርም ይቻላል።"
+
+#: includes/arrays.php
+msgid "Encrypted POP3, you can try login and test certificate and user login."
+msgstr "የተመሰጠረ POP3፤ መግባትን መሞከር እንዲሁም የምስክር ወረቀትን እና የተጠቃሚ መግቢያን መፈተሽ ይችላሉ።"
+
+#: includes/arrays.php
+msgid "Try to resolve DNS record on specified DNS server"
+msgstr "በተጠቀሰው የDNS አገልጋይ ላይ የDNS መዝገብን ለመፍታት ይሞክሩ"
+
+#: includes/arrays.php
+msgid "Try DNS over HTTPS."
+msgstr "DNS በHTTPS ላይ ይሞክሩ።"
+
+#: includes/arrays.php
+msgid "All parameters are required. Perform unencrypted LDAP login and search"
+msgstr "ሁሉም መለኪያዎች ያስፈልጋሉ። ያልተመሰጠረ LDAP መግቢያ እና ፍለጋ ያከናውኑ"
+
+#: includes/arrays.php
+msgid "All parameters are required. Perform encrypted LDAP login and search"
+msgstr "ሁሉም መለኪያዎች ያስፈልጋሉ። የተመሰጠረ LDAP መግቢያ እና ፍለጋ ያከናውኑ"
+
+#: includes/arrays.php
+msgid "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content of the file is returned."
+msgstr "ያልተመሰጠረ የFTP ግንኙነት፤ መግባት እና በዱካው (/path/to/file.txt) የተገለጸውን ፋይል ለማውረድ መሞከር። ማንነቱ ላልታወቀ ግንኙነት *anonymous* እንደ መግቢያ እና የኢሜይል አድራሻን እንደ የይለፍ ቃል ይጠቀሙ። የፋይሉ ይዘት ይመለሳል።"
+
+#: includes/arrays.php
+msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
+msgstr "በዱካው (/path/to/file.txt) ውስጥ የተገለጸውን ፋይል ከTFTP አገልጋይ ለማውረድ ይሞክሩ። የፋይሉ ይዘት ይመለሳል።"
+
+#: includes/arrays.php
+msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
+msgstr "የተመሰጠረ SCP ግንኙነት፤ ይግቡ እና በዱካው (/path/to/file.txt) የተገለጸውን ፋይል ለማውረድ ይሞክሩ።"
+
+#: includes/arrays.php
+msgid "Try SMB protocol, username and password are required. Try to login and download file."
+msgstr "የSMB ፕሮቶኮልን ይሞክሩ፣ የተጠቃሚ ስም እና የይለፍ ቃል ያስፈልጋሉ። ለመግባት እና ፋይል ለማውረድ ይሞክሩ።"
+
+#: includes/arrays.php
+msgid "Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\""
+msgstr "ከMQTT አገልጋይ ጋር ይገናኙ እና ማንኛውንም መልዕክት ያዳምጡ። ርዕሱን በመንገድ (bedroom/temp) ላይ መጥቀስ ይችላሉ፣ ለማንኛውም ርዕስ ባዶ ይተውት። ለዚህ ሙከራ \"ረጅም ጊዜ ማንቂያ\" መጨመር ይመከራል"
+
+#: includes/arrays.php
+msgid "REST API test with basic HTTP auth. Prepare credential first."
+msgstr "በመሠረታዊ HTTP ማረጋገጫ የREST API ሙከራ። መጀመሪያ የማረጋገጫ መረጃውን ያዘጋጁ።"
+
+#: includes/arrays.php
+msgid "REST API test with API key auth. Prepare credential first."
+msgstr "በAPI ቁልፍ ማረጋገጫ የREST API ሙከራ። መጀመሪያ የማረጋገጫ መረጃውን ያዘጋጁ።"
+
+#: includes/arrays.php
+msgid "REST API test with Oauth2. Prepare credential first."
+msgstr "በOauth2 የREST API ሙከራ። መጀመሪያ የማረጋገጫ መረጃውን ያዘጋጁ።"
+
+#: includes/arrays.php
+msgid "REST API test with cookie auth. Prepare credential first."
+msgstr "በኩኪ ማረጋገጫ የREST API ሙከራ። መጀመሪያ የማረጋገጫ መረጃውን ያዘጋጁ።"
+
+#: includes/arrays.php
+msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
+msgstr "የSNMP get ዘዴን ይሞክሩ። ለተጠቀሰው OID ውጤት ይመለሳል። ማረጋገጫ ያስፈልጋል፣ በመጀመሪያ የSNMP v.1፣ 2 ወይም v3 ማረጋገጫ ማዘጋጀት አለብዎት።"
+
+#: includes/arrays.php
+msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
+msgstr "የSNMP walk ዘዴን ይሞክሩ። ለተጠቀሰው OID ውጤት ይመለሳል። ማረጋገጫ ያስፈልጋል፣ በመጀመሪያ የSNMP v.1፣ 2 ወይም v3 ማረጋገጫ ማዘጋጀት አለብዎት።"
+
+#: includes/arrays.php
+msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
+msgstr "SSH ተጠቅመው ከርቀት አስተናጋጅ ጋር ይገናኙ። ከገቡ በኋላ የተጠቀሰውን ትዕዛዝ ያስኪዱ እና ውጤቱን ይመልሱ። የተጠቃሚ ስም እና የይለፍ ቃል ወይም የግል ቁልፍ መጠቀም ይቻላል።"
+
+#: includes/arrays.php
+msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
+msgstr "በወደብ 22 ላይ ያለ SFTP ፕሮቶኮል፣ የተጠቃሚ ስም፣ የይለፍ ቃል እና መንገድ ያስፈልጋሉ። የመንገዱን የማውጫ ዝርዝር ለማግኘት ይሞክሩ።"
+
+#: includes/arrays.php
+msgid "All fine. Proceed as usual."
+msgstr "ሁሉም ደህና ነው። እንደተለመደው ይቀጥሉ።"
+
+#: includes/arrays.php
+msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
+msgstr "ለlibcurl ያስተላለፉት URL ይህ libcurl የማይደግፈውን ፕሮቶኮል ተጠቅሟል። ድጋፉ ያልተጠቀሙበት የcompile-time አማራጭ ሊሆን ይችላል፣ በስህተት የተጻፈ የፕሮቶኮል ሕብረቁምፊ ወይም libcurl ምንም ኮድ የሌለው ፕሮቶኮል ሊሆን ይችላል።"
+
+#: includes/arrays.php
+msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
+msgstr "ቀደምት የመጀመሪያ ማስጀመሪያ ኮድ አልተሳካም። ይህ ውስጣዊ ስህተት ወይም ችግር፣ ወይም በመጀመሪያ ማስጀመሪያ ጊዜ መሠረታዊ የሆነ ነገር መከናወን ያልቻለበት የሀብት ችግር ሊሆን ይችላል።"
+
+#: includes/arrays.php
+msgid "The URL was not properly formatted."
+msgstr "URL በትክክል አልተቀረጸም።"
+
+#: includes/arrays.php
+msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
+msgstr "የተጠየቀው ባህሪ፣ ፕሮቶኮል ወይም አማራጭ በግንባታ ጊዜ በተወሰደ ውሳኔ ምክንያት በዚህ libcurl ውስጥ አብሮ የተሰራ ሆኖ አልተገኘም። ይህ ማለት libcurl ሲገነባ ባህሪው ወይም አማራጩ አልነቃም ወይም በግልጽ ተሰናክሏል ማለት ነው፤ እንዲሰራ ለማድረግ እንደገና የተገነባ libcurl ማግኘት አለብዎት።"
+
+#: includes/arrays.php
+msgid "Could not resolve proxy. The given proxy host could not be resolved."
+msgstr "ፕሮክሲውን መፍታት አልተቻለም። የተሰጠው የፕሮክሲ አስተናጋጅ አልተፈታም።"
+
+#: includes/arrays.php
+msgid "Could not resolve host. The given remote host was not resolved."
+msgstr "አስተናጋጁን መፍታት አልተቻለም። የተሰጠው የርቀት አስተናጋጅ አልተፈታም።"
+
+#: includes/arrays.php
+msgid "Failed to connect() to host or proxy."
+msgstr "ወደ አስተናጋጅ ወይም ፕሮክሲ connect() ማድረግ አልተሳካም።"
+
+#: includes/arrays.php
+msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
+msgstr "አገልጋዩ libcurl ሊተነትነው ያልቻለውን ውሂብ ልኳል። ይህ የስህተት ኮድ ከ7.51.0 በፊት CURLE_FTP_WEIRD_SERVER_REPLY በመባል ይታወቅ ነበር።"
+
+#: includes/arrays.php
+msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
+msgstr "በURL ውስጥ ወደተሰጠው ግብዓት መዳረሻ ተከልክለናል። ለFTP፣ ይህ የሚከሰተው ወደ የርቀት ማውጫ ለመቀየር በሚሞከርበት ጊዜ ነው።"
+
+#: includes/arrays.php
+msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
+msgstr "ንቁ የFTP ክፍለ-ጊዜ ጥቅም ላይ ሲውል አገልጋዩ መልሶ እስኪገናኝ በመጠበቅ ላይ እያለ፣ የስህተት ኮድ በመቆጣጠሪያ ግንኙነቱ ወይም በተመሳሳይ መልኩ ተልኳል።"
+
+#: includes/arrays.php
+msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
+msgstr "የFTP የይለፍ ቃልን ወደ አገልጋዩ ከላከ በኋላ libcurl ተገቢ ምላሽ ይጠብቃል። ይህ የስህተት ኮድ ያልተጠበቀ ኮድ መመለሱን ያመለክታል።"
+
+#: includes/arrays.php
+msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
+msgstr "ንቁ በሆነ የFTP ክፍለ ጊዜ አገልጋዩ እስኪገናኝ በመጠበቅ ላይ ሳለ፣ የCURLOPT_ACCEPTTIMEOUT_MS (ወይም የውስጥ ነባሪ) የጊዜ ገደብ አልፏል።"
+
+#: includes/arrays.php
+msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
+msgstr "Libcurl ለPASV ወይም EPSV ትዕዛዝ ምላሽ ከአገልጋዩ ትርጉም ያለው ውጤት ማግኘት አልቻለም። አገልጋዩ ጉድለት አለበት።"
+
+#: includes/arrays.php
+msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
+msgstr "የFTP አገልጋዮች ለPASV ትዕዛዝ ምላሽ ሆኖ ባለ 227-መስመር ይመልሳሉ። libcurl ያንን መስመር መተንተን ካልቻለ፣ ይህ የመመለሻ ኮድ ይመለሳል።"
+
+#: includes/arrays.php
+msgid "An internal failure to lookup the host used for the new connection."
+msgstr "ለአዲሱ ግንኙነት የሚያገለግለውን አስተናጋጅ በመፈለግ ረገድ ውስጣዊ ውድቀት ተከስቷል።"
+
+#: includes/arrays.php
+msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr "በHTTP2 ክፈፍ ንብርብር ውስጥ ችግር ተገኝቷል። ይህ በተወሰነ ደረጃ አጠቃላይ ነው እና ከብዙ ችግሮች አንዱ ሊሆን ይችላል፣ ለዝርዝሮች የስህተት ቋቱን ይመልከቱ።"
+
+#: includes/arrays.php
+msgid "Received an error when trying to set the transfer mode to binary or ASCII."
+msgstr "የዝውውር ሁነታውን ወደ ሁለትዮሽ (binary) ወይም ASCII ለማቀናበር ሲሞከር ስህተት አጋጥሟል።"
+
+#: includes/arrays.php
+msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
+msgstr "የፋይል ማስተላለፍ ከተጠበቀው ያነሰ ወይም የበለጠ ነበር። ይህ የሚከሰተው አገልጋዩ መጀመሪያ የሚጠበቀውን የማስተላለፊያ መጠን ሪፖርት ሲያደርግ እና ከዚያ ቀደም ሲል ከተሰጠው መጠን ጋር የማይዛመድ ውሂብ ሲያቀርብ ነው።"
+
+#: includes/arrays.php
+msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
+msgstr "ይህ ለ'RETR' ትዕዛዝ ያልተለመደ ምላሽ ወይም ዜሮ ባይት ዝውውር መጠናቀቅ ነበር።"
+
+#: includes/arrays.php
+msgid "Obsolete Error"
+msgstr "ጊዜው ያለፈበት ስህተት"
+
+#: includes/arrays.php
+msgid "Not used in modern versions."
+msgstr "በዘመናዊ ስሪቶች ውስጥ ጥቅም ላይ አይውልም።"
+
+#: includes/arrays.php
+msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
+msgstr "ብጁ \"QUOTE\" ትዕዛዞችን ወደ የርቀት አገልጋይ ሲልኩ፣ ከትዕዛዞቹ አንዱ 400 ወይም ከዚያ በላይ የሆነ የስህተት ኮድ (ለFTP) መልሷል ወይም ትዕዛዙ በተሳካ ሁኔታ አለመጠናቀቁን አመልክቷል።"
+
+#: includes/arrays.php
+msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
+msgstr "ይህ የሚመለሰው CURLOPT_FAILONERROR ወደ true ከተዋቀረ እና የHTTP አገልጋዩ >= 400 የሆነ የስህተት ኮድ ከመለሰ ነው።"
+
+#: includes/arrays.php
+msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
+msgstr "የተቀበለውን ውሂብ ወደ አካባቢያዊ ፋይል በመጻፍ ላይ ስህተት ተከስቷል፣ ወይም ከመጻፊያ መልሶ መጥሪያ (write callback) ለlibcurl ስህተት ተመልሷል።"
+
+#: includes/arrays.php
+msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
+msgstr "መስቀል መጀመር አልተሳካም። ለFTP አገልጋዩ በተለምዶ የSTOR ትዕዛዝን ከልክሏል። የስህተት ማከማቻው ብዙውን ጊዜ ለዚህ የአገልጋዩን ማብራሪያ ይይዛል።"
+
+#: includes/arrays.php
+msgid "There was a problem reading a local file or an error returned by the read callback."
+msgstr "የአካባቢ ፋይልን በማንበብ ላይ ችግር ነበር ወይም በንባብ መልሶ መጥሪያው ስህተት ተመልሷል።"
+
+#: includes/arrays.php
+msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
+msgstr "የማህደረ ትውስታ ምደባ ጥያቄ አልተሳካም። ይህ ከባድ ችግር ነው እና ይህ ከተከሰተ ነገሮች በከፍተኛ ሁኔታ ተበላሽተዋል ማለት ነው።"
+
+#: includes/arrays.php
+msgid "Operation timeout. The specified time-out period was reached according to the conditions."
+msgstr "የተግባር ጊዜ አልቋል። እንደ ሁኔታዎቹ የተገለጸው የጊዜ ገደብ ደርሷል።"
+
+#: includes/arrays.php
+msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
+msgstr "የFTP PORT ትዕዛዝ ስህተት መልሷል። ይህ በአብዛኛው የሚከሰተው libcurl እንዲጠቀምበት በቂ የሆነ ትክክለኛ አድራሻ ሳይገልጹ ሲቀሩ ነው። CURLOPT_FTPPORTን ይመልከቱ።"
+
+#: includes/arrays.php
+msgid "The FTP REST command returned error. This should never happen if the server is sane."
+msgstr "የFTP REST ትዕዛዝ ስህተት መልሷል። አገልጋዩ በትክክል የሚሰራ ከሆነ ይህ በፍጹም መከሰት የለበትም።"
+
+#: includes/arrays.php
+msgid "The server does not support or accept range requests."
+msgstr "አገልጋዩ የክልል (range) ጥያቄዎችን አይደግፍም ወይም አይቀበልም።"
+
+#: includes/arrays.php
+msgid "This is an odd error that mainly occurs due to internal confusion."
+msgstr "ይህ በዋናነት በውስጣዊ ግራ መጋባት ምክንያት የሚከሰት ያልተለመደ ስህተት ነው።"
+
+#: includes/arrays.php
+msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
+msgstr "በSSL/TLS እጅ መጨባበጥ (handshake) ውስጥ የሆነ ችግር ተከስቷል። ችግሩን በትንሹም ቢሆን በትክክል ስለሚጠቁም የስህተት ቋቱን ማግኘት እና እዚያ ያለውን መልዕክት ማንበብ ያስፈልግዎታል። የምስክር ወረቀቶች (የፋይል ቅርጸቶች፣ መንገዶች፣ ፈቃዶች)፣ የይለፍ ቃሎች እና ሌሎች ሊሆኑ ይችላሉ።"
+
+#: includes/arrays.php
+msgid "The download could not be resumed because the specified offset was out of the file boundary."
+msgstr "የተገለጸው ቦታ (offset) ከፋይሉ ወሰን ውጭ ስለነበር ማውረዱ ሊቀጥል አልቻለም።"
+
+#: includes/arrays.php
+msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
+msgstr "በFILE:// የተሰጠ ፋይል ሊከፈት አልቻለም። ምናልባት የፋይሉ መንገድ ያለ ፋይልን ስለማያመለክት ሊሆን ይችላል። የፋይል ፈቃዶችን አረጋግጠዋል?"
+
+#: includes/arrays.php
+msgid "LDAP cannot bind. LDAP bind operation failed."
+msgstr "LDAP ማገናኘት (bind) አይችልም። የLDAP bind ክወና አልተሳካም።"
+
+#: includes/arrays.php
+msgid "LDAP search failed."
+msgstr "የLDAP ፍለጋ አልተሳካም።"
+
+#: includes/arrays.php
+msgid "Function not found. A required zlib function was not found."
+msgstr "ተግባሩ አልተገኘም። አንድ አስፈላጊ የzlib ተግባር አልተገኘም።"
+
+#: includes/arrays.php
+msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
+msgstr "በcallback ተቋርጧል። አንድ callback ለlibcurl \"abort\" መልሷል።"
+
+#: includes/arrays.php
+msgid "A function was called with a bad parameter."
+msgstr "አንድ ተግባር በተሳሳተ መለኪያ ተጠርቷል።"
+
+#: includes/arrays.php
+msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
+msgstr "የበይነገጽ ስህተት። የተገለጸው የወጪ በይነገጽ ጥቅም ላይ ሊውል አልቻለም። ለወጪ ግንኙነቶች ምንጭ IP አድራሻ የትኛውን በይነገጽ መጠቀም እንዳለብዎት በURLOPT_INTERFACE ያዘጋጁ።"
+
+#: includes/arrays.php
+msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
+msgstr "በጣም ብዙ ማዞሪያዎች። ማዞሪያዎችን በመከተል ላይ እያለ libcurl ከፍተኛውን መጠን ደርሷል። ገደብዎን በCURLOPT_MAXREDIRS ያዘጋጁ።"
+
+#: includes/arrays.php
+msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
+msgstr "ለlibcurl የተላለፈ አማራጭ አይታወቅም/ተቀባይነት የለውም። ተገቢውን ሰነድ ይመልከቱ። ይህ ምናልባት libcurlን በሚጠቀመው ፕሮግራም ውስጥ ያለ ችግር ሊሆን ይችላል። የስህተት ቋቱ (error buffer) የትኛውን ትክክለኛ አማራጭ እንደሚመለከት የበለጠ የተለየ መረጃ ሊይዝ ይችላል።"
+
+#: includes/arrays.php
+msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
+msgstr "ወደ setopt የተላለፈ አማራጭ በተሳሳተ መንገድ ተቀርጿል። ስለ አማራጩ ዝርዝር መረጃ የስህተት መልእክቱን ይመልከቱ።"
+
+#: includes/arrays.php
+msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
+msgstr "ከአገልጋዩ ምንም አልተመለሰም፣ እና በእነዚህ ሁኔታዎች ምንም አለማግኘት እንደ ስህተት ይቆጠራል።"
+
+#: includes/arrays.php
+msgid "The specified crypto engine was not found."
+msgstr "የተጠቀሰው የክሪፕቶ ሞተር (crypto engine) አልተገኘም።"
+
+#: includes/arrays.php
+msgid "Failed setting the selected SSL crypto engine as default."
+msgstr "የተመረጠውን የSSL ክሪፕቶ ሞተር እንደ ነባሪ ማዘጋጀት አልተሳካም።"
+
+#: includes/arrays.php
+msgid "Failed sending network data."
+msgstr "የአውታረ መረብ ውሂብ መላክ አልተሳካም።"
+
+#: includes/arrays.php
+msgid "Failure with receiving network data."
+msgstr "የአውታረ መረብ ውሂብ በመቀበል ላይ ስህተት ተፈጥሯል።"
+
+#: includes/arrays.php
+msgid "problem with the local client certificate."
+msgstr "ከአካባቢያዊ የደንበኛ ሰርተፊኬት ጋር ችግር አለ።"
+
+#: includes/arrays.php
+msgid "Could not use specified cipher."
+msgstr "የተጠቀሰውን ሳይፈር መጠቀም አልተቻለም።"
+
+#: includes/arrays.php
+msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
+msgstr "የርቀት አገልጋዩ የSSL ሰርተፊኬት ወይም የSSH አሻራ ትክክል እንዳልሆነ ተቆጥሯል። ይህ የስህተት ኮድ ከ7.62.0 ጀምሮ ከCURLE_SSL_CACERT ጋር ተዋህዷል። የቀድሞ ዋጋው 51 ነበር።"
+
+#: includes/arrays.php
+msgid "Unrecognized transfer encoding."
+msgstr "ያልታወቀ የዝውውር ኢንኮዲንግ።"
+
+#: includes/arrays.php
+msgid "Maximum file size exceeded."
+msgstr "ከፍተኛው የፋይል መጠን አልፏል።"
+
+#: includes/arrays.php
+msgid "Requested FTP SSL level failed."
+msgstr "የተጠየቀው የFTP SSL ደረጃ አልተሳካም።"
+
+#: includes/arrays.php
+msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
+msgstr "የመላክ ክዋኔ ሲያደርግ curl ውሂቡን እንደገና ለማስተላለፍ ወደ ኋላ መመለስ (rewind) ነበረበት፣ ነገር ግን የመመለስ ክዋኔው አልተሳካም።"
+
+#: includes/arrays.php
+msgid "Initiating the SSL Engine failed."
+msgstr "የSSL ሞተሩን ማስጀመር አልተሳካም።"
+
+#: includes/arrays.php
+msgid "The remote server denied curl to login (Added in 7.13.1)"
+msgstr "የርቀት አገልጋዩ curl እንዳይገባ ከልክሏል (በ7.13.1 የታከለ)"
+
+#: includes/arrays.php
+msgid "File not found on TFTP server."
+msgstr "ፋይሉ በTFTP አገልጋይ ላይ አልተገኘም።"
+
+#: includes/arrays.php
+msgid "Permission problem on TFTP server."
+msgstr "በTFTP አገልጋይ ላይ የፈቃድ ችግር።"
+
+#: includes/arrays.php
+msgid "Out of disk space on the server."
+msgstr "በአገልጋዩ ላይ የዲስክ ቦታ አልቋል።"
+
+#: includes/arrays.php
+msgid "Illegal TFTP operation."
+msgstr "ህገ-ወጥ የTFTP ክዋኔ።"
+
+#: includes/arrays.php
+msgid "Unknown TFTP transfer ID."
+msgstr "ያልታወቀ የTFTP ዝውውር መታወቂያ።"
+
+#: includes/arrays.php
+msgid "File already exists and is not overwritten."
+msgstr "ፋይሉ አስቀድሞ አለ እና አልተተካም።"
+
+#: includes/arrays.php
+msgid "This error should never be returned by a properly functioning TFTP server."
+msgstr "ይህ ስህተት በትክክል በሚሠራ TFTP አገልጋይ በጭራሽ መመለስ የለበትም።"
+
+#: includes/arrays.php
+msgid "Problem with reading the SSL CA cert (path? access rights?)"
+msgstr "የSSL CA የምስክር ወረቀትን በማንበብ ላይ ችግር ተፈጥሯል (መንገድ? የመዳረሻ መብቶች?)"
+
+#: includes/arrays.php
+msgid "The resource referenced in the URL does not exist."
+msgstr "በURL ውስጥ የተጠቀሰው ግብዓት የለም።"
+
+#: includes/arrays.php
+msgid "An unspecified error occurred during the SSH session."
+msgstr "በSSH ክፍለ ጊዜ ውስጥ ያልተገለጸ ስህተት ተከስቷል።"
+
+#: includes/arrays.php
+msgid "Failed to shut down the SSL connection."
+msgstr "የSSL ግንኙነቱን መዝጋት አልተሳካም።"
+
+#: includes/arrays.php
+msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
+msgstr "ሶኬቱ ለመላክ/ለመቀበል (send/recv) ዝግጁ አይደለም፤ ዝግጁ እስኪሆን ድረስ ይጠብቁና እንደገና ይሞክሩ። ይህ የመመለሻ ኮድ የሚመለሰው ከcurl_easy_recv እና curl_easy_send ብቻ ነው (በ7.18.2 የታከለ)"
+
+#: includes/arrays.php
+msgid "Failed to load CRL file (Added in 7.19.0)"
+msgstr "የCRL ፋይል መጫን አልተሳካም (በ7.19.0 የታከለ)"
+
+#: includes/arrays.php
+msgid "Issuer check failed (Added in 7.19.0)"
+msgstr "የአውጪ ፍተሻ አልተሳካም (በ7.19.0 የታከለ)"
+
+#: includes/arrays.php
+msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
+msgstr "የFTP አገልጋዩ የPRET ትዕዛዝን በፍጹም አይረዳውም ወይም የተሰጠውን መለኪያ አይደግፍም። CURLOPT_CUSTOMREQUESTን ሲጠቀሙ ይጠንቀቁ፣ ብጁ የLIST ትዕዛዝ ከPASV በፊት ከPRET ትዕዛዝ ጋርም ይላካል። (በ7.20.0 ታክሏል)"
+
+#: includes/arrays.php
+msgid "Mismatch of RTSP CSeq numbers."
+msgstr "የRTSP CSeq ቁጥሮች አለመዛመድ።"
+
+#: includes/arrays.php
+msgid "Mismatch of RTSP Session Identifiers."
+msgstr "የRTSP ክፍለ ጊዜ መለያዎች አለመዛመድ።"
+
+#: includes/arrays.php
+msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
+msgstr "የFTP ፋይል ዝርዝርን መተንተን አልተቻለም (በFTP ዋይልድካርድ ማውረድ ወቅት)።"
+
+#: includes/arrays.php
+msgid "Chunk callback reported error."
+msgstr "የChunk መልሶ መጥሪያ ስህተት ሪፖርት አድርጓል።"
+
+#: includes/arrays.php
+msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
+msgstr "(ለውስጥ አገልግሎት ብቻ፣ በ libcurl በፍጹም አይመለስም) ምንም ግንኙነት የለም፣ ክፍለ ጊዜው በወረፋ ላይ ነው። (በ 7.30.0 የታከለ)"
+
+#: includes/arrays.php
+msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
+msgstr "በCURLOPT_PINNEDPUBLICKEY ከተገለጸው የተሰካ ቁልፍ ጋር ማዛመድ አልተሳካም።"
+
+#: includes/arrays.php
+msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
+msgstr "በ CURLOPT_SSL_VERIFYSTATUS ሲጠየቅ ሁኔታው አለመሳካትን መልሷል።"
+
+#: includes/arrays.php
+msgid "Stream error in the HTTP/2 framing layer."
+msgstr "በHTTP/2 ክፈፍ ንብርብር ውስጥ የዥረት ስህተት።"
+
+#: includes/arrays.php
+msgid "An API function was called from inside a callback."
+msgstr "የAPI ተግባር ከመልሶ መጥሪያ (callback) ውስጥ ተጠርቷል።"
+
+#: includes/arrays.php
+msgid "An authentication function returned an error."
+msgstr "የማረጋገጫ ተግባር ስህተት መልሷል።"
+
+#: includes/arrays.php
+msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr "በHTTP/3 ንብርብር ውስጥ ችግር ተገኝቷል። ይህ በተወሰነ ደረጃ አጠቃላይ ነው እና ከብዙ ችግሮች አንዱ ሊሆን ይችላል፣ ለዝርዝሮች የስህተት ቋቱን ይመልከቱ።"
+
+#: includes/arrays.php
+msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
+msgstr "የQUIC ግንኙነት ስህተት። ይህ ስህተት በSSL ቤተ-መጽሐፍት ስህተት ምክንያት ሊከሰት ይችላል። QUIC ለHTTP/3 ዝውውሮች የሚያገለግል ፕሮቶኮል ነው።"
+
+#: includes/arrays.php
+msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
+msgstr "የፕሮክሲ የእጅ መጨባበጥ (handshake) ስህተት። CURLINFO_PROXY_ERROR ስለተወሰነው ችግር ተጨማሪ ዝርዝሮችን ይሰጣል።"
+
+#: includes/arrays.php
+msgid "SSL Client Certificate required."
+msgstr "የSSL ደንበኛ የምስክር ወረቀት ያስፈልጋል።"
+
+#: includes/arrays.php
+msgid "An internal call to poll() or select() returned error that is not recoverable."
+msgstr "ወደ poll() ወይም select() የተደረገ ውስጣዊ ጥሪ የማይስተካከል ስህተት መልሷል።"
+
+#: includes/functions.php
+msgid "Log History"
+msgstr "የምዝግብ ታሪክ"
+
+#: includes/functions.php
+msgid "Graphs"
+msgstr "ግራፎች"
+
+#: includes/functions.php
+msgid "No data"
+msgstr "ምንም ውሂብ የለም"
+
+#: includes/functions.php servcheck_ca.php servcheck_proxy.php
+msgid "Cancel"
+msgstr "ይቅር"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Delete"
+msgstr "ሰርዝ"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
+msgstr[0] "የሚከተለውን ንጥል ለመሰረዝ 'ቀጥል' የሚለውን ጠቅ ያድርጉ።"
+msgstr[1] "የሚከተሉትን ንጥሎች ለመሰረዝ 'ቀጥል' የሚለውን ጠቅ ያድርጉ።"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Delete item"
+msgid_plural "Delete items"
+msgstr[0] "ንጥል ሰርዝ"
+msgstr[1] "ንጥሎችን ሰርዝ"
+
+#: servcheck_ca.php
+#, php-format
+msgid "CA [edit: %s]"
+msgstr "CA [አርትዕ: %s]"
+
+#: servcheck_ca.php
+msgid "CA [new]"
+msgstr "CA [አዲስ]"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+msgid "Used"
+msgstr "ጥቅም ላይ የዋለ"
+
+#: servcheck_ca.php
+msgid "CAs"
+msgstr "CAዎች"
+
+#: servcheck_ca.php
+msgid "No Certificates Found"
+msgstr "ምንም ሰርተፊኬቶች አልተገኙም"
+
+#: servcheck_ca.php
+msgid "Servcheck CA Management"
+msgstr "የServcheck CA አስተዳደር"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Search"
+msgstr "ፈልግ"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Default"
+msgstr "ነባሪ"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Go"
+msgstr "ሂድ"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Set/Refresh Filters"
+msgstr "ማጣሪያዎችን አዘጋጅ/አድስ"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Clear"
+msgstr "አጽዳ"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Clear Filters"
+msgstr "ማጣሪያዎችን አጽዳ"
+
+#: servcheck_credential.php servcheck_test.php
+msgid "Duplicate"
+msgstr "አባዛ"
+
+#: servcheck_credential.php
+msgid "Click 'Continue' to Duplicate the following Credential."
+msgid_plural "Click 'Continue' to Duplicate the following Credentials."
+msgstr[0] "የሚከተለውን ማረጋገጫ ለማባዛት 'ቀጥል' የሚለውን ጠቅ ያድርጉ።"
+msgstr[1] "የሚከተሉትን ማረጋገጫዎች ለማባዛት 'ቀጥል' የሚለውን ጠቅ ያድርጉ።"
+
+#: servcheck_credential.php
+msgid "Duplicate Credential"
+msgid_plural "Duplicate Credentials"
+msgstr[0] "ማረጋገጫ አባዛ"
+msgstr[1] "ማረጋገጫዎችን አባዛ"
+
+#: servcheck_credential.php
+#, php-format
+msgid "Credential [edit: %s]"
+msgstr "ማረጋገጫ [አርትዕ፦ %s]"
+
+#: servcheck_credential.php
+msgid "Credential [new]"
+msgstr "ማረጋገጫ [አዲስ]"
+
+#: servcheck_credential.php
+msgid "Type"
+msgstr "ዓይነት"
+
+#: servcheck_credential.php
+msgid "Credentials"
+msgstr "ማረጋገጫዎች"
+
+#: servcheck_credential.php
+msgid "No Credentials Found"
+msgstr "ምንም የመግቢያ ማረጋገጫዎች አልተገኙም"
+
+#: servcheck_credential.php
+msgid "Servcheck Credential Management"
+msgstr "የServcheck ማረጋገጫ አስተዳደር"
+
+#: servcheck_curl_code.php
+msgid "No error codes"
+msgstr "ምንም የስህተት ኮዶች የሉም"
+
+#: servcheck_proxy.php
+#, php-format
+msgid "Proxy [edit: %s]"
+msgstr "ፕሮክሲ [አርትዕ: %s]"
+
+#: servcheck_proxy.php
+msgid "Proxy [new]"
+msgstr "ፕሮክሲ [አዲስ]"
+
+#: servcheck_proxy.php
+msgid "Ports (http/https)"
+msgstr "ወደቦች (http/https)"
+
+#: servcheck_proxy.php
+msgid "No Proxies Found"
+msgstr "ምንም ፕሮክሲዎች አልተገኙም"
+
+#: servcheck_proxy.php
+msgid "Servcheck Proxy Management"
+msgstr "የServcheck ፕሮክሲ አስተዳደር"
+
+#: servcheck_test.php
+msgid "Disable"
+msgstr "አሰናክል"
+
+#: servcheck_test.php
+msgid "Enable"
+msgstr "አንቃ"
+
+#: servcheck_test.php
+msgid "Clear statistics"
+msgstr "ስታቲስቲክስን አጽዳ"
+
+#: servcheck_test.php
+msgid "Clear log"
+msgstr "ምዝግብ ማስታወሻውን አጽዳ"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
+msgstr[0] "የሚከተለውን ንጥል ለማሰናከል 'ቀጥል' የሚለውን ጠቅ ያድርጉ።"
+msgstr[1] "የሚከተሉትን ንጥሎች ለማሰናከል 'ቀጥል' የሚለውን ጠቅ ያድርጉ።"
+
+#: servcheck_test.php
+msgid "Disable item"
+msgid_plural "Disable items"
+msgstr[0] "ንጥል አሰናክል"
+msgstr[1] "ንጥሎችን አሰናክል"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
+msgstr[0] "የሚከተለውን ንጥል ለማንቃት 'ቀጥል' የሚለውን ጠቅ ያድርጉ።"
+msgstr[1] "የሚከተሉትን ንጥሎች ለማንቃት 'ቀጥል' የሚለውን ጠቅ ያድርጉ።"
+
+#: servcheck_test.php
+msgid "Enable item"
+msgid_plural "Enable items"
+msgstr[0] "ንጥል አንቃ"
+msgstr[1] "ንጥሎችን አንቃ"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
+msgstr[0] "የሚከተለውን ንጥል ለማባዛት 'ቀጥል' የሚለውን ጠቅ ያድርጉ።"
+msgstr[1] "የሚከተሉትን ንጥሎች ለማባዛት 'ቀጥል' የሚለውን ጠቅ ያድርጉ።"
+
+#: servcheck_test.php
+msgid "Duplicate item"
+msgid_plural "Duplicate items"
+msgstr[0] "ንጥል አባዛ"
+msgstr[1] "ንጥሎችን አባዛ"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear statistics of the following item."
+msgid_plural "Click 'Continue' to clear statistics of the following items."
+msgstr[0] "የሚከተለውን ንጥል ስታቲስቲክስ ለማጽዳት 'ቀጥል' የሚለውን ጠቅ ያድርጉ።"
+msgstr[1] "የሚከተሉትን ንጥሎች ስታቲስቲክስ ለማጽዳት 'ቀጥል' የሚለውን ጠቅ ያድርጉ።"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear log of the following item."
+msgid_plural "Click 'Continue' to clear log of the following items."
+msgstr[0] "የሚከተለውን ንጥል መዝገብ ለማጽዳት 'ቀጥል' የሚለውን ጠቅ ያድርጉ።"
+msgstr[1] "የሚከተሉትን ንጥሎች መዝገብ ለማጽዳት 'ቀጥል' የሚለውን ጠቅ ያድርጉ።"
+
+#: servcheck_test.php
+#, php-format
+msgid "The Service Check history was purged for %s"
+msgstr "ለ %s የአገልግሎት ፍተሻ ታሪክ ጸድቷል"
+
+#: servcheck_test.php
+#, php-format
+msgid "Test [edit: %s]"
+msgstr "ሙከራ [አርትዕ: %s]"
+
+#: servcheck_test.php
+msgid "Test [new]"
+msgstr "ሙከራ [አዲስ]"
+
+#: servcheck_test.php
+msgid "No Users Selected"
+msgstr "ምንም ተጠቃሚዎች አልተመረጡም"
+
+#: servcheck_test.php
+msgid "Users Selected"
+msgstr "የተመረጡ ተጠቃሚዎች"
+
+#: servcheck_test.php
+msgid "All Users Selected"
+msgstr "ሁሉም ተጠቃሚዎች ተመርጠዋል"
+
+#: servcheck_test.php
+msgid "All"
+msgstr "ሁሉም"
+
+#: servcheck_test.php
+msgid "Date"
+msgstr "ቀን"
+
+#: servcheck_test.php
+msgid "Attempt"
+msgstr "ሙከራ"
+
+#: servcheck_test.php
+msgid "Result"
+msgstr "ውጤት"
+
+#: servcheck_test.php
+msgid "Search result"
+msgstr "የፍለጋ ውጤት"
+
+#: servcheck_test.php
+msgid "Duration"
+msgstr "የቆይታ ጊዜ"
+
+#: servcheck_test.php
+msgid "Certificate"
+msgstr "የምስክር ወረቀት"
+
+#: servcheck_test.php
+msgid "Curl"
+msgstr "Curl"
+
+#: servcheck_test.php
+msgid "Ret. data size"
+msgstr "የተያዘ የውሂብ መጠን"
+
+#: servcheck_test.php
+msgid "CPU u/CPU s/Memory"
+msgstr "CPU u/CPU s/ማህደረ ትውስታ"
+
+#: servcheck_test.php
+msgid "Logs"
+msgstr "ምዝግብ ማስታወሻዎች"
+
+#: servcheck_test.php
+msgid "days"
+msgstr "ቀናት"
+
+#: servcheck_test.php
+#, php-format
+msgid "Expired %s days ago"
+msgstr "ከ %s ቀናት በፊት ጊዜው አልፎበታል"
+
+#: servcheck_test.php
+msgid "Insufficient data, wait a few poller cycles"
+msgstr "በቂ ውሂብ የለም፤ ጥቂት የፖለር ዑደቶችን ይጠብቁ"
+
+#: servcheck_test.php
+msgid "Actions"
+msgstr "ድርጊቶች"
+
+#: servcheck_test.php
+msgid "Status"
+msgstr "ሁኔታ"
+
+#: servcheck_test.php
+msgid "Last Check (attempt)"
+msgstr "የመጨረሻ ፍተሻ (ሙከራ)"
+
+#: servcheck_test.php
+msgid "Stats (OK/problem)"
+msgstr "ስታቲስቲክስ (እሺ/ችግር)"
+
+#: servcheck_test.php
+msgid "Triggered"
+msgstr "ተቀስቅሷል"
+
+#: servcheck_test.php
+msgid "Edit Service Check"
+msgstr "የአገልግሎት ፍተሻ አርትዕ"
+
+#: servcheck_test.php
+msgid "Enable Service Check"
+msgstr "የአገልግሎት ፍተሻን አንቃ"
+
+#: servcheck_test.php
+msgid "Disable Service Check"
+msgstr "የአገልግሎት ፍተሻን አሰናክል"
+
+#: servcheck_test.php
+msgid "View Service Check History"
+msgstr "የአገልግሎት ፍተሻ ታሪክን ተመልከት"
+
+#: servcheck_test.php
+msgid "View Last returned data"
+msgstr "የመጨረሻውን የተመለሰ ውሂብ ተመልከት"
+
+#: servcheck_test.php
+msgid "View Graph"
+msgstr "ግራፍ ተመልከት"
+
+#: servcheck_test.php
+msgid "N/A (N/A)"
+msgstr "የለም (የለም)"
+
+#: servcheck_test.php
+msgid "No"
+msgstr "አይ"
+
+#: servcheck_test.php
+msgid "Yes"
+msgstr "አዎ"
+
+#: servcheck_test.php
+msgid "No Service Checks Found"
+msgstr "ምንም የአገልግሎት ፍተሻዎች አልተገኙም"
+
+#: servcheck_test.php
+msgid "Last returned data of test"
+msgstr "የመጨረሻ የተመለሰ የሙከራ ውሂብ"
+
+#: servcheck_test.php
+msgid "Servcheck Test Management"
+msgstr "የServcheck ሙከራ አስተዳደር"
+
+#: servcheck_test.php
+msgid "State"
+msgstr "ግዛት"
+
+#: servcheck_test.php
+msgid "Any"
+msgstr "ማንኛውም"
+
+#: servcheck_test.php
+msgid "Refresh"
+msgstr "አድስ"
+
+#: servcheck_test.php
+msgid "Checks"
+msgstr "ፍተሻዎች"
+
+#: servcheck_test.php
+msgid "Service Check History"
+msgstr "የአገልግሎት ፍተሻ ታሪክ"
+
+#: servcheck_test.php
+msgid "Date Search"
+msgstr "የቀን ፍለጋ"
+
+#: servcheck_test.php
+msgid "Entries"
+msgstr "ግቤቶች"
+
+#: servcheck_test.php
+msgid "Purge Events"
+msgstr "ክስተቶችን አጥፋ"
+
+#: setup.php
+msgid "Service Check Admin"
+msgstr "የአገልግሎት ፍተሻ አስተዳዳሪ"
+
+#: setup.php
+msgid "Management"
+msgstr "አስተዳደር"
+
+#: setup.php
+msgid "Service Checker"
+msgstr "የአገልግሎት ፈታሽ"
+
+#: setup.php
+msgid "Service Checks"
+msgstr "የአገልግሎት ፍተሻዎች"
+
+#: setup.php
+msgid "Service Check Edit"
+msgstr "የአገልግሎት ፍተሻ አርትዕ"
+
+#: setup.php
+msgid "Service Check Save"
+msgstr "የአገልግሎት ፍተሻ አስቀምጥ"
+
+#: setup.php
+msgid "Credential Edit"
+msgstr "ማረጋገጫ አርትዕ"
+
+#: setup.php
+msgid "Credential Save"
+msgstr "ማረጋገጫ አስቀምጥ"
+
+#: setup.php
+msgid "Web Proxy"
+msgstr "የድር ፕሮክሲ"
+
+#: setup.php
+msgid "Web Proxy Edit"
+msgstr "የድር ፕሮክሲ አርትዕ"
+
+#: setup.php
+msgid "Save Web Proxy"
+msgstr "የድር ፕሮክሲ አስቀምጥ"
+
+#: setup.php
+msgid "CA"
+msgstr "CA"
+
+#: setup.php
+msgid "CA Edit"
+msgstr "CA አርትዕ"
+
+#: setup.php
+msgid "Save CA"
+msgstr "CA አስቀምጥ"
+
+#: setup.php
+msgid "Servcheck"
+msgstr "Servcheck"
+
+#: setup.php
+msgid "Notification Preferences"
+msgstr "የማሳወቂያ ምርጫዎች"
+
+#: setup.php
+msgid "Send Email separately for each address"
+msgstr "ለእያንዳንዱ አድራሻ ኢሜይልን በተናጠል ላክ"
+
+#: setup.php
+msgid "If checked, this will cause all Emails to be sent separately for each address."
+msgstr "ይህ ከተመረጠ፣ ሁሉም ኢሜይሎች ለእያንዳንዱ አድራሻ በተናጠል እንዲላኩ ያደርጋል።"
+
+#: setup.php
+msgid "Stop sending all notification"
+msgstr "ሁሉንም ማሳወቂያ መላክ አቁም"
+
+#: setup.php
+msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
+msgstr "ምልክት ከተደረገበት፣ servcheck ምንም ኢሜይሎችን አይልክም። እንዲሁም ለተወሰኑ ሙከራዎች ብቻ ማሳወቂያን ማሰናከል ይችላሉ"
+
+#: setup.php
+msgid "Enable Command Execution"
+msgstr "የትዕዛዝ አፈጻጸምን አንቃ"
+
+#: setup.php
+msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
+msgstr "ይህን ሳጥን መምረጥ በServcheck ክስተቶች ላይ ትዕዛዞችን የማስኬድ ችሎታን ያነቃል። ለእያንዳንዱ ሙከራ ማንቃት ወይም ማሰናከል ይችላሉ።"
+
+#: setup.php
+msgid "Status Change Command"
+msgstr "የሁኔታ ለውጥ ትዕዛዝ"
+
+#: setup.php
+msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+msgstr "መሰረታዊ ወይም የፍለጋ ወይም የምስክር ወረቀት ጊዜ ማብቂያ ሙከራ የተለየ ውጤት ሲመልስ፣ የሚከተለውን ትዕዛዝ ያሂዱ... ይህ ትዕዛዝ የትዕዛዝ መስመር ነጋሪ እሴቶችን ማካተት የለበትም... ሆኖም የሚከተሉት ተለዋዋጮች ከስክሪፕቱ አካባቢ ሊወሰዱ ይችላሉ፦<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+
+#: setup.php
+msgid "Concurrent Check Processes"
+msgstr "ተጓዳኝ የፍተሻ ሂደቶች"
+
+#: setup.php
+msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
+msgstr "በአንድ ጊዜ የሚከናወኑ የአገልግሎት ፍተሻ ሂደቶች ብዛት። ይህንን ቁጥር ከኮሮች ብዛት በ 2 እጥፍ ማሳደግ አይመከርም።"
+
+#: setup.php
+msgid "1 Process"
+msgstr "1 ሂደት"
+
+#: setup.php
+#, php-format
+msgid "%d Processes"
+msgstr "%d ሂደቶች"
+
+#: setup.php
+msgid "Certificate expiry date advanced notification email"
+msgstr "የምስክር ወረቀት ማብቂያ ቀን ቅድመ ማሳወቂያ ኢሜይል"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
+msgstr "የSSL/TLS አገልግሎት የምስክር ወረቀት ጊዜ ማለቂያ ከነቃ፣ የምስክር ወረቀቱ ከማብቃቱ በፊት ስርዓቱ ማሳወቂያ የሚልክበትን የቅድመ ማስጠንቀቂያ ቀናት ብዛት ያዘጋጁ"
+
+#: setup.php
+msgid "3 days in advance"
+msgstr "3 ቀናት አስቀድሞ"
+
+#: setup.php
+msgid "1 week in advance"
+msgstr "1 ሳምንት አስቀድሞ"
+
+#: setup.php
+msgid "3 weeks in advance"
+msgstr "3 ሳምንታት አስቀድሞ"
+
+#: setup.php
+msgid "30 days in advance"
+msgstr "30 ቀናት አስቀድሞ"
+
+#: setup.php
+msgid "60 days in advance"
+msgstr "60 ቀናት አስቀድሞ"
+
+#: setup.php
+msgid "90 days in advance"
+msgstr "90 ቀናት አስቀድሞ"
+
+#: setup.php
+msgid "Certificate expiry notification email interval"
+msgstr "የምስክር ወረቀት ማብቂያ ማሳወቂያ ኢሜይል ክፍተት"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday"
+msgstr "የSSL/TLS አገልግሎት የምስክር ወረቀት ጊዜ ማለቂያ ከነቃ፣ የኢሜይል ማሳወቂያው የሚላክበትን የጊዜ ክፍተት (በቀናት) ያዘጋጁ፤ ሆኖም የማብቂያ ቀኑ ካለፈ፣ የኢሜይል ማሳወቂያው በየቀኑ ይላካል"
+
+#: setup.php
+msgid "1 day"
+msgstr "1 ቀን"
+
+#: setup.php
+msgid "3 days"
+msgstr "3 ቀናት"
+
+#: setup.php
+msgid "5 days"
+msgstr "5 ቀናት"
+
+#: setup.php
+msgid "7 days"
+msgstr "7 ቀናት"
+
+#: setup.php
+msgid "10 days"
+msgstr "10 ቀናት"
+
+#: setup.php
+msgid "15 days"
+msgstr "15 ቀናት"
+
+#: setup.php
+msgid "20 days"
+msgstr "20 ቀናት"
+
+#: setup.php
+msgid "30 days"
+msgstr "30 ቀናት"
+
+#: setup.php
+msgid "How long to keep logs"
+msgstr "ምዝግብ ማስታወሻዎችን ለምን ያህል ጊዜ ማቆየት እንደሚቻል"
+
+#: setup.php
+msgid "Enter the period after which older logs will be automatically deleted."
+msgstr "ከዚያ በኋላ የቆዩ መዝገቦች በራስ-ሰር የሚሰረዙበትን ጊዜ ያስገቡ።"
+
+#: setup.php
+msgid "Never"
+msgstr "ፈጽሞ"
+
+#: setup.php
+#, php-format
+msgid "%d hours"
+msgstr "%d ሰዓታት"
+
+#: setup.php
+#, php-format
+msgid "%d days"
+msgstr "%d ቀናት"
+
+#: setup.php
+#, php-format
+msgid "%d year"
+msgstr "%d ዓመት"
+
+#: setup.php
+msgid "Maximum test duration in seconds"
+msgstr "ከፍተኛ የሙከራ ቆይታ ጊዜ በሴኮንዶች"
+
+#: setup.php
+msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
+msgstr "የሩጫ ጊዜ (runtime) ፍተሻ ላልነቃባቸው ሙከራዎች ነባሪ እሴት። ከነቃ፣ ከፍተኛው ቆይታ እንደ ቆይታ ገደብ + 2 ሰከንድ ሆኖ ይሰላል።"
+
+#: setup.php
+msgid "HTTP/HTTPS Check Settings"
+msgstr "የHTTP/HTTPS ፍተሻ ቅንብሮች"
+
+#: setup.php
+msgid "User Agent"
+msgstr "የተጠቃሚ ወኪል (User Agent)"
+
+#: setup.php
+msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
+msgstr "ከHTTP/HTTPS እና ከሌሎች በcURL ላይ ከተመሰረቱ የአገልግሎት ፍተሻዎች ጋር የሚላከው የUser-Agent ሕብረቁምፊ። አንዳንድ ጣቢያዎች የቆዩ ወይም ያልተለመዱ አሳሾችን ስለሚያግዱ፣ ወቅታዊ የUser-Agent እዚህ ማዘጋጀት ይችላሉ። አብሮ የተሰራውን ነባሪ ለመጠቀም ባዶ ይተዉት።"
+

@@ -1,0 +1,2171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-11-02 13:51-0500\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Malagasy\n"
+"Language: mg-MG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: includes/arrays.php servcheck_test.php
+msgid "Tests"
+msgstr "Andrana"
+
+#: includes/arrays.php
+msgid "CA certificates"
+msgstr "Taratasy fanamarinana CA"
+
+#: includes/arrays.php servcheck_proxy.php
+msgid "Proxies"
+msgstr "Ireo Proxy"
+
+#: includes/arrays.php setup.php
+msgid "Credential"
+msgstr "Fanamarinam-pidirana"
+
+#: includes/arrays.php
+msgid "Curl return codes"
+msgstr "Kaody fiverenan'ny Curl"
+
+#: includes/arrays.php
+msgid "Error"
+msgstr "Hadisoana"
+
+#: includes/arrays.php
+msgid "Long duration"
+msgstr "Faharetana lava"
+
+#: includes/arrays.php
+msgid "Warning"
+msgstr "Fampitandremana"
+
+#: includes/arrays.php
+msgid "Failing"
+msgstr "Tsy mahomby"
+
+#: includes/arrays.php
+msgid "Ok"
+msgstr "Ekena"
+
+#: includes/arrays.php setup.php
+msgid "Disabled"
+msgstr "Tsy mavitrika"
+
+#: includes/arrays.php
+msgid "HTTP plaintext, default port 80"
+msgstr "HTTP soratra tsotra, seranana mahazatra 80"
+
+#: includes/arrays.php
+msgid "HTTP encrypted (HTTPS), default port 443"
+msgstr "HTTP voasitrika (HTTPS), seranana mahazatra 443"
+
+#: includes/arrays.php
+msgid "SMTP plaintext, default port 25 (or 587 for submission)"
+msgstr "SMTP amin'ny endrika tsotra, seranana mahazatra 25 (na 587 ho an'ny fandefasana)"
+
+#: includes/arrays.php
+msgid "SMTP with STARTTLS, default port 25 (or 587 for submission)"
+msgstr "SMTP miaraka amin'ny STARTTLS, seranana mahazatra 25 (na 587 ho an'ny fandefasana)"
+
+#: includes/arrays.php
+msgid "SMTP encrypted (SMTPS), default port 465"
+msgstr "SMTP voakoditra (SMTPS), seranana mahazatra 465"
+
+#: includes/arrays.php
+msgid "IMAP plaintext, default port 143"
+msgstr "IMAP lahatsoratra tsotra, seranana mahazatra 143"
+
+#: includes/arrays.php
+msgid "IMAP with STARTTLS, default port 143"
+msgstr "IMAP miaraka amin'ny STARTTLS, seranana mahazatra 143"
+
+#: includes/arrays.php
+msgid "IMAP encrypted (IMAPS), default port 993"
+msgstr "IMAP voaaro amin'ny fanafenana (IMAPS), seranana mahazatra 993"
+
+#: includes/arrays.php
+msgid "POP3 plaintext, default port 110"
+msgstr "POP3 soratra tsotra, seranana mahazatra 110"
+
+#: includes/arrays.php
+msgid "POP3 with STARTTLS, default port 110"
+msgstr "POP3 miaraka amin'ny STARTTLS, seranana mahazatra 110"
+
+#: includes/arrays.php
+msgid "POP3 encrypted (POP3S), default port 995"
+msgstr "POP3 voahidy miafina (POP3S), seranana mahazatra 995"
+
+#: includes/arrays.php
+msgid "DNS plaintext, default port 53"
+msgstr "DNS lahatsoratra tsotra, seranana mahazatra 53"
+
+#: includes/arrays.php
+msgid "DNS over HTTPS, default port 443"
+msgstr "DNS ambonin'ny HTTPS, seranana mahazatra 443"
+
+#: includes/arrays.php
+msgid "LDAP plaintext, default port 389"
+msgstr "LDAP lahatsoratra tsotra, seranana mahazatra 389"
+
+#: includes/arrays.php
+msgid "LDAP encrypted (LDAPS), default port 636"
+msgstr "LDAP voaafina (LDAPS), seranana mahazatra 636"
+
+#: includes/arrays.php
+msgid "FTP plaintext, default port 21"
+msgstr "FTP lahatsoratra tsotra, seranana mahazatra 21"
+
+#: includes/arrays.php
+msgid "TFTP protocol - download file, default port 69"
+msgstr "Prôtokôly TFTP - fampidinana rakitra, seranana mahazatra 69"
+
+#: includes/arrays.php
+msgid "SCP download file, default port 22"
+msgstr "Rakitra fampidinana SCP, seranana mahazatra 22"
+
+#: includes/arrays.php
+msgid "SMB plaintext download file, default port 445"
+msgstr "Rakitra fampidinana SMB amin'ny endrika tsotra, seranana mahazatra 445"
+
+#: includes/arrays.php
+msgid "SMB encrypted (SMBS) download file, default port 445"
+msgstr "Rakitra fampidinana SMB voakoditra (SMBS), seranana mahazatra 445"
+
+#: includes/arrays.php
+msgid "MQTT plaintext, default port 1883"
+msgstr "MQTT lahatsoratra tsotra, seranana mahazatra 1883"
+
+#: includes/arrays.php
+msgid "Rest API with Basic HTTP auth"
+msgstr "Rest API miaraka amin'ny fanamarinana HTTP tsotra"
+
+#: includes/arrays.php
+msgid "Rest API with API key auth"
+msgstr "Rest API miaraka amin'ny fanamarinana amin'ny fanalahidin'ny API"
+
+#: includes/arrays.php
+msgid "Rest API with OAuth2/Bearer token auth"
+msgstr "Rest API miaraka amin'ny fanamarinana amin'ny mari-pamantarana OAuth2/Bearer"
+
+#: includes/arrays.php
+msgid "Rest API with Cookie based auth"
+msgstr "Rest API miaraka amin'ny fanamarinana mifototra amin'ny Cookie"
+
+#: includes/arrays.php
+msgid "SNMP get"
+msgstr "Fakana SNMP"
+
+#: includes/arrays.php
+msgid "SNMP walk"
+msgstr "Fitsidihana SNMP"
+
+#: includes/arrays.php
+msgid "SSH command on remote system"
+msgstr "Baiko SSH amin'ny rafitra lavitra"
+
+#: includes/arrays.php
+msgid "SFTP protocol - directory listing, default port 22"
+msgstr "Protokoly SFTP - fitanisana lahatahiry, seranana mahazatra 22"
+
+#: includes/arrays.php
+msgid "Username and password"
+msgstr "Anaran'ny mpampiasa sy tenimiafina"
+
+#: includes/arrays.php
+msgid "Rest API - Basic HTTP auth"
+msgstr "Rest API - Fanamarinana HTTP tsotra"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth"
+msgstr "Rest API - Fanamarinana amin'ny fanalahidin'ny API"
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth"
+msgstr "Rest API - Fanamarinana amin'ny mari-pamantarana OAuth2/Bearer"
+
+#: includes/arrays.php
+msgid "Rest API - Cookie based auth"
+msgstr "Rest API - Fanamarinana mifototra amin'ny Cookie"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2"
+msgstr "SNMP v1 na v2"
+
+#: includes/arrays.php
+msgid "SNMP v3"
+msgstr "SNMP v3"
+
+#: includes/arrays.php
+msgid "SSH private key - Cacti 1.2.31+"
+msgstr "Fanalahidy manokana SSH - Cacti 1.2.31+"
+
+#: includes/arrays.php
+msgid "Last hour"
+msgstr "Ora farany"
+
+#: includes/arrays.php
+msgid "Last 6 hours"
+msgstr "6 ora farany"
+
+#: includes/arrays.php
+msgid "Last day"
+msgstr "Andro farany"
+
+#: includes/arrays.php
+msgid "Last week"
+msgstr "Herinandro lasa"
+
+#: includes/arrays.php
+msgid "String found"
+msgstr "Hita ny lahatsoratra"
+
+#: includes/arrays.php
+msgid "String not found"
+msgstr "Tsy hita ny lahatsoratra"
+
+#: includes/arrays.php
+msgid "Failed string found"
+msgstr "Hita ny teny tsy nahomby"
+
+#: includes/arrays.php
+msgid "Failed string not found"
+msgstr "Tsy hita ny teny tsy nahomby"
+
+#: includes/arrays.php
+msgid "Maint string found"
+msgstr "Nahitana teny Maint"
+
+#: includes/arrays.php servcheck_test.php
+msgid "Not tested yet"
+msgstr "Mbola tsy notsapaina"
+
+#: includes/arrays.php
+msgid "Search not performed"
+msgstr "Tsy natao ny fikarohana"
+
+#: includes/arrays.php
+msgid "OK"
+msgstr "Eny"
+
+#: includes/arrays.php
+msgid "Error/failed"
+msgstr "Hadisoana/tsy nahomby"
+
+#: includes/arrays.php
+msgid "[None]"
+msgstr "[Tsy misy]"
+
+#: includes/arrays.php
+msgid "MD5"
+msgstr "MD5"
+
+#: includes/arrays.php
+msgid "SHA"
+msgstr "SHA"
+
+#: includes/arrays.php
+msgid "SHA-224"
+msgstr "SHA-224"
+
+#: includes/arrays.php
+msgid "SHA-256"
+msgstr "SHA-256"
+
+#: includes/arrays.php
+msgid "SHA-392"
+msgstr "SHA-392"
+
+#: includes/arrays.php
+msgid "SHA-512"
+msgstr "SHA-512"
+
+#: includes/arrays.php
+msgid "DES"
+msgstr "DES"
+
+#: includes/arrays.php
+msgid "AES"
+msgstr "AES"
+
+#: includes/arrays.php
+msgid "AES-128"
+msgstr "AES-128"
+
+#: includes/arrays.php
+msgid "AES-192"
+msgstr "AES-192"
+
+#: includes/arrays.php
+msgid "AES-192-C"
+msgstr "AES-192-C"
+
+#: includes/arrays.php
+msgid "AES-256"
+msgstr "AES-256"
+
+#: includes/arrays.php
+msgid "AES-256-C"
+msgstr "AES-256-C"
+
+#: includes/arrays.php
+msgid "Unable to Connect"
+msgstr "Tsy afaka mifandray"
+
+#: includes/arrays.php includes/functions.php servcheck_ca.php
+#: servcheck_proxy.php
+msgid "Continue"
+msgstr "Tohizo"
+
+#: includes/arrays.php
+msgid "Switching Protocols"
+msgstr "Protokolin'ny Switching"
+
+#: includes/arrays.php
+msgid "Created"
+msgstr "Noforonina"
+
+#: includes/arrays.php
+msgid "Accepted"
+msgstr "Nekena"
+
+#: includes/arrays.php
+msgid "Non-Authoritative Information"
+msgstr "Fampahalalana tsy manam-pahefana"
+
+#: includes/arrays.php
+msgid "No Content"
+msgstr "Tsy misy votoatiny"
+
+#: includes/arrays.php
+msgid "Reset Content"
+msgstr "Avereno ny votoatiny"
+
+#: includes/arrays.php
+msgid "Partial Content"
+msgstr "Votoaty ampahany"
+
+#: includes/arrays.php
+msgid "Multiple Choices"
+msgstr "Safidy maro"
+
+#: includes/arrays.php
+msgid "Moved Permanently"
+msgstr "Nafindra maharitra"
+
+#: includes/arrays.php
+msgid "Found"
+msgstr "Hita"
+
+#: includes/arrays.php
+msgid "See Other"
+msgstr "Jereo ny Hafa"
+
+#: includes/arrays.php
+msgid "Not Modified"
+msgstr "Tsy novana"
+
+#: includes/arrays.php
+msgid "Use Proxy"
+msgstr "Ampiasao ny Proxy"
+
+#: includes/arrays.php
+msgid "(Unused)"
+msgstr "(Tsy ampiasaina)"
+
+#: includes/arrays.php
+msgid "Temporary Redirect"
+msgstr "Fampiviliana vonjimaika"
+
+#: includes/arrays.php
+msgid "Bad Request"
+msgstr "Fangatahana tsy mety"
+
+#: includes/arrays.php
+msgid "Unauthorized"
+msgstr "Tsy nahazo alalana"
+
+#: includes/arrays.php
+msgid "Payment Required"
+msgstr "Ilaina ny fandoavam-bola"
+
+#: includes/arrays.php
+msgid "Forbidden"
+msgstr "Voarara"
+
+#: includes/arrays.php
+msgid "Not Found"
+msgstr "Tsy hita"
+
+#: includes/arrays.php
+msgid "Method Not Allowed"
+msgstr "Fomba tsy azo ekena"
+
+#: includes/arrays.php
+msgid "Not Acceptable"
+msgstr "Tsy azo ekena"
+
+#: includes/arrays.php
+msgid "Proxy Authentication Required"
+msgstr "Ilaina ny fanamarinana Proxy"
+
+#: includes/arrays.php
+msgid "Request Timeout"
+msgstr "Fe-potoana lany tamin'ny fangatahana"
+
+#: includes/arrays.php
+msgid "Conflict"
+msgstr "Fifanoherana"
+
+#: includes/arrays.php
+msgid "Gone"
+msgstr "Tsy eo intsony"
+
+#: includes/arrays.php
+msgid "Length Required"
+msgstr "Ilaina ny halava"
+
+#: includes/arrays.php
+msgid "Precondition Failed"
+msgstr "Tsy nahomby ny fepetra mialoha"
+
+#: includes/arrays.php
+msgid "Request Entity Too Large"
+msgstr "Lehibe loatra ny zavatra nangatahina"
+
+#: includes/arrays.php
+msgid "Request-URI Too Long"
+msgstr "Lava loatra ny Request-URI"
+
+#: includes/arrays.php
+msgid "Unsupported Media Type"
+msgstr "Karazana haino aman-jery tsy tohanana"
+
+#: includes/arrays.php
+msgid "Requested Range Not Satisfiable"
+msgstr "Tsy azo tanterahina ny elanelana nangatahina"
+
+#: includes/arrays.php
+msgid "Expectation Failed"
+msgstr "Tsy tanteraka ny nandrasana"
+
+#: includes/arrays.php
+msgid "Internal Server Error"
+msgstr "Hadisoana anatiny amin'ny mpizara"
+
+#: includes/arrays.php
+msgid "Not Implemented"
+msgstr "Tsy nampiharina"
+
+#: includes/arrays.php
+msgid "Bad Gateway"
+msgstr "Vavahady tsy mety"
+
+#: includes/arrays.php
+msgid "Service Unavailable"
+msgstr "Tsy azo ampiasaina ny tolotra"
+
+#: includes/arrays.php
+msgid "Gateway Timeout"
+msgstr "Lany fotoana ny vavahady"
+
+#: includes/arrays.php
+msgid "HTTP Version Not Supported"
+msgstr "Tsy tohanana ny kinova HTTP"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Poller run"
+msgstr "%d Fanatanterahana Poller"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Poller runs"
+msgstr "%d Fanatanterahana Poller"
+
+#: includes/arrays.php
+#, php-format
+msgid "%d Seconds"
+msgstr "%d Segondra"
+
+#: includes/arrays.php
+msgid "Auth in HTTP headers"
+msgstr "Fanamarinana ao amin'ny lohanteny HTTP"
+
+#: includes/arrays.php
+msgid "Custom HTTP header"
+msgstr "Lohateny HTTP namboarina"
+
+#: includes/arrays.php
+msgid "POST method, form-urlencoded"
+msgstr "Fomba POST, form-urlencoded"
+
+#: includes/arrays.php
+msgid "POST method, JSON encoded"
+msgstr "Fomba POST, voakodia JSON"
+
+#: includes/arrays.php
+msgid "JSON encoded"
+msgstr "Voakôdy JSON"
+
+#: includes/arrays.php
+msgid "Form urlencoded"
+msgstr "Taratasy famenoana urlencoded"
+
+#: includes/arrays.php servcheck_ca.php servcheck_credential.php
+#: servcheck_proxy.php servcheck_test.php
+msgid "Name"
+msgstr "Anarana"
+
+#: includes/arrays.php
+msgid "A Useful Name for this CA chain."
+msgstr "Anarana ilaina ho an'ity rojo CA ity."
+
+#: includes/arrays.php
+msgid "New CA"
+msgstr "CA vaovao"
+
+#: includes/arrays.php
+msgid "CA Chain"
+msgstr "Rohy CA"
+
+#: includes/arrays.php
+msgid "CA and intermediate certs, PEM encoded"
+msgstr "Taratasy fanamarinana CA sy anelanelany, voakodia PEM"
+
+#: includes/arrays.php
+msgid "A Useful Name for this Proxy."
+msgstr "Anarana ilaina ho an'ity Proxy ity."
+
+#: includes/arrays.php
+msgid "New Proxy"
+msgstr "Proxy vaovao"
+
+#: includes/arrays.php servcheck_proxy.php
+msgid "Hostname"
+msgstr "Anaran'ny mpampiantrano"
+
+#: includes/arrays.php
+msgid "The Proxy Hostname."
+msgstr "Ny Anaran'ny Mpampiantrano Proxy."
+
+#: includes/arrays.php
+msgid "HTTP Port"
+msgstr "Seranana HTTP"
+
+#: includes/arrays.php
+msgid "The HTTP Proxy Port."
+msgstr "Ny seranana Proxy HTTP."
+
+#: includes/arrays.php
+msgid "HTTPS Port"
+msgstr "Seranana HTTPS"
+
+#: includes/arrays.php
+msgid "The HTTPS Proxy Port."
+msgstr "Ny seranana Proxy HTTPS."
+
+#: includes/arrays.php
+msgid "Select correct credential or left empty."
+msgstr "Misafidiana mari-pamantarana marina na avelao ho banga."
+
+#: includes/arrays.php servcheck_test.php
+msgid "None"
+msgstr "Tsy misy"
+
+#: includes/arrays.php
+msgid "General Settings"
+msgstr "Fikirana ankapobeny"
+
+#: includes/arrays.php
+msgid "Service Check Name"
+msgstr "Anaran'ny fanamarinana tolotra"
+
+#: includes/arrays.php
+msgid "The name that is displayed for this Service Check, and is included in any Alert notifications."
+msgstr "Ny anarana aseho ho an'ity Fanamarinana Serivisy ity, ary ampidirina ao amin'ny fampandrenesana Fanairana rehetra."
+
+#: includes/arrays.php
+msgid "How many attempts"
+msgstr "Impiry no manandrana"
+
+#: includes/arrays.php
+msgid "Cacti attempts to run each test multiple times. The first successful attempt ends the testing and records the success. If none of the attempts are successful, the test is terminated and a failure is recorded. High number causes log test duration."
+msgstr "Miezaka manatanteraka ny fitsapana tsirairay imbetsaka i Cacti. Ny andrana voalohany mahomby dia mamarana ny fitsapana ary mirakitra ny fahombiazana. Raha tsy misy mahomby amin'ireo andrana ireo, dia atsahatra ny fitsapana ary voarakitra ny tsy fahombiazana. Ny isa avo dia mahatonga ny faharetan'ny fitsapana ho lava."
+
+#: includes/arrays.php
+msgid "Enable test"
+msgstr "Ataovy mavitrika ny fitsapana"
+
+#: includes/arrays.php
+msgid "Uncheck this box to disable this test from being checked."
+msgstr "Esory ny marika amin'ity boaty ity mba tsy ho voamarina intsony ity fitsapana ity."
+
+#: includes/arrays.php
+msgid "Enable run script for this test"
+msgstr "Ataovy mavitrika ny fandefasana script ho an'ity fitsapana ity"
+
+#: includes/arrays.php
+msgid "If the global Command Execution function is enabled, you can set here whether the script should be run for this test or not."
+msgstr "Raha mavitrika ny fiasan'ny Fanatanterahana Baiko manontolo, dia azonao faritana eto raha tokony halefa ho an'ity fitsapana ity ny script na tsia."
+
+#: includes/arrays.php
+msgid "Poller"
+msgstr "Poller"
+
+#: includes/arrays.php
+msgid "Poller on which the test will run"
+msgstr "Poller izay handehan'ny fitsapana"
+
+#: includes/arrays.php
+msgid "Type of service"
+msgstr "Karazana serivisy"
+
+#: includes/arrays.php
+msgid "What type of service?"
+msgstr "Karazana serivisy manao ahoana?"
+
+#: includes/arrays.php
+msgid "IP Address or DNS name of server"
+msgstr "Adiresy IP na anarana DNS an'ny lohamilina"
+
+#: includes/arrays.php
+msgid "You can specify another port (example.com:5000) otherwise default will be used. For IPv6 numeric address use [ip:ad:dr:es:fo:rma:at]. For DOH (DNS over HTTPS) use here name of server (example 10.10.10.10, cloudflare-dns.com, ..)"
+msgstr "Afaka mamaritra seranana hafa ianao (example.com:5000) fa raha tsy izany dia ny mahazatra no hampiasaina. Ho an'ny adiresy isa IPv6 dia ampiasao ny [ip:ad:dr:es:fo:rma:at]. Ho an'ny DOH (DNS over HTTPS) dia ampiasao eto ny anaran'ny mpizara (ohatra 10.10.10.10, cloudflare-dns.com, ..)"
+
+#: includes/arrays.php
+msgid "Resolve DNS to Address"
+msgstr "Avadiho ho adiresy ny DNS"
+
+#: includes/arrays.php
+msgid "Enter an IP Address to force DNS name to resolve to. Leaving blank will use DNS Resolution instead."
+msgstr "Ampidiro Adiresy IP hanerena ny famahana ny anarana DNS. Raha avela ho banga dia ny Famahana DNS no hampiasaina."
+
+#: includes/arrays.php
+msgid "Service settings"
+msgstr "Fandrindrana ny tolotra"
+
+#: includes/arrays.php
+msgid "Select correct credential"
+msgstr "Misafidiana mari-pamantarana marina"
+
+#: includes/arrays.php
+msgid "SNMP OID"
+msgstr "OID SNMP"
+
+#: includes/arrays.php
+msgid "Insert SNMP OID"
+msgstr "Ampidiro ny SNMP OID"
+
+#: includes/arrays.php
+msgid "SSH command"
+msgstr "Baiko SSH"
+
+#: includes/arrays.php
+msgid "Insert SSH command with full path, result of command will be returned"
+msgstr "Ampidiro ny baiko SSH miaraka amin'ny lalana feno, haverina ny vokatry ny baiko"
+
+#: includes/arrays.php
+msgid "Your own CA and intermediate certs"
+msgstr "Ny CA-nao manokana sy ireo taratasy fanamarinana mpanelanelana"
+
+#: includes/arrays.php
+msgid "LDAP Search"
+msgstr "Fikarohana LDAP"
+
+#: includes/arrays.php
+msgid "LDAP search filter, it could be ,OU=anygroup,DC=example,DC=com"
+msgstr "Sivana fikarohana LDAP, mety ho ,OU=anygroup,DC=example,DC=com"
+
+#: includes/arrays.php
+msgid "DNS Name for Query"
+msgstr "Anarana DNS ho an'ny fangatahana"
+
+#: includes/arrays.php
+msgid "DNS name for querying. For DOH (DNS over HTTPS) use /resolve?name=example.com or /dns-query?name=example.com&type=A. For plaintext DNS A and AAAA records will be returned"
+msgstr "Anarana DNS hanaovana fangatahana. Ho an'ny DOH (DNS ambonin'ny HTTPS) ampiasao ny /resolve?name=example.com na /dns-query?name=example.com&type=A. Ho an'ny soratra tsotra dia haverina ny firaketana DNS A sy AAAA"
+
+#: includes/arrays.php
+msgid "Path Part of URL"
+msgstr "Ampahan-dalana ao amin'ny URL"
+
+#: includes/arrays.php
+msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
+msgstr "Ho an'ny serivisy tranonkala dia ampidiro farafahakeliny \"/\" na zavatra toy ny \"/lalana/rehetra/\"."
+
+#: includes/arrays.php
+msgid "Requires Authentication"
+msgstr "Mitaky fanamarinana"
+
+#: includes/arrays.php
+msgid "Check this box if the site will normally return a 401 Error as it requires a username and password."
+msgstr "Mariho ity boaty ity raha mamerina hadisoana 401 matetika ny toerana satria mitaky anaran'ny mpampiasa sy tenimiafina."
+
+#: includes/arrays.php
+msgid "Proxy Server"
+msgstr "Mpizara mpanelanelana"
+
+#: includes/arrays.php
+msgid "If this connection text requires a proxy, select it here.  Otherwise choose 'None'."
+msgstr "Raha mitaky proxy ity lahatsoratra fifandraisana ity, dia fidio eto izany. Raha tsy izany, fidio ny 'Tsy misy'."
+
+#: includes/arrays.php
+msgid "Check Certificate"
+msgstr "Hamarino ny taratasy fanamarinana"
+
+#: includes/arrays.php
+msgid "If using SSL, check this box if you want to validate the certificate. Default on, turn off if you the site uses a self-signed certificate."
+msgstr "Raha mampiasa SSL, mariho ity boaty ity raha te hanamarina ny mari-pankatoavana ianao. Mandeha amin'ny fomba mahazatra, vonoy raha mampiasa mari-pankatoavana nosoniaviny manokana ny toerana."
+
+#: includes/arrays.php
+msgid "Check and notify Certificate expiration"
+msgstr "Hamarino ary ampandre ny fahataperan'ny taratasy fanamarinana"
+
+#: includes/arrays.php
+msgid "If using SSL, check this box if you want to check the certificate expiration. You can set in settings how many days before expiration notify.."
+msgstr "Raha mampiasa SSL, mariho ity boaty ity raha te hanamarina ny fahataperan'ny mari-pankatoavana ianao. Azonao faritana ao amin'ny fandrindrana hoe firy andro mialoha ny fahataperana no hampahafantarina."
+
+#: includes/arrays.php
+msgid "Parameters"
+msgstr "Masontsivana"
+
+#: includes/arrays.php
+msgid "How Often to Test"
+msgstr "Impiry no hitsapa"
+
+#: includes/arrays.php
+msgid "Test every xth poller run"
+msgstr "Andramana isaky ny fandehanan'ny poller faha-x"
+
+#: includes/arrays.php
+msgid "Trigger"
+msgstr "Mpandrisika"
+
+#: includes/arrays.php
+msgid "How many times the service must be DOWN before an alert email is triggered."
+msgstr "Impiry no tsy maintsy ho MATY ny serivisy alohan'ny handefasana mailaka fanairana."
+
+#: includes/arrays.php
+msgid "Long duration alert"
+msgstr "Fanairana faharetana lava"
+
+#: includes/arrays.php
+msgid "If the test time is greater than this value more times in a row, send a notification. Related to variable Duration count. The test inherits the maximum runtime from the settings. If a higher value is set here, the maximum runtime is this value + 2 seconds."
+msgstr "Raha mihoatra an'io sanda io ny fotoanan'ny fitsapana imbetsaka misesy, dia mandefasa fampahafantarana. Mifandraika amin'ny variable fanisana Faharetana. Mandova ny fotoana fiasana farany ambony avy amin'ny fandrindrana ny fitsapana. Raha sanda ambony kokoa no apetraka eto, ny fotoana fiasana farany ambony dia io sanda io + 2 segondra."
+
+#: includes/arrays.php
+msgid "Number of duration violations in a row"
+msgstr "Isan'ny fandikana faharetana mifanesy"
+
+#: includes/arrays.php
+msgid "How many times the duration trigger must be exceeded in a row for a notification to be sent"
+msgstr "Impiry misesy no tsy maintsy mihoatra ny fetran'ny faharetana alohan'ny handefasana fampandrenesana"
+
+#: includes/arrays.php
+msgid "Verification Strings"
+msgstr "Teny fanamarinana"
+
+#: includes/arrays.php
+msgid "Response Search String"
+msgstr "Teny fikarohana amin'ny valiny"
+
+#: includes/arrays.php
+msgid "This is the string to search for in the response for a live and working service."
+msgstr "Ity no laha-tsoratra karohina ao amin'ny valinteny ho an'ny sampan-draharaha velona sy miasa."
+
+#: includes/arrays.php
+msgid "Response Search String - Maintenance"
+msgstr "Teny fikarohana amin'ny valiny - Fikojakojana"
+
+#: includes/arrays.php
+msgid "This is the string to search for on the Maintenance .  The Service Check will check for this string if the above string is not found.  If found, it means that the service is under maintenance."
+msgstr "Ity no laha-tsoratra karohina ao amin'ny Fikojakojana. Hanamarina ity laha-tsoratra ity ny Fanamarinana Sampan-draharaha raha tsy hita ilay laha-tsoratra etsy ambony. Raha hita izany dia midika fa eo am-pikojakojana ilay sampan-draharaha."
+
+#: includes/arrays.php
+msgid "Response Search String - Failed"
+msgstr "Teny fikarohana amin'ny valiny - Tsy nahomby"
+
+#: includes/arrays.php
+msgid "This is the string to search for a known failure in the service response.  The Service Check will only alert if this string is found, ignoring any timeout issues and the search strings above."
+msgstr "Ity no laha-tsoratra karohina mba hahitana tsy fahombiazana fantatra ao amin'ny valin'ny sampan-draharaha. Hanao fampandrenesana ihany ny Fanamarinana Sampan-draharaha raha hita ity laha-tsoratra ity, ary tsy hiraharaha ny olan'ny fahataperan'ny fotoana sy ireo laha-tsoratra fikarohana etsy ambony."
+
+#: includes/arrays.php
+msgid "Notification Settings"
+msgstr "Fikirana fampandrenesana"
+
+#: includes/arrays.php
+msgid "Email notification"
+msgstr "Fampandrenesana amin'ny mailaka"
+
+#: includes/arrays.php
+msgid "If enabled email notification about state, duration and search result will be send"
+msgstr "Raha mavitrika, dia halefa ny fampahafantarana amin'ny mailaka momba ny sata, ny faharetana ary ny vokatry ny fikarohana"
+
+#: includes/arrays.php
+msgid "Notify Format"
+msgstr "Endriky ny fampandrenesana"
+
+#: includes/arrays.php
+msgid "This is the format to use when sending the notification email"
+msgstr "Ity ny endrika hampiasaina rehefa mandefa ny mailaka fampahafantarana"
+
+#: includes/arrays.php
+msgid "Notification List"
+msgstr "Lisitry ny Fampandrenesana"
+
+#: includes/arrays.php
+msgid "Use this Notification List for those to be notified when this service goes down."
+msgstr "Ampiasao ity Lisitry ny fampandrenesana ity ho an'ireo hampandrenesina rehefa maty ity tolotra ity."
+
+#: includes/arrays.php
+msgid "Notify Accounts"
+msgstr "Kaonty ampandrenesina"
+
+#: includes/arrays.php
+msgid "This is a listing of accounts that will be notified when this service goes down."
+msgstr "Ity ny lisitry ny kaonty izay hampahafantarina rehefa maty ity tolotra ity."
+
+#: includes/arrays.php
+msgid "Extra Alert Emails"
+msgstr "Mailaka fampandrenesana fanampiny"
+
+#: includes/arrays.php
+msgid "You may specify here extra Emails to receive alerts for this test (comma separated)"
+msgstr "Azonao faritana eto ireo Mailaka fanampiny handraisana fanairana ho an'ity fitsapana ity (sarahina faingo)"
+
+#: includes/arrays.php
+msgid "Notes"
+msgstr "Fanamarihana"
+
+#: includes/arrays.php
+msgid "Notes sent in email"
+msgstr "Naoty nalefa tamin'ny mailaka"
+
+#: includes/arrays.php
+msgid "External ID"
+msgstr "Famantarana ivelany"
+
+#: includes/arrays.php
+msgid "Enter an External ID for this test."
+msgstr "Ampidiro ID Ivelany ho an'ity fitsapana ity."
+
+#: includes/arrays.php
+msgid "Help"
+msgstr "Fanampiana"
+
+#: includes/arrays.php
+msgid "Credential Name"
+msgstr "Anaran'ny fanamarinam-pidirana"
+
+#: includes/arrays.php
+msgid "The name that is displayed for this Credential."
+msgstr "Ny anarana aseho ho an'ity Famaritana fanamarinana ity."
+
+#: includes/arrays.php
+msgid "Credential type"
+msgstr "Karazana fanamarinam-pidirana"
+
+#: includes/arrays.php
+msgid "Select correct Credential type."
+msgstr "Misafidiana karazana mari-pamantarana marina."
+
+#: includes/arrays.php
+msgid "Options"
+msgstr "Safidy"
+
+#: includes/arrays.php
+msgid "Set according to your REST API server"
+msgstr "Amboary araka ny lohamilina REST API anao"
+
+#: includes/arrays.php
+msgid "Username"
+msgstr "Anaran'ny mpampiasa"
+
+#: includes/arrays.php
+msgid "Password"
+msgstr "Tenimiafina"
+
+#: includes/arrays.php
+msgid "For anonymous FTP insert email address"
+msgstr "Ho an'ny FTP tsy mitonona anarana dia ampidiro ny adiresy mailaka"
+
+#: includes/arrays.php
+msgid "Login URL"
+msgstr "URL fidirana"
+
+#: includes/arrays.php
+msgid "URL which is used to log in or get the token."
+msgstr "URL ampiasaina hidirana na hahazoana ny famantarana (token)."
+
+#: includes/arrays.php
+msgid "Data URL"
+msgstr "URL an'ny angona"
+
+#: includes/arrays.php
+msgid "URL to retrieve data. Insert with http:// or https://"
+msgstr "URL fakana angona. Ampidiro miaraka amin'ny http:// na https://"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2 community"
+msgstr "Fiaraha-monina SNMP v1 na v2"
+
+#: includes/arrays.php
+msgid "SNMP community string for SNMP v1 or v2(c)"
+msgstr "Teny fiaraha-monina SNMP ho an'ny SNMP v1 na v2(c)"
+
+#: includes/arrays.php
+msgid "SNMP Security Level"
+msgstr "Ambaratongan'ny fiarovana SNMP"
+
+#: includes/arrays.php
+msgid "SNMP v3 Security Level to use when querying the device."
+msgstr "Ambaratongan'ny fiarovana SNMP v3 ampiasaina rehefa manontany ny fitaovana."
+
+#: includes/arrays.php
+msgid "SNMP Auth Protocol (v3)"
+msgstr "Prôtôkôly fanamarinana SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Authorization Protocol."
+msgstr "Safidio ny prôtôkôly fanomezan-dàlana SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Username (v3)"
+msgstr "Anaran'ny mpampiasa SNMP (v3)"
+
+#: includes/arrays.php
+msgid "SNMP v3 username for this device."
+msgstr "Anaran'ny mpampiasa SNMP v3 ho an'ity fitaovana ity."
+
+#: includes/arrays.php
+msgid "SNMP Password (v3)"
+msgstr "Tenimiafina SNMP (v3)"
+
+#: includes/arrays.php
+msgid "SNMP v3 password for this device."
+msgstr "Tenimiafina SNMP v3 ho an'ity fitaovana ity."
+
+#: includes/arrays.php
+msgid "SNMP Privacy Protocol (v3)"
+msgstr "Prôtôkôly tsiambaratelo SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Privacy Protocol."
+msgstr "Safidio ny prôtôkôly tsiambaratelo SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Privacy Passphrase (v3)"
+msgstr "Fehezanteny miafina tsiambaratelo SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Choose the SNMPv3 Privacy Passphrase."
+msgstr "Safidio ny fehezanteny miafina tsiambaratelo SNMPv3."
+
+#: includes/arrays.php
+msgid "SNMP Context (v3)"
+msgstr "Konteksta SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Enter the SNMP Context to use for this device."
+msgstr "Ampidiro ny konteksta SNMP ampiasaina ho an'ity fitaovana ity."
+
+#: includes/arrays.php
+msgid "SNMP Engine ID (v3)"
+msgstr "Engine ID SNMP (v3)"
+
+#: includes/arrays.php
+msgid "Enter the SNMP v3 Engine Id or empty."
+msgstr "Ampidiro ny ID Motera SNMP v3 na avelao ho banga."
+
+#: includes/arrays.php
+msgid "SSH user"
+msgstr "Mpampiasa SSH"
+
+#: includes/arrays.php
+msgid "Insert username here"
+msgstr "Ampidiro eto ny anaran'ny mpampiasa"
+
+#: includes/arrays.php
+msgid "SSH private key"
+msgstr "Fanalahidy manokana SSH"
+
+#: includes/arrays.php
+msgid "SSH private key "
+msgstr "Fanalahidy manokana SSH "
+
+#: includes/arrays.php
+msgid "SSH private key passphrase"
+msgstr "Fehin-tenimiafin'ny fanalahidy manokana SSH"
+
+#: includes/arrays.php
+msgid "If your key is password protected, insert password here"
+msgstr "Raha voaaro amin'ny Tenimiafina ny fanalahidinao, ampidiro eto ny Tenimiafina"
+
+#: includes/arrays.php
+msgid "Client ID"
+msgstr "ID mpanjifa"
+
+#: includes/arrays.php
+msgid "Oauth Client ID"
+msgstr "ID mpanjifa OAuth"
+
+#: includes/arrays.php
+msgid "Client secret"
+msgstr "Tsiambaratelon'ny mpanjifa"
+
+#: includes/arrays.php
+msgid "OAuth Client secret"
+msgstr "Tsiambaratelon'ny mpanjifa OAuth"
+
+#: includes/arrays.php
+msgid "Token name"
+msgstr "Anaran'ny token"
+
+#: includes/arrays.php
+msgid "Token value"
+msgstr "Sandan'ny token"
+
+#: includes/arrays.php
+msgid "<b>Can be used for a lot of service checks:</b><br/><i>Http/https</i> - optional, when it is set, try HTTP basic auth<br/><i>SMTP on port 587</i> - optional. Without a username/password, only the server response is tested. With a username and password, login is also performed<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - optional. For anonymous ftp, use username \"anonymous\" and email address as password<br/><i>LDAP, smb, smbs</i> - required<br/><i>MQTT</i> - optional<br/><i>SCP, SSH command</i> - you can use this method or private key method"
+msgstr "<b>Azo ampiasaina amin'ny fanamarinana serivisy maro:</b><br/><i>Http/https</i> - tsy voatery, rehefa voafaritra izy dia manandrana fanamarinana fototra HTTP<br/><i>SMTP eo amin'ny seranana 587</i> - tsy voatery. Raha tsy misy anaran'ny mpampiasa/tenimiafina, dia ny valintenin'ny lohamilina ihany no tsapaina. Raha misy anaran'ny mpampiasa sy tenimiafina dia atao ihany koa ny fidirana<br/><i>Imap, imaps, pop3, pop3s, ftp</i> - tsy voatery. Ho an'ny ftp tsy mitonona anarana, ampiasao ny anaran'ny mpampiasa \"anonymous\" ary adiresy mailaka ho tenimiafina<br/><i>LDAP, smb, smbs</i> - takiana<br/><i>MQTT</i> - tsy voatery<br/><i>Baiko SCP, SSH</i> - azonao ampiasaina ity fomba ity na ny fomba fanalahidy manokana"
+
+#: includes/arrays.php
+msgid "Rest API - Basic HTTP auth. Username and password are required"
+msgstr "Rest API - Fanamarinana HTTP tsotra. Ilaina ny anaran'ny mpampiasa sy ny tenimiafina"
+
+#: includes/arrays.php
+msgid "Rest API - API key auth<br/>Auth is sent in HTTP header, custom header or POST method. Credentials in URL are not supported.<br/>Insert API key name and value. Both values are required. For HTTP header the name <i>Bearer or apikey or \"\"</i> is usually used (Authorization: Bearer apivalue). For custom header <i>X-API-Key</i> is usually used (X-Api-Key: keyvalue). For POST <i>api_key</i> is usually used."
+msgstr "Rest API - Fanamarinana amin'ny fanalahidin'ny API<br/>Alefa amin'ny lohateny HTTP, lohateny manokana na fomba POST ny fanamarinana. Tsy tohana ny mari-pamantarana ao amin'ny URL.<br/>Ampidiro ny anarana sy ny sandan'ny fanalahidin'ny API. Ilaina avokoa ny sanda roa. Ho an'ny lohateny HTTP, ny anarana <i>Bearer na apikey na \"\"</i> no matetika ampiasaina (Authorization: Bearer apivalue). Ho an'ny lohateny manokana, <i>X-API-Key</i> no matetika ampiasaina (X-Api-Key: keyvalue). Ho an'ny POST, <i>api_key</i> no matetika ampiasaina."
+
+#: includes/arrays.php
+msgid "Rest API - OAuth2/Bearer token auth<br/>You can have key/token from server and insert it here or use auth flow with credentials. Username and password are sent Json encoded."
+msgstr "Rest API - Fanamarinana amin'ny mari-pamantarana OAuth2/Bearer<br/>Afaka maka fanalahidy/mari-pamantarana avy amin'ny mpizara ianao ka mampiditra izany eto, na mampiasa dingana fanamarinana miaraka amin'ny mombamomba ny fidirana. Alefa amin'ny endrika JSON ny anaran'ny mpampiasa sy ny tenimiafina."
+
+#: includes/arrays.php
+msgid "Rest API - Cookie based auth - both values are required. After login, cookie is returned"
+msgstr "Rest API - Fanamarinana mifototra amin'ny Cookie - ilaina avokoa ny sanda roa. Rehefa tafiditra dia averina ny cookie"
+
+#: includes/arrays.php
+msgid "SNMP v1 or v2 - required, insert community name here"
+msgstr "SNMP v1 na v2 - takiana, ampidiro eto ny anaran'ny fiaraha-monina"
+
+#: includes/arrays.php
+msgid "SNMP v3 - The security level determines which parameters are required"
+msgstr "SNMP v3 - Ny haavon'ny fiarovana no mamaritra izay mason-tsivana takiana"
+
+#: includes/arrays.php
+msgid "SSH private key - Can be used for SCP or SSH command test. These test can use username/password too"
+msgstr "Fanalahidy manokana SSH - Azo ampiasaina amin'ny fanandramana baiko SCP na SSH. Ireo fanandramana ireo dia afaka mampiasa anaran'ny mpampiasa/tenimiafina ihany koa"
+
+#: includes/arrays.php
+msgid "It only checks whether the web server is responding. If username/password credential is used, it will try Basic HTTP auth."
+msgstr "Izany dia manamarina fotsiny raha mamaly ny mpizara tranonkala. Raha ampiasaina ny anaran'ny mpampiasa/tenimiafina, dia hanandrana fanamarinana Basic HTTP izy."
+
+#: includes/arrays.php
+msgid "The same as HTTP plaintext but adds the ability to test certificates."
+msgstr "Mitovy amin'ny HTTP lahatsoratra tsotra fa manampy fahafahana mitsapa taratasy fanamarinana."
+
+#: includes/arrays.php
+msgid "It only checks whether the SMTP server is responding. No authentication. You will see server login banner and ehlo response."
+msgstr "Izany dia manamarina fotsiny raha mamaly ny mpizara SMTP. Tsy misy fanamarinana maha-izy azy. Ho hitanao ny sora-baventy fidirana amin'ny mpizara sy ny valiny ehlo."
+
+#: includes/arrays.php
+msgid "Unencrypted + STARTTLS. It is also possible to test the validity of the certificate. Without username and password, you will see server login banner and ehlo response. With credential, login will be performed"
+msgstr "Tsy voarakotra + STARTTLS. Azo atao ihany koa ny mitsapa ny fahamarinan'ny taratasy fanamarinana. Raha tsy misy anaran'ny mpampiasa sy tenimiafina dia ho hitanao ny sora-baventy fidirana amin'ny mpizara sy ny valin'ny ehlo. Raha misy fanomezan-dàlana dia hatao ny fidirana"
+
+#: includes/arrays.php
+msgid "Encrypted connection on default port 465. It is also possible to test the validity of the certificate. With username and password AUTH LOGIN will be tested."
+msgstr "Fifandraisana voaaro amin'ny fanafenana amin'ny seranana mahazatra 465. Azo tsapaina ihany koa ny fananan-kerin'ny mari-pankatoavana. Miaraka amin'ny anaran'ny mpampiasa sy tenimiafina dia hotsapaina ny AUTH LOGIN."
+
+#: includes/arrays.php
+msgid "Unencrypted IMAP connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages. You can use AUTHENTICATE PLAIN or AUTHENTICATE LOGIN method."
+msgstr "Fifandraisana IMAP tsy voarakotra. Raha tsy misy fanomezan-dàlana dia ny fifandraisana ihany no hotsapaina. Ny sora-baventy fidirana ihany no ho hitanao. Raha misy fanomezan-dàlana dia hotsapaina ny fidirana ary hanandrana hamaky ny lisitry ny hafatra. Azonao ampiasaina ny fomba AUTHENTICATE PLAIN na AUTHENTICATE LOGIN."
+
+#: includes/arrays.php
+msgid "The same as unencrypted IMAP but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Mitovy amin'ny IMAP tsy voasoratra miafina fa aorian'ny fidirana dia mampiasa STARTTLS. Azo atao ihany koa ny mitsapa ny maha-ara-dalàna ny taratasy fanamarinana aorian'ny STARTTLS."
+
+#: includes/arrays.php
+msgid "Encrypted IMAP, you can try login and test certificate and user login"
+msgstr "IMAP voaaro amin'ny fanafenana, afaka manandrana miditra ianao ary mitsapa ny mari-pankatoavana sy ny fidirana ho an'ny mpampiasa"
+
+#: includes/arrays.php
+msgid "Unencrypted POP3 connection. Without credential, only connection will be tested. You will see only login banner. With credential login will be tested and try to read list of messages"
+msgstr "Fifandraisana POP3 tsy voarakotra. Raha tsy misy fanomezan-dàlana dia ny fifandraisana ihany no hotsapaina. Ny sora-baventy fidirana ihany no ho hitanao. Raha misy fanomezan-dàlana dia hotsapaina ny fidirana ary hanandrana hamaky ny lisitry ny hafatra"
+
+#: includes/arrays.php
+msgid "The same as unencrypted POP3 but after login STARTTLS is used. It is also possible to test the validity of the certificate after STARTTLS."
+msgstr "Mitovy amin'ny POP3 tsy voasoratra miafina fa aorian'ny fidirana dia mampiasa STARTTLS. Azo atao ihany koa ny mitsapa ny maha-ara-dalàna ny taratasy fanamarinana aorian'ny STARTTLS."
+
+#: includes/arrays.php
+msgid "Encrypted POP3, you can try login and test certificate and user login."
+msgstr "POP3 voaaro amin'ny fanafenana, afaka manandrana miditra ianao ary mitsapa ny mari-pankatoavana sy ny fidirana ho an'ny mpampiasa."
+
+#: includes/arrays.php
+msgid "Try to resolve DNS record on specified DNS server"
+msgstr "Andramo ny mamaha ny firaketana DNS eo amin'ny mpizara DNS voafaritra"
+
+#: includes/arrays.php
+msgid "Try DNS over HTTPS."
+msgstr "Andramo ny DNS amin'ny HTTPS."
+
+#: includes/arrays.php
+msgid "All parameters are required. Perform unencrypted LDAP login and search"
+msgstr "Ilaina avokoa ny mason-tsivana rehetra. Manaova fidirana sy fikarohana LDAP tsy voaaro amin'ny fanafenana"
+
+#: includes/arrays.php
+msgid "All parameters are required. Perform encrypted LDAP login and search"
+msgstr "Ilaina avokoa ny mason-tsivana rehetra. Manaova fidirana sy fikarohana LDAP voaaro amin'ny fanafenana"
+
+#: includes/arrays.php
+msgid "Unencrypted FTP connection, login and try to download file specified in path (/path/to/file.txt). For anonymous connection use login *anonymous* and email address as password. The content of the file is returned."
+msgstr "Fifandraisana FTP tsy voarakotra, midira ary manandrama mampidina ny rakitra voafaritra ao amin'ny lalana (/path/to/file.txt). Ho an'ny fifandraisana tsy mitonona anarana dia ampiasao ny fidirana *anonymous* ary adiresy mailaka ho tenimiafina. Ny votoatin'ny rakitra no haverina."
+
+#: includes/arrays.php
+msgid "Try to download file specified in path (/path/to/file.txt) from TFTP server. The content of the file is returned."
+msgstr "Andramo ny maka ny rakitra voafaritra ao amin'ny lalana (/path/to/file.txt) avy amin'ny mpizara TFTP. Averina ny votoatin'ny rakitra."
+
+#: includes/arrays.php
+msgid "Encrypted SCP connection, login and try to download file specified in path (/path/to/file.txt)."
+msgstr "Fifandraisana SCP voaaro amin'ny fanafenana, midira ary andramo ny maka ny rakitra voafaritra ao amin'ny lalana (/path/to/file.txt)."
+
+#: includes/arrays.php
+msgid "Try SMB protocol, username and password are required. Try to login and download file."
+msgstr "Andramo ny protokoly SMB, ilaina ny anaran'ny mpampiasa sy ny tenimiafina. Andramo ny miditra sy maka rakitra."
+
+#: includes/arrays.php
+msgid "Connect to MQTT server and listen for any message. You can specify topic in Path (bedroom/temp), blank for any topic. For this test is recommended increase \"Long duration alert\""
+msgstr "Mifandraisa amin'ny mpizara MQTT ary mihainoa hafatra rehetra. Azonao atao ny mamaritra lohahevitra ao amin'ny Lalana (bedroom/temp), avelao ho banga ho an'ny lohahevitra rehetra. Ho an'ity fitsapana ity dia soso-kevitra ny mampitombo ny \"Fampandrenesana maharitra\""
+
+#: includes/arrays.php
+msgid "REST API test with basic HTTP auth. Prepare credential first."
+msgstr "Fitsapana REST API miaraka amin'ny fanamarinana HTTP tsotra. Omano aloha ny mombamomba ny fidirana."
+
+#: includes/arrays.php
+msgid "REST API test with API key auth. Prepare credential first."
+msgstr "Fitsapana REST API miaraka amin'ny fanamarinana API key. Omano aloha ny mombamomba ny fidirana."
+
+#: includes/arrays.php
+msgid "REST API test with Oauth2. Prepare credential first."
+msgstr "Fitsapana REST API miaraka amin'ny Oauth2. Omano aloha ny mombamomba ny fidirana."
+
+#: includes/arrays.php
+msgid "REST API test with cookie auth. Prepare credential first."
+msgstr "Fitsapana REST API miaraka amin'ny fanamarinana cookie. Omano aloha ny mombamomba ny fidirana."
+
+#: includes/arrays.php
+msgid "Try SNMP get method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
+msgstr "Andramo ny fomba SNMP get. Averina ny valiny ho an'ny OID voafaritra. Ilaina ny fahazoan-dalana, tsy maintsy manomana fahazoan-dalana SNMP v.1,2 na v3 aloha ianao."
+
+#: includes/arrays.php
+msgid "Try SNMP walk method. Output for specified OID is returned. Credential is required, you have to prepare SNMP v.1,2 or v3 credential first."
+msgstr "Andramo ny fomba SNMP walk. Averina ny valiny ho an'ny OID voafaritra. Ilaina ny fahazoan-dalana, tsy maintsy manomana fahazoan-dalana SNMP v.1,2 na v3 aloha ianao."
+
+#: includes/arrays.php
+msgid "Use ssh and connect to remote host. After login run specified command and return output. Username and password or private key is possible."
+msgstr "Ampiasao ny SSH ary mifandraisa amin'ny mpampiantrano lavitra. Rehefa tafiditra dia alefaso ny baiko voafaritra ary avereno ny vokatra. Azo ampiasaina ny anaran'ny mpampiasa sy tenimiafina na lakile manokana."
+
+#: includes/arrays.php
+msgid "SFTP protocol on port 22, username and password and path are required. Try to do directory listing of path."
+msgstr "Protokoly SFTP amin'ny seranana 22, takiana ny anaran'ny mpampiasa, ny tenimiafina ary ny lalana. Andramo ny mitanisa ny lahatahiry amin'ilay lalana."
+
+#: includes/arrays.php
+msgid "All fine. Proceed as usual."
+msgstr "Tsara daholo. Tohizo toy ny mahazatra."
+
+#: includes/arrays.php
+msgid "The URL you passed to libcurl used a protocol that this libcurl does not support. The support might be a compile-time option that you did not use, it can be a misspelled protocol string or just a protocol libcurl has no code for."
+msgstr "Ny URL nampitainao tamin'ny libcurl dia nampiasa protokol izay tsy tohanan'ity libcurl ity. Mety ho safidy tamin'ny famoronana rindrankajy tsy nampiasainao ilay fanohanana, mety ho diso tsipelina ny anaran'ny protokol na protokol tsy misy kaody ao amin'ny libcurl fotsiny."
+
+#: includes/arrays.php
+msgid "Early initialization code failed. This is likely to be an internal error or problem, or a resource problem where something fundamental could not get done at init time."
+msgstr "Tsy nahomby ny kaody fanombohana mialoha. Azo inoana fa hadisoana na olana anatiny izany, na olana amin'ny loharano ka tsy nisy zavatra fototra tontosa tamin'ny fotoana fanombohana."
+
+#: includes/arrays.php
+msgid "The URL was not properly formatted."
+msgstr "Tsy voarafitra araka ny tokony ho izy ny URL."
+
+#: includes/arrays.php
+msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."
+msgstr "Tsy hita tafiditra tao amin'ity libcurl ity ny endri-javatra, arofenitra na safidy nangatahina noho ny fanapahan-kevitra tamin'ny fotoana fanamboarana azy. Midika izany fa tsy natao mavitrika na natao tsy mavitrika manokana ny endri-javatra na safidy iray fony namboarina ny libcurl, ka mba hampandehanana azy dia tsy maintsy maka libcurl namboarina vaovao ianao."
+
+#: includes/arrays.php
+msgid "Could not resolve proxy. The given proxy host could not be resolved."
+msgstr "Tsy afaka namaha ny adiresin'ny proxy. Tsy voavaha ny adiresin'ny mpampiantrano proxy nomena."
+
+#: includes/arrays.php
+msgid "Could not resolve host. The given remote host was not resolved."
+msgstr "Tsy afaka namaha ny adiresin'ny mpampiantrano. Tsy voavaha ny adiresin'ny mpampiantrano lavitra nomena."
+
+#: includes/arrays.php
+msgid "Failed to connect() to host or proxy."
+msgstr "Tsy nahomby ny connect() tamin'ny mpampiantrano na proxy."
+
+#: includes/arrays.php
+msgid "The server sent data libcurl could not parse. This error code was known as CURLE_FTP_WEIRD_SERVER_REPLY before 7.51.0."
+msgstr "Nandefa angon-drakitra tsy voazavan'ny libcurl ny mpizara. Fantatra amin'ny anarana hoe CURLE_FTP_WEIRD_SERVER_REPLY ity kaody hadisoana ity talohan'ny 7.51.0."
+
+#: includes/arrays.php
+msgid "We were denied access to the resource given in the URL. For FTP, this occurs while trying to change to the remote directory."
+msgstr "Nolavina ny fidirana amin'ny loharano nomena tao amin'ny URL. Ho an'ny FTP, mitranga izany rehefa manandrana manova ny lahatahiry lavitra."
+
+#: includes/arrays.php
+msgid "While waiting for the server to connect back when an active FTP session is used, an error code was sent over the control connection or similar."
+msgstr "Teo am-piandrasana ny lohamilina hifandray miverina rehefa mampiasa fifandraisana FTP mavitrika, dia nisy kaody hadisoana nalefa tamin'ny fifandraisana fanaraha-maso na mitovitovy amin'izany."
+
+#: includes/arrays.php
+msgid "After having sent the FTP password to the server, libcurl expects a proper reply. This error code indicates that an unexpected code was returned."
+msgstr "Rehefa avy nandefa ny Tenimiafina FTP tany amin'ny lohamilina, dia manantena valiny mety ny libcurl. Ity kaody diso ity dia manondro fa kaody tsy nampoizina no naverina."
+
+#: includes/arrays.php
+msgid "During an active FTP session while waiting for the server to connect, the CURLOPT_ACCEPTTIMEOUT_MS (or the internal default) timeout expired."
+msgstr "Nandritra ny fivoriana FTP mavitrika raha niandry ny fifandraisan'ny mpizara, tapitra ny fe-potoana CURLOPT_ACCEPTTIMEOUT_MS (na ny fe-potoana anatiny)."
+
+#: includes/arrays.php
+msgid "Libcurl failed to get a sensible result back from the server as a response to either a PASV or a EPSV command. The server is flawed."
+msgstr "Tsy nahazo valiny azo antoka avy amin'ny lohamilina ny Libcurl ho valin'ny baiko PASV na EPSV. Misy lesoka ny lohamilina."
+
+#: includes/arrays.php
+msgid "FTP servers return a 227-line as a response to a PASV command. If libcurl fails to parse that line, this return code is passed back."
+msgstr "Ny mpizara FTP dia mamerina andalana 227 ho valin'ny baiko PASV. Raha tsy mahavita mamakafaka io andalana io ny libcurl, dia averina ity kaody fiverenana ity."
+
+#: includes/arrays.php
+msgid "An internal failure to lookup the host used for the new connection."
+msgstr "Tsy fahombiazana anatiny teo am-pikarohana ny mpampiantrano nampiasaina ho an'ny fifandraisana vaovao."
+
+#: includes/arrays.php
+msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr "Nisy olana hita teo amin'ny sosona fandrafetana HTTP2. Somary ankapobeny izany ary mety ho iray amin'ireo olana maromaro, jereo ny fitahirizana hadisoana raha mila antsipiriany."
+
+#: includes/arrays.php
+msgid "Received an error when trying to set the transfer mode to binary or ASCII."
+msgstr "Nahazo hadisoana raha nanandrana nametraka ny fomba famindrana ho binary na ASCII."
+
+#: includes/arrays.php
+msgid "A file transfer was shorter or larger than expected. This happens when the server first reports an expected transfer size, and then delivers data that does not match the previously given size."
+msgstr "Fohy kokoa na lehibe kokoa noho ny nandrasana ny famindrana rakitra. Mitranga izany rehefa milaza habe famindrana andrasana aloha ny lohamilina, avy eo manatitra angona tsy mifanaraka amin'ilay habe nomena teo aloha."
+
+#: includes/arrays.php
+msgid "This was either a weird reply to a 'RETR' command or a zero byte transfer complete."
+msgstr "Na valiny hafahafa tamin'ny baiko 'RETR' ity, na famindrana zero byte vita."
+
+#: includes/arrays.php
+msgid "Obsolete Error"
+msgstr "Fahadisoana lany andro"
+
+#: includes/arrays.php
+msgid "Not used in modern versions."
+msgstr "Tsy ampiasaina amin'ireo dikan-teny vaovao."
+
+#: includes/arrays.php
+msgid "When sending custom \"QUOTE\" commands to the remote server, one of the commands returned an error code that was 400 or higher (for FTP) or otherwise indicated unsuccessful completion of the command."
+msgstr "Rehefa nandefa baiko \"QUOTE\" manokana tany amin'ny lohamilina lavitra, dia namerina kaody hadisoana 400 na mihoatra (ho an'ny FTP) ny iray tamin'ireo baiko ireo na nanondro fa tsy nahomby ny fanatanterahana ilay baiko."
+
+#: includes/arrays.php
+msgid "This is returned if CURLOPT_FAILONERROR is set true and the HTTP server returns an error code that is >= 400."
+msgstr "Izany dia averina raha toa ka natao ho marina (true) ny CURLOPT_FAILONERROR ary mamerina kaody hadisoana >= 400 ny mpizara HTTP."
+
+#: includes/arrays.php
+msgid "An error occurred when writing received data to a local file, or an error was returned to libcurl from a write callback."
+msgstr "Nisy hadisoana nitranga teo am-panoratana ny angona voaray tao amin'ny rakitra eo an-toerana, na nisy hadisoana naverin'ny write callback tany amin'ny libcurl."
+
+#: includes/arrays.php
+msgid "Failed starting the upload. For FTP, the server typically denied the STOR command. The error buffer usually contains the server's explanation for this."
+msgstr "Tsy nahomby ny fanombohana ny fampakarana. Ho an'ny FTP, matetika nolavin'ny mpizara ny baiko STOR. Ny tahirin-tsoratra hadisoana dia matetika ahitana ny fanazavan'ny mpizara momba izany."
+
+#: includes/arrays.php
+msgid "There was a problem reading a local file or an error returned by the read callback."
+msgstr "Nisy olana teo am-pamakiana rakitra eo an-toerana na nisy hadisoana naverin'ny fampandehanana famakiana."
+
+#: includes/arrays.php
+msgid "A memory allocation request failed. This is serious badness and things are severely screwed up if this ever occurs."
+msgstr "Tsy nahomby ny fangatahana fanokanana fitadidiana. Olana lehibe izany ary tena simba ny raharaha raha mitranga izany."
+
+#: includes/arrays.php
+msgid "Operation timeout. The specified time-out period was reached according to the conditions."
+msgstr "Tapitra ny fe-potoanan'ny asa. Tratry ny fe-potoana voatondro araka ny fepetra."
+
+#: includes/arrays.php
+msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
+msgstr "Namerina hadisoana ny baiko FTP PORT. Matetika izany no mitranga rehefa tsy nanondro adiresy tsara ampiasain'ny libcurl ianao. Jereo ny CURLOPT_FTPPORT."
+
+#: includes/arrays.php
+msgid "The FTP REST command returned error. This should never happen if the server is sane."
+msgstr "Namerina hadisoana ny baiko FTP REST. Tsy tokony hitranga mihitsy izany raha salama tsara ny mpizara."
+
+#: includes/arrays.php
+msgid "The server does not support or accept range requests."
+msgstr "Tsy manohana na tsy manaiky fangatahana elanelana ny mpizara."
+
+#: includes/arrays.php
+msgid "This is an odd error that mainly occurs due to internal confusion."
+msgstr "Ity dia hadisoana hafahafa izay mitranga indrindra noho ny fifanjevoana anatiny."
+
+#: includes/arrays.php
+msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
+msgstr "Nisy olana nitranga teo amin'ny fifampiresahana SSL/TLS. Tena ilainao ny mijery ny fitahirizana hadisoana (error buffer) ary mamaky ny hafatra ao satria manondro mazava kokoa ny olana izany. Mety ho taratasy fanamarinana (endrika rakitra, lalana, alalana), tenimiafina, sy ny hafa."
+
+#: includes/arrays.php
+msgid "The download could not be resumed because the specified offset was out of the file boundary."
+msgstr "Tsy azo notohizana ny fampidinana satria nivoaka ny fetran'ny rakitra ny elanelana (offset) voatondro."
+
+#: includes/arrays.php
+msgid "A file given with FILE:// could not be opened. Most likely because the file path does not identify an existing file. Did you check file permissions?"
+msgstr "Tsy azo nosokafana ny rakitra nomena tamin'ny FILE://. Mety ho noho ny lalan'ny rakitra tsy manondro rakitra misy izany. Efa nojerenao ve ny alalan'ny rakitra?"
+
+#: includes/arrays.php
+msgid "LDAP cannot bind. LDAP bind operation failed."
+msgstr "Tsy afaka mifamatotra ny LDAP. Tsy nahomby ny fampifandraisana LDAP."
+
+#: includes/arrays.php
+msgid "LDAP search failed."
+msgstr "Tsy nahomby ny fikarohana LDAP."
+
+#: includes/arrays.php
+msgid "Function not found. A required zlib function was not found."
+msgstr "Tsy hita ny fiasa. Tsy hita ny fiasa zlib ilaina."
+
+#: includes/arrays.php
+msgid "Aborted by callback. A callback returned \"abort\" to libcurl."
+msgstr "Natsahatry ny callback. Nisy callback namerina \"abort\" tamin'ny libcurl."
+
+#: includes/arrays.php
+msgid "A function was called with a bad parameter."
+msgstr "Nantsoina tamin'ny masontsivana diso ny fiasa iray."
+
+#: includes/arrays.php
+msgid "Interface error. A specified outgoing interface could not be used. Set which interface to use for outgoing connections' source IP address with URLOPT_INTERFACE."
+msgstr "Hadisoana amin'ny fifandraisana. Tsy azo nampiasaina ny fifandraisana fivoahana voafaritra. Farito amin'ny alalan'ny URLOPT_INTERFACE izay fifandraisana hampiasaina ho an'ny adiresy IP loharanon'ny fifandraisana mivoaka."
+
+#: includes/arrays.php
+msgid "Too many redirects. When following redirects, libcurl hit the maximum amount. Set your limit with CURLOPT_MAXREDIRS."
+msgstr "Famerenana lalana (redirects) be loatra. Rehefa nanaraka ny famerenana lalana ny libcurl dia nahatratra ny fetra ambony indrindra. Apetraho amin'ny alalan'ny CURLOPT_MAXREDIRS ny fetranao."
+
+#: includes/arrays.php
+msgid "An option passed to libcurl is not recognized/known. Refer to the appropriate documentation. This is most likely a problem in the program that uses libcurl. The error buffer might contain more specific information about which exact option it concerns."
+msgstr "Tsy fantatra/tsy ekena ny safidy iray nalefa tany amin'ny libcurl. Jereo ny tahirin-kevitra mifanentana amin'izany. Mety ho olana ao amin'ny programa mampiasa libcurl izany. Mety misy fampahalalana mazava kokoa momba izay tena safidy voakasika ao amin'ny buffer-n'ny hadisoana."
+
+#: includes/arrays.php
+msgid "An option passed in to a setopt was wrongly formatted. See error message for details about what option."
+msgstr "Diso endrika ny safidy iray nampidirina tao amin'ny setopt. Jereo ny hafatra hadisoana raha mila antsipiriany momba izany safidy izany."
+
+#: includes/arrays.php
+msgid "Nothing was returned from the server, and under the circumstances, getting nothing is considered an error."
+msgstr "Tsy nisy naverin'ny lohamilina, ary amin'izao toe-javatra izao, ny tsy fahazoana na inona na inona dia raisina ho fahadisoana."
+
+#: includes/arrays.php
+msgid "The specified crypto engine was not found."
+msgstr "Tsy hita ilay milina fanafenana voatondro."
+
+#: includes/arrays.php
+msgid "Failed setting the selected SSL crypto engine as default."
+msgstr "Tsy nahomby ny fametrahana ny motera fanafenana SSL voafidy ho mahazatra."
+
+#: includes/arrays.php
+msgid "Failed sending network data."
+msgstr "Tsy nahomby ny fandefasana angona tambajotra."
+
+#: includes/arrays.php
+msgid "Failure with receiving network data."
+msgstr "Tsy fahombiazana tamin'ny fandraisana angona tambajotra."
+
+#: includes/arrays.php
+msgid "problem with the local client certificate."
+msgstr "olana amin'ny taratasy fanamarinana mpanjifa eo an-toerana."
+
+#: includes/arrays.php
+msgid "Could not use specified cipher."
+msgstr "Tsy afaka nampiasa ny fanafenana voafaritra."
+
+#: includes/arrays.php
+msgid "The remote server's SSL certificate or SSH fingerprint was deemed not OK. This error code has been unified with CURLE_SSL_CACERT since 7.62.0. Its previous value was 51."
+msgstr "Tsy nekena ho tsara ny taratasy fanamarinana SSL na ny dian-tanana SSH an'ny mpizara lavitra. Natambatra tamin'ny CURLE_SSL_CACERT ity kaody hadisoana ity hatramin'ny 7.62.0. Ny sandany teo aloha dia 51."
+
+#: includes/arrays.php
+msgid "Unrecognized transfer encoding."
+msgstr "Fandikana famindrana tsy fantatra."
+
+#: includes/arrays.php
+msgid "Maximum file size exceeded."
+msgstr "Mihoatra ny haben'ny rakitra farany ambony."
+
+#: includes/arrays.php
+msgid "Requested FTP SSL level failed."
+msgstr "Tsy nahomby ny haavon'ny FTP SSL nangatahina."
+
+#: includes/arrays.php
+msgid "When doing a send operation curl had to rewind the data to retransmit, but the rewinding operation failed."
+msgstr "Rehefa nanao fandefasana ny curl dia tsy maintsy naverina tany am-piandohana ny angona mba halefa indray, saingy tsy nahomby ny famerenana azy."
+
+#: includes/arrays.php
+msgid "Initiating the SSL Engine failed."
+msgstr "Tsy nahomby ny fanombohana ny maotera SSL."
+
+#: includes/arrays.php
+msgid "The remote server denied curl to login (Added in 7.13.1)"
+msgstr "Nandà ny fidiran'ny curl ny mpizara lavitra (Nampiana tamin'ny 7.13.1)"
+
+#: includes/arrays.php
+msgid "File not found on TFTP server."
+msgstr "Tsy hita tao amin'ny mpizara TFTP ny rakitra."
+
+#: includes/arrays.php
+msgid "Permission problem on TFTP server."
+msgstr "Olana amin'ny fahazoan-dalana ao amin'ny lohamilina TFTP."
+
+#: includes/arrays.php
+msgid "Out of disk space on the server."
+msgstr "Tsy ampy ny toerana ao amin'ny kapila ao amin'ny mpizara."
+
+#: includes/arrays.php
+msgid "Illegal TFTP operation."
+msgstr "Hetsika TFTP tsy ara-dalàna."
+
+#: includes/arrays.php
+msgid "Unknown TFTP transfer ID."
+msgstr "ID famindrana TFTP tsy fantatra."
+
+#: includes/arrays.php
+msgid "File already exists and is not overwritten."
+msgstr "Efa misy ny rakitra ary tsy nosoloina."
+
+#: includes/arrays.php
+msgid "This error should never be returned by a properly functioning TFTP server."
+msgstr "Tsy tokony haverin'ny mpizara TFTP miasa tsara mihitsy ity hadisoana ity."
+
+#: includes/arrays.php
+msgid "Problem with reading the SSL CA cert (path? access rights?)"
+msgstr "Olana teo am-pamakiana ny taratasy fanamarinana SSL CA (lalana? alalana miditra?)"
+
+#: includes/arrays.php
+msgid "The resource referenced in the URL does not exist."
+msgstr "Tsy misy ny loharano voatondro ao amin'ny URL."
+
+#: includes/arrays.php
+msgid "An unspecified error occurred during the SSH session."
+msgstr "Nisy hadisoana tsy voafaritra nitranga nandritra ny fotoam-pivoriana SSH."
+
+#: includes/arrays.php
+msgid "Failed to shut down the SSL connection."
+msgstr "Tsy nahomby ny fanakatonana ny fifandraisana SSL."
+
+#: includes/arrays.php
+msgid "Socket is not ready for send/recv wait till it's ready and try again. This return code is only returned from curl_easy_recv and curl_easy_send (Added in 7.18.2)"
+msgstr "Tsy mbola vonona handefa na handray ny socket, andraso mandra-pahavonony ary andramo indray. Ity kaody fiverenana ity dia avy amin'ny curl_easy_recv sy curl_easy_send ihany no miverina (Nampiana tao amin'ny 7.18.2)"
+
+#: includes/arrays.php
+msgid "Failed to load CRL file (Added in 7.19.0)"
+msgstr "Tsy nahomby ny fampidirana ny rakitra CRL (Nampiana tamin'ny 7.19.0)"
+
+#: includes/arrays.php
+msgid "Issuer check failed (Added in 7.19.0)"
+msgstr "Tsy nahomby ny fanamarinana ny mpamoaka (Nampiana tamin'ny 7.19.0)"
+
+#: includes/arrays.php
+msgid "The FTP server does not understand the PRET command at all or does not support the given argument. Be careful when using CURLOPT_CUSTOMREQUEST, a custom LIST command is sent with the PRET command before PASV as well. (Added in 7.20.0)"
+msgstr "Tsy mahazo mihitsy ny baiko PRET ny mpizara FTP na tsy manohana ny hevitra nomena. Mitandrema rehefa mampiasa CURLOPT_CUSTOMREQUEST, satria alefa miaraka amin'ny baiko PRET alohan'ny PASV ihany koa ny baiko LIST manokana. (Nampiana tamin'ny 7.20.0)"
+
+#: includes/arrays.php
+msgid "Mismatch of RTSP CSeq numbers."
+msgstr "Tsy mifanaraka ny laharan'ny RTSP CSeq."
+
+#: includes/arrays.php
+msgid "Mismatch of RTSP Session Identifiers."
+msgstr "Tsy mifanaraka ny famantarana ny fivoriana RTSP."
+
+#: includes/arrays.php
+msgid "Unable to parse FTP file list (during FTP wildcard downloading)."
+msgstr "Tsy afaka manadihady ny lisitry ny rakitra FTP (mandritra ny fampidinana FTP misy wildcard)."
+
+#: includes/arrays.php
+msgid "Chunk callback reported error."
+msgstr "Nitatitra hadisoana ny chunk callback."
+
+#: includes/arrays.php
+msgid "(For internal use only, is never returned by libcurl) No connection available, the session is queued. (added in 7.30.0)"
+msgstr "(Ho an'ny fampiasana anatiny ihany, tsy averin'ny libcurl mihitsy) Tsy misy fifandraisana azo ampiasaina, napetraka amin'ny filaharana ny sesiona. (nampiana tamin'ny 7.30.0)"
+
+#: includes/arrays.php
+msgid "Failed to match the pinned key specified with CURLOPT_PINNEDPUBLICKEY."
+msgstr "Tsy nifanaraka tamin'ny fanalahidy voafantsika voalaza amin'ny CURLOPT_PINNEDPUBLICKEY."
+
+#: includes/arrays.php
+msgid "Status returned failure when asked with CURLOPT_SSL_VERIFYSTATUS."
+msgstr "Namerina tsy fahombiazana ny sata rehefa nanontaniana tamin'ny CURLOPT_SSL_VERIFYSTATUS."
+
+#: includes/arrays.php
+msgid "Stream error in the HTTP/2 framing layer."
+msgstr "Hadisoan'ny fikorianana ao amin'ny sosona fandrafetana HTTP/2."
+
+#: includes/arrays.php
+msgid "An API function was called from inside a callback."
+msgstr "Nisy asa API nantsoina avy tao anaty callback."
+
+#: includes/arrays.php
+msgid "An authentication function returned an error."
+msgstr "Namerina hadisoana ny asa fanamarinana ny maha-izy azy."
+
+#: includes/arrays.php
+msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
+msgstr "Nisy olana hita teo amin'ny sosona HTTP/3. Somary ankapobeny izany ary mety ho iray amin'ireo olana maromaro, jereo ny fitahirizana hadisoana raha mila antsipiriany."
+
+#: includes/arrays.php
+msgid "QUIC connection error. This error may be caused by an SSL library error. QUIC is the protocol used for HTTP/3 transfers."
+msgstr "Hadisoana tamin'ny fifandraisana QUIC. Mety ho avy amin'ny hadisoan'ny tranomboky SSL io hadisoana io. Ny QUIC no protokoly ampiasaina amin'ny fifindrana HTTP/3."
+
+#: includes/arrays.php
+msgid "Proxy handshake error. CURLINFO_PROXY_ERROR provides extra details on the specific problem."
+msgstr "Hadisoana teo amin'ny fifanarahana voalohany amin'ny Proxy. Manome antsipiriany fanampiny momba ilay olana manokana ny CURLINFO_PROXY_ERROR."
+
+#: includes/arrays.php
+msgid "SSL Client Certificate required."
+msgstr "Takiana ny taratasy fanamarinana SSL an'ny mpanjifa."
+
+#: includes/arrays.php
+msgid "An internal call to poll() or select() returned error that is not recoverable."
+msgstr "Namerina hadisoana tsy azo arenina ny fiantsoana anatiny ny poll() na select()."
+
+#: includes/functions.php
+msgid "Log History"
+msgstr "Tantaran'ny firaketana"
+
+#: includes/functions.php
+msgid "Graphs"
+msgstr "Kisary"
+
+#: includes/functions.php
+msgid "No data"
+msgstr "Tsy misy angona"
+
+#: includes/functions.php servcheck_ca.php servcheck_proxy.php
+msgid "Cancel"
+msgstr "Foano"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Delete"
+msgstr "Fafao"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Click 'Continue' to delete the following item."
+msgid_plural "Click 'Continue' to delete the following items."
+msgstr[0] "Tsindrio ny 'Tohizo' mba hamafana ity singa manaraka ity."
+msgstr[1] "Tsindrio ny 'Tohizo' mba hamafana ireto singa manaraka ireto."
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Delete item"
+msgid_plural "Delete items"
+msgstr[0] "Fafao ny singa"
+msgstr[1] "Fafao ireo singa"
+
+#: servcheck_ca.php
+#, php-format
+msgid "CA [edit: %s]"
+msgstr "CA [ovao: %s]"
+
+#: servcheck_ca.php
+msgid "CA [new]"
+msgstr "CA [vaovao]"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+msgid "Used"
+msgstr "Nampiasaina"
+
+#: servcheck_ca.php
+msgid "CAs"
+msgstr "Ireo CA"
+
+#: servcheck_ca.php
+msgid "No Certificates Found"
+msgstr "Tsy nisy taratasy fanamarinana hita"
+
+#: servcheck_ca.php
+msgid "Servcheck CA Management"
+msgstr "Fitantanana CA Servcheck"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Search"
+msgstr "Fikarohana"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Default"
+msgstr "Voafaritra mialoha"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Go"
+msgstr "Alefa"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Set/Refresh Filters"
+msgstr "Hametraka/Hanavao sivana"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Clear"
+msgstr "Fafao"
+
+#: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
+#: servcheck_test.php
+msgid "Clear Filters"
+msgstr "Esory ny sivana"
+
+#: servcheck_credential.php servcheck_test.php
+msgid "Duplicate"
+msgstr "Dika mitovy"
+
+#: servcheck_credential.php
+msgid "Click 'Continue' to Duplicate the following Credential."
+msgid_plural "Click 'Continue' to Duplicate the following Credentials."
+msgstr[0] "Tsindrio ny 'Tohizo' mba hamoronana dika mitovy amin'ity fahazoan-dalana manaraka ity."
+msgstr[1] "Tsindrio ny 'Tohizo' mba hamoronana dika mitovy amin'ireto fahazoan-dalana manaraka ireto."
+
+#: servcheck_credential.php
+msgid "Duplicate Credential"
+msgid_plural "Duplicate Credentials"
+msgstr[0] "Mamoròna dika mitovy amin'ny fahazoan-dalana"
+msgstr[1] "Mamoròna dika mitovy amin'ireo fahazoan-dalana"
+
+#: servcheck_credential.php
+#, php-format
+msgid "Credential [edit: %s]"
+msgstr "Fanamarinam-pidirana [ovao: %s]"
+
+#: servcheck_credential.php
+msgid "Credential [new]"
+msgstr "Fanamarinam-pidirana [vaovao]"
+
+#: servcheck_credential.php
+msgid "Type"
+msgstr "Karazana"
+
+#: servcheck_credential.php
+msgid "Credentials"
+msgstr "Fanamarinam-pidirana"
+
+#: servcheck_credential.php
+msgid "No Credentials Found"
+msgstr "Tsy nisy mombamomba fidirana hita"
+
+#: servcheck_credential.php
+msgid "Servcheck Credential Management"
+msgstr "Fitantanana mari-pamantarana Servcheck"
+
+#: servcheck_curl_code.php
+msgid "No error codes"
+msgstr "Tsy misy kaody hadisoana"
+
+#: servcheck_proxy.php
+#, php-format
+msgid "Proxy [edit: %s]"
+msgstr "Proxy [ovao: %s]"
+
+#: servcheck_proxy.php
+msgid "Proxy [new]"
+msgstr "Proxy [vaovao]"
+
+#: servcheck_proxy.php
+msgid "Ports (http/https)"
+msgstr "Seranana (http/https)"
+
+#: servcheck_proxy.php
+msgid "No Proxies Found"
+msgstr "Tsy misy proxy hita"
+
+#: servcheck_proxy.php
+msgid "Servcheck Proxy Management"
+msgstr "Fitantanana Proxy Servcheck"
+
+#: servcheck_test.php
+msgid "Disable"
+msgstr "Ajanony"
+
+#: servcheck_test.php
+msgid "Enable"
+msgstr "Alefa"
+
+#: servcheck_test.php
+msgid "Clear statistics"
+msgstr "Esory ny antontan'isa"
+
+#: servcheck_test.php
+msgid "Clear log"
+msgstr "Diovy ny diarin'asa"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to disable the following item."
+msgid_plural "Click 'Continue' to disable the following items."
+msgstr[0] "Tsindrio ny 'Tohizo' mba hanao ho tsy mavitrika ity singa manaraka ity."
+msgstr[1] "Tsindrio ny 'Tohizo' mba hanao ho tsy mavitrika ireto singa manaraka ireto."
+
+#: servcheck_test.php
+msgid "Disable item"
+msgid_plural "Disable items"
+msgstr[0] "Ataovy tsy mavitrika ny singa"
+msgstr[1] "Ataovy tsy mavitrika ireo singa"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to enable the following item."
+msgid_plural "Click 'Continue' to enable the following items."
+msgstr[0] "Tsindrio ny 'Tohizo' mba hanao ho mavitrika ity singa manaraka ity."
+msgstr[1] "Tsindrio ny 'Tohizo' mba hanao ho mavitrika ireto singa manaraka ireto."
+
+#: servcheck_test.php
+msgid "Enable item"
+msgid_plural "Enable items"
+msgstr[0] "Ataovy mavitrika ny singa"
+msgstr[1] "Ataovy mavitrika ireo singa"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to duplicate the following item."
+msgid_plural "Click 'Continue' to duplicate the following items."
+msgstr[0] "Tsindrio ny 'Tohizo' mba hamoronana dika mitovy amin'ity singa manaraka ity."
+msgstr[1] "Tsindrio ny 'Tohizo' mba hamoronana dika mitovy amin'ireto singa manaraka ireto."
+
+#: servcheck_test.php
+msgid "Duplicate item"
+msgid_plural "Duplicate items"
+msgstr[0] "Mamoròna dika mitovy amin'ny singa"
+msgstr[1] "Mamoròna dika mitovy amin'ireo singa"
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear statistics of the following item."
+msgid_plural "Click 'Continue' to clear statistics of the following items."
+msgstr[0] "Tsindrio ny 'Tohizo' mba hanadiovana ny antontan'isan'ity singa manaraka ity."
+msgstr[1] "Tsindrio ny 'Tohizo' mba hanadiovana ny antontan'isan'ireto singa manaraka ireto."
+
+#: servcheck_test.php
+msgid "Click 'Continue' to clear log of the following item."
+msgid_plural "Click 'Continue' to clear log of the following items."
+msgstr[0] "Tsindrio ny 'Tohizo' mba hanadiovana ny rakitra tantaran'ity singa manaraka ity."
+msgstr[1] "Tsindrio ny 'Tohizo' mba hanadiovana ny rakitra tantaran'ireto singa manaraka ireto."
+
+#: servcheck_test.php
+#, php-format
+msgid "The Service Check history was purged for %s"
+msgstr "Voafafa tanteraka ny tantaran'ny Fanamarinana Tolotra ho an'ny %s"
+
+#: servcheck_test.php
+#, php-format
+msgid "Test [edit: %s]"
+msgstr "Andrana [ovao: %s]"
+
+#: servcheck_test.php
+msgid "Test [new]"
+msgstr "Andrana [vaovao]"
+
+#: servcheck_test.php
+msgid "No Users Selected"
+msgstr "Tsy misy mpampiasa voafantina"
+
+#: servcheck_test.php
+msgid "Users Selected"
+msgstr "Mpampiasa voafidy"
+
+#: servcheck_test.php
+msgid "All Users Selected"
+msgstr "Mpampiasa rehetra voafidy"
+
+#: servcheck_test.php
+msgid "All"
+msgstr "Rehetra"
+
+#: servcheck_test.php
+msgid "Date"
+msgstr "Daty"
+
+#: servcheck_test.php
+msgid "Attempt"
+msgstr "Andrana"
+
+#: servcheck_test.php
+msgid "Result"
+msgstr "Vokatra"
+
+#: servcheck_test.php
+msgid "Search result"
+msgstr "Valin'ny fikarohana"
+
+#: servcheck_test.php
+msgid "Duration"
+msgstr "Faharetana"
+
+#: servcheck_test.php
+msgid "Certificate"
+msgstr "Taratasy fanamarinana"
+
+#: servcheck_test.php
+msgid "Curl"
+msgstr "Curl"
+
+#: servcheck_test.php
+msgid "Ret. data size"
+msgstr "Haben'ny angona voatahiry"
+
+#: servcheck_test.php
+msgid "CPU u/CPU s/Memory"
+msgstr "CPU u/CPU s/Fitadidiana"
+
+#: servcheck_test.php
+msgid "Logs"
+msgstr "Firaketana"
+
+#: servcheck_test.php
+msgid "days"
+msgstr "andro"
+
+#: servcheck_test.php
+#, php-format
+msgid "Expired %s days ago"
+msgstr "Lany daty %s andro lasa izay"
+
+#: servcheck_test.php
+msgid "Insufficient data, wait a few poller cycles"
+msgstr "Tsy ampy ny angona, miandrasa tsingerina Poller vitsivitsy"
+
+#: servcheck_test.php
+msgid "Actions"
+msgstr "Hetsika"
+
+#: servcheck_test.php
+msgid "Status"
+msgstr "Sata"
+
+#: servcheck_test.php
+msgid "Last Check (attempt)"
+msgstr "Fanamarinana farany (fanandramana)"
+
+#: servcheck_test.php
+msgid "Stats (OK/problem)"
+msgstr "Antontan'isa (Tsara/misy olana)"
+
+#: servcheck_test.php
+msgid "Triggered"
+msgstr "Voahetsika"
+
+#: servcheck_test.php
+msgid "Edit Service Check"
+msgstr "Ovao ny fanamarinana tolotra"
+
+#: servcheck_test.php
+msgid "Enable Service Check"
+msgstr "Alefaso ny fanamarinana tolotra"
+
+#: servcheck_test.php
+msgid "Disable Service Check"
+msgstr "Ataovy tsy mavitrika ny fanamarinana tolotra"
+
+#: servcheck_test.php
+msgid "View Service Check History"
+msgstr "Jereo ny tantaran'ny fanamarinana serivisy"
+
+#: servcheck_test.php
+msgid "View Last returned data"
+msgstr "Jereo ny angona naverina farany"
+
+#: servcheck_test.php
+msgid "View Graph"
+msgstr "Jereo ny Kisary"
+
+#: servcheck_test.php
+msgid "N/A (N/A)"
+msgstr "Tsy misy (Tsy misy)"
+
+#: servcheck_test.php
+msgid "No"
+msgstr "Tsia"
+
+#: servcheck_test.php
+msgid "Yes"
+msgstr "Eny"
+
+#: servcheck_test.php
+msgid "No Service Checks Found"
+msgstr "Tsy misy fanamarinana serivisy hita"
+
+#: servcheck_test.php
+msgid "Last returned data of test"
+msgstr "Angona naverin'ny fitsapana farany"
+
+#: servcheck_test.php
+msgid "Servcheck Test Management"
+msgstr "Fitantanana fitsapana Servcheck"
+
+#: servcheck_test.php
+msgid "State"
+msgstr "Faritany"
+
+#: servcheck_test.php
+msgid "Any"
+msgstr "Na inona na inona"
+
+#: servcheck_test.php
+msgid "Refresh"
+msgstr "Havaozy"
+
+#: servcheck_test.php
+msgid "Checks"
+msgstr "Fanamarinana"
+
+#: servcheck_test.php
+msgid "Service Check History"
+msgstr "Tantaran'ny fanamarinana tolotra"
+
+#: servcheck_test.php
+msgid "Date Search"
+msgstr "Fikarohana daty"
+
+#: servcheck_test.php
+msgid "Entries"
+msgstr "Andininy"
+
+#: servcheck_test.php
+msgid "Purge Events"
+msgstr "Fafao tanteraka ireo hetsika"
+
+#: setup.php
+msgid "Service Check Admin"
+msgstr "Mpitantana ny fanamarinana tolotra"
+
+#: setup.php
+msgid "Management"
+msgstr "Fitantanana"
+
+#: setup.php
+msgid "Service Checker"
+msgstr "Mpanamarina tolotra"
+
+#: setup.php
+msgid "Service Checks"
+msgstr "Fanamarinana tolotra"
+
+#: setup.php
+msgid "Service Check Edit"
+msgstr "Ovao ny fanamarinana tolotra"
+
+#: setup.php
+msgid "Service Check Save"
+msgstr "Tehirizo ny fanamarinana tolotra"
+
+#: setup.php
+msgid "Credential Edit"
+msgstr "Ovao ny fanamarinam-pidirana"
+
+#: setup.php
+msgid "Credential Save"
+msgstr "Tehirizo ny fanamarinam-pidirana"
+
+#: setup.php
+msgid "Web Proxy"
+msgstr "Proxy tranonkala"
+
+#: setup.php
+msgid "Web Proxy Edit"
+msgstr "Fanovana Proxy tranonkala"
+
+#: setup.php
+msgid "Save Web Proxy"
+msgstr "Tehirizo ny Web Proxy"
+
+#: setup.php
+msgid "CA"
+msgstr "CA"
+
+#: setup.php
+msgid "CA Edit"
+msgstr "Fanovana CA"
+
+#: setup.php
+msgid "Save CA"
+msgstr "Tehirizo ny CA"
+
+#: setup.php
+msgid "Servcheck"
+msgstr "Servcheck"
+
+#: setup.php
+msgid "Notification Preferences"
+msgstr "Safidin'ny fampandrenesana"
+
+#: setup.php
+msgid "Send Email separately for each address"
+msgstr "Alefaso mitokana ny Mailaka ho an'ny adiresy tsirairay"
+
+#: setup.php
+msgid "If checked, this will cause all Emails to be sent separately for each address."
+msgstr "Raha voamarika, dia halefa mitokana isaky ny adiresy ny Mailaka rehetra."
+
+#: setup.php
+msgid "Stop sending all notification"
+msgstr "Atsaharo ny fandefasana ny fampandrenesana rehetra"
+
+#: setup.php
+msgid "If checked, servcheck will not send any emails. You can also disable notification only for specific tests"
+msgstr "Raha voamarika dia tsy handefa mailaka mihitsy ny servcheck. Azonao atao koa ny manakana ny fampandrenesana ho an'ny fitsapana manokana ihany"
+
+#: setup.php
+msgid "Enable Command Execution"
+msgstr "Alefaso ny fanatanterahana baiko"
+
+#: setup.php
+msgid "Checking this box will enable the ability to run commands on Servcheck events. You can enable or disable it for each test."
+msgstr "Ny fanamarihana ity boaty ity dia hampavitrika ny fahafahana mandefa baiko amin'ny hetsika Servcheck. Azonao atao ny mampavitrika na manafoana izany ho an'ny fitsapana tsirairay."
+
+#: setup.php
+msgid "Status Change Command"
+msgstr "Baiko fanovana sata"
+
+#: setup.php
+msgid "When a basic or search or certificate expiration test returns different result, run the following command... This command must NOT include command line arguments... However, the following variables can be pulled from the environment of the script:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+msgstr "Rehefa mamerina vokatra hafa ny fitsapana fototra na fikarohana na fahataperan'ny taratasy fanamarinana, dia alefaso ity baiko manaraka ity... Tsy tokony hisy tohan-kevitra amin'ny tsipika baiko ity baiko ity... Na izany aza, azo alaina avy amin'ny tontolo iainan'ny script ireto ova-ova manaraka ireto:<br>&#060SERVCHECK_TEST_NAME&#062 &#060SERVCHECK_EXTERNAL_ID&#062 &#060SERVCHECK_TEST_TYPE&#062 &#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 &#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
+
+#: setup.php
+msgid "Concurrent Check Processes"
+msgstr "Fomba fiasa fanamarinana miaraka"
+
+#: setup.php
+msgid "The number of service check processes to run concurrently.  Increasing this number to 2 times the number of cores is not advised."
+msgstr "Ny isan'ny dingana fanamarinana serivisy mandeha miaraka. Tsy soso-kevitra ny fampitomboana ity isa ity ho avo 2 heny amin'ny isan'ny foibe (cores)."
+
+#: setup.php
+msgid "1 Process"
+msgstr "1 Dingana"
+
+#: setup.php
+#, php-format
+msgid "%d Processes"
+msgstr "%d Dingana"
+
+#: setup.php
+msgid "Certificate expiry date advanced notification email"
+msgstr "Mailaka fampandrenesana mialoha ny daty fahataperan'ny taratasy fanamarinana"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how many days advanced notice period before certificate expiry date the system will send notification"
+msgstr "Raha mavitrika ny fampandrenesana fahataperan'ny taratasy fanamarinana serivisy SSL/TLS, farito hoe firy andro mialoha ny daty fahataperan'ny taratasy fanamarinana no handefasan'ny rafitra fampandrenesana"
+
+#: setup.php
+msgid "3 days in advance"
+msgstr "3 andro mialoha"
+
+#: setup.php
+msgid "1 week in advance"
+msgstr "1 herinandro mialoha"
+
+#: setup.php
+msgid "3 weeks in advance"
+msgstr "3 herinandro mialoha"
+
+#: setup.php
+msgid "30 days in advance"
+msgstr "30 andro mialoha"
+
+#: setup.php
+msgid "60 days in advance"
+msgstr "60 andro mialoha"
+
+#: setup.php
+msgid "90 days in advance"
+msgstr "90 andro mialoha"
+
+#: setup.php
+msgid "Certificate expiry notification email interval"
+msgstr "Elanelam-potoanan'ny mailaka fampandrenesana ny fahataperan'ny taratasy fanamarinana"
+
+#: setup.php
+msgid "If SSL/TLS service certificate expiration is enabled, set how the interval (days) for the email notification to be sent, however, if the expiry date is passed, the email notification will be sent everyday"
+msgstr "Raha mavitrika ny fampandrenesana fahataperan'ny taratasy fanamarinana serivisy SSL/TLS, farito ny elanelam-potoana (andro) handefasana ny fampandrenesana amin'ny mailaka; na izany aza, raha efa dila ny daty fahataperana dia halefa isan'andro ny fampandrenesana amin'ny mailaka"
+
+#: setup.php
+msgid "1 day"
+msgstr "1 andro"
+
+#: setup.php
+msgid "3 days"
+msgstr "3 andro"
+
+#: setup.php
+msgid "5 days"
+msgstr "5 andro"
+
+#: setup.php
+msgid "7 days"
+msgstr "7 andro"
+
+#: setup.php
+msgid "10 days"
+msgstr "10 andro"
+
+#: setup.php
+msgid "15 days"
+msgstr "15 andro"
+
+#: setup.php
+msgid "20 days"
+msgstr "20 andro"
+
+#: setup.php
+msgid "30 days"
+msgstr "30 andro"
+
+#: setup.php
+msgid "How long to keep logs"
+msgstr "Ny faharetan'ny fitahirizana ny rakitra (logs)"
+
+#: setup.php
+msgid "Enter the period after which older logs will be automatically deleted."
+msgstr "Ampidiro ny fe-potoana izay hamafana ho azy ireo tatitra tranainy aorian'izany."
+
+#: setup.php
+msgid "Never"
+msgstr "Tsy mihitsy"
+
+#: setup.php
+#, php-format
+msgid "%d hours"
+msgstr "%d ora"
+
+#: setup.php
+#, php-format
+msgid "%d days"
+msgstr "%d andro"
+
+#: setup.php
+#, php-format
+msgid "%d year"
+msgstr "%d taona"
+
+#: setup.php
+msgid "Maximum test duration in seconds"
+msgstr "Faharetan'ny fitsapana farany ambony amin'ny segondra"
+
+#: setup.php
+msgid "The default value for tests where runtime testing is not enabled. If enabled, the max. duration is calculated as the duration threshold + 2 seconds."
+msgstr "Ny sanda voafaritra mialoha ho an'ny fitsapana izay tsy mavitrika ny fitsapana mandritra ny fandehanany. Raha mavitrika izy dia kajiana ho ny Fetra faharetana + 2 segondra ny faharetana farany ambony."
+
+#: setup.php
+msgid "HTTP/HTTPS Check Settings"
+msgstr "Fandrindrana ny fanamarinana HTTP/HTTPS"
+
+#: setup.php
+msgid "User Agent"
+msgstr "Mpanera mpampiasa (User Agent)"
+
+#: setup.php
+msgid "The User-Agent string sent with HTTP/HTTPS and other cURL based service checks. Some sites block old or uncommon browsers, so you can set a current User-Agent here. Leave blank to use the built-in default."
+msgstr "Ny lahatsoratra User-Agent alefa miaraka amin'ny HTTP/HTTPS sy ny fanamarinana tolotra hafa mifototra amin'ny cURL. Ny toerana sasany dia manakana mpitety tranonkala taloha na tsy fahita firy, ka azonao atao ny mametraka User-Agent vaovao eto. Avelao ho banga raha hampiasa ny sanda voafaritra mialoha ao anatiny."
+

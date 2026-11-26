@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-26 05:54+0000\n"
+"PO-Revision-Date: 2026-11-26 10:48+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: German <https://translate.cacti.net/projects/cacti/servcheck/"
 "de/>\n"
@@ -572,7 +572,7 @@ msgstr "Zielsystemname"
 
 #: includes/arrays.php
 msgid "How Often to Test"
-msgstr "Wie oft sollte getestet werden?"
+msgstr "Testintervall"
 
 #: includes/arrays.php
 msgid "How many attempts"

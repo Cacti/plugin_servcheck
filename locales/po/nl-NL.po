@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-26 05:54+0000\n"
+"PO-Revision-Date: 2026-11-26 10:48+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Dutch <https://translate.cacti.net/projects/cacti/servcheck/"
 "nl/>\n"
@@ -79,7 +79,11 @@ msgstr "Een verzoek om geheugentoewijzing is mislukt. Dit is ernstige slechtheid
 
 #: includes/arrays.php
 msgid "A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
-msgstr "Er is ergens een probleem opgetreden in de SSL/TLS-handshake. U wilt echt de foutbuffer en leest het bericht daar, omdat het het probleem iets meer aangeeft. Dit kunnen certificaten zijn (bestandsindelingen, paden, machtigingen), wachtwoorden en andere."
+msgstr ""
+"Er is ergens een probleem opgetreden in de SSL/TLS-handshake. U kunt het "
+"beste de foutbuffer raadplegen en het bericht daar lezen, omdat dit het "
+"probleem wat specifieker aangeeft. Dit kunnen certificaten zijn ("
+"bestandsindelingen, paden, machtigingen), wachtwoorden en andere zaken."
 
 #: includes/arrays.php
 msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."

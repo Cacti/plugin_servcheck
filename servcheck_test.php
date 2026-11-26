@@ -459,7 +459,7 @@ function servcheck_data_edit(): void {
 			$data = [];
 		}
 
-		$header_label = __('Test [edit: %s]', $data['name'] ?? '');
+		$header_label = __('Test [edit: %s]', $data['name'] ?? '', 'servcheck');
 	} else {
 		$header_label = __('Test [new]', 'servcheck');
 	}
@@ -512,19 +512,19 @@ function servcheck_data_edit(): void {
 		});
 
 		$('#notify_accounts').hide().multiselect({
-			noneSelectedText: '<?php print __('No Users Selected', 'servcheck'); ?>',
+			noneSelectedText: <?php print json_encode(__('No Users Selected', 'servcheck')); ?>,
 			selectedText: function(numChecked, numTotal, checkedItems) {
-				myReturn = numChecked + ' <?php print __('Users Selected', 'servcheck'); ?>';
+				myReturn = numChecked + ' ' + <?php print json_encode(__('Users Selected', 'servcheck')); ?>;
 				$.each(checkedItems, function(index, value) {
 					if (value.value == '0') {
-						myReturn='<?php print __('All Users Selected', 'servcheck'); ?>';
+						myReturn=<?php print json_encode(__('All Users Selected', 'servcheck')); ?>;
 						return false;
 					}
 				});
 				return myReturn;
 			},
-			checkAllText: '<?php print __('All', 'servcheck'); ?>',
-			uncheckAllText: '<?php print __('None', 'servcheck'); ?>',
+			checkAllText: <?php print json_encode(__('All', 'servcheck')); ?>,
+			uncheckAllText: <?php print json_encode(__('None', 'servcheck')); ?>,
 			uncheckall: function() {
 				$(this).multiselect('widget').find(':checkbox:first').each(function() {
 					$(this).prop('checked', true);
@@ -557,7 +557,7 @@ function servcheck_data_edit(): void {
 				}
 			}
 		}).multiselectfilter({
-			label: '<?php print __('Search', 'servcheck'); ?>',
+			label: <?php print json_encode(__('Search', 'servcheck')); ?>,
 			width: msWidth
 		});
 

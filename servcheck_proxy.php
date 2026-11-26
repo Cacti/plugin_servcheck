@@ -181,7 +181,7 @@ function servcheck_data_edit(): void {
 			$data = [];
 		}
 
-		$header_label = __('Proxy [edit: %s]', $data['name'] ?? '');
+		$header_label = __('Proxy [edit: %s]', $data['name'] ?? '', 'servcheck');
 	} else {
 		$header_label = __('Proxy [new]', 'servcheck');
 	}

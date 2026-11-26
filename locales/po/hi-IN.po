@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.11.4\n"
 
 #: includes/arrays.php
@@ -188,9 +188,8 @@ msgid "Auth in HTTP headers"
 msgstr "HTTP हेडर में प्रमाणीकरण"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "Auth type"
-msgstr "प्रमाणीकरण"
+msgstr ""
 
 #: includes/arrays.php
 msgid "Bad Gateway"
@@ -1733,11 +1732,10 @@ msgstr "साफ फिल्टर"
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
-#, fuzzy
 msgid "Click 'Continue' to delete the following items."
 msgid_plural "Click 'Continue' to delete following items."
-msgstr[0] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
-msgstr[1] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 #: servcheck_test.php
@@ -1784,11 +1782,10 @@ msgid "Used"
 msgstr "प्रयुक्त"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Click 'Continue' to Duplicate the following Credential."
 msgid_plural "Click 'Continue' to Duplicate following Credential."
-msgstr[0] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
-msgstr[1] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_credential.php
 #, php-format
@@ -1808,11 +1805,10 @@ msgid "Duplicate"
 msgstr "डुप्लीकेट"
 
 #: servcheck_credential.php
-#, fuzzy
 msgid "Duplicate Credential"
 msgid_plural "Duplicate Credential"
-msgstr[0] "डुप्लीकेट"
-msgstr[1] "डुप्लीकेट"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_credential.php
 msgid "No Credentials Found"
@@ -1856,42 +1852,37 @@ msgid "Any"
 msgstr "कोई भी"
 
 #: servcheck_restapi.php
-#, fuzzy
 msgid "Click 'Continue' to Delete the following Rest API."
 msgid_plural "Click 'Continue' to Delete following Rest API."
-msgstr[0] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
-msgstr[1] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_restapi.php
-#, fuzzy
 msgid "Click 'Continue' to Duplicate the following Rest API."
 msgid_plural "Click 'Continue' to Duplicate following Rest APIs."
-msgstr[0] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
-msgstr[1] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_restapi.php
-#, fuzzy
 msgid "Delete Rest API"
 msgid_plural "Delete Rest API"
-msgstr[0] "वेबसर्वर सर्वर"
-msgstr[1] "वेबसर्वर सर्वर"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_restapi.php
-#, fuzzy
 msgid "Duplicate Rest API"
 msgid_plural "Duplicate Rest API"
-msgstr[0] "डुप्लीकेट"
-msgstr[1] "डुप्लीकेट"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_restapi.php
-#, fuzzy, php-format
+#, php-format
 msgid "Query [edit: %s]"
-msgstr "क्वेरी [संपादित करें: %s]"
+msgstr ""
 
 #: servcheck_restapi.php
-#, fuzzy
 msgid "Query [new]"
-msgstr "क्वेरी [नया]"
+msgstr ""
 
 #: servcheck_restapi.php
 msgid "Records"
@@ -1942,39 +1933,34 @@ msgid "Clear statistics"
 msgstr "आँकड़े साफ़ करें"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Click 'Continue' to clear log of following items."
 msgid_plural "Click 'Continue' to clear log of following items."
-msgstr[0] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
-msgstr[1] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Click 'Continue' to clear statistics of following items."
 msgid_plural "Click 'Continue' to clear statistics of following items."
-msgstr[0] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
-msgstr[1] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Click 'Continue' to disable the following items."
 msgid_plural "Click 'Continue' to disable following items."
-msgstr[0] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
-msgstr[1] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Click 'Continue' to duplicate the following items."
 msgid_plural "Click 'Continue' to duplicate following items."
-msgstr[0] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
-msgstr[1] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Click 'Continue' to enable the following items."
 msgid_plural "Click 'Continue' to enable following items."
-msgstr[0] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
-msgstr[1] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
+msgstr[0] ""
+msgstr[1] ""
 
 #: servcheck_test.php
 msgid "Curl"
@@ -2276,9 +2262,8 @@ msgid "Notification Preferences"
 msgstr "अधिसूचना प्राथमिकताएँ"
 
 #: setup.php
-#, fuzzy
 msgid "Rest API Edit"
-msgstr "सीए संपादित करें"
+msgstr ""
 
 #: setup.php
 msgid "Rest API Save"
@@ -2369,65 +2354,52 @@ msgstr ""
 "&#060SERVCHECK_POLLER_ID&#062 &#060SERVCHECK_RESULT&#062 "
 "&#060SERVCHECK_RESULT_SEARCH&#062 &#060SERVCHECK_CERTIFICATE_EXPIRATION&#062"
 
-#, fuzzy
 #~ msgid "%d Minute"
 #~ msgstr "% d मिनट"
 
-#, fuzzy
 #~ msgid "%d Minutes"
 #~ msgstr "% d मिनट"
 
-#, fuzzy
 #~ msgid "Available Checks"
 #~ msgstr "उपलब्ध चेक"
 
-#, fuzzy
 #~ msgid "Cacti Master"
 #~ msgstr "कैक्टि मास्टर"
 
-#, fuzzy
 #~ msgid "Cacti Remote Server"
 #~ msgstr "Cacti रिमोट सर्वर"
 
-#, fuzzy
 #~ msgid "Check this box if the current server you are connected to is this entry."
 #~ msgstr "इस बॉक्स की जाँच करें यदि आप जिस वर्तमान सर्वर से जुड़े हैं वह यह प्रविष्टि है।"
 
-#, fuzzy
 #~ msgid "Click 'Continue' to Delete the following Server."
 #~ msgid_plural "Click 'Continue' to Delete following Servers."
 #~ msgstr[0] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
 #~ msgstr[1] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
 
-#, fuzzy
 #~ msgid "Click 'Continue' to Disable the following Server."
 #~ msgid_plural "Click 'Continue' to Disable following Servers."
 #~ msgstr[0] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
 #~ msgstr[1] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
 
-#, fuzzy
 #~ msgid "Click 'Continue' to Enable the following Server."
 #~ msgid_plural "Click 'Continue' to Enable following Servers."
 #~ msgstr[0] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
 #~ msgstr[1] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
 
-#, fuzzy
 #~ msgid "Click 'Continue' to delete the following CA."
 #~ msgid_plural "Click 'Continue' to delete following CA."
 #~ msgstr[0] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
 #~ msgstr[1] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
 
-#, fuzzy
 #~ msgid "Click 'Continue' to delete the following Proxy."
 #~ msgid_plural "Click 'Continue' to delete following Proxies."
 #~ msgstr[0] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
 #~ msgstr[1] "निम्नलिखित प्रॉक्सी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
 
-#, fuzzy
 #~ msgid "Compression"
 #~ msgstr "दबाव"
 
-#, fuzzy
 #~ msgid "Connect"
 #~ msgstr "जुडिये"
 
@@ -2437,64 +2409,53 @@ msgstr ""
 #~ msgid "DNS name for querying"
 #~ msgstr "क्वेरी के लिए DNS नाम"
 
-#, fuzzy
 #~ msgid "DNS: Server %s - A Record for %s"
 #~ msgstr "DNS: सर्वर %s - %s के लिए एक रिकॉर्ड"
 
-#, fuzzy
 #~ msgid "Delete CA"
 #~ msgid_plural "Delete CA"
 #~ msgstr[0] "हटाएं"
 #~ msgstr[1] "हटाएं"
 
-#, fuzzy
 #~ msgid "Delete Proxy"
 #~ msgid_plural "Delete Proxies"
 #~ msgstr[0] "हटाना"
 #~ msgstr[1] "हटाना"
 
-#, fuzzy
 #~| msgid "Delete"
 #~ msgid "Delete URL"
 #~ msgid_plural "Delete URLs"
 #~ msgstr[0] "हटाएं"
 #~ msgstr[1] "हटाएं"
 
-#, fuzzy
 #~ msgid "Disable Server"
 #~ msgid_plural "Disable Servers"
 #~ msgstr[0] "सर्वर सक्षम करें"
 #~ msgstr[1] "सर्वर सक्षम करें"
 
-#, fuzzy
 #~| msgid "Disable"
 #~ msgid "Disable URL"
 #~ msgid_plural "Disable URLs"
 #~ msgstr[0] "अक्षम करें"
 #~ msgstr[1] "अक्षम करें"
 
-#, fuzzy
 #~ msgid "Display Name of this server"
 #~ msgstr "इस सर्वर का नाम प्रदर्शित करें"
 
 #~ msgid "Down"
 #~ msgstr "नीचे"
 
-#, fuzzy
 #~ msgid "Edit Server"
 #~ msgstr "साइट संपादित करें"
 
-#, fuzzy
 #~ msgid "Edit Site"
 #~ msgstr "साइट संपादित करें"
 
-#, fuzzy
 #~ msgid "Enable Server"
 #~ msgid_plural "Enable Servers"
 #~ msgstr[0] "सर्वर सक्षम करें"
 #~ msgstr[1] "सर्वर सक्षम करें"
 
-#, fuzzy
 #~| msgid "Enable"
 #~ msgid "Enable URL"
 #~ msgid_plural "Enable URLs"
@@ -2507,75 +2468,60 @@ msgstr ""
 #~ msgid "FTP encrypted (FTPS), default port 990"
 #~ msgstr "FTP एन्क्रिप्टेड (FTPS), डिफ़ॉल्ट पोर्ट 990"
 
-#, fuzzy
 #~ msgid "HTTP Code"
 #~ msgstr "HTTP कोड"
 
-#, fuzzy
 #~ msgid "How many poller cycles must be down before it will send an alert. After an alert is sent, in order for a 'Site Recovering' Email to be send, it must also be up this number of poller cycles."
 #~ msgstr "अलर्ट भेजने से पहले URL कितने मिनट नीचे होना चाहिए। एक अलर्ट भेजे जाने के बाद, 'साइट पुनर्प्राप्त करने के लिए' ईमेल भेजने के लिए, यह भी कुछ मिनटों तक होना चाहिए।"
 
-#, fuzzy
 #~ msgid "How many seconds to allow the page to timeout before reporting it as down."
 #~ msgstr "पृष्ठ को रिपोर्ट करने से पहले कितने सेकंड के लिए समय समाप्त करने की अनुमति दें।"
 
 #~ msgid "IP Address"
 #~ msgstr "IP सिरनामा"
 
-#, fuzzy
 #~ msgid "Is this server the local server?"
 #~ msgstr "क्या यह सर्वर स्थानीय सर्वर है?"
 
-#, fuzzy
 #~ msgid "Location of this server"
 #~ msgstr "इस सर्वर का स्थान"
 
-#, fuzzy
 #~ msgid "Master"
 #~ msgstr "स्वामी"
 
-#, fuzzy
 #~ msgid "Master Server"
 #~ msgstr "मास्टर सर्वर"
 
 #~ msgid "N/A"
 #~ msgstr "लागू नहीं"
 
-#, fuzzy
 #~ msgid "No CAs Found"
 #~ msgstr "कोई सर्वर नहीं मिला"
 
-#, fuzzy
 #~ msgid "No Events in History"
 #~ msgstr "इतिहास की कोई घटना नहीं"
 
-#, fuzzy
 #~ msgid "No Service Check Events in History"
 #~ msgstr "इतिहास की कोई घटना नहीं"
 
-#, fuzzy
 #~ msgid "Not Set"
 #~ msgstr "डिफ़ॉल्ट नियत करें"
 
-#, fuzzy
 #~ msgid "Notification Timing"
 #~ msgstr "अधिसूचना समय"
 
-#, fuzzy
 #~ msgid "Redirect"
 #~ msgstr "पुन: निर्देशित"
 
 #~ msgid "Return"
 #~ msgstr "वापसी"
 
-#, fuzzy
 #~ msgid "Save Server"
 #~ msgstr "सर्वर सक्षम करें"
 
 #~ msgid "Servcheck uses a file of certificates from common root CAs to check certificates. This will work for certificates issued by common CAs. If you are using a custom CA (for example, in a Microsoft AD environment), the test for that certificate will fail because servcheck does not know your CA. You must upload the entire chain (CA certificate and intermediate certificates). You then associate these with the test where the certificate issued by your CA is."
 #~ msgstr "Servcheck प्रमाण पत्र की जांच करने के लिए सामान्य रूट CAs से प्रमाण पत्र की एक फ़ाइल का उपयोग करता है। यह कॉमन सीए द्वारा जारी सर्टिफिकेट के लिए काम करेगा। यदि आप एक कस्टम CA (उदाहरण के लिए, एक Microsoft AD वातावरण में) का उपयोग कर रहे हैं, तो उस प्रमाणपत्र के लिए परीक्षण विफल हो जाएगा क्योंकि servcheck आपके CA को नहीं जानता है। आपको पूरी चेन (CA सर्टिफिकेट और इंटरमीडिएट सर्टिफिकेट) अपलोड करनी होगी. फिर आप इन्हें उस परीक्षण से जोड़ते हैं जहां आपके सीए द्वारा जारी प्रमाण पत्र है।"
 
-#, fuzzy
 #~ msgid "Server Edit"
 #~ msgstr "सर्वर संपादित करें"
 
@@ -2588,7 +2534,6 @@ msgstr ""
 #~ msgid "Service UP"
 #~ msgstr "सर्विस यूपी"
 
-#, fuzzy
 #~ msgid "Sets this server to the Master server.  The Master server handles all Email operations"
 #~ msgstr "इस सर्वर को मास्टर सर्वर पर सेट करता है। मास्टर सर्वर सभी ईमेल संचालन को संभालता है"
 
@@ -2601,27 +2546,21 @@ msgstr ""
 #~ msgid "Test each poller cycle or less"
 #~ msgstr "प्रत्येक पोलर चक्र या उससे कम का परीक्षण करें"
 
-#, fuzzy
 #~ msgid "The URL to Monitor"
 #~ msgstr "मॉनिटर करने के लिए URL"
 
-#, fuzzy
 #~ msgid "The user password to use to authenticate with the Proxy if any."
 #~ msgstr "यदि कोई हो तो प्रॉक्सी के साथ प्रमाणित करने के लिए उपयोग करने के लिए उपयोगकर्ता पासवर्ड।"
 
-#, fuzzy
 #~ msgid "The user to use to authenticate with the Proxy if any."
 #~ msgstr "उपयोगकर्ता प्रॉक्सी के साथ प्रमाणित करने के लिए उपयोग करने के लिए यदि कोई हो।"
 
-#, fuzzy
 #~ msgid "This Host"
 #~ msgstr "यह मेजबान"
 
-#, fuzzy
 #~ msgid "This is the URL to connect to remote.php on this server."
 #~ msgstr "यह इस सर्वर पर Remote.php से जुड़ने वाला URL है"
 
-#, fuzzy
 #~ msgid "Time Out"
 #~ msgstr "समय समाप्त"
 
@@ -2631,46 +2570,36 @@ msgstr ""
 #~ msgid "URL"
 #~ msgstr "URL"
 
-#, fuzzy
 #~ msgid "Uncheck this box to disabled this server from checking urls."
 #~ msgstr "Url चेक करने से इस सर्वर को अक्षम करने के लिए इस बॉक्स को अनचेक करें।"
 
 #~ msgid "Up"
 #~ msgstr "ऊपर"
 
-#, fuzzy
 #~ msgid "View Server History"
 #~ msgstr "इतिहास देखे"
 
-#, fuzzy
 #~ msgid "WebSeer Servers"
 #~ msgstr "वेबसर्वर सर्वर"
 
-#, fuzzy
 #~ msgid "WebSeer Service Checks"
 #~ msgstr "WebSeer सेवा चेक"
 
-#, fuzzy
 #~ msgid "Webseer Server History"
 #~ msgstr "वेबसर्वर सर्वर"
 
-#, fuzzy
 #~ msgid "Webseer Servers"
 #~ msgstr "वेबसर्वर सर्वर"
 
-#, fuzzy
 #~ msgid "Webseer Service Check History"
 #~ msgstr "WebSeer सेवा चेक"
 
-#, fuzzy
 #~ msgid "Webseer Service Checks"
 #~ msgstr "WebSeer सेवा चेक"
 
-#, fuzzy
 #~ msgid "Webseer Site Management"
 #~ msgstr "वेबसीर साइट प्रबंधन"
 
-#, fuzzy
 #~ msgid "What compression does the server require?  Most servers should not need this, but some will not redirect properly without it."
 #~ msgstr "सर्वर को किस संपीड़न की आवश्यकता है? अधिकांश सर्वर को इसकी आवश्यकता नहीं होनी चाहिए, लेकिन कुछ इसके बिना ठीक से रीडायरेक्ट नहीं होंगे।"
 
@@ -2680,6 +2609,5 @@ msgstr ""
 #~ msgid "You can specify another port (example.com:5000) otherwise default will be used"
 #~ msgstr "आप एक और पोर्ट (example.com:5000) निर्दिष्ट कर सकते हैं अन्यथा डिफ़ॉल्ट का उपयोग किया जाएगा"
 
-#, fuzzy
 #~ msgid "You must select at least one Proxy."
 #~ msgstr "आपको कम से कम एक प्रॉक्सी का चयन करना होगा।"

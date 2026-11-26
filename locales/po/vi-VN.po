@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"PO-Revision-Date: 2026-11-26 10:48+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Vietnamese <https://translate.cacti.net/projects/cacti/"
 "servcheck/vi/>\n"
@@ -83,11 +83,15 @@ msgstr "Một vấn đề đã xảy ra ở đâu đó trong bắt tay SSL / TLS
 
 #: includes/arrays.php
 msgid "A problem was detected in the HTTP/3 layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr "Một vấn đề đã được phát hiện trong lớp HTTP / 3. Điều này hơi chung chung và có thể là một trong một số vấn đề, hãy xem bộ đệm lỗi để biết chi tiết."
+msgstr ""
+"Một vấn đề đã được phát hiện trong lớp HTTP / 3. Điều này hơi tổng quát và "
+"có thể là một trong một số vấn đề, hãy xem bộ đệm lỗi để biết chi tiết."
 
 #: includes/arrays.php
 msgid "A problem was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of several problems, see the error buffer for details."
-msgstr "Một vấn đề đã được phát hiện trong lớp khung HTTP2. Điều này hơi chung chung và có thể là một trong một số vấn đề, hãy xem bộ đệm lỗi để biết chi tiết."
+msgstr ""
+"Một vấn đề đã được phát hiện trong lớp khung HTTP2. Điều này hơi tổng quát "
+"và có thể là một trong một số vấn đề, hãy xem bộ đệm lỗi để biết chi tiết."
 
 #: includes/arrays.php
 msgid "A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision. This means that a feature or option was not enabled or explicitly disabled when libcurl was built and in order to get it to function you have to get a rebuilt libcurl."

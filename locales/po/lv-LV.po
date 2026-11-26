@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Cacti 1.2.16\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2026-09-29 21:48+0200\n"
-"PO-Revision-Date: 2026-11-25 10:18+0000\n"
+"PO-Revision-Date: 2026-11-26 05:54+0000\n"
 "Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
 "Language-Team: Latvian <https://translate.cacti.net/projects/cacti/servcheck/"
 "lv/>\n"
@@ -478,7 +478,7 @@ msgstr "Neizdevās izslēgt SSL savienojumu."
 
 #: includes/arrays.php
 msgid "Failing"
-msgstr ""
+msgstr "Neveiksmīga"
 
 #: includes/arrays.php
 msgid "Failure with receiving network data."
@@ -493,14 +493,14 @@ msgid "File not found on TFTP server."
 msgstr "Fails nav atrasts TFTP serverī."
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For anonymous FTP insert email address"
-msgstr "Lai iegūtu anonīmu ftp, ievietojiet e-pasta adresi šeit."
+msgstr "Anonīmam FTP ievadiet e-pasta adresi"
 
 #: includes/arrays.php
-#, fuzzy
 msgid "For web service insert at least \"/\" or something like \"/any/path/\"."
-msgstr "Tīmekļa pakalpojumam ievietojiet vismaz \"/\" vai kaut ko līdzīgu \"/any/path/\". FTP sarakstam jābeidzas ar char \"/\". TFTP/SCP/SMB lejupielādei testa ieliktnis /ceļš/fails"
+msgstr ""
+"Tīmekļa pakalpojumam ievadiet vismaz \"/\" vai kaut ko līdzīgu \"/any/path/\""
+"."
 
 #: includes/arrays.php
 msgid "Forbidden"
@@ -853,7 +853,7 @@ msgstr ""
 
 #: includes/arrays.php
 msgid "OK"
-msgstr "Labi"
+msgstr "Kārtībā"
 
 #: includes/arrays.php
 msgid "Oauth Client ID"
@@ -865,7 +865,7 @@ msgstr "Novecojusi kļūda"
 
 #: includes/arrays.php
 msgid "Ok"
-msgstr ""
+msgstr "Kārtībā"
 
 #: includes/arrays.php
 msgid "Operation timeout. The specified time-out period was reached according to the conditions."
@@ -1331,7 +1331,7 @@ msgstr ""
 
 #: includes/arrays.php servcheck_test.php
 msgid "Tests"
-msgstr "Testi"
+msgstr "Pārbaudes"
 
 #: includes/arrays.php
 msgid "The FTP PORT command returned error. This mostly happens when you have not specified a good enough address for libcurl to use. See CURLOPT_FTPPORT."
@@ -1738,7 +1738,7 @@ msgstr ""
 
 #: servcheck_ca.php servcheck_credential.php servcheck_proxy.php
 msgid "Used"
-msgstr "Lietots"
+msgstr "Izmantots"
 
 #: servcheck_credential.php
 #, fuzzy
@@ -1986,9 +1986,8 @@ msgstr[1] "Izveidot testa kopiju"
 msgstr[2] "Izveidot testa kopijas"
 
 #: servcheck_test.php
-#, fuzzy
 msgid "Duration"
-msgstr "Atrašanās vieta"
+msgstr "Ilgums"
 
 #: servcheck_test.php
 msgid "Edit Service Check"
@@ -2145,14 +2144,14 @@ msgid "%d days"
 msgstr ""
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d hours"
-msgstr "Pēdējās 6 stundas"
+msgstr "%d stundas"
 
 #: setup.php
 #, php-format
 msgid "%d year"
-msgstr ""
+msgstr "%d gads"
 
 #: setup.php
 #, fuzzy
@@ -2249,7 +2248,7 @@ msgstr ""
 
 #: setup.php
 msgid "Never"
-msgstr ""
+msgstr "Nekad"
 
 #: setup.php
 #, fuzzy
@@ -2278,9 +2277,8 @@ msgid "Send Email separately for each address"
 msgstr ""
 
 #: setup.php
-#, fuzzy
 msgid "Servcheck"
-msgstr "Pakalpojuma pārbaudes"
+msgstr "Servcheck"
 
 #: setup.php
 msgid "Service Check Admin"
@@ -2300,7 +2298,7 @@ msgstr "Pakalpojuma pārbaudītājs"
 
 #: setup.php
 msgid "Service Checks"
-msgstr "Pakalpojuma pārbaudes"
+msgstr "Pakalpojumu pārbaudes"
 
 #: setup.php
 msgid "Status Change Command"
